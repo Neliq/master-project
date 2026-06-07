@@ -1,0 +1,1415 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Darkpattern .lab" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e6]
+        - generic [ref=e9]:
+          - text: Darkpattern
+          - generic [ref=e10]: .lab
+      - navigation "Primary" [ref=e11]:
+        - link "Catalog" [ref=e12] [cursor=pointer]:
+          - /url: /
+        - link "Source taxonomy (opens in a new tab)" [ref=e13] [cursor=pointer]:
+          - /url: https://www.deceptive.design
+          - text: Source taxonomy
+          - generic [ref=e14]: (opens in a new tab)
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e19]: Educational reference
+          - heading "60 dark patterns, one objective definition each." [level=1] [ref=e21]:
+            - text: 60 dark patterns,
+            - text: one objective definition each.
+          - paragraph [ref=e22]: A catalog of manipulative design patterns observed in production interfaces. Every entry is described in terms of an objective, mathematically expressible condition — predicates you can actually test for, not adjectives you have to argue about.
+        - generic [ref=e23]:
+          - generic [ref=e24]: 62 patterns
+          - generic [ref=e25]: 8 categories
+          - generic [ref=e26]:
+            - img
+            - text: 62 interactive demos
+        - generic [ref=e27]:
+          - heading "Try the demos" [level=2] [ref=e28]
+          - generic [ref=e29]:
+            - link "Immortal Accounts" [ref=e30] [cursor=pointer]:
+              - /url: /patterns/immortal-accounts
+              - generic [ref=e31]: Immortal Accounts
+              - img [ref=e32]
+            - link "Dead End" [ref=e34] [cursor=pointer]:
+              - /url: /patterns/dead-end
+              - generic [ref=e35]: Dead End
+              - img [ref=e36]
+            - link "Forced Grace Period" [ref=e38] [cursor=pointer]:
+              - /url: /patterns/forced-grace-period
+              - generic [ref=e39]: Forced Grace Period
+              - img [ref=e40]
+            - link "Privacy Maze" [ref=e42] [cursor=pointer]:
+              - /url: /patterns/privacy-maze
+              - generic [ref=e43]: Privacy Maze
+              - img [ref=e44]
+            - link "Labyrinthine Navigation" [ref=e46] [cursor=pointer]:
+              - /url: /patterns/labyrinthine-navigation
+              - generic [ref=e47]: Labyrinthine Navigation
+              - img [ref=e48]
+            - link "Customisation (Interface Nesting)" [ref=e50] [cursor=pointer]:
+              - /url: /patterns/customisation
+              - generic [ref=e51]: Customisation (Interface Nesting)
+              - img [ref=e52]
+            - link "Intermediate Currency" [ref=e54] [cursor=pointer]:
+              - /url: /patterns/intermediate-currency
+              - generic [ref=e55]: Intermediate Currency
+              - img [ref=e56]
+            - link "Disguised Ad" [ref=e58] [cursor=pointer]:
+              - /url: /patterns/disguised-ad
+              - generic [ref=e59]: Disguised Ad
+              - img [ref=e60]
+            - link "Sneak Into Basket" [ref=e62] [cursor=pointer]:
+              - /url: /patterns/sneak-into-basket
+              - generic [ref=e63]: Sneak Into Basket
+              - img [ref=e64]
+            - link "Drip Pricing, Hidden Costs, or Partitioned Pricing" [ref=e66] [cursor=pointer]:
+              - /url: /patterns/drip-pricing
+              - generic [ref=e67]: Drip Pricing, Hidden Costs, or Partitioned Pricing
+              - img [ref=e68]
+            - link "Bundling" [ref=e70] [cursor=pointer]:
+              - /url: /patterns/bundling
+              - generic [ref=e71]: Bundling
+              - img [ref=e72]
+            - link "Hidden Information" [ref=e74] [cursor=pointer]:
+              - /url: /patterns/hidden-information
+              - generic [ref=e75]: Hidden Information
+              - img [ref=e76]
+            - link "Reduced Friction" [ref=e78] [cursor=pointer]:
+              - /url: /patterns/reduced-friction
+              - generic [ref=e79]: Reduced Friction
+              - img [ref=e80]
+            - link "Forced Continuity" [ref=e82] [cursor=pointer]:
+              - /url: /patterns/forced-continuity
+              - generic [ref=e83]: Forced Continuity
+              - img [ref=e84]
+            - link "Privacy Zuckering" [ref=e86] [cursor=pointer]:
+              - /url: /patterns/privacy-zuckering
+              - generic [ref=e87]: Privacy Zuckering
+              - img [ref=e88]
+            - link "Friend Spam" [ref=e90] [cursor=pointer]:
+              - /url: /patterns/friend-spam
+              - generic [ref=e91]: Friend Spam
+              - img [ref=e92]
+            - link "Address Book Leeching" [ref=e94] [cursor=pointer]:
+              - /url: /patterns/address-book-leeching
+              - generic [ref=e95]: Address Book Leeching
+              - img [ref=e96]
+            - link "Automatic Accept Third Party Term" [ref=e98] [cursor=pointer]:
+              - /url: /patterns/automatic-accept-third-party-term
+              - generic [ref=e99]: Automatic Accept Third Party Term
+              - img [ref=e100]
+            - link "Pre-Delivered Content" [ref=e102] [cursor=pointer]:
+              - /url: /patterns/pre-delivered-content
+              - generic [ref=e103]: Pre-Delivered Content
+              - img [ref=e104]
+            - link "Fear Of Missing Out (FOMO)" [ref=e106] [cursor=pointer]:
+              - /url: /patterns/fear-of-missing-out-fomo
+              - generic [ref=e107]: Fear Of Missing Out (FOMO)
+              - img [ref=e108]
+            - link "High Demand" [ref=e110] [cursor=pointer]:
+              - /url: /patterns/high-demand
+              - generic [ref=e111]: High Demand
+              - img [ref=e112]
+            - link "Low Stock" [ref=e114] [cursor=pointer]:
+              - /url: /patterns/low-stock
+              - generic [ref=e115]: Low Stock
+              - img [ref=e116]
+            - link "Activity Messages" [ref=e118] [cursor=pointer]:
+              - /url: /patterns/activity-messages
+              - generic [ref=e119]: Activity Messages
+              - img [ref=e120]
+            - link "Countdown Timer" [ref=e122] [cursor=pointer]:
+              - /url: /patterns/countdown-timer
+              - generic [ref=e123]: Countdown Timer
+              - img [ref=e124]
+            - link "Limited Time Message" [ref=e126] [cursor=pointer]:
+              - /url: /patterns/limited-time-message
+              - generic [ref=e127]: Limited Time Message
+              - img [ref=e128]
+            - link "Price Comparison Prevention" [ref=e130] [cursor=pointer]:
+              - /url: /patterns/price-comparison-prevention
+              - generic [ref=e131]: Price Comparison Prevention
+              - img [ref=e132]
+            - link "Reference Pricing" [ref=e134] [cursor=pointer]:
+              - /url: /patterns/reference-pricing
+              - generic [ref=e135]: Reference Pricing
+              - img [ref=e136]
+            - link "Conflicting Information" [ref=e138] [cursor=pointer]:
+              - /url: /patterns/conflicting-information
+              - generic [ref=e139]: Conflicting Information
+              - img [ref=e140]
+            - link "Information Without Context" [ref=e142] [cursor=pointer]:
+              - /url: /patterns/information-without-context
+              - generic [ref=e143]: Information Without Context
+              - img [ref=e144]
+            - link "False Hierarchy" [ref=e146] [cursor=pointer]:
+              - /url: /patterns/false-hierarchy
+              - generic [ref=e147]: False Hierarchy
+              - img [ref=e148]
+            - link "Visual Prominence" [ref=e150] [cursor=pointer]:
+              - /url: /patterns/visual-prominence
+              - generic [ref=e151]: Visual Prominence
+              - img [ref=e152]
+            - link "Persuasive Language" [ref=e154] [cursor=pointer]:
+              - /url: /patterns/persuasive-language
+              - generic [ref=e155]: Persuasive Language
+              - img [ref=e156]
+            - link "Cuteness" [ref=e158] [cursor=pointer]:
+              - /url: /patterns/cuteness
+              - generic [ref=e159]: Cuteness
+              - img [ref=e160]
+            - link "Positive Or Negative Framing" [ref=e162] [cursor=pointer]:
+              - /url: /patterns/positive-or-negative-framing
+              - generic [ref=e163]: Positive Or Negative Framing
+              - img [ref=e164]
+            - link "Choice Overload" [ref=e166] [cursor=pointer]:
+              - /url: /patterns/choice-overload
+              - generic [ref=e167]: Choice Overload
+              - img [ref=e168]
+            - link "Plain Evil (Theoretical Construct)" [ref=e170] [cursor=pointer]:
+              - /url: /patterns/plain-evil
+              - generic [ref=e171]: Plain Evil (Theoretical Construct)
+              - img [ref=e172]
+            - link "Endorsement And Testimonials" [ref=e174] [cursor=pointer]:
+              - /url: /patterns/endorsement-and-testimonials
+              - generic [ref=e175]: Endorsement And Testimonials
+              - img [ref=e176]
+            - link "Confirmshaming" [ref=e178] [cursor=pointer]:
+              - /url: /patterns/confirmshaming
+              - generic [ref=e179]: Confirmshaming
+              - img [ref=e180]
+            - link "Psychological Tricks" [ref=e182] [cursor=pointer]:
+              - /url: /patterns/psychological-tricks
+              - generic [ref=e183]: Psychological Tricks
+              - img [ref=e184]
+            - link "Pressured Selling" [ref=e186] [cursor=pointer]:
+              - /url: /patterns/pressured-selling
+              - generic [ref=e187]: Pressured Selling
+              - img [ref=e188]
+            - link "Small or Moving Close Button" [ref=e190] [cursor=pointer]:
+              - /url: /patterns/small-or-moving-close-button
+              - generic [ref=e191]: Small or Moving Close Button
+              - img [ref=e192]
+            - link "Bad Defaults / Preselection" [ref=e194] [cursor=pointer]:
+              - /url: /patterns/bad-defaults-preselection
+              - generic [ref=e195]: Bad Defaults / Preselection
+              - img [ref=e196]
+            - link "Trick Questions" [ref=e198] [cursor=pointer]:
+              - /url: /patterns/trick-questions
+              - generic [ref=e199]: Trick Questions
+              - img [ref=e200]
+            - link "Wrong Language" [ref=e202] [cursor=pointer]:
+              - /url: /patterns/wrong-language
+              - generic [ref=e203]: Wrong Language
+              - img [ref=e204]
+            - link "Complex Language" [ref=e206] [cursor=pointer]:
+              - /url: /patterns/complex-language
+              - generic [ref=e207]: Complex Language
+              - img [ref=e208]
+            - link "Feedforward Ambiguity" [ref=e210] [cursor=pointer]:
+              - /url: /patterns/feedforward-ambiguity
+              - generic [ref=e211]: Feedforward Ambiguity
+              - img [ref=e212]
+            - link "Forced Registration" [ref=e214] [cursor=pointer]:
+              - /url: /patterns/forced-registration
+              - generic [ref=e215]: Forced Registration
+              - img [ref=e216]
+            - link "Social Pyramid" [ref=e218] [cursor=pointer]:
+              - /url: /patterns/social-pyramid
+              - generic [ref=e219]: Social Pyramid
+              - img [ref=e220]
+            - link "Granting and Interaction" [ref=e222] [cursor=pointer]:
+              - /url: /patterns/granting-and-interaction
+              - generic [ref=e223]: Granting and Interaction
+              - img [ref=e224]
+            - link "Pay-To-Play" [ref=e226] [cursor=pointer]:
+              - /url: /patterns/pay-to-play
+              - generic [ref=e227]: Pay-To-Play
+              - img [ref=e228]
+            - link "Grinding" [ref=e230] [cursor=pointer]:
+              - /url: /patterns/grinding
+              - generic [ref=e231]: Grinding
+              - img [ref=e232]
+            - link "Playing By Appointment" [ref=e234] [cursor=pointer]:
+              - /url: /patterns/playing-by-appointment
+              - generic [ref=e235]: Playing By Appointment
+              - img [ref=e236]
+            - link "Watch Ads To Unlock Features Or Get Rewards" [ref=e238] [cursor=pointer]:
+              - /url: /patterns/watch-ads-to-unlock-features
+              - generic [ref=e239]: Watch Ads To Unlock Features Or Get Rewards
+              - img [ref=e240]
+            - link "Pay To Avoid" [ref=e242] [cursor=pointer]:
+              - /url: /patterns/pay-to-avoid
+              - generic [ref=e243]: Pay To Avoid
+              - img [ref=e244]
+            - link "Automating The User Away" [ref=e246] [cursor=pointer]:
+              - /url: /patterns/automating-the-user-away
+              - generic [ref=e247]: Automating The User Away
+              - img [ref=e248]
+            - link "Parasocial Pressure" [ref=e250] [cursor=pointer]:
+              - /url: /patterns/parasocial-pressure
+              - generic [ref=e251]: Parasocial Pressure
+              - img [ref=e252]
+            - link "Encouraging Anti-Social Behavior" [ref=e254] [cursor=pointer]:
+              - /url: /patterns/encouraging-anti-social-behavior
+              - generic [ref=e255]: Encouraging Anti-Social Behavior
+              - img [ref=e256]
+            - link "Addictive Design" [ref=e258] [cursor=pointer]:
+              - /url: /patterns/addictive-design
+              - generic [ref=e259]: Addictive Design
+              - img [ref=e260]
+            - link "Infinite Scrolling" [ref=e262] [cursor=pointer]:
+              - /url: /patterns/infinite-scrolling
+              - generic [ref=e263]: Infinite Scrolling
+              - img [ref=e264]
+            - link "Pull To Refresh (Variable-Reward Trap)" [ref=e266] [cursor=pointer]:
+              - /url: /patterns/pull-to-refresh
+              - generic [ref=e267]: Pull To Refresh (Variable-Reward Trap)
+              - img [ref=e268]
+            - link "Countdown On Ads" [ref=e270] [cursor=pointer]:
+              - /url: /patterns/countdown-on-ads
+              - generic [ref=e271]: Countdown On Ads
+              - img [ref=e272]
+            - link "Auto-Play" [ref=e274] [cursor=pointer]:
+              - /url: /patterns/auto-play
+              - generic [ref=e275]: Auto-Play
+              - img [ref=e276]
+        - generic [ref=e278]:
+          - heading "Browse by category" [level=2] [ref=e279]
+          - generic [ref=e280]:
+            - link "Sneaking13" [ref=e281] [cursor=pointer]:
+              - /url: "#sneaking"
+            - link "Urgency6" [ref=e282] [cursor=pointer]:
+              - /url: "#urgency"
+            - link "Misdirection14" [ref=e283] [cursor=pointer]:
+              - /url: "#misdirection"
+            - link "Forced Action11" [ref=e284] [cursor=pointer]:
+              - /url: "#forced-action"
+            - link "Obstruction6" [ref=e285] [cursor=pointer]:
+              - /url: "#obstruction"
+            - link "Nagging1" [ref=e286] [cursor=pointer]:
+              - /url: "#nagging"
+            - link "Interface Interference6" [ref=e287] [cursor=pointer]:
+              - /url: "#interface-interference"
+            - link "Attention Manipulation5" [ref=e288] [cursor=pointer]:
+              - /url: "#attention-manipulation"
+      - generic [ref=e289]:
+        - region "Sneaking" [ref=e290]:
+          - generic [ref=e291]:
+            - generic [ref=e292]:
+              - heading "Sneaking" [level=2] [ref=e293]
+              - generic [ref=e294]: "13"
+            - paragraph [ref=e295]: Covert transfer of money, attention or data the user never agreed to.
+          - generic [ref=e296]:
+            - link "Demo Intermediate Currency The Intermediate Currency pattern introduces an artificial layer of abstraction between the user's fiat money and the digital goods or services they wish to purchase. Sneaking Read" [ref=e297] [cursor=pointer]:
+              - /url: /patterns/intermediate-currency
+              - generic [ref=e298]:
+                - img [ref=e300]
+                - generic "Interactive demo available" [ref=e305]:
+                  - img [ref=e306]
+                  - text: Demo
+              - generic [ref=e308]:
+                - heading "Intermediate Currency" [level=3] [ref=e309]
+                - paragraph [ref=e310]: The Intermediate Currency pattern introduces an artificial layer of abstraction between the user's fiat money and the digital goods or services they wish to purchase.
+              - generic [ref=e311]:
+                - generic [ref=e312]:
+                  - img [ref=e313]
+                  - text: Sneaking
+                - generic [ref=e317]:
+                  - text: Read
+                  - img [ref=e318]
+            - link "Demo Disguised Ad The Disguised Ad pattern is a visual manipulation technique where promotional content is engineered to mimic native interface elements, such as navigation menus, editorial content, or primary action buttons (e.g., a fake \"Download'' button). Sneaking Read" [ref=e320] [cursor=pointer]:
+              - /url: /patterns/disguised-ad
+              - generic [ref=e321]:
+                - img [ref=e323]
+                - generic "Interactive demo available" [ref=e326]:
+                  - img [ref=e327]
+                  - text: Demo
+              - generic [ref=e329]:
+                - heading "Disguised Ad" [level=3] [ref=e330]
+                - paragraph [ref=e331]: The Disguised Ad pattern is a visual manipulation technique where promotional content is engineered to mimic native interface elements, such as navigation menus, editorial content, or primary action buttons (e.g., a fake "Download'' button).
+              - generic [ref=e332]:
+                - generic [ref=e333]:
+                  - img [ref=e334]
+                  - text: Sneaking
+                - generic [ref=e338]:
+                  - text: Read
+                  - img [ref=e339]
+            - link "Demo Sneak Into Basket The Sneak Into Basket pattern, often categorized under the broader \"Sneaking'' or \"Hiding Information'' umbrella, occurs when an e-commerce platform automatically adds supplementary, unrequested items---such as extended warranties, premium shipping, or complementary products---to the user's shopping cart. Sneaking Read" [ref=e341] [cursor=pointer]:
+              - /url: /patterns/sneak-into-basket
+              - generic [ref=e342]:
+                - img [ref=e344]
+                - generic "Interactive demo available" [ref=e348]:
+                  - img [ref=e349]
+                  - text: Demo
+              - generic [ref=e351]:
+                - heading "Sneak Into Basket" [level=3] [ref=e352]
+                - paragraph [ref=e353]: The Sneak Into Basket pattern, often categorized under the broader "Sneaking'' or "Hiding Information'' umbrella, occurs when an e-commerce platform automatically adds supplementary, unrequested items---such as extended warranties, premium shipping, or complementary products---to the user's shopping cart.
+              - generic [ref=e354]:
+                - generic [ref=e355]:
+                  - img [ref=e356]
+                  - text: Sneaking
+                - generic [ref=e360]:
+                  - text: Read
+                  - img [ref=e361]
+            - link "Demo Drip Pricing, Hidden Costs, or Partitioned Pricing Drip Pricing, also known as Partitioned Pricing or Hidden Costs, is a deceptive pricing strategy formally categorized under \"Hiding Information.'' The interface lures the user in by prominently advertising a low, incomplete base price. Sneaking Read" [ref=e363] [cursor=pointer]:
+              - /url: /patterns/drip-pricing
+              - generic [ref=e364]:
+                - img [ref=e366]
+                - generic "Interactive demo available" [ref=e369]:
+                  - img [ref=e370]
+                  - text: Demo
+              - generic [ref=e372]:
+                - heading "Drip Pricing, Hidden Costs, or Partitioned Pricing" [level=3] [ref=e373]
+                - paragraph [ref=e374]: Drip Pricing, also known as Partitioned Pricing or Hidden Costs, is a deceptive pricing strategy formally categorized under "Hiding Information.'' The interface lures the user in by prominently advertising a low, incomplete base price.
+              - generic [ref=e375]:
+                - generic [ref=e376]:
+                  - img [ref=e377]
+                  - text: Sneaking
+                - generic [ref=e381]:
+                  - text: Read
+                  - img [ref=e382]
+            - link "Demo Bundling Bundling is an e-commerce and structural dark pattern formally recognized as a severe manipulation of choice architecture. Sneaking Read" [ref=e384] [cursor=pointer]:
+              - /url: /patterns/bundling
+              - generic [ref=e385]:
+                - img [ref=e387]
+                - generic "Interactive demo available" [ref=e397]:
+                  - img [ref=e398]
+                  - text: Demo
+              - generic [ref=e400]:
+                - heading "Bundling" [level=3] [ref=e401]
+                - paragraph [ref=e402]: Bundling is an e-commerce and structural dark pattern formally recognized as a severe manipulation of choice architecture.
+              - generic [ref=e403]:
+                - generic [ref=e404]:
+                  - img [ref=e405]
+                  - text: Sneaking
+                - generic [ref=e409]:
+                  - text: Read
+                  - img [ref=e410]
+            - link "Demo Hidden Information The Hidden Information pattern, frequently overlapping with \"Sneaking'' and \"Interface Interference,'' deliberately obscures critical details---such as auto-renewal clauses, additional fees, or extensive data-sharing agreements---by displacing them from the user's primary visual locus. Sneaking Read" [ref=e412] [cursor=pointer]:
+              - /url: /patterns/hidden-information
+              - generic [ref=e413]:
+                - img [ref=e415]
+                - generic "Interactive demo available" [ref=e420]:
+                  - img [ref=e421]
+                  - text: Demo
+              - generic [ref=e423]:
+                - heading "Hidden Information" [level=3] [ref=e424]
+                - paragraph [ref=e425]: The Hidden Information pattern, frequently overlapping with "Sneaking'' and "Interface Interference,'' deliberately obscures critical details---such as auto-renewal clauses, additional fees, or extensive data-sharing agreements---by displacing them from the user's primary visual locus.
+              - generic [ref=e426]:
+                - generic [ref=e427]:
+                  - img [ref=e428]
+                  - text: Sneaking
+                - generic [ref=e432]:
+                  - text: Read
+                  - img [ref=e433]
+            - link "Demo Reduced Friction Reduced Friction—also referred to as Frictionless Design when weaponized—is a behavioral dark pattern formally categorized under \"Interface Interference'' and \"Forced Action.'' While removing friction is traditionally a best practice in UX design to improve usability, it becomes a dark pattern when applied exclusively to high-stakes, business-favorable actions, such as spending money, subscribing, or granting broad data permissions . Sneaking Read" [ref=e435] [cursor=pointer]:
+              - /url: /patterns/reduced-friction
+              - generic [ref=e436]:
+                - img [ref=e438]
+                - generic "Interactive demo available" [ref=e440]:
+                  - img [ref=e441]
+                  - text: Demo
+              - generic [ref=e443]:
+                - heading "Reduced Friction" [level=3] [ref=e444]
+                - paragraph [ref=e445]: Reduced Friction—also referred to as Frictionless Design when weaponized—is a behavioral dark pattern formally categorized under "Interface Interference'' and "Forced Action.'' While removing friction is traditionally a best practice in UX design to improve usability, it becomes a dark pattern when applied exclusively to high-stakes, business-favorable actions, such as spending money, subscribing, or granting broad data permissions .
+              - generic [ref=e446]:
+                - generic [ref=e447]:
+                  - img [ref=e448]
+                  - text: Sneaking
+                - generic [ref=e452]:
+                  - text: Read
+                  - img [ref=e453]
+            - link "Demo Forced Continuity Forced Continuity is a financial dark pattern typically categorized under \"Sneaking'' or \"Bait and Switch.'' It occurs when a free trial or heavily discounted promotional period silently and automatically converts into a recurring, full-priced subscription without adequate prior warning or a transparent, frictionless cancellation mechanism . Sneaking Read" [ref=e455] [cursor=pointer]:
+              - /url: /patterns/forced-continuity
+              - generic [ref=e456]:
+                - img [ref=e458]
+                - generic "Interactive demo available" [ref=e460]:
+                  - img [ref=e461]
+                  - text: Demo
+              - generic [ref=e463]:
+                - heading "Forced Continuity" [level=3] [ref=e464]
+                - paragraph [ref=e465]: Forced Continuity is a financial dark pattern typically categorized under "Sneaking'' or "Bait and Switch.'' It occurs when a free trial or heavily discounted promotional period silently and automatically converts into a recurring, full-priced subscription without adequate prior warning or a transparent, frictionless cancellation mechanism .
+              - generic [ref=e466]:
+                - generic [ref=e467]:
+                  - img [ref=e468]
+                  - text: Sneaking
+                - generic [ref=e472]:
+                  - text: Read
+                  - img [ref=e473]
+            - link "Demo Privacy Zuckering Privacy Zuckering—a term originally coined by the Electronic Frontier Foundation (EFF)—is a data-harvesting dark pattern formally categorized under \"Sneaking'' and \"Interface Interference.'' It occurs when an interface intentionally tricks, confuses, or coerces a user into surrendering significantly more personal data than they intend to . Sneaking Read" [ref=e475] [cursor=pointer]:
+              - /url: /patterns/privacy-zuckering
+              - generic [ref=e476]:
+                - img [ref=e478]
+                - generic "Interactive demo available" [ref=e481]:
+                  - img [ref=e482]
+                  - text: Demo
+              - generic [ref=e484]:
+                - heading "Privacy Zuckering" [level=3] [ref=e485]
+                - paragraph [ref=e486]: Privacy Zuckering—a term originally coined by the Electronic Frontier Foundation (EFF)—is a data-harvesting dark pattern formally categorized under "Sneaking'' and "Interface Interference.'' It occurs when an interface intentionally tricks, confuses, or coerces a user into surrendering significantly more personal data than they intend to .
+              - generic [ref=e487]:
+                - generic [ref=e488]:
+                  - img [ref=e489]
+                  - text: Sneaking
+                - generic [ref=e493]:
+                  - text: Read
+                  - img [ref=e494]
+            - link "Demo Friend Spam Friend Spam is an aggressive and privacy-invasive dark pattern categorized under \"Sneaking'' and \"Interface Interference.'' It occurs when an application requests access to a user's contact list or social media graph under the explicit pretense of a benign utility—such as \"finding friends already on the platform''—but then silently weaponizes those permissions to broadcast unsolicited promotional messages to the user's entire network . Sneaking Read" [ref=e496] [cursor=pointer]:
+              - /url: /patterns/friend-spam
+              - generic [ref=e497]:
+                - img [ref=e499]
+                - generic "Interactive demo available" [ref=e502]:
+                  - img [ref=e503]
+                  - text: Demo
+              - generic [ref=e505]:
+                - heading "Friend Spam" [level=3] [ref=e506]
+                - paragraph [ref=e507]: Friend Spam is an aggressive and privacy-invasive dark pattern categorized under "Sneaking'' and "Interface Interference.'' It occurs when an application requests access to a user's contact list or social media graph under the explicit pretense of a benign utility—such as "finding friends already on the platform''—but then silently weaponizes those permissions to broadcast unsolicited promotional messages to the user's entire network .
+              - generic [ref=e508]:
+                - generic [ref=e509]:
+                  - img [ref=e510]
+                  - text: Sneaking
+                - generic [ref=e514]:
+                  - text: Read
+                  - img [ref=e515]
+            - link "Demo Address Book Leeching Address Book Leeching is a severe data-harvesting dark pattern formally categorized under \"Privacy Manipulation'' and \"Forced Action.'' While closely related to Friend Spam, Leeching focuses specifically on the covert extraction, upload, and permanent retention of a user's entire contact list. Sneaking Read" [ref=e517] [cursor=pointer]:
+              - /url: /patterns/address-book-leeching
+              - generic [ref=e518]:
+                - img [ref=e520]
+                - generic "Interactive demo available" [ref=e524]:
+                  - img [ref=e525]
+                  - text: Demo
+              - generic [ref=e527]:
+                - heading "Address Book Leeching" [level=3] [ref=e528]
+                - paragraph [ref=e529]: Address Book Leeching is a severe data-harvesting dark pattern formally categorized under "Privacy Manipulation'' and "Forced Action.'' While closely related to Friend Spam, Leeching focuses specifically on the covert extraction, upload, and permanent retention of a user's entire contact list.
+              - generic [ref=e530]:
+                - generic [ref=e531]:
+                  - img [ref=e532]
+                  - text: Sneaking
+                - generic [ref=e536]:
+                  - text: Read
+                  - img [ref=e537]
+            - link "Demo Automatic Accept Third Party Term Automatic Accept Third Party Term is a consent-based dark pattern formally categorized under \"Sneaking'' and \"Forced Action.'' It occurs when an interface structurally bundles the agreement to a primary service provider's Terms of Service with the hidden, mandatory acceptance of numerous third-party agreements . Sneaking Read" [ref=e539] [cursor=pointer]:
+              - /url: /patterns/automatic-accept-third-party-term
+              - generic [ref=e540]:
+                - img [ref=e542]
+                - generic "Interactive demo available" [ref=e546]:
+                  - img [ref=e547]
+                  - text: Demo
+              - generic [ref=e549]:
+                - heading "Automatic Accept Third Party Term" [level=3] [ref=e550]
+                - paragraph [ref=e551]: Automatic Accept Third Party Term is a consent-based dark pattern formally categorized under "Sneaking'' and "Forced Action.'' It occurs when an interface structurally bundles the agreement to a primary service provider's Terms of Service with the hidden, mandatory acceptance of numerous third-party agreements .
+              - generic [ref=e552]:
+                - generic [ref=e553]:
+                  - img [ref=e554]
+                  - text: Sneaking
+                - generic [ref=e558]:
+                  - text: Read
+                  - img [ref=e559]
+            - link "Demo Pre-Delivered Content The Pre-Delivered Content pattern—historically termed \"On-Disc DLC''—is a manipulative resource-extraction strategy formally categorized under \"Hidden Costs'' and \"Forced Action.'' It occurs when a software provider covertly installs premium, locked digital assets (e.g., expansion packs or high-resolution textures) directly onto the user's local hardware without explicit consent . Sneaking Read" [ref=e561] [cursor=pointer]:
+              - /url: /patterns/pre-delivered-content
+              - generic [ref=e562]:
+                - img [ref=e564]
+                - generic "Interactive demo available" [ref=e568]:
+                  - img [ref=e569]
+                  - text: Demo
+              - generic [ref=e571]:
+                - heading "Pre-Delivered Content" [level=3] [ref=e572]
+                - paragraph [ref=e573]: The Pre-Delivered Content pattern—historically termed "On-Disc DLC''—is a manipulative resource-extraction strategy formally categorized under "Hidden Costs'' and "Forced Action.'' It occurs when a software provider covertly installs premium, locked digital assets (e.g., expansion packs or high-resolution textures) directly onto the user's local hardware without explicit consent .
+              - generic [ref=e574]:
+                - generic [ref=e575]:
+                  - img [ref=e576]
+                  - text: Sneaking
+                - generic [ref=e580]:
+                  - text: Read
+                  - img [ref=e581]
+        - region "Urgency" [ref=e583]:
+          - generic [ref=e584]:
+            - generic [ref=e585]:
+              - heading "Urgency" [level=2] [ref=e586]
+              - generic [ref=e587]: "6"
+            - paragraph [ref=e588]: Manufactured time pressure that pushes the user to act before they can think.
+          - generic [ref=e589]:
+            - link "Demo Fear Of Missing Out (FOMO) The Fear Of Missing Out (FOMO) pattern is a psychological manipulation tactic formally categorized under \"Deceptive Sniping'' or \"Urgency and Scarcity.'' It aggressively pressures the user into an immediate transaction by fabricating artificial constraints on either time (temporal scarcity) or availability (inventory scarcity). Urgency Read" [ref=e590] [cursor=pointer]:
+              - /url: /patterns/fear-of-missing-out-fomo
+              - generic [ref=e591]:
+                - img [ref=e593]
+                - generic "Interactive demo available" [ref=e595]:
+                  - img [ref=e596]
+                  - text: Demo
+              - generic [ref=e598]:
+                - heading "Fear Of Missing Out (FOMO)" [level=3] [ref=e599]
+                - paragraph [ref=e600]: The Fear Of Missing Out (FOMO) pattern is a psychological manipulation tactic formally categorized under "Deceptive Sniping'' or "Urgency and Scarcity.'' It aggressively pressures the user into an immediate transaction by fabricating artificial constraints on either time (temporal scarcity) or availability (inventory scarcity).
+              - generic [ref=e601]:
+                - generic [ref=e602]:
+                  - img [ref=e603]
+                  - text: Urgency
+                - generic [ref=e607]:
+                  - text: Read
+                  - img [ref=e608]
+            - link "Demo High Demand The High Demand pattern is a manipulative psychological tactic formally categorized under \"Social Proof'' and \"Urgency.'' It functions by artificially injecting notifications or metrics that claim a large number of other users are concurrently viewing, purchasing, or booking the same item . Urgency Read" [ref=e610] [cursor=pointer]:
+              - /url: /patterns/high-demand
+              - generic [ref=e611]:
+                - img [ref=e613]
+                - generic "Interactive demo available" [ref=e616]:
+                  - img [ref=e617]
+                  - text: Demo
+              - generic [ref=e619]:
+                - heading "High Demand" [level=3] [ref=e620]
+                - paragraph [ref=e621]: The High Demand pattern is a manipulative psychological tactic formally categorized under "Social Proof'' and "Urgency.'' It functions by artificially injecting notifications or metrics that claim a large number of other users are concurrently viewing, purchasing, or booking the same item .
+              - generic [ref=e622]:
+                - generic [ref=e623]:
+                  - img [ref=e624]
+                  - text: Urgency
+                - generic [ref=e628]:
+                  - text: Read
+                  - img [ref=e629]
+            - link "Demo Low Stock The Low Stock pattern is a psychological manipulation tactic formally categorized under \"Scarcity'' and \"Urgency.'' It weaponizes the economic principle of supply and demand by artificially presenting an item as being on the verge of selling out (e.g., \"Only 2 left at this price!''). Urgency Read" [ref=e631] [cursor=pointer]:
+              - /url: /patterns/low-stock
+              - generic [ref=e632]:
+                - img [ref=e634]
+                - generic "Interactive demo available" [ref=e640]:
+                  - img [ref=e641]
+                  - text: Demo
+              - generic [ref=e643]:
+                - heading "Low Stock" [level=3] [ref=e644]
+                - paragraph [ref=e645]: The Low Stock pattern is a psychological manipulation tactic formally categorized under "Scarcity'' and "Urgency.'' It weaponizes the economic principle of supply and demand by artificially presenting an item as being on the verge of selling out (e.g., "Only 2 left at this price!'').
+              - generic [ref=e646]:
+                - generic [ref=e647]:
+                  - img [ref=e648]
+                  - text: Urgency
+                - generic [ref=e652]:
+                  - text: Read
+                  - img [ref=e653]
+            - link "Demo Activity Messages Activity Messages is a behavioral manipulation pattern formally categorized under \"Social Proof'' and \"Urgency.'' It functions by continuously injecting asynchronous notifications into the user's viewport, detailing the purported recent actions of other users—such as \"Sarah from New York just purchased this item'' . Urgency Read" [ref=e655] [cursor=pointer]:
+              - /url: /patterns/activity-messages
+              - generic [ref=e656]:
+                - img [ref=e658]
+                - generic "Interactive demo available" [ref=e661]:
+                  - img [ref=e662]
+                  - text: Demo
+              - generic [ref=e664]:
+                - heading "Activity Messages" [level=3] [ref=e665]
+                - paragraph [ref=e666]: Activity Messages is a behavioral manipulation pattern formally categorized under "Social Proof'' and "Urgency.'' It functions by continuously injecting asynchronous notifications into the user's viewport, detailing the purported recent actions of other users—such as "Sarah from New York just purchased this item'' .
+              - generic [ref=e667]:
+                - generic [ref=e668]:
+                  - img [ref=e669]
+                  - text: Urgency
+                - generic [ref=e673]:
+                  - text: Read
+                  - img [ref=e674]
+            - link "Demo Countdown Timer The Countdown Timer is a psychological manipulation tactic formally categorized under \"Urgency'' and \"Deception.'' It visualizes a strict temporal constraint—usually a rapidly ticking clock—imploring the user to complete a transaction before a promised discount or cart reservation expires . Urgency Read" [ref=e676] [cursor=pointer]:
+              - /url: /patterns/countdown-timer
+              - generic [ref=e677]:
+                - img [ref=e679]
+                - generic "Interactive demo available" [ref=e682]:
+                  - img [ref=e683]
+                  - text: Demo
+              - generic [ref=e685]:
+                - heading "Countdown Timer" [level=3] [ref=e686]
+                - paragraph [ref=e687]: The Countdown Timer is a psychological manipulation tactic formally categorized under "Urgency'' and "Deception.'' It visualizes a strict temporal constraint—usually a rapidly ticking clock—imploring the user to complete a transaction before a promised discount or cart reservation expires .
+              - generic [ref=e688]:
+                - generic [ref=e689]:
+                  - img [ref=e690]
+                  - text: Urgency
+                - generic [ref=e694]:
+                  - text: Read
+                  - img [ref=e695]
+            - link "Demo Limited Time Message The Limited Time Message is a linguistic manipulation tactic formally categorized under \"Urgency'' and \"Deception.'' Unlike a strict Countdown Timer that relies on a specific numerical deadline, this pattern employs vague, high-arousal semantics (e.g., \"Sale Ends Soon!'' or \"Today Only!'') to manufacture an artificial sense of scarcity . Urgency Read" [ref=e697] [cursor=pointer]:
+              - /url: /patterns/limited-time-message
+              - generic [ref=e698]:
+                - img [ref=e700]
+                - generic "Interactive demo available" [ref=e703]:
+                  - img [ref=e704]
+                  - text: Demo
+              - generic [ref=e706]:
+                - heading "Limited Time Message" [level=3] [ref=e707]
+                - paragraph [ref=e708]: The Limited Time Message is a linguistic manipulation tactic formally categorized under "Urgency'' and "Deception.'' Unlike a strict Countdown Timer that relies on a specific numerical deadline, this pattern employs vague, high-arousal semantics (e.g., "Sale Ends Soon!'' or "Today Only!'') to manufacture an artificial sense of scarcity .
+              - generic [ref=e709]:
+                - generic [ref=e710]:
+                  - img [ref=e711]
+                  - text: Urgency
+                - generic [ref=e715]:
+                  - text: Read
+                  - img [ref=e716]
+        - region "Misdirection" [ref=e718]:
+          - generic [ref=e719]:
+            - generic [ref=e720]:
+              - heading "Misdirection" [level=2] [ref=e721]
+              - generic [ref=e722]: "14"
+            - paragraph [ref=e723]: Visual or linguistic bias that steers the user toward an outcome the designer prefers.
+          - generic [ref=e724]:
+            - link "Demo Price Comparison Prevention The Price Comparison Prevention pattern, often implemented as part of a broader \"Creating Barriers'' strategy, deliberately obscures the true cost of a product or service to prevent the user from making informed, cross-platform or cross-product evaluations. Misdirection Read" [ref=e725] [cursor=pointer]:
+              - /url: /patterns/price-comparison-prevention
+              - generic [ref=e726]:
+                - img [ref=e728]
+                - generic "Interactive demo available" [ref=e732]:
+                  - img [ref=e733]
+                  - text: Demo
+              - generic [ref=e735]:
+                - heading "Price Comparison Prevention" [level=3] [ref=e736]
+                - paragraph [ref=e737]: The Price Comparison Prevention pattern, often implemented as part of a broader "Creating Barriers'' strategy, deliberately obscures the true cost of a product or service to prevent the user from making informed, cross-platform or cross-product evaluations.
+              - generic [ref=e738]:
+                - generic [ref=e739]:
+                  - img [ref=e740]
+                  - text: Misdirection
+                - generic [ref=e744]:
+                  - text: Read
+                  - img [ref=e745]
+            - link "Demo Reference Pricing The Reference Pricing pattern, categorized formally under \"(De)Contextualizing Cues,'' exploits the anchoring cognitive bias to manufacture the illusion of a significant discount . Misdirection Read" [ref=e747] [cursor=pointer]:
+              - /url: /patterns/reference-pricing
+              - generic [ref=e748]:
+                - img [ref=e750]
+                - generic "Interactive demo available" [ref=e753]:
+                  - img [ref=e754]
+                  - text: Demo
+              - generic [ref=e756]:
+                - heading "Reference Pricing" [level=3] [ref=e757]
+                - paragraph [ref=e758]: The Reference Pricing pattern, categorized formally under "(De)Contextualizing Cues,'' exploits the anchoring cognitive bias to manufacture the illusion of a significant discount .
+              - generic [ref=e759]:
+                - generic [ref=e760]:
+                  - img [ref=e761]
+                  - text: Misdirection
+                - generic [ref=e765]:
+                  - text: Read
+                  - img [ref=e766]
+            - link "Demo Conflicting Information Conflicting Information is a dark pattern formally categorized under \"(De)Contextualizing Cues'' or \"Feedforward Ambiguity'' . Misdirection Read" [ref=e768] [cursor=pointer]:
+              - /url: /patterns/conflicting-information
+              - generic [ref=e769]:
+                - img [ref=e771]
+                - generic "Interactive demo available" [ref=e776]:
+                  - img [ref=e777]
+                  - text: Demo
+              - generic [ref=e779]:
+                - heading "Conflicting Information" [level=3] [ref=e780]
+                - paragraph [ref=e781]: Conflicting Information is a dark pattern formally categorized under "(De)Contextualizing Cues'' or "Feedforward Ambiguity'' .
+              - generic [ref=e782]:
+                - generic [ref=e783]:
+                  - img [ref=e784]
+                  - text: Misdirection
+                - generic [ref=e788]:
+                  - text: Read
+                  - img [ref=e789]
+            - link "Demo Information Without Context Information Without Context is a dark pattern classified under \"(De)Contextualizing Cues.'' It occurs when an interface presents a compelling metric, claim, or data point (such as a discount, a popularity score, or a stock level) but deliberately omits the necessary baseline, unit of measurement, or temporal boundaries required for the user to rationally evaluate its significance. Misdirection Read" [ref=e791] [cursor=pointer]:
+              - /url: /patterns/information-without-context
+              - generic [ref=e792]:
+                - img [ref=e794]
+                - generic "Interactive demo available" [ref=e796]:
+                  - img [ref=e797]
+                  - text: Demo
+              - generic [ref=e799]:
+                - heading "Information Without Context" [level=3] [ref=e800]
+                - paragraph [ref=e801]: Information Without Context is a dark pattern classified under "(De)Contextualizing Cues.'' It occurs when an interface presents a compelling metric, claim, or data point (such as a discount, a popularity score, or a stock level) but deliberately omits the necessary baseline, unit of measurement, or temporal boundaries required for the user to rationally evaluate its significance.
+              - generic [ref=e802]:
+                - generic [ref=e803]:
+                  - img [ref=e804]
+                  - text: Misdirection
+                - generic [ref=e808]:
+                  - text: Read
+                  - img [ref=e809]
+            - link "Demo False Hierarchy False Hierarchy is a structural and visual dark pattern formally categorized under \"Interface Interference'' and \"Manipulating Visual Choice Architecture.'' Distinct from general visual prominence, this pattern strictly requires a binary relational structure between two opposing actions. Misdirection Read" [ref=e811] [cursor=pointer]:
+              - /url: /patterns/false-hierarchy
+              - generic [ref=e812]:
+                - img [ref=e814]
+                - generic "Interactive demo available" [ref=e818]:
+                  - img [ref=e819]
+                  - text: Demo
+              - generic [ref=e821]:
+                - heading "False Hierarchy" [level=3] [ref=e822]
+                - paragraph [ref=e823]: False Hierarchy is a structural and visual dark pattern formally categorized under "Interface Interference'' and "Manipulating Visual Choice Architecture.'' Distinct from general visual prominence, this pattern strictly requires a binary relational structure between two opposing actions.
+              - generic [ref=e824]:
+                - generic [ref=e825]:
+                  - img [ref=e826]
+                  - text: Misdirection
+                - generic [ref=e830]:
+                  - text: Read
+                  - img [ref=e831]
+            - link "Demo Visual Prominence Visual Prominence is a fundamental dark pattern formally categorized under \"Manipulating Visual Choice Architecture.'' While False Hierarchy manipulates the relationship between opposing choices, Visual Prominence operates as an absolute metric. Misdirection Read" [ref=e833] [cursor=pointer]:
+              - /url: /patterns/visual-prominence
+              - generic [ref=e834]:
+                - img [ref=e836]
+                - generic "Interactive demo available" [ref=e839]:
+                  - img [ref=e840]
+                  - text: Demo
+              - generic [ref=e842]:
+                - heading "Visual Prominence" [level=3] [ref=e843]
+                - paragraph [ref=e844]: Visual Prominence is a fundamental dark pattern formally categorized under "Manipulating Visual Choice Architecture.'' While False Hierarchy manipulates the relationship between opposing choices, Visual Prominence operates as an absolute metric.
+              - generic [ref=e845]:
+                - generic [ref=e846]:
+                  - img [ref=e847]
+                  - text: Misdirection
+                - generic [ref=e851]:
+                  - text: Read
+                  - img [ref=e852]
+            - link "Demo Persuasive Language The Persuasive Language pattern manipulates the user's decision-making process by heavily biasing the framing of choices . Misdirection Read" [ref=e854] [cursor=pointer]:
+              - /url: /patterns/persuasive-language
+              - generic [ref=e855]:
+                - img [ref=e857]
+                - generic "Interactive demo available" [ref=e859]:
+                  - img [ref=e860]
+                  - text: Demo
+              - generic [ref=e862]:
+                - heading "Persuasive Language" [level=3] [ref=e863]
+                - paragraph [ref=e864]: The Persuasive Language pattern manipulates the user's decision-making process by heavily biasing the framing of choices .
+              - generic [ref=e865]:
+                - generic [ref=e866]:
+                  - img [ref=e867]
+                  - text: Misdirection
+                - generic [ref=e871]:
+                  - text: Read
+                  - img [ref=e872]
+            - link "Demo Cuteness The Cuteness dark pattern is a distinct form of emotional and sensory manipulation . Misdirection Read" [ref=e874] [cursor=pointer]:
+              - /url: /patterns/cuteness
+              - generic [ref=e875]:
+                - img [ref=e877]
+                - generic "Interactive demo available" [ref=e880]:
+                  - img [ref=e881]
+                  - text: Demo
+              - generic [ref=e883]:
+                - heading "Cuteness" [level=3] [ref=e884]
+                - paragraph [ref=e885]: The Cuteness dark pattern is a distinct form of emotional and sensory manipulation .
+              - generic [ref=e886]:
+                - generic [ref=e887]:
+                  - img [ref=e888]
+                  - text: Misdirection
+                - generic [ref=e892]:
+                  - text: Read
+                  - img [ref=e893]
+            - link "Demo Positive Or Negative Framing Positive or Negative Framing is a cognitive dark pattern rooted deeply in Prospect Theory and the framing effect . Misdirection Read" [ref=e895] [cursor=pointer]:
+              - /url: /patterns/positive-or-negative-framing
+              - generic [ref=e896]:
+                - img [ref=e898]
+                - generic "Interactive demo available" [ref=e902]:
+                  - img [ref=e903]
+                  - text: Demo
+              - generic [ref=e905]:
+                - heading "Positive Or Negative Framing" [level=3] [ref=e906]
+                - paragraph [ref=e907]: Positive or Negative Framing is a cognitive dark pattern rooted deeply in Prospect Theory and the framing effect .
+              - generic [ref=e908]:
+                - generic [ref=e909]:
+                  - img [ref=e910]
+                  - text: Misdirection
+                - generic [ref=e914]:
+                  - text: Read
+                  - img [ref=e915]
+            - link "Demo Choice Overload Choice Overload, also known as Overchoice or Decision Fatigue, is a cognitive dark pattern formally categorized under \"Interface Interference'' or \"Adding Steps.'' It deliberately overwhelms the user's cognitive processing capacity by presenting an excessive, uncurated volume of granular options, toggles, or text. Misdirection Read" [ref=e917] [cursor=pointer]:
+              - /url: /patterns/choice-overload
+              - generic [ref=e918]:
+                - img [ref=e920]
+                - generic "Interactive demo available" [ref=e921]:
+                  - img [ref=e922]
+                  - text: Demo
+              - generic [ref=e924]:
+                - heading "Choice Overload" [level=3] [ref=e925]
+                - paragraph [ref=e926]: Choice Overload, also known as Overchoice or Decision Fatigue, is a cognitive dark pattern formally categorized under "Interface Interference'' or "Adding Steps.'' It deliberately overwhelms the user's cognitive processing capacity by presenting an excessive, uncurated volume of granular options, toggles, or text.
+              - generic [ref=e927]:
+                - generic [ref=e928]:
+                  - img [ref=e929]
+                  - text: Misdirection
+                - generic [ref=e933]:
+                  - text: Read
+                  - img [ref=e934]
+            - link "Demo Plain Evil (Theoretical Construct) While not a formally recognized pattern in Thomas Mildner’s (or any established HCI) taxonomy, the colloquial concept of \"Plain Evil'' represents the theoretical absolute limit of hostile choice architecture. Misdirection Read" [ref=e936] [cursor=pointer]:
+              - /url: /patterns/plain-evil
+              - generic [ref=e937]:
+                - img [ref=e939]
+                - generic "Interactive demo available" [ref=e944]:
+                  - img [ref=e945]
+                  - text: Demo
+              - generic [ref=e947]:
+                - heading "Plain Evil (Theoretical Construct)" [level=3] [ref=e948]
+                - paragraph [ref=e949]: While not a formally recognized pattern in Thomas Mildner’s (or any established HCI) taxonomy, the colloquial concept of "Plain Evil'' represents the theoretical absolute limit of hostile choice architecture.
+              - generic [ref=e950]:
+                - generic [ref=e951]:
+                  - img [ref=e952]
+                  - text: Misdirection
+                - generic [ref=e956]:
+                  - text: Read
+                  - img [ref=e957]
+            - link "Demo Endorsement And Testimonials Endorsement And Testimonials is a manipulative dark pattern formally categorized under \"Social Proof'' and \"Deception.'' It occurs when an interface artificially engineers trust by presenting fabricated, paid, or algorithmically generated reviews as genuine user feedback . Misdirection Read" [ref=e959] [cursor=pointer]:
+              - /url: /patterns/endorsement-and-testimonials
+              - generic [ref=e960]:
+                - img [ref=e962]
+                - generic "Interactive demo available" [ref=e964]:
+                  - img [ref=e965]
+                  - text: Demo
+              - generic [ref=e967]:
+                - heading "Endorsement And Testimonials" [level=3] [ref=e968]
+                - paragraph [ref=e969]: Endorsement And Testimonials is a manipulative dark pattern formally categorized under "Social Proof'' and "Deception.'' It occurs when an interface artificially engineers trust by presenting fabricated, paid, or algorithmically generated reviews as genuine user feedback .
+              - generic [ref=e970]:
+                - generic [ref=e971]:
+                  - img [ref=e972]
+                  - text: Misdirection
+                - generic [ref=e976]:
+                  - text: Read
+                  - img [ref=e977]
+            - link "Demo Confirmshaming Confirmshaming is a manipulative linguistic and psychological dark pattern formally categorized under \"Social Manipulation'' and \"Interface Interference.'' It occurs when the interface copy designed for a dismissal or opt-out action is deliberately formulated to evoke guilt, shame, embarrassment, or feelings of inadequacy in the user . Misdirection Read" [ref=e979] [cursor=pointer]:
+              - /url: /patterns/confirmshaming
+              - generic [ref=e980]:
+                - img [ref=e982]
+                - generic "Interactive demo available" [ref=e985]:
+                  - img [ref=e986]
+                  - text: Demo
+              - generic [ref=e988]:
+                - heading "Confirmshaming" [level=3] [ref=e989]
+                - paragraph [ref=e990]: Confirmshaming is a manipulative linguistic and psychological dark pattern formally categorized under "Social Manipulation'' and "Interface Interference.'' It occurs when the interface copy designed for a dismissal or opt-out action is deliberately formulated to evoke guilt, shame, embarrassment, or feelings of inadequacy in the user .
+              - generic [ref=e991]:
+                - generic [ref=e992]:
+                  - img [ref=e993]
+                  - text: Misdirection
+                - generic [ref=e997]:
+                  - text: Read
+                  - img [ref=e998]
+            - link "Demo Psychological Tricks Psychological Tricks represent a meta-category of dark patterns formally classified under \"Cognitive Manipulation'' and \"Deception.'' Rather than relying on technical coercion or outright lies, these interfaces weaponize innate human cognitive biases—such as the framing effect, anchoring, and decision fatigue—to steer users toward suboptimal, business-favorable outcomes . Misdirection Read" [ref=e1000] [cursor=pointer]:
+              - /url: /patterns/psychological-tricks
+              - generic [ref=e1001]:
+                - img [ref=e1003]
+                - generic "Interactive demo available" [ref=e1006]:
+                  - img [ref=e1007]
+                  - text: Demo
+              - generic [ref=e1009]:
+                - heading "Psychological Tricks" [level=3] [ref=e1010]
+                - paragraph [ref=e1011]: Psychological Tricks represent a meta-category of dark patterns formally classified under "Cognitive Manipulation'' and "Deception.'' Rather than relying on technical coercion or outright lies, these interfaces weaponize innate human cognitive biases—such as the framing effect, anchoring, and decision fatigue—to steer users toward suboptimal, business-favorable outcomes .
+              - generic [ref=e1012]:
+                - generic [ref=e1013]:
+                  - img [ref=e1014]
+                  - text: Misdirection
+                - generic [ref=e1018]:
+                  - text: Read
+                  - img [ref=e1019]
+        - region "Forced Action" [ref=e1021]:
+          - generic [ref=e1022]:
+            - generic [ref=e1023]:
+              - heading "Forced Action" [level=2] [ref=e1024]
+              - generic [ref=e1025]: "11"
+            - paragraph [ref=e1026]: A desired action is gated on surrendering data, attention, or social capital.
+          - generic [ref=e1027]:
+            - link "Demo Forced Registration Forced Registration is a structural dark pattern formally categorized under \"Forced Action'' and is closely linked to aggressive data harvesting strategies. Forced Action Read" [ref=e1028] [cursor=pointer]:
+              - /url: /patterns/forced-registration
+              - generic [ref=e1029]:
+                - img [ref=e1031]
+                - generic "Interactive demo available" [ref=e1034]:
+                  - img [ref=e1035]
+                  - text: Demo
+              - generic [ref=e1037]:
+                - heading "Forced Registration" [level=3] [ref=e1038]
+                - paragraph [ref=e1039]: Forced Registration is a structural dark pattern formally categorized under "Forced Action'' and is closely linked to aggressive data harvesting strategies.
+              - generic [ref=e1040]:
+                - generic [ref=e1041]:
+                  - img [ref=e1042]
+                  - text: Forced Action
+                - generic [ref=e1046]:
+                  - text: Read
+                  - img [ref=e1047]
+            - link "Demo Social Pyramid The Social Pyramid pattern is an aggressive growth-hacking technique formally categorized under \"Social Manipulation'' and \"Forced Action.'' It functionally mimics a digital multi-level marketing (MLM) scheme by gating core application features, essential progress, or promised rewards behind mandatory user recruitment . Forced Action Read" [ref=e1049] [cursor=pointer]:
+              - /url: /patterns/social-pyramid
+              - generic [ref=e1050]:
+                - img [ref=e1052]
+                - generic "Interactive demo available" [ref=e1057]:
+                  - img [ref=e1058]
+                  - text: Demo
+              - generic [ref=e1060]:
+                - heading "Social Pyramid" [level=3] [ref=e1061]
+                - paragraph [ref=e1062]: The Social Pyramid pattern is an aggressive growth-hacking technique formally categorized under "Social Manipulation'' and "Forced Action.'' It functionally mimics a digital multi-level marketing (MLM) scheme by gating core application features, essential progress, or promised rewards behind mandatory user recruitment .
+              - generic [ref=e1063]:
+                - generic [ref=e1064]:
+                  - img [ref=e1065]
+                  - text: Forced Action
+                - generic [ref=e1069]:
+                  - text: Read
+                  - img [ref=e1070]
+            - link "Demo Granting and Interaction The Granting and Interaction pattern is a structural dark pattern formally categorized under \"Forced Action'' and \"Interface Interference,'' primarily found in mobile applications and consent management platforms. Forced Action Read" [ref=e1072] [cursor=pointer]:
+              - /url: /patterns/granting-and-interaction
+              - generic [ref=e1073]:
+                - img [ref=e1075]
+                - generic "Interactive demo available" [ref=e1081]:
+                  - img [ref=e1082]
+                  - text: Demo
+              - generic [ref=e1084]:
+                - heading "Granting and Interaction" [level=3] [ref=e1085]
+                - paragraph [ref=e1086]: The Granting and Interaction pattern is a structural dark pattern formally categorized under "Forced Action'' and "Interface Interference,'' primarily found in mobile applications and consent management platforms.
+              - generic [ref=e1087]:
+                - generic [ref=e1088]:
+                  - img [ref=e1089]
+                  - text: Forced Action
+                - generic [ref=e1093]:
+                  - text: Read
+                  - img [ref=e1094]
+            - link "Demo Pay-To-Play The Pay-To-Play pattern—often overlapping with Pay-To-Win—is an aggressive monetization strategy primarily found in freemium games, dating applications, and SaaS platforms, categorized under \"Forced Action'' and \"Hidden Costs.'' It lures users in with a seemingly free experience, only to artificially inflate the difficulty, inject massive temporal delays (grinding), or hard-block core progression once the user is psychologically invested . Forced Action Read" [ref=e1096] [cursor=pointer]:
+              - /url: /patterns/pay-to-play
+              - generic [ref=e1097]:
+                - img [ref=e1099]
+                - generic "Interactive demo available" [ref=e1101]:
+                  - img [ref=e1102]
+                  - text: Demo
+              - generic [ref=e1104]:
+                - heading "Pay-To-Play" [level=3] [ref=e1105]
+                - paragraph [ref=e1106]: The Pay-To-Play pattern—often overlapping with Pay-To-Win—is an aggressive monetization strategy primarily found in freemium games, dating applications, and SaaS platforms, categorized under "Forced Action'' and "Hidden Costs.'' It lures users in with a seemingly free experience, only to artificially inflate the difficulty, inject massive temporal delays (grinding), or hard-block core progression once the user is psychologically invested .
+              - generic [ref=e1107]:
+                - generic [ref=e1108]:
+                  - img [ref=e1109]
+                  - text: Forced Action
+                - generic [ref=e1113]:
+                  - text: Read
+                  - img [ref=e1114]
+            - link "Demo Grinding Grinding is a temporal and interactive dark pattern, heavily prevalent in gaming and gamified applications, formally categorized under \"Playing with Time'' and \"Engagement Traps.'' It forces the user to perform highly repetitive, low-skill, and monotonous tasks to achieve necessary progression, unlock core content, or maintain competitive parity . Forced Action Read" [ref=e1116] [cursor=pointer]:
+              - /url: /patterns/grinding
+              - generic [ref=e1117]:
+                - img [ref=e1119]
+                - generic "Interactive demo available" [ref=e1122]:
+                  - img [ref=e1123]
+                  - text: Demo
+              - generic [ref=e1125]:
+                - heading "Grinding" [level=3] [ref=e1126]
+                - paragraph [ref=e1127]: Grinding is a temporal and interactive dark pattern, heavily prevalent in gaming and gamified applications, formally categorized under "Playing with Time'' and "Engagement Traps.'' It forces the user to perform highly repetitive, low-skill, and monotonous tasks to achieve necessary progression, unlock core content, or maintain competitive parity .
+              - generic [ref=e1128]:
+                - generic [ref=e1129]:
+                  - img [ref=e1130]
+                  - text: Forced Action
+                - generic [ref=e1134]:
+                  - text: Read
+                  - img [ref=e1135]
+            - link "Demo Playing By Appointment The Playing By Appointment pattern is a behavioral manipulation tactic formally categorized under \"Playing with Time'' and \"Engagement Traps.'' Prevalent in freemium games, habit-tracking apps, and gamified educational platforms, this pattern dictates exactly when a user must interact with the system, effectively hijacking their real-world schedule . Forced Action Read" [ref=e1137] [cursor=pointer]:
+              - /url: /patterns/playing-by-appointment
+              - generic [ref=e1138]:
+                - img [ref=e1140]
+                - generic "Interactive demo available" [ref=e1143]:
+                  - img [ref=e1144]
+                  - text: Demo
+              - generic [ref=e1146]:
+                - heading "Playing By Appointment" [level=3] [ref=e1147]
+                - paragraph [ref=e1148]: The Playing By Appointment pattern is a behavioral manipulation tactic formally categorized under "Playing with Time'' and "Engagement Traps.'' Prevalent in freemium games, habit-tracking apps, and gamified educational platforms, this pattern dictates exactly when a user must interact with the system, effectively hijacking their real-world schedule .
+              - generic [ref=e1149]:
+                - generic [ref=e1150]:
+                  - img [ref=e1151]
+                  - text: Forced Action
+                - generic [ref=e1155]:
+                  - text: Read
+                  - img [ref=e1156]
+            - 'link "Demo Watch Ads To Unlock Features Or Get Rewards The \"Watch Ads To Unlock Features Or Get Rewards'''' pattern—commonly referred to as Rewarded Video or Ad-Gating—is a monetization and attention-extraction strategy formally categorized under \"Forced Action'''' and \"Playing with Time.'''' It presents the user with a pseudo-choice: pay for a necessary resource, feature, or progression step with fiat currency, or pay with their attention by consuming an unskippable third-party advertisement . Forced Action Read" [ref=e1158] [cursor=pointer]':
+              - /url: /patterns/watch-ads-to-unlock-features
+              - generic [ref=e1159]:
+                - img [ref=e1161]
+                - generic "Interactive demo available" [ref=e1163]:
+                  - img [ref=e1164]
+                  - text: Demo
+              - generic [ref=e1166]:
+                - heading "Watch Ads To Unlock Features Or Get Rewards" [level=3] [ref=e1167]
+                - paragraph [ref=e1168]: "The \"Watch Ads To Unlock Features Or Get Rewards'' pattern—commonly referred to as Rewarded Video or Ad-Gating—is a monetization and attention-extraction strategy formally categorized under \"Forced Action'' and \"Playing with Time.'' It presents the user with a pseudo-choice: pay for a necessary resource, feature, or progression step with fiat currency, or pay with their attention by consuming an unskippable third-party advertisement ."
+              - generic [ref=e1169]:
+                - generic [ref=e1170]:
+                  - img [ref=e1171]
+                  - text: Forced Action
+                - generic [ref=e1175]:
+                  - text: Read
+                  - img [ref=e1176]
+            - link "Demo Pay To Avoid The Pay To Avoid pattern is a coercive monetization strategy formally categorized under \"Forced Action'' and \"Interface Interference.'' Instead of charging users for novel, premium features or enhanced utility, the system artificially degrades the baseline user experience—injecting excessive advertisements, capping download speeds, applying non-removable watermarks, or imposing severe usage limits . Forced Action Read" [ref=e1178] [cursor=pointer]:
+              - /url: /patterns/pay-to-avoid
+              - generic [ref=e1179]:
+                - img [ref=e1181]
+                - generic "Interactive demo available" [ref=e1183]:
+                  - img [ref=e1184]
+                  - text: Demo
+              - generic [ref=e1186]:
+                - heading "Pay To Avoid" [level=3] [ref=e1187]
+                - paragraph [ref=e1188]: The Pay To Avoid pattern is a coercive monetization strategy formally categorized under "Forced Action'' and "Interface Interference.'' Instead of charging users for novel, premium features or enhanced utility, the system artificially degrades the baseline user experience—injecting excessive advertisements, capping download speeds, applying non-removable watermarks, or imposing severe usage limits .
+              - generic [ref=e1189]:
+                - generic [ref=e1190]:
+                  - img [ref=e1191]
+                  - text: Forced Action
+                - generic [ref=e1195]:
+                  - text: Read
+                  - img [ref=e1196]
+            - link "Demo Automating The User Away The Automating The User Away pattern is a behavioral and structural dark pattern formally categorized under \"Forced Action'' and \"Interface Interference.'' It usurps user agency by autonomously executing high-engagement or high-stakes actions—such as auto-playing the next video, automatically rolling over a queue, or silently executing a transaction—without requiring explicit, contemporary user confirmation . Forced Action Read" [ref=e1198] [cursor=pointer]:
+              - /url: /patterns/automating-the-user-away
+              - generic [ref=e1199]:
+                - img [ref=e1201]
+                - generic "Interactive demo available" [ref=e1204]:
+                  - img [ref=e1205]
+                  - text: Demo
+              - generic [ref=e1207]:
+                - heading "Automating The User Away" [level=3] [ref=e1208]
+                - paragraph [ref=e1209]: The Automating The User Away pattern is a behavioral and structural dark pattern formally categorized under "Forced Action'' and "Interface Interference.'' It usurps user agency by autonomously executing high-engagement or high-stakes actions—such as auto-playing the next video, automatically rolling over a queue, or silently executing a transaction—without requiring explicit, contemporary user confirmation .
+              - generic [ref=e1210]:
+                - generic [ref=e1211]:
+                  - img [ref=e1212]
+                  - text: Forced Action
+                - generic [ref=e1216]:
+                  - text: Read
+                  - img [ref=e1217]
+            - link "Demo Parasocial Pressure The Parasocial Pressure pattern is a behavioral manipulation tactic formally categorized under \"Social Manipulation'' and is closely related to \"Confirmshaming.'' It weaponizes the psychological phenomenon of parasocial interaction—the one-sided emotional attachment a user forms with a content creator, influencer, or anthropomorphized platform mascot . Forced Action Read" [ref=e1219] [cursor=pointer]:
+              - /url: /patterns/parasocial-pressure
+              - generic [ref=e1220]:
+                - img [ref=e1222]
+                - generic "Interactive demo available" [ref=e1224]:
+                  - img [ref=e1225]
+                  - text: Demo
+              - generic [ref=e1227]:
+                - heading "Parasocial Pressure" [level=3] [ref=e1228]
+                - paragraph [ref=e1229]: The Parasocial Pressure pattern is a behavioral manipulation tactic formally categorized under "Social Manipulation'' and is closely related to "Confirmshaming.'' It weaponizes the psychological phenomenon of parasocial interaction—the one-sided emotional attachment a user forms with a content creator, influencer, or anthropomorphized platform mascot .
+              - generic [ref=e1230]:
+                - generic [ref=e1231]:
+                  - img [ref=e1232]
+                  - text: Forced Action
+                - generic [ref=e1236]:
+                  - text: Read
+                  - img [ref=e1237]
+            - link "Demo Encouraging Anti-Social Behavior Encouraging Anti-Social Behavior is a behavioral manipulation pattern formally categorized under \"Social Manipulation'' and \"Engagement Traps.'' It occurs when an application explicitly gamifies, incentivizes, or algorithmically rewards users for engaging in actions that are socially harmful, annoying to their peers, or detrimental to social trust . Forced Action Read" [ref=e1239] [cursor=pointer]:
+              - /url: /patterns/encouraging-anti-social-behavior
+              - generic [ref=e1240]:
+                - img [ref=e1242]
+                - generic "Interactive demo available" [ref=e1244]:
+                  - img [ref=e1245]
+                  - text: Demo
+              - generic [ref=e1247]:
+                - heading "Encouraging Anti-Social Behavior" [level=3] [ref=e1248]
+                - paragraph [ref=e1249]: Encouraging Anti-Social Behavior is a behavioral manipulation pattern formally categorized under "Social Manipulation'' and "Engagement Traps.'' It occurs when an application explicitly gamifies, incentivizes, or algorithmically rewards users for engaging in actions that are socially harmful, annoying to their peers, or detrimental to social trust .
+              - generic [ref=e1250]:
+                - generic [ref=e1251]:
+                  - img [ref=e1252]
+                  - text: Forced Action
+                - generic [ref=e1256]:
+                  - text: Read
+                  - img [ref=e1257]
+        - region "Obstruction" [ref=e1259]:
+          - generic [ref=e1260]:
+            - generic [ref=e1261]:
+              - heading "Obstruction" [level=2] [ref=e1262]
+              - generic [ref=e1263]: "6"
+            - paragraph [ref=e1264]: Making a legitimate, user-benefiting flow harder than it has to be.
+          - generic [ref=e1265]:
+            - link "Demo Immortal Accounts Immortal Accounts is a lifecycle-constrained specialization of Labyrinthine Navigation with a null-terminal state, heavily associated with the \"Roach Motel'' category of deceptive design . Obstruction Read" [ref=e1266] [cursor=pointer]:
+              - /url: /patterns/immortal-accounts
+              - generic [ref=e1267]:
+                - img [ref=e1269]
+                - generic "Interactive demo available" [ref=e1271]:
+                  - img [ref=e1272]
+                  - text: Demo
+              - generic [ref=e1274]:
+                - heading "Immortal Accounts" [level=3] [ref=e1275]
+                - paragraph [ref=e1276]: Immortal Accounts is a lifecycle-constrained specialization of Labyrinthine Navigation with a null-terminal state, heavily associated with the "Roach Motel'' category of deceptive design .
+              - generic [ref=e1277]:
+                - generic [ref=e1278]:
+                  - img [ref=e1279]
+                  - text: Obstruction
+                - generic [ref=e1283]:
+                  - text: Read
+                  - img [ref=e1284]
+            - link "Demo Dead End The Dead End pattern occurs when a user is guided into a specific interface state or navigational node from which they cannot easily return, exit, or proceed without completing a forced action (such as accepting tracking cookies or viewing an advertisement). Obstruction Read" [ref=e1286] [cursor=pointer]:
+              - /url: /patterns/dead-end
+              - generic [ref=e1287]:
+                - img [ref=e1289]
+                - generic "Interactive demo available" [ref=e1292]:
+                  - img [ref=e1293]
+                  - text: Demo
+              - generic [ref=e1295]:
+                - heading "Dead End" [level=3] [ref=e1296]
+                - paragraph [ref=e1297]: The Dead End pattern occurs when a user is guided into a specific interface state or navigational node from which they cannot easily return, exit, or proceed without completing a forced action (such as accepting tracking cookies or viewing an advertisement).
+              - generic [ref=e1298]:
+                - generic [ref=e1299]:
+                  - img [ref=e1300]
+                  - text: Obstruction
+                - generic [ref=e1304]:
+                  - text: Read
+                  - img [ref=e1305]
+            - link "Demo Forced Grace Period The Forced Grace Period pattern introduces an artificial temporal barrier to an action that should technically be instantaneous, most commonly occurring during account deletion or subscription cancellation. Obstruction Read" [ref=e1307] [cursor=pointer]:
+              - /url: /patterns/forced-grace-period
+              - generic [ref=e1308]:
+                - img [ref=e1310]
+                - generic "Interactive demo available" [ref=e1313]:
+                  - img [ref=e1314]
+                  - text: Demo
+              - generic [ref=e1316]:
+                - heading "Forced Grace Period" [level=3] [ref=e1317]
+                - paragraph [ref=e1318]: The Forced Grace Period pattern introduces an artificial temporal barrier to an action that should technically be instantaneous, most commonly occurring during account deletion or subscription cancellation.
+              - generic [ref=e1319]:
+                - generic [ref=e1320]:
+                  - img [ref=e1321]
+                  - text: Obstruction
+                - generic [ref=e1325]:
+                  - text: Read
+                  - img [ref=e1326]
+            - link "Demo Privacy Maze The Privacy Maze pattern is a consent-scoped specialization of Labyrinthine Navigation. Obstruction Read" [ref=e1328] [cursor=pointer]:
+              - /url: /patterns/privacy-maze
+              - generic [ref=e1329]:
+                - img [ref=e1331]
+                - generic "Interactive demo available" [ref=e1333]:
+                  - img [ref=e1334]
+                  - text: Demo
+              - generic [ref=e1336]:
+                - heading "Privacy Maze" [level=3] [ref=e1337]
+                - paragraph [ref=e1338]: The Privacy Maze pattern is a consent-scoped specialization of Labyrinthine Navigation.
+              - generic [ref=e1339]:
+                - generic [ref=e1340]:
+                  - img [ref=e1341]
+                  - text: Obstruction
+                - generic [ref=e1345]:
+                  - text: Read
+                  - img [ref=e1346]
+            - link "Demo Labyrinthine Navigation Labyrinthine Navigation is the foundational architectural implementation of exit friction, categorized formally under \"Adding Steps.'' It deliberately weaponizes complex information architecture to deter users from executing critical, user-beneficial actions (such as canceling a subscription or deleting an account). Obstruction Read" [ref=e1348] [cursor=pointer]:
+              - /url: /patterns/labyrinthine-navigation
+              - generic [ref=e1349]:
+                - img [ref=e1351]
+                - generic "Interactive demo available" [ref=e1355]:
+                  - img [ref=e1356]
+                  - text: Demo
+              - generic [ref=e1358]:
+                - heading "Labyrinthine Navigation" [level=3] [ref=e1359]
+                - paragraph [ref=e1360]: Labyrinthine Navigation is the foundational architectural implementation of exit friction, categorized formally under "Adding Steps.'' It deliberately weaponizes complex information architecture to deter users from executing critical, user-beneficial actions (such as canceling a subscription or deleting an account).
+              - generic [ref=e1361]:
+                - generic [ref=e1362]:
+                  - img [ref=e1363]
+                  - text: Obstruction
+                - generic [ref=e1367]:
+                  - text: Read
+                  - img [ref=e1368]
+            - link "Demo Customisation (Interface Nesting) Customisation—often overlapping with the \"Privacy Maze'' or \"Adding Steps'' patterns—is a structural dark pattern that weaponizes interface depth to manipulate user consent. Obstruction Read" [ref=e1370] [cursor=pointer]:
+              - /url: /patterns/customisation
+              - generic [ref=e1371]:
+                - img [ref=e1373]
+                - generic "Interactive demo available" [ref=e1374]:
+                  - img [ref=e1375]
+                  - text: Demo
+              - generic [ref=e1377]:
+                - heading "Customisation (Interface Nesting)" [level=3] [ref=e1378]
+                - paragraph [ref=e1379]: Customisation—often overlapping with the "Privacy Maze'' or "Adding Steps'' patterns—is a structural dark pattern that weaponizes interface depth to manipulate user consent.
+              - generic [ref=e1380]:
+                - generic [ref=e1381]:
+                  - img [ref=e1382]
+                  - text: Obstruction
+                - generic [ref=e1386]:
+                  - text: Read
+                  - img [ref=e1387]
+        - region "Nagging" [ref=e1389]:
+          - generic [ref=e1390]:
+            - generic [ref=e1391]:
+              - heading "Nagging" [level=2] [ref=e1392]
+              - generic [ref=e1393]: "1"
+            - paragraph [ref=e1394]: Persistent, interruptive requests that the user has to actively dismiss.
+          - link "Demo Pressured Selling Pressured Selling is an aggressive e-commerce dark pattern that interrupts the user's transactional flow, typically right before the final checkout step, to force a rapid decision on an upsell, cross-sell, or premium subscription. Nagging Read" [ref=e1396] [cursor=pointer]:
+            - /url: /patterns/pressured-selling
+            - generic [ref=e1397]:
+              - img [ref=e1399]
+              - generic "Interactive demo available" [ref=e1402]:
+                - img [ref=e1403]
+                - text: Demo
+            - generic [ref=e1405]:
+              - heading "Pressured Selling" [level=3] [ref=e1406]
+              - paragraph [ref=e1407]: Pressured Selling is an aggressive e-commerce dark pattern that interrupts the user's transactional flow, typically right before the final checkout step, to force a rapid decision on an upsell, cross-sell, or premium subscription.
+            - generic [ref=e1408]:
+              - generic [ref=e1409]:
+                - img [ref=e1410]
+                - text: Nagging
+              - generic [ref=e1414]:
+                - text: Read
+                - img [ref=e1415]
+        - region "Interface Interference" [ref=e1417]:
+          - generic [ref=e1418]:
+            - generic [ref=e1419]:
+              - heading "Interface Interference" [level=2] [ref=e1420]
+              - generic [ref=e1421]: "6"
+            - paragraph [ref=e1422]: UI mechanics that subvert the user's mental model of how the control works.
+          - generic [ref=e1423]:
+            - link "Demo Small or Moving Close Button The Small or Moving Close Button is a visual and interaction-based dark pattern formally classified under the \"Hard To Close'' taxonomy . Interface Interference Read" [ref=e1424] [cursor=pointer]:
+              - /url: /patterns/small-or-moving-close-button
+              - generic [ref=e1425]:
+                - img [ref=e1427]
+                - generic "Interactive demo available" [ref=e1430]:
+                  - img [ref=e1431]
+                  - text: Demo
+              - generic [ref=e1433]:
+                - heading "Small or Moving Close Button" [level=3] [ref=e1434]
+                - paragraph [ref=e1435]: The Small or Moving Close Button is a visual and interaction-based dark pattern formally classified under the "Hard To Close'' taxonomy .
+              - generic [ref=e1436]:
+                - generic [ref=e1437]:
+                  - img [ref=e1438]
+                  - text: Interface Interference
+                - generic [ref=e1442]:
+                  - text: Read
+                  - img [ref=e1443]
+            - link "Demo Bad Defaults / Preselection The Bad Defaults or Preselection pattern exploits user inertia and the psychological status quo bias by initializing interface elements with values that disproportionately benefit the service provider. Interface Interference Read" [ref=e1445] [cursor=pointer]:
+              - /url: /patterns/bad-defaults-preselection
+              - generic [ref=e1446]:
+                - img [ref=e1448]
+                - generic "Interactive demo available" [ref=e1451]:
+                  - img [ref=e1452]
+                  - text: Demo
+              - generic [ref=e1454]:
+                - heading "Bad Defaults / Preselection" [level=3] [ref=e1455]
+                - paragraph [ref=e1456]: The Bad Defaults or Preselection pattern exploits user inertia and the psychological status quo bias by initializing interface elements with values that disproportionately benefit the service provider.
+              - generic [ref=e1457]:
+                - generic [ref=e1458]:
+                  - img [ref=e1459]
+                  - text: Interface Interference
+                - generic [ref=e1463]:
+                  - text: Read
+                  - img [ref=e1464]
+            - link "Demo Trick Questions The Trick Questions pattern operates within the \"Sneaking'' and \"Interface Interference'' domains. Interface Interference Read" [ref=e1466] [cursor=pointer]:
+              - /url: /patterns/trick-questions
+              - generic [ref=e1467]:
+                - img [ref=e1469]
+                - generic "Interactive demo available" [ref=e1472]:
+                  - img [ref=e1473]
+                  - text: Demo
+              - generic [ref=e1475]:
+                - heading "Trick Questions" [level=3] [ref=e1476]
+                - paragraph [ref=e1477]: The Trick Questions pattern operates within the "Sneaking'' and "Interface Interference'' domains.
+              - generic [ref=e1478]:
+                - generic [ref=e1479]:
+                  - img [ref=e1480]
+                  - text: Interface Interference
+                - generic [ref=e1484]:
+                  - text: Read
+                  - img [ref=e1485]
+            - link "Demo Wrong Language The Wrong Language pattern is an obfuscation technique formally categorized under \"Interface Interference'' and \"Hiding Information.'' It occurs when an interface abruptly and intentionally switches the language of critical text nodes---such as Terms and Conditions, privacy opt-out forms, or cancellation flows---to a language different from the user's established session language. Interface Interference Read" [ref=e1487] [cursor=pointer]:
+              - /url: /patterns/wrong-language
+              - generic [ref=e1488]:
+                - img [ref=e1490]
+                - generic "Interactive demo available" [ref=e1494]:
+                  - img [ref=e1495]
+                  - text: Demo
+              - generic [ref=e1497]:
+                - heading "Wrong Language" [level=3] [ref=e1498]
+                - paragraph [ref=e1499]: The Wrong Language pattern is an obfuscation technique formally categorized under "Interface Interference'' and "Hiding Information.'' It occurs when an interface abruptly and intentionally switches the language of critical text nodes---such as Terms and Conditions, privacy opt-out forms, or cancellation flows---to a language different from the user's established session language.
+              - generic [ref=e1500]:
+                - generic [ref=e1501]:
+                  - img [ref=e1502]
+                  - text: Interface Interference
+                - generic [ref=e1506]:
+                  - text: Read
+                  - img [ref=e1507]
+            - link "Demo Complex Language The Complex Language pattern—also referred to as Legalese, Jargon, or Bafflement—is a linguistic dark pattern formally categorized under \"Hiding Information'' and \"Interface Interference.'' It deliberately utilizes overly technical, legalistic, or convoluted vocabulary and extremely long sentence structures to obscure the true meaning of a disclosure, privacy policy, or set of terms. Interface Interference Read" [ref=e1509] [cursor=pointer]:
+              - /url: /patterns/complex-language
+              - generic [ref=e1510]:
+                - img [ref=e1512]
+                - generic "Interactive demo available" [ref=e1514]:
+                  - img [ref=e1515]
+                  - text: Demo
+              - generic [ref=e1517]:
+                - heading "Complex Language" [level=3] [ref=e1518]
+                - paragraph [ref=e1519]: The Complex Language pattern—also referred to as Legalese, Jargon, or Bafflement—is a linguistic dark pattern formally categorized under "Hiding Information'' and "Interface Interference.'' It deliberately utilizes overly technical, legalistic, or convoluted vocabulary and extremely long sentence structures to obscure the true meaning of a disclosure, privacy policy, or set of terms.
+              - generic [ref=e1520]:
+                - generic [ref=e1521]:
+                  - img [ref=e1522]
+                  - text: Interface Interference
+                - generic [ref=e1526]:
+                  - text: Read
+                  - img [ref=e1527]
+            - link "Demo Feedforward Ambiguity Feedforward Ambiguity is an interaction-based dark pattern formally categorized under \"(De)Contextualizing Cues'' and \"Interface Interference.'' While feedback informs a user about what has happened, feedforward informs the user about what will happen before they initiate an action . Interface Interference Read" [ref=e1529] [cursor=pointer]:
+              - /url: /patterns/feedforward-ambiguity
+              - generic [ref=e1530]:
+                - img [ref=e1532]
+                - generic "Interactive demo available" [ref=e1535]:
+                  - img [ref=e1536]
+                  - text: Demo
+              - generic [ref=e1538]:
+                - heading "Feedforward Ambiguity" [level=3] [ref=e1539]
+                - paragraph [ref=e1540]: Feedforward Ambiguity is an interaction-based dark pattern formally categorized under "(De)Contextualizing Cues'' and "Interface Interference.'' While feedback informs a user about what has happened, feedforward informs the user about what will happen before they initiate an action .
+              - generic [ref=e1541]:
+                - generic [ref=e1542]:
+                  - img [ref=e1543]
+                  - text: Interface Interference
+                - generic [ref=e1547]:
+                  - text: Read
+                  - img [ref=e1548]
+        - region "Attention Manipulation" [ref=e1550]:
+          - generic [ref=e1551]:
+            - generic [ref=e1552]:
+              - heading "Attention Manipulation" [level=2] [ref=e1553]
+              - generic [ref=e1554]: "5"
+            - paragraph [ref=e1555]: Designing the interface to fight for the user's attention rather than earn it.
+          - generic [ref=e1556]:
+            - link "Demo Addictive Design Addictive Design—often intersecting with \"Engagement Traps'' or \"Attention Theft''—refers to a constellation of structural and algorithmic mechanisms designed to maximize a user's time-on-site far beyond their original conscious intent. Attention Manipulation Read" [ref=e1557] [cursor=pointer]:
+              - /url: /patterns/addictive-design
+              - generic [ref=e1558]:
+                - img [ref=e1560]
+                - generic "Interactive demo available" [ref=e1565]:
+                  - img [ref=e1566]
+                  - text: Demo
+              - generic [ref=e1568]:
+                - heading "Addictive Design" [level=3] [ref=e1569]
+                - paragraph [ref=e1570]: Addictive Design—often intersecting with "Engagement Traps'' or "Attention Theft''—refers to a constellation of structural and algorithmic mechanisms designed to maximize a user's time-on-site far beyond their original conscious intent.
+              - generic [ref=e1571]:
+                - generic [ref=e1572]:
+                  - img [ref=e1573]
+                  - text: Attention Manipulation
+                - generic [ref=e1577]:
+                  - text: Read
+                  - img [ref=e1578]
+            - link "Demo Infinite Scrolling Infinite Scrolling is an interaction pattern formally classified under \"Engagement Traps'' and \"Interface Interference.'' While initially designed for seamless mobile consumption, it functions as a dark pattern when it deliberately removes a user's navigational agency and natural stopping cues . Attention Manipulation Read" [ref=e1580] [cursor=pointer]:
+              - /url: /patterns/infinite-scrolling
+              - generic [ref=e1581]:
+                - img [ref=e1583]
+                - generic "Interactive demo available" [ref=e1585]:
+                  - img [ref=e1586]
+                  - text: Demo
+              - generic [ref=e1588]:
+                - heading "Infinite Scrolling" [level=3] [ref=e1589]
+                - paragraph [ref=e1590]: Infinite Scrolling is an interaction pattern formally classified under "Engagement Traps'' and "Interface Interference.'' While initially designed for seamless mobile consumption, it functions as a dark pattern when it deliberately removes a user's navigational agency and natural stopping cues .
+              - generic [ref=e1591]:
+                - generic [ref=e1592]:
+                  - img [ref=e1593]
+                  - text: Attention Manipulation
+                - generic [ref=e1597]:
+                  - text: Read
+                  - img [ref=e1598]
+            - link "Demo Pull To Refresh (Variable-Reward Trap) While originally designed as a utilitarian mobile interaction paradigm, Pull To Refresh functions as a dark pattern—categorized under \"Engagement Traps'' and \"Addictive Design''—when deliberately engineered to mimic the mechanics of a slot machine. Attention Manipulation Read" [ref=e1600] [cursor=pointer]:
+              - /url: /patterns/pull-to-refresh
+              - generic [ref=e1601]:
+                - img [ref=e1603]
+                - generic "Interactive demo available" [ref=e1608]:
+                  - img [ref=e1609]
+                  - text: Demo
+              - generic [ref=e1611]:
+                - heading "Pull To Refresh (Variable-Reward Trap)" [level=3] [ref=e1612]
+                - paragraph [ref=e1613]: While originally designed as a utilitarian mobile interaction paradigm, Pull To Refresh functions as a dark pattern—categorized under "Engagement Traps'' and "Addictive Design''—when deliberately engineered to mimic the mechanics of a slot machine.
+              - generic [ref=e1614]:
+                - generic [ref=e1615]:
+                  - img [ref=e1616]
+                  - text: Attention Manipulation
+                - generic [ref=e1620]:
+                  - text: Read
+                  - img [ref=e1621]
+            - link "Demo Countdown On Ads The Countdown On Ads pattern—categorized under \"Playing with Time'' and \"Interface Interference''—deliberately hijacks the user's navigational agency by forcing the consumption of advertising content for a mandatory, unskippable duration. Attention Manipulation Read" [ref=e1623] [cursor=pointer]:
+              - /url: /patterns/countdown-on-ads
+              - generic [ref=e1624]:
+                - img [ref=e1626]
+                - generic "Interactive demo available" [ref=e1629]:
+                  - img [ref=e1630]
+                  - text: Demo
+              - generic [ref=e1632]:
+                - heading "Countdown On Ads" [level=3] [ref=e1633]
+                - paragraph [ref=e1634]: The Countdown On Ads pattern—categorized under "Playing with Time'' and "Interface Interference''—deliberately hijacks the user's navigational agency by forcing the consumption of advertising content for a mandatory, unskippable duration.
+              - generic [ref=e1635]:
+                - generic [ref=e1636]:
+                  - img [ref=e1637]
+                  - text: Attention Manipulation
+                - generic [ref=e1641]:
+                  - text: Read
+                  - img [ref=e1642]
+            - link "Demo Auto-Play Auto-Play is an attention-hijacking dark pattern formally categorized under \"Forced Action'' and \"Interface Interference.'' It occurs when a system autonomously initiates the playback of continuous media—such as video advertisements, algorithmic feeds, or the next episode in a queue—without requiring an explicit, affirmative interaction from the user . Attention Manipulation Read" [ref=e1644] [cursor=pointer]:
+              - /url: /patterns/auto-play
+              - generic [ref=e1645]:
+                - img [ref=e1647]
+                - generic "Interactive demo available" [ref=e1649]:
+                  - img [ref=e1650]
+                  - text: Demo
+              - generic [ref=e1652]:
+                - heading "Auto-Play" [level=3] [ref=e1653]
+                - paragraph [ref=e1654]: Auto-Play is an attention-hijacking dark pattern formally categorized under "Forced Action'' and "Interface Interference.'' It occurs when a system autonomously initiates the playback of continuous media—such as video advertisements, algorithmic feeds, or the next episode in a queue—without requiring an explicit, affirmative interaction from the user .
+              - generic [ref=e1655]:
+                - generic [ref=e1656]:
+                  - img [ref=e1657]
+                  - text: Attention Manipulation
+                - generic [ref=e1661]:
+                  - text: Read
+                  - img [ref=e1662]
+  - contentinfo [ref=e1664]:
+    - generic [ref=e1665]:
+      - paragraph [ref=e1666]: An educational reference for designers and developers. Not legal advice.
+      - paragraph [ref=e1667]: 60 patterns · 3 with interactive demos · Categorised by Brignull, Mathur, Gray
