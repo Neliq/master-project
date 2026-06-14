@@ -431,6 +431,47 @@ export const AUDITOR_ANNOTATIONS: Record<string, AnnotationItem[]> = {
         "A slot-machine loop (random likes, surprise badges) hooks the user with unpredictable micro-rewards.",
     },
   ],
+  "addictive-design-infinite-scroll": [
+    {
+      label: "Infinite feed",
+      description:
+        "New content is always loaded just before the user reaches the bottom — they can never reach the end of the feed.",
+    },
+    {
+      label: "Loading indicator",
+      description:
+        "A 'Loading more...' message at the bottom signals that content will continue indefinitely.",
+    },
+  ],
+  "addictive-design-variable-reinforcement": [
+    {
+      label: "Notification badge",
+      description:
+        "An animated red badge appears unpredictably, triggering compulsive checking behaviour.",
+    },
+    {
+      label: "Unpredictable timing",
+      description:
+        "Notifications arrive at random intervals (1-6 seconds), matching a Skinnerian variable ratio schedule.",
+    },
+  ],
+  "addictive-design-hidden-stopping-cues": [
+    {
+      label: "Missing end-of-content marker",
+      description:
+        "No 'end of results' or pagination boundary — the user never knows they've seen everything.",
+    },
+    {
+      label: "Hidden progress indicator",
+      description:
+        "The progress bar and time estimate are removed, so the user cannot gauge how much content remains.",
+    },
+    {
+      label: "Missing pagination",
+      description:
+        "No page numbers or 'next' button — the user has no structural cue that content is finite.",
+    },
+  ],
   "infinite-scrolling": [
     {
       label: "Feed",
@@ -458,5 +499,11 @@ export const AUDITOR_ANNOTATIONS: Record<string, AnnotationItem[]> = {
       description:
         "The next video starts immediately after the previous one, with no natural pause and no clear off switch.",
     },
+  ],  "immortal-accounts-condition-1": [
+    {
+      label: "Absolute Absence of Deletion Vectors",
+      description: "The dismissal vector (close button, X, escape handler) is completely absent from the interface.",
+    },
   ],
+
 };

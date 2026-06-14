@@ -6,15 +6,11 @@
  * detail (and the interactive demos for the three built patterns).
  */
 
-import Link from "next/link";
-import { ArrowRight, FlaskConical } from "lucide-react";
-
 import { PatternCard } from "@/components/pattern-card";
 import { Badge } from "@/components/ui/badge";
 import { CATEGORIES, PATTERNS, patternsInCategory } from "@/lib/patterns";
 
 export default function HomePage() {
-  const built = PATTERNS.filter((p) => p.built);
   const total = PATTERNS.length;
 
   return (
@@ -48,29 +44,7 @@ export default function HomePage() {
           <Badge variant="secondary" className="rounded-full">
             {CATEGORIES.length} categories
           </Badge>
-          <Badge variant="secondary" className="rounded-full">
-            <FlaskConical className="size-3" />
-            {built.length} interactive demos
-          </Badge>
-        </div>
 
-        {/* Quick links to built demos */}
-        <div className="flex flex-col gap-3">
-          <h2 className="text-sm font-medium tracking-wide uppercase">
-            Try the demos
-          </h2>
-          <div className="grid gap-3 sm:grid-cols-3">
-            {built.map((p) => (
-              <Link
-                key={p.slug}
-                href={`/patterns/${p.slug}`}
-                className="group/quick border-foreground/10 hover:border-foreground/30 group flex items-center justify-between rounded-lg border bg-card px-4 py-3 text-sm ring-1 ring-foreground/10 transition-all hover:shadow-sm"
-              >
-                <span className="font-medium">{p.name}</span>
-                <ArrowRight className="text-muted-foreground size-4 transition-transform group-hover/quick:translate-x-0.5" />
-              </Link>
-            ))}
-          </div>
         </div>
 
         {/* Category TOC */}

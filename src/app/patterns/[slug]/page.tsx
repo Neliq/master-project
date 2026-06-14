@@ -5,6 +5,12 @@
  * three "built" patterns (Auto-Play, Immortal Accounts, Pre-Delivered
  * Content) it also mounts an interactive demo from the demo registry.
  *
+ * When a pattern has per-condition demos, the layout groups each demo
+ * with its corresponding condition and checklist item:
+ *   Demo 1 → Condition 1 → Checklist 1
+ *   Demo 2 → Condition 2 → Checklist 2
+ *   Demo 3 → Condition 3 → Checklist 3
+ *
  * All 60 patterns are statically generated via `generateStaticParams`.
  */
 
@@ -24,16 +30,32 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { MathBlock } from "@/components/math-block";
+import { MathBlock, Math } from "@/components/math-block";
 import { PatternCard } from "@/components/pattern-card";
 import { DemoSection } from "@/components/demos/demo-section";
 import {
+  CATEGORIES,
   ICONS,
   PATTERNS,
   PATTERNS_BY_SLUG,
   getCategory,
   patternsInCategory,
 } from "@/lib/patterns";
+
+/** Splits text on $...$ delimiters and renders the math parts with KaTeX. */
+function InlineMath({ text }: { text: string }) {
+  const parts = text.split(/(\$[^$]+\$)/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        if (part.startsWith("$") && part.endsWith("$")) {
+          return <Math key={i}>{part.slice(1, -1)}</Math>;
+        }
+        return <span key={i}>{part}</span>;
+      })}
+    </>
+  );
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -66,11 +88,18 @@ export default async function PatternPage({ params }: PageProps) {
     .map((s) => PATTERNS_BY_SLUG[s])
     .filter(Boolean);
 
-  // Sibling navigation: prev/next inside the same category.
-  const siblings = patternsInCategory(pattern.category);
-  const idx = siblings.findIndex((p) => p.slug === pattern.slug);
-  const prev = idx > 0 ? siblings[idx - 1] : null;
-  const next = idx < siblings.length - 1 ? siblings[idx + 1] : null;
+  const hasConditions =
+    pattern.conditions && pattern.conditions.length > 0;
+  const hasConditionDemos =
+    pattern.conditionDemos && pattern.conditionDemos.length > 0;
+  const isGrouped = pattern.built && hasConditionDemos;
+
+  // Global navigation: prev/next across all categories, following the
+  // category order displayed on the homepage.
+  const allPatterns = CATEGORIES.flatMap((c) => patternsInCategory(c.id));
+  const idx = allPatterns.findIndex((p) => p.slug === pattern.slug);
+  const prev = idx > 0 ? allPatterns[idx - 1] : null;
+  const next = idx < allPatterns.length - 1 ? allPatterns[idx + 1] : null;
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-10 sm:py-12">
@@ -118,73 +147,140 @@ export default async function PatternPage({ params }: PageProps) {
         </div>
       </header>
 
-      {/* Interactive demo (built patterns only) */}
-      {pattern.built ? (
+      {/* ── Grouped layout: demo + condition + checklist per condition ── */}
+      {isGrouped ? (
         <section className="mt-8">
-          <div className="mb-4 flex items-center gap-2">
-            <FlaskConical className="text-muted-foreground size-4" />
-            <h2 className="text-sm font-medium tracking-wide uppercase">
-              Live demo
-            </h2>
-          </div>
-          <DemoSection slug={pattern.slug} />
-        </section>
-      ) : null}
-
-      {/* Formal conditions */}
-      {pattern.conditions && pattern.conditions.length > 0 ? (
-        <section className="mt-10">
-          <div className="mb-4 flex items-center gap-2">
-            <BookOpen className="text-muted-foreground size-4" />
-            <h2 className="text-sm font-medium tracking-wide uppercase">
-              Objective conditions
-            </h2>
-          </div>
           <p className="text-muted-foreground mb-6 max-w-2xl text-sm leading-relaxed">
             Each condition below is a predicate. Pass it the state of a
             running interface and you can mechanically decide whether the
-            pattern is present. This is what makes the definition
-            objective, not the user&apos;s discomfort.
+            pattern is present. The demo for each condition shows it in
+            isolation.
           </p>
-          <div className="flex flex-col gap-4">
-            {pattern.conditions.map((c, i) => (
-              <MathBlock
-                key={i}
-                title={`${i + 1}. ${c.title}`}
-                formula={c.formula}
-                given={c.given}
-                note={c.note}
-                ariaLabel={c.title}
-              />
-            ))}
+          <div className="flex flex-col gap-10">
+            {pattern.conditions!.map((c, i) => {
+              const cd = pattern.conditionDemos!.find(
+                (d) => d.conditionIndex === i
+              );
+              return (
+                <div key={i} className="flex flex-col gap-4">
+                  {/* Condition number + title */}
+                  <div className="flex items-center gap-2">
+                    <div className="bg-foreground text-background flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-semibold">
+                      {i + 1}
+                    </div>
+                    <h2 className="text-sm font-medium tracking-wide uppercase">
+                      {c.title}
+                    </h2>
+                  </div>
+
+                  {/* Demo for this condition */}
+                  {cd && pattern.built ? (
+                    <DemoSection
+                      slug={slug}
+                      conditionIndex={i}
+                      showControls={true}
+                    />
+                  ) : null}
+
+                  {/* Formal condition (formula) */}
+                  <MathBlock
+                    title={`Condition ${i + 1}: ${c.title}`}
+                    formula={c.formula}
+                    given={c.given}
+                    note={c.note}
+                    ariaLabel={c.title}
+                  />
+
+                  {/* Auditor checklist item */}
+                  <li
+                    className="flex items-start gap-3 rounded-lg border bg-card px-4 py-3 ring-1 ring-foreground/10 list-none"
+                  >
+                    <CheckCircle2 className="text-muted-foreground mt-0.5 size-4 shrink-0" />
+                    <div className="text-sm">
+                      <div className="font-medium">{c.title}</div>
+                      <div className="text-muted-foreground mt-0.5 text-xs leading-relaxed">
+                        <InlineMath text={c.description} />
+                      </div>
+                    </div>
+                  </li>
+                </div>
+              );
+            })}
           </div>
         </section>
-      ) : null}
+      ) : (
+        <>
+          {/* ── Legacy layout: separate sections ── */}
 
-      {/* Indicator checklist (re-formulated as yes/no questions) */}
-      {pattern.conditions && pattern.conditions.length > 0 ? (
-        <section className="mt-10">
-          <h2 className="mb-4 text-sm font-medium tracking-wide uppercase">
-            Auditor&apos;s checklist
-          </h2>
-          <ul className="flex flex-col gap-2">
-            {pattern.conditions.map((c, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-3 rounded-lg border bg-card px-4 py-3 ring-1 ring-foreground/10"
-              >
-                <CheckCircle2 className="text-muted-foreground mt-0.5 size-4 shrink-0" />
-                <div className="text-sm">
-                  <div className="font-medium">{c.title}</div>
-                  <div className="text-muted-foreground mt-0.5 text-xs leading-relaxed">
-                    {c.description}
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
+          {/* Interactive demo (built patterns only) */}
+          {pattern.built ? (
+            <section className="mt-8">
+              <div className="mb-4 flex items-center gap-2">
+                <FlaskConical className="text-muted-foreground size-4" />
+                <h2 className="text-sm font-medium tracking-wide uppercase">
+                  Live demo
+                </h2>
+              </div>
+              <DemoSection slug={pattern.slug} />
+            </section>
+          ) : null}
+
+          {/* Formal conditions */}
+          {hasConditions ? (
+            <section className="mt-10">
+              <div className="mb-4 flex items-center gap-2">
+                <BookOpen className="text-muted-foreground size-4" />
+                <h2 className="text-sm font-medium tracking-wide uppercase">
+                  Objective conditions
+                </h2>
+              </div>
+              <p className="text-muted-foreground mb-6 max-w-2xl text-sm leading-relaxed">
+                Each condition below is a predicate. Pass it the state of a
+                running interface and you can mechanically decide whether the
+                pattern is present. This is what makes the definition
+                objective, not the user&apos;s discomfort.
+              </p>
+              <div className="flex flex-col gap-4">
+                {pattern.conditions!.map((c, i) => (
+                  <MathBlock
+                    key={i}
+                    title={`${i + 1}. ${c.title}`}
+                    formula={c.formula}
+                    given={c.given}
+                    note={c.note}
+                    ariaLabel={c.title}
+                  />
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {/* Indicator checklist (re-formulated as yes/no questions) */}
+          {hasConditions ? (
+            <section className="mt-10">
+              <h2 className="mb-4 text-sm font-medium tracking-wide uppercase">
+                Auditor&apos;s checklist
+              </h2>
+              <ul className="flex flex-col gap-2">
+                {pattern.conditions!.map((c, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 rounded-lg border bg-card px-4 py-3 ring-1 ring-foreground/10"
+                  >
+                    <CheckCircle2 className="text-muted-foreground mt-0.5 size-4 shrink-0" />
+                    <div className="text-sm">
+                      <div className="font-medium">{c.title}</div>
+                      <div className="text-muted-foreground mt-0.5 text-xs leading-relaxed">
+                        <InlineMath text={c.description} />
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+        </>
+      )}
 
       {/* Non-built stub */}
       {!pattern.built ? (
