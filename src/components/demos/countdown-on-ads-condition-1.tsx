@@ -10,17 +10,46 @@ export function CountdownOnAdsCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [path, setPath] = React.useState(["Home"]);
-  const reset = () => setPath(["Home"]);
-  const menus: Record<string, string[]> = {"Home": ["Settings","Profile","Help"], "Settings": ["Account","Privacy"], "Account": ["Delete account"], "Privacy": ["Cookies","Data sharing"], "Profile": ["Edit","Avatar"]};
-  const current = path[path.length - 1];
-  const options = menus[current] || [];
+  const [adVisible, setAdVisible] = React.useState(false);
+  const [countdown, setCountdown] = React.useState(10);
+  const [dismissed, setDismissed] = React.useState(false);
+
+  const reset = () => {
+    setAdVisible(false);
+    setCountdown(10);
+    setDismissed(false);
+  };
+
+  React.useEffect(() => {
+    const t = setTimeout(() => setAdVisible(true), 1500);
+    return () => clearTimeout(t);
+  }, []);
+
+  React.useEffect(() => {
+    if (!adVisible || countdown <= 0) return;
+    const interval = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [adVisible, countdown]);
+
+  const canClose = countdown === 0;
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Navigation depth</span>
-        <span className="font-mono font-semibold">{path.length} levels</span>
+        <span className="text-muted-foreground">Mandatory wait time</span>
+        <span className="font-mono font-semibold">10 seconds</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Close button enabled</span>
+        <span className="font-mono font-semibold">{canClose ? "Yes" : `No (${countdown}s left)`}</span>
       </div>
     </>
   ) : null;
@@ -28,20 +57,77 @@ export function CountdownOnAdsCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Countdown On Ads: Temporal Gating of Navigational Agency"
-      caption="Temporal Gating of Navigational Agency — navigating to the target requires excessive depth." auditorStats={stats}>
+      caption="Temporal Gating of Navigational Agency — ad blocks content and cannot be closed for 10 seconds." auditorStats={stats}>
       <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="text-muted-foreground mb-2 text-[9px]">{path.join(" → ")}</div>
-          <div className="mb-2 font-medium">{current}</div>
-          {options.map(label => (
-            <button key={label} onClick={() => setPath(p => [...p, label])}
-              className="hover:bg-foreground/5 mb-1 w-full rounded-md border p-2 text-left text-[10px]">
-              {">"} {label}
-            </button>
-          ))}
-          {path.length > 3 && (
-            <div className="text-muted-foreground mt-2 border-t pt-2 text-[9px]">
-              {path.length} levels deep. Target not visible.
+        <div className="relative min-h-[400px] rounded-md border bg-foreground/5 p-3 text-xs">
+
+          {/* Page content behind the ad */}
+          <div className={`transition-opacity ${adVisible && !dismissed ? "opacity-30" : "opacity-100"}`}>
+            <div className="mb-1 font-medium">Your Content</div>
+            <div className="space-y-1 text-[10px] text-muted-foreground">
+              <div className="h-2 w-3/4 rounded bg-foreground/10" />
+              <div className="h-2 w-full rounded bg-foreground/10" />
+              <div className="h-2 w-5/6 rounded bg-foreground/10" />
+              <div className="h-2 w-2/3 rounded bg-foreground/10" />
+            </div>
+          </div>
+
+          {/* Ad overlay — scoped to demo section */}
+          {adVisible && !dismissed && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center rounded-md">
+              {/* Backdrop */}
+              <div className="absolute inset-0 bg-black/60 rounded-md" />
+
+              {/* Ad card */}
+              <div className="relative w-full max-w-[220px] rounded-xl border-2 border-amber-500/40 bg-white shadow-2xl dark:bg-zinc-900">
+
+                {/* Close button */}
+                <div className="absolute top-2 right-2">
+                  {canClose ? (
+                    <button
+                      onClick={() => setDismissed(true)}
+                      className="flex h-6 w-6 items-center justify-center rounded-full bg-foreground/10 text-sm font-bold text-foreground hover:bg-foreground/20"
+                    >
+                      ✕
+                    </button>
+                  ) : (
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full bg-foreground/5 text-[10px] font-bold text-muted-foreground/30">
+                      {countdown}
+                    </div>
+                  )}
+                </div>
+
+                {/* Ad content */}
+                <div className="p-4 pt-3 text-center">
+                  <div className="text-[7px] uppercase tracking-widest text-amber-600 dark:text-amber-400">Sponsored</div>
+                  <div className="mt-1.5 text-base font-bold text-foreground">🎉 Congratulations!</div>
+                  <div className="mt-1 text-[10px] text-muted-foreground">You've been selected for an exclusive offer</div>
+
+                  <div className="mt-2 rounded-lg border-2 border-amber-500/30 bg-amber-500/5 p-2">
+                    <div className="text-xl font-extrabold text-amber-600 dark:text-amber-400">FREE</div>
+                    <div className="text-[9px] text-muted-foreground">Premium membership for 30 days</div>
+                  </div>
+
+                  <button className="mt-2 w-full rounded-lg bg-amber-500 px-3 py-2 text-[10px] font-bold text-white shadow-lg">
+                    Claim Now
+                  </button>
+
+                  {/* Countdown bar */}
+                  {!canClose && (
+                    <div className="mt-2">
+                      <div className="h-1 overflow-hidden rounded-full bg-foreground/10">
+                        <div
+                          className="h-full bg-amber-500/60 transition-all duration-1000"
+                          style={{ width: `${((10 - countdown) / 10) * 100}%` }}
+                        />
+                      </div>
+                      <div className="mt-0.5 text-[7px] text-muted-foreground/50">
+                        Ad closes in {countdown}s
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           )}
         </div>

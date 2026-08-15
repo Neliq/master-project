@@ -10,17 +10,46 @@ export function CountdownOnAdsCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [step, setStep] = React.useState(0);
-  const reset = () => setStep(0);
-  const fees = [{label: "Base", amount: 9.99}, {label: "+ Service", amount: 3.50}, {label: "+ Processing", amount: 1.99}, {label: "+ Convenience", amount: 2.00}];
-  const shown = fees.slice(0, step + 1);
-  const total = shown.reduce((s, f) => s + f.amount, 0);
+  const [adVisible, setAdVisible] = React.useState(false);
+  const [countdown, setCountdown] = React.useState(10);
+  const [dismissed, setDismissed] = React.useState(false);
+
+  const reset = () => {
+    setAdVisible(false);
+    setCountdown(10);
+    setDismissed(false);
+  };
+
+  React.useEffect(() => {
+    const t = setTimeout(() => setAdVisible(true), 1500);
+    return () => clearTimeout(t);
+  }, []);
+
+  React.useEffect(() => {
+    if (!adVisible || countdown <= 0) return;
+    const interval = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [adVisible, countdown]);
+
+  const canClose = countdown === 0;
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Base → final</span>
-        <span className="font-mono font-semibold">$9.99 → ${total.toFixed(2)}</span>
+        <span className="text-muted-foreground">Mandatory wait time</span>
+        <span className="font-mono font-semibold">10 seconds</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Close affordance injected at</span>
+        <span className="font-mono font-semibold">t = 10s</span>
       </div>
     </>
   ) : null;
@@ -28,30 +57,71 @@ export function CountdownOnAdsCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Countdown On Ads: Dynamic Affordance Injection"
-      caption="Dynamic Affordance Injection — price inflates step-by-step as fees are injected." auditorStats={stats}>
+      caption="Dynamic Affordance Injection — no close button exists until the countdown finishes." auditorStats={stats}>
       <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-2 font-medium">Dynamic Affordance Injection — Checkout</div>
-          {shown.map((f, i) => (
-            <div key={i} className="flex items-center justify-between border-t border-dashed py-1.5">
-              <span>{f.label}</span>
-              <span className="font-mono tabular-nums">${f.amount.toFixed(2)}</span>
+        <div className="relative min-h-[400px] rounded-md border bg-foreground/5 p-3 text-xs">
+
+          {/* Page content behind the ad */}
+          <div className={`transition-opacity ${adVisible && !dismissed ? "opacity-30" : "opacity-100"}`}>
+            <div className="mb-1 font-medium">Your Content</div>
+            <div className="space-y-1 text-[10px] text-muted-foreground">
+              <div className="h-2 w-3/4 rounded bg-foreground/10" />
+              <div className="h-2 w-full rounded bg-foreground/10" />
+              <div className="h-2 w-5/6 rounded bg-foreground/10" />
+              <div className="h-2 w-2/3 rounded bg-foreground/10" />
             </div>
-          ))}
-          <div className="flex items-center justify-between border-t pt-1.5 font-medium">
-            <span>Total</span>
-            <span className="font-mono tabular-nums">${total.toFixed(2)}</span>
           </div>
+
+          {/* Ad overlay */}
+          {adVisible && !dismissed && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center rounded-md">
+              {/* Backdrop */}
+              <div className="absolute inset-0 bg-black/60 rounded-md" />
+
+              {/* Ad card */}
+              <div className="relative w-full max-w-[220px] rounded-xl border-2 border-amber-500/40 bg-white shadow-2xl dark:bg-zinc-900">
+
+                {/* Close button — only appears after countdown, positioned top-left */}
+                {canClose && (
+                  <button
+                    onClick={() => setDismissed(true)}
+                    className="absolute top-2 left-2 flex h-6 w-6 items-center justify-center rounded-full bg-foreground/10 text-sm font-bold text-foreground hover:bg-foreground/20 animate-in fade-in"
+                  >
+                    ✕
+                  </button>
+                )}
+
+                {/* Ad content */}
+                <div className="p-4 pt-3 text-center">
+                  <div className="text-[7px] uppercase tracking-widest text-amber-600 dark:text-amber-400">Sponsored</div>
+                  <div className="mt-1.5 text-base font-bold text-foreground">🎉 Congratulations!</div>
+                  <div className="mt-1 text-[10px] text-muted-foreground">You've been selected for an exclusive offer</div>
+
+                  <div className="mt-2 rounded-lg border-2 border-amber-500/30 bg-amber-500/5 p-2">
+                    <div className="text-xl font-extrabold text-amber-600 dark:text-amber-400">FREE</div>
+                    <div className="text-[9px] text-muted-foreground">Premium membership for 30 days</div>
+                  </div>
+
+                  <button className="mt-2 w-full rounded-lg bg-amber-500 px-3 py-2 text-[10px] font-bold text-white shadow-lg">
+                    Claim Now
+                  </button>
+
+                  {/* Central countdown */}
+                  {!canClose && (
+                    <div className="mt-3 flex flex-col items-center">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-amber-500/30 text-xl font-bold text-amber-600 dark:text-amber-400 tabular-nums">
+                        {countdown}
+                      </div>
+                      <div className="mt-1 text-[8px] text-muted-foreground/50">
+                        Wait to close
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-        {step < fees.length - 1 ? (
-          <button onClick={() => setStep(s => s + 1)} className="bg-blue-500 hover:bg-blue-600 text-white w-full rounded-md py-2 text-xs font-medium">
-            Continue (more fees)
-          </button>
-        ) : (
-          <div className="rounded-md border border-dashed p-2 text-center text-[10px] text-muted-foreground">
-            Final price ${total.toFixed(2)} (${((total / 9.99 - 1) * 100).toFixed(0)}% higher than advertised)
-          </div>
-        )}
       </div>
     </DemoShell>
   );
