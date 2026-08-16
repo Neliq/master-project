@@ -3,6 +3,27 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Privacy Maze — Condition 2: Visual Prominence Disparity
+ *
+ * Thesis: B_accept is the primary node for maximum consent and B_manage
+ * is the node that initiates the opt-out flow. A visual prominence
+ * function P(x) (bounding box area, contrast ratio, z-index) evaluates
+ * the visual weight of the two opposing choices; the feature triggers if
+ * the accept vector massively outweighs the manage vector:
+ *
+ *   P(B_accept) / P(B_manage) > delta_contrast
+ *
+ * Variant A (dark): "Accept All" is a large, high-contrast filled button;
+ * the privacy-preserving route is a tiny, low-contrast text link.
+ * Variant B (benign): both choices share equal size, weight and contrast.
+ */
+
+const P_ACCEPT = 0.86;
+const P_MANAGE = 0.06;
+const DELTA_CONTRAST = 2.0;
+const PROMINENCE_RATIO = P_ACCEPT / P_MANAGE; // 14.3
+
 export function PrivacyMazeCond2({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,43 +31,151 @@ export function PrivacyMazeCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [step, setStep] = React.useState(0);
-  const reset = () => setStep(0);
-  const fees = [{label: "Base", amount: 9.99}, {label: "+ Service", amount: 3.50}, {label: "+ Processing", amount: 1.99}, {label: "+ Convenience", amount: 2.00}];
-  const shown = fees.slice(0, step + 1);
-  const total = shown.reduce((s, f) => s + f.amount, 0);
+  const [outcome, setOutcome] = React.useState<"none" | "accepted" | "rejected">("none");
+
+  const reset = () => setOutcome("none");
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Base → final</span>
-        <span className="font-mono font-semibold">$9.99 → ${total.toFixed(2)}</span>
+        <span className="text-muted-foreground">P(B_accept)</span>
+        <span className="font-mono font-semibold tabular-nums">{P_ACCEPT.toFixed(2)}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">P(B_manage)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{P_MANAGE.toFixed(2)}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">P(B_accept) / P(B_manage)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{PROMINENCE_RATIO.toFixed(1)}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Baseline &delta;_contrast</span>
+        <span className="font-mono font-semibold tabular-nums">{DELTA_CONTRAST.toFixed(1)}</span>
       </div>
     </>
   ) : null;
 
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Privacy Maze: Excessive Interaction Density"
-      caption="Excessive Interaction Density — price inflates step-by-step as fees are injected." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-2 font-medium">Excessive Interaction Density</div>
-          <div className="flex items-end gap-1 h-16 mb-2">
-            {fees.map((f, i) => (
-              <div key={i} className="flex-1 flex flex-col items-center">
-                <div className="bg-teal-500 w-full rounded-t-sm" style={{height: (f.amount / total * 60) + "px"}} />
-                <div className="text-[7px] mt-0.5">${f.amount}</div>
+      title="Privacy Maze: Visual Prominence Disparity"
+      caption="Visual Prominence Disparity — the accept vector is rendered with massively more visual weight than the nearly invisible opt-out route."
+      auditorStats={stats}
+      deltaNote={`In Variant A, P(B_accept)/P(B_manage) = ${PROMINENCE_RATIO.toFixed(1)} (> δ_contrast = ${DELTA_CONTRAST.toFixed(1)}): the privacy-preserving route is a tiny, low-contrast text link drowned out by a large filled button. In Variant B both choices are rendered with identical size, weight and contrast, so the ratio is 1.0.`}
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-start gap-3">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
+                <svg className="h-4 w-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
               </div>
-            ))}
+              <div className="min-w-0 flex-1">
+                <h3 className="text-[11px] font-semibold">Your privacy choices</h3>
+                <p className="mt-0.5 text-[9px] leading-relaxed text-muted-foreground">
+                  We use cookies to improve the site and show relevant ads. Both options below
+                  carry exactly the same visual weight — your choice, equally easy to see.
+                </p>
+              </div>
+            </div>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <button
+                onClick={() => setOutcome("accepted")}
+                className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+              >
+                Accept All
+              </button>
+              <button
+                onClick={() => setOutcome("rejected")}
+                className="w-full rounded-md border border-emerald-600/50 bg-background hover:bg-emerald-500/10 py-2 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 transition-colors cursor-pointer"
+              >
+                Reject All
+              </button>
+            </div>
+            <p className="mt-2 text-center text-[8px] text-muted-foreground/60">
+              Equal bounding boxes, equal contrast, equal z-index — P ratio = 1.0
+            </p>
           </div>
-          <div className="text-center text-[10px] font-medium">Total: ${total.toFixed(2)}</div>
+
+          {outcome !== "none" && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Visual hierarchy is neutral
+              </div>
+              <p className="mt-0.5 text-muted-foreground">
+                Both vectors were rendered with equal prominence, so your eye was not steered
+                toward surrender. P(B_accept)/P(B_manage) = 1.0, well below &delta;_contrast.
+              </p>
+            </div>
+          )}
         </div>
-        {step < fees.length - 1 ? (
-          <button onClick={() => setStep(s => s + 1)} className="bg-teal-500 hover:bg-teal-600 text-white w-full rounded-md py-2 text-xs font-medium">Continue</button>
-        ) : (
-          <div className="rounded-md border border-dashed p-2 text-center text-[10px] text-muted-foreground">
-            ${(total - 9.99).toFixed(2)} in hidden fees
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-start gap-3">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
+              <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </div>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-[11px] font-semibold">We care about your privacy</h3>
+              <p className="mt-0.5 text-[9px] leading-relaxed text-muted-foreground">
+                We and our partners process personal data to serve personalised ads and
+                content, measure performance, and derive insights, as described in our
+                privacy policy.
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setOutcome("accepted")}
+            className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 py-3 text-[12px] font-bold text-white shadow-lg transition-all hover:shadow-xl cursor-pointer"
+          >
+            Accept All
+          </button>
+
+          <div className="mt-2 space-y-1 text-center">
+            <button
+              onClick={() => setOutcome("rejected")}
+              className="text-[9px] text-muted-foreground/40 underline underline-offset-2 hover:text-muted-foreground/70 transition-colors cursor-pointer"
+            >
+              Manage options
+            </button>
+            <div className="text-[8px] text-muted-foreground/30">
+              Essential cookies only
+            </div>
+          </div>
+
+          <div className="mt-2 flex items-center justify-between rounded-md border border-border bg-muted/40 px-2 py-1.5">
+            <span className="text-[8px] text-muted-foreground/50">Visual weight meter</span>
+            <span className="font-mono text-[8px] tabular-nums text-muted-foreground/60">
+              accept ██████████████&nbsp;manage █
+            </span>
+          </div>
+        </div>
+
+        {outcome !== "none" && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Visual prominence disparity triggered
+            </div>
+            <p className="text-muted-foreground">
+              {outcome === "accepted"
+                ? `“Accept All” was the only element that looked like a button: a large filled block (P(B_accept) = ${P_ACCEPT.toFixed(2)}) against a tiny gray link (P(B_manage) = ${P_MANAGE.toFixed(2)}). The ratio ${PROMINENCE_RATIO.toFixed(1)} far exceeds δ_contrast = ${DELTA_CONTRAST.toFixed(1)} — your gaze was structurally steered into consent.`
+                : `You found it — but only because you were looking for it. The opt-out route is a 9px gray link at ${P_MANAGE.toFixed(2)} prominence while “Accept All” occupies ${P_ACCEPT.toFixed(2)}. P(B_accept)/P(B_manage) = ${PROMINENCE_RATIO.toFixed(1)} > δ_contrast = ${DELTA_CONTRAST.toFixed(1)}, so the privacy-preserving vector is effectively invisible against the baseline design.`}
+            </p>
           </div>
         )}
       </div>

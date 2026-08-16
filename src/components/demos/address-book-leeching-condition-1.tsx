@@ -3,6 +3,22 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Address Book Leeching — Condition 1: Utility-Permission Decoupling
+ *
+ * Thesis: the application blocks initialization or core functionality until
+ * a contact permission is granted, even though the advertised utility has
+ * no functional dependency on contact data:
+ *
+ *   State(U_core) = Blocked given P_contacts = False  ∧  Dep(U_core, P_contacts) = ∅
+ *
+ * Variant A (dark): a flashlight app refuses to start until the user
+ * surrenders address-book access — a permission with zero technical
+ * dependency on the core utility.
+ * Variant B (benign): the flashlight works immediately; the permission is
+ * optional and honestly labelled.
+ */
+
 export function AddressBookLeechingCond1({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,14 +26,33 @@ export function AddressBookLeechingCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [done, setDone] = React.useState(false);
-  const reset = () => setDone(false);
+  const [torchOn, setTorchOn] = React.useState(false);
+  const [permission, setPermission] = React.useState<"undecided" | "granted" | "declined">("undecided");
+  const [darkBlocked, setDarkBlocked] = React.useState(false);
+
+  const reset = () => {
+    setTorchOn(false);
+    setPermission("undecided");
+    setDarkBlocked(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Dismissal vectors</span>
-        <span className="font-mono font-semibold">0</span>
+        <span className="text-muted-foreground">Dep(U_core, P_contacts)</span>
+        <span className="font-mono font-semibold tabular-nums">&empty; (no dependency)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">State(U_core) w/o P_contacts</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">Blocked (dark) / Running (benign)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Permission status</span>
+        <span className="font-mono font-semibold tabular-nums">{permission}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Torch powered</span>
+        <span className="font-mono font-semibold tabular-nums">{torchOn ? "On" : "Off"}</span>
       </div>
     </>
   ) : null;
@@ -25,18 +60,147 @@ export function AddressBookLeechingCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Address Book Leeching: Utility-Permission Decoupling"
-      caption="Utility-Permission Decoupling — there is no way to dismiss this element." auditorStats={stats}>
+      caption="Core functionality is gated behind a contact permission the utility does not technically need — the permission is a data harvest, not a feature."
+      auditorStats={stats}
+      deltaNote="In Variant A the flashlight is blocked until the address-book permission is granted, despite Dep(U_core, P_contacts) = ∅. In Variant B the identical utility runs without the permission, which is optional and clearly labelled."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-start justify-between gap-2">
+              <div>
+                <h3 className="text-[11px] font-semibold">TorchMate — Flashlight</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">
+                  A local utility. Works entirely on your device.
+                </p>
+              </div>
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+                {torchOn ? "On" : "Off"}
+              </div>
+            </div>
+
+            <button
+              onClick={() => setTorchOn(!torchOn)}
+              className={`mt-3 w-full rounded-md py-2 text-[10px] font-medium transition-colors cursor-pointer ${
+                torchOn
+                  ? "bg-emerald-600 hover:bg-emerald-700 text-white"
+                  : "bg-emerald-600/15 hover:bg-emerald-600/25 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30"
+              }`}
+            >
+              {torchOn ? "Switch off flashlight" : "Switch on flashlight"}
+            </button>
+          </div>
+
+          {permission === "undecided" && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5">
+              <div className="text-[10px] font-semibold">Allow TorchMate to access your contacts?</div>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                This is a data-access permission: it uploads your address book to our servers.
+                You can keep using the flashlight without it.
+              </p>
+              <div className="mt-2 flex gap-2">
+                <button
+                  onClick={() => setPermission("granted")}
+                  className="flex-1 rounded-md border border-emerald-500/40 px-2 py-1.5 text-[9px] font-medium text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/10 transition-colors cursor-pointer"
+                >
+                  Allow access
+                </button>
+                <button
+                  onClick={() => setPermission("declined")}
+                  className="flex-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer"
+                >
+                  Not now
+                </button>
+              </div>
+            </div>
+          )}
+
+          {permission !== "undecided" && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Utility decoupled from permission
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                {permission === "granted"
+                  ? "You granted the permission, but note it was presented as an optional data-access request and the flashlight never required it."
+                  : "You declined and the flashlight keeps working: State(U_core) = Running with P_contacts = False."}
+              </p>
+            </div>
+          )}
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-1 font-medium">Utility-Permission Decoupling</div>
-          <p className="text-muted-foreground text-[10px]">An overlay has appeared. No close button, no X, no escape key.</p>
-        </div>
-        <div className="bg-background rounded-md border-teal-500/40 border-2 p-4 text-center text-xs">
-          <div className="mb-2 font-semibold">Action required</div>
-          <button onClick={() => setDone(true)} className="bg-teal-500 hover:bg-teal-600 text-white mt-3 rounded-md px-3 py-1.5 text-[10px] font-medium">
-            Continue
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <h3 className="text-[11px] font-semibold">TorchMate — Flashlight</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                A local utility. Works entirely on your device.
+              </p>
+            </div>
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+              {torchOn ? "On" : "Off"}
+            </div>
+          </div>
+
+          <button
+            onClick={() => setTorchOn(!torchOn)}
+            disabled={permission !== "granted"}
+            className={`mt-3 w-full rounded-md py-2 text-[10px] font-medium transition-colors ${
+              permission === "granted"
+                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                : "bg-muted text-muted-foreground/40 cursor-not-allowed"
+            }`}
+          >
+            {torchOn ? "Switch off flashlight" : "Switch on flashlight"}
           </button>
+
+          {permission !== "granted" && (
+            <div className="mt-2 rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5">
+              <div className="text-[10px] font-semibold">TorchMate requires contact access to continue</div>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                To use the flashlight, please allow TorchMate to read your contacts.
+              </p>
+              <div className="mt-2 flex gap-2">
+                <button
+                  onClick={() => setPermission("granted")}
+                  className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer"
+                >
+                  Allow contact access
+                </button>
+                <button
+                  onClick={() => { setPermission("declined"); setDarkBlocked(true); }}
+                  className="flex-1 rounded-md border border-border px-2 py-1.5 text-[9px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                >
+                  Decline
+                </button>
+              </div>
+            </div>
+          )}
         </div>
+
+        {darkBlocked && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Forced permission gate
+            </div>
+            <p className="text-muted-foreground mt-0.5">
+              Declining leaves you locked out of the flashlight:{" "}
+              <strong className="text-rose-500">State(U_core) = Blocked</strong> while{" "}
+              <strong className="text-foreground">Dep(U_core, P_contacts) = &empty;</strong> — a
+              flashlight has zero technical need for your address book. The app algorithmically
+              blocks its core utility until you hand over P_contacts, coercing a harvest that
+              serves no function of the advertised product.
+            </p>
+          </div>
+        )}
       </div>
     </DemoShell>
   );

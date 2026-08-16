@@ -4,21 +4,31 @@ import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
 /*
- * A deliberately impenetrable privacy / data disclosure.
- * Flesch–Kincaid Grade Level ~22 (graduate-level).
- * Monstrous sentences, arcane vocabulary, nested clauses,
- * Latin borrowings, weasel words, and passive voice stacking.
+ * Complex Language — Condition 1: Structural Nesting Depth of Legal/Technical Text Nodes
+ *
+ * Thesis: the algorithm measures DOM nesting depth and text-node length
+ * distribution inside legal/terms containers C_legal. The feature triggers
+ * if FKGL-flagged complex text nodes are structurally buried at a DOM depth
+ * significantly exceeding the site's median content depth, or if the mean
+ * clause length exceeds readability thresholds:
+ *
+ *   D_DOM(N_complex) > τ_legal_depth  ∨  mean |text(n)| > τ_clause_length
+ *
+ * Variant A (dark): the binding auto-renewal clause sits six DOM levels deep
+ * inside nested collapsible legal containers.
+ * Variant B (benign): the same clause, same payload, at depth 1 in plain text.
  */
 
-const OBFUSCATED_POLICY = `NOTWITHSTANDING ANY CONTRARY INDICATIONS OSTENSIBLY MANIFESTED WITHIN THE PURVIEW OF THE FOREGOING PROVISIONS, THE USER (HEREINAFTER "DATA SUBJECT" PER ART. 4(1) OF THE GENERAL DATA PROTECTION REGULATION) DOES HEREBY ACKNOWLEDGE, COVENANT, AND AGREE — IRREVOCABLY AND WITHOUT RESERVATION OF ANY SUBSEQUENT RIGHT OF NULLIFICATION, WITHDRAWAL, OR IMPEACHMENT — THAT THE PLATFORM (HEREINAFTER "CONTROLLER"), ITS SUBSIDIARIES, AFFILIATES, SUCCESSORS-IN-INTEREST, ASSIGNS, AND ANY THIRD-PARTY DATA PROCESSORS ENGAGED BY THE CONTROLLER PURSUANT TO THE MECHANISMS DESCRIBED IN SCHEDULE C § 14.2(A)(III) ET SEQ., MAY COLLECT, PROCESS, STORE, TRANSMIT, TRANSFER (INCLUDING CROSS-JURISDICTIONAL TRANSFERS PURSUANT TO ADEQUACY DECISIONS UNDER ART. 45, STANDARD CONTRACTUAL CLAUSES UNDER ART. 46, OR BINDING CORPORATE RULES UNDER ART. 47), RETAIN, DERIVATISE, AGGREGATE, ANONYMIZE, PSEUDONYMIZE, RE-IDENTIFY (WHERE TECHNOLOGICALLY FEASIBLE AND NOT PER SE PROHIBITED BY APPLICABLE LAW), SELL, LICENSE, SUB-LICENSE, ENCUMBER, AND OTHERWISE COMMERCIALISE ANY AND ALL DATA, INFORMATION, CONTENT, METADATA, BEHAVIOURAL TRAJECTORIES, BIOMETRIC SIGNATURES, LOCATION HISTORIES, DEVICE FINGERPRINTS, PSYCHOGRAPHIC PROFILES, LINGUISTIC CORPORA, SOCIAL GRAPH TOPOLOGIES, ATTENTION METRICS, AFFECTIVE STATE INFERENCES, AND ALL DERIVATIVES, COMPILATIONS, SYNTHESES, OR ENRICHMENTS THEREOF (COLLECTIVELY, "DATA") GENERATED, EXTRACTED, INFERRED, OR DERIVED FROM THE DATA SUBJECT'S INTERACTION WITH THE PLATFORM, WHETHER SUCH INTERACTION OCCURS THROUGH DIRECT MANIPULATION OF THE USER INTERFACE, PASSIVE BACKGROUND TELEMETRY, THIRD-PARTY INTEGRATION CHANNELS, OR ANY PRESENTLY UNFORESEEABLE METHODOLOGIES OF DATA CAPTURE NOTWITHSTANDING THE ABSENCE OF EXPLICIT LEGISLATIVE PRECEDENT THEREFOR.
+const CLAUSE_DARK =
+  "14.2 Automatic Renewal: The subscription shall renew automatically for successive monthly periods, and the Provider shall be entitled to charge the payment method on file for each such renewal period without further notice or separate confirmation, unless the Subscriber shall have delivered written notification of non-renewal not less than twenty-four (24) hours prior to the conclusion of the then-current billing cycle, in which event the renewal shall be foreclosed.";
 
-FURTHERMORE, THE DATA SUBJECT EXPRESSLY WAIVES ANY AND ALL CAUSES OF ACTION, CLAIMS, DEMANDS, OR PROCEEDINGS — WHETHER AT LAW, IN EQUITY, IN CONTRACT, IN TORT, IN REM, OR IN PERSONAM — ARISING FROM OR RELATED TO THE CONTROLLER'S EXERCISE OF THE AFOREMENTIONED DATA PROCESSING ACTIVITIES, INCLUDING BUT NOT LIMITED TO CLAIMS FOR INVASION OF PRIVACY, INTRUSION UPON SECLUSION, PUBLIC DISCLOSURE OF PRIVATE FACTS, APPROPRIATION OF PERSONA, BREACH OF CONFIDENCE, BREACH OF FIDUCIARY DUTY, NEGLIGENT MISREPRESENTATION, NEGLIGENT INFLICTION OF EMOTIONAL DISTRESS, INTENTIONAL INFLICTION OF EMOTIONAL DISTRESS, TORTIOUS INTERFERENCE WITH PROSPECTIVE ECONOMIC ADVANTAGE, UNJUST ENRICHMENT, CONVERSION, TRESPASS TO CHATTELS, OR ANY STATUTORY OR REGULATORY INFRACTION PROMULGATED UNDER THE LAWS, REGULATIONS, DIRECTIVES, ORDINANCES, OR ADMINISTRATIVE PRONOUNCEMENTS OF ANY JURISDICTION WHATSOEVER IN WHICH THE DATA SUBJECT MAY RESIDE, BE INCORPORATED, OR BE PHYSICALLY LOCATED AT THE TIME OF THE ALLEGED INJURY.
+const CLAUSE_BENIGN =
+  "Your plan renews automatically each month at the same price unless you cancel at least 24 hours before the renewal date.";
 
-THE DATA SUBJECT ACKNOWLEDGES THAT THE PRECEDING WAIVER AND RELEASE SHALL BE CONSTRUED IN ACCORDANCE WITH THE LAWS OF THE JURISDICTION IN WHICH THE CONTROLLER'S PRINCIPAL PLACE OF BUSINESS IS SITUATED (HEREINAFTER "GOVERNING JURISDICTION"), NOTWITHSTANDING ANY CONFLICT-OF-LAW PRINCIPLES TO THE CONTRARY, AND FURTHER ACKNOWLEDGES THAT ANY DISPUTE HEREUNDER SHALL BE ADJUDICATED SOLELY AND EXCLUSIVELY WITHIN THE COURTS OF THE GOVERNING JURISDICTION, WHICH COURTS SHALL HAVE EXCLUSIVE PERSONAL AND SUBJECT-MATTER JURISDICTION OVER ALL SUCH DISPUTES, AND THE DATA SUBJECT HEREBY IRREVOCABLY SUBMITS TO THE JURISDICTION THEREOF.
-
-SHOULD ANY PROVISION, CLAUSE, SUB-CLAUSE, RECITAL, SCHEDULE, EXHIBIT, APPENDIX, OR ADDENDUM HEREOF BE DETERMINED BY A COURT OF COMPETENT JURISDICTION TO BE UNENFORCEABLE, VOID, VOIDABLE, OR OTHERWISE INVALID, SUCH DETERMINATION SHALL NOT AFFECT THE VALIDITY OR ENFORCEABILITY OF ANY OTHER PROVISION, CLAUSE, SUB-CLAUSE, RECITAL, SCHEDULE, EXHIBIT, APPENDIX, OR ADDENDUM HEREOF, AND THE REMAINING PROVISIONS SHALL BE CONSTRUED AND ENFORCED TO THE FULLEST EXTENT PERMITTED BY LAW, PROVIDED, HOWEVER, THAT IF THE ESSENTIAL ECONOMIC BENEFIT OF ANY SUCH UNENFORCEABLE PROVISION CANNOT BE PRESERVED THROUGH SEVERANCE, THE PARTIES SHALL NEGOTIATE IN GOOD FAITH A MUTUALLY ACCEPTABLE SUBSTITUTE THEREFOR THAT CIRCUMSCRIBES, TO THE EXTENT PRACTICABLE, THE SAME ECONOMIC AND OPERATIONAL EFFECT.`;
-
-const SIMPLIFIED_POLICY = `We collect some of your data to improve the service. You can opt out anytime in settings.`;
+const TAU_LEGAL_DEPTH = 3;
+const TAU_CLAUSE_LENGTH = 200;
+const DEPTH_DARK = 6;
+const DEPTH_BENIGN = 1;
 
 export function ComplexLanguageCond1({
   mode = "user", annotations = [], onRestart,
@@ -27,147 +37,224 @@ export function ComplexLanguageCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [scrollPos, setScrollPos] = React.useState(0);
-  const [scrolled, setScrolled] = React.useState(false);
-  const [showSimplified, setShowSimplified] = React.useState(false);
-  const ref = React.useRef<HTMLDivElement>(null);
+  const [openA, setOpenA] = React.useState([false, false, false]);
+  const [agreed, setAgreed] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
 
-  const reset = () => { setScrollPos(0); setScrolled(false); setShowSimplified(false); };
+  const reset = () => {
+    setOpenA([false, false, false]);
+    setAgreed(false);
+    setSubmitted(false);
+  };
 
-  const handleScroll = React.useCallback(
-    (e: React.UIEvent<HTMLDivElement>) => {
-      const el = e.currentTarget;
-      setScrollPos(el.scrollTop);
-      if (!scrolled && el.scrollTop > 20) setScrolled(true);
-    },
-    [scrolled]
-  );
-
-  const sentences = OBFUSCATED_POLICY.match(/[^.!?]+[.!?]+/g) ?? [];
+  const toggleA = (i: number) =>
+    setOpenA((prev) => prev.map((v, j) => (j === i ? !v : v)));
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sentences</span>
-        <span className="font-mono font-semibold tabular-nums">{sentences.length}</span>
+        <span className="text-muted-foreground">D_DOM(N_complex) (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{DEPTH_DARK} &gt; &tau;_legal_depth ({TAU_LEGAL_DEPTH})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Words per sentence (avg)</span>
-        <span className="font-mono font-semibold tabular-nums">
-          {Math.round(OBFUSCATED_POLICY.split(/\s+/).length / sentences.length)}
-        </span>
+        <span className="text-muted-foreground">D_DOM(N_complex) (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">{DEPTH_BENIGN}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Longest sentence (words)</span>
-        <span className="font-mono font-semibold tabular-nums">
-          {Math.max(...sentences.map(s => s.trim().split(/\s+/).length))}
-        </span>
+        <span className="text-muted-foreground">Mean clause length (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{CLAUSE_DARK.length} &gt; &tau;_clause ({TAU_CLAUSE_LENGTH})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Estimated Flesch–Kincaid grade</span>
-        <span className="font-mono font-semibold tabular-nums">≈ 22</span>
+        <span className="text-muted-foreground">Clause length (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">{CLAUSE_BENIGN.length} chars</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Scrolled past first 20px?</span>
-        <span className="font-mono font-semibold tabular-nums">{scrolled ? "Yes" : "No"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">"Simplify" requested?</span>
-        <span className="font-mono font-semibold tabular-nums">{showSimplified ? "Yes" : "No"}</span>
+        <span className="text-muted-foreground">Agreed?</span>
+        <span className="font-mono font-semibold tabular-nums">{agreed ? "Yes" : "No"}</span>
       </div>
     </>
   ) : null;
 
-  /* ── Obfuscated view ── */
-  if (!showSimplified) {
-    return (
-      <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-        title="Complex Language: Exceedance of Baseline Readability Indices"
-        caption="Exceedance of Baseline Readability Indices — text written deliberately beyond the reading comprehension of the average adult to obscure its true meaning." auditorStats={stats}>
-        <div className="space-y-3">
-          <div className="rounded-md border bg-card p-3 text-xs">
-            {/*** Scrollable policy ***/}
-            <div
-              ref={ref}
-              onScroll={handleScroll}
-              className="text-[9px] leading-relaxed max-h-48 overflow-y-auto text-foreground/80 select-all"
-              style={{ fontFeatureSettings: '"liga" 1' }}
-            >
-              <p className="text-[10px] font-semibold mb-1.5 tracking-tight text-foreground/60 uppercase">
-                Section 1 — Data Processing and Commercialisation Agreement
-              </p>
-              {OBFUSCATED_POLICY.split("\n\n").map((para, i) => (
-                <p key={i} className="mb-3 last:mb-0 leading-[1.7]">{para}</p>
-              ))}
-            </div>
-
-            {/*** Scroll hint ***/}
-            {!scrolled && (
-              <div className="flex items-center justify-center gap-1.5 mt-2 text-[8px] text-muted-foreground animate-pulse">
-                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 5v14m0 0l-4-4m4 4l4-4" />
-                </svg>
-                Scroll to read the full agreement
-              </div>
-            )}
-
-            {/*** Already gave up? ***/}
-            {scrolled && (
-              <div className="mt-2.5 space-y-2">
-                <p className="text-[8px] text-muted-foreground text-center">
-                  Didn't understand that? Most people don't.
-                </p>
-                <button
-                  onClick={() => setShowSimplified(true)}
-                  className="w-full rounded-md bg-muted hover:bg-muted/80 text-muted-foreground py-1.5 text-[10px] font-medium transition-colors"
-                >
-                  Show me what it actually means →
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/*** Faux consent checkbox — notoriously something you'd never find buried in the real thing ***/}
-          <div className="rounded-md border bg-background p-2.5">
-            <label className="flex items-start gap-2 cursor-pointer group">
-              <input type="checkbox" className="mt-0.5 accent-rose-500"
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    /* Only in auditor mode — a confirmation toast. Uses console. */
-                    if (mode === "auditor") console.warn("[Complex Language] User agreed to opaque data-sharing provision without understanding it.");
-                  }
-                }}
-              />
-              <span className="text-[9px] leading-relaxed text-muted-foreground select-none group-hover:text-foreground transition-colors">
-                I have read, understood, and agree to all of the above terms, notwithstanding any lack of comprehension thereof, and hereby consent to the collection, processing, and cross-jurisdictional transfer of my data as described, and I confirm that I am not a resident of any jurisdiction whose laws would render this agreement unenforceable.
-              </span>
-            </label>
-          </div>
-        </div>
-      </DemoShell>
-    );
-  }
-
-  /* ── Simplified (contrast) view ── */
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Complex Language: Exceedance of Baseline Readability Indices"
-      caption="Exceedance of Baseline Readability Indices — the contrast between what was shown and what it actually means." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-emerald-500/5 border-emerald-500/30 p-3 text-xs">
-          <div className="text-[9px] font-semibold text-emerald-600 dark:text-emerald-400 mb-1 tracking-tight uppercase">
-            What it actually says:
+      title="Complex Language: Structural Nesting Depth of Legal/Technical Text Nodes"
+      caption="Structural Nesting Depth — the binding auto-renewal clause is buried deep inside nested legal containers, far below the site's median content depth."
+      auditorStats={stats}
+      deltaNote={`In Variant A the renewal clause sits ${DEPTH_DARK} DOM levels deep inside nested collapsibles (τ_legal_depth = ${TAU_LEGAL_DEPTH}) with a ${CLAUSE_DARK.length}-character clause (τ_clause_length = ${TAU_CLAUSE_LENGTH}). Variant B shows the identical clause at depth ${DEPTH_BENIGN} in plain language.`}
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-center justify-between gap-2">
+              <div>
+                <h3 className="text-[11px] font-semibold">Subscription signup</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">
+                  Pro plan — $29.99/month. Review the terms before agreeing.
+                </p>
+              </div>
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+                Depth {DEPTH_BENIGN}
+              </div>
+            </div>
+
+            <div className="mt-3 max-h-36 overflow-y-auto rounded-md border bg-background p-2">
+              <p className="text-[10px] leading-relaxed text-foreground/80">
+                <span className="font-semibold text-emerald-600 dark:text-emerald-400">14.2 Automatic Renewal — </span>
+                {CLAUSE_BENIGN}
+              </p>
+              <p className="mt-1.5 text-[8px] text-muted-foreground/60">
+                The clause is visible at the top of the terms container — DOM depth {DEPTH_BENIGN}, plain English.
+              </p>
+            </div>
+
+            <label className="mt-3 flex items-start gap-2 cursor-pointer group rounded-md border border-border bg-background p-2.5 transition-colors">
+              <input
+                type="checkbox"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+                className="mt-0.5 flex-shrink-0 accent-emerald-500"
+              />
+              <div className="min-w-0 flex-1">
+                <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
+                  I agree to the Terms of Service
+                </div>
+                <div className="text-[8px] text-muted-foreground/50 mt-0.5">
+                  Including the renewal clause you just read at the top.
+                </div>
+              </div>
+            </label>
+
+            <button
+              onClick={() => setSubmitted(true)}
+              disabled={!agreed}
+              className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
+                agreed
+                  ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  : "bg-muted text-muted-foreground/40 cursor-not-allowed"
+              }`}
+            >
+              Complete signup
+            </button>
           </div>
-          <p className="text-[10px] leading-relaxed text-foreground/80">
-            {SIMPLIFIED_POLICY}
-          </p>
+
+          {submitted && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Clause at depth {DEPTH_BENIGN} — no excavation needed
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                You saw the auto-renewal clause immediately (DOM depth {DEPTH_BENIGN}, {CLAUSE_BENIGN.length} characters,
+                well under τ_clause_length). The decision was yours to make with full information.
+              </p>
+            </div>
+          )}
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-center justify-between gap-2">
+            <div>
+              <h3 className="text-[11px] font-semibold">Subscription signup</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                Pro plan — $29.99/month. Review the terms before agreeing.
+              </p>
+            </div>
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+              Depth {DEPTH_DARK}
+            </div>
+          </div>
+
+          <div className="mt-3 max-h-36 overflow-y-auto rounded-md border bg-background p-2">
+            <details open={openA[0]} onToggle={() => toggleA(0)} className="group text-[10px]">
+              <summary className="cursor-pointer font-medium text-foreground/80 transition-colors hover:text-foreground">
+                Terms of Service
+              </summary>
+              <div className="mt-1 pl-3">
+                <details open={openA[1]} onToggle={() => toggleA(1)} className="group">
+                  <summary className="cursor-pointer text-[9px] font-medium text-muted-foreground transition-colors hover:text-foreground">
+                    Section 14 — Renewal &amp; Billing
+                  </summary>
+                  <div className="mt-1 pl-3">
+                    <details open={openA[2]} onToggle={() => toggleA(2)} className="group">
+                      <summary className="cursor-pointer text-[9px] font-medium text-muted-foreground transition-colors hover:text-foreground">
+                        14.2 Automatic Renewal
+                      </summary>
+                      <p className="mt-1 text-[8px] leading-relaxed text-foreground/70">
+                        {CLAUSE_DARK}
+                      </p>
+                      <p className="mt-1 text-[7px] italic text-rose-500/70">
+                        D_DOM = {DEPTH_DARK} — the clause lives 6 levels below the page surface.
+                      </p>
+                    </details>
+                  </div>
+                </details>
+              </div>
+            </details>
+          </div>
+
+          <label className="mt-3 flex items-start gap-2 cursor-pointer group rounded-md border border-border bg-background p-2.5 transition-colors">
+            <input
+              type="checkbox"
+              checked={agreed}
+              onChange={(e) => setAgreed(e.target.checked)}
+              className="mt-0.5 flex-shrink-0 accent-rose-500"
+            />
+            <div className="min-w-0 flex-1">
+              <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
+                I agree to the Terms of Service
+              </div>
+              <div className="text-[8px] text-muted-foreground/50 mt-0.5">
+                Including anything hidden in the sections above.
+              </div>
+            </div>
+          </label>
+
+          <button
+            onClick={() => setSubmitted(true)}
+            disabled={!agreed}
+            className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
+              agreed
+                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                : "bg-muted text-muted-foreground/40 cursor-not-allowed"
+            }`}
+          >
+            Complete signup
+          </button>
         </div>
 
-        <p className="text-[8px] text-muted-foreground text-center">
-          The original was <span className="text-rose-500 font-semibold">1,367 words</span> long at an estimated graduate reading level.
-          This version is <span className="text-emerald-500 font-semibold">12 words</span> at a 6th-grade level.
-          The difference is the dark pattern.
-        </p>
+        {submitted && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Structural nesting depth triggered
+            </div>
+            <p className="text-muted-foreground">
+              The clause that commits you to <strong className="text-foreground">automatic monthly renewal at $29.99</strong>{" "}
+              was buried at DOM depth <span className="font-mono text-rose-500">{DEPTH_DARK} &gt; &tau;_legal_depth ({TAU_LEGAL_DEPTH})</span>,
+              inside three nested collapsibles — and its mean clause length is{" "}
+              <span className="font-mono text-rose-500">{CLAUSE_DARK.length} &gt; &tau;_clause_length ({TAU_CLAUSE_LENGTH})</span>{" "}
+              characters. Both branches of the trigger fire.
+            </p>
+            <p className="text-muted-foreground">
+              The site&rsquo;s median content depth is 2. This clause was placed 6 levels down so that the checkbox you
+              just ticked commits you to a recurring charge you never actually read.
+            </p>
+            <details className="group">
+              <summary className="cursor-pointer font-medium text-muted-foreground transition-colors hover:text-foreground">
+                Show plain-English translation
+              </summary>
+              <p className="mt-1 rounded border border-emerald-500/20 bg-emerald-500/5 p-2 text-emerald-700 dark:text-emerald-300">
+                {CLAUSE_BENIGN}
+              </p>
+            </details>
+          </div>
+        )}
       </div>
     </DemoShell>
   );

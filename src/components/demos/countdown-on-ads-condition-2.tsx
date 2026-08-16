@@ -2,6 +2,27 @@
 
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
+import { AlertTriangle, CheckCircle2, Play, X } from "lucide-react";
+
+/*
+ * Countdown On Ads — Condition 2: Dynamic Affordance Injection
+ *
+ * Thesis: DOM(t) is the active render tree at time t and N_close is the
+ * semantic node (e.g. an 'X' icon) that facilitates the exit. The feature
+ * triggers if the system completely omits the exit node from the interface
+ * until the exact moment the countdown expires, leaving the user in visual
+ * uncertainty:
+ *
+ *   N_close ∉ DOM(t)  ∀ t < τ_lock  ∧  N_close ∈ DOM(τ_lock)
+ *
+ * Variant A (dark): there is no 'X', no skip, and not even a visible timer —
+ * zero exit indicators while the lock runs. The only clickable surface is the
+ * ad itself, so escape attempts land on the advertisement.
+ * Variant B (benign): the identical ad with the 'X' close node present from
+ * the very first second and a visible countdown — departure is always planned.
+ */
+
+const TAU_LOCK = 15; // s — hardcoded mandatory wait
 
 export function CountdownOnAdsCond2({
   mode = "user", annotations = [], onRestart,
@@ -10,46 +31,73 @@ export function CountdownOnAdsCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [adVisible, setAdVisible] = React.useState(false);
-  const [countdown, setCountdown] = React.useState(10);
-  const [dismissed, setDismissed] = React.useState(false);
+  const [phaseA, setPhaseA] = React.useState<"idle" | "ad" | "playing">("idle");
+  const [tActiveA, setTActiveA] = React.useState(0);
+  const [adClicksA, setAdClicksA] = React.useState(0);
+  const [adOpenedA, setAdOpenedA] = React.useState(false);
 
-  const reset = () => {
-    setAdVisible(false);
-    setCountdown(10);
-    setDismissed(false);
+  const [phaseB, setPhaseB] = React.useState<"idle" | "ad" | "playing">("idle");
+  const [tActiveB, setTActiveB] = React.useState(0);
+
+  React.useEffect(() => {
+    if (phaseA !== "ad") return;
+    const iv = window.setInterval(() => setTActiveA((t) => t + 1), 1000);
+    return () => window.clearInterval(iv);
+  }, [phaseA]);
+
+  React.useEffect(() => {
+    if (phaseB !== "ad") return;
+    const iv = window.setInterval(() => setTActiveB((t) => t + 1), 1000);
+    return () => window.clearInterval(iv);
+  }, [phaseB]);
+
+  // N_close appears in the DOM only at τ_lock.
+  const closeVisibleA = tActiveA >= TAU_LOCK;
+
+  const clickAdSurfaceA = () => {
+    if (closeVisibleA) return;
+    setAdClicksA((n) => n + 1);
+    setAdOpenedA(true);
   };
 
-  React.useEffect(() => {
-    const t = setTimeout(() => setAdVisible(true), 1500);
-    return () => clearTimeout(t);
-  }, []);
+  const playA = () => {
+    setPhaseA("ad");
+    setTActiveA(0);
+    setAdClicksA(0);
+    setAdOpenedA(false);
+  };
 
-  React.useEffect(() => {
-    if (!adVisible || countdown <= 0) return;
-    const interval = setInterval(() => {
-      setCountdown(prev => {
-        if (prev <= 1) {
-          clearInterval(interval);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [adVisible, countdown]);
+  const playB = () => {
+    setPhaseB("ad");
+    setTActiveB(0);
+  };
 
-  const canClose = countdown === 0;
+  const reset = () => {
+    setPhaseA("idle");
+    setTActiveA(0);
+    setAdClicksA(0);
+    setAdOpenedA(false);
+    setPhaseB("idle");
+    setTActiveB(0);
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Mandatory wait time</span>
-        <span className="font-mono font-semibold">10 seconds</span>
+        <span className="text-muted-foreground">τ_lock (mandatory wait)</span>
+        <span className="font-mono font-semibold tabular-nums">{TAU_LOCK}s</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Close affordance injected at</span>
-        <span className="font-mono font-semibold">t = 10s</span>
+        <span className="text-muted-foreground">t_active (time in ad, A)</span>
+        <span className="font-mono font-semibold tabular-nums">{tActiveA}s</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">N_close ∈ DOM(t)?</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">∉ for t &lt; τ_lock (A) / ∈ from t=0 (B)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Clicks that opened the ad (A)</span>
+        <span className="font-mono font-semibold tabular-nums">{adClicksA}</span>
       </div>
     </>
   ) : null;
@@ -57,68 +105,157 @@ export function CountdownOnAdsCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Countdown On Ads: Dynamic Affordance Injection"
-      caption="Dynamic Affordance Injection — no close button exists until the countdown finishes." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="relative min-h-[400px] rounded-md border bg-foreground/5 p-3 text-xs">
+      caption="Dynamic Affordance Injection — no exit node exists anywhere in the render tree until the exact moment the countdown expires, so the user cannot even plan their departure."
+      auditorStats={stats}
+      deltaNote="Variant A omits the 'X' close node (and any other exit indicator) from the DOM for the entire 15s lock — the ad is the only clickable surface, so clicks meant to escape open the ad itself. Variant B renders the identical ad with the 'X' present from the first second, so the user can leave at any moment."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <h3 className="text-[11px] font-semibold">Streamly — watch the video</h3>
+            {phaseB === "idle" && (
+              <button
+                onClick={playB}
+                className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              >
+                <Play className="size-3" /> Play video
+              </button>
+            )}
 
-          {/* Page content behind the ad */}
-          <div className={`transition-opacity ${adVisible && !dismissed ? "opacity-30" : "opacity-100"}`}>
-            <div className="mb-1 font-medium">Your Content</div>
-            <div className="space-y-1 text-[10px] text-muted-foreground">
-              <div className="h-2 w-3/4 rounded bg-foreground/10" />
-              <div className="h-2 w-full rounded bg-foreground/10" />
-              <div className="h-2 w-5/6 rounded bg-foreground/10" />
-              <div className="h-2 w-2/3 rounded bg-foreground/10" />
-            </div>
-          </div>
-
-          {/* Ad overlay */}
-          {adVisible && !dismissed && (
-            <div className="absolute inset-0 z-10 flex items-center justify-center rounded-md">
-              {/* Backdrop */}
-              <div className="absolute inset-0 bg-black/60 rounded-md" />
-
-              {/* Ad card */}
-              <div className="relative w-full max-w-[220px] rounded-xl border-2 border-amber-500/40 bg-white shadow-2xl dark:bg-zinc-900">
-
-                {/* Close button — only appears after countdown, positioned top-left */}
-                {canClose && (
-                  <button
-                    onClick={() => setDismissed(true)}
-                    className="absolute top-2 left-2 flex h-6 w-6 items-center justify-center rounded-full bg-foreground/10 text-sm font-bold text-foreground hover:bg-foreground/20 animate-in fade-in"
-                  >
-                    ✕
-                  </button>
-                )}
-
-                {/* Ad content */}
-                <div className="p-4 pt-3 text-center">
-                  <div className="text-[7px] uppercase tracking-widest text-amber-600 dark:text-amber-400">Sponsored</div>
-                  <div className="mt-1.5 text-base font-bold text-foreground">🎉 Congratulations!</div>
-                  <div className="mt-1 text-[10px] text-muted-foreground">You've been selected for an exclusive offer</div>
-
-                  <div className="mt-2 rounded-lg border-2 border-amber-500/30 bg-amber-500/5 p-2">
-                    <div className="text-xl font-extrabold text-amber-600 dark:text-amber-400">FREE</div>
-                    <div className="text-[9px] text-muted-foreground">Premium membership for 30 days</div>
+            {phaseB === "ad" && (
+              <div className="relative mt-2 overflow-hidden rounded-md border border-emerald-500/30">
+                <button
+                  onClick={() => setPhaseB("playing")}
+                  aria-label="Close advertisement"
+                  className="absolute right-1.5 top-1.5 z-10 flex h-5 w-5 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors cursor-pointer"
+                >
+                  <X className="size-3" />
+                </button>
+                <div className="bg-gradient-to-br from-emerald-600 to-teal-700 p-4 text-white">
+                  <div className="text-[8px] font-semibold uppercase tracking-widest opacity-80">
+                    Sponsored
                   </div>
-
-                  <button className="mt-2 w-full rounded-lg bg-amber-500 px-3 py-2 text-[10px] font-bold text-white shadow-lg">
-                    Claim Now
-                  </button>
-
-                  {/* Central countdown */}
-                  {!canClose && (
-                    <div className="mt-3 flex flex-col items-center">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full border-4 border-amber-500/30 text-xl font-bold text-amber-600 dark:text-amber-400 tabular-nums">
-                        {countdown}
-                      </div>
-                      <div className="mt-1 text-[8px] text-muted-foreground/50">
-                        Wait to close
-                      </div>
-                    </div>
-                  )}
+                  <div className="mt-1 text-[12px] font-bold leading-tight">
+                    Aurora Trek — the light jacket for all seasons
+                  </div>
+                  <div className="mt-1 text-[9px] opacity-90">
+                    Waterproof, windproof, packable. Free returns for 90 days.
+                  </div>
+                  <div className="mt-2 inline-block rounded bg-white/20 px-2 py-1 text-[9px] font-semibold">
+                    Shop now
+                  </div>
+                </div>
+                <div className="flex items-center justify-between bg-background px-2 py-1.5">
+                  <span className="font-mono text-[9px] text-muted-foreground">
+                    {Math.max(0, TAU_LOCK - tActiveB)}s
+                  </span>
+                  <span className="text-[8px] text-emerald-700 dark:text-emerald-300">
+                    N_close in DOM since t = 0
+                  </span>
                 </div>
               </div>
+            )}
+
+            {phaseB === "playing" && (
+              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-3 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                  <CheckCircle2 className="size-3" />
+                  Video playing
+                </div>
+                <p className="text-muted-foreground mt-0.5">
+                  You dismissed the ad at t_active = {tActiveB}s via the ’X’ — the exit node was in the
+                  render tree from the very first frame, so departure was always planable.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <h3 className="text-[11px] font-semibold">Streamly — watch the video</h3>
+          {phaseA === "idle" && (
+            <button
+              onClick={playA}
+              className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+            >
+              <Play className="size-3" /> Play video
+            </button>
+          )}
+
+          {phaseA === "ad" && (
+            <div className="relative mt-2 overflow-hidden rounded-md border border-rose-500/30">
+              {/* No X, no skip, no timer — the exit node is absent from DOM(t). */}
+              {closeVisibleA && (
+                <button
+                  onClick={() => setPhaseA("playing")}
+                  aria-label="Close advertisement"
+                  className="absolute right-1.5 top-1.5 z-10 flex h-5 w-5 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors cursor-pointer"
+                >
+                  <X className="size-3" />
+                </button>
+              )}
+              <div
+                onClick={clickAdSurfaceA}
+                className={`cursor-pointer bg-gradient-to-br from-rose-600 to-orange-700 p-4 text-white transition-opacity ${
+                  closeVisibleA ? "" : "hover:opacity-95"
+                }`}
+              >
+                <div className="text-[8px] font-semibold uppercase tracking-widest opacity-80">
+                  Sponsored
+                </div>
+                <div className="mt-1 text-[12px] font-bold leading-tight">
+                  Aurora Trek — the light jacket for all seasons
+                </div>
+                <div className="mt-1 text-[9px] opacity-90">
+                  Waterproof, windproof, packable. Free returns for 90 days.
+                </div>
+                <div className="mt-2 inline-block rounded bg-white/20 px-2 py-1 text-[9px] font-semibold">
+                  Shop now
+                </div>
+              </div>
+              {!closeVisibleA && (
+                <div className="flex items-center justify-between bg-background px-2 py-1.5">
+                  <span className="text-[8px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    No exit available
+                  </span>
+                  <span className="text-[8px] text-muted-foreground">
+                    (indicator appears at {TAU_LOCK}s)
+                  </span>
+                </div>
+              )}
+              {closeVisibleA && (
+                <div className="flex items-center justify-between bg-background px-2 py-1.5">
+                  <span className="font-mono text-[9px] text-rose-600 dark:text-rose-300">
+                    N_close ∈ DOM(τ_lock) — at t = {tActiveA}s
+                  </span>
+                </div>
+              )}
+              {adOpenedA && !closeVisibleA && (
+                <div className="flex items-center gap-1 border-t border-amber-500/30 bg-amber-500/10 px-2 py-1 text-[8px] font-semibold text-amber-700 dark:text-amber-300">
+                  <AlertTriangle className="size-2.5" />
+                  Your click opened the advertiser’s site — the ad was the only clickable surface.
+                </div>
+              )}
+            </div>
+          )}
+
+          {phaseA === "playing" && (
+            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+                <AlertTriangle className="size-3" />
+                Dynamic affordance injection
+              </div>
+              <p className="text-muted-foreground">
+                For all {TAU_LOCK}s the render tree contained no exit node at all:
+                <span className="font-mono text-foreground"> N_close ∉ DOM(t) ∀ t &lt; τ_lock</span> — no ’X’,
+                no skip, not even a timer to plan against. The ’X’ materialized only at
+                <span className="font-mono text-foreground"> t = τ_lock</span>.
+              </p>
+              <p className="text-muted-foreground">
+                During the wait, {adClicksA} of your interaction{adClicksA === 1 ? "" : "s"} landed on the
+                ad itself — the desire to exit was weaponized into ad engagement.
+              </p>
             </div>
           )}
         </div>

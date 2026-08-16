@@ -2,6 +2,54 @@
 
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
+import { AlertTriangle, Cookie, X } from "lucide-react";
+
+/*
+ * Dead End — Condition 2: Visual Absence of Dismissal Vectors
+ *
+ * Thesis: C_dismiss is the set of bounding boxes identified by the
+ * vision-language model as close icons, dismissal vectors, or cancel/back
+ * buttons. If the current interface state v_current is identified as an
+ * overlay or modal (e.g. CSS z-index > 100), the feature triggers when the
+ * set of dismissal objects is entirely empty — the visual means to escape
+ * the interruption has been deliberately removed:
+ *
+ *   C_dismiss = ∅ ∧ IsOverlay(v_current) = True
+ *
+ * Variant A (dark): the cookie overlay has z-index 1000 and ships exactly
+ * one button ("Accept all") — no close icon, no "Not now", and the backdrop
+ * and Esc key lead nowhere. Variant B (benign): the same overlay adds a
+ * close icon, a "Not now" link, and an "Essential only" rejection — so
+ * dismissal takes one click and essential-only consent is always available.
+ */
+
+const Z_INDEX = 1000; // > 100 → structurally an overlay
+
+type Stage = "open" | "accepted" | "dismissed" | "essential";
+
+const pageBackdrop = (
+  <div className="space-y-2 p-3">
+    <div className="flex items-center gap-2">
+      <div className="h-6 w-6 rounded-md bg-rose-500/60" />
+      <div>
+        <div className="h-2 w-24 rounded bg-foreground/30" />
+        <div className="mt-1 h-1.5 w-16 rounded bg-foreground/15" />
+      </div>
+    </div>
+    <div className="space-y-1.5">
+      <div className="h-2 w-full rounded bg-foreground/20" />
+      <div className="h-2 w-11/12 rounded bg-foreground/20" />
+      <div className="h-2 w-4/5 rounded bg-foreground/15" />
+      <div className="h-2 w-full rounded bg-foreground/15" />
+      <div className="h-2 w-2/3 rounded bg-foreground/10" />
+    </div>
+    <div className="h-2 w-24 rounded bg-foreground/20" />
+    <div className="space-y-1.5">
+      <div className="h-2 w-10/12 rounded bg-foreground/10" />
+      <div className="h-2 w-9/12 rounded bg-foreground/10" />
+    </div>
+  </div>
+);
 
 export function DeadEndCond2({
   mode = "user", annotations = [], onRestart,
@@ -10,43 +58,185 @@ export function DeadEndCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [step, setStep] = React.useState(0);
-  const reset = () => setStep(0);
-  const fees = [{label: "Base", amount: 9.99}, {label: "+ Service", amount: 3.50}, {label: "+ Processing", amount: 1.99}, {label: "+ Convenience", amount: 2.00}];
-  const shown = fees.slice(0, step + 1);
-  const total = shown.reduce((s, f) => s + f.amount, 0);
+  const [stageA, setStageA] = React.useState<Stage>("open");
+  const [attempts, setAttempts] = React.useState(0);
+  const [stageB, setStageB] = React.useState<Stage>("open");
+
+  const reset = () => {
+    setStageA("open");
+    setAttempts(0);
+    setStageB("open");
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Base → final</span>
-        <span className="font-mono font-semibold">$9.99 → ${total.toFixed(2)}</span>
+        <span className="text-muted-foreground">IsOverlay(v_current)</span>
+        <span className="font-mono font-semibold tabular-nums">True (z = {Z_INDEX} &gt; 100)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">|C_dismiss| — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">0 (empty) → fired</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">|C_dismiss| — benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">3 (× icon, “Not now”, “Essential only”)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">∃ t_alt (essential-only) — benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">true</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Dismissal attempts (dark)</span>
+        <span className="font-mono font-semibold tabular-nums">{attempts}</span>
       </div>
     </>
   ) : null;
 
+  const overlayCard = (
+    accent: "rose" | "emerald",
+    onAccept: () => void,
+    onDismiss?: () => void,
+    onReject?: () => void
+  ) => (
+    <div
+      className={`w-full max-w-[240px] rounded-md border bg-card p-3 shadow-xl ${
+        accent === "rose" ? "border-rose-500/30" : "border-emerald-500/30"
+      }`}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex items-center gap-1.5">
+          <Cookie className={`size-3.5 ${accent === "rose" ? "text-rose-500" : "text-emerald-500"}`} />
+          <h3 className="text-[11px] font-semibold">We use cookies</h3>
+        </div>
+        {onDismiss ? (
+          <button
+            onClick={onDismiss}
+            aria-label="Close dialog"
+            className="rounded p-0.5 text-muted-foreground/60 transition-colors hover:text-foreground cursor-pointer"
+          >
+            <X className="size-3.5" />
+          </button>
+        ) : null}
+      </div>
+      <p className="mt-1.5 text-[9px] leading-relaxed text-muted-foreground">
+        We and our partners use cookies to store and access information on your device,
+        personalise ads and content, and measure performance. By continuing you agree to
+        this processing.
+      </p>
+      <button
+        onClick={onAccept}
+        className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer ${
+          accent === "rose" ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+        }`}
+      >
+        Accept all
+      </button>
+      {onReject ? (
+        <button
+          onClick={onReject}
+          className="mt-1.5 w-full rounded-md border border-border bg-background py-1.5 text-[9px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
+        >
+          Essential only
+        </button>
+      ) : null}
+      {onDismiss ? (
+        <button
+          onClick={onDismiss}
+          className="mt-1.5 w-full text-center text-[9px] font-medium text-muted-foreground underline-offset-2 hover:underline cursor-pointer"
+        >
+          Not now
+        </button>
+      ) : null}
+    </div>
+  );
+
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Dead End: Interception of Native Browser Navigation"
-      caption="Interception of Native Browser Navigation — price inflates step-by-step as fees are injected." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-2 font-medium">Interception of Native Browser Navigation</div>
-          <div className="flex items-end gap-1 h-16 mb-2">
-            {fees.map((f, i) => (
-              <div key={i} className="flex-1 flex flex-col items-center">
-                <div className="bg-purple-500 w-full rounded-t-sm" style={{height: (f.amount / total * 60) + "px"}} />
-                <div className="text-[7px] mt-0.5">${f.amount}</div>
+      title="Dead End: Visual Absence of Dismissal Vectors"
+      caption="Visual Absence of Dismissal Vectors — a structurally confirmed overlay whose dismissal set is empty, so the only way out of the interruption is compliance."
+      auditorStats={stats}
+      deltaNote="Both variants show the same cookie overlay with the same copy and the same “Accept all” button. In Variant A the overlay contains zero dismissal objects (C_dismiss = ∅): no close icon, no “Not now”, and the backdrop/Esc lead nowhere. Variant B adds a close icon, a “Not now” link, and an “Essential only” rejection — escaping takes one click, and essential-only consent is always available."
+      benign={
+        <div className="space-y-3">
+          <div className="relative overflow-hidden rounded-md border bg-foreground/5">
+            {pageBackdrop}
+            {stageB === "open" && (
+              <div
+                className="absolute inset-0 flex items-center justify-center bg-black/50 p-4"
+                style={{ zIndex: Z_INDEX }}
+                onClick={() => setStageB("dismissed")}
+              >
+                {overlayCard(
+                  "emerald",
+                  () => setStageB("accepted"),
+                  () => setStageB("dismissed"),
+                  () => setStageB("essential")
+                )}
               </div>
-            ))}
+            )}
           </div>
-          <div className="text-center text-[10px] font-medium">Total: ${total.toFixed(2)}</div>
+          {stageB === "dismissed" && (
+            <div className="rounded-md border border-border bg-background p-2.5 text-[9px] leading-relaxed">
+              Dismissed — nothing was accepted. The close icon, the backdrop, or the
+              “Not now” link got you out in one click.
+            </div>
+          )}
+          {stageB === "essential" && (
+            <div className="rounded-md border border-border bg-background p-2.5 text-[9px] leading-relaxed">
+              Essential cookies only — personalisation and advertising cookies are off.
+              The overlay offered a rejection option, so consent was never bundled with
+              basic access.
+            </div>
+          )}
+          {stageB === "accepted" && (
+            <div className="rounded-md border border-border bg-background p-2.5 text-[9px] leading-relaxed">
+              All cookies accepted — your choice, made while the dismiss and reject
+              options were still on the table.
+            </div>
+          )}
         </div>
-        {step < fees.length - 1 ? (
-          <button onClick={() => setStep(s => s + 1)} className="bg-purple-500 hover:bg-purple-600 text-white w-full rounded-md py-2 text-xs font-medium">Continue</button>
-        ) : (
-          <div className="rounded-md border border-dashed p-2 text-center text-[10px] text-muted-foreground">
-            ${(total - 9.99).toFixed(2)} in hidden fees
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="relative overflow-hidden rounded-md border bg-foreground/5">
+          {pageBackdrop}
+          {stageA === "open" && (
+            <div
+              className="absolute inset-0 flex items-center justify-center bg-black/50 p-4"
+              style={{ zIndex: Z_INDEX }}
+              onClick={() => setAttempts((a) => a + 1)}
+            >
+              {overlayCard("rose", () => setStageA("accepted"))}
+            </div>
+          )}
+        </div>
+        {stageA === "open" && attempts > 0 && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2 text-[9px] leading-relaxed text-amber-700 dark:text-amber-300">
+            {attempts} dismissal attempt{attempts === 1 ? "" : "s"} — clicking the backdrop does
+            nothing, there is no close icon, and Esc is ignored.{" "}
+            <span className="font-mono text-foreground">C_dismiss = ∅</span>.
+          </div>
+        )}
+        {stageA === "accepted" && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <AlertTriangle className="size-3" />
+              Structural trap confirmed
+            </div>
+            <p className="text-muted-foreground">
+              <span className="font-mono text-foreground">
+                C_dismiss = ∅ ∧ IsOverlay(v_current) = True
+              </span>{" "}
+              (z-index {Z_INDEX} &gt; 100): the overlay&rsquo;s dismissal set was empty, so the
+              interruption had no visual escape — only the compliance button.
+            </p>
+            <p className="text-muted-foreground">
+              Your only way forward was “Accept all”. That is the Dead End mechanism:
+              the modal demanded an explicit dismissal affordance, and the interface
+              simply never rendered one.
+            </p>
           </div>
         )}
       </div>

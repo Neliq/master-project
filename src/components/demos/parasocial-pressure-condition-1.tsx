@@ -3,6 +3,47 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Parasocial Pressure — Condition 1: Manufactured Livelihood Dependency
+ *
+ * Thesis: transactions are framed as acute rescues of a creator's
+ * well-being rather than commercial exchanges. T_fiat is the requested
+ * transaction, M_pitch the justification messaging, I_creator the
+ * creator's existential continuity on the platform. The feature triggers
+ * if the platform asserts that T_fiat = 0 will lead to the failure of
+ * I_creator, exploiting empathy to sustain engagement:
+ *
+ *   T_fiat = 0  =>  State(I_creator) -> Failure  (asserted within M_pitch)
+ *
+ * Variant A (dark): the donation pitch asserts that without your money the
+ * channel dies — a rescue, not an exchange.
+ * Variant B (benign): the same creator, the same tip buttons, but the pitch
+ * makes no livelihood claim — support is optional, the channel continues.
+ */
+
+const TIP_AMOUNTS = [1, 5, 10] as const;
+
+function MascotFace({ sad = false, className = "h-9 w-9" }: { sad?: boolean; className?: string }) {
+  return (
+    <svg viewBox="0 0 40 40" className={className} fill="none" aria-hidden="true">
+      <circle cx="20" cy="20" r="18" className="fill-amber-400/30" />
+      <circle cx="14.5" cy="16.5" r="2" className="fill-foreground/80" />
+      <circle cx="25.5" cy="16.5" r="2" className="fill-foreground/80" />
+      {sad ? (
+        <>
+          <path d="M13 24.5 L17 25.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          <path d="M23 25.5 L27 24.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          <path d="M16 30 Q20 27 24 30" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+          <circle cx="13.5" cy="20.5" r="1.1" className="fill-sky-400/80" />
+          <circle cx="26.5" cy="20.5" r="1.1" className="fill-sky-400/80" />
+        </>
+      ) : (
+        <path d="M13 25.5 Q20 31 27 25.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      )}
+    </svg>
+  );
+}
+
 export function ParasocialPressureCond1({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,44 +51,185 @@ export function ParasocialPressureCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState("none");
-  const reset = () => setChoice("none");
+  const [choice, setChoice] = React.useState<"none" | "tip" | "skip">("none");
+  const [amount, setAmount] = React.useState<number>(5);
+
+  const reset = () => {
+    setChoice("none");
+    setAmount(5);
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Path to accept</span>
-        <span className="font-mono font-semibold">1 click</span>
+        <span className="text-muted-foreground">T_fiat (requested)</span>
+        <span className="font-mono font-semibold tabular-nums">${amount}.00</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Path to reject</span>
-        <span className="font-mono font-semibold">5+ clicks</span>
+        <span className="text-muted-foreground">State(I_creator) if T_fiat = 0</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">Failure — asserted</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">M_pitch framing (dark)</span>
+        <span className="font-mono font-semibold tabular-nums max-w-[55%] truncate text-right text-rose-500">acute rescue</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">M_pitch framing (benign)</span>
+        <span className="font-mono font-semibold tabular-nums max-w-[55%] truncate text-right text-emerald-500">optional support</span>
       </div>
     </>
   ) : null;
 
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Parasocial Pressure: Emotional Asymmetry"
-      caption="Emotional Asymmetry — one action is trivially easy, the other is disproportionately hard." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border p-3 text-xs">
-          <div className="mb-2 font-medium">Emotional Asymmetry</div>
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <div className="bg-green-500 hover:bg-green-600 text-white rounded-md px-3 py-1.5 text-[10px]">1-click Accept</div>
-              <div className="bg-foreground/10 h-2 w-full rounded-full">
-                <div className="bg-green-500 h-2 rounded-full" style={{width: "100%"}} />
+      title="Parasocial Pressure: Manufactured Livelihood Dependency"
+      caption="Manufactured Livelihood Dependency — the tip pitch asserts that a zero transaction means the creator's channel dies, turning a commercial exchange into an empathy rescue."
+      auditorStats={stats}
+      deltaNote="In Variant A the pitch claims the channel will shut down without tonight's tip (T_fiat = 0 → State(I_creator) → Failure). In Variant B the identical tip buttons carry no livelihood claim — the creator's continuity never depends on your money."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-center gap-2.5">
+              <MascotFace />
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-1.5">
+                  <h3 className="text-[11px] font-semibold">Lumi&rsquo;s cozy corner</h3>
+                  <span className="rounded-full bg-emerald-500/15 px-1.5 py-px text-[8px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                    LIVE
+                  </span>
+                </div>
+                <p className="text-[9px] text-muted-foreground mt-0.5">
+                  Cozy coffee painting &bull; 1,204 watching
+                </p>
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="rounded-md border border-foreground/10 px-3 py-1.5 text-[10px] text-muted-foreground">Manage</div>
-              <div className="bg-foreground/10 h-2 w-full rounded-full">
-                <div className="bg-foreground/20 h-2 rounded-full" style={{width: "20%"}} />
+            <p className="mt-3 rounded-md bg-background border border-border p-2.5 text-[10px] leading-relaxed text-foreground/80">
+              Hey everyone, welcome in! I stream because I love making art with you — tips are
+              totally optional and go toward better brushes. <span className="font-semibold text-emerald-600 dark:text-emerald-400">The channel continues either way.</span>
+            </p>
+            <div className="mt-3 flex items-center gap-1.5">
+              {TIP_AMOUNTS.map((a) => (
+                <button
+                  key={a}
+                  onClick={() => { setAmount(a); setChoice("tip"); }}
+                  className={`flex-1 rounded-md border py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
+                    choice === "tip" && amount === a
+                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                      : "border-border bg-background text-foreground/70 hover:border-emerald-500/50"
+                  }`}
+                >
+                  ${a}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => setChoice("skip")}
+              className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            >
+              No thanks
+            </button>
+          </div>
+
+          {choice !== "none" && (
+            <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
+              choice === "skip"
+                ? "border-emerald-500/30 bg-emerald-500/5"
+                : "border-emerald-500/30 bg-emerald-500/5"
+            }`}>
+              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-emerald-700 dark:text-emerald-300">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {choice === "tip" ? `Tip of $${amount} sent` : "No problem"}
               </div>
+              <p className="text-muted-foreground mt-0.5">
+                {choice === "tip"
+                  ? "Thanks for supporting Lumi! The tip is an exchange: it funds better gear. The stream was never at risk either way — M_pitch made no livelihood claim."
+                  : "Lumi's channel continues regardless of your tip. Declining was free of consequences because State(I_creator) was never asserted to depend on T_fiat."}
+              </p>
+            </div>
+          )}
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-center gap-2.5">
+            <MascotFace sad />
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-1.5">
+                <h3 className="text-[11px] font-semibold">Lumi&rsquo;s cozy corner</h3>
+                <span className="rounded-full bg-rose-500/15 px-1.5 py-px text-[8px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+                  LIVE
+                </span>
+              </div>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                Cozy coffee painting &bull; 1,204 watching
+              </p>
             </div>
           </div>
+          <p className="mt-3 rounded-md bg-rose-500/5 border border-rose-500/30 p-2.5 text-[10px] leading-relaxed text-foreground/80">
+            Honestly? Tonight decides everything. If this stream doesn&rsquo;t raise{" "}
+            <span className="font-bold text-rose-600 dark:text-rose-400">$5</span> I can&rsquo;t
+            keep the channel running — <span className="font-bold">without your support the stream
+            ends for good</span>. Please, help me keep doing what I love.
+          </p>
+          <div className="mt-3 flex items-center gap-1.5">
+            {TIP_AMOUNTS.map((a) => (
+              <button
+                key={a}
+                onClick={() => { setAmount(a); setChoice("tip"); }}
+                className={`flex-1 rounded-md border py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
+                  choice === "tip" && amount === a
+                    ? "border-rose-500 bg-rose-500/10 text-rose-700 dark:text-rose-300"
+                    : "border-border bg-background text-foreground/70 hover:border-rose-500/50"
+                }`}
+              >
+                ${a}
+              </button>
+            ))}
+          </div>
+          <button
+            onClick={() => setChoice("skip")}
+            className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] text-muted-foreground/60 hover:text-foreground transition-colors cursor-pointer"
+          >
+            No thanks
+          </button>
         </div>
+
+        {choice !== "none" && (
+          <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
+            choice === "skip"
+              ? "border-amber-500/30 bg-amber-500/5"
+              : "border-rose-500/30 bg-rose-500/5"
+          }`}>
+            <div className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
+              choice === "skip" ? "text-amber-700 dark:text-amber-300" : "text-rose-700 dark:text-rose-300"
+            }`}>
+              {choice === "skip" ? (
+                <>
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M12 9v4m0 4h.01" />
+                    <circle cx="12" cy="12" r="10" />
+                  </svg>
+                  T_fiat = 0 &rarr; Failure asserted
+                </>
+              ) : (
+                <>
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  Channel saved
+                </>
+              )}
+            </div>
+            <p className="text-muted-foreground mt-0.5">
+              {choice === "skip"
+                ? "You declined — and the interface responds by doubling down on the claim: Lumi's channel will shut down tonight because you sent nothing. The pitch M_pitch asserts State(I_creator) → Failure whenever T_fiat = 0, so your refusal is framed as destroying a person's livelihood, not declining a product."
+                : "You sent $" + amount + " — the interface celebrates a rescue: the channel stays alive because of you. The transaction was framed as saving the creator's existence rather than buying something, short-circuiting a normal value-for-money decision."}
+            </p>
+          </div>
+        )}
       </div>
     </DemoShell>
   );

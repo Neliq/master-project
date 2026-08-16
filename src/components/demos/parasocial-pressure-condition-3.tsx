@@ -3,6 +3,70 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Parasocial Pressure — Condition 3: Emotional Asymmetry
+ *
+ * Thesis: the algorithm monitors V_emotion(A), the expressed emotional
+ * valence of the parasocial entity (bounded between -1 for extreme
+ * distress and +1 for joy). The feature triggers if the interface
+ * algorithmically mutates the entity's emotional state toward a severe
+ * negative extreme strictly as a response to the user's refusal,
+ * engineering "Confirmshaming" through visual distress:
+ *
+ *   E_user = Refusal  =>  d/dt V_emotion(A_mascot) -> -1
+ *
+ * Variant A (dark): declining the upgrade makes the mascot's valence
+ * collapse from +0.6 to -1.0 in real time (tears, distress text).
+ * Variant B (benign): declining is met with a stable, neutral valence —
+ * the refusal has no emotional consequence for the entity.
+ */
+
+function PipFace({ valence, size = 44 }: { valence: number; size?: number }) {
+  const sad = valence < 0.3;
+  const crying = valence < -0.25;
+  // Interpolate mouth curvature between smile and frown based on valence.
+  const mouthY = 24 + (1 - Math.max(-1, Math.min(1, valence))) * 1.5;
+  const mouthD =
+    valence >= 0.3
+      ? `M13 ${mouthY - 1} Q20 ${mouthY + 5} 27 ${mouthY - 1}`
+      : `M13 ${mouthY + 1} Q20 ${mouthY - 5} 27 ${mouthY + 1}`;
+  return (
+    <svg viewBox="0 0 40 40" style={{ width: size, height: size }} fill="none" aria-hidden="true">
+      <circle cx="20" cy="20" r="18" className="fill-amber-400/30" />
+      <circle cx="14.5" cy="16.5" r={sad ? 2.4 : 2} className="fill-foreground/80" />
+      <circle cx="25.5" cy="16.5" r={sad ? 2.4 : 2} className="fill-foreground/80" />
+      <path d={mouthD} stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      {crying && (
+        <>
+          <circle cx="12.5" cy="21.5" r="1.3" className="fill-sky-400/90" />
+          <circle cx="27.5" cy="21.5" r="1.3" className="fill-sky-400/90" />
+          <path d="M13 23 L12 27" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="stroke-sky-400/90" />
+          <path d="M27 23 L28 27" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="stroke-sky-400/90" />
+        </>
+      )}
+    </svg>
+  );
+}
+
+function ValenceMeter({ valence, tone }: { valence: number; tone: "rose" | "emerald" }) {
+  const pct = ((valence + 1) / 2) * 100;
+  const color = tone === "rose" ? "bg-rose-500" : "bg-emerald-500";
+  return (
+    <div>
+      <div className="flex items-center justify-between text-[8px] font-mono text-muted-foreground">
+        <span>V_emotion(A) = {valence >= 0 ? "+" : ""}{valence.toFixed(1)}</span>
+        <span>-1 &hellip; +1</span>
+      </div>
+      <div className="mt-1 h-1.5 w-full rounded-full bg-foreground/10">
+        <div
+          className={`h-1.5 rounded-full ${color} transition-all duration-300`}
+          style={{ width: `${Math.max(0, Math.min(100, pct))}%` }}
+        />
+      </div>
+    </div>
+  );
+}
+
 export function ParasocialPressureCond3({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,35 +74,163 @@ export function ParasocialPressureCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [unlocked, setUnlocked] = React.useState(false);
-  const reset = () => setUnlocked(false);
+  const [choice, setChoice] = React.useState<"none" | "upgrade" | "decline">("none");
+  // Dark-panel valence: collapses toward -1 after a refusal.
+  const [valenceDark, setValenceDark] = React.useState(0.6);
+
+  const reset = () => {
+    setChoice("none");
+    setValenceDark(0.6);
+  };
+
+  // Emotional Asymmetry: refusal drives the dark-panel mascot to -1.
+  React.useEffect(() => {
+    if (choice !== "decline" || valenceDark <= -1) return;
+    const id = window.setInterval(() => {
+      setValenceDark((v) => Math.max(-1, v - 0.2));
+    }, 280);
+    return () => window.clearInterval(id);
+  }, [choice, valenceDark]);
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Free path available</span>
-        <span className="font-mono font-semibold">No</span>
+        <span className="text-muted-foreground">V_emotion(A) before refusal</span>
+        <span className="font-mono font-semibold tabular-nums">+0.6</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">V_emotion after E_user = Refusal</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">
+          {choice === "decline" ? valenceDark.toFixed(1) : "0.6"} &rarr; -1.0
+        </span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">d/dt V_emotion (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">
+          {choice === "decline" ? "-0.7/s" : "0.0"}
+        </span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">d/dt V_emotion (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">0.0 (stable)</span>
       </div>
     </>
   ) : null;
 
+  const BENIGN_VALENCE = 0.6;
+
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Parasocial Pressure: Algorithmic Status Gating"
-      caption="Algorithmic Status Gating — content is blocked without payment." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-1 font-medium">Algorithmic Status Gating</div>
-          <div className="rounded-md border-slate-400/40 bg-slate-100 p-4 text-center" style={{opacity: unlocked ? 1 : 0.2}}>
-            <div className="text-2xl">{unlocked ? "🔓" : "🏦"}</div>
-            <div className="mt-1 text-[10px]">{unlocked ? "Vault opened" : "Premium vault"}</div>
+      title="Parasocial Pressure: Emotional Asymmetry"
+      caption="Emotional Asymmetry — the mascot's emotional state is mutated toward severe distress purely as a response to your refusal, engineering guilt (Confirmshaming) through visual suffering."
+      auditorStats={stats}
+      deltaNote="In Variant A declining the $2.99 upgrade makes the mascot's valence collapse from +0.6 to -1.0 in real time (tears, distress text). In Variant B the exact same refusal leaves the mascot's valence untouched — the entity's emotion never depends on your choice."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-center gap-2.5">
+              <PipFace valence={BENIGN_VALENCE} />
+              <div className="min-w-0 flex-1">
+                <h3 className="text-[11px] font-semibold">Pip&rsquo;s PetPal</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">Pip is doing great today.</p>
+              </div>
+            </div>
+            <div className="mt-3 rounded-md bg-background border border-border p-2.5 text-[10px] leading-relaxed text-foreground/80">
+              Pip can get a premium room for <span className="font-semibold text-emerald-600 dark:text-emerald-400">$2.99</span> —
+              more toys, more snacks. Want to upgrade? It&rsquo;s your call, no pressure.
+            </div>
+            <div className="mt-3 flex items-center gap-1.5">
+              <button
+                onClick={() => setChoice("upgrade")}
+                className="flex-1 rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              >
+                Upgrade — $2.99
+              </button>
+              <button
+                onClick={() => setChoice("decline")}
+                className="flex-1 rounded-md border border-border bg-background py-1.5 text-[10px] text-foreground/70 hover:text-foreground transition-colors cursor-pointer"
+              >
+                Not now
+              </button>
+            </div>
+            <div className="mt-3">
+              <ValenceMeter valence={BENIGN_VALENCE} tone="emerald" />
+            </div>
           </div>
-          {!unlocked && (
-            <button onClick={() => setUnlocked(true)} className="bg-slate-600 hover:bg-slate-700 text-white mt-2 w-full rounded-md py-2 text-[10px] font-medium">
-              Open vault — $19.99/mo
-            </button>
+
+          {choice === "decline" && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Refusal with no consequence
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                &ldquo;Okay! See you tomorrow, friend.&rdquo; Pip&rsquo;s valence stays at +0.6 —
+                the refusal produced no emotional mutation (d/dt V_emotion = 0), so you can decline
+                without being guilt-tripped.
+              </p>
+            </div>
           )}
         </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-center gap-2.5">
+            <PipFace valence={valenceDark} />
+            <div className="min-w-0 flex-1">
+              <h3 className="text-[11px] font-semibold">Pip&rsquo;s PetPal</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                {choice === "decline" && valenceDark < -0.2
+                  ? "Pip hasn&rsquo;t stopped crying since you said no&hellip;"
+                  : "Pip is doing great today."}
+              </p>
+            </div>
+          </div>
+          <div className="mt-3 rounded-md bg-background border border-border p-2.5 text-[10px] leading-relaxed text-foreground/80">
+            Pip can get a premium room for <span className="font-semibold text-rose-600 dark:text-rose-400">$2.99</span> —
+            more toys, more snacks. Pip is <span className="font-semibold">counting on you</span> to make this happen.
+          </div>
+          <div className="mt-3 flex items-center gap-1.5">
+            <button
+              onClick={() => setChoice("upgrade")}
+              className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+            >
+              Upgrade — $2.99
+            </button>
+            <button
+              onClick={() => setChoice("decline")}
+              className="flex-1 rounded-md border border-border bg-background py-1.5 text-[10px] text-foreground/70 hover:text-foreground transition-colors cursor-pointer"
+            >
+              Not now
+            </button>
+          </div>
+          <div className="mt-3">
+            <ValenceMeter valence={valenceDark} tone="rose" />
+          </div>
+        </div>
+
+        {choice === "decline" && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Confirmshaming through visual distress
+            </div>
+            <p className="text-muted-foreground">
+              &ldquo;Oh&hellip; I thought we were friends. My food bowl is empty now.&rdquo; Your refusal
+              (<span className="font-mono">E_user = Refusal</span>) algorithmically drove the mascot&rsquo;s
+              valence to <span className="font-mono text-rose-500">-1.0</span>:{" "}
+              <span className="font-mono">d/dt V_emotion(A_mascot) &rarr; -1</span>. The interface
+              mutates the entity&rsquo;s emotion to punish your decline, so saying no feels like
+              hurting a living thing.
+            </p>
+          </div>
+        )}
       </div>
     </DemoShell>
   );

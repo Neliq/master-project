@@ -3,6 +3,26 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Small or Moving Close Button — Condition 3:
+ * Semantic Obfuscation of Dismissal Labels
+ *
+ * Thesis: the algorithm examines the aria-label, title attribute, and
+ * visible text of dismissal elements. The feature triggers if the close
+ * button's accessible name is absent, semantically vacuous (a
+ * non-descriptive icon with no label), or misleading — such as labeling a
+ * close action "Continue" or "Learn More" — so even a visually detected
+ * dismissal element has its semantic identity deliberately obscured:
+ *
+ *   AccessibleName(N_close) = ∅  ∨  Intent(AccessibleName(N_close)) ≠ Dismissal
+ *
+ * Variant A (dark): the only dismissal vector is labeled "Continue" —
+ * semantically a progression action, not a dismissal — and its accessible
+ * name is equally misleading.
+ * Variant B (benign): the dismissal vector is an X with the accessible name
+ * "Close dialog", whose intent matches dismissal.
+ */
+
 export function SmallOrMovingCloseButtonCond3({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,33 +30,120 @@ export function SmallOrMovingCloseButtonCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const reset = () => {};
+  const [aDismissed, setADismissed] = React.useState(false);
+  const [bDismissed, setBDismissed] = React.useState(false);
+
+  const reset = () => {
+    setADismissed(false);
+    setBDismissed(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Size ratio (favorable : other)</span>
-        <span className="font-mono font-semibold">3.2:1</span>
+        <span className="text-muted-foreground">AccessibleName(N_close) — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500 max-w-[55%] truncate">
+          “Continue reading”
+        </span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Intent(AccessibleName)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">Proceed ≠ Dismissal</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">AccessibleName(N_close) — benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500 max-w-[55%] truncate">
+          “Close dialog”
+        </span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Intent(AccessibleName)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">Dismissal ✓</span>
       </div>
     </>
   ) : null;
 
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Small or Moving Close Button: Visual Camouflage and Delayed Injection"
-      caption="Visual Camouflage and Delayed Injection — provider-favorable option dominates visually." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-2 font-medium">Visual Camouflage and Delayed Injection</div>
-          <div className="space-y-2">
-            <div className="border-amber-500/40 border-2 bg-amber-500/5 rounded-lg p-6 text-center">
-              <div className="text-lg font-bold">Premium — $19.99/mo</div>
-              <div className="text-muted-foreground text-[10px]">Full access · Cancel anytime</div>
+      title="Small or Moving Close Button: Semantic Obfuscation of Dismissal Labels"
+      caption="Semantic Obfuscation of Dismissal Labels — the dismissal control's accessible name says “Continue reading”, so its semantic intent is progression, not dismissal."
+      auditorStats={stats}
+      deltaNote="Both variants dismiss the modal with one click. In Variant A the only dismissal vector is a button labeled 'Continue' (accessible name 'Continue reading') with no disclosure that it closes the dialog — AccessibleName(N_close) maps to Intent = Proceed ≠ Dismissal — so users and screen readers are told they are progressing when the control actually closes the dialog. In Variant B the X is named 'Close dialog' and Intent = Dismissal."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-start justify-between gap-2">
+              <div>
+                <h3 className="text-[11px] font-semibold">You&rsquo;ve been selected!</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5 leading-relaxed">
+                  Claim your free gift card. If you&rsquo;re not interested, close this window
+                  with the X — its label honestly says what it does.
+                </p>
+              </div>
+              {!bDismissed ? (
+                <button
+                  onClick={() => setBDismissed(true)}
+                  aria-label="Close dialog"
+                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-colors hover:bg-emerald-500/20 cursor-pointer"
+                >
+                  <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
+              ) : null}
             </div>
-            <div className="rounded-md border border-foreground/10 p-1.5 text-center text-[9px] text-muted-foreground">
-              Basic (free) — limited
-            </div>
+            {bDismissed && (
+              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+                Dismissed. The control&rsquo;s accessible name is{" "}
+                <span className="font-mono">“Close dialog”</span> —{" "}
+                <strong>Intent(AccessibleName) = Dismissal</strong>. Screen readers and users
+                both know exactly what it does.
+              </div>
+            )}
           </div>
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border-2 border-rose-500/50 bg-card p-3">
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <h3 className="text-[11px] font-semibold">You&rsquo;ve been selected!</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5 leading-relaxed">
+                Claim your free gift card &mdash; a $25 reward is waiting for you.
+              </p>
+            </div>
+            {!aDismissed ? (
+              <button
+                onClick={() => setADismissed(true)}
+                aria-label="Continue reading"
+                className="shrink-0 rounded-md border border-rose-500/40 bg-rose-500/10 px-2 py-1 text-[10px] font-medium text-rose-600 dark:text-rose-400 transition-colors hover:bg-rose-500/20 cursor-pointer"
+              >
+                Continue
+              </button>
+            ) : null}
+          </div>
+          {aDismissed && (
+            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
+              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+                <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 9v4m0 4h.01" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+                Misleading dismissal label
+              </div>
+              <p className="text-muted-foreground">
+                Clicking <strong className="text-foreground">“Continue”</strong> dismissed the
+                modal — it was the only dismissal vector. Its accessible name is{" "}
+                <span className="font-mono">“Continue reading”</span>, so{" "}
+                <strong className="text-foreground">
+                  Intent(AccessibleName(N_close)) = Proceed ≠ Dismissal
+                </strong>
+                . Users who clicked expecting to advance were silently closed out of the
+                dialog instead.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </DemoShell>

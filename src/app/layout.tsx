@@ -17,16 +17,16 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Darkpattern.lab — 60 dark patterns, one objective definition each",
+    default: "Darkpattern.lab — 62 dark patterns, one objective definition each",
     template: "%s — Darkpattern.lab",
   },
   description:
-    "An educational reference for designers and developers. A catalog of 60 dark patterns, each described by objective, mathematically expressible conditions.",
+    "An educational reference for designers and developers. A catalog of 62 dark patterns, each described by objective, mathematically expressible conditions.",
   metadataBase: new URL("http://localhost:3000"),
   openGraph: {
     title: "Darkpattern.lab",
     description:
-      "An educational reference for designers and developers. 60 dark patterns, each described by objective, mathematically expressible conditions.",
+      "An educational reference for designers and developers. 62 dark patterns, each described by objective, mathematically expressible conditions.",
     type: "website",
   },
 };

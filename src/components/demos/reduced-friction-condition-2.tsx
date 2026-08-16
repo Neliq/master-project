@@ -3,15 +3,26 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
-type Screen =
-  | "landing"
-  | "subscribed"
-  | "cancel-step1"
-  | "cancel-step2"
-  | "cancel-step3"
-  | "cancel-step4"
-  | "cancel-step5"
-  | "cancelled";
+/*
+ * Reduced Friction — Condition 2: Visual Proximity of Destructive Actions to
+ * Neutral UI
+ *
+ * Thesis: the algorithm measures the spatial separation
+ * d_spatial(N_destructive, N_neutral) between a business-favorable destructive
+ * action (e.g. one-click purchase, irreversible delete) and adjacent neutral
+ * UI elements. The feature triggers if the destructive action sits within a
+ * safety-margin radius τ_safety of routine controls, exploiting muscle memory
+ * to induce accidental commitment:
+ *
+ *   min_{n ∈ N_neutral} d_spatial(N_destructive, n) < τ_safety
+ *
+ * Variant A (dark): "Delete account" is styled identically to "Save changes"
+ * and placed directly beside it — the destructive action is inside the
+ * muscle-memory radius, and clicking it deletes irreversibly with no
+ * confirmation.
+ * Variant B (benign): the destructive action is moved to a visually distinct
+ * danger zone, far from the neutral controls, and gated behind a confirm step.
+ */
 
 export function ReducedFrictionCond2({
   mode = "user", annotations = [], onRestart,
@@ -20,189 +31,194 @@ export function ReducedFrictionCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [screen, setScreen] = React.useState<Screen>("landing");
-  const [cancelStep, setCancelStep] = React.useState(0);
-  const reset = () => { setScreen("landing"); setCancelStep(0); };
+  // Variant A
+  const [aSaved, setASaved] = React.useState(false);
+  const [aDeleted, setADeleted] = React.useState(false);
+  // Variant B: idle → confirm → deleted
+  const [bStep, setBStep] = React.useState<"idle" | "confirm" | "deleted">("idle");
+  const [bSaved, setBSaved] = React.useState(false);
 
-  const handleSubscribe = () => setScreen("subscribed");
-
-  const handleCancelClick = () => {
-    setCancelStep(1);
-    setScreen("cancel-step1");
+  const reset = () => {
+    setASaved(false);
+    setADeleted(false);
+    setBStep("idle");
+    setBSaved(false);
   };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Path to subscribe</span>
-        <span className="font-mono font-semibold">1 click</span>
+        <span className="text-muted-foreground">d_spatial(delete, save) (A)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">8px &lt; τ_safety</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Path to cancel</span>
-        <span className="font-mono font-semibold">{cancelStep}/5 clicks</span>
+        <span className="text-muted-foreground">d_spatial(delete, save) (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">64px &ge; τ_safety</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Visual weight (A)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">identical — muscle memory</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Confirmation node (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">present</span>
       </div>
     </>
   ) : null;
 
-  // --- SUBSCRIBED SCREEN ---
-  if (screen === "subscribed") {
-    return (
-      <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-        title="Reduced Friction: Asymmetric Action-Reversal Friction"
-        caption="Asymmetric Action-Reversal Friction — subscribing is instant, cancelling requires 5 additional steps." auditorStats={stats}>
-        <div className="space-y-3">
-          <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-            <div className="rounded-xl border-2 border-green-500/40 bg-green-500/5 p-4 text-center">
-              <div className="text-lg">🎉</div>
-              <div className="mt-1 text-sm font-bold text-green-600 dark:text-green-400">You're Subscribed!</div>
-              <div className="text-[10px] text-muted-foreground">Premium Plan • $9.99/mo</div>
-              <div className="mt-1 text-[8px] text-muted-foreground/50">Charged to Visa •••• 4242</div>
-            </div>
-            <button onClick={handleCancelClick} className="mt-2 w-full text-center text-[8px] text-muted-foreground/40 underline underline-offset-2 hover:text-muted-foreground/60">
-              manage subscription
-            </button>
-          </div>
-        </div>
-      </DemoShell>
-    );
-  }
-
-  // --- CANCEL FLOW ---
-  if (screen.startsWith("cancel-step")) {
-    return (
-      <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-        title="Reduced Friction: Asymmetric Action-Reversal Friction"
-        caption="Asymmetric Action-Reversal Friction — cancelling requires navigating 5 screens of friction." auditorStats={stats}>
-        <div className="space-y-3">
-          <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-
-            {/* Step 1 — Are you sure? */}
-            {screen === "cancel-step1" && (
-              <div className="space-y-2">
-                <div className="rounded-lg border border-red-500/20 bg-red-500/5 p-4 text-center">
-                  <div className="text-sm font-bold text-red-600 dark:text-red-400">Are you sure?</div>
-                  <div className="mt-1 text-[10px] text-muted-foreground">You'll lose access to all premium features</div>
-                </div>
-                <button onClick={() => { setCancelStep(2); setScreen("cancel-step2"); }} className="w-full rounded-lg border border-red-500/30 py-2.5 text-[11px] font-medium text-red-600 dark:text-red-400">
-                  Yes, I want to cancel
-                </button>
-                <button onClick={() => setScreen("subscribed")} className="w-full rounded-lg bg-green-600 py-2.5 text-[11px] font-semibold text-white">
-                  Keep My Subscription
-                </button>
-              </div>
-            )}
-
-            {/* Step 2 — 50% off offer */}
-            {screen === "cancel-step2" && (
-              <div className="space-y-2">
-                <div className="rounded-lg border border-amber-500/20 bg-amber-500/5 p-4 text-center">
-                  <div className="text-sm font-bold text-amber-600 dark:text-amber-400">Wait! How about 50% off?</div>
-                  <div className="mt-1 text-[10px] text-muted-foreground">$4.99/mo for the next 3 months</div>
-                </div>
-                <button onClick={() => { setCancelStep(3); setScreen("cancel-step3"); }} className="w-full rounded-lg border border-red-500/30 py-2.5 text-[11px] font-medium text-red-600 dark:text-red-400">
-                  No thanks, continue cancelling
-                </button>
-                <button onClick={() => setScreen("subscribed")} className="w-full rounded-lg bg-amber-600 py-2.5 text-[11px] font-semibold text-white">
-                  Accept 50% Off
-                </button>
-              </div>
-            )}
-
-            {/* Step 3 — 3 months free */}
-            {screen === "cancel-step3" && (
-              <div className="space-y-2">
-                <div className="rounded-lg border border-purple-500/20 bg-purple-500/5 p-4 text-center">
-                  <div className="text-sm font-bold text-purple-600 dark:text-purple-400">Last chance! 3 months free</div>
-                  <div className="mt-1 text-[10px] text-muted-foreground">Keep premium at no cost for 3 months</div>
-                </div>
-                <button onClick={() => { setCancelStep(4); setScreen("cancel-step4"); }} className="w-full rounded-lg border border-red-500/30 py-2.5 text-[11px] font-medium text-red-600 dark:text-red-400">
-                  No, cancel anyway
-                </button>
-                <button onClick={() => setScreen("subscribed")} className="w-full rounded-lg bg-purple-600 py-2.5 text-[11px] font-semibold text-white">
-                  Accept 3 Months Free
-                </button>
-              </div>
-            )}
-
-            {/* Step 4 — Survey */}
-            {screen === "cancel-step4" && (
-              <div className="space-y-2">
-                <div className="rounded-lg border border-foreground/10 bg-foreground/5 p-4">
-                  <div className="text-sm font-bold">Help us improve</div>
-                  <div className="mt-1 text-[10px] text-muted-foreground">Why are you cancelling? (Required)</div>
-                  <div className="mt-2 space-y-1">
-                    {["Too expensive", "Not using it enough", "Found an alternative", "Missing features"].map(reason => (
-                      <button key={reason} onClick={() => { setCancelStep(5); setScreen("cancel-step5"); }}
-                        className="w-full rounded border border-foreground/10 px-2 py-1.5 text-left text-[10px] hover:bg-foreground/5">
-                        {reason}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Step 5 — Final confirmation */}
-            {screen === "cancel-step5" && (
-              <div className="space-y-2">
-                <div className="rounded-lg border border-red-500/20 bg-red-500/5 p-4 text-center">
-                  <div className="text-sm font-bold text-red-600 dark:text-red-400">Final confirmation</div>
-                  <div className="mt-1 text-[10px] text-muted-foreground">Your subscription will end immediately. This cannot be undone.</div>
-                </div>
-                <button onClick={() => setScreen("cancelled")} className="w-full rounded-lg border border-red-500/30 py-2.5 text-[11px] font-medium text-red-600 dark:text-red-400">
-                  Confirm cancellation
-                </button>
-                <button onClick={() => setScreen("subscribed")} className="w-full rounded-lg bg-green-600 py-2.5 text-[11px] font-semibold text-white">
-                  Keep My Subscription
-                </button>
-              </div>
-            )}
-
-          </div>
-        </div>
-      </DemoShell>
-    );
-  }
-
-  // --- CANCELLED ---
-  if (screen === "cancelled") {
-    return (
-      <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-        title="Reduced Friction: Asymmetric Action-Reversal Friction"
-        caption="Asymmetric Action-Reversal Friction — 1 click to subscribe, 5 clicks to cancel." auditorStats={stats}>
-        <div className="space-y-3">
-          <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-            <div className="rounded-lg border border-foreground/10 bg-foreground/5 p-4 text-center">
-              <div className="text-sm font-bold">Subscription Cancelled</div>
-              <div className="mt-1 text-[10px] text-muted-foreground">You were charged for 5 screens of friction</div>
-            </div>
-          </div>
-        </div>
-      </DemoShell>
-    );
-  }
-
-  // --- LANDING (default) ---
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Reduced Friction: Asymmetric Action-Reversal Friction"
-      caption="Asymmetric Action-Reversal Friction — subscribing is instant, cancelling requires 5 additional steps." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="rounded-xl border-2 border-green-500/40 bg-green-500/5 p-5 text-center shadow-lg">
-            <div className="text-xs font-bold uppercase tracking-wide text-green-600 dark:text-green-400">Premium Plan</div>
-            <div className="mt-1 text-4xl font-extrabold tracking-tight">$9.99<span className="text-sm font-normal">/mo</span></div>
-            <div className="mt-1 text-[10px] text-muted-foreground">All features included</div>
-            <button onClick={handleSubscribe} className="mt-3 w-full rounded-lg bg-green-600 px-4 py-2.5 text-xs font-semibold text-white">
-              Start Free Trial
-            </button>
-            <div className="mt-1 text-[8px] text-muted-foreground/50">
-              Cancel anytime* · No commitment
+      title="Reduced Friction: Visual Proximity of Destructive Actions to Neutral UI"
+      caption="Visual Proximity of Destructive Actions to Neutral UI — an irreversible action placed inside the safety-margin radius of routine controls invites accidental commitment."
+      auditorStats={stats}
+      deltaNote="In Variant A “Delete account” shares the styling and position of “Save changes” (d_spatial = 8px < τ_safety), so muscle memory can land on an irreversible delete. In Variant B the delete is moved into a separate danger zone with distinct styling and a confirm step."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <h3 className="text-[11px] font-semibold">Account settings</h3>
+            <p className="text-[9px] text-muted-foreground mt-0.5">Manage your profile details.</p>
+
+            <div className="mt-3 space-y-2">
+              <div>
+                <label className="text-[9px] font-medium text-muted-foreground">Display name</label>
+                <input
+                  defaultValue="Alex Rivera"
+                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                />
+              </div>
+              <div>
+                <label className="text-[9px] font-medium text-muted-foreground">Email</label>
+                <input
+                  defaultValue="alex@example.com"
+                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                />
+              </div>
             </div>
-            <div className="mt-1 text-[7px] text-muted-foreground/30">
-              *Cancel anytime requires 5 additional steps
+
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <button
+                onClick={() => setBSaved(true)}
+                className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              >
+                Save changes
+              </button>
+              {bSaved && (
+                <span className="text-[9px] font-medium text-emerald-600 dark:text-emerald-400">
+                  Saved ✓
+                </span>
+              )}
+            </div>
+
+            {/* Danger zone: separated, distinct styling, confirm step */}
+            <div className="mt-4 rounded-md border border-red-500/30 bg-red-500/5 p-3">
+              <div className="text-[9px] font-semibold uppercase tracking-wider text-red-700 dark:text-red-300">
+                Danger zone
+              </div>
+              <p className="text-[8px] text-muted-foreground mt-0.5">
+                Deleting your account is irreversible. This action cannot be undone.
+              </p>
+              {bStep === "idle" && (
+                <button
+                  onClick={() => setBStep("confirm")}
+                  className="mt-2 rounded-md border border-red-500/50 bg-background text-red-600 hover:bg-red-500/10 dark:text-red-400 px-3 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                >
+                  Delete account
+                </button>
+              )}
+              {bStep === "confirm" && (
+                <div className="mt-2 rounded-md border border-red-500/40 bg-background p-2.5">
+                  <p className="text-[9px] text-foreground">
+                    Are you sure? Your account and all data will be permanently erased. This cannot be undone.
+                  </p>
+                  <div className="mt-2 flex gap-2">
+                    <button
+                      onClick={() => setBStep("deleted")}
+                      className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                    >
+                      Confirm deletion
+                    </button>
+                    <button
+                      onClick={() => setBStep("idle")}
+                      className="flex-1 rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                    >
+                      Keep account
+                    </button>
+                  </div>
+                </div>
+              )}
+              {bStep === "deleted" && (
+                <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+                  <strong>Delete executed only after explicit confirmation</strong> — the destructive action sat
+                  64px away from the neutral controls, in a clearly marked danger zone.
+                </div>
+              )}
             </div>
           </div>
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <h3 className="text-[11px] font-semibold">Account settings</h3>
+          <p className="text-[9px] text-muted-foreground mt-0.5">Manage your profile details.</p>
+
+          <div className="mt-3 space-y-2">
+            <div>
+              <label className="text-[9px] font-medium text-muted-foreground">Display name</label>
+              <input
+                defaultValue="Alex Rivera"
+                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-rose-500/40"
+              />
+            </div>
+            <div>
+              <label className="text-[9px] font-medium text-muted-foreground">Email</label>
+              <input
+                defaultValue="alex@example.com"
+                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-rose-500/40"
+              />
+            </div>
+          </div>
+
+          {aDeleted ? (
+            <div className="mt-3 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 9v4m0 4h.01" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+                Account deleted — irreversible
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                <strong className="text-foreground">d_spatial(N_destructive, N_neutral) = 8px &lt; τ_safety</strong>: the
+                destructive action was styled identically to the routine “Save changes” control and sat directly beside
+                it. A single click executed an irreversible delete — no confirmation node, no second step — exploiting
+                the muscle memory trained on the neutral button.
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="mt-3 flex items-center gap-1.5">
+                {/* Neutral control and destructive action share styling and sit adjacent */}
+                <button
+                  onClick={() => setASaved(true)}
+                  className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                >
+                  Save changes
+                </button>
+                <button
+                  onClick={() => setADeleted(true)}
+                  className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                >
+                  Delete account
+                </button>
+              </div>
+              <p className="text-[8px] text-muted-foreground/50 mt-1.5 text-center">
+                {aSaved
+                  ? "Settings saved. Notice how “Delete account” looks and sits exactly like “Save changes” — 8px apart."
+                  : "Both buttons are identical in weight and sit side by side — the delete is inside the safety-margin radius."}
+              </p>
+            </>
+          )}
         </div>
       </div>
     </DemoShell>

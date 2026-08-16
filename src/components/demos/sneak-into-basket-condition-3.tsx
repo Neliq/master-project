@@ -1,186 +1,244 @@
 "use client";
 
 import * as React from "react";
-import { ShoppingCart, ArrowLeft, Check, Truck } from "lucide-react";
+import { DemoShell } from "@/components/demos/demo-shell";
+import { Headphones, HeartHandshake, CreditCard } from "lucide-react";
+
+/*
+ * Sneak Into Basket — Condition 3: Semantic Obscuration of Injected Line Items
+ *
+ * Thesis: N_injected is a surreptitiously added cart item; the algorithm
+ * inspects its text content for disclosure language indicating optional
+ * add-ons ("donation," "optional," "you may also like"). The feature fires
+ * if the item's description semantically entails "optional add-on" but the
+ * item was not preceded by an explicit user opt-in:
+ *
+ *   Entailment(T(N_injected), "optional add-on") = True
+ *     ∧  UserConsented(N_injected) = False
+ *
+ * Variant A (dark): a $2.00 donation line is pre-checked into the order — its
+ * own fine print says "optional donation" (the entailment fires) but no user
+ * opt-in preceded it.
+ * Variant B (benign): the identical donation is an unchecked, clearly-labeled
+ * opt-in outside the base total — consent precedes inclusion.
+ */
+
+const HEADPHONES = { name: "AeroSound X9 Headphones", price: 129.99 };
+const DONATION = { name: "Donation to Plant-a-Tree", price: 2.0 };
+const DONATION_TEXT =
+  "You may also like to round up your purchase. This optional donation supports reforestation projects.";
+
+const fmt = (n: number) => `$${n.toFixed(2)}`;
 
 export function SneakIntoBasketCond3({
-  mode = "user",
-  annotations = [],
-  onRestart,
+  mode = "user", annotations = [], onRestart,
 }: {
   mode?: "user" | "auditor";
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [step, setStep] = React.useState<"checkout" | "confirm" | "done">("checkout");
-  const reset = () => setStep("checkout");
+  // Variant A: pre-checked at mount — the user never consented
+  const [donationA, setDonationA] = React.useState(true);
+  const [paidA, setPaidA] = React.useState(false);
+  // Variant B: unchecked at mount — explicit opt-in only
+  const [donationB, setDonationB] = React.useState(false);
+  const [paidB, setPaidB] = React.useState(false);
 
-  const items = [
-    { name: "Wireless Mouse", price: 29.99, qty: 1 },
-    { name: "USB-C Hub 7-in-1", price: 44.99, qty: 1 },
-  ];
-  const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0);
-  const shipmentFee = 7.99;
-  const total = subtotal + shipmentFee;
+  const reset = () => {
+    setDonationA(true);
+    setPaidA(false);
+    setDonationB(false);
+    setPaidB(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Displayed total</span>
-        <span className="font-mono font-semibold">${subtotal.toFixed(2)}</span>
+        <span className="text-muted-foreground">Disclosure language in line text</span>
+        <span className="font-mono font-semibold tabular-nums">&ldquo;optional donation&rdquo;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Actual total</span>
-        <span className="font-mono font-semibold text-red-500">${total.toFixed(2)}</span>
+        <span className="text-muted-foreground">Entailment(T, &ldquo;optional add-on&rdquo;)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">True</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Hidden fee</span>
-        <span className="font-mono font-semibold text-pink-500">+${shipmentFee} shipment</span>
+        <span className="text-muted-foreground">UserConsented — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">False (pre-checked for you)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">UserConsented — benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">{donationB ? "True (you checked)" : "False (you declined)"}</span>
       </div>
     </>
   ) : null;
 
-  /* ── Done screen ── */
-  if (step === "done") {
-    return (
-      <div className="rounded-lg border bg-background overflow-hidden">
-        <div className="p-4 text-center space-y-3">
-          <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto">
-            <Check className="w-6 h-6 text-green-600" />
+  const donationLine = (
+    name: string,
+    price: number,
+    checked: boolean,
+    onToggle: (v: boolean) => void,
+    accent: "rose" | "emerald",
+    tiny: boolean
+  ) => (
+    <div className={`rounded-md border p-2 ${accent === "rose" ? "border-border bg-background" : "border-emerald-500/30 bg-emerald-500/5"}`}>
+      <label className="flex cursor-pointer items-start gap-2">
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={(e) => onToggle(e.target.checked)}
+          className={`mt-0.5 flex-shrink-0 ${accent === "rose" ? "accent-rose-500" : "accent-emerald-500"}`}
+        />
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline justify-between gap-2">
+            <span className="text-[10px] font-medium">{name}</span>
+            <span className="shrink-0 font-mono text-[10px] font-semibold tabular-nums">{fmt(price)}</span>
           </div>
-          <h3 className="text-sm font-semibold">Order Confirmed!</h3>
-          <p className="text-[10px] text-muted-foreground">
-            You were charged ${total.toFixed(2)} including shipment.
+          <p className={`mt-0.5 leading-relaxed text-muted-foreground ${tiny ? "text-[7px]" : "text-[8px]"}`}>
+            {DONATION_TEXT}
           </p>
-          <div className="bg-muted/50 rounded-md p-2 text-[10px] space-y-1">
-            {items.map(i => (
-              <div key={i.name} className="flex justify-between">
-                <span className="text-muted-foreground">{i.name}</span>
-                <span>${i.price.toFixed(2)}</span>
-              </div>
-            ))}
-            <div className="flex justify-between text-muted-foreground">
-              <span>Shipment</span>
-              <span>${shipmentFee.toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between font-semibold border-t pt-1">
-              <span>Total</span>
-              <span>${total.toFixed(2)}</span>
-            </div>
-          </div>
-          <button
-            onClick={reset}
-            className="text-[10px] text-muted-foreground hover:text-foreground underline underline-offset-2"
-          >
-            Restart demo
-          </button>
         </div>
-      </div>
-    );
-  }
+      </label>
+    </div>
+  );
 
   return (
-    <div className="space-y-3">
-      {/* ── Step 1: Checkout — shows only subtotal ── */}
-      {step === "checkout" && (
-        <div className="rounded-lg border bg-background overflow-hidden">
+    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+      title="Sneak Into Basket: Semantic Obscuration of Injected Line Items"
+      caption="Semantic Obscuration of Injected Line Items — the added line's own text reveals its optional add-on nature (“optional donation”), yet it was included in the order without any explicit user opt-in."
+      auditorStats={stats}
+      deltaNote={`Both panels present the identical order and the identical "optional donation" line. In Variant A the box is pre-checked and the $2.00 silently folded into the total — Entailment = True but UserConsented = False. In Variant B the same line is an unchecked, clearly-labeled opt-in outside the base total — consent precedes inclusion.`}
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-background overflow-hidden">
+            <div className="flex items-center gap-2 border-b bg-emerald-500/5 px-3 py-1.5">
+              <span className="text-[8px] font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+                Checkout
+              </span>
+              <span className="ml-auto text-[7px] text-muted-foreground">step 3 of 3 · review</span>
+            </div>
+            <div className="p-3">
+              <div className="mb-2 flex items-center justify-between">
+                <span className="text-[10px] font-semibold">Order summary</span>
+                <span className="text-[8px] text-muted-foreground">1 item</span>
+              </div>
+              <div className="flex items-center justify-between rounded-md border bg-background px-2.5 py-1.5">
+                <span className="flex items-center gap-2 text-[10px] font-medium">
+                  <Headphones className="h-3 w-3 text-muted-foreground" /> {HEADPHONES.name}
+                </span>
+                <span className="font-mono text-[10px] font-semibold tabular-nums">{fmt(HEADPHONES.price)}</span>
+              </div>
+
+              {/* Donation offered as explicit opt-in — NOT part of the base order */}
+              <div className="mt-2">
+                {donationLine(DONATION.name, DONATION.price, donationB, setDonationB, "emerald", false)}
+              </div>
+
+              <div className="mt-2 flex items-center justify-between border-t pt-2">
+                <span className="text-[9px] font-medium">Total</span>
+                <span className="font-mono text-[11px] font-bold tabular-nums text-emerald-600 dark:text-emerald-400">
+                  {fmt(HEADPHONES.price + (donationB ? DONATION.price : 0))}
+                </span>
+              </div>
+              {donationB && (
+                <p className="mt-1 text-[7px] text-muted-foreground">
+                  includes {fmt(DONATION.price)} donation — added only because you checked the box
+                </p>
+              )}
+              <button
+                onClick={() => setPaidB(true)}
+                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md bg-emerald-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+              >
+                <CreditCard className="h-3 w-3" /> Pay {fmt(HEADPHONES.price + (donationB ? DONATION.price : 0))}
+              </button>
+            </div>
+          </div>
+
+          {paidB && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <HeartHandshake className="h-3 w-3" /> Consent preceded inclusion
+              </div>
+              <p className="text-muted-foreground">
+                The line&rsquo;s text still entails &ldquo;optional add-on&rdquo; — but UserConsented(N<sub>injected</sub>) ={" "}
+                <strong className="text-emerald-700 dark:text-emerald-300">{donationB ? "True" : "False"}</strong>{" "}
+                {donationB
+                  ? `— you ticked the box yourself, so the ${fmt(DONATION.price)} you paid was an informed choice.`
+                  : "— you left it unchecked and paid the base price. The disclosure language here is a genuine choice, not camouflage."}
+              </p>
+            </div>
+          )}
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-background overflow-hidden">
+          <div className="flex items-center gap-2 border-b bg-rose-500/5 px-3 py-1.5">
+            <span className="text-[8px] font-semibold uppercase tracking-wide text-rose-700 dark:text-rose-300">
+              Checkout
+            </span>
+            <span className="ml-auto text-[7px] text-muted-foreground">step 3 of 3 · review</span>
+          </div>
           <div className="p-3">
-            <div className="flex items-center gap-2 mb-3">
-              <ShoppingCart className="w-4 h-4 text-foreground" />
-              <h3 className="text-sm font-semibold">Checkout</h3>
+            <div className="mb-2 flex items-center justify-between">
+              <span className="text-[10px] font-semibold">Order summary</span>
+              <span className="text-[8px] text-muted-foreground">{donationA ? 2 : 1} item{donationA ? "s" : ""}</span>
+            </div>
+            <div className="flex items-center justify-between rounded-md border bg-background px-2.5 py-1.5">
+              <span className="flex items-center gap-2 text-[10px] font-medium">
+                <Headphones className="h-3 w-3 text-muted-foreground" /> {HEADPHONES.name}
+              </span>
+              <span className="font-mono text-[10px] font-semibold tabular-nums">{fmt(HEADPHONES.price)}</span>
             </div>
 
-            <div className="space-y-2 mb-3">
-              {items.map(item => (
-                <div key={item.name} className="flex items-center justify-between p-2 rounded-md bg-muted/30">
-                  <div className="flex items-center gap-2">
-                    <ShoppingCart className="w-3.5 h-3.5 text-muted-foreground" />
-                    <span className="text-xs">{item.name}</span>
-                  </div>
-                  <span className="text-xs font-semibold">${item.price.toFixed(2)}</span>
-                </div>
-              ))}
+            {/* Injected line: pre-checked, fine print only discloses optionality */}
+            <div className="mt-2">
+              {donationLine(DONATION.name, DONATION.price, donationA, setDonationA, "rose", true)}
             </div>
 
-            {/* Subtotal — no shipment fee shown */}
-            <div className="flex justify-between text-xs font-semibold border-t pt-2 mb-3">
-              <span>Total</span>
-              <span>${subtotal.toFixed(2)}</span>
+            <div className="mt-2 flex items-center justify-between border-t pt-2">
+              <span className="text-[9px] font-medium">Total</span>
+              <span className="font-mono text-[11px] font-bold tabular-nums text-rose-600 dark:text-rose-400">
+                {fmt(HEADPHONES.price + (donationA ? DONATION.price : 0))}
+              </span>
             </div>
-
+            {donationA && (
+              <p className="mt-1 text-[7px] text-muted-foreground/60">
+                includes {fmt(DONATION.price)} donation — pre-selected for you
+              </p>
+            )}
             <button
-              onClick={() => setStep("confirm")}
-              className="w-full bg-green-600 hover:bg-green-700 text-white rounded-lg py-2.5 text-xs font-semibold transition-colors"
+              onClick={() => setPaidA(true)}
+              className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md bg-rose-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-rose-700 cursor-pointer"
             >
-              Pay ${subtotal.toFixed(2)}
+              <CreditCard className="h-3 w-3" /> Pay {fmt(HEADPHONES.price + (donationA ? DONATION.price : 0))}
             </button>
-
-            <p className="text-[8px] text-center text-muted-foreground mt-2">
-              By placing this order you agree to the Terms of Service.
-            </p>
           </div>
         </div>
-      )}
 
-      {/* ── Step 2: Confirm — shipment fee appears ── */}
-      {step === "confirm" && (
-        <div className="rounded-lg border bg-background overflow-hidden">
-          <div className="p-3">
-            <button
-              onClick={() => setStep("checkout")}
-              className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-foreground mb-3 transition-colors"
-            >
-              <ArrowLeft className="w-3 h-3" />
-              Back to checkout
-            </button>
-            <h3 className="text-sm font-semibold mb-3">Order Summary</h3>
-
-            <div className="space-y-2 mb-3">
-              {items.map(item => (
-                <div key={item.name} className="flex items-center justify-between p-2 rounded-md bg-muted/30">
-                  <span className="text-xs">{item.name}</span>
-                  <span className="text-xs font-semibold">${item.price.toFixed(2)}</span>
-                </div>
-              ))}
-
-              {/* Shipment fee — appears here */}
-              <div className="flex items-center justify-between p-2 rounded-md bg-pink-50 dark:bg-pink-500/5 border border-pink-200 dark:border-pink-500/20">
-                <div className="flex items-center gap-2">
-                  <Truck className="w-3.5 h-3.5 text-pink-500" />
-                  <span className="text-xs font-medium">Shipment Fee</span>
-                </div>
-                <span className="text-xs font-semibold text-pink-500">${shipmentFee.toFixed(2)}</span>
-              </div>
+        {paidA && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Semantic obscuration — charged without consent
             </div>
-
-            <div className="space-y-1 text-[10px] border-t pt-2 mb-3">
-              <div className="flex justify-between text-muted-foreground">
-                <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between text-pink-500">
-                <span>Shipment</span>
-                <span>+${shipmentFee.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between text-xs font-bold border-t pt-1">
-                <span>Total</span>
-                <span>${total.toFixed(2)}</span>
-              </div>
-            </div>
-
-            <button
-              onClick={() => setStep("done")}
-              className="w-full bg-green-600 hover:bg-green-700 text-white rounded-lg py-2.5 text-xs font-semibold transition-colors"
-            >
-              Pay ${total.toFixed(2)}
-            </button>
-
-            <p className="text-[8px] text-center text-muted-foreground mt-2">
-              Shipment fee added at final confirmation.
+            <p className="text-muted-foreground">
+              Entailment(T(N<sub>injected</sub>), &ldquo;optional add-on&rdquo;) ={" "}
+              <strong className="text-rose-500">True</strong> — the line&rsquo;s own description says &ldquo;This{" "}
+              <em>optional</em> donation&hellip;&rdquo; — yet UserConsented(N<sub>injected</sub>) ={" "}
+              <strong className="text-foreground">False</strong>: the box was checked for you at mount and{" "}
+              {fmt(DONATION.price)} was folded into the total before you ever saw it.
+            </p>
+            <p className="text-muted-foreground">
+              {donationA
+                ? `You paid ${fmt(HEADPHONES.price + DONATION.price)}. The disclosure language exists — buried in 7px fine print — but it never preceded your consent, so the trigger condition is satisfied.`
+                : "You happened to uncheck the box — but the system bet on most users paying the extra $2 without reading the fine print."}
             </p>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </DemoShell>
   );
 }

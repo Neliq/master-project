@@ -3,6 +3,37 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Grinding — Condition 2: Visual Diminishing-Returns Feedback Loop
+ *
+ * Thesis: the incremental visual progress feedback ΔP_visual per user
+ * action is monitored over a sequence of k repeated interactions. The
+ * feature triggers if the per-action visual-reward delta decays
+ * exponentially — ΔP_i ≈ ΔP_0 · e^(−λi) — attenuating positive feedback
+ * to compel extended repetitive engagement:
+ *
+ *   ΔP_k/ΔP_1 < e^(−λ(k−1))  ∧  d²P/di² < 0
+ *
+ * Variant A (dark): the first collection fills 20% of the reward bar,
+ * the next 10%, then 5%, 2.5%… — feedback decays exponentially.
+ * Variant B (benign): every collection fills a constant 10% of the bar —
+ * feedback is steady, so the reward arrives predictably.
+ */
+
+const DARK_DELTA_0 = 20; // ΔP_0 in percent
+const DARK_DECAY = 0.5;  // e^(−λ) per action
+const BENIGN_DELTA = 10; // constant per-action percent
+
+function darkDelta(i: number): number {
+  // i is the 0-based action index → ΔP_i = ΔP_0 · e^(−λi)
+  return DARK_DELTA_0 * Math.pow(DARK_DECAY, i);
+}
+
+function darkProgress(clicks: number): number {
+  // geometric series: ΔP_0 · (1 − e^(−λk)) / (1 − e^(−λ))
+  return DARK_DELTA_0 * (1 - Math.pow(DARK_DECAY, clicks)) / (1 - DARK_DECAY);
+}
+
 export function GrindingCond2({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,53 +41,175 @@ export function GrindingCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [secs, setSecs] = React.useState(120);
-  const expired = secs <= 0;
-  const reset = () => setSecs(120);
-  React.useEffect(() => {
-    if (expired) return;
-    const id = window.setInterval(() => setSecs(s => Math.max(0, s - 1)), 1000);
-    return () => window.clearInterval(id);
-  }, [expired]);
-  const mm = String(Math.floor(secs / 60)).padStart(2, "0");
-  const ss = String(secs % 60).padStart(2, "0");
+  const [clicks, setClicks] = React.useState(0);
+
+  const reset = () => setClicks(0);
+
+  const revealed = clicks >= 12;
+  const pA = Math.min(100, darkProgress(clicks));
+  const lastDeltaA = clicks === 0 ? 0 : darkDelta(clicks - 1);
+  const pB = Math.min(100, clicks * BENIGN_DELTA);
+  const eggUnlocked = pB >= 100;
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Timer resets on expiry</span>
-        <span className="font-mono font-semibold">Yes</span>
+        <span className="text-muted-foreground">ΔP_1 (first action)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">+{DARK_DELTA_0.toFixed(1)}%</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Urgency type</span>
-        <span className="font-mono font-semibold">Manufactured</span>
+        <span className="text-muted-foreground">ΔP_k (action {Math.max(1, clicks)})</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">+{lastDeltaA.toFixed(2)}%</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">ΔP_k / ΔP_1</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{clicks === 0 ? "—" : (lastDeltaA / DARK_DELTA_0).toFixed(4)}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">d²P/di² (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">&lt; 0 (concave)</span>
       </div>
     </>
   ) : null;
 
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Grinding: Monotonous Loop Forcing"
-      caption="Monotonous Loop Forcing — manufactured countdown creates pressure to act before thinking." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border-teal-500/40 bg-teal-500/5 p-3 text-xs">
-          <div className="mb-1 font-medium text-teal-700 dark:text-teal-300">Monotonous Loop Forcing</div>
-          <div className="font-mono text-2xl font-bold tabular-nums text-center py-2">
-            {mm}:{ss}
+      title="Grinding: Visual Diminishing-Returns Feedback Loop"
+      caption="Visual Diminishing-Returns Feedback Loop — the reward bar's per-action progress decays exponentially, so the bar creeps ever more slowly and the reward recedes."
+      auditorStats={stats}
+      deltaNote="Both variants collect the same number of eggs toward the same Golden Egg. Variant A's bar fills +20%, then +10%, +5%, +2.5%… per collection (ΔP_i ≈ ΔP_0·e^(−λi), so d²P/di² < 0) — the feedback attenuates to compel more grinding. Variant B fills a constant +10% per collection and the egg unlocks after exactly 10 actions."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-start justify-between gap-2">
+              <div>
+                <h3 className="text-[11px] font-semibold">Sunny Hen Farm</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">
+                  Collect eggs to fill the reward bar. Every collection counts the same.
+                </p>
+              </div>
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+                Steady feedback
+              </div>
+            </div>
+
+            <div className="mt-3 flex items-center justify-between text-[10px]">
+              <span className="text-muted-foreground">Golden Egg progress</span>
+              <span className="font-mono tabular-nums">{pB.toFixed(0)}% · last action +{BENIGN_DELTA}%</span>
+            </div>
+            <div className="mt-1 bg-foreground/10 h-3 rounded-full overflow-hidden">
+              <div className="bg-emerald-500 h-full transition-all" style={{ width: `${pB}%` }} />
+            </div>
+            {eggUnlocked && (
+              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Golden Egg unlocked after exactly {Math.ceil(100 / BENIGN_DELTA)} collections!
+              </div>
+            )}
+
+            <div className="mt-2 flex gap-2">
+              <button
+                onClick={() => setClicks((c) => c + 1)}
+                className="flex-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              >
+                Collect an egg (+1)
+              </button>
+              <button
+                onClick={() => setClicks((c) => c + 5)}
+                className="flex-1 rounded-md border border-emerald-500/40 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              >
+                Collect ×5
+              </button>
+            </div>
           </div>
-          <div className="bg-foreground/10 h-2 rounded-full overflow-hidden mb-2">
-            <div className="bg-teal-500 h-full transition-all" style={{width: (secs/120*100)+"%"}} />
-          </div>
-          {!expired ? (
-            <button className="bg-teal-500 hover:bg-teal-600 text-white w-full rounded-md py-2 text-sm font-bold">
-              Claim 50% off
-            </button>
-          ) : (
-            <button onClick={reset} className="bg-teal-500 hover:bg-teal-600 text-white w-full rounded-md py-2 text-sm font-bold">
-              New offer available
-            </button>
+
+          {revealed && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Constant feedback loop
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                Every collection filled exactly <span className="font-mono tabular-nums">+{BENIGN_DELTA}%</span> —{" "}
+                ΔP_k/ΔP_1 = 1, so the bar moves predictably and the Golden Egg arrives after{" "}
+                <span className="font-mono tabular-nums">10</span> actions. No feedback is withheld.
+              </p>
+            </div>
           )}
         </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <h3 className="text-[11px] font-semibold">Sunny Hen Farm</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                Collect eggs to fill the reward bar. The bar… barely moves anymore.
+              </p>
+            </div>
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+              Diminishing
+            </div>
+          </div>
+
+          <div className="mt-3 flex items-center justify-between text-[10px]">
+            <span className="text-muted-foreground">Golden Egg progress</span>
+            <span className="font-mono tabular-nums">{pA.toFixed(1)}% · last action +{lastDeltaA.toFixed(2)}%</span>
+          </div>
+          <div className="mt-1 bg-foreground/10 h-3 rounded-full overflow-hidden">
+            <div className="bg-rose-500 h-full transition-all" style={{ width: `${pA}%` }} />
+          </div>
+          {clicks > 0 && clicks % 6 === 0 && (
+            <p className="mt-1.5 text-[8px] italic text-muted-foreground/50">
+              The bar crept only {pA.toFixed(1)}% after {clicks} collections. Almost there…?
+            </p>
+          )}
+          <p className="text-[9px] text-muted-foreground mt-1.5">
+            First collection filled <span className="font-mono tabular-nums">+{DARK_DELTA_0}%</span>; your last
+            filled <span className="font-mono tabular-nums">+{lastDeltaA.toFixed(2)}%</span>.
+          </p>
+
+          <div className="mt-2 flex gap-2">
+            <button
+              onClick={() => setClicks((c) => c + 1)}
+              className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+            >
+              Collect an egg (+1)
+            </button>
+            <button
+              onClick={() => setClicks((c) => c + 5)}
+              className="flex-1 rounded-md border border-rose-500/40 text-rose-700 dark:text-rose-300 hover:bg-rose-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
+            >
+              Collect ×5
+            </button>
+          </div>
+        </div>
+
+        {revealed && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Diminishing-returns loop triggered
+            </div>
+            <p className="text-muted-foreground">
+              After {clicks} collections the bar sits at <strong className="text-rose-500">{pA.toFixed(1)}%</strong>.
+              The first action filled <strong className="text-foreground">+{DARK_DELTA_0}%</strong>; action{" "}
+              {Math.max(1, clicks)} filled just <strong className="text-foreground">+{lastDeltaA.toFixed(2)}%</strong>{" "}
+              — ΔP_i ≈ ΔP_0 · e^(−λi) with ΔP_k/ΔP_1 ≈{" "}
+              <span className="font-mono tabular-nums">{clicks === 0 ? "—" : (lastDeltaA / DARK_DELTA_0).toFixed(4)}</span>{" "}
+              and d²P/di² &lt; 0. The interface deliberately attenuates positive feedback, so the reward
+              recedes just out of reach — compelling extended repetitive engagement.
+            </p>
+          </div>
+        )}
       </div>
     </DemoShell>
   );

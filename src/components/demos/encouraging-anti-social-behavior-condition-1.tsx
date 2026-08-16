@@ -3,6 +3,27 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Encouraging Anti-Social Behavior — Condition 1: Reward-Coupled Social Externality
+ *
+ * Thesis: A_antisocial is an action directed at non-consenting third
+ * parties (e.g., unsolicited mass-invites), V_reward the in-app value
+ * granted to the initiating user, E_externality the negative social cost
+ * (notification fatigue) borne by the target network. The feature
+ * triggers if the platform structurally hinges progression on generating
+ * these negative externalities, decoupling user benefit from network
+ * health:
+ *
+ *   A_antisocial  =>  (V_reward > 0  AND  E_externality >> 0)
+ *
+ * Variant A (dark): sending bulk invites to all 248 contacts is rewarded
+ * with +500 coins; the 248 notifications are the externality.
+ * Variant B (benign): one consenting invite; the reward only lands after
+ * the friend actually joins, so user benefit tracks network health.
+ */
+
+const CONTACTS = 248;
+
 export function EncouragingAntiSocialBehaviorCond1({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,13 +31,26 @@ export function EncouragingAntiSocialBehaviorCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const reset = () => {};
+  const [sent, setSent] = React.useState(false);
+  const reset = () => setSent(false);
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Emotional pressure tactics</span>
-        <span className="font-mono font-semibold">Detected</span>
+        <span className="text-muted-foreground">A_antisocial (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">mass-invite {CONTACTS} contacts</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">V_reward (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">+500 coins, immediate</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">E_externality</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{CONTACTS} notifications &gg; 0</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">A_antisocial (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">1 consented invite</span>
       </div>
     </>
   ) : null;
@@ -24,19 +58,130 @@ export function EncouragingAntiSocialBehaviorCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Encouraging Anti-Social Behavior: Reward-Coupled Social Externality"
-      caption="Reward-Coupled Social Externality — social or parasocial pressure manipulates behavior." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md bg-orange-500/5 border border-orange-500/30 p-3 text-xs">
-          <div className="font-medium text-orange-700 dark:text-orange-300">Reward-Coupled Social Externality</div>
-          <div className="space-y-1 mt-2">
-            <div className="text-[10px]">✓ Alex just purchased — 2 min ago</div>
-            <div className="text-[10px]">✓ Jordan just purchased — 5 min ago</div>
-            <div className="text-[10px]">✓ Sam just purchased — 8 min ago</div>
+      caption="Reward-Coupled Social Externality — progression is hinged on actions that dump negative externalities (notification fatigue) on non-consenting third parties, decoupling user reward from network health."
+      auditorStats={stats}
+      deltaNote="Variant A pays +500 coins the instant you mass-invite all 248 contacts, externalizing 248 notifications onto people who never asked. Variant B lets you invite one friend who consented, and the reward only arrives when they actually join — user benefit and network health move together."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-center justify-between gap-2">
+              <div>
+                <h3 className="text-[11px] font-semibold">WaveChat — grow your circle</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">
+                  Invite a friend who&rsquo;s interested. One invite, one choice.
+                </p>
+              </div>
+              <div className="rounded-full border border-emerald-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-emerald-600 dark:text-emerald-400">
+                {sent ? "20 coins" : "0 coins"}
+              </div>
+            </div>
+
+            <div className="mt-3 rounded-md bg-background border border-border p-2.5">
+              <div className="text-[9px] font-medium text-foreground/80">Choose who to invite</div>
+              <div className="mt-1.5 flex items-center gap-1.5 text-[9px] text-muted-foreground">
+                <span className="rounded-md border border-border bg-card px-2 py-1">Sam (consented)</span>
+                <span className="rounded-md border border-border bg-card px-2 py-1">Riley (consented)</span>
+              </div>
+              <button
+                onClick={() => setSent(true)}
+                disabled={sent}
+                className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
+                  sent
+                    ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
+                    : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                }`}
+              >
+                Send 1 invite
+              </button>
+            </div>
           </div>
-          <button className="bg-orange-500 hover:bg-orange-600 text-white mt-2 w-full rounded-md py-1.5 text-[10px] font-medium">
-            Don&apos;t miss out — $4.99
-          </button>
+
+          {sent && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Healthy growth
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                1 person was notified (they opted in). You earn{" "}
+                <span className="font-mono font-semibold text-emerald-600 dark:text-emerald-400">+20 coins</span>{" "}
+                only after Sam or Riley actually joins — your benefit is coupled to a healthy
+                network, so E_externality stays &asymp; 0.
+              </p>
+            </div>
+          )}
         </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-center justify-between gap-2">
+            <div>
+              <h3 className="text-[11px] font-semibold">WaveChat — grow your circle</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                Unlock the full app by inviting your address book.
+              </p>
+            </div>
+            <div className="rounded-full border border-rose-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-rose-600 dark:text-rose-400">
+              {sent ? "+500 coins" : "+500 coins"}
+            </div>
+          </div>
+
+          <div className="mt-3 rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5">
+            <div className="flex items-center justify-between gap-2">
+              <div className="text-[9px] font-medium text-foreground/80">
+                Send invites to your entire address book
+              </div>
+              <span className="rounded-full bg-rose-600 px-1.5 py-px text-[8px] font-bold uppercase tracking-wider text-white">
+                Pre-selected
+              </span>
+            </div>
+            <div className="mt-2 grid grid-cols-6 gap-1">
+              {Array.from({ length: 12 }).map((_, i) => (
+                <div key={i} className="flex items-center justify-center rounded border border-rose-500/30 bg-card py-0.5 text-[7px] font-mono text-muted-foreground">
+                  ✓
+                </div>
+              ))}
+              <div className="col-span-6 pt-0.5 text-center text-[8px] font-mono text-rose-600 dark:text-rose-400">
+                …all {CONTACTS} contacts selected
+              </div>
+            </div>
+            <button
+              onClick={() => setSent(true)}
+              disabled={sent}
+              className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
+                sent
+                  ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
+                  : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+              }`}
+            >
+              Invite all {CONTACTS} contacts &rarr; +500 coins
+            </button>
+          </div>
+        </div>
+
+        {sent && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Reward decoupled from network health
+            </div>
+            <p className="text-muted-foreground">
+              <span className="font-mono">A_antisocial</span> fired: {CONTACTS} people who never
+              asked received notifications, and you got{" "}
+              <span className="font-mono font-semibold text-rose-600 dark:text-rose-400">+500 coins</span>{" "}
+              instantly. The platform&rsquo;s growth is subsidized by your friends&rsquo; attention —{" "}
+              <span className="font-mono">V_reward &gt; 0 &and; E_externality &gg; 0</span>. You were
+              turned into a social disruption agent; your contacts&rsquo; notification fatigue is
+              the product.
+            </p>
+          </div>
+        )}
       </div>
     </DemoShell>
   );

@@ -1,211 +1,257 @@
 "use client";
 
 import * as React from "react";
-import { ShoppingCart, Trash2, Shield, Check, ArrowLeft } from "lucide-react";
+import { DemoShell } from "@/components/demos/demo-shell";
+import { Headphones, ShieldCheck, Eye, EyeOff } from "lucide-react";
+
+/*
+ * Sneak Into Basket — Condition 2: Visual Indistinguishability of Surcharged Items
+ *
+ * Thesis: V_user is the visual feature vector set of the user's own cart
+ * line items; V_injected is the vector of the surreptitiously injected item.
+ * Δ_color(i, j) is the Euclidean distance in CIELAB color space. The feature
+ * fires if the injected item is rendered with chromatic and typographic
+ * properties within a similarity radius of the legitimate items, causing the
+ * user to overlook it:
+ *
+ *   min ||v_injected − v_u||₂ < τ_camouflage
+ *    v_u ∈ V_user
+ *
+ * Variant A (dark): the injected warranty line is rendered with the identical
+ * background, typography, and radius as the user's own item (Δ_color = 3.2),
+ * so nothing flags it.
+ * Variant B (benign): the same line is rendered in a visually distinct
+ * "suggested add-on" section (Δ_color = 41.2), impossible to overlook.
+ */
+
+const HEADPHONES = { name: "AeroSound X9 Headphones", price: 129.99 };
+const WARRANTY = { name: "2-Year Extended Warranty", price: 19.99 };
+const TAU_CAMOUFLAGE = 25;
+const DELTA_DARK = 3.2;
+const DELTA_BENIGN = 41.2;
+
+const fmt = (n: number) => `$${n.toFixed(2)}`;
 
 export function SneakIntoBasketCond2({
-  mode = "user",
-  annotations = [],
-  onRestart,
+  mode = "user", annotations = [], onRestart,
 }: {
   mode?: "user" | "auditor";
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [step, setStep] = React.useState<"basket" | "checkout" | "done">("basket");
-  const [warrantyChecked, setWarrantyChecked] = React.useState(true);
-  const reset = () => { setStep("basket"); setWarrantyChecked(true); };
+  // Variant A's honesty quiz: "how many items did YOU add?"
+  const [answer, setAnswer] = React.useState<null | 1 | 2>(null);
+  // Variant B: user declines the suggested add-on
+  const [declined, setDeclined] = React.useState(false);
+  const [checkedOut, setCheckedOut] = React.useState(false);
 
-  const items = [
-    { name: "Wireless Mouse", price: 29.99, qty: 1 },
-    { name: "USB-C Hub 7-in-1", price: 44.99, qty: 1 },
-  ];
-  const warrantyPrice = 14.99;
-  const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0);
-  const total = subtotal + (warrantyChecked ? warrantyPrice : 0);
+  const reset = () => {
+    setAnswer(null);
+    setDeclined(false);
+    setCheckedOut(false);
+  };
+
+  const totalB = HEADPHONES.price + (declined ? 0 : WARRANTY.price);
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Items in basket</span>
-        <span className="font-mono font-semibold">{items.length}</span>
+        <span className="text-muted-foreground">Δ_color(v_injected, v_user) — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{DELTA_DARK} &lt; τ_camouflage ({TAU_CAMOUFLAGE})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Items at checkout</span>
-        <span className="font-mono font-semibold text-pink-500">{items.length + 1}</span>
+        <span className="text-muted-foreground">Δ_color — benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">{DELTA_BENIGN} &gt; τ_camouflage</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sneaked item</span>
-        <span className="font-mono font-semibold text-pink-500">Extended Warranty</span>
+        <span className="text-muted-foreground">Rendered as (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">identical bg · type · radius</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Pre-checked</span>
-        <span className="font-mono font-semibold text-red-500">Yes</span>
+        <span className="text-muted-foreground">Total charged (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{fmt(HEADPHONES.price + WARRANTY.price)} incl. {fmt(WARRANTY.price)} unrequested</span>
       </div>
     </>
   ) : null;
 
-  /* ── Done screen ── */
-  if (step === "done") {
-    return (
-      <div className="rounded-lg border bg-background overflow-hidden">
-        <div className="p-4 text-center space-y-3">
-          <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto">
-            <Check className="w-6 h-6 text-green-600" />
-          </div>
-          <h3 className="text-sm font-semibold">Order Placed!</h3>
-          <p className="text-[10px] text-muted-foreground">
-            You were charged ${total.toFixed(2)}.
-            {warrantyChecked && " This includes the Extended Warranty ($14.99)."}
-          </p>
-          <div className="bg-muted/50 rounded-md p-2 text-[10px] space-y-1">
-            {items.map(i => (
-              <div key={i.name} className="flex justify-between">
-                <span className="text-muted-foreground">{i.name}</span>
-                <span>${i.price.toFixed(2)}</span>
-              </div>
-            ))}
-            {warrantyChecked && (
-              <div className="flex justify-between text-pink-500">
-                <span>Extended Warranty</span>
-                <span>${warrantyPrice.toFixed(2)}</span>
-              </div>
-            )}
-            <div className="flex justify-between font-semibold border-t pt-1">
-              <span>Total</span>
-              <span>${total.toFixed(2)}</span>
-            </div>
-          </div>
-          <button
-            onClick={reset}
-            className="text-[10px] text-muted-foreground hover:text-foreground underline underline-offset-2"
-          >
-            Restart demo
-          </button>
-        </div>
+  const userLine = (name: string, price: number) => (
+    <div className="flex items-center justify-between rounded-md border bg-background px-2.5 py-2">
+      <div className="flex min-w-0 items-center gap-2">
+        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-muted">
+          <Headphones className="h-3.5 w-3.5 text-muted-foreground" />
+        </span>
+        <span className="truncate text-[10px] font-medium">{name}</span>
       </div>
-    );
-  }
+      <span className="ml-2 shrink-0 font-mono text-[10px] font-semibold tabular-nums">{fmt(price)}</span>
+    </div>
+  );
 
   return (
-    <div className="space-y-3">
-      {/* ── Step 1: Basket ── */}
-      {step === "basket" && (
-        <div className="rounded-lg border bg-background overflow-hidden">
-          <div className="p-3">
-            <div className="flex items-center gap-2 mb-3">
-              <ShoppingCart className="w-4 h-4 text-foreground" />
-              <h3 className="text-sm font-semibold">Your Basket ({items.length} items)</h3>
+    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+      title="Sneak Into Basket: Visual Indistinguishability of Surcharged Items"
+      caption="Visual Indistinguishability of Surcharged Items — the injected line item is rendered with the same chromatic and typographic properties as your own items, so it falls inside the camouflage radius and escapes notice."
+      auditorStats={stats}
+      deltaNote={`Both carts contain the same two lines: ${HEADPHONES.name} and ${WARRANTY.name}. In Variant A the warranty reuses the identical card styling (Δ_color = ${DELTA_DARK} < τ_camouflage = ${TAU_CAMOUFLAGE}), so it reads as part of your purchase. In Variant B the same line sits in a tinted, dashed, clearly-badged "suggested add-on" section (Δ_color = ${DELTA_BENIGN}), so nothing can be overlooked.`}
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-background p-2.5">
+            <div className="mb-2 flex items-center justify-between">
+              <h3 className="text-[11px] font-semibold">Your cart</h3>
+              <span className="text-[8px] text-muted-foreground">1 item you added</span>
             </div>
+            <div className="space-y-1.5">{userLine(HEADPHONES.name, HEADPHONES.price)}</div>
 
-            <div className="space-y-2 mb-3">
-              {items.map(item => (
-                <div key={item.name} className="flex items-center gap-3 p-2 rounded-md bg-muted/30">
-                  <div className="w-10 h-10 rounded-md bg-muted flex items-center justify-center shrink-0">
-                    <ShoppingCart className="w-4 h-4 text-muted-foreground" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-xs font-medium">{item.name}</div>
-                    <div className="text-[9px] text-muted-foreground">Qty: {item.qty}</div>
-                  </div>
-                  <span className="text-xs font-semibold">${item.price.toFixed(2)}</span>
-                  <button className="text-muted-foreground hover:text-red-500 transition-colors">
-                    <Trash2 className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex justify-between text-xs font-semibold border-t pt-2 mb-3">
-              <span>Subtotal</span>
-              <span>${subtotal.toFixed(2)}</span>
-            </div>
-
-            <button
-              onClick={() => setStep("checkout")}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg py-2.5 text-xs font-semibold transition-colors"
-            >
-              Proceed to Checkout
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* ── Step 2: Checkout with sneaked item ── */}
-      {step === "checkout" && (
-        <div className="rounded-lg border bg-background overflow-hidden">
-          <div className="p-3">
-            <button
-              onClick={() => setStep("basket")}
-              className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-foreground mb-3 transition-colors"
-            >
-              <ArrowLeft className="w-3 h-3" />
-              Back to basket
-            </button>
-            <h3 className="text-sm font-semibold mb-3">Checkout</h3>
-
-            <div className="space-y-2 mb-3">
-              {items.map(item => (
-                <div key={item.name} className="flex items-center justify-between p-2 rounded-md bg-muted/30">
-                  <div className="flex items-center gap-2">
-                    <ShoppingCart className="w-3.5 h-3.5 text-muted-foreground" />
-                    <span className="text-xs">{item.name}</span>
-                  </div>
-                  <span className="text-xs font-semibold">${item.price.toFixed(2)}</span>
-                </div>
-              ))}
-
-              {/* Sneaked warranty item */}
-              <div className="flex items-center justify-between p-2 rounded-md bg-pink-50 dark:bg-pink-500/5 border border-pink-200 dark:border-pink-500/20">
-                <div className="flex items-center gap-2">
-                  <Shield className="w-3.5 h-3.5 text-pink-500" />
-                  <div>
-                    <span className="text-xs font-medium">Extended Warranty</span>
-                    <div className="text-[9px] text-muted-foreground">12-month coverage</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold">${warrantyPrice.toFixed(2)}</span>
-                  <input
-                    type="checkbox"
-                    checked={warrantyChecked}
-                    onChange={(e) => setWarrantyChecked(e.target.checked)}
-                    className="w-3.5 h-3.5 rounded border-pink-300 text-pink-500 focus:ring-pink-500"
-                  />
-                </div>
+            {/* Injected item — visually DISTINCT: tinted, dashed, badged */}
+            <div className="mt-2 rounded-md border-2 border-dashed border-amber-400/50 bg-amber-500/10 p-2">
+              <div className="mb-1 flex items-center gap-1">
+                <ShieldCheck className="h-3 w-3 text-amber-600 dark:text-amber-400" />
+                <span className="rounded-full bg-amber-500 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-white">
+                  Suggested add-on
+                </span>
+                <span className="ml-auto text-[7px] text-muted-foreground">optional · not added by you</span>
               </div>
-            </div>
-
-            <div className="space-y-1 text-[10px] border-t pt-2 mb-3">
-              <div className="flex justify-between text-muted-foreground">
-                <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-medium">{WARRANTY.name}</span>
+                <span className="font-mono text-[10px] font-semibold tabular-nums">{fmt(WARRANTY.price)}</span>
               </div>
-              {warrantyChecked && (
-                <div className="flex justify-between text-pink-500">
-                  <span>Extended Warranty</span>
-                  <span>${warrantyPrice.toFixed(2)}</span>
+              {!declined ? (
+                <button
+                  onClick={() => setDeclined(true)}
+                  className="mt-1.5 w-full rounded border border-amber-400/60 py-1 text-[8px] font-semibold text-amber-700 dark:text-amber-300 transition-colors hover:bg-amber-500/10 cursor-pointer"
+                >
+                  Decline — remove from order
+                </button>
+              ) : (
+                <div className="mt-1.5 rounded bg-emerald-500/10 px-2 py-1 text-[8px] font-medium text-emerald-700 dark:text-emerald-300">
+                  Declined — excluded from your total ✓
                 </div>
               )}
-              <div className="flex justify-between text-xs font-bold border-t pt-1">
-                <span>Total</span>
-                <span>${total.toFixed(2)}</span>
-              </div>
             </div>
 
+            <div className="mt-2 flex items-center justify-between border-t pt-2">
+              <span className="text-[9px] font-medium">Total {declined && <span className="text-muted-foreground">(warranty declined)</span>}</span>
+              <span className="font-mono text-[11px] font-bold tabular-nums text-emerald-600 dark:text-emerald-400">{fmt(totalB)}</span>
+            </div>
             <button
-              onClick={() => setStep("done")}
-              className="w-full bg-green-600 hover:bg-green-700 text-white rounded-lg py-2.5 text-xs font-semibold transition-colors"
+              onClick={() => setCheckedOut(true)}
+              className="mt-2 w-full rounded-md bg-emerald-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
             >
-              Pay ${total.toFixed(2)}
+              Pay {fmt(totalB)}
             </button>
+          </div>
 
-            <p className="text-[8px] text-center text-muted-foreground mt-2">
-              By placing this order you agree to the Terms of Service.
+          {checkedOut && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <Eye className="h-3 w-3" /> Nothing camouflaged
+              </div>
+              <p className="text-muted-foreground">
+                min ||v<sub>injected</sub> − v<sub>u</sub>||₂ = {DELTA_BENIGN} &gt; τ<sub>camouflage</sub> ({TAU_CAMOUFLAGE}):
+                the tinted background, dashed border, badge, and separate section keep the add-on visually apart from your
+                items. You paid {declined ? fmt(totalB) : fmt(HEADPHONES.price + WARRANTY.price)} — every dollar of it
+                deliberate.
+              </p>
+            </div>
+          )}
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-background p-2.5">
+          <div className="mb-2 flex items-center justify-between">
+            <h3 className="text-[11px] font-semibold">Your cart</h3>
+            <span className="text-[8px] text-muted-foreground">2 items</span>
+          </div>
+          <div className="space-y-1.5">
+            {/* Both lines rendered with IDENTICAL styling — Δ_color = 3.2 */}
+            {userLine(HEADPHONES.name, HEADPHONES.price)}
+            <div className="flex items-center justify-between rounded-md border bg-background px-2.5 py-2">
+              <div className="flex min-w-0 items-center gap-2">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-muted">
+                  <ShieldCheck className="h-3.5 w-3.5 text-muted-foreground" />
+                </span>
+                <span className="truncate text-[10px] font-medium">{WARRANTY.name}</span>
+              </div>
+              <span className="ml-2 shrink-0 font-mono text-[10px] font-semibold tabular-nums">{fmt(WARRANTY.price)}</span>
+            </div>
+          </div>
+
+          {/* Honesty quiz: prove the camouflage */}
+          {!checkedOut && (
+            <div className="mt-2 rounded-md border bg-muted/30 p-2">
+              <p className="text-[8px] font-semibold uppercase tracking-wide text-muted-foreground">Quick check</p>
+              <p className="mt-0.5 text-[9px] text-muted-foreground">
+                You added <strong className="text-foreground">1 item</strong> to this cart. How many items does the cart show?
+              </p>
+              <div className="mt-1.5 flex gap-1.5">
+                {([1, 2] as const).map((n) => (
+                  <button
+                    key={n}
+                    onClick={() => setAnswer(n)}
+                    className={`flex-1 rounded-md border py-1.5 text-[10px] font-semibold transition-colors cursor-pointer ${
+                      answer === n
+                        ? "border-rose-500/60 bg-rose-500/10 text-rose-600 dark:text-rose-300"
+                        : "border-border bg-background text-foreground hover:bg-muted"
+                    }`}
+                  >
+                    {n} item{n === 1 ? "" : "s"}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="mt-2 flex items-center justify-between border-t pt-2">
+            <span className="text-[9px] font-medium">Total</span>
+            <span className="font-mono text-[11px] font-bold tabular-nums text-rose-600 dark:text-rose-400">{fmt(HEADPHONES.price + WARRANTY.price)}</span>
+          </div>
+          <button
+            onClick={() => setCheckedOut(true)}
+            className="mt-2 w-full rounded-md bg-rose-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-rose-700 cursor-pointer"
+          >
+            Pay {fmt(HEADPHONES.price + WARRANTY.price)}
+          </button>
+        </div>
+
+        {answer !== null && (
+          <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${answer === 1 ? "border-amber-500/30 bg-amber-500/5" : "border-emerald-500/30 bg-emerald-500/5"}`}>
+            <div className={`mb-0.5 flex items-center gap-1.5 font-semibold uppercase tracking-tight ${answer === 1 ? "text-amber-700 dark:text-amber-300" : "text-emerald-700 dark:text-emerald-300"}`}>
+              {answer === 1 ? (
+                <>
+                  <EyeOff className="h-3 w-3" /> The injected item escaped you
+                </>
+              ) : (
+                <>
+                  <Eye className="h-3 w-3" /> You caught it — by counting
+                </>
+              )}
+            </div>
+            <p className="text-muted-foreground">
+              {answer === 1
+                ? `The ${WARRANTY.name} line reused your item's exact background, typography, and border radius — Δ_color = ${DELTA_DARK} < τ_camouflage (${TAU_CAMOUFLAGE}) — so it grouped visually with your own purchase and you read the cart as "1 item".`
+                : `You spotted the second line, but the styling gave no cue: Δ_color = ${DELTA_DARK} < τ_camouflage. Distinguishing the injected item from your own required deliberate counting — exactly the cognitive load the pattern exploits.`}
             </p>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+
+        {checkedOut && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Surcharge camouflaged into your total
+            </div>
+            <p className="text-muted-foreground">
+              You paid <strong className="text-rose-500">{fmt(HEADPHONES.price + WARRANTY.price)}</strong> —{" "}
+              {fmt(WARRANTY.price)} of it for the {WARRANTY.name} you never added. Because the line is typographically
+              identical to your own item, it never triggered a visual inspection. Status-quo bias does the rest at
+              checkout.
+            </p>
+          </div>
+        )}
+      </div>
+    </DemoShell>
   );
 }

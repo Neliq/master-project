@@ -1,0 +1,2234 @@
+{
+ "inst-0332": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "activity-messages",
+  "condition_index": 1
+ },
+ "inst-0284": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "activity-messages",
+  "condition_index": 1
+ },
+ "inst-0158": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "activity-messages",
+  "condition_index": 2
+ },
+ "inst-0350": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "activity-messages",
+  "condition_index": 2
+ },
+ "inst-0001": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "activity-messages",
+  "condition_index": 3
+ },
+ "inst-0359": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "activity-messages",
+  "condition_index": 3
+ },
+ "inst-0187": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "addictive-design",
+  "condition_index": 1
+ },
+ "inst-0290": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "addictive-design",
+  "condition_index": 1
+ },
+ "inst-0144": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "addictive-design",
+  "condition_index": 2
+ },
+ "inst-0286": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "addictive-design",
+  "condition_index": 2
+ },
+ "inst-0266": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "addictive-design",
+  "condition_index": 3
+ },
+ "inst-0317": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "addictive-design",
+  "condition_index": 3
+ },
+ "inst-0244": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "address-book-leeching",
+  "condition_index": 1
+ },
+ "inst-0337": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "address-book-leeching",
+  "condition_index": 1
+ },
+ "inst-0220": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "address-book-leeching",
+  "condition_index": 2
+ },
+ "inst-0047": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "address-book-leeching",
+  "condition_index": 2
+ },
+ "inst-0255": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "address-book-leeching",
+  "condition_index": 3
+ },
+ "inst-0296": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "address-book-leeching",
+  "condition_index": 3
+ },
+ "inst-0367": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "auto-play",
+  "condition_index": 1
+ },
+ "inst-0308": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "auto-play",
+  "condition_index": 1
+ },
+ "inst-0261": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "auto-play",
+  "condition_index": 2
+ },
+ "inst-0304": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "auto-play",
+  "condition_index": 2
+ },
+ "inst-0265": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "auto-play",
+  "condition_index": 3
+ },
+ "inst-0356": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "auto-play",
+  "condition_index": 3
+ },
+ "inst-0163": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 1
+ },
+ "inst-0325": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 1
+ },
+ "inst-0188": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 2
+ },
+ "inst-0322": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 2
+ },
+ "inst-0327": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 3
+ },
+ "inst-0173": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 3
+ },
+ "inst-0341": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "automating-the-user-away",
+  "condition_index": 1
+ },
+ "inst-0092": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "automating-the-user-away",
+  "condition_index": 1
+ },
+ "inst-0137": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "automating-the-user-away",
+  "condition_index": 2
+ },
+ "inst-0019": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "automating-the-user-away",
+  "condition_index": 2
+ },
+ "inst-0324": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "automating-the-user-away",
+  "condition_index": 3
+ },
+ "inst-0214": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "automating-the-user-away",
+  "condition_index": 3
+ },
+ "inst-0166": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 1
+ },
+ "inst-0007": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 1
+ },
+ "inst-0118": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 2
+ },
+ "inst-0126": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 2
+ },
+ "inst-0203": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 3
+ },
+ "inst-0051": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 3
+ },
+ "inst-0104": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "bundling",
+  "condition_index": 1
+ },
+ "inst-0100": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "bundling",
+  "condition_index": 1
+ },
+ "inst-0133": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "bundling",
+  "condition_index": 2
+ },
+ "inst-0303": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "bundling",
+  "condition_index": 2
+ },
+ "inst-0012": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "bundling",
+  "condition_index": 3
+ },
+ "inst-0269": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "bundling",
+  "condition_index": 3
+ },
+ "inst-0083": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "choice-overload",
+  "condition_index": 1
+ },
+ "inst-0152": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "choice-overload",
+  "condition_index": 1
+ },
+ "inst-0211": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "choice-overload",
+  "condition_index": 2
+ },
+ "inst-0246": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "choice-overload",
+  "condition_index": 2
+ },
+ "inst-0363": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "choice-overload",
+  "condition_index": 3
+ },
+ "inst-0036": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "choice-overload",
+  "condition_index": 3
+ },
+ "inst-0260": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "complex-language",
+  "condition_index": 1
+ },
+ "inst-0273": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "complex-language",
+  "condition_index": 1
+ },
+ "inst-0146": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "complex-language",
+  "condition_index": 2
+ },
+ "inst-0348": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "complex-language",
+  "condition_index": 2
+ },
+ "inst-0196": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "complex-language",
+  "condition_index": 3
+ },
+ "inst-0059": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "complex-language",
+  "condition_index": 3
+ },
+ "inst-0216": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "confirmshaming",
+  "condition_index": 1
+ },
+ "inst-0010": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "confirmshaming",
+  "condition_index": 1
+ },
+ "inst-0107": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "confirmshaming",
+  "condition_index": 2
+ },
+ "inst-0272": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "confirmshaming",
+  "condition_index": 2
+ },
+ "inst-0119": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "confirmshaming",
+  "condition_index": 3
+ },
+ "inst-0025": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "confirmshaming",
+  "condition_index": 3
+ },
+ "inst-0031": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "conflicting-information",
+  "condition_index": 1
+ },
+ "inst-0334": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "conflicting-information",
+  "condition_index": 1
+ },
+ "inst-0088": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "conflicting-information",
+  "condition_index": 2
+ },
+ "inst-0159": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "conflicting-information",
+  "condition_index": 2
+ },
+ "inst-0061": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "conflicting-information",
+  "condition_index": 3
+ },
+ "inst-0353": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "conflicting-information",
+  "condition_index": 3
+ },
+ "inst-0328": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "countdown-on-ads",
+  "condition_index": 1
+ },
+ "inst-0165": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "countdown-on-ads",
+  "condition_index": 1
+ },
+ "inst-0063": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "countdown-on-ads",
+  "condition_index": 2
+ },
+ "inst-0232": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "countdown-on-ads",
+  "condition_index": 2
+ },
+ "inst-0229": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "countdown-on-ads",
+  "condition_index": 3
+ },
+ "inst-0315": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "countdown-on-ads",
+  "condition_index": 3
+ },
+ "inst-0135": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "countdown-timer",
+  "condition_index": 1
+ },
+ "inst-0307": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "countdown-timer",
+  "condition_index": 1
+ },
+ "inst-0251": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "countdown-timer",
+  "condition_index": 2
+ },
+ "inst-0245": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "countdown-timer",
+  "condition_index": 2
+ },
+ "inst-0062": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "countdown-timer",
+  "condition_index": 3
+ },
+ "inst-0011": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "countdown-timer",
+  "condition_index": 3
+ },
+ "inst-0209": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "customisation",
+  "condition_index": 1
+ },
+ "inst-0221": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "customisation",
+  "condition_index": 1
+ },
+ "inst-0219": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "customisation",
+  "condition_index": 2
+ },
+ "inst-0005": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "customisation",
+  "condition_index": 2
+ },
+ "inst-0228": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "customisation",
+  "condition_index": 3
+ },
+ "inst-0095": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "customisation",
+  "condition_index": 3
+ },
+ "inst-0175": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "cuteness",
+  "condition_index": 1
+ },
+ "inst-0033": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "cuteness",
+  "condition_index": 1
+ },
+ "inst-0091": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "cuteness",
+  "condition_index": 2
+ },
+ "inst-0197": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "cuteness",
+  "condition_index": 2
+ },
+ "inst-0193": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "cuteness",
+  "condition_index": 3
+ },
+ "inst-0186": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "cuteness",
+  "condition_index": 3
+ },
+ "inst-0227": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "dead-end",
+  "condition_index": 1
+ },
+ "inst-0362": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "dead-end",
+  "condition_index": 1
+ },
+ "inst-0054": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "dead-end",
+  "condition_index": 2
+ },
+ "inst-0257": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "dead-end",
+  "condition_index": 2
+ },
+ "inst-0053": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "dead-end",
+  "condition_index": 3
+ },
+ "inst-0347": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "dead-end",
+  "condition_index": 3
+ },
+ "inst-0120": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "disguised-ad",
+  "condition_index": 1
+ },
+ "inst-0297": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "disguised-ad",
+  "condition_index": 1
+ },
+ "inst-0090": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "disguised-ad",
+  "condition_index": 2
+ },
+ "inst-0041": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "disguised-ad",
+  "condition_index": 2
+ },
+ "inst-0368": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "disguised-ad",
+  "condition_index": 3
+ },
+ "inst-0162": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "disguised-ad",
+  "condition_index": 3
+ },
+ "inst-0340": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "drip-pricing",
+  "condition_index": 1
+ },
+ "inst-0096": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "drip-pricing",
+  "condition_index": 1
+ },
+ "inst-0235": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "drip-pricing",
+  "condition_index": 2
+ },
+ "inst-0281": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "drip-pricing",
+  "condition_index": 2
+ },
+ "inst-0020": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "drip-pricing",
+  "condition_index": 3
+ },
+ "inst-0339": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "drip-pricing",
+  "condition_index": 3
+ },
+ "inst-0345": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 1
+ },
+ "inst-0241": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 1
+ },
+ "inst-0153": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 2
+ },
+ "inst-0319": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 2
+ },
+ "inst-0129": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 3
+ },
+ "inst-0145": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 3
+ },
+ "inst-0008": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 1
+ },
+ "inst-0218": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 1
+ },
+ "inst-0111": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 2
+ },
+ "inst-0067": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 2
+ },
+ "inst-0237": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 3
+ },
+ "inst-0002": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 3
+ },
+ "inst-0243": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "false-hierarchy",
+  "condition_index": 1
+ },
+ "inst-0309": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "false-hierarchy",
+  "condition_index": 1
+ },
+ "inst-0360": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "false-hierarchy",
+  "condition_index": 2
+ },
+ "inst-0049": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "false-hierarchy",
+  "condition_index": 2
+ },
+ "inst-0016": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "false-hierarchy",
+  "condition_index": 3
+ },
+ "inst-0123": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "false-hierarchy",
+  "condition_index": 3
+ },
+ "inst-0114": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 1
+ },
+ "inst-0142": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 1
+ },
+ "inst-0336": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 2
+ },
+ "inst-0009": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 2
+ },
+ "inst-0149": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 3
+ },
+ "inst-0288": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 3
+ },
+ "inst-0116": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 1
+ },
+ "inst-0073": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 1
+ },
+ "inst-0161": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 2
+ },
+ "inst-0371": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 2
+ },
+ "inst-0022": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 3
+ },
+ "inst-0292": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 3
+ },
+ "inst-0276": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "forced-continuity",
+  "condition_index": 1
+ },
+ "inst-0130": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "forced-continuity",
+  "condition_index": 1
+ },
+ "inst-0141": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "forced-continuity",
+  "condition_index": 2
+ },
+ "inst-0066": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "forced-continuity",
+  "condition_index": 2
+ },
+ "inst-0364": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "forced-continuity",
+  "condition_index": 3
+ },
+ "inst-0275": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "forced-continuity",
+  "condition_index": 3
+ },
+ "inst-0201": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "forced-grace-period",
+  "condition_index": 1
+ },
+ "inst-0131": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "forced-grace-period",
+  "condition_index": 1
+ },
+ "inst-0204": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "forced-grace-period",
+  "condition_index": 2
+ },
+ "inst-0003": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "forced-grace-period",
+  "condition_index": 2
+ },
+ "inst-0302": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "forced-grace-period",
+  "condition_index": 3
+ },
+ "inst-0078": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "forced-grace-period",
+  "condition_index": 3
+ },
+ "inst-0192": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "forced-registration",
+  "condition_index": 1
+ },
+ "inst-0280": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "forced-registration",
+  "condition_index": 1
+ },
+ "inst-0026": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "forced-registration",
+  "condition_index": 2
+ },
+ "inst-0122": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "forced-registration",
+  "condition_index": 2
+ },
+ "inst-0056": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "forced-registration",
+  "condition_index": 3
+ },
+ "inst-0320": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "forced-registration",
+  "condition_index": 3
+ },
+ "inst-0081": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "friend-spam",
+  "condition_index": 1
+ },
+ "inst-0358": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "friend-spam",
+  "condition_index": 1
+ },
+ "inst-0369": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "friend-spam",
+  "condition_index": 2
+ },
+ "inst-0283": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "friend-spam",
+  "condition_index": 2
+ },
+ "inst-0060": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "friend-spam",
+  "condition_index": 3
+ },
+ "inst-0225": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "friend-spam",
+  "condition_index": 3
+ },
+ "inst-0121": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "granting-and-interaction",
+  "condition_index": 1
+ },
+ "inst-0238": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "granting-and-interaction",
+  "condition_index": 1
+ },
+ "inst-0198": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "granting-and-interaction",
+  "condition_index": 2
+ },
+ "inst-0262": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "granting-and-interaction",
+  "condition_index": 2
+ },
+ "inst-0099": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "granting-and-interaction",
+  "condition_index": 3
+ },
+ "inst-0370": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "granting-and-interaction",
+  "condition_index": 3
+ },
+ "inst-0177": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "grinding",
+  "condition_index": 1
+ },
+ "inst-0048": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "grinding",
+  "condition_index": 1
+ },
+ "inst-0234": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "grinding",
+  "condition_index": 2
+ },
+ "inst-0156": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "grinding",
+  "condition_index": 2
+ },
+ "inst-0148": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "grinding",
+  "condition_index": 3
+ },
+ "inst-0037": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "grinding",
+  "condition_index": 3
+ },
+ "inst-0057": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "hidden-information",
+  "condition_index": 1
+ },
+ "inst-0087": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "hidden-information",
+  "condition_index": 1
+ },
+ "inst-0279": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "hidden-information",
+  "condition_index": 2
+ },
+ "inst-0113": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "hidden-information",
+  "condition_index": 2
+ },
+ "inst-0058": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "hidden-information",
+  "condition_index": 3
+ },
+ "inst-0164": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "hidden-information",
+  "condition_index": 3
+ },
+ "inst-0169": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "high-demand",
+  "condition_index": 1
+ },
+ "inst-0039": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "high-demand",
+  "condition_index": 1
+ },
+ "inst-0108": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "high-demand",
+  "condition_index": 2
+ },
+ "inst-0236": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "high-demand",
+  "condition_index": 2
+ },
+ "inst-0064": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "high-demand",
+  "condition_index": 3
+ },
+ "inst-0285": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "high-demand",
+  "condition_index": 3
+ },
+ "inst-0318": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "immortal-accounts",
+  "condition_index": 1
+ },
+ "inst-0242": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "immortal-accounts",
+  "condition_index": 1
+ },
+ "inst-0344": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "immortal-accounts",
+  "condition_index": 2
+ },
+ "inst-0069": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "immortal-accounts",
+  "condition_index": 2
+ },
+ "inst-0139": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "immortal-accounts",
+  "condition_index": 3
+ },
+ "inst-0136": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "immortal-accounts",
+  "condition_index": 3
+ },
+ "inst-0102": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "infinite-scrolling",
+  "condition_index": 1
+ },
+ "inst-0224": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "infinite-scrolling",
+  "condition_index": 1
+ },
+ "inst-0086": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "infinite-scrolling",
+  "condition_index": 2
+ },
+ "inst-0140": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "infinite-scrolling",
+  "condition_index": 2
+ },
+ "inst-0184": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "infinite-scrolling",
+  "condition_index": 3
+ },
+ "inst-0172": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "infinite-scrolling",
+  "condition_index": 3
+ },
+ "inst-0050": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "information-without-context",
+  "condition_index": 1
+ },
+ "inst-0190": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "information-without-context",
+  "condition_index": 1
+ },
+ "inst-0178": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "information-without-context",
+  "condition_index": 2
+ },
+ "inst-0160": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "information-without-context",
+  "condition_index": 2
+ },
+ "inst-0115": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "information-without-context",
+  "condition_index": 3
+ },
+ "inst-0199": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "information-without-context",
+  "condition_index": 3
+ },
+ "inst-0004": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "intermediate-currency",
+  "condition_index": 1
+ },
+ "inst-0027": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "intermediate-currency",
+  "condition_index": 1
+ },
+ "inst-0200": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "intermediate-currency",
+  "condition_index": 2
+ },
+ "inst-0294": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "intermediate-currency",
+  "condition_index": 2
+ },
+ "inst-0316": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "intermediate-currency",
+  "condition_index": 3
+ },
+ "inst-0042": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "intermediate-currency",
+  "condition_index": 3
+ },
+ "inst-0128": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 1
+ },
+ "inst-0109": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 1
+ },
+ "inst-0013": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 2
+ },
+ "inst-0179": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 2
+ },
+ "inst-0295": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 3
+ },
+ "inst-0210": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 3
+ },
+ "inst-0017": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "limited-time-message",
+  "condition_index": 1
+ },
+ "inst-0306": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "limited-time-message",
+  "condition_index": 1
+ },
+ "inst-0072": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "limited-time-message",
+  "condition_index": 2
+ },
+ "inst-0170": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "limited-time-message",
+  "condition_index": 2
+ },
+ "inst-0182": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "limited-time-message",
+  "condition_index": 3
+ },
+ "inst-0093": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "limited-time-message",
+  "condition_index": 3
+ },
+ "inst-0143": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "low-stock",
+  "condition_index": 1
+ },
+ "inst-0154": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "low-stock",
+  "condition_index": 1
+ },
+ "inst-0270": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "low-stock",
+  "condition_index": 2
+ },
+ "inst-0029": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "low-stock",
+  "condition_index": 2
+ },
+ "inst-0106": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "low-stock",
+  "condition_index": 3
+ },
+ "inst-0015": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "low-stock",
+  "condition_index": 3
+ },
+ "inst-0233": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "parasocial-pressure",
+  "condition_index": 1
+ },
+ "inst-0046": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "parasocial-pressure",
+  "condition_index": 1
+ },
+ "inst-0085": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "parasocial-pressure",
+  "condition_index": 2
+ },
+ "inst-0335": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "parasocial-pressure",
+  "condition_index": 2
+ },
+ "inst-0310": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "parasocial-pressure",
+  "condition_index": 3
+ },
+ "inst-0207": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "parasocial-pressure",
+  "condition_index": 3
+ },
+ "inst-0259": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pay-to-avoid",
+  "condition_index": 1
+ },
+ "inst-0300": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pay-to-avoid",
+  "condition_index": 1
+ },
+ "inst-0313": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pay-to-avoid",
+  "condition_index": 2
+ },
+ "inst-0289": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pay-to-avoid",
+  "condition_index": 2
+ },
+ "inst-0331": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pay-to-avoid",
+  "condition_index": 3
+ },
+ "inst-0097": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pay-to-avoid",
+  "condition_index": 3
+ },
+ "inst-0311": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pay-to-play",
+  "condition_index": 1
+ },
+ "inst-0254": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pay-to-play",
+  "condition_index": 1
+ },
+ "inst-0167": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pay-to-play",
+  "condition_index": 2
+ },
+ "inst-0183": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pay-to-play",
+  "condition_index": 2
+ },
+ "inst-0124": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pay-to-play",
+  "condition_index": 3
+ },
+ "inst-0127": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pay-to-play",
+  "condition_index": 3
+ },
+ "inst-0155": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "persuasive-language",
+  "condition_index": 1
+ },
+ "inst-0343": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "persuasive-language",
+  "condition_index": 1
+ },
+ "inst-0338": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "persuasive-language",
+  "condition_index": 2
+ },
+ "inst-0321": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "persuasive-language",
+  "condition_index": 2
+ },
+ "inst-0176": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "persuasive-language",
+  "condition_index": 3
+ },
+ "inst-0023": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "persuasive-language",
+  "condition_index": 3
+ },
+ "inst-0248": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "plain-evil",
+  "condition_index": 1
+ },
+ "inst-0079": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "plain-evil",
+  "condition_index": 1
+ },
+ "inst-0355": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "plain-evil",
+  "condition_index": 2
+ },
+ "inst-0112": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "plain-evil",
+  "condition_index": 2
+ },
+ "inst-0222": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "plain-evil",
+  "condition_index": 3
+ },
+ "inst-0044": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "plain-evil",
+  "condition_index": 3
+ },
+ "inst-0125": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "playing-by-appointment",
+  "condition_index": 1
+ },
+ "inst-0301": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "playing-by-appointment",
+  "condition_index": 1
+ },
+ "inst-0202": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "playing-by-appointment",
+  "condition_index": 2
+ },
+ "inst-0181": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "playing-by-appointment",
+  "condition_index": 2
+ },
+ "inst-0094": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "playing-by-appointment",
+  "condition_index": 3
+ },
+ "inst-0365": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "playing-by-appointment",
+  "condition_index": 3
+ },
+ "inst-0157": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 1
+ },
+ "inst-0278": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 1
+ },
+ "inst-0217": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 2
+ },
+ "inst-0208": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 2
+ },
+ "inst-0323": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 3
+ },
+ "inst-0253": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 3
+ },
+ "inst-0312": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pre-delivered-content",
+  "condition_index": 1
+ },
+ "inst-0194": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pre-delivered-content",
+  "condition_index": 1
+ },
+ "inst-0080": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pre-delivered-content",
+  "condition_index": 2
+ },
+ "inst-0185": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pre-delivered-content",
+  "condition_index": 2
+ },
+ "inst-0138": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pre-delivered-content",
+  "condition_index": 3
+ },
+ "inst-0293": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pre-delivered-content",
+  "condition_index": 3
+ },
+ "inst-0077": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pressured-selling",
+  "condition_index": 1
+ },
+ "inst-0034": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pressured-selling",
+  "condition_index": 1
+ },
+ "inst-0195": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pressured-selling",
+  "condition_index": 2
+ },
+ "inst-0223": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pressured-selling",
+  "condition_index": 2
+ },
+ "inst-0354": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pressured-selling",
+  "condition_index": 3
+ },
+ "inst-0103": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pressured-selling",
+  "condition_index": 3
+ },
+ "inst-0277": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "price-comparison-prevention",
+  "condition_index": 1
+ },
+ "inst-0110": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "price-comparison-prevention",
+  "condition_index": 1
+ },
+ "inst-0258": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "price-comparison-prevention",
+  "condition_index": 2
+ },
+ "inst-0028": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "price-comparison-prevention",
+  "condition_index": 2
+ },
+ "inst-0168": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "price-comparison-prevention",
+  "condition_index": 3
+ },
+ "inst-0205": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "price-comparison-prevention",
+  "condition_index": 3
+ },
+ "inst-0213": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "privacy-maze",
+  "condition_index": 1
+ },
+ "inst-0226": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "privacy-maze",
+  "condition_index": 1
+ },
+ "inst-0065": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "privacy-maze",
+  "condition_index": 2
+ },
+ "inst-0014": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "privacy-maze",
+  "condition_index": 2
+ },
+ "inst-0134": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "privacy-maze",
+  "condition_index": 3
+ },
+ "inst-0299": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "privacy-maze",
+  "condition_index": 3
+ },
+ "inst-0239": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "privacy-zuckering",
+  "condition_index": 1
+ },
+ "inst-0189": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "privacy-zuckering",
+  "condition_index": 1
+ },
+ "inst-0264": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "privacy-zuckering",
+  "condition_index": 2
+ },
+ "inst-0268": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "privacy-zuckering",
+  "condition_index": 2
+ },
+ "inst-0074": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "privacy-zuckering",
+  "condition_index": 3
+ },
+ "inst-0070": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "privacy-zuckering",
+  "condition_index": 3
+ },
+ "inst-0215": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "psychological-tricks",
+  "condition_index": 1
+ },
+ "inst-0171": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "psychological-tricks",
+  "condition_index": 1
+ },
+ "inst-0180": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "psychological-tricks",
+  "condition_index": 2
+ },
+ "inst-0250": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "psychological-tricks",
+  "condition_index": 2
+ },
+ "inst-0082": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "psychological-tricks",
+  "condition_index": 3
+ },
+ "inst-0333": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "psychological-tricks",
+  "condition_index": 3
+ },
+ "inst-0287": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pull-to-refresh",
+  "condition_index": 1
+ },
+ "inst-0256": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pull-to-refresh",
+  "condition_index": 1
+ },
+ "inst-0150": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pull-to-refresh",
+  "condition_index": 2
+ },
+ "inst-0349": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pull-to-refresh",
+  "condition_index": 2
+ },
+ "inst-0249": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "pull-to-refresh",
+  "condition_index": 3
+ },
+ "inst-0191": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "pull-to-refresh",
+  "condition_index": 3
+ },
+ "inst-0105": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "reduced-friction",
+  "condition_index": 1
+ },
+ "inst-0206": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "reduced-friction",
+  "condition_index": 1
+ },
+ "inst-0231": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "reduced-friction",
+  "condition_index": 2
+ },
+ "inst-0098": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "reduced-friction",
+  "condition_index": 2
+ },
+ "inst-0314": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "reduced-friction",
+  "condition_index": 3
+ },
+ "inst-0212": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "reduced-friction",
+  "condition_index": 3
+ },
+ "inst-0271": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "reference-pricing",
+  "condition_index": 1
+ },
+ "inst-0366": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "reference-pricing",
+  "condition_index": 1
+ },
+ "inst-0021": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "reference-pricing",
+  "condition_index": 2
+ },
+ "inst-0055": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "reference-pricing",
+  "condition_index": 2
+ },
+ "inst-0089": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "reference-pricing",
+  "condition_index": 3
+ },
+ "inst-0298": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "reference-pricing",
+  "condition_index": 3
+ },
+ "inst-0030": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 1
+ },
+ "inst-0342": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 1
+ },
+ "inst-0075": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 2
+ },
+ "inst-0132": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 2
+ },
+ "inst-0043": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 3
+ },
+ "inst-0274": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 3
+ },
+ "inst-0038": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "sneak-into-basket",
+  "condition_index": 1
+ },
+ "inst-0351": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "sneak-into-basket",
+  "condition_index": 1
+ },
+ "inst-0045": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "sneak-into-basket",
+  "condition_index": 2
+ },
+ "inst-0117": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "sneak-into-basket",
+  "condition_index": 2
+ },
+ "inst-0006": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "sneak-into-basket",
+  "condition_index": 3
+ },
+ "inst-0035": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "sneak-into-basket",
+  "condition_index": 3
+ },
+ "inst-0151": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "social-pyramid",
+  "condition_index": 1
+ },
+ "inst-0305": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "social-pyramid",
+  "condition_index": 1
+ },
+ "inst-0346": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "social-pyramid",
+  "condition_index": 2
+ },
+ "inst-0052": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "social-pyramid",
+  "condition_index": 2
+ },
+ "inst-0252": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "social-pyramid",
+  "condition_index": 3
+ },
+ "inst-0247": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "social-pyramid",
+  "condition_index": 3
+ },
+ "inst-0147": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "trick-questions",
+  "condition_index": 1
+ },
+ "inst-0329": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "trick-questions",
+  "condition_index": 1
+ },
+ "inst-0040": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "trick-questions",
+  "condition_index": 2
+ },
+ "inst-0240": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "trick-questions",
+  "condition_index": 2
+ },
+ "inst-0230": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "trick-questions",
+  "condition_index": 3
+ },
+ "inst-0291": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "trick-questions",
+  "condition_index": 3
+ },
+ "inst-0267": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "visual-prominence",
+  "condition_index": 1
+ },
+ "inst-0361": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "visual-prominence",
+  "condition_index": 1
+ },
+ "inst-0084": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "visual-prominence",
+  "condition_index": 2
+ },
+ "inst-0071": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "visual-prominence",
+  "condition_index": 2
+ },
+ "inst-0372": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "visual-prominence",
+  "condition_index": 3
+ },
+ "inst-0326": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "visual-prominence",
+  "condition_index": 3
+ },
+ "inst-0076": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 1
+ },
+ "inst-0357": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 1
+ },
+ "inst-0101": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 2
+ },
+ "inst-0282": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 2
+ },
+ "inst-0068": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 3
+ },
+ "inst-0263": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 3
+ },
+ "inst-0024": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "wrong-language",
+  "condition_index": 1
+ },
+ "inst-0352": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "wrong-language",
+  "condition_index": 1
+ },
+ "inst-0032": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "wrong-language",
+  "condition_index": 2
+ },
+ "inst-0174": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "wrong-language",
+  "condition_index": 2
+ },
+ "inst-0018": {
+  "deceptive": true,
+  "variant": "A",
+  "slug": "wrong-language",
+  "condition_index": 3
+ },
+ "inst-0330": {
+  "deceptive": false,
+  "variant": "B",
+  "slug": "wrong-language",
+  "condition_index": 3
+ }
+}

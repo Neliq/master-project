@@ -1,204 +1,257 @@
 "use client";
 
 import * as React from "react";
-import { Coins, ArrowLeft, ShoppingCart, Star, Check } from "lucide-react";
+import { DemoShell } from "@/components/demos/demo-shell";
+import { Coins, CreditCard, ShoppingCart, Star, ArrowLeft, Check } from "lucide-react";
 
-const COIN_PRICE = 0.0314; // 1 coin = $0.0314
+/*
+ * Intermediate Currency — Condition 1: Interception of the Fiat Checkout Flow
+ *
+ * Thesis: V_product is the interface state showing a purchasable item and
+ * E_purchase its "Buy" trigger. The feature fires if the targeted transition
+ * edge systematically bypasses direct fiat payment, forcibly routing the user
+ * away from the fiat checkout (V_checkout) and into the internal virtual-
+ * currency exchange (V_exchange):
+ *
+ *   target(E_purchase) = V_exchange  ∧  target(E_purchase) ≠ V_checkout
+ *
+ * Variant A (dark): clicking "Buy" on the product page routes straight into
+ * the coin top-up exchange; no fiat checkout is ever offered.
+ * Variant B (benign): the identical product card routes the same action to a
+ * normal fiat payment gateway.
+ */
+
+const PRODUCT_NAME = "Stellar Nova Bundle";
+const PRICE_COINS = 1299;
+const PRICE_USD = 40.79; // ≈ 1299 × $0.0314
+const PACK_COINS = 1500;
+const PACK_USD = 47.1;
+const LEFTOVER = PACK_COINS - PRICE_COINS; // 201 unspendable coins
 
 export function IntermediateCurrencyCond1({
-  mode = "user",
-  annotations = [],
-  onRestart,
+  mode = "user", annotations = [], onRestart,
 }: {
   mode?: "user" | "auditor";
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [step, setStep] = React.useState<"product" | "topup" | "done">("product");
-  const [coinInput, setCoinInput] = React.useState("");
-  const reset = () => { setStep("product"); setCoinInput(""); };
+  const [step, setStep] = React.useState<"product" | "after" | "done">("product");
 
-  const coinAmount = parseInt(coinInput, 10) || 0;
-  const dollarAmount = coinAmount * COIN_PRICE;
-  const valid = coinAmount > 0;
+  const reset = () => setStep("product");
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Product cost</span>
-        <span className="font-mono font-semibold">1,299 coins</span>
+        <span className="font-mono font-semibold tabular-nums">{PRICE_COINS.toLocaleString()} coins ≈ ${PRICE_USD.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Redirect target</span>
-        <span className="font-mono font-semibold text-pink-500">Wallet top-up</span>
+        <span className="text-muted-foreground">target(E_purchase) — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">V_exchange (coin store)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Direct fiat checkout</span>
-        <span className="font-mono font-semibold text-red-500">Bypassed</span>
+        <span className="text-muted-foreground">target(E_purchase) — benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">V_checkout (fiat)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Exchange rate</span>
-        <span className="font-mono font-semibold">1 coin = ${COIN_PRICE}</span>
+        <span className="text-muted-foreground">Fiat checkout offered (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">Never</span>
       </div>
     </>
   ) : null;
 
-  return (
-    <div className="space-y-3">
-      {/* ── Step 1: Product page ── */}
-      {step === "product" && (
-        <div className="rounded-lg border bg-background overflow-hidden">
-          <div className="relative h-36 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
-              <Star className="w-10 h-10 text-white" />
-            </div>
-            <div className="absolute top-2 right-2 bg-pink-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full">
-              PREMIUM
-            </div>
-          </div>
-          <div className="p-3">
-            <div className="flex items-start justify-between gap-2 mb-1">
-              <h3 className="text-sm font-semibold">Stellar Nova Bundle</h3>
-              <span className="text-xs font-bold text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10 px-2 py-0.5 rounded-full shrink-0">
-                1,299 coins
-              </span>
-            </div>
-            <p className="text-[10px] text-muted-foreground mb-3">
-              Unlock exclusive in-game items, skins, and 500 bonus coins.
-              Limited time offer for new players.
-            </p>
-            <button
-              onClick={() => setStep("topup")}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg py-2.5 text-xs font-semibold flex items-center justify-center gap-2 transition-colors"
-            >
-              <ShoppingCart className="w-3.5 h-3.5" />
-              Buy Now &mdash; 1,299 coins
-            </button>
-            <p className="text-[9px] text-center text-muted-foreground mt-2">
-              by Stellar Games Inc.
-            </p>
-          </div>
+  const productCard = (onBuy: () => void, accent: "rose" | "emerald", showFiat: boolean) => (
+    <div className="rounded-md border bg-background overflow-hidden">
+      <div className={`relative flex h-24 items-center justify-center bg-gradient-to-br ${accent === "rose" ? "from-rose-500/15 via-purple-500/15 to-indigo-500/15" : "from-emerald-500/15 via-teal-500/15 to-indigo-500/15"}`}>
+        <div className={`flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br shadow ${accent === "rose" ? "from-rose-500 to-purple-600" : "from-emerald-500 to-teal-600"}`}>
+          <Star className="h-6 w-6 text-white" />
         </div>
-      )}
+        <div className="absolute top-2 right-2 rounded-full bg-amber-500 px-2 py-0.5 text-[8px] font-bold text-white">
+          PREMIUM
+        </div>
+      </div>
+      <div className="p-3">
+        <div className="mb-1 flex items-start justify-between gap-2">
+          <h3 className="text-[11px] font-semibold">{PRODUCT_NAME}</h3>
+          <span className="shrink-0 rounded-full bg-indigo-50 px-2 py-0.5 text-[10px] font-bold text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-300">
+            {PRICE_COINS.toLocaleString()} coins
+          </span>
+        </div>
+        <p className="mb-3 text-[9px] leading-relaxed text-muted-foreground">
+          Unlock exclusive in-game items, skins, and 500 bonus coins. Limited time offer for new players.
+        </p>
+        {showFiat && (
+          <p className="mb-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 px-2 py-1 text-[8px] font-mono text-emerald-700 dark:text-emerald-300">
+            Fiat equivalent: ${PRICE_USD.toFixed(2)} — charged in your currency
+          </p>
+        )}
+        <button
+          onClick={onBuy}
+          className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer ${accent === "rose" ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"}`}
+        >
+          <ShoppingCart className="h-3 w-3" />
+          Buy Now &mdash; {showFiat ? `$${PRICE_USD.toFixed(2)}` : `${PRICE_COINS.toLocaleString()} coins`}
+        </button>
+        <p className="mt-2 text-center text-[8px] text-muted-foreground">by Stellar Games Inc.</p>
+      </div>
+    </div>
+  );
 
-      {/* ── Step 2: Redirected to wallet top-up ── */}
-      {step === "topup" && (
-        <div className="rounded-lg border bg-background overflow-hidden">
-          <div className="p-3">
-            <button
-              onClick={() => setStep("product")}
-              className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-foreground mb-3 transition-colors"
-            >
-              <ArrowLeft className="w-3 h-3" />
-              Back to store
-            </button>
-            <div className="flex items-center gap-2 mb-1">
-              <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                <Coins className="w-4 h-4 text-amber-600" />
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold">Top Up Your Wallet</h3>
-                <p className="text-[10px] text-muted-foreground">Add funds to complete your purchase</p>
-              </div>
-            </div>
+  return (
+    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+      title="Intermediate Currency: Interception of the Fiat Checkout Flow"
+      caption="Interception of the Fiat Checkout Flow — the Buy action systematically bypasses the fiat payment gateway and is forcibly rerouted into the platform's virtual-currency exchange."
+      auditorStats={stats}
+      deltaNote={`Both panels show the identical product card and the identical Buy action. The only difference is the transition target and the price disclosure: in Variant A the product is priced only in coins (no fiat equivalent on the card) and the Buy action routes to the coin exchange (V_exchange — no fiat checkout is ever offered); in Variant B the card shows the fiat equivalent ($${PRICE_USD.toFixed(2)}) and routes straight to the fiat payment gateway (V_checkout).`}
+      benign={
+        <div className="space-y-3">
+          {step === "product" && productCard(() => setStep("after"), "emerald", true)}
 
-            <div className="bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20 rounded-md p-2 mt-3 mb-3">
-              <p className="text-[10px] text-amber-700 dark:text-amber-400">
-                <span className="font-semibold">Stellar Nova Bundle</span> costs <span className="font-bold">1,299 coins</span>.
-                Top up your wallet to continue.
-              </p>
-            </div>
-
-            {/* Coin input */}
-            <div className="space-y-2 mb-3">
-              <label className="text-[10px] font-medium text-muted-foreground">
-                How many coins do you want to add?
-              </label>
-              <div className="relative">
-                <Coins className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-amber-500" />
-                <input
-                  type="number"
-                  min={1}
-                  value={coinInput}
-                  onChange={(e) => setCoinInput(e.target.value)}
-                  placeholder="e.g. 1299"
-                  className="w-full rounded-lg border bg-background pl-9 pr-3 py-2.5 text-xs font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder:text-muted-foreground/50"
-                />
-              </div>
-
-              {/* Live price calculation */}
-              {coinAmount > 0 && (
-                <div className="bg-muted/50 rounded-md p-2.5 space-y-1">
-                  <div className="flex justify-between text-[10px]">
-                    <span className="text-muted-foreground">Coins</span>
-                    <span className="font-mono font-semibold">{coinAmount.toLocaleString()}</span>
+          {step === "after" && (
+            <div className="rounded-md border bg-background overflow-hidden">
+              <div className="p-3">
+                <button
+                  onClick={() => setStep("product")}
+                  className="mb-3 flex items-center gap-1 text-[9px] text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+                >
+                  <ArrowLeft className="h-3 w-3" /> Back to store
+                </button>
+                <div className="mb-2 flex items-center gap-2">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-md bg-emerald-500/10">
+                    <CreditCard className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
                   </div>
-                  <div className="flex justify-between text-[10px]">
-                    <span className="text-muted-foreground">Rate</span>
-                    <span className="font-mono">1 coin = ${COIN_PRICE}</span>
-                  </div>
-                  <div className="flex justify-between text-[10px] border-t pt-1">
-                    <span className="font-medium">You pay</span>
-                    <span className="font-mono font-bold">${dollarAmount.toFixed(2)}</span>
+                  <div>
+                    <h3 className="text-[11px] font-semibold">Secure fiat checkout</h3>
+                    <p className="text-[9px] text-muted-foreground">V_checkout — pay with your card, no coins required.</p>
                   </div>
                 </div>
-              )}
+                <div className="mb-3 space-y-1.5 rounded-md border bg-muted/30 p-2.5 text-[10px]">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">{PRODUCT_NAME}</span>
+                    <span className="font-mono font-semibold tabular-nums">{PRICE_COINS.toLocaleString()} coins</span>
+                  </div>
+                  <div className="flex justify-between border-t pt-1">
+                    <span className="font-medium">Total</span>
+                    <span className="font-mono font-bold tabular-nums text-emerald-600 dark:text-emerald-400">${PRICE_USD.toFixed(2)}</span>
+                  </div>
+                </div>
+                <div className="mb-3 space-y-1.5">
+                  <div className="rounded-md border bg-background px-2.5 py-1.5 text-[9px] font-mono text-muted-foreground">Card number&ensp;•••• •••• •••• 4242</div>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    <div className="rounded-md border bg-background px-2.5 py-1.5 text-[9px] font-mono text-muted-foreground">MM/YY&ensp;12/28</div>
+                    <div className="rounded-md border bg-background px-2.5 py-1.5 text-[9px] font-mono text-muted-foreground">CVC&ensp;•••</div>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setStep("done")}
+                  className="w-full rounded-md bg-emerald-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+                >
+                  Pay ${PRICE_USD.toFixed(2)} now
+                </button>
+                <p className="mt-2 text-center text-[8px] text-muted-foreground">
+                  Charged in your currency. No virtual-currency exchange in this flow.
+                </p>
+              </div>
             </div>
+          )}
 
-            <button
-              onClick={() => valid && setStep("done")}
-              disabled={!valid}
-              className={`w-full rounded-lg py-2.5 text-xs font-semibold transition-colors ${
-                valid
-                  ? "bg-indigo-600 hover:bg-indigo-700 text-white"
-                  : "bg-muted text-muted-foreground cursor-not-allowed"
-              }`}
-            >
-              {valid
-                ? `Top Up ${coinAmount.toLocaleString()} Coins — $${dollarAmount.toFixed(2)}`
-                : "Enter an amount"
-              }
-            </button>
-
-            <p className="text-[8px] text-center text-muted-foreground mt-2 leading-relaxed">
-              Remaining balance stays in your wallet. Unused coins never expire.
-              <br />By continuing you agree to the Terms of Service.
-            </p>
-          </div>
+          {step === "done" && (
+            <div className="space-y-2">
+              <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                  <Check className="h-3 w-3" /> Direct fiat purchase
+                </div>
+                <p className="text-muted-foreground">
+                  target(E<sub>purchase</sub>) = V<sub>checkout</sub>: your ${PRICE_USD.toFixed(2)} was charged directly to your card.
+                  The product card disclosed the fiat equivalent up front, and no top-up screen or exchange rate was interposed
+                  between your money and the product.
+                </p>
+              </div>
+              <button onClick={reset} className="w-full rounded-md border py-1.5 text-[9px] font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer">
+                Restart demo
+              </button>
+            </div>
+          )}
         </div>
-      )}
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        {step === "product" && productCard(() => setStep("after"), "rose", false)}
 
-      {/* ── Step 3: Done ── */}
-      {step === "done" && (
-        <div className="rounded-lg border bg-background overflow-hidden">
-          <div className="p-4 text-center space-y-3">
-            <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto">
-              <Check className="w-6 h-6 text-green-600" />
-            </div>
-            <h3 className="text-sm font-semibold">Payment Processed!</h3>
-            <p className="text-[10px] text-muted-foreground">
-              ${dollarAmount.toFixed(2)} has been added to your wallet.
-              You now have {coinAmount.toLocaleString()} coins.
-            </p>
-            <div className="bg-muted/50 rounded-md p-2 text-[10px] space-y-1">
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Stellar Nova Bundle</span>
-                <span>1,299 coins</span>
+        {step === "after" && (
+          <div className="rounded-md border bg-background overflow-hidden">
+            <div className="p-3">
+              <button
+                onClick={() => setStep("product")}
+                className="mb-3 flex items-center gap-1 text-[9px] text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+              >
+                <ArrowLeft className="h-3 w-3" /> Back to store
+              </button>
+              <div className="mb-2 flex items-center gap-2">
+                <div className="flex h-7 w-7 items-center justify-center rounded-md bg-amber-500/10">
+                  <Coins className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
+                </div>
+                <div>
+                  <h3 className="text-[11px] font-semibold">Top up your wallet</h3>
+                  <p className="text-[9px] text-muted-foreground">V_exchange — add coins to complete your purchase</p>
+                </div>
               </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Remaining balance</span>
-                <span>{(coinAmount - 1299).toLocaleString()} coins</span>
+              <div className="mb-3 rounded-md border border-amber-500/30 bg-amber-500/5 p-2 text-[9px] leading-relaxed">
+                <span className="font-semibold text-amber-700 dark:text-amber-300">{PRODUCT_NAME}</span>{" "}
+                <span className="text-muted-foreground">costs <strong>{PRICE_COINS.toLocaleString()} coins</strong>. Your wallet is
+                empty — you must buy coins before you can buy anything. Fiat payment is not accepted for in-game items.</span>
               </div>
+              <div className="mb-3 rounded-md border bg-background p-2.5">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-[10px] font-semibold">{PACK_COINS.toLocaleString()} Coins</div>
+                    <div className="text-[8px] text-muted-foreground">$ {PACK_USD.toFixed(2)} &middot; best value pack</div>
+                  </div>
+                  <span className="rounded-full bg-amber-500/15 px-2 py-0.5 text-[8px] font-bold text-amber-600 dark:text-amber-400">+{(PACK_COINS - PRICE_COINS).toLocaleString()} extra</span>
+                </div>
+              </div>
+              <button
+                onClick={() => setStep("done")}
+                className="w-full rounded-md bg-rose-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-rose-700 cursor-pointer"
+              >
+                Buy {PACK_COINS.toLocaleString()} Coins — ${PACK_USD.toFixed(2)}
+              </button>
+              <p className="mt-2 text-center text-[8px] leading-relaxed text-muted-foreground">
+                Remaining balance stays in your wallet. Unused coins never expire.
+              </p>
             </div>
-            <button
-              onClick={reset}
-              className="text-[10px] text-muted-foreground hover:text-foreground underline underline-offset-2"
-            >
+          </div>
+        )}
+
+        {step === "done" && (
+          <div className="space-y-2">
+            <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+                <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 9v4m0 4h.01" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+                Checkout flow intercepted
+              </div>
+              <p className="text-muted-foreground">
+                target(E<sub>purchase</sub>) = V<sub>exchange</sub> <strong className="text-foreground">∧</strong>{" "}
+                target(E<sub>purchase</sub>) ≠ V<sub>checkout</sub> — you clicked &ldquo;Buy&rdquo; and were routed straight into
+                the coin storefront. You paid <strong className="text-rose-500">${PACK_USD.toFixed(2)}</strong> for{" "}
+                {PACK_COINS.toLocaleString()} coins to buy a product priced at ${PRICE_USD.toFixed(2)}, and{" "}
+                <strong className="text-foreground">{LEFTOVER.toLocaleString()} coins</strong> remain stranded in your wallet —
+                an unspendable remainder that nudges you toward a future purchase.
+              </p>
+              <p className="text-muted-foreground">
+                The fiat gateway was never presented. The interface decouples the perceived cost from the real financial
+                impact: you paid in &ldquo;coins&rdquo;, not dollars.
+              </p>
+            </div>
+            <button onClick={reset} className="w-full rounded-md border py-1.5 text-[9px] font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer">
               Restart demo
             </button>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </DemoShell>
   );
 }

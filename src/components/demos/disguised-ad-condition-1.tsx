@@ -1,188 +1,182 @@
 "use client";
 
 import * as React from "react";
-import { Star, Download, ExternalLink, ArrowLeft, Shield, Zap } from "lucide-react";
+import { DemoShell } from "@/components/demos/demo-shell";
+import { Download, ExternalLink, FileDown, Globe, ShieldCheck } from "lucide-react";
+
+/*
+ * Disguised Ad — Condition 1: Cross-Origin Action Masking
+ *
+ * Thesis: B_action is a node styled as a primary action button whose label
+ * matches a high-intent native task (e.g. "Download"). The feature fires if
+ * the button masquerades as a native function but its resolved destination
+ * domain differs from the host web application's domain:
+ *
+ *   B_action ≠ ∅  ∧  D_target(B_action) ≠ D_host
+ *
+ * Variant A (dark): the prominent "Download Now" button routes to an external
+ * advertising domain (a sponsored installer); the real download is a small
+ * gray link.
+ * Variant B (benign): the same prominent button routes to the host domain —
+ * it is the real download.
+ */
+
+const APP_NAME = "FileVault Pro 2026";
+const HOST = "filevaultpro.io";
+const AD_DOMAIN = "downloads.bestdeal-network.com";
 
 export function DisguisedAdCond1({
-  mode = "user",
-  annotations = [],
-  onRestart,
+  mode = "user", annotations = [], onRestart,
 }: {
   mode?: "user" | "auditor";
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [clicked, setClicked] = React.useState<"real" | "fake" | null>(null);
+  const [clicked, setClicked] = React.useState<null | "big" | "direct">(null);
+
   const reset = () => setClicked(null);
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Cards shown</span>
-        <span className="font-mono font-semibold">2 identical</span>
+        <span className="text-muted-foreground">B_action (primary-styled)</span>
+        <span className="font-mono font-semibold tabular-nums">&ldquo;Download Now&rdquo;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Ad disclosure</span>
-        <span className="font-mono font-semibold text-red-500">Tiny badge</span>
+        <span className="text-muted-foreground">D_host</span>
+        <span className="font-mono font-semibold tabular-nums">{HOST}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Ad click target</span>
-        <span className="font-mono font-semibold text-red-500">Sponsored redirect</span>
+        <span className="text-muted-foreground">D_target(B_action) — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{AD_DOMAIN} (external ad network)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">D_target ≠ D_host — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">True</span>
       </div>
     </>
   ) : null;
 
-  /* ── Sponsored redirect page ── */
-  if (clicked === "fake") {
-    return (
-      <div className="rounded-lg border bg-background overflow-hidden">
-        <div className="bg-amber-50 dark:bg-amber-500/5 border-b border-amber-200 dark:border-amber-500/20 px-3 py-1.5 flex items-center gap-1.5">
-          <ExternalLink className="w-3 h-3 text-amber-600 shrink-0" />
-          <span className="text-[9px] text-amber-700 dark:text-amber-400 truncate">
-            ad.trackerexample.com/redirect?campaign=vpn-promo&amp;ref=appstore
-          </span>
-        </div>
-        <div className="p-4 text-center space-y-3">
-          <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto">
-            <ExternalLink className="w-6 h-6 text-amber-600" />
-          </div>
-          <h3 className="text-sm font-semibold">Sponsored Offer</h3>
-          <p className="text-[10px] text-muted-foreground">
-            You&apos;ve been redirected to a third-party promotional page.
-            This is not the app you were looking for.
-          </p>
-          <div className="bg-muted/50 rounded-md p-2 text-[10px] space-y-1">
-            <div className="flex items-center gap-1.5">
-              <span className="text-amber-500">⚠</span>
-              <span>Redirected by ad network</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="text-red-500">✗</span>
-              <span>No app download available here</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="text-muted-foreground">Target URL</span>
-              <span className="font-mono text-[9px]">ad.trackerexample.com</span>
-            </div>
-          </div>
-          <button
-            onClick={reset}
-            className="text-[10px] text-muted-foreground hover:text-foreground underline underline-offset-2"
-          >
-            ← Back to app store
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  /* ── App download result ── */
-  if (clicked === "real") {
-    return (
-      <div className="rounded-lg border bg-background overflow-hidden">
-        <div className="p-4 text-center space-y-3">
-          <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto">
-            <Download className="w-6 h-6 text-green-600" />
-          </div>
-          <h3 className="text-sm font-semibold">Download Started!</h3>
-          <p className="text-[10px] text-muted-foreground">
-            SecureVPN Pro is downloading to your device.
-          </p>
-          <div className="bg-muted/50 rounded-md p-2 text-[10px]">
-            <div className="flex items-center gap-1.5 text-green-600">
-              <Shield className="w-3 h-3" />
-              <span>Verified &mdash; direct from developer</span>
-            </div>
-          </div>
-          <button
-            onClick={reset}
-            className="text-[10px] text-muted-foreground hover:text-foreground underline underline-offset-2"
-          >
-            Restart demo
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  /* ── Default: two app cards ── */
   return (
-    <div className="space-y-3">
-      {/* Card A — the real app */}
-      <button
-        onClick={() => setClicked("real")}
-        className="w-full rounded-lg border bg-background overflow-hidden text-left transition-all hover:border-green-300 dark:hover:border-green-500/50 hover:shadow-md"
-      >
-        <div className="p-3 flex items-center gap-3">
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow shrink-0">
-            <Shield className="w-7 h-7 text-white" />
+    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+      title="Disguised Ad: Cross-Origin Action Masking"
+      caption="Cross-Origin Action Masking — a visually prominent button labeled like a native task (Download) structurally routes you to an external advertising domain instead of the host application."
+      auditorStats={stats}
+      deltaNote={`The page layout, the product, and the button label ("Download Now") are identical in both panels. The only difference is the resolved href: in Variant A the button targets ${AD_DOMAIN} — an external ad domain, so D_target ≠ D_host and the feature triggers; in Variant B the same button targets ${HOST} — the real download.`}
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-background overflow-hidden">
+            <div className="flex items-center gap-2 border-b bg-emerald-500/5 px-3 py-1.5">
+              <Globe className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
+              <span className="font-mono text-[8px] text-muted-foreground">{HOST}</span>
+              <span className="ml-auto rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[7px] font-bold text-emerald-600 dark:text-emerald-400">
+                D_host
+              </span>
+            </div>
+            <div className="p-3">
+              <h3 className="text-[11px] font-semibold">{APP_NAME}</h3>
+              <p className="mt-0.5 text-[9px] leading-relaxed text-muted-foreground">
+                Military-grade file encryption for your whole drive. Version 2026.1 — free for personal use.
+              </p>
+              <div className="mt-3 flex flex-col gap-1.5">
+                <button
+                  onClick={() => setClicked("big")}
+                  className="flex w-full items-center justify-center gap-1.5 rounded-md bg-emerald-600 py-2.5 text-[10px] font-bold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+                >
+                  <Download className="h-3.5 w-3.5" /> Download Now
+                </button>
+                <p className="text-center text-[7px] font-mono text-emerald-600/70 dark:text-emerald-400/70">
+                  href → https://{HOST}/download/filevault-pro-2026.exe
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-semibold">SecureVPN Pro</span>
-              <span className="text-[8px] bg-green-500/10 text-green-600 px-1.5 py-0.5 rounded-full font-medium">VERIFIED</span>
+
+          {clicked === "big" && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <ShieldCheck className="h-3 w-3" /> Native download — D_target = D_host
+              </div>
+              <p className="text-muted-foreground">
+                B<sub>action</sub> = &ldquo;Download Now&rdquo; and D<sub>target</sub>(B<sub>action</sub>) = {HOST} = D
+                <sub>host</sub>. The button does exactly what it advertises: it is the genuine download, same origin.
+              </p>
             </div>
-            <div className="flex items-center gap-0.5 mt-0.5">
-              {[1,2,3,4,5].map(i => (
-                <Star key={i} className="w-2.5 h-2.5 text-amber-400 fill-amber-400" />
-              ))}
-              <span className="text-[9px] text-muted-foreground ml-1">4.8 (12.4k)</span>
+          )}
+          {clicked === "direct" && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] text-muted-foreground">
+              The direct link also resolves to {HOST} — same origin. Every download path on this page is legitimate.
             </div>
-            <p className="text-[9px] text-muted-foreground mt-0.5 truncate">
-              Fast &amp; secure VPN with no logs policy. Free 7-day trial.
+          )}
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-background overflow-hidden">
+          <div className="flex items-center gap-2 border-b bg-rose-500/5 px-3 py-1.5">
+            <Globe className="h-3 w-3 text-rose-600 dark:text-rose-400" />
+            <span className="font-mono text-[8px] text-muted-foreground">{HOST}</span>
+            <span className="ml-auto rounded-full bg-rose-500/15 px-1.5 py-0.5 text-[7px] font-bold text-rose-600 dark:text-rose-400">
+              D_host
+            </span>
+          </div>
+          <div className="p-3">
+            <h3 className="text-[11px] font-semibold">{APP_NAME}</h3>
+            <p className="mt-0.5 text-[9px] leading-relaxed text-muted-foreground">
+              Military-grade file encryption for your whole drive. Version 2026.1 — free for personal use.
+            </p>
+            <div className="mt-3 flex flex-col gap-1.5">
+              {/* B_action: primary-styled button, label matches native "Download" task */}
+              <button
+                onClick={() => setClicked("big")}
+                className="flex w-full items-center justify-center gap-1.5 rounded-md bg-emerald-600 py-2.5 text-[10px] font-bold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+              >
+                <Download className="h-3.5 w-3.5" /> Download Now
+              </button>
+              <p className="text-center text-[7px] font-mono text-rose-600/70 dark:text-rose-400/70">
+                href → https://{AD_DOMAIN}/sponsored/installer.exe
+              </p>
+              {/* The real download, demoted to a small gray link */}
+              <button
+                onClick={() => setClicked("direct")}
+                className="flex items-center justify-center gap-1 text-[9px] text-muted-foreground underline underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
+              >
+                <FileDown className="h-3 w-3" /> Direct download (32 MB)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {clicked === "big" && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <ExternalLink className="h-3 w-3" /> Cross-origin action masking triggered
+            </div>
+            <p className="text-muted-foreground">
+              B<sub>action</sub> = &ldquo;Download Now&rdquo; ≠ ∅, and D<sub>target</sub>(B<sub>action</sub>) ={" "}
+              <strong className="text-rose-500">{AD_DOMAIN}</strong> ≠ D<sub>host</sub> ({HOST}). The button was styled and
+              labeled as the native download action, but it routes you to an external advertising network — a sponsored
+              installer, not {APP_NAME}. The genuine file is buried in the small gray &ldquo;Direct download&rdquo; link
+              below.
+            </p>
+            <p className="text-muted-foreground">
+              Your functional intent (download the app) was intercepted by an ad that visually is the app&rsquo;s primary
+              action.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-1 shrink-0 mt-5">
-            <div className="bg-green-600 hover:bg-green-700 text-white rounded-lg px-3 py-1.5 text-[10px] font-semibold flex items-center gap-1 transition-colors">
-              <Download className="w-3 h-3" />
-              Install
+        )}
+        {clicked === "direct" && (
+          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <ShieldCheck className="h-3 w-3" /> Real download located
             </div>
-            <span className="text-[8px] text-muted-foreground">42 MB</span>
-          </div>
-        </div>
-      </button>
-
-      {/* Card B — the disguised ad (almost identical, tiny "ad" badge) */}
-      <button
-        onClick={() => setClicked("fake")}
-        className="w-full rounded-lg border bg-background overflow-hidden text-left transition-all hover:border-blue-300 dark:hover:border-blue-500/50 hover:shadow-md relative"
-      >
-        {/* Tiny "ad" badge — easy to miss */}
-        <div className="absolute top-2 right-2 text-[9px] text-white bg-black px-1.5 py-0.5 rounded font-medium">
-          advertisement
-        </div>
-        <div className="p-3 flex items-center gap-3">
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow shrink-0">
-            <Shield className="w-7 h-7 text-white" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-semibold">SecureVPN Pro</span>
-              <span className="text-[8px] bg-green-500/10 text-green-600 px-1.5 py-0.5 rounded-full font-medium">VERIFIED</span>
-            </div>
-            <div className="flex items-center gap-0.5 mt-0.5">
-              {[1,2,3,4,5].map(i => (
-                <Star key={i} className="w-2.5 h-2.5 text-amber-400 fill-amber-400" />
-              ))}
-              <span className="text-[9px] text-muted-foreground ml-1">4.8 (12.4k)</span>
-            </div>
-            <p className="text-[9px] text-muted-foreground mt-0.5 truncate">
-              Fast &amp; secure VPN with no logs policy. Free 7-day trial.
+            <p className="text-muted-foreground">
+              The direct link resolves to {HOST} = D<sub>host</sub>. Note how much harder it was to find than the fake
+              primary button — that demotion is the point of the pattern.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-1 shrink-0 mt-5">
-            <div className="bg-green-600 hover:bg-green-700 text-white rounded-lg px-3 py-1.5 text-[10px] font-semibold flex items-center gap-1 transition-colors">
-              <ExternalLink className="w-3 h-3" />
-              Visit
-            </div>
-            <span className="text-[8px] text-muted-foreground">42 MB</span>
-          </div>
-        </div>
-      </button>
-
-      <p className="text-[8px] text-center text-muted-foreground">
-        Both cards look nearly identical. The second one carries a barely visible &quot;ad&quot; badge.
-      </p>
-    </div>
+        )}
+      </div>
+    </DemoShell>
   );
 }

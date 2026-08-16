@@ -2,6 +2,8 @@
  * Site-wide footer.
  */
 
+import { PATTERNS } from "@/lib/patterns";
+
 export function SiteFooter() {
   return (
     <footer className="border-t border-foreground/10">
@@ -11,8 +13,8 @@ export function SiteFooter() {
           advice.
         </p>
         <p>
-          60 patterns · 3 with interactive demos · Categorised by Brignull,
-          Mathur, Gray
+          {PATTERNS.length} patterns · each with an A/B demo pair · Categorised
+          by Brignull, Mathur, Gray
         </p>
       </div>
     </footer>

@@ -1,198 +1,290 @@
 "use client";
 
 import * as React from "react";
-import { ShoppingCart, Trash2, Shield, Check, ArrowLeft } from "lucide-react";
+import { DemoShell } from "@/components/demos/demo-shell";
+import { ShoppingCart, Headphones, X } from "lucide-react";
+
+/*
+ * Sneak Into Basket — Condition 1: Unprompted State Mutation
+ *
+ * Thesis: I_explicit is the set of items the user selected via direct DOM
+ * interaction events E_user (clicks on "Add to Cart"); I_cart is the actual
+ * set of items in the cart. The feature fires if the set difference between
+ * the actual cart and the explicitly requested items is non-empty — proving
+ * an unrequested item y was injected without a corresponding user event e:
+ *
+ *   (I_cart \ I_explicit ≠ ∅)  ∧  ∄ e ∈ E_user ⟹ Add(y)
+ *
+ * Variant A (dark): adding the headphones silently injects a warranty and
+ * priority shipping into the cart — no user event added them.
+ * Variant B (benign): the cart contains exactly what was added; the extras
+ * exist only as explicit opt-in buttons.
+ */
+
+const HEADPHONES = { name: "AeroSound X9 Headphones", price: 129.99 };
+const WARRANTY = { name: "2-Year Extended Warranty", price: 19.99 };
+const SHIPPING = { name: "Priority Express Shipping", price: 8.99 };
+
+const fmt = (n: number) => `$${n.toFixed(2)}`;
 
 export function SneakIntoBasketCond1({
-  mode = "user",
-  annotations = [],
-  onRestart,
+  mode = "user", annotations = [], onRestart,
 }: {
   mode?: "user" | "auditor";
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [step, setStep] = React.useState<"basket" | "checkout" | "done">("basket");
-  const reset = () => setStep("basket");
+  const [stage, setStage] = React.useState<"product" | "cart" | "review">("product");
+  const [added, setAdded] = React.useState(false); // headphones explicitly added
+  const [injected, setInjected] = React.useState({ warranty: false, shipping: false }); // Variant A: system-injected
+  const [optedIn, setOptedIn] = React.useState({ warranty: false, shipping: false }); // Variant B: user-clicked
 
-  const items = [
-    { name: "Wireless Mouse", price: 29.99, qty: 1 },
-    { name: "USB-C Hub 7-in-1", price: 44.99, qty: 1 },
+  const reset = () => {
+    setStage("product");
+    setAdded(false);
+    setInjected({ warranty: false, shipping: false });
+    setOptedIn({ warranty: false, shipping: false });
+  };
+
+  const injectedItems = [
+    ...(injected.warranty ? [WARRANTY] : []),
+    ...(injected.shipping ? [SHIPPING] : []),
   ];
-  const warrantyPrice = 14.99;
-  const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0);
-  const total = subtotal + warrantyPrice;
+  const optedItems = [
+    ...(optedIn.warranty ? [WARRANTY] : []),
+    ...(optedIn.shipping ? [SHIPPING] : []),
+  ];
+  const totalA = HEADPHONES.price + injectedItems.reduce((s, i) => s + i.price, 0);
+  const totalB = HEADPHONES.price + optedItems.reduce((s, i) => s + i.price, 0);
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Items in basket</span>
-        <span className="font-mono font-semibold">{items.length}</span>
+        <span className="text-muted-foreground">I_explicit (your Add events)</span>
+        <span className="font-mono font-semibold tabular-nums">{added ? "{" + HEADPHONES.name + "}" : "∅"}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Items at checkout</span>
-        <span className="font-mono font-semibold text-pink-500">{items.length + 1}</span>
+        <span className="text-muted-foreground">I_cart \ I_explicit — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">
+          {injectedItems.length > 0 ? "{" + injectedItems.map((i) => i.name.split(" ")[0]).join(", ") + "}" : "∅"}
+        </span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sneaked item</span>
-        <span className="font-mono font-semibold text-pink-500">Extended Warranty</span>
+        <span className="text-muted-foreground">∃ e ∈ E_user : Add(y) (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">none — no clicks</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Removable</span>
-        <span className="font-mono font-semibold text-red-500">No</span>
+        <span className="text-muted-foreground">Trigger — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{injectedItems.length > 0 ? "True" : "False"}</span>
       </div>
     </>
   ) : null;
 
-  /* ── Done screen ── */
-  if (step === "done") {
-    return (
-      <div className="rounded-lg border bg-background overflow-hidden">
-        <div className="p-4 text-center space-y-3">
-          <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto">
-            <Check className="w-6 h-6 text-green-600" />
-          </div>
-          <h3 className="text-sm font-semibold">Order Placed!</h3>
-          <p className="text-[10px] text-muted-foreground">
-            You were charged ${total.toFixed(2)}.
-            This includes the Extended Warranty ($14.99).
+  const productPage = (onAdd: () => void, accent: "rose" | "emerald") => (
+    <div className="rounded-md border bg-background p-3">
+      <div className="flex items-start gap-3">
+        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-md ${accent === "rose" ? "bg-rose-500/10" : "bg-emerald-500/10"}`}>
+          <Headphones className={`h-5 w-5 ${accent === "rose" ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"}`} />
+        </div>
+        <div className="min-w-0 flex-1">
+          <h3 className="text-[11px] font-semibold">{HEADPHONES.name}</h3>
+          <p className="mt-0.5 text-[9px] leading-relaxed text-muted-foreground">
+            Over-ear, noise-cancelling, 40h battery. Free returns within 30 days.
           </p>
-          <div className="bg-muted/50 rounded-md p-2 text-[10px] space-y-1">
-            {items.map(i => (
-              <div key={i.name} className="flex justify-between">
-                <span className="text-muted-foreground">{i.name}</span>
-                <span>${i.price.toFixed(2)}</span>
-              </div>
-            ))}
-            <div className="flex justify-between text-pink-500">
-              <span>Extended Warranty</span>
-              <span>${warrantyPrice.toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between font-semibold border-t pt-1">
-              <span>Total</span>
-              <span>${total.toFixed(2)}</span>
-            </div>
-          </div>
-          <button
-            onClick={reset}
-            className="text-[10px] text-muted-foreground hover:text-foreground underline underline-offset-2"
-          >
-            Restart demo
-          </button>
+          <div className="mt-1 text-[10px] font-bold tabular-nums">{fmt(HEADPHONES.price)}</div>
         </div>
       </div>
-    );
-  }
+      <button
+        onClick={onAdd}
+        className={`mt-3 flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer ${accent === "rose" ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"}`}
+      >
+        <ShoppingCart className="h-3 w-3" /> Add to Cart
+      </button>
+    </div>
+  );
+
+  const lineItem = (name: string, price: number, extra?: React.ReactNode) => (
+    <div className="flex items-center justify-between rounded-md border bg-background px-2.5 py-1.5">
+      <div className="min-w-0">
+        <div className="truncate text-[10px] font-medium">{name}</div>
+        {extra}
+      </div>
+      <span className="ml-2 shrink-0 font-mono text-[10px] font-semibold tabular-nums">{fmt(price)}</span>
+    </div>
+  );
 
   return (
-    <div className="space-y-3">
-      {/* ── Step 1: Basket ── */}
-      {step === "basket" && (
-        <div className="rounded-lg border bg-background overflow-hidden">
-          <div className="p-3">
-            <div className="flex items-center gap-2 mb-3">
-              <ShoppingCart className="w-4 h-4 text-foreground" />
-              <h3 className="text-sm font-semibold">Your Basket ({items.length} items)</h3>
-            </div>
+    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+      title="Sneak Into Basket: Unprompted State Mutation"
+      caption="Unprompted State Mutation — items land in your cart that you never added: the actual cart set differs from the set of items you explicitly requested."
+      auditorStats={stats}
+      deltaNote={`Both panels show the same product and the same Add to Cart button. In Variant A, clicking it silently injects a ${WARRANTY.name} (${fmt(WARRANTY.price)}) and ${SHIPPING.name} (${fmt(SHIPPING.price)}) — I_cart \\ I_explicit ≠ ∅ with no corresponding user event. In Variant B the cart holds exactly what you clicked; the same extras are offered as opt-in buttons you must click yourself.`}
+      benign={
+        <div className="space-y-3">
+          {stage === "product" &&
+            productPage(() => {
+              setAdded(true);
+              setInjected({ warranty: false, shipping: false });
+              setStage("cart");
+            }, "emerald")}
 
-            <div className="space-y-2 mb-3">
-              {items.map(item => (
-                <div key={item.name} className="flex items-center gap-3 p-2 rounded-md bg-muted/30">
-                  <div className="w-10 h-10 rounded-md bg-muted flex items-center justify-center shrink-0">
-                    <ShoppingCart className="w-4 h-4 text-muted-foreground" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-xs font-medium">{item.name}</div>
-                    <div className="text-[9px] text-muted-foreground">Qty: {item.qty}</div>
-                  </div>
-                  <span className="text-xs font-semibold">${item.price.toFixed(2)}</span>
-                  <button className="text-muted-foreground hover:text-red-500 transition-colors">
-                    <Trash2 className="w-3.5 h-3.5" />
-                  </button>
+          {stage === "cart" && (
+            <div className="rounded-md border bg-background p-2.5">
+              <div className="mb-2 flex items-center justify-between">
+                <h3 className="text-[11px] font-semibold">Your cart</h3>
+                <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[8px] font-bold text-emerald-600 dark:text-emerald-400">
+                  {added ? 1 + optedItems.length : 0} item{added && optedItems.length === 0 ? "" : "s"}
+                </span>
+              </div>
+              <div className="space-y-1.5">
+                {added && lineItem(HEADPHONES.name, HEADPHONES.price, (
+                  <div className="text-[8px] text-emerald-600/80 dark:text-emerald-400/80">added by you ✓</div>
+                ))}
+                {optedItems.map((item) =>
+                  lineItem(item.name, item.price, (
+                    <div className="text-[8px] text-emerald-600/80 dark:text-emerald-400/80">added by you ✓</div>
+                  ))
+                )}
+              </div>
+
+              {/* Extras offered as explicit opt-ins — never pre-injected */}
+              {added && (
+                <div className="mt-2 space-y-1.5 border-t pt-2">
+                  <div className="text-[8px] font-semibold uppercase tracking-wide text-muted-foreground">Optional extras — your choice</div>
+                  {!optedIn.warranty && (
+                    <button
+                      onClick={() => setOptedIn((o) => ({ ...o, warranty: true }))}
+                      className="flex w-full items-center justify-between rounded-md border border-emerald-500/40 bg-emerald-500/5 px-2.5 py-1.5 text-left transition-colors hover:bg-emerald-500/10 cursor-pointer"
+                    >
+                      <span className="text-[9px] font-medium">+ Add {WARRANTY.name} — {fmt(WARRANTY.price)}</span>
+                      <span className="text-[8px] font-semibold text-emerald-600 dark:text-emerald-400">opt in</span>
+                    </button>
+                  )}
+                  {!optedIn.shipping && (
+                    <button
+                      onClick={() => setOptedIn((o) => ({ ...o, shipping: true }))}
+                      className="flex w-full items-center justify-between rounded-md border border-emerald-500/40 bg-emerald-500/5 px-2.5 py-1.5 text-left transition-colors hover:bg-emerald-500/10 cursor-pointer"
+                    >
+                      <span className="text-[9px] font-medium">+ Add {SHIPPING.name} — {fmt(SHIPPING.price)}</span>
+                      <span className="text-[8px] font-semibold text-emerald-600 dark:text-emerald-400">opt in</span>
+                    </button>
+                  )}
                 </div>
-              ))}
-            </div>
+              )}
 
-            <div className="flex justify-between text-xs font-semibold border-t pt-2 mb-3">
-              <span>Subtotal</span>
-              <span>${subtotal.toFixed(2)}</span>
+              <div className="mt-2 flex items-center justify-between border-t pt-2">
+                <span className="text-[9px] font-medium">Total</span>
+                <span className="font-mono text-[11px] font-bold tabular-nums text-emerald-600 dark:text-emerald-400">{fmt(totalB)}</span>
+              </div>
+              <button
+                onClick={() => setStage("review")}
+                className="mt-2 w-full rounded-md bg-emerald-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+              >
+                Proceed to checkout
+              </button>
             </div>
+          )}
 
-            <button
-              onClick={() => setStep("checkout")}
-              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg py-2.5 text-xs font-semibold transition-colors"
-            >
-              Proceed to Checkout
-            </button>
-          </div>
+          {stage === "review" && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                I_cart = I_explicit — no mutation
+              </div>
+              <p className="text-muted-foreground">
+                Every line item in this cart maps to an explicit Add event you triggered (E<sub>user</sub>).{" "}
+                {optedItems.length > 0
+                  ? `The ${optedItems.map((i) => i.name).join(" and ")} you see were added by your own click.`
+                  : "The extras were offered as opt-in buttons and left in the shelf when you didn't click them."}{" "}
+                I<sub>cart</sub> \ I<sub>explicit</sub> = ∅, so the trigger condition never fires.
+              </p>
+            </div>
+          )}
         </div>
-      )}
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        {stage === "product" &&
+          productPage(() => {
+            setAdded(true);
+            setInjected({ warranty: true, shipping: true });
+            setStage("cart");
+          }, "rose")}
 
-      {/* ── Step 2: Checkout with sneaked item (no checkbox) ── */}
-      {step === "checkout" && (
-        <div className="rounded-lg border bg-background overflow-hidden">
-          <div className="p-3">
-            <button
-              onClick={() => setStep("basket")}
-              className="flex items-center gap-1 text-[10px] text-muted-foreground hover:text-foreground mb-3 transition-colors"
-            >
-              <ArrowLeft className="w-3 h-3" />
-              Back to basket
-            </button>
-            <h3 className="text-sm font-semibold mb-3">Checkout</h3>
-
-            <div className="space-y-2 mb-3">
-              {items.map(item => (
-                <div key={item.name} className="flex items-center justify-between p-2 rounded-md bg-muted/30">
-                  <div className="flex items-center gap-2">
-                    <ShoppingCart className="w-3.5 h-3.5 text-muted-foreground" />
-                    <span className="text-xs">{item.name}</span>
-                  </div>
-                  <span className="text-xs font-semibold">${item.price.toFixed(2)}</span>
-                </div>
-              ))}
-
-              {/* Sneaked warranty item — no checkbox, just appears */}
-              <div className="flex items-center justify-between p-2 rounded-md bg-pink-50 dark:bg-pink-500/5 border border-pink-200 dark:border-pink-500/20">
-                <div className="flex items-center gap-2">
-                  <Shield className="w-3.5 h-3.5 text-pink-500" />
-                  <div>
-                    <span className="text-xs font-medium">Extended Warranty</span>
-                    <div className="text-[9px] text-muted-foreground">12-month coverage</div>
-                  </div>
-                </div>
-                <span className="text-xs font-semibold">${warrantyPrice.toFixed(2)}</span>
-              </div>
+        {stage === "cart" && (
+          <div className="rounded-md border bg-background p-2.5">
+            <div className="mb-2 flex items-center justify-between">
+              <h3 className="text-[11px] font-semibold">Your cart</h3>
+              <span className="rounded-full bg-rose-500/15 px-2 py-0.5 text-[8px] font-bold text-rose-600 dark:text-rose-400">
+                {added ? 1 + injectedItems.length : 0} item{added && injectedItems.length === 0 ? "" : "s"}
+              </span>
             </div>
-
-            <div className="space-y-1 text-[10px] border-t pt-2 mb-3">
-              <div className="flex justify-between text-muted-foreground">
-                <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between text-pink-500">
-                <span>Extended Warranty</span>
-                <span>${warrantyPrice.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between text-xs font-bold border-t pt-1">
-                <span>Total</span>
-                <span>${total.toFixed(2)}</span>
-              </div>
+            <div className="space-y-1.5">
+              {added && lineItem(HEADPHONES.name, HEADPHONES.price)}
+              {/* Injected items rendered as ordinary cart lines — no indication they were added by the system */}
+              {injected.warranty &&
+                lineItem(WARRANTY.name, WARRANTY.price, (
+                  <button
+                    onClick={() => setInjected((i) => ({ ...i, warranty: false }))}
+                    className="mt-0.5 flex items-center gap-0.5 text-[8px] text-muted-foreground underline underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
+                  >
+                    <X className="h-2.5 w-2.5" /> Remove
+                  </button>
+                ))}
+              {injected.shipping &&
+                lineItem(SHIPPING.name, SHIPPING.price, (
+                  <button
+                    onClick={() => setInjected((i) => ({ ...i, shipping: false }))}
+                    className="mt-0.5 flex items-center gap-0.5 text-[8px] text-muted-foreground underline underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
+                  >
+                    <X className="h-2.5 w-2.5" /> Remove
+                  </button>
+                ))}
             </div>
-
+            <div className="mt-2 flex items-center justify-between border-t pt-2">
+              <span className="text-[9px] font-medium">Total</span>
+              <span className="font-mono text-[11px] font-bold tabular-nums text-rose-600 dark:text-rose-400">{fmt(totalA)}</span>
+            </div>
             <button
-              onClick={() => setStep("done")}
-              className="w-full bg-green-600 hover:bg-green-700 text-white rounded-lg py-2.5 text-xs font-semibold transition-colors"
+              onClick={() => setStage("review")}
+              className="mt-2 w-full rounded-md bg-rose-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-rose-700 cursor-pointer"
             >
-              Pay ${total.toFixed(2)}
+              Proceed to checkout
             </button>
+            {injectedItems.length > 0 && (
+              <p className="mt-1.5 text-[8px] text-muted-foreground/70">
+                Note: no &ldquo;added by you&rdquo; markers appear on these lines — can you tell which items you added?
+              </p>
+            )}
+          </div>
+        )}
 
-            <p className="text-[8px] text-center text-muted-foreground mt-2">
-              By placing this order you agree to the Terms of Service.
+        {stage === "review" && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Unprompted state mutation detected
+            </div>
+            <p className="text-muted-foreground">
+              I<sub>cart</sub> \ I<sub>explicit</sub> ={" "}
+              <strong className="text-rose-500">
+                {injectedItems.length > 0
+                  ? `{${injectedItems.map((i) => i.name).join(", ")}} ≠ ∅`
+                  : "∅ (you removed them)"}
+              </strong>{" "}
+              — and for every injected item y there is <strong className="text-foreground">no event e ∈ E</strong>
+              <sub>user</sub> with Add(y). The system mutated your cart without your input, relying on status-quo bias
+              and checkout-time fatigue to keep the unwanted lines in the total.{" "}
+              {injectedItems.length === 0 && "You removed them yourself — the burden of vigilance was on you."}
             </p>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </DemoShell>
   );
 }

@@ -3,19 +3,27 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  emoji: string;
-}
+/*
+ * Reduced Friction — Condition 1: Absence of Confirmation Interstitial
+ *
+ * Thesis: S_intent is the state where the user views an offer, S_commit the
+ * final irreversible transactional state (payment processed), and S_confirm
+ * a standard intermediary state requiring explicit review and secondary
+ * validation. The feature triggers if the transition edge for a high-stakes
+ * domain (D_financial) bypasses the confirmation node entirely — a single
+ * interaction vector E_click executes the commitment with no path through
+ * S_confirm:
+ *
+ *   E_click(S_intent) => S_commit  ∧  S_confirm ∉ Path(S_intent → S_commit)
+ *
+ * Variant A (dark): one click on "Buy now" goes straight from offer to
+ * charged — no confirmation interstitial exists in the path, and no
+ * confirmation or review language appears anywhere on the screen.
+ * Variant B (benign): the same purchase routes through a review step
+ * (S_confirm) with an explicit "Confirm purchase" action.
+ */
 
-const products: Product[] = [
-  { id: "cloud", name: "Cloud Storage (1TB)", price: 9.99, emoji: "☁️" },
-  { id: "vpn", name: "VPN Pro", price: 4.99, emoji: "🔒" },
-  { id: "backup", name: "Auto Backup", price: 2.99, emoji: "💾" },
-  { id: "antivirus", name: "Antivirus Shield", price: 6.99, emoji: "🛡️" },
-];
+const LICENSE_PRICE = "$79.00";
 
 export function ReducedFrictionCond1({
   mode = "user", annotations = [], onRestart,
@@ -24,115 +32,176 @@ export function ReducedFrictionCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [screen, setScreen] = React.useState<"list" | "confirmation">("list");
-  const [selectedProduct, setSelectedProduct] = React.useState<Product | null>(null);
-  const [purchasedIds, setPurchasedIds] = React.useState<string[]>([]);
+  // Variant A: idle → committed (no confirm node exists)
+  const [aStep, setAStep] = React.useState<"idle" | "committed">("idle");
+  // Variant B: idle → confirm (S_confirm) → committed
+  const [bStep, setBStep] = React.useState<"idle" | "confirm" | "committed">("idle");
 
   const reset = () => {
-    setScreen("list");
-    setSelectedProduct(null);
-    setPurchasedIds([]);
-  };
-
-  const handleBuy = (product: Product) => {
-    // No confirmation — payment goes through instantly, then shows receipt
-    setSelectedProduct(product);
-    setPurchasedIds(prev => [...prev, product.id]);
-    setScreen("confirmation");
+    setAStep("idle");
+    setBStep("idle");
   };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Confirmation steps removed</span>
-        <span className="font-mono font-semibold">All (0 shown)</span>
+        <span className="text-muted-foreground">Domain</span>
+        <span className="font-mono font-semibold tabular-nums">D_financial</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Items purchased</span>
-        <span className="font-mono font-semibold">{purchasedIds.length}/{products.length}</span>
+        <span className="text-muted-foreground">E_click(S_intent) ⇒ S_commit</span>
+        <span className="font-mono font-semibold tabular-nums">A: direct / B: via review</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">S_confirm ∈ Path (A)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">False — bypassed</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">S_confirm ∈ Path (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">True — review step</span>
       </div>
     </>
   ) : null;
 
-  if (screen === "confirmation" && selectedProduct) {
-    return (
-      <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-        title="Reduced Friction: Absence of Confirmation Interstitial"
-        caption="Payment confirmation shown after charge — no review step before payment." auditorStats={stats}>
-        <div className="space-y-3">
-          <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-
-            {/* Confirmation screen */}
-            <div className="rounded-xl border-2 border-green-500/40 bg-green-500/5 p-5 text-center shadow-lg">
-              <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-green-500/10 text-lg">
-                ✓
-              </div>
-              <div className="text-sm font-bold text-green-600 dark:text-green-400">Payment Successful</div>
-              <div className="mt-1 text-[10px] text-muted-foreground">
-                {selectedProduct.emoji} {selectedProduct.name}
-              </div>
-              <div className="mt-2 font-mono text-lg font-bold">${selectedProduct.price.toFixed(2)}/mo</div>
-              <div className="mt-1 text-[8px] text-muted-foreground/50">
-                Charged to Visa •••• 4242
-              </div>
-            </div>
-
-            <button onClick={() => setScreen("list")} className="mt-2 w-full rounded-md border border-foreground/10 bg-foreground/5 py-2 text-xs font-medium">
-              Back to Store
-            </button>
-          </div>
-        </div>
-      </DemoShell>
-    );
-  }
-
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Reduced Friction: Absence of Confirmation Interstitial"
-      caption="Absence of Confirmation Interstitial — clicking Buy charges your saved card instantly, no confirmation shown." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
+      caption="Absence of Confirmation Interstitial — a single click executes an irreversible financial commitment with no confirmation node on the path."
+      auditorStats={stats}
+      deltaNote="In Variant A one click on “Buy now” jumps straight from S_intent to S_commit (payment processed) — S_confirm never appears in the path, and the screen carries no confirmation or reversibility language of any kind, so the charge happens with zero feedforward. In Variant B the same purchase stops at a review interstitial and only commits after an explicit “Confirm purchase” click."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-start gap-3">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
+                <svg className="h-4 w-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <path d="M3 10h18" />
+                </svg>
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-[11px] font-semibold">Pro License — one-time payment</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">
+                  Full access forever. No subscription, no renewal. Billed once as{" "}
+                  <span className="font-semibold text-emerald-600 dark:text-emerald-400">{LICENSE_PRICE}</span>.
+                </p>
+              </div>
+            </div>
 
-          {/* Saved card notice */}
-          <div className="mb-2 flex items-center gap-1.5 rounded-md bg-foreground/5 px-2 py-1 text-[9px] text-muted-foreground">
-            <span>💳</span>
-            <span>Visa •••• 4242 saved</span>
-          </div>
+            <div className="mt-3 flex items-center justify-between rounded-md border border-border bg-background px-3 py-2">
+              <span className="text-[9px] text-muted-foreground">Visa •••• 4242</span>
+              <span className="text-[10px] font-semibold font-mono tabular-nums">{LICENSE_PRICE}</span>
+            </div>
 
-          {/* Product list */}
-          <div className="space-y-1.5">
-            {products.map(product => {
-              const isPaid = purchasedIds.includes(product.id);
-              return (
-                <div key={product.id} className="flex items-center justify-between rounded-md border border-foreground/10 bg-foreground/5 px-2.5 py-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm">{product.emoji}</span>
-                    <div>
-                      <div className="font-medium">{product.name}</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {!isPaid ? (
-                      <>
-                        <span className="font-mono font-semibold">${product.price.toFixed(2)}/mo</span>
-                        <button
-                          onClick={() => handleBuy(product)}
-                          className="flex items-center gap-1 rounded-md bg-green-600 px-2 py-1 text-[9px] font-semibold text-white transition-colors hover:bg-green-700"
-                        >
-                          🛒 Buy
-                        </button>
-                      </>
-                    ) : (
-                      <span className="flex items-center gap-1 rounded-md bg-green-500/10 px-2 py-1 text-[9px] font-semibold text-green-600 dark:text-green-400">
-                        ✓ Purchased
-                      </span>
-                    )}
-                  </div>
+            {bStep === "idle" && (
+              <button
+                onClick={() => setBStep("confirm")}
+                className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              >
+                Buy now — {LICENSE_PRICE}
+              </button>
+            )}
+
+            {bStep === "confirm" && (
+              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-3">
+                <div className="text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                  Review your purchase (S_confirm)
                 </div>
-              );
-            })}
+                <div className="mt-1.5 space-y-1 text-[9px] text-muted-foreground">
+                  <div className="flex justify-between">
+                    <span>Pro License (one-time)</span>
+                    <span className="font-mono tabular-nums">{LICENSE_PRICE}</span>
+                  </div>
+                  <div className="flex justify-between border-t border-emerald-500/20 pt-1">
+                    <span className="font-medium text-foreground">Total charged now</span>
+                    <span className="font-mono tabular-nums font-semibold text-foreground">{LICENSE_PRICE}</span>
+                  </div>
+                  <p className="pt-1">
+                    You are about to be charged. This purchase is final.
+                  </p>
+                </div>
+                <div className="mt-2 flex gap-2">
+                  <button
+                    onClick={() => setBStep("committed")}
+                    className="flex-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  >
+                    Confirm purchase
+                  </button>
+                  <button
+                    onClick={() => setBStep("idle")}
+                    className="flex-1 rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                  >
+                    Back
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {bStep === "committed" && (
+              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  Payment processed — {LICENSE_PRICE}
+                </div>
+                <p className="text-muted-foreground mt-0.5">
+                  The path ran S_intent → <strong className="text-emerald-600 dark:text-emerald-400">S_confirm</strong> → S_commit:
+                  you reviewed the order and explicitly confirmed before anything was charged.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-start gap-3">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
+              <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M3 10h18" />
+              </svg>
+            </div>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-[11px] font-semibold">Pro License — one-time payment</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                Full access forever. No subscription, no renewal. Billed once as{" "}
+                <span className="font-semibold text-emerald-600 dark:text-emerald-400">{LICENSE_PRICE}</span>.
+              </p>
+            </div>
           </div>
 
+          <div className="mt-3 flex items-center justify-between rounded-md border border-border bg-background px-3 py-2">
+            <span className="text-[9px] text-muted-foreground">Visa •••• 4242</span>
+            <span className="text-[10px] font-semibold font-mono tabular-nums">{LICENSE_PRICE}</span>
+          </div>
+
+          <button
+            onClick={() => setAStep("committed")}
+            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+          >
+            Buy now — {LICENSE_PRICE}
+          </button>
+
+          {aStep === "committed" && (
+            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 9v4m0 4h.01" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+                Charged instantly — S_confirm bypassed
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                One click executed <strong className="text-foreground">E_click(S_intent) ⇒ S_commit</strong> —{" "}
+                {LICENSE_PRICE} was charged to •••• 4242 with no confirmation interstitial in the path.{" "}
+                <strong className="text-foreground">S_confirm ∉ Path(S_intent → S_commit)</strong>, so an accidental or
+                impulsive click translates instantly into an irreversible charge.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </DemoShell>

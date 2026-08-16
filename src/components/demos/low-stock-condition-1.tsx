@@ -3,6 +3,28 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Low Stock — Condition 1: Inventory Fabrication
+ *
+ * Thesis: I_true(x) is the actual quantity of item x in the backend
+ * database and I_displayed(x) the value rendered on the frontend, with
+ * tau_scarcity the psychological panic threshold (typically I <= 5).
+ * The feature triggers if the system algorithmically generates a low
+ * number strictly to manufacture urgency, regardless of true stock:
+ *
+ *   I_displayed(x) <= tau_scarcity  given  I_displayed(x) << I_true(x)
+ *
+ * Variant A (dark): the page claims "Only 2 left at this price!" while
+ * the backend holds 148 units — scarcity is a visual overlay.
+ * Variant B (benign): the same page shows the real stock level.
+ */
+
+const ITEM_NAME = "Aurora Wireless Earbuds Pro";
+const ITEM_PRICE = "$89.00";
+const I_TRUE = 148; // backend database quantity
+const I_DISPLAYED_DARK = 2; // fabricated frontend quantity
+const TAU_SCARCITY = 5;
+
 export function LowStockCond1({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,13 +32,31 @@ export function LowStockCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const reset = () => {};
+  const [added, setAdded] = React.useState(false);
+  const [verified, setVerified] = React.useState(false);
+
+  const reset = () => {
+    setAdded(false);
+    setVerified(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Emotional pressure tactics</span>
-        <span className="font-mono font-semibold">Detected</span>
+        <span className="text-muted-foreground">I_displayed(x) — frontend (A)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{I_DISPLAYED_DARK} (&le; &tau;)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">I_displayed(x) — frontend (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">{I_TRUE}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">I_true(x) — backend DB</span>
+        <span className="font-mono font-semibold tabular-nums">{I_TRUE}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">&tau;_scarcity (panic threshold)</span>
+        <span className="font-mono font-semibold tabular-nums">I &le; {TAU_SCARCITY}</span>
       </div>
     </>
   ) : null;
@@ -24,16 +64,131 @@ export function LowStockCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Low Stock: Inventory Fabrication"
-      caption="Inventory Fabrication — social or parasocial pressure manipulates behavior." auditorStats={stats}>
+      caption="Inventory Fabrication — the frontend renders a panic-level stock number that is algorithmically generated and has no relation to the real backend inventory."
+      auditorStats={stats}
+      deltaNote={`In Variant A the page claims “Only ${I_DISPLAYED_DARK} left at this price!” while the backend database actually holds ${I_TRUE} units (I_displayed = ${I_DISPLAYED_DARK} &le; &tau; = ${TAU_SCARCITY}, yet I_displayed &lt;&lt; I_true = ${I_TRUE}). Variant B shows the true stock level with the exact same product card.`}
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-start gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
+                <svg className="h-5 w-5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M2 7l10-5 10 5M4 10v10a1 1 0 001 1h14a1 1 0 001-1V10M2 7l2 13M22 7l-2 13" />
+                </svg>
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-[11px] font-semibold">{ITEM_NAME}</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">
+                  True wireless, 36h battery, active noise cancelling.
+                </p>
+                <div className="mt-1.5 flex items-center gap-2">
+                  <span className="text-[11px] font-bold">{ITEM_PRICE}</span>
+                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                    <svg className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                    In stock — {I_TRUE} available
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setAdded(true)}
+              className="mt-3 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            >
+              {added ? "Added to cart ✓" : "Add to cart"}
+            </button>
+          </div>
+
+          {added && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Honest inventory
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                The stock badge shows the real backend quantity: I_displayed(x) = {I_TRUE} = I_true(x).
+                There is no manufactured scarcity, so the Fear Of Missing Out trigger never fires.
+              </p>
+            </div>
+          )}
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="rounded-md bg-indigo-500/5 border border-indigo-500/30 p-3 text-xs">
-          <div className="mb-2 font-medium text-indigo-700 dark:text-indigo-300">Your favourite creator needs support</div>
-          <p className="text-muted-foreground text-[10px]">Without your help, they cannot keep creating content you love.</p>
-          <div className="mt-2 flex gap-2">
-            <button className="bg-indigo-500 hover:bg-indigo-600 text-white flex-1 rounded-md py-2 text-[10px] font-medium">Send $4.99</button>
-            <button className="rounded-md border border-foreground/10 px-3 py-2 text-[10px] text-muted-foreground">Maybe later</button>
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-start gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
+              <svg className="h-5 w-5 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M2 7l10-5 10 5M4 10v10a1 1 0 001 1h14a1 1 0 001-1V10M2 7l2 13M22 7l-2 13" />
+              </svg>
+            </div>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-[11px] font-semibold">{ITEM_NAME}</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                True wireless, 36h battery, active noise cancelling.
+              </p>
+              <div className="mt-1.5 flex items-center gap-2">
+                <span className="text-[11px] font-bold">{ITEM_PRICE}</span>
+                <span className="inline-flex items-center gap-1 rounded-full border border-rose-500/40 bg-rose-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-600 dark:text-rose-300 animate-pulse">
+                  <svg className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M12 9v4m0 4h.01" />
+                    <circle cx="12" cy="12" r="10" />
+                  </svg>
+                  Only {I_DISPLAYED_DARK} left at this price!
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-3 flex gap-2">
+            <button
+              onClick={() => setAdded(true)}
+              className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            >
+              {added ? "Added to cart ✓" : "Add to cart"}
+            </button>
+            <button
+              onClick={() => setVerified(true)}
+              className="rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            >
+              Verify stock
+            </button>
           </div>
         </div>
+
+        {verified && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Inventory fabrication detected
+            </div>
+            <p className="text-muted-foreground">
+              The frontend badge claims <strong className="text-rose-500">“Only {I_DISPLAYED_DARK} left at this price!”</strong> — that
+              satisfies I_displayed(x) = {I_DISPLAYED_DARK} &le; &tau;_scarcity = {TAU_SCARCITY}, the panic threshold.
+              But the backend database holds <strong className="text-emerald-500">I_true(x) = {I_TRUE} units</strong>.
+            </p>
+            <p className="text-muted-foreground">
+              Because I_displayed(x) &lt;&lt; I_true(x), the low number was algorithmically generated to manufacture
+              urgency — the scarcity is a visual overlay, not a backend reality. The trigger fires regardless of true stock depth.
+            </p>
+          </div>
+        )}
+
+        {added && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+            <p className="text-muted-foreground">
+              You rushed to add the item while the panic badge was pulsing. A user who clicks “Verify stock”
+              (or who reloads) discovers the stock never actually depletes — it is stuck at a fabricated low threshold.
+            </p>
+          </div>
+        )}
       </div>
     </DemoShell>
   );

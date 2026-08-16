@@ -1,180 +1,203 @@
 "use client";
 
 import * as React from "react";
-import { Star, Download, ExternalLink, Shield } from "lucide-react";
+import { DemoShell } from "@/components/demos/demo-shell";
+import { ChevronLeft, ChevronRight, Megaphone, BookOpen } from "lucide-react";
+
+/*
+ * Disguised Ad — Condition 3: Semantic Mimicry of Native Action Labels
+ *
+ * Thesis: N_ad is a third-party advertising node; L_native is the corpus of
+ * native functional labels (e.g. "Download," "Next," "Play"). The feature
+ * fires if the ad's button label is semantically near-identical to a native
+ * function label, indicating deliberate linguistic impersonation:
+ *
+ *   max sim(L(N_ad), ℓ) > τ_masquerade
+ *     ℓ ∈ L_native
+ *
+ * Variant A (dark): an in-article ad button is labeled "Next" — semantically
+ * identical to the native pagination control below the article.
+ * Variant B (benign): the same ad carries a plainly descriptive label,
+ * "Learn more about our sponsor," far from any native label.
+ */
+
+const NATIVE_LABELS = ["Play", "Next", "Download"];
+const TAU_MASQUERADE = 0.75;
+const SIM_DARK = 0.99; // "Next" vs native "Next"
+const SIM_BENIGN = 0.18; // "Learn more about our sponsor" vs corpus
+
+const AD_LABEL_DARK = "Next";
+const AD_LABEL_BENIGN = "Learn more about our sponsor";
 
 export function DisguisedAdCond3({
-  mode = "user",
-  annotations = [],
-  onRestart,
+  mode = "user", annotations = [], onRestart,
 }: {
   mode?: "user" | "auditor";
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [clicked, setClicked] = React.useState<"real" | "fake" | null>(null);
-  const reset = () => setClicked(null);
+  const [page, setPage] = React.useState<1 | 2>(1);
+  const [adClicked, setAdClicked] = React.useState<null | "dark" | "benign">(null);
+
+  const reset = () => {
+    setPage(1);
+    setAdClicked(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Ad disclosure</span>
-        <span className="font-mono font-semibold text-red-500">None</span>
+        <span className="text-muted-foreground">L_native corpus</span>
+        <span className="font-mono font-semibold tabular-nums">{"{"}{NATIVE_LABELS.join(", ")}{"}"}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Both buttons</span>
-        <span className="font-mono font-semibold">"Download"</span>
+        <span className="text-muted-foreground">Label(N_ad) — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">&ldquo;{AD_LABEL_DARK}&rdquo;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Ad click target</span>
-        <span className="font-mono font-semibold text-red-500">Sponsored redirect</span>
+        <span className="text-muted-foreground">max sim(L(N_ad), ℓ) — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{SIM_DARK} &gt; τ_masquerade ({TAU_MASQUERADE})</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">max sim — benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">{SIM_BENIGN} &le; τ_masquerade</span>
       </div>
     </>
   ) : null;
 
-  /* ── Sponsored redirect page ── */
-  if (clicked === "fake") {
-    return (
-      <div className="rounded-lg border bg-background overflow-hidden">
-        <div className="bg-amber-50 dark:bg-amber-500/5 border-b border-amber-200 dark:border-amber-500/20 px-3 py-1.5 flex items-center gap-1.5">
-          <ExternalLink className="w-3 h-3 text-amber-600 shrink-0" />
-          <span className="text-[9px] text-amber-700 dark:text-amber-400 truncate">
-            ad.trackerexample.com/redirect?campaign=vpn-promo&amp;ref=appstore
-          </span>
-        </div>
-        <div className="p-4 text-center space-y-3">
-          <div className="w-12 h-12 rounded-full bg-amber-500/10 flex items-center justify-center mx-auto">
-            <ExternalLink className="w-6 h-6 text-amber-600" />
-          </div>
-          <h3 className="text-sm font-semibold">Sponsored Offer</h3>
-          <p className="text-[10px] text-muted-foreground">
-            You&apos;ve been redirected to a third-party promotional page.
-            This is not the app you were looking for.
-          </p>
-          <div className="bg-muted/50 rounded-md p-2 text-[10px] space-y-1">
-            <div className="flex items-center gap-1.5">
-              <span className="text-amber-500">⚠</span>
-              <span>Redirected by ad network</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="text-red-500">✗</span>
-              <span>No app download available here</span>
-            </div>
-          </div>
-          <button
-            onClick={reset}
-            className="text-[10px] text-muted-foreground hover:text-foreground underline underline-offset-2"
-          >
-            ← Back to app store
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  /* ── Real download result ── */
-  if (clicked === "real") {
-    return (
-      <div className="rounded-lg border bg-background overflow-hidden">
-        <div className="p-4 text-center space-y-3">
-          <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto">
-            <Download className="w-6 h-6 text-green-600" />
-          </div>
-          <h3 className="text-sm font-semibold">Download Started!</h3>
-          <p className="text-[10px] text-muted-foreground">
-            SecureVPN Pro is downloading to your device.
-          </p>
-          <div className="bg-muted/50 rounded-md p-2 text-[10px]">
-            <div className="flex items-center gap-1.5 text-green-600">
-              <Shield className="w-3 h-3" />
-              <span>Verified &mdash; direct from developer</span>
-            </div>
-          </div>
-          <button
-            onClick={reset}
-            className="text-[10px] text-muted-foreground hover:text-foreground underline underline-offset-2"
-          >
-            Restart demo
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  /* ── Default: two identical "Download" buttons ── */
-  return (
-    <div className="space-y-3">
-      {/* Card A — the real app */}
+  const nativePagination = (
+    <div className="flex items-center justify-between rounded-md border bg-background px-2 py-1.5">
       <button
-        onClick={() => setClicked("real")}
-        className="w-full rounded-lg border bg-background overflow-hidden text-left transition-all hover:border-green-300 dark:hover:border-green-500/50 hover:shadow-md"
+        onClick={() => setPage(1)}
+        disabled={page === 1}
+        className={`flex items-center gap-1 rounded px-1.5 py-1 text-[9px] font-semibold transition-colors ${
+          page === 1 ? "text-muted-foreground/30 cursor-not-allowed" : "text-foreground hover:bg-muted cursor-pointer"
+        }`}
       >
-        <div className="p-3 flex items-center gap-3">
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow shrink-0">
-            <Shield className="w-7 h-7 text-white" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-semibold">SecureVPN Pro</span>
-              <span className="text-[8px] bg-green-500/10 text-green-600 px-1.5 py-0.5 rounded-full font-medium">VERIFIED</span>
-            </div>
-            <div className="flex items-center gap-0.5 mt-0.5">
-              {[1,2,3,4,5].map(i => (
-                <Star key={i} className="w-2.5 h-2.5 text-amber-400 fill-amber-400" />
-              ))}
-              <span className="text-[9px] text-muted-foreground ml-1">4.8 (12.4k)</span>
-            </div>
-            <p className="text-[9px] text-muted-foreground mt-0.5 truncate">
-              Fast &amp; secure VPN with no logs policy. Free 7-day trial.
-            </p>
-          </div>
-          <div className="flex flex-col items-center gap-1 shrink-0 mt-5">
-            <div className="bg-green-600 hover:bg-green-700 text-white rounded-lg px-3 py-1.5 text-[10px] font-semibold flex items-center gap-1 transition-colors">
-              <Download className="w-3 h-3" />
-              Download
-            </div>
-            <span className="text-[8px] text-muted-foreground">42 MB</span>
-          </div>
-        </div>
+        <ChevronLeft className="h-3 w-3" /> Previous
       </button>
-
-      {/* Card B — the ad (no badge, identical "Download" button) */}
+      <span className="font-mono text-[8px] text-muted-foreground">
+        page {page} / 2 <span className="ml-1 text-[7px]">(native control — D_host)</span>
+      </span>
       <button
-        onClick={() => setClicked("fake")}
-        className="w-full rounded-lg border bg-background overflow-hidden text-left transition-all hover:border-green-300 dark:hover:border-green-500/50 hover:shadow-md"
+        onClick={() => setPage(2)}
+        disabled={page === 2}
+        className={`flex items-center gap-1 rounded px-1.5 py-1 text-[9px] font-semibold transition-colors ${
+          page === 2 ? "text-muted-foreground/30 cursor-not-allowed" : "text-foreground hover:bg-muted cursor-pointer"
+        }`}
       >
-        <div className="p-3 flex items-center gap-3">
-          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow shrink-0">
-            <Shield className="w-7 h-7 text-white" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1.5">
-              <span className="text-xs font-semibold">SecureVPN Pro</span>
-              <span className="text-[8px] bg-green-500/10 text-green-600 px-1.5 py-0.5 rounded-full font-medium">VERIFIED</span>
-            </div>
-            <div className="flex items-center gap-0.5 mt-0.5">
-              {[1,2,3,4,5].map(i => (
-                <Star key={i} className="w-2.5 h-2.5 text-amber-400 fill-amber-400" />
-              ))}
-              <span className="text-[9px] text-muted-foreground ml-1">4.8 (12.4k)</span>
-            </div>
-            <p className="text-[9px] text-muted-foreground mt-0.5 truncate">
-              Fast &amp; secure VPN with no logs policy. Free 7-day trial.
-            </p>
-          </div>
-          <div className="flex flex-col items-center gap-1 shrink-0 mt-5">
-            <div className="bg-green-600 hover:bg-green-700 text-white rounded-lg px-3 py-1.5 text-[10px] font-semibold flex items-center gap-1 transition-colors">
-              <Download className="w-3 h-3" />
-              Download
-            </div>
-            <span className="text-[8px] text-muted-foreground">42 MB</span>
-          </div>
-        </div>
+        Next <ChevronRight className="h-3 w-3" />
       </button>
-
-      <p className="text-[8px] text-center text-muted-foreground">
-        Both cards are identical — same icon, same name, same button label. No disclosure on the ad.
-      </p>
     </div>
+  );
+
+  return (
+    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+      title="Disguised Ad: Semantic Mimicry of Native Action Labels"
+      caption="Semantic Mimicry of Native Action Labels — the ad's button label is semantically near-identical to a native functional label such as “Next”, “Play”, or “Download”, impersonating the interface's own vocabulary."
+      auditorStats={stats}
+      deltaNote={`The article, the native pagination, and the ad placement are identical in both panels. In Variant A the ad's button is labeled "${AD_LABEL_DARK}" — cosine similarity ${SIM_DARK} with the native "Next" label, above τ_masquerade (${TAU_MASQUERADE}) — so clicking it looks like turning the page. In Variant B the same ad is labeled "${AD_LABEL_BENIGN}" (sim ${SIM_BENIGN}), semantically distant from every native label.`}
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-background p-3">
+            <div className="mb-1 flex items-center gap-1.5">
+              <BookOpen className="h-3 w-3 text-muted-foreground" />
+              <span className="text-[9px] font-semibold">TechDaily — Read</span>
+            </div>
+            <h3 className="text-[11px] font-bold leading-snug">Why your phone is always listening (and what to do)</h3>
+            <p className="mt-1 text-[9px] leading-relaxed text-muted-foreground">
+              {page === 1
+                ? "Voice assistants wake on trigger words, but the microphone pipeline is always hot. We measured the actual data flow between your phone and the vendor's cloud over 30 days, and the results are… complicated."
+                : "Page two: opt-out paths differ wildly by vendor, and most settings screens bury the toggle behind three menus. Our checklist walks through each major platform, one setting at a time."}
+            </p>
+          </div>
+
+          {/* Ad box — plainly descriptive label (sim ≤ τ_masquerade) */}
+          <div className="rounded-md border-2 border-dashed border-amber-400/50 bg-amber-500/10 p-2.5">
+            <div className="mb-1.5 flex items-center justify-between">
+              <span className="flex items-center gap-1 rounded-full bg-amber-500 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-white">
+                <Megaphone className="h-2.5 w-2.5" /> Advertisement
+              </span>
+              <span className="text-[7px] font-medium text-muted-foreground">third-party · sponsor</span>
+            </div>
+            <p className="text-[9px] leading-relaxed text-muted-foreground">
+              Our sponsor builds privacy-focused VPNs for the whole family. Take a look if you are shopping around.
+            </p>
+            <button
+              onClick={() => setAdClicked("benign")}
+              className="mt-1.5 w-full rounded border border-amber-400/60 py-1.5 text-[9px] font-semibold text-amber-700 dark:text-amber-300 transition-colors hover:bg-amber-500/10 cursor-pointer"
+            >
+              {AD_LABEL_BENIGN}
+            </button>
+          </div>
+
+          {nativePagination}
+
+          {adClicked === "benign" && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <Megaphone className="h-3 w-3" /> No linguistic impersonation
+              </div>
+              <p className="text-muted-foreground">
+                max sim(L(N<sub>ad</sub>), ℓ) over L<sub>native</sub> = {"{"}{NATIVE_LABELS.join(", ")}{"}"} is{" "}
+                {SIM_BENIGN} ≤ τ<sub>masquerade</sub> ({TAU_MASQUERADE}). The label describes the ad honestly — no native
+                action word was borrowed.
+              </p>
+            </div>
+          )}
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-background p-3">
+          <div className="mb-1 flex items-center gap-1.5">
+            <BookOpen className="h-3 w-3 text-muted-foreground" />
+            <span className="text-[9px] font-semibold">TechDaily — Read</span>
+          </div>
+          <h3 className="text-[11px] font-bold leading-snug">Why your phone is always listening (and what to do)</h3>
+          <p className="mt-1 text-[9px] leading-relaxed text-muted-foreground">
+            {page === 1
+              ? "Voice assistants wake on trigger words, but the microphone pipeline is always hot. We measured the actual data flow between your phone and the vendor's cloud over 30 days, and the results are… complicated."
+              : "Page two: opt-out paths differ wildly by vendor, and most settings screens bury the toggle behind three menus. Our checklist walks through each major platform, one setting at a time."}
+          </p>
+        </div>
+
+        {/* Ad box — button labeled "Next", semantically identical to native pagination */}
+        <div className="rounded-md border bg-card p-2.5">
+          <div className="mb-1 flex items-center justify-between">
+            <span className="text-[7px] font-bold uppercase tracking-wider text-muted-foreground/40 select-none">AD</span>
+            <span className="text-[7px] font-medium text-muted-foreground/60">Continue reading</span>
+          </div>
+          <p className="text-[9px] leading-relaxed text-muted-foreground">
+            Some vendors offer a free tier. Some don&rsquo;t. Find out which of the big three actually keeps logs.
+          </p>
+          <button
+            onClick={() => setAdClicked("dark")}
+            className="mt-1.5 flex w-full items-center justify-center gap-1 rounded-md bg-foreground py-1.5 text-[9px] font-bold text-background transition-opacity hover:opacity-90 cursor-pointer"
+          >
+            {AD_LABEL_DARK} <ChevronRight className="h-3 w-3" />
+          </button>
+        </div>
+
+        {nativePagination}
+
+        {adClicked === "dark" && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Semantic masquerade — that was an ad
+            </div>
+            <p className="text-muted-foreground">
+              max sim(L(N<sub>ad</sub>), ℓ) over L<sub>native</sub> = <strong className="text-rose-500">{SIM_DARK} &gt; τ<sub>masquerade</sub></strong>{" "}
+              ({TAU_MASQUERADE}): the ad button borrowed the native pagination&rsquo;s exact word, &ldquo;{AD_LABEL_DARK}&rdquo;.
+              Clicking it sends you to the sponsor — not to page two. The page you wanted stays one click further away.
+            </p>
+          </div>
+        )}
+      </div>
+    </DemoShell>
   );
 }

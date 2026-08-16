@@ -3,6 +3,39 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Activity Messages — Condition 1: Asynchronous Event Fabrication
+ *
+ * Thesis: E_real(t) is the set of genuine transactions in the database and
+ * M_displayed(t) the activity message rendered on the client interface.
+ * The feature triggers if the system algorithmically generates activity
+ * pop-ups that have no structural mapping to the backend event log:
+ *
+ *   M_displayed(t) != ∅  ∧  M_displayed(t) ∉ E_real(t)
+ *
+ * Variant A (dark): a stream of "X just purchased this item" pop-ups pours
+ * in while the backend transaction log stays empty — every message is a
+ * narrative fabrication. Variant B (benign): each message carries a real
+ * order id that exists in the visible backend log (M_displayed ⊆ E_real).
+ */
+
+const BUYERS = [
+  { name: "Sarah", city: "New York", item: "Aurora Wireless Earbuds Pro" },
+  { name: "Mike", city: "Berlin", item: "CloudNine Smart Lamp" },
+  { name: "Anna", city: "Toronto", item: "TrailBlazer Backpack 45L" },
+  { name: "Liam", city: "Dublin", item: "Aurora Wireless Earbuds Pro" },
+  { name: "Priya", city: "Mumbai", item: "CloudNine Smart Lamp" },
+];
+
+type Event = {
+  id: number;
+  order: string;
+  name: string;
+  city: string;
+  item: string;
+  ts: string;
+};
+
 export function ActivityMessagesCond1({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,30 +43,203 @@ export function ActivityMessagesCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const reset = () => {};
+  const [events, setEvents] = React.useState<Event[]>([]);
+  const [verified, setVerified] = React.useState(false);
+  const counter = React.useRef(0);
+
+  // Shared event stream: every 2.8s one new "purchase" arrives.
+  React.useEffect(() => {
+    const id = window.setInterval(() => {
+      const src = BUYERS[counter.current % BUYERS.length];
+      counter.current += 1;
+      const ev: Event = {
+        id: counter.current,
+        order: `TX-${48200 + counter.current}`,
+        name: src.name,
+        city: src.city,
+        item: src.item,
+        ts: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" }),
+      };
+      setEvents((prev) => [...prev.slice(-4), ev]);
+    }, 2800);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const reset = () => {
+    setEvents([]);
+    setVerified(false);
+    counter.current = 0;
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Emotional pressure tactics</span>
-        <span className="font-mono font-semibold">Detected</span>
+        <span className="text-muted-foreground">M_displayed(t) — messages shown</span>
+        <span className="font-mono font-semibold tabular-nums">{events.length}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">E_real(t) — backend log entries</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">0 (fabricated) / {events.length} (real)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">M_displayed ⊆ E_real?</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">No — M ∉ E_real (A)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Injection interval</span>
+        <span className="font-mono font-semibold tabular-nums">2.8s / message</span>
       </div>
     </>
   ) : null;
 
+  const toastRow = (ev: Event, dark: boolean) => (
+    <div
+      key={ev.id}
+      className={`flex items-start gap-2 rounded-md border p-2 text-[9px] leading-snug ${
+        dark
+          ? "border-rose-500/30 bg-rose-500/5"
+          : "border-emerald-500/30 bg-emerald-500/5"
+      }`}
+    >
+      <svg
+        className={`mt-0.5 h-3 w-3 shrink-0 ${dark ? "text-rose-500" : "text-emerald-500"}`}
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+      >
+        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
+      </svg>
+      <div className="min-w-0">
+        {dark ? (
+          <p className="text-foreground/85">
+            <strong>{ev.name} from {ev.city}</strong> just purchased <strong>{ev.item}</strong>
+          </p>
+        ) : (
+          <p className="text-foreground/85">
+            <strong>{ev.name}</strong> ({ev.city}) purchased <strong>{ev.item}</strong>{" "}
+            <span className="font-mono text-emerald-600 dark:text-emerald-400">· {ev.order} · {ev.ts}</span>
+          </p>
+        )}
+      </div>
+    </div>
+  );
+
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Activity Messages: Asynchronous Event Fabrication"
-      caption="Asynchronous Event Fabrication — social or parasocial pressure manipulates behavior." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md bg-purple-500/5 border border-purple-500/30 p-3 text-xs">
-          <div className="font-medium text-purple-700 dark:text-purple-300">Asynchronous Event Fabrication</div>
-          <div className="flex items-center gap-3 mt-2">
-            <div className="font-mono text-2xl font-bold">1,247</div>
-            <div className="text-[10px] text-muted-foreground">people viewed this today</div>
+      caption="Asynchronous Event Fabrication — purchase pop-ups stream in continuously, but none of them maps to a real transaction in the backend event log."
+      auditorStats={stats}
+      deltaNote="Both panels stream the same names, cities and products. In Variant A the pop-ups carry no order id and the backend log stays empty (M_displayed ∉ E_real — fabricated). In Variant B every message references a real order id that is present in the visible backend log (M_displayed ⊆ E_real)."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <h3 className="text-[11px] font-semibold">Aurora Wireless Earbuds Pro</h3>
+            <p className="text-[9px] text-muted-foreground mt-0.5">
+              Live purchase activity is shown below. Each message references a real order in the event log.
+            </p>
           </div>
-          <div className="mt-2 text-[9px] text-muted-foreground">Hurry — 23 people are viewing right now</div>
+
+          <div className="space-y-1.5">
+            {events.length === 0 && (
+              <p className="text-[9px] text-muted-foreground/70 italic">
+                Waiting for the next real transaction…
+              </p>
+            )}
+            {events.map((ev) => toastRow(ev, false))}
+          </div>
+
+          <div className="rounded-md border border-border bg-background p-2.5">
+            <div className="flex items-center justify-between text-[9px]">
+              <span className="font-mono text-muted-foreground">Backend event log — E_real(t)</span>
+              <span className="font-mono font-semibold tabular-nums text-emerald-500">{events.length} entr{events.length === 1 ? "y" : "ies"}</span>
+            </div>
+            <ul className="mt-1.5 space-y-1">
+              {events.map((ev) => (
+                <li key={ev.id} className="flex items-center justify-between font-mono text-[8px] text-muted-foreground">
+                  <span className="truncate">{ev.order} · {ev.name}</span>
+                  <span className="tabular-nums">{ev.ts}</span>
+                </li>
+              ))}
+              {events.length === 0 && <li className="text-[8px] text-muted-foreground/60 italic">No transactions yet.</li>}
+            </ul>
+          </div>
+
+          <button
+            onClick={() => setVerified(true)}
+            className="w-full rounded-md border border-emerald-500/40 bg-emerald-500/10 py-1.5 text-[10px] font-medium text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors cursor-pointer"
+          >
+            Verify against backend
+          </button>
+
+          {verified && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Messages map to real events
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                Every displayed message has a structural mapping to the backend event log: M_displayed(t) ⊆ E_real(t).
+                The social proof is genuine, so the herd-behaviour heuristic is fed real information.
+              </p>
+            </div>
+          )}
         </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <h3 className="text-[11px] font-semibold">Aurora Wireless Earbuds Pro</h3>
+          <p className="text-[9px] text-muted-foreground mt-0.5">
+            Others are buying right now. Act fast before they sell out!
+          </p>
+        </div>
+
+        <div className="space-y-1.5">
+          {events.length === 0 && (
+            <p className="text-[9px] text-muted-foreground/70 italic">
+              Waiting for the next “purchase”…
+            </p>
+          )}
+          {events.map((ev) => toastRow(ev, true))}
+        </div>
+
+        <div className="rounded-md border border-border bg-background p-2.5">
+          <div className="flex items-center justify-between text-[9px]">
+            <span className="font-mono text-muted-foreground">Backend event log — E_real(t)</span>
+            <span className="font-mono font-semibold tabular-nums text-rose-500">0 entries</span>
+          </div>
+          <p className="mt-1.5 text-[8px] italic text-muted-foreground/60">
+            Querying transactions for this product… no records found.
+          </p>
+        </div>
+
+        <button
+          onClick={() => setVerified(true)}
+          className="w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+        >
+          Verify against backend
+        </button>
+
+        {verified && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Event fabrication detected
+            </div>
+            <p className="text-muted-foreground">
+              The stream shows <strong className="text-foreground">{events.length} message{events.length === 1 ? "" : "s"}</strong> of the form
+              “Sarah from New York just purchased this item” — M_displayed(t) ≠ ∅ — yet the backend event log E_real(t)
+              contains <strong className="text-rose-500">zero matching transactions</strong>.
+            </p>
+            <p className="text-muted-foreground">
+              Because M_displayed(t) ∉ E_real(t), every pop-up is algorithmically generated with no structural mapping to
+              real events: a narrative fabrication intended to mimic high demand and inflate perceived desirability.
+            </p>
+          </div>
+        )}
       </div>
     </DemoShell>
   );

@@ -3,6 +3,22 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Limited Time Message — Condition 2: Visual Salience of Temporal-Urgency Chromatics
+ *
+ * Thesis: the offer container C_offer is inspected for the co-occurrence of
+ * a time-constrained claim and high-saturation, warm-spectrum color styling.
+ * The feature triggers if the dominant accent color falls within the urgency
+ * spectrum and the text matches a temporal-scarcity pattern:
+ *
+ *   Hue(C_offer) ∈ [0°, 45°]  ∧  Match(T(C_offer), Pattern_temporal) = True
+ *
+ * Variant A (dark): temporal-scarcity copy painted in the urgency spectrum
+ * (hue ≈ 15°) — a compound visual-linguistic urgency signal.
+ * Variant B (benign): identical copy on a neutral palette (hue ≈ 210°) —
+ * the compound signal never forms.
+ */
+
 export function LimitedTimeMessageCond2({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,30 +26,147 @@ export function LimitedTimeMessageCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const reset = () => {};
+  const [probed, setProbed] = React.useState(false);
+  const [added, setAdded] = React.useState(false);
+
+  const reset = () => {
+    setProbed(false);
+    setAdded(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Emotional pressure tactics</span>
-        <span className="font-mono font-semibold">Detected</span>
+        <span className="text-muted-foreground">Hue(C_offer) — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">15° ∈ [0°, 45°]</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Hue(C_offer) — benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">210° ∉ [0°, 45°]</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Match(T, Pattern_temporal)</span>
+        <span className="font-mono font-semibold tabular-nums">“ends in” → True</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Compound signal</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">dark: active</span>
       </div>
     </>
   ) : null;
 
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Limited Time Message: Perpetual Extension"
-      caption="Perpetual Extension — social or parasocial pressure manipulates behavior." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md bg-teal-500/5 border border-teal-500/30 p-3 text-xs">
-          <div className="font-medium text-teal-700 dark:text-teal-300">Perpetual Extension</div>
-          <div className="flex items-center gap-3 mt-2">
-            <div className="font-mono text-2xl font-bold">1,247</div>
-            <div className="text-[10px] text-muted-foreground">people viewed this today</div>
+      title="Limited Time Message: Visual Salience of Temporal-Urgency Chromatics"
+      caption="Visual Salience of Temporal-Urgency Chromatics — a warm-spectrum accent (hue 0°–45°) co-occurring with a temporal-scarcity claim (“ends in”, “only today”) creates a compound visual-linguistic urgency signal."
+      auditorStats={stats}
+      deltaNote="Both variants carry identical urgency copy — only the palette differs. Variant A paints the offer container in the urgency spectrum (hue ≈ 15°), satisfying the co-occurrence condition; Variant B uses a neutral hue (≈ 210°), so the same claim never triggers the compound signal."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="rounded-md border border-sky-200 bg-sky-100 px-3 py-2.5">
+              <div className="flex items-center justify-between gap-2">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-sky-900">Flash sale — 50% off</div>
+                <div className="rounded-full bg-sky-200 px-2 py-0.5 text-[8px] font-mono font-semibold text-sky-900">hue ≈ 210°</div>
+              </div>
+              <div className="mt-1.5 text-[10px] font-semibold text-sky-900">Only today — ends in 4 hours</div>
+              <div className="mt-0.5 text-[9px] leading-relaxed text-sky-900/70">
+                Don&rsquo;t miss it. Full-price customers pay double.
+              </div>
+            </div>
+
+            <button
+              onClick={() => setProbed(true)}
+              className="mt-2.5 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            >
+              Inspect offer container (hue probe)
+            </button>
+
+            {probed && (
+              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+                <div className="font-semibold text-emerald-700 dark:text-emerald-300">Hue(C_offer) = 210° ∉ [0°, 45°] ✗</div>
+                <div className="text-muted-foreground">Match(T(C_offer), “ends in | only today”) = True ✓</div>
+                <div className="text-muted-foreground mt-1">Conjunction fails — no compound urgency signal.</div>
+              </div>
+            )}
+
+            <button
+              onClick={() => setAdded(true)}
+              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            >
+              Add to cart — 50% off
+            </button>
           </div>
-          <div className="mt-2 text-[9px] text-muted-foreground">Hurry — 23 people are viewing right now</div>
+
+          {added && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Added — decision on the price alone
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                The offer was evaluated on its factual content: the same copy, a neutral
+                palette, no warm-spectrum urgency. Nothing in the container amplifies arousal.
+              </p>
+            </div>
+          )}
         </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="rounded-md bg-gradient-to-br from-red-500 to-orange-500 px-3 py-2.5 text-white">
+            <div className="flex items-center justify-between gap-2">
+              <div className="text-[10px] font-bold uppercase tracking-wider">Flash sale — 50% off</div>
+              <div className="rounded-full bg-white/25 px-2 py-0.5 text-[8px] font-mono font-semibold">hue ≈ 15°</div>
+            </div>
+            <div className="mt-1.5 text-[10px] font-semibold">Only today — ends in 4 hours</div>
+            <div className="mt-0.5 text-[9px] leading-relaxed text-white/85">
+              Don&rsquo;t miss it. Full-price customers pay double.
+            </div>
+          </div>
+
+          <button
+            onClick={() => setProbed(true)}
+            className="mt-2.5 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+          >
+            Inspect offer container (hue probe)
+          </button>
+
+          {probed && (
+            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+              <div className="font-semibold text-amber-700 dark:text-amber-300">Hue(C_offer) = 15° ∈ [0°, 45°] ✓</div>
+              <div className="text-muted-foreground">Match(T(C_offer), “ends in | only today”) = True ✓</div>
+              <div className="text-muted-foreground mt-1">Co-occurrence confirmed — compound urgency signal active.</div>
+            </div>
+          )}
+
+          <button
+            onClick={() => setAdded(true)}
+            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+          >
+            Add to cart — 50% off
+          </button>
+        </div>
+
+        {added && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Compound visual-linguistic urgency
+            </div>
+            <p className="text-muted-foreground">
+              You clicked under a hue-15° banner whose copy says &ldquo;only today&rdquo;. The warm
+              palette and the temporal claim reinforce each other — the color is part of the
+              manipulation, not decoration. Both conditions of the conjunction hold.
+            </p>
+          </div>
+        )}
       </div>
     </DemoShell>
   );

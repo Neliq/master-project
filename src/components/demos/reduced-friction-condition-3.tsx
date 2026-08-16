@@ -3,21 +3,27 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
-interface CookieCategory {
-  id: string;
-  label: string;
-  description: string;
-  required: boolean;
-  checked: boolean;
-}
+/*
+ * Reduced Friction — Condition 3: Semantic Absence of Confirmation Language
+ *
+ * Thesis: the algorithm searches for confirmation-seeking or
+ * reversibility-assuring language preceding a high-commitment action —
+ * “Are you sure?”, “This cannot be undone”, “Confirm purchase.” The feature
+ * triggers if a one-click purchase or subscription commitment is executed
+ * without any semantically equivalent confirmation text node in the
+ * interaction path preceding the action:
+ *
+ *   ¬∃ n ∈ Path(v_pre, v_commit) : Match(T(n), Pattern_confirm) = True
+ *
+ * Variant A (dark): the commit button reads “Start my plan” surrounded by
+ * promotional copy — zero confirmation-language nodes on the path, yet a
+ * charge fires immediately.
+ * Variant B (benign): identical layout and price, but the button is a
+ * confirmation node: “Confirm purchase — $29.99”, preceded by “This cannot
+ * be undone.”
+ */
 
-const defaultCategories: CookieCategory[] = [
-  { id: "essential", label: "Strictly Necessary", description: "Required for the website to function", required: true, checked: true },
-  { id: "analytics", label: "Performance & Analytics", description: "Helps us understand how visitors interact", required: false, checked: true },
-  { id: "marketing", label: "Marketing & Advertising", description: "Used to deliver relevant ads and campaigns", required: false, checked: true },
-  { id: "thirdparty", label: "Third-Party Data Sharing", description: "Allows sharing data with partner companies", required: false, checked: true },
-  { id: "personalization", label: "Personalization", description: "Remember your preferences and settings", required: false, checked: true },
-];
+const PLAN_PRICE = "$29.99";
 
 export function ReducedFrictionCond3({
   mode = "user", annotations = [], onRestart,
@@ -26,125 +32,136 @@ export function ReducedFrictionCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [categories, setCategories] = React.useState(defaultCategories);
-  const [accepted, setAccepted] = React.useState(false);
+  const [aCommitted, setACommitted] = React.useState(false);
+  const [bCommitted, setBCommitted] = React.useState(false);
 
   const reset = () => {
-    setCategories(defaultCategories);
-    setAccepted(false);
+    setACommitted(false);
+    setBCommitted(false);
   };
-
-  const toggle = (id: string) => {
-    setCategories(prev =>
-      prev.map(c => c.id === id ? { ...c, checked: !c.checked } : c)
-    );
-  };
-
-  const handleAcceptAll = () => setAccepted(true);
-  const handleSavePreferences = () => setAccepted(true);
-
-  const checkedCount = categories.filter(c => c.checked).length;
-  const optionalChecked = categories.filter(c => !c.required && c.checked).length;
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Pre-checked (opt-out)</span>
-        <span className="font-mono font-semibold">{optionalChecked} of {categories.length - 1} optional</span>
+        <span className="text-muted-foreground">∃n: Match(T(n), Pattern_confirm) (A)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">False — 0 nodes</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">∃n: Match(T(n), Pattern_confirm) (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">True — button node</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Pattern_confirm lexicon</span>
+        <span className="font-mono font-semibold tabular-nums">“Are you sure?” · “This cannot be undone” · “Confirm purchase”</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Charge</span>
+        <span className="font-mono font-semibold tabular-nums">{PLAN_PRICE}/mo — both variants</span>
       </div>
     </>
   ) : null;
 
-  if (accepted) {
-    return (
-      <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-        title="Reduced Friction: Pre-authorized State Exploitation"
-        caption="Pre-authorized State Exploitation — privacy-sensitive options pre-checked, exploiting user inertia." auditorStats={stats}>
-        <div className="space-y-3">
-          <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-            <div className="rounded-lg border border-green-500/20 bg-green-500/5 p-4 text-center">
-              <div className="text-sm font-bold text-green-600 dark:text-green-400">Preferences Saved</div>
-              <div className="mt-1 text-[10px] text-muted-foreground">
-                {checkedCount} of {categories.length} categories enabled
-              </div>
-              <div className="mt-2 space-y-0.5 text-left text-[9px] text-muted-foreground">
-                {categories.map(c => (
-                  <div key={c.id} className="flex items-center justify-between border-t border-foreground/5 py-1">
-                    <span>{c.label}</span>
-                    <span className={c.checked ? "font-medium text-green-600 dark:text-green-400" : "text-muted-foreground/50"}>
-                      {c.checked ? "ON" : "OFF"}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </DemoShell>
-    );
-  }
-
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Reduced Friction: Pre-authorized State Exploitation"
-      caption="Pre-authorized State Exploitation — privacy-sensitive options pre-checked, exploiting user inertia." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-
-          {/* Cookie banner */}
-          <div className="rounded-lg border border-foreground/15 bg-foreground/[0.03] shadow-sm">
-            <div className="px-3 py-2.5 border-b border-foreground/10">
-              <div className="flex items-center gap-1.5">
-                <span className="text-sm">🍪</span>
-                <span className="font-semibold text-[11px]">Cookie Preferences</span>
+      title="Reduced Friction: Semantic Absence of Confirmation Language"
+      caption="Semantic Absence of Confirmation Language — a high-commitment action fires with no confirmation-seeking or reversibility-assuring text node anywhere on the path."
+      auditorStats={stats}
+      deltaNote="In Variant A the button is a promotional node (“Start my plan”) and the path contains no confirmation language at all (Match = False). In Variant B the very same commitment is preceded by “This cannot be undone” and the button itself reads “Confirm purchase” — a confirmation node exists on the path."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-start gap-3">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
+                <svg className="h-4 w-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
               </div>
-              <p className="mt-1 text-[9px] text-muted-foreground leading-relaxed">
-                We use cookies to enhance your experience. By clicking "Accept All",
-                you consent to our use of cookies as described in our Cookie Policy.
-              </p>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-[11px] font-semibold">Premium Plan</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">
+                  Unlimited projects, priority support, and analytics.{" "}
+                  <span className="font-semibold text-emerald-600 dark:text-emerald-400">{PLAN_PRICE}/month</span>,
+                  billed monthly. Cancel anytime.
+                </p>
+              </div>
             </div>
 
-            {/* Toggle switches */}
-            <div className="px-3 py-2 space-y-0">
-              {categories.map((cat, i) => (
-                <div key={cat.id} className={`flex items-center justify-between py-2 ${i < categories.length - 1 ? "border-b border-foreground/5" : ""}`}>
-                  <div className="flex-1 mr-2">
-                    <div className="flex items-center gap-1">
-                      <span className="text-[10px] font-medium">{cat.label}</span>
-                      {cat.required && (
-                        <span className="text-[7px] rounded bg-foreground/10 px-1 py-0.5 text-muted-foreground/60">Required</span>
-                      )}
-                    </div>
-                    <div className="text-[8px] text-muted-foreground/60 mt-0.5">{cat.description}</div>
-                  </div>
-                  <button
-                    onClick={() => !cat.required && toggle(cat.id)}
-                    disabled={cat.required}
-                    className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full transition-colors ${
-                      cat.checked ? "bg-green-500" : "bg-foreground/20"
-                    } ${cat.required ? "opacity-50 cursor-not-allowed" : ""}`}
-                  >
-                    <span className={`inline-block h-3.5 w-3.5 rounded-full bg-white shadow transition-transform ${
-                      cat.checked ? "translate-x-4.5" : "translate-x-0.5"
-                    }`} />
-                  </button>
+            <div className="mt-3 rounded-md border border-border bg-background px-3 py-2 text-[9px] text-muted-foreground">
+              <strong className="text-foreground">This cannot be undone.</strong> You will be charged {PLAN_PRICE}{" "}
+              now, and every month thereafter until you cancel.
+            </div>
+
+            <button
+              onClick={() => setBCommitted(true)}
+              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+            >
+              Confirm purchase — {PLAN_PRICE}/month
+            </button>
+
+            {bCommitted && (
+              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  Match(T(n), Pattern_confirm) = True
                 </div>
-              ))}
+                <p className="text-muted-foreground mt-0.5">
+                  The path from offer to charge contained a confirmation node: the warning line and the
+                  “Confirm purchase” button itself. The commitment was explicit, not momentum-driven.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-start gap-3">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
+              <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
             </div>
-
-            {/* Action buttons */}
-            <div className="px-3 py-2.5 border-t border-foreground/10 flex gap-2">
-              <button onClick={handleSavePreferences}
-                className="flex-1 rounded-md border border-foreground/15 py-2 text-[10px] font-medium text-muted-foreground hover:bg-foreground/5">
-                Save Preferences
-              </button>
-              <button onClick={handleAcceptAll}
-                className="flex-1 rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white hover:bg-green-700">
-                Accept All
-              </button>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-[11px] font-semibold">Premium Plan</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                Unlimited projects, priority support, and analytics.{" "}
+                <span className="font-semibold text-emerald-600 dark:text-emerald-400">{PLAN_PRICE}/month</span>,
+                billed monthly. Cancel anytime.
+              </p>
             </div>
           </div>
 
+          <div className="mt-3 rounded-md border border-amber-500/20 bg-amber-500/5 px-3 py-2 text-[9px] text-muted-foreground">
+            🎉 Limited-time offer — get instant access now! Join 40,000+ happy customers. Upgrade today.
+          </div>
+
+          <button
+            onClick={() => setACommitted(true)}
+            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+          >
+            Start my plan — {PLAN_PRICE}/month
+          </button>
+
+          {aCommitted && (
+            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 9v4m0 4h.01" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+                Charged — no confirmation language
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                {PLAN_PRICE} was charged to •••• 4242. Scanning the path from offer to commit: no “Are you sure?”,
+                no “This cannot be undone”, no “Confirm purchase” —{" "}
+                <strong className="text-foreground">¬∃ n ∈ Path(v_pre, v_commit) : Match(T(n), Pattern_confirm) = True</strong>.
+                The only text around the button was promotional.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </DemoShell>

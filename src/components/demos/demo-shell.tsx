@@ -21,6 +21,7 @@ import type { ReactNode } from "react";
 import {
   AlertTriangle,
   Beaker,
+  CheckCircle2,
   Clock,
   Eye,
   Gauge,
@@ -50,8 +51,17 @@ export interface DemoShellProps {
   hint?: string;
   /** Optional set of toggles (illuminated by the demo author). */
   controls?: ReactNode;
-  /** The actual interactive widget. */
+  /** The actual interactive widget (the dark pattern, Variant A). */
   children: ReactNode;
+  /**
+   * Optional non-dark counterpart (Variant B) — the same UI with the
+   * deceptive heuristic neutralised, per the thesis's Minimal-Variance
+   * Principle (Ch. 4). When provided, children and `benign` are rendered
+   * side by side as an A/B pair so the difference is immediately visible.
+   */
+  benign?: ReactNode;
+  /** Optional one-liner describing exactly what changed between A and B. */
+  deltaNote?: string;
   /** Optional className for the root card. */
   className?: string;
   /** View mode: "user" shows only the dark pattern UI; "auditor" adds audit chrome. */
@@ -78,6 +88,8 @@ export function DemoShell({
   hint,
   controls,
   children,
+  benign,
+  deltaNote,
   className,
   mode = "user",
   annotations = [],
@@ -96,9 +108,15 @@ export function DemoShell({
   React.useEffect(() => {
     if (!isAuditor) return;
     const start = Date.now();
-    setElapsed(0);
-    setClickCount(0);
+    let first = true;
     const id = window.setInterval(() => {
+      if (first) {
+        // Reset counters on the first tick after the mode flip (avoids a
+        // synchronous setState inside the effect body).
+        setElapsed(0);
+        setClickCount(0);
+        first = false;
+      }
       setElapsed(Math.floor((Date.now() - start) / 1000));
     }, 500);
     return () => window.clearInterval(id);
@@ -155,28 +173,80 @@ export function DemoShell({
         ) : null}
 
         {/* ============================================================ */}
-        {/* USER-FACING DARK PATTERN UI — visually isolated from the    */}
-        {/* auditor chrome. In auditor mode it is wrapped in a red    */}
-        {/* container with a "Dark pattern fragment" label.            */}
+        {/* USER-FACING UI — visually isolated from the auditor chrome.  */}
+        {/* Single demos render one dark-pattern fragment; demos that    */}
+        {/* ship a benign counterpart render an A/B pair (Variant A =    */}
+        {/* dark pattern, Variant B = non-dark pattern), so the delta    */}
+        {/* between the two states is immediately visible.               */}
         {/* ============================================================ */}
         <div
           data-dp-simulation
           data-dp-speed={speed}
           onClickCapture={isAuditor ? handleClickCapture : undefined}
-          className={cn(
-            "bg-background relative rounded-md border p-4 ring-1",
-            isAuditor
-              ? "ring-2 ring-red-500/40 border-red-500/40"
-              : "ring-foreground/5"
-          )}
+          className="bg-background relative rounded-md border p-4 ring-1 ring-foreground/5"
         >
-          {isAuditor ? (
-            <div className="bg-red-500/10 border-red-500/40 text-red-800 dark:text-red-200 -mx-1 -mt-1 mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
-              <AlertTriangle className="size-3" />
-              Dark pattern fragment
+          {benign ? (
+            <>
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+                {/* ── Variant A: the dark pattern ── */}
+                <div
+                  className={cn(
+                    "rounded-md border p-3",
+                    isAuditor
+                      ? "ring-2 ring-red-500/40 border-red-500/40"
+                      : "ring-1 ring-red-500/30"
+                  )}
+                >
+                  <div className="bg-red-500/10 border-red-500/40 text-red-800 dark:text-red-200 mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
+                    <AlertTriangle className="size-3" />
+                    Variant A — Dark pattern
+                  </div>
+                  {children}
+                </div>
+                {/* ── Variant B: the non-dark counterpart ── */}
+                <div
+                  className={cn(
+                    "rounded-md border p-3",
+                    isAuditor
+                      ? "ring-2 ring-emerald-500/40 border-emerald-500/40"
+                      : "ring-1 ring-emerald-500/30"
+                  )}
+                >
+                  <div className="bg-emerald-500/10 border-emerald-500/40 text-emerald-800 dark:text-emerald-200 mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
+                    <CheckCircle2 className="size-3" />
+                    Variant B — Non-dark pattern
+                  </div>
+                  {benign}
+                </div>
+              </div>
+              {deltaNote ? (
+                <div className="border-foreground/10 bg-muted/40 mt-3 flex items-start gap-2 rounded-md border px-3 py-2 text-xs leading-relaxed">
+                  <Info className="text-muted-foreground mt-0.5 size-3.5 shrink-0" />
+                  <span className="text-muted-foreground">
+                    <strong className="text-foreground">What changed:</strong>{" "}
+                    {deltaNote}
+                  </span>
+                </div>
+              ) : null}
+            </>
+          ) : (
+            <div
+              className={cn(
+                "relative",
+                isAuditor
+                  ? "ring-2 ring-red-500/40 border-red-500/40 rounded-md border p-3"
+                  : ""
+              )}
+            >
+              {isAuditor ? (
+                <div className="bg-red-500/10 border-red-500/40 text-red-800 dark:text-red-200 -mx-1 -mt-1 mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
+                  <AlertTriangle className="size-3" />
+                  Dark pattern fragment
+                </div>
+              ) : null}
+              {children}
             </div>
-          ) : null}
-          {children}
+          )}
         </div>
 
         {/* ============================================================ */}

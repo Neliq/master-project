@@ -2,9 +2,40 @@
 
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
+import { AlertTriangle, CheckCircle2 } from "lucide-react";
 
-const ROTATIONS_NEEDED = 3;
-const DEGREES_NEEDED = ROTATIONS_NEEDED * 360; // 1080°
+/*
+ * Pull To Refresh (Variable-Reward Trap) — Condition 1:
+ * Kinesthetic Resistance and Action Commitment
+ *
+ * Thesis: the user must apply deliberate tension against simulated elastic
+ * friction R_elastic(ΔY) — a programmed friction function that non-linearly
+ * slows visual displacement — until the displacement threshold τ_commit is
+ * reached and the lever "snaps", releasing the refresh event E_refresh:
+ *
+ *   ΔY_touch(t) ≥ τ_commit  ∧  R_elastic > 0  ⟹  E_refresh() = True
+ *
+ * Variant A (dark): a lever-style pull. Hold to pull; resistance grows as the
+ * pull deepens, and releasing before τ_commit snaps the lever back with no
+ * refresh. Only sustained physical effort past the threshold triggers it.
+ * Variant B (benign): the identical feed and payload through a plain Refresh
+ * button — one tap fires the refresh, no threshold, no lever mechanics.
+ */
+
+const TAU_COMMIT = 80; // px — commitment threshold (thesis: τ_commit)
+
+const POSTS = [
+  "Morning run along the canal — 8 km done.",
+  "Finally finished the shelf I've been building.",
+  "This café's flat white is dangerously good.",
+  "New plant on the windowsill. Name pending.",
+  "Read 60 pages before the alarm even rang.",
+  "The fog over the bay this morning was unreal.",
+];
+
+function postFor(i: number): string {
+  return POSTS[i % POSTS.length];
+}
 
 export function PullToRefreshCond1({
   mode = "user", annotations = [], onRestart,
@@ -13,228 +44,256 @@ export function PullToRefreshCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [rotation, setRotation] = React.useState(0);
-  const [unlocked, setUnlocked] = React.useState(false);
-  const [isDragging, setIsDragging] = React.useState(false);
-  const [progress, setProgress] = React.useState(0);
-  const lastXRef = React.useRef(0);
-  const totalRef = React.useRef(0);
-  const rafRef = React.useRef<number | null>(null);
+  // Shared feed: both panels show the same payload in the same order.
+  const [feed, setFeed] = React.useState<string[]>(() =>
+    Array.from({ length: 3 }, (_, i) => postFor(i))
+  );
+  const [feedSeq, setFeedSeq] = React.useState(3);
+  const [refreshCount, setRefreshCount] = React.useState(0);
+  const [committedA, setCommittedA] = React.useState(false);
 
-  const handlePointerDown = (e: React.PointerEvent) => {
-    if (unlocked) return;
-    e.preventDefault();
-    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
-    setIsDragging(true);
-    lastXRef.current = e.clientX;
+  // Variant A lever mechanics (local to A).
+  const [pull, setPull] = React.useState(0);
+  const [pulling, setPulling] = React.useState(false);
+  const [refreshingA, setRefreshingA] = React.useState(false);
+  const pullRef = React.useRef(0);
+
+  const timersRef = React.useRef<number[]>([]);
+
+  React.useEffect(
+    () => () => {
+      timersRef.current.forEach((id) => window.clearTimeout(id));
+    },
+    []
+  );
+
+  // Elastic friction: while held, displacement grows but decelerates
+  // non-linearly (R_elastic > 0) — sustained effort is required.
+  React.useEffect(() => {
+    if (!pulling) return;
+    const iv = window.setInterval(() => {
+      pullRef.current = Math.min(130, pullRef.current + Math.max(2, 7 - pullRef.current / 20));
+      setPull(pullRef.current);
+    }, 60);
+    return () => window.clearInterval(iv);
+  }, [pulling]);
+
+  const appendNext = () => {
+    setFeed((prev) => [...prev, postFor(feedSeq)]);
+    setFeedSeq((s) => s + 1);
+    setRefreshCount((n) => n + 1);
   };
 
-  const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isDragging || unlocked) return;
-    const deltaX = e.clientX - lastXRef.current;
-    lastXRef.current = e.clientX;
+  const startPull = () => {
+    if (refreshingA || pull > 0) return;
+    setPulling(true);
+  };
 
-    if (deltaX > 0) {
-      totalRef.current += deltaX * 1.2;
+  const releasePull = () => {
+    if (!pulling) return;
+    setPulling(false);
+    if (pullRef.current >= TAU_COMMIT) {
+      // Threshold reached — the lever "snaps" and E_refresh() fires.
+      setRefreshingA(true);
+      setCommittedA(true);
+      timersRef.current.push(
+        window.setTimeout(() => {
+          appendNext();
+          pullRef.current = 0;
+          setPull(0);
+          setRefreshingA(false);
+        }, 700)
+      );
     } else {
-      totalRef.current = Math.max(0, totalRef.current + deltaX * 0.15);
-    }
-
-    setRotation(totalRef.current);
-
-    // Check unlock
-    if (totalRef.current >= DEGREES_NEEDED) {
-      setUnlocked(true);
-      setIsDragging(false);
-      totalRef.current = 0;
-      setRotation(0);
+      // Released too early — silent elastic snap-back, no refresh and no explanation.
+      pullRef.current = 0;
+      setPull(0);
     }
   };
 
-  const handlePointerUp = (_e: React.PointerEvent) => {
-    if (!isDragging) return;
-    setIsDragging(false);
-    // Decay back to 0 if not enough rotation
-    if (totalRef.current < DEGREES_NEEDED) {
-      const start = totalRef.current;
-      const startTime = performance.now();
-      const duration = 400;
-
-      const decay = (now: number) => {
-        const elapsed = now - startTime;
-        const t = Math.min(elapsed / duration, 1);
-        const eased = 1 - (1 - t) * (1 - t);
-        const current = Math.round(start * (1 - eased));
-        totalRef.current = current;
-        setRotation(current);
-        if (t < 1) {
-          rafRef.current = requestAnimationFrame(decay);
-        } else {
-          totalRef.current = 0;
-          setRotation(0);
-        }
-      };
-      rafRef.current = requestAnimationFrame(decay);
-    }
+  const refreshB = () => {
+    if (refreshingA) return;
+    setRefreshingA(true);
+    timersRef.current.push(
+      window.setTimeout(() => {
+        appendNext();
+        setRefreshingA(false);
+      }, 400)
+    );
   };
-
-  // Update progress display on each render
-  const displayProgress = unlocked ? 1 : Math.min(Math.abs(totalRef.current) / DEGREES_NEEDED, 1);
-  const rotationsDone = unlocked ? ROTATIONS_NEEDED : Math.abs(totalRef.current) / 360;
 
   const reset = () => {
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    setRotation(0);
-    setUnlocked(false);
-    setIsDragging(false);
-    totalRef.current = 0;
+    timersRef.current.forEach((id) => window.clearTimeout(id));
+    timersRef.current = [];
+    pullRef.current = 0;
+    setFeed(Array.from({ length: 3 }, (_, i) => postFor(i)));
+    setFeedSeq(3);
+    setRefreshCount(0);
+    setCommittedA(false);
+    setPull(0);
+    setPulling(false);
+    setRefreshingA(false);
   };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Free path available</span>
-        <span className="font-mono font-semibold">No</span>
+        <span className="text-muted-foreground">ΔY_touch (current pull)</span>
+        <span className="font-mono font-semibold tabular-nums">{pull}px</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Kinesthetic investment</span>
-        <span className="font-mono font-semibold">3 rotations</span>
+        <span className="text-muted-foreground">τ_commit (snap threshold)</span>
+        <span className="font-mono font-semibold tabular-nums">{TAU_COMMIT}px</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">R_elastic(ΔY) friction</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">&gt; 0 — non-linear (A) / = 0 (B)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">E_refresh()</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">needs ΔY ≥ τ_commit (A) / fires on tap (B)</span>
       </div>
     </>
   ) : null;
 
-  // 36 tick marks (one every 10 degrees)
-  const ticks = Array.from({ length: 36 }, (_, i) => i);
-  // 12 major marks (one every 30 degrees)
-  const majors = Array.from({ length: 12 }, (_, i) => i * 30);
-
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Pull To Refresh (Variable-Reward Trap): Kinesthetic Resistance and Action Commitment"
-      caption="Kinesthetic Resistance and Action Commitment — content is blocked without payment." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-1 font-medium">Kinesthetic Resistance and Action Commitment</div>
+      caption="Kinesthetic Resistance and Action Commitment — pulling must overcome non-linear elastic friction and cross the commitment threshold before the lever snaps and the refresh fires."
+      auditorStats={stats}
+      deltaNote="Variant A demands sustained physical effort against a hidden commitment threshold: the pull builds non-linear elastic resistance, but the threshold, the progress and the payoff are never disclosed — release too early and the gesture silently snaps back with nothing. Variant B delivers the identical feed payload through a plain Refresh button — one tap, no threshold, no lever physics."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-center justify-between gap-2">
+              <h3 className="text-[11px] font-semibold">Pulse — your feed</h3>
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+                {feed.length} posts
+              </span>
+            </div>
 
-          {/* Vault content — faded when locked */}
-          <div className="rounded-md border-pink-500/40 bg-pink-500/5 p-4 text-center" style={{ opacity: unlocked ? 1 : 0.15, transition: "opacity 0.6s" }}>
-            <div className="text-2xl">{unlocked ? "🔓" : "🏦"}</div>
-            <div className="mt-1 text-[10px]">{unlocked ? "Vault opened — secrets revealed!" : "Premium vault"}</div>
-            {unlocked && (
-              <div className="mt-2 rounded border border-pink-500/30 bg-pink-500/10 p-2 text-[10px]">
-                🎉 You earned access through sheer physical commitment.<br/>
-                Paywalls use this same friction to justify charging you.
+            <div className="mt-2 h-48 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2">
+              {feed.map((p, i) => (
+                <div key={i} className="rounded border border-border bg-card px-2 py-1.5 text-[9px] leading-snug text-foreground/80">
+                  {p}
+                </div>
+              ))}
+              {refreshingA && (
+                <div className="flex items-center gap-1.5 rounded border border-emerald-500/30 bg-emerald-500/5 px-2 py-1.5 text-[9px] text-emerald-700 dark:text-emerald-300">
+                  <RefreshSpinner /> Refreshing…
+                </div>
+              )}
+            </div>
+
+            <button
+              onClick={refreshB}
+              disabled={refreshingA}
+              className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
+                refreshingA
+                  ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
+                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+              }`}
+            >
+              {refreshingA ? "Refreshing…" : "Refresh feed"}
+            </button>
+            <p className="mt-1 text-center text-[8px] text-muted-foreground">
+              One tap — no resistance, no threshold.
+            </p>
+
+            {refreshCount >= 1 && (
+              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                  <CheckCircle2 className="size-3" />
+                  No action commitment
+                </div>
+                <p className="text-muted-foreground mt-0.5">
+                  The refresh fired the moment you tapped — no elastic resistance
+                  (<span className="font-mono text-foreground">R_elastic = 0</span>) and no commitment
+                  threshold. The user’s intent maps 1:1 to the action.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-center justify-between gap-2">
+            <h3 className="text-[11px] font-semibold">Pulse — your feed</h3>
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+              {feed.length} posts
+            </span>
+          </div>
+
+          <div className="mt-2 h-48 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2">
+            {feed.map((p, i) => (
+              <div key={i} className="rounded border border-border bg-card px-2 py-1.5 text-[9px] leading-snug text-foreground/80">
+                {p}
+              </div>
+            ))}
+            {refreshingA && (
+              <div className="flex items-center gap-1.5 rounded border border-rose-500/30 bg-rose-500/5 px-2 py-1.5 text-[9px] text-rose-600 dark:text-rose-300">
+                <RefreshSpinner /> Refreshing…
               </div>
             )}
           </div>
 
-          {/* The spinning wheel */}
-          {!unlocked && (
-            <div className="mt-3 flex flex-col items-center gap-2 select-none touch-none">
-              {/* Progress bar */}
-              <div className="w-full h-1.5 rounded-full bg-foreground/10 overflow-hidden">
-                <div
-                  className="h-full rounded-full transition-[width] duration-75"
-                  style={{
-                    width: `${displayProgress * 100}%`,
-                    background: "linear-gradient(90deg, rgb(236,72,153), rgb(34,197,94))",
-                  }}
-                />
+          {/* Lever mechanics — threshold, resistance and payoff are NOT disclosed */}
+          <div className="mt-2 rounded-md border border-border bg-background p-2">
+            <button
+              onPointerDown={startPull}
+              onPointerUp={releasePull}
+              onPointerLeave={releasePull}
+              disabled={refreshingA}
+              className={`mt-1.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors select-none touch-none ${
+                refreshingA
+                  ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
+                  : pulling
+                    ? "bg-rose-700 text-white cursor-grabbing"
+                    : "bg-rose-600 hover:bg-rose-700 text-white cursor-grab"
+              }`}
+            >
+              {refreshingA
+                ? "Refreshing…"
+                : pulling
+                  ? "Holding — keep pulling…"
+                  : "Hold to pull down"}
+            </button>
+            <p className="mt-1 text-center text-[8px] text-muted-foreground">
+              Pull down to load new posts.
+            </p>
+          </div>
+
+          {committedA && (
+            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+                <AlertTriangle className="size-3" />
+                Action commitment enforced
               </div>
-              <div className="text-[10px] text-muted-foreground">
-                {rotationsDone.toFixed(1)} / {ROTATIONS_NEEDED} rotations — drag right to spin
-              </div>
-
-              {/* Wheel — uses pointer events for mouse + touch */}
-              <div
-                className="relative w-28 h-28 touch-none"
-                onPointerDown={handlePointerDown}
-                onPointerMove={handlePointerMove}
-                onPointerUp={handlePointerUp}
-                onPointerCancel={handlePointerUp}
-                style={{
-                  cursor: unlocked ? "default" : isDragging ? "grabbing" : "grab",
-                  touchAction: "none",
-                }}
-              >
-                {/* The rotating wheel */}
-                <div
-                  className="relative w-full h-full rounded-full border-2 border-pink-500/40 bg-gradient-to-br from-zinc-800 to-zinc-900 shadow-lg"
-                  style={{
-                    transform: `rotate(${rotation}deg)`,
-                    transition: isDragging ? "none" : "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-                    willChange: "transform",
-                  }}
-                >
-                  {/* Tick marks */}
-                  {ticks.map((i) => (
-                    <div
-                      key={i}
-                      className="absolute left-1/2 top-0 w-full h-full"
-                      style={{ transform: `translateX(-50%) rotate(${i * 10}deg)` }}
-                    >
-                      <div
-                        className="absolute top-0 left-1/2 -translate-x-1/2 rounded-full"
-                        style={{
-                          width: i % 3 === 0 ? "3px" : "1.5px",
-                          height: i % 3 === 0 ? "8px" : "4px",
-                          background: i % 3 === 0
-                            ? "rgba(236,72,153,0.8)"
-                            : "rgba(236,72,153,0.3)",
-                        }}
-                      />
-                    </div>
-                  ))}
-
-                  {/* Number labels at major positions */}
-                  {majors.map((deg) => (
-                    <div
-                      key={`label-${deg}`}
-                      className="absolute left-1/2 top-0 w-full h-full"
-                      style={{ transform: `translateX(-50%) rotate(${deg}deg)` }}
-                    >
-                      <div
-                        className="absolute top-[-5px] left-1/2 -translate-x-1/2 text-[7px] font-mono"
-                        style={{
-                          color: "rgba(236,72,153,0.5)",
-                          transform: `rotate(-${deg}deg)`,
-                        }}
-                      >
-                        {deg === 0 ? "" : `${deg / 30}`}
-                      </div>
-                    </div>
-                  ))}
-
-                  {/* Center hub */}
-                  <div className="absolute inset-4 rounded-full bg-zinc-800 border border-zinc-600 shadow-inner flex items-center justify-center">
-                    <div className="flex gap-[2px]">
-                      {Array.from({ length: 6 }, (_, i) => (
-                        <div key={i} className="w-[2px] h-3 rounded-full" style={{
-                          background: `rgba(255,255,255,${0.08 + i * 0.04})`,
-                        }} />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Fixed pointer/notch at top — does not rotate */}
-                <div className="absolute -top-[3px] left-1/2 -translate-x-1/2 z-10">
-                  <div className="w-0 h-0 border-l-[7px] border-l-transparent border-r-[7px] border-r-transparent border-t-[9px] border-pink-500" />
-                </div>
-
-                {/* Glow when dragging */}
-                {isDragging && (
-                  <div className="absolute inset-[-4px] rounded-full border-2 border-pink-400/40 animate-pulse pointer-events-none" />
-                )}
-              </div>
-
-              <div className="text-[9px] text-muted-foreground italic">
-                Press and drag right — 3 full turns to crack the vault
-              </div>
+              <p className="text-muted-foreground">
+                The refresh only fired once
+                <span className="font-mono text-foreground"> ΔY_touch(t) ≥ τ_commit</span> (80px) was met
+                with <span className="font-mono text-foreground">R_elastic &gt; 0</span> — the friction
+                function decelerated the pull, demanding sustained physical investment before the lever
+                “snapped” and <span className="font-mono text-foreground">E_refresh() = True</span>.
+              </p>
+              <p className="text-muted-foreground">
+                Every premature release cost the user effort with zero payoff — a high-engagement
+                commitment ritual built around a single data-fetch action.
+              </p>
             </div>
           )}
         </div>
       </div>
     </DemoShell>
+  );
+}
+
+function RefreshSpinner() {
+  return (
+    <svg className="size-3 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+      <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
   );
 }

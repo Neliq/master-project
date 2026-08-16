@@ -3,6 +3,27 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Hidden Information — Condition 2: Typographical and Chromatic Camouflage
+ *
+ * Thesis: N_critical is a DOM node containing NLP-identified critical
+ * phrases (e.g. {“auto-renew”, “subscription”, “cancel at any time”}).
+ * S_font(x) is the computed font size in px and CR(x, L_bg) the WCAG
+ * contrast ratio against the background. The feature triggers when the
+ * critical node is rendered at the extreme margins of legibility:
+ *
+ *   S_font(N_critical) < τ_min_readable  ∨  CR(N_critical, L_bg) < τ_wcag_min
+ *
+ * Variant A (dark): the auto-renew disclosure is printed at 6px with
+ * ~1.9:1 contrast directly beneath the trial CTA.
+ * Variant B (benign): the same disclosure rendered at 11px with full
+ * contrast in a bordered notice.
+ */
+
+const usd = (n: number) => `$${n.toFixed(2)}`;
+const RENEWAL_PRICE = 49.99;
+const TRIAL_DAYS = 30;
+
 export function HiddenInformationCond2({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,107 +31,148 @@ export function HiddenInformationCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const reset = () => {};
+  const [started, setStarted] = React.useState(false);
+  const [showLine, setShowLine] = React.useState(false);
+
+  const reset = () => {
+    setStarted(false);
+    setShowLine(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Total word count</span>
-        <span className="font-mono font-semibold">1,247 words</span>
+        <span className="text-muted-foreground">S_font(N_critical) dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">6px (&lt; 11px)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Critical clause position</span>
-        <span className="font-mono font-semibold">Paragraph 14 of 18</span>
+        <span className="text-muted-foreground">CR(N_critical, L_bg) dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 1.9:1 (&lt; 4.5:1)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">S_font / CR benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">11px / ≈ 14.5:1</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Auto-renew charge</span>
+        <span className="font-mono font-semibold tabular-nums">{usd(RENEWAL_PRICE)} / mo</span>
       </div>
     </>
   ) : null;
 
-  return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Hidden Information: Structural Burial in High-Density Text"
-      caption="Structural Burial in High-Density Text — subscription duration buried in a wall of text." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-
-          {/* Subscription offer */}
-          <div className="rounded-lg border-2 border-purple-500/40 bg-purple-500/5 p-4 text-center">
-            <div className="text-xs font-bold uppercase tracking-wide text-purple-600 dark:text-purple-400">Premium Access</div>
-            <div className="mt-1 text-2xl font-extrabold">$4.99<span className="text-xs font-normal">/mo</span></div>
-            <button className="mt-2 w-full rounded-lg bg-purple-600 py-2 text-xs font-semibold text-white">
-              Subscribe Now
-            </button>
+  const renderPanel = (dark: boolean) => (
+    <div className="space-y-3">
+      <div className="rounded-md border bg-card p-3">
+        <div className="flex items-center gap-3">
+          <div
+            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
+              dark ? "bg-rose-100 dark:bg-rose-900/30" : "bg-emerald-100 dark:bg-emerald-900/30"
+            }`}
+          >
+            <svg
+              className={`h-4 w-4 ${dark ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"}`}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
           </div>
-
-          {/* Scrollable wall of text */}
-          <div className="mt-2 rounded-md border border-foreground/10 bg-foreground/[0.02]">
-            <div className="px-2 py-1 text-[8px] font-semibold uppercase tracking-wider text-muted-foreground/50 border-b border-foreground/5">
-              Terms & Conditions
-            </div>
-            <div className="h-48 overflow-y-auto px-2.5 py-2 text-[8px] leading-relaxed text-foreground/40 space-y-2">
-
-              <p>
-                1. General Terms. By accessing or using the Services provided by Premium Access Inc. ("Company"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, you may not access or use the Services. These Terms constitute a legally binding agreement between you and the Company.
-              </p>
-              <p>
-                2. Eligibility. You must be at least 18 years of age to use the Services. By using the Services, you represent and warrant that you are at least 18 years old and have the legal capacity to enter into these Terms.
-              </p>
-              <p>
-                3. Account Registration. You may be required to register an account to access certain features of the Services. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete.
-              </p>
-              <p>
-                4. Privacy Policy. Your use of the Services is also governed by our Privacy Policy, which is incorporated into these Terms by reference. Please review our Privacy Policy to understand our practices regarding the collection, use, and disclosure of your personal information.
-              </p>
-              <p>
-                5. User Content. The Services may allow you to create, upload, post, send, receive, and store content. You retain ownership of any intellectual property rights that you hold in such content.
-              </p>
-              <p>
-                6. Acceptable Use. You agree not to use the Services for any unlawful purpose or in any way that could damage, disable, overburden, or impair the Services.
-              </p>
-              <p>
-                7. Intellectual Property. All content, features, and functionality of the Services are owned by the Company and are protected by copyright, trademark, and other intellectual property laws.
-              </p>
-              <p>
-                8. Termination. The Company may terminate or suspend your access to the Services at any time, with or without cause, with or without notice. Upon termination, your right to use the Services will immediately cease.
-              </p>
-              <p>
-                9. Limitation of Liability. In no event shall the Company be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the Services.
-              </p>
-              <p>
-                10. Indemnification. You agree to indemnify, defend, and hold harmless the Company, its officers, directors, employees, agents, and affiliates from and against any claims, liabilities, damages, losses, and expenses arising out of or in any way connected with your access to or use of the Services.
-              </p>
-              <p>
-                11. Governing Law. These Terms shall be governed by and construed in accordance with the laws of the State of Delaware, without regard to its conflict of law provisions.
-              </p>
-              <p>
-                12. Dispute Resolution. Any dispute arising out of or relating to these Terms or the Services shall be resolved through binding arbitration in accordance with the rules of the American Arbitration Association.
-              </p>
-              <p>
-                13. Modifications. The Company reserves the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of the Services after any changes constitutes acceptance of the new Terms.
-              </p>
-              {/* THE CRITICAL CLAUSE — buried deep */}
-              <p>
-                14. Subscription Duration. Your subscription commitment begins on the date of purchase and continues for a minimum period of twenty-four (24) months. Early termination of the subscription before the end of the commitment period will result in an early cancellation fee of fifty dollars ($50.00), which will be charged to the payment method on file. The subscription will automatically renew for successive twelve (12) month periods unless cancelled at least thirty (30) days prior to the end of the current commitment period.
-              </p>
-              <p>
-                15. Severability. If any provision of these Terms is held to be unenforceable or invalid, such provision will be modified to the minimum extent necessary to make it enforceable, and the remaining provisions shall remain in full force and effect.
-              </p>
-              <p>
-                16. Entire Agreement. These Terms, together with the Privacy Policy, constitute the entire agreement between you and the Company regarding the use of the Services, superseding any prior agreements.
-              </p>
-              <p>
-                17. Waiver. The failure of the Company to exercise or enforce any right or provision of these Terms shall not constitute a waiver of such right or provision.
-              </p>
-              <p>
-                18. Contact. If you have any questions about these Terms, please contact us at support@premiumaccess.example.com.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-1.5 text-center text-[8px] text-muted-foreground/40">
-            By subscribing you agree to the Terms & Conditions above
+          <div className="min-w-0 flex-1">
+            <h3 className="text-[11px] font-semibold">CloudNimbus Pro</h3>
+            <p className="text-[9px] text-muted-foreground mt-0.5">
+              Unlimited sync · 2 TB storage · team sharing
+            </p>
           </div>
         </div>
+
+        <button
+          onClick={() => setStarted(true)}
+          className={`mt-3 w-full cursor-pointer rounded-md py-2 text-[11px] font-semibold text-white transition-colors ${
+            dark ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+          }`}
+        >
+          {started ? "Trial activated" : `Start your free ${TRIAL_DAYS}-day trial`}
+        </button>
+
+        {/* N_critical — the auto-renew disclosure */}
+        {dark ? (
+          <button
+            onClick={() => setShowLine(true)}
+            className={`mt-1.5 block w-full cursor-pointer text-left text-[6px] leading-relaxed transition-all hover:underline ${
+              showLine ? "rounded px-1 ring-2 ring-rose-500/60" : ""
+            }`}
+            style={{ color: "rgb(185 185 185)" }}
+          >
+            Your plan auto-renews at {usd(RENEWAL_PRICE)}/month after your trial.
+          </button>
+        ) : (
+          <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[10px] leading-relaxed">
+            <span className="text-emerald-700 dark:text-emerald-300">
+              <strong>After your free {TRIAL_DAYS}-day trial, your plan auto-renews at{" "}
+              {usd(RENEWAL_PRICE)}/month.</strong>{" "}
+            </span>
+            <span className="text-muted-foreground">You can cancel anytime in settings.</span>
+          </div>
+        )}
+        {dark ? (
+          <p className="text-[8px] text-muted-foreground/50 mt-1">
+            No commitment required. Cancel before the trial ends.
+          </p>
+        ) : null}
       </div>
+
+      {started &&
+        (dark ? (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-amber-700 dark:text-amber-300">
+              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Typographical camouflage active
+            </div>
+            <p className="text-muted-foreground mt-1">
+              The renewal disclosure was rendered at{" "}
+              <strong className="text-foreground">S_font = 6px</strong> with{" "}
+              <strong className="text-foreground">CR ≈ 1.9:1</strong> — below τ_min_readable (11px)
+              and τ_wcag_min (4.5:1). You activated a{" "}
+              <strong className="text-amber-700 dark:text-amber-300">{usd(RENEWAL_PRICE)}/month</strong>{" "}
+              auto-renewal whose terms sat at the extreme margins of legibility. Click the tiny line
+              to highlight it.
+            </p>
+          </div>
+        ) : (
+          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-emerald-700 dark:text-emerald-300">
+              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              Disclosure fully legible
+            </div>
+            <p className="text-muted-foreground mt-1">
+              The auto-renewal at {usd(RENEWAL_PRICE)}/month was printed at 11px with ≈14.5:1 contrast
+              in a bordered notice directly under the CTA — S_font and CR both clear their thresholds,
+              so the commitment was readable before you clicked.
+            </p>
+          </div>
+        ))}
+    </div>
+  );
+
+  return (
+    <DemoShell
+      mode={mode}
+      annotations={annotations}
+      onRestart={onRestart ?? reset}
+      title="Hidden Information: Typographical and Chromatic Camouflage"
+      caption="Typographical and Chromatic Camouflage — the critical node is rendered at the extreme margins of legibility, dropping below minimum readable font size or WCAG contrast while the primary interface stays highly visible."
+      auditorStats={stats}
+      deltaNote={`Variant A prints the $49.99/month auto-renew disclosure at 6px with ≈1.9:1 contrast (S_font < τ_min_readable ∨ CR < τ_wcag_min). Variant B shows the same disclosure at 11px with ≈14.5:1 contrast in a bordered notice — legible before committing.`}
+      benign={renderPanel(false)}
+    >
+      {renderPanel(true)}
     </DemoShell>
   );
 }

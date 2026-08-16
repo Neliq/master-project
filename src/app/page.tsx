@@ -23,7 +23,7 @@ export default function HomePage() {
             Educational reference
           </div>
           <h1 className="text-4xl leading-tight font-semibold tracking-tight sm:text-5xl">
-            60 dark patterns,
+            62 dark patterns,
             <br />
             <span className="text-muted-foreground">
               one objective definition each.
@@ -34,6 +34,8 @@ export default function HomePage() {
             interfaces. Every entry is described in terms of an objective,
             mathematically expressible condition — predicates you can
             actually test for, not adjectives you have to argue about.
+            Each pattern is demonstrated as an A/B pair: the deceptive
+            variant next to the compliant, non-dark variant.
           </p>
         </div>
 

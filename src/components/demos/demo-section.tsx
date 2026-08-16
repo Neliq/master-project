@@ -89,12 +89,12 @@ export function DemoSection({
             )}
           >
             <p className="text-muted-foreground max-w-2xl text-xs leading-relaxed">
-              <strong className="text-foreground">User view</strong> shows
-              exactly what a real visitor would see.{" "}
-              <strong className="text-amber-700 dark:text-amber-300">
-                Auditor view
-              </strong>{" "}
-              adds annotations and live statistics.
+              Each example shows the pattern as an <strong className="text-foreground">A/B pair</strong>{" "}
+              (thesis Ch. 4–5): <strong className="text-red-700 dark:text-red-300">Variant A</strong>{" "}
+              executes the deceptive heuristic, <strong className="text-emerald-700 dark:text-emerald-300">Variant B</strong>{" "}
+              is the same interface with it neutralised.{" "}
+              <strong className="text-amber-700 dark:text-amber-300">Auditor view</strong> adds annotations
+              and live statistics.
             </p>
             <ViewModeToggle mode={mode} onChange={setMode} />
           </div>
@@ -121,14 +121,12 @@ export function DemoSection({
         )}
       >
         <p className="text-muted-foreground max-w-2xl text-xs leading-relaxed">
-          <strong className="text-foreground">User view</strong> shows
-          exactly what a real visitor would see on the site.{" "}
-          <strong className="text-amber-700 dark:text-amber-300">
-            Auditor view
-          </strong>{" "}
-          adds annotations, presentation controls (skip / restart), and live
-          statistics — all of which are visually separated from the dark
-          pattern itself.
+          Each example shows the pattern as an <strong className="text-foreground">A/B pair</strong>{" "}
+          (thesis Ch. 4–5): <strong className="text-red-700 dark:text-red-300">Variant A</strong>{" "}
+          executes the deceptive heuristic, <strong className="text-emerald-700 dark:text-emerald-300">Variant B</strong>{" "}
+          is the same interface with it neutralised. Auditor view adds annotations,
+          presentation controls (restart), and live statistics — all visually separated
+          from the dark pattern itself.
         </p>
         <ViewModeToggle mode={mode} onChange={setMode} />
       </div>

@@ -3,6 +3,30 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Forced Continuity — Condition 1: Time-Triggered Silent State Mutation
+ *
+ * Thesis: t_expiry is the timestamp when the promotional period concludes;
+ * S_account(t) transitions from S_trial to S_premium, and E_charge executes
+ * a transaction against a cached payment token T_payment. The feature
+ * triggers if the system runs the state transition and the charge purely off
+ * the temporal threshold, without demanding explicit, contemporary user
+ * confirmation (Consent_explicit) at the point of conversion:
+ *
+ *   t >= t_expiry  =>  S_account(t) -> S_premium ∧ E_charge(T_payment) = True
+ *   given Consent_explicit(t) = False
+ *
+ * Variant A (dark): when the trial clock crosses t_expiry, the account
+ * silently mutates to premium and $14.99 is charged to the cached token —
+ * no consent is ever requested.
+ * Variant B (benign): before expiry the trial shows a renewal reminder and
+ * a one-click cancel; at t_expiry the system stops and asks for explicit
+ * contemporary consent before any charge fires.
+ */
+
+const TRIAL_DAYS = 7;
+const PLAN_PRICE = "$14.99";
+
 export function ForcedContinuityCond1({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,14 +34,37 @@ export function ForcedContinuityCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [sent, setSent] = React.useState(false);
-  const reset = () => setSent(false);
+  // Shared clock so both panels stay in sync.
+  const [daysLeft, setDaysLeft] = React.useState(TRIAL_DAYS);
+  // Variant B: what the user decided when asked for consent.
+  const [bChoice, setBChoice] = React.useState<null | "continue" | "cancel">(null);
+
+  const trialEnded = daysLeft <= 0;
+
+  const advanceToExpiry = () => setDaysLeft(0);
+
+  const reset = () => {
+    setDaysLeft(TRIAL_DAYS);
+    setBChoice(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Messages sent without consent</span>
-        <span className="font-mono font-semibold">{sent ? "47" : "0"}</span>
+        <span className="text-muted-foreground">t vs t_expiry</span>
+        <span className="font-mono font-semibold tabular-nums">{trialEnded ? "t ≥ t_expiry" : `${daysLeft}d left`}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">S_account(t)</span>
+        <span className="font-mono font-semibold tabular-nums">{trialEnded ? "S_trial → S_premium" : "S_trial"}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Consent_explicit(t) (A)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">False — never asked</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Consent_explicit(t) (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">{bChoice ? "True — recorded" : "requested at t_expiry"}</span>
       </div>
     </>
   ) : null;
@@ -25,21 +72,154 @@ export function ForcedContinuityCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Forced Continuity: Time-Triggered Silent State Mutation"
-      caption="Time-Triggered Silent State Mutation — messages appear to come from the user without consent." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-1 font-medium">Time-Triggered Silent State Mutation</div>
-          <p className="text-muted-foreground text-[10px]">Find friends already on the platform.</p>
-          <button onClick={() => setSent(true)} className="bg-foreground text-background mt-2 w-full rounded-md py-2 text-[10px] font-medium">
-            {sent ? "Invites sent" : "Send invites"}
-          </button>
-        </div>
-        {sent && (
-          <div className="rounded-md border border-orange-500/30 bg-orange-500/5 p-3 text-[10px]">
-            <div className="font-medium text-orange-700 dark:text-orange-300">47 invites sent as you!</div>
-            <div className="text-muted-foreground mt-1">Messages appear to come from YOUR account.</div>
+      caption="Time-Triggered Silent State Mutation — the trial-to-paid transition fires purely off the clock, with no contemporary consent at the point of conversion."
+      auditorStats={stats}
+      deltaNote="Both variants share the same 7-day clock. When it crosses t_expiry, Variant A silently mutates the trial into premium and charges the cached token — no prompt anywhere. Variant B shows a renewal reminder and a one-click cancel before expiry, then halts at t_expiry and asks for explicit consent before any charge fires."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-start justify-between gap-2">
+              <div>
+                <h3 className="text-[11px] font-semibold">Premium — free trial</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">
+                  {trialEnded
+                    ? "Your trial period has concluded."
+                    : `${daysLeft} day${daysLeft === 1 ? "" : "s"} of free trial remaining.`}
+                </p>
+              </div>
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+                {bChoice === "cancel" ? "cancelled" : trialEnded && bChoice === "continue" ? "premium" : "trial"}
+              </div>
+            </div>
+
+            <div className="mt-3 flex items-center justify-between rounded-md border border-border bg-background px-3 py-2">
+              <span className="text-[9px] text-muted-foreground">Cached token T_payment — Visa •••• 4242</span>
+              <span className="text-[10px] font-mono font-semibold tabular-nums">{PLAN_PRICE}/mo</span>
+            </div>
+
+            {!trialEnded && bChoice === null && (
+              <div className="mt-2 rounded-md border border-border bg-background p-2.5 text-[9px] leading-relaxed">
+                <span className="font-semibold text-foreground">Renewal reminder:</span>{" "}
+                <span className="text-muted-foreground">
+                  your free trial ends in {daysLeft} day{daysLeft === 1 ? "" : "s"}. After it ends,
+                  {PLAN_PRICE}/mo will be charged to •••• 4242 unless you cancel before then.
+                </span>
+              </div>
+            )}
+
+            {!trialEnded && bChoice === null && (
+              <button
+                onClick={advanceToExpiry}
+                className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              >
+                Skip ahead — advance to t_expiry
+              </button>
+            )}
+
+            {!trialEnded && bChoice === null && (
+              <button
+                onClick={() => setBChoice("cancel")}
+                className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              >
+                Cancel trial — nothing will be charged
+              </button>
+            )}
+
+            {trialEnded && bChoice === null && (
+              <div className="mt-2 rounded-md border border-border bg-background p-3">
+                <div className="text-[10px] font-semibold text-foreground">Your free trial has ended</div>
+                <p className="text-[9px] text-muted-foreground mt-1">
+                  Continue with Premium at {PLAN_PRICE}/month, charged to •••• 4242? Nothing is
+                  charged until you confirm.
+                </p>
+                <div className="mt-2 flex gap-2">
+                  <button
+                    onClick={() => setBChoice("continue")}
+                    className="flex-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  >
+                    Yes — charge me {PLAN_PRICE}/mo
+                  </button>
+                  <button
+                    onClick={() => setBChoice("cancel")}
+                    className="flex-1 rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                  >
+                    No — cancel my subscription
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {bChoice === "continue" && (
+              <div className="mt-2 rounded-md border border-border bg-background p-2.5 text-[9px] leading-relaxed">
+                <div className="font-semibold text-foreground">Premium active — {PLAN_PRICE}/mo</div>
+                <p className="text-muted-foreground mt-0.5">
+                  {PLAN_PRICE} was charged to •••• 4242 after you confirmed at the prompt. The
+                  renewal reminder and the confirm step were both shown before any charge.
+                </p>
+              </div>
+            )}
+
+            {bChoice === "cancel" && (
+              <div className="mt-2 rounded-md border border-border bg-background p-2.5 text-[9px] leading-relaxed">
+                <div className="font-semibold text-foreground">Cancelled — nothing charged</div>
+                <p className="text-muted-foreground mt-0.5">
+                  Your trial was cancelled and the cached card was never charged.
+                </p>
+              </div>
+            )}
           </div>
-        )}
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <h3 className="text-[11px] font-semibold">Premium — free trial</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                {trialEnded
+                  ? "Your trial period has concluded."
+                  : `${daysLeft} day${daysLeft === 1 ? "" : "s"} of free trial remaining.`}
+              </p>
+            </div>
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 text-rose-500 border-rose-500/30">
+              {trialEnded ? "S_premium" : "S_trial"}
+            </div>
+          </div>
+
+          <div className="mt-3 flex items-center justify-between rounded-md border border-border bg-background px-3 py-2">
+            <span className="text-[9px] text-muted-foreground">Cached token T_payment — Visa •••• 4242</span>
+            <span className="text-[10px] font-mono font-semibold tabular-nums">{PLAN_PRICE}/mo</span>
+          </div>
+
+          {!trialEnded && (
+            <button
+              onClick={advanceToExpiry}
+              className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            >
+              Skip ahead — advance to t_expiry
+            </button>
+          )}
+
+          {trialEnded && (
+            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 9v4m0 4h.01" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+                Silently converted — charged {PLAN_PRICE}
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                t ≥ t_expiry fired <strong className="text-foreground">S_account(t): S_trial → S_premium</strong> and{" "}
+                <strong className="text-foreground">E_charge(T_payment) = True</strong> — {PLAN_PRICE} was taken from
+                the cached card •••• 4242. No prompt, no email warning, no consent dialog:{" "}
+                <strong className="text-foreground">Consent_explicit(t) = False</strong>. The charge is technically
+                authorized by the pre-auth token but practically forgotten.
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </DemoShell>
   );

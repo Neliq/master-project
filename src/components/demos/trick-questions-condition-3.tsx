@@ -4,25 +4,42 @@ import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
 /*
- * Trick Questions — Condition 3: Affordance-Consequence Mismatch
+ * Trick Questions — Condition 3: Syntactic Obfuscation via Multiple Negations
  *
- * A subscription cancellation dialog where the button labels are reversed:
- * - "Cancel" actually cancels the subscription
- * - "Confirm" does nothing (keeps the subscription)
+ * Thesis: the text label L(c) of a boolean input is parsed into a syntactic
+ * dependency tree; the count of negation modifiers N_neg(L(c)) acting on the
+ * primary action verbs triggers the feature at >= 2 stacked negations.
  *
- * The user expects "Cancel" to dismiss the dialog and "Confirm" to finalise
- * the action, but the consequences are swapped.
+ *   N_neg(L(c)) >= 2  =>  Linguistic Obfuscation
+ *
+ * Variant A (dark): a checkbox whose label stacks 10+ negations so the user
+ * cannot tell whether checking opts in or out.
+ * Variant B (benign): the same offer, expressed in plain English with zero
+ * negations — checking means exactly what it says.
  */
 
-type PageState = "initial" | "modal" | "cancelled" | "confirmed";
+const CLAUSE_TEXT =
+  "I do not decline to not receive marketing communications " +
+  "about products and services unrelated to my purchase unless " +
+  "I have previously indicated no preference not to be excluded " +
+  "from promotional offers that do not pertain to my transaction " +
+  "history, in which case I do not object to not being opted out " +
+  "of receiving such communications without my prior written consent " +
+  "not having been obtained, except where such communications are " +
+  "not prohibited by applicable law.";
 
-const FEATURES = [
-  "Ad-free browsing across all devices",
-  "Exclusive member-only content & early access",
-  "Priority customer support — 24/7 chat",
-  "Unlimited bookmarks & custom collections",
-  "Cancel anytime — your data stays yours",
-];
+const PLAIN_TEXT =
+  "I agree to receive marketing communications about products " +
+  "and services. I can unsubscribe at any time.";
+
+function countNegations(s: string): number {
+  const negations = ["not", "no", "never", "without", "unless", "except", "decline", "excluded", "prohibited", "opt out"];
+  const words = s.toLowerCase().split(/\s+/);
+  return negations.reduce((sum, n) => sum + words.filter(w => w === n).length, 0);
+}
+
+const NEGATION_COUNT = countNegations(CLAUSE_TEXT);
+const PLAIN_NEGATION_COUNT = countNegations(PLAIN_TEXT);
 
 export function TrickQuestionsCond3({
   mode = "user", annotations = [], onRestart,
@@ -31,186 +48,249 @@ export function TrickQuestionsCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [state, setState] = React.useState<PageState>("initial");
+  const [checked, setChecked] = React.useState(false);
+  const [showReveal, setShowReveal] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
 
-  const reset = () => setState("initial");
+  const reset = () => {
+    setChecked(false);
+    setShowReveal(false);
+    setSubmitted(false);
+  };
 
-  const openModal = () => setState("modal");
-  const doCancel = () => setState("cancelled");
-  const doConfirm = () => setState("confirmed");
+  const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setChecked(e.target.checked);
+    setShowReveal(true);
+  };
+
+  const handleSubmit = () => setSubmitted(true);
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Affordance label</span>
-        <span className="font-mono font-semibold tabular-nums">&ldquo;Continue&rdquo;</span>
+        <span className="text-muted-foreground">Negation count N_neg (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{NEGATION_COUNT} (&ge; 2)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Actual consequence</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">Keeps subscription</span>
+        <span className="text-muted-foreground">Negation count (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">{PLAIN_NEGATION_COUNT}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Affordance label</span>
-        <span className="font-mono font-semibold tabular-nums">&ldquo;Cancel&rdquo;</span>
+        <span className="text-muted-foreground">Clause length</span>
+        <span className="font-mono font-semibold tabular-nums">{CLAUSE_TEXT.split(/\s+/).length} words</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Actual consequence</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">Cancels subscription</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Mismatch severity</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">Critical</span>
+        <span className="text-muted-foreground">Checkbox checked?</span>
+        <span className="font-mono font-semibold tabular-nums">{checked ? "Yes" : "No"}</span>
       </div>
     </>
   ) : null;
 
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Trick Questions: Affordance-Consequence Mismatch"
-      caption="Affordance-Consequence Mismatch — button labels deliberately contradict their real consequences." auditorStats={stats}>
-      <div className="space-y-3">
-        {/* ── Subscription card ── */}
-        {state !== "cancelled" && (
+      title="Trick Questions: Syntactic Obfuscation via Multiple Negations"
+      caption="Syntactic Obfuscation via Multiple Negations — a checkbox whose label is a maze of contradictory clauses, so the user cannot tell what checking means."
+      auditorStats={stats}
+      deltaNote={`In Variant A the label stacks ${NEGATION_COUNT} negation modifiers onto the primary verbs (N_neg >= 2, so the heuristic fires). Variant B says the same thing with zero negations in ${PLAIN_TEXT.split(/\s+/).length} words.`}
+      benign={
+        <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
-            <div className="flex items-start justify-between">
-              <div>
-                <h3 className="text-[11px] font-semibold">Premium Gold Access</h3>
-                <p className="text-[9px] text-muted-foreground mt-0.5">$49.99 / month &middot; Renews on July 20, 2026</p>
-              </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5">
-                Active
-              </div>
-            </div>
-
-            {mode === "auditor" && (
-              <div className="mt-2 rounded bg-muted p-1.5 text-[7px] text-muted-foreground leading-relaxed">
-                <span className="font-semibold text-foreground">Auditor note:</span> This card shows an active
-                subscription. User expectation: clicking <strong>&ldquo;Cancel Subscription&rdquo;</strong> opens a
-                confirmation dialog where <strong>&ldquo;Continue&rdquo;</strong> proceeds with cancellation and{" "}
-                <strong>&ldquo;Cancel&rdquo;</strong> dismisses. Reality: swapped.
-              </div>
-            )}
-
-            <button
-              onClick={openModal}
-              className="mt-2 w-full rounded-md bg-rose-600 text-white py-1.5 text-[10px] font-medium hover:bg-rose-700 transition-colors cursor-pointer"
-            >
-              Cancel Subscription
-            </button>
-          </div>
-        )}
-
-        {/* ── Cancelled state ── */}
-        {state === "cancelled" && (
-          <div className="rounded-md border border-rose-500/30 bg-rose-500/5 p-3">
-            <div className="flex items-center gap-1.5">
-              <svg className="w-3 h-3 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M15 9l-6 6M9 9l6 6" />
-              </svg>
-              <span className="text-[11px] font-semibold text-rose-700 dark:text-rose-300">Subscription Cancelled</span>
-            </div>
-            <p className="text-[9px] text-muted-foreground mt-1">
-              Your Premium Gold Access has been cancelled. You&rsquo;ll retain access through July 20, 2026.
-            </p>
-            <div className="mt-2 rounded border border-amber-500/30 bg-amber-500/5 p-2 text-[8px] leading-relaxed">
-              <span className="font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">Affordance trap triggered</span>
-              <p className="text-muted-foreground mt-0.5">
-                You clicked <strong>&ldquo;Cancel&rdquo;</strong> &mdash; which sounds like it would
-                dismiss the dialog. In reality, it cancelled your subscription. The{" "}
-                <strong>&ldquo;Continue&rdquo;</strong> button, which sounds like it proceeds with
-                cancellation, actually keeps you subscribed.
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* ── Confirmed (kept) state ── */}
-        {state === "confirmed" && (
-          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-3">
-            <div className="flex items-center gap-1.5">
-              <svg className="w-3 h-3 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M9 12l2 2 4-4" />
-              </svg>
-              <span className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-300">Subscription Kept</span>
-            </div>
-            <p className="text-[9px] text-muted-foreground mt-1">
-              Nothing changed. Your Premium Gold Access remains active and will renew as scheduled.
-            </p>
-            <div className="mt-2 rounded border border-amber-500/30 bg-amber-500/5 p-2 text-[8px] leading-relaxed">
-              <span className="font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">Affordance trap triggered</span>
-              <p className="text-muted-foreground mt-0.5">
-                You clicked <strong>&ldquo;Continue&rdquo;</strong> &mdash; which sounds like it would
-                proceed with cancellation. In reality, nothing changed. To actually cancel, you would
-                need to click <strong>&ldquo;Cancel,&rdquo;</strong> which sounds like dismissing
-                the dialog.
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* ── Modal overlay ── */}
-        {state === "modal" && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-            <div className="mx-4 w-full max-w-sm rounded-lg border bg-card p-5 shadow-xl">
-              {/* Close icon */}
-              <button
-                onClick={doConfirm}
-                className="float-right text-muted-foreground/50 hover:text-muted-foreground cursor-pointer"
-              >
-                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M18 6L6 18M6 6l12 12" />
+            <div className="flex items-start gap-3">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
+                <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
-              </button>
-
-              <div className="text-center">
-                <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-amber-500/10 mb-2.5">
-                  <svg className="w-5 h-5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 9v4m0 4h.01" />
-                    <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-                  </svg>
-                </div>
-
-                <h4 className="text-sm font-semibold">We&rsquo;d hate to see you go!</h4>
-                <p className="text-[10px] text-muted-foreground mt-1">
-                  Are you sure you want to cancel? Here&rsquo;s what you&rsquo;ll lose:
-                </p>
-
-                <ul className="mt-3 space-y-1.5 text-left text-[9px]">
-                  {FEATURES.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-1.5">
-                      <svg className="mt-0.5 w-2.5 h-2.5 flex-shrink-0 text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                      <span className="text-muted-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-3 rounded bg-rose-500/5 border border-rose-500/20 p-2 text-[8px] text-muted-foreground">
-                  After cancellation you&rsquo;ll lose access immediately. We wouldn&rsquo;t want that.
-                </div>
               </div>
-
-              <div className="mt-4 flex flex-col gap-2">
-                <button
-                  onClick={doConfirm}
-                  className="w-full rounded-md bg-foreground text-background py-2 text-[10px] font-medium hover:opacity-90 transition-opacity cursor-pointer"
-                >
-                  Continue
-                </button>
-                <button
-                  onClick={doCancel}
-                  className="w-full rounded-md border border-border bg-transparent py-2 text-[10px] font-medium text-muted-foreground hover:bg-muted transition-colors cursor-pointer"
-                >
-                  Cancel
-                </button>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-[11px] font-semibold">
+                  You&rsquo;ve been selected for an exclusive offer!
+                </h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">
+                  As a valued customer, you qualify for <strong className="text-rose-600 dark:text-rose-400">Premium Gold Access</strong> — a{" "}
+                  <span className="font-semibold">$49.99/mo</span> value, available to you for the introductory price of
+                  just <span className="font-semibold text-emerald-600 dark:text-emerald-400">$0.00 for the first 30 days</span>.
+                  After your trial, your plan auto-renews at full price unless you cancel.
+                </p>
               </div>
             </div>
+          </div>
+
+          <div className="rounded-md border bg-background p-2.5">
+            <label className="group flex cursor-pointer items-start gap-2">
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={handleCheck}
+                className="mt-1 flex-shrink-0 accent-emerald-500"
+              />
+              <div className="min-w-0 space-y-1">
+                <div className="text-[10px] leading-relaxed text-foreground/80 select-none transition-colors group-hover:text-foreground">
+                  {PLAIN_TEXT}
+                </div>
+                <p className="text-[8px] text-muted-foreground/50">
+                  {PLAIN_NEGATION_COUNT} negations — checking the box opts you in. Uncheck to opt out.
+                </p>
+              </div>
+            </label>
+          </div>
+
+          {showReveal && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed text-emerald-700 dark:text-emerald-300">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {checked ? "You are OPTED IN" : "You are OPTED OUT"}
+              </div>
+              <p className="text-muted-foreground">
+                The label contains zero negations. {checked ? "Checking the box opted you into marketing — exactly as written." : "Unchecking left you opted out — exactly as written."}
+              </p>
+            </div>
+          )}
+
+          <button
+            onClick={handleSubmit}
+            disabled={!checked}
+            className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
+              checked
+                ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                : "bg-muted text-muted-foreground/40 cursor-not-allowed"
+            }`}
+          >
+            {submitted ? "Confirmed ✓" : "Confirm & activate Premium Gold Access"}
+          </button>
+
+          {submitted && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+              <strong>Consent recorded transparently.</strong> You read a one-sentence, zero-negation
+              label and confirmed your opt-in. No syntactic acrobatics required.
+            </div>
+          )}
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-start gap-3">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
+              <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            </div>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-[11px] font-semibold">
+                You&rsquo;ve been selected for an exclusive offer!
+              </h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                As a valued customer, you qualify for <strong className="text-rose-600 dark:text-rose-400">Premium Gold Access</strong> — a{" "}
+                <span className="font-semibold">$49.99/mo</span> value, available to you for the introductory price of
+                just <span className="font-semibold text-emerald-600 dark:text-emerald-400">$0.00 for the first 30 days</span>.
+                After your trial, your plan auto-renews at full price unless you cancel.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className="rounded-md border bg-background p-2.5 transition-colors"
+          style={{
+            borderColor: checked ? "hsl(142, 71%, 40%)" : undefined,
+            backgroundColor: checked ? "hsla(142, 71%, 40%, 0.04)" : undefined,
+          }}
+        >
+          <label className="group flex cursor-pointer items-start gap-2">
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={handleCheck}
+              className="mt-1 flex-shrink-0 accent-rose-500"
+            />
+            <div className="min-w-0 space-y-1">
+              <div className="text-[9px] leading-relaxed text-foreground/80 select-none transition-colors group-hover:text-foreground">
+                {CLAUSE_TEXT}
+              </div>
+              {!showReveal && (
+                <p className="text-[7px] italic text-muted-foreground/40">
+                  Try to figure out what checking this box actually means.
+                </p>
+              )}
+            </div>
+          </label>
+        </div>
+
+        {showReveal && (
+          <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed transition-all ${
+            checked
+              ? "bg-emerald-500/5 border-emerald-500/30 text-emerald-700 dark:text-emerald-300"
+              : "bg-amber-500/5 border-amber-500/30 text-amber-700 dark:text-amber-300"
+          }`}>
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold uppercase tracking-tight">
+              {checked ? (
+                <>
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  You are currently OPTED IN to marketing
+                </>
+              ) : (
+                <>
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                  You are currently OPTED OUT of marketing
+                </>
+              )}
+            </div>
+            <p className={checked ? "text-emerald-600/80 dark:text-emerald-400/80" : "text-amber-600/80 dark:text-amber-400/80"}>
+              {checked
+                ? `Despite ${NEGATION_COUNT} negation modifiers stacked on the primary verbs, checking the box means exactly what it looks like: YES, I agree. The negations exist to make you believe you're declining when you're actually accepting.`
+                : "With the box unchecked, you haven't agreed to anything. The maze of negations was designed to pressure you into checking the box, not to inform your decision."}
+            </p>
+          </div>
+        )}
+
+        <details className="group text-[9px]">
+          <summary className="cursor-pointer font-medium text-muted-foreground transition-colors hover:text-foreground">
+            Show skeleton key — what the sentence actually says
+          </summary>
+          <div className="mt-1 rounded-md border bg-card p-2">
+            <p className="mb-1 text-muted-foreground">
+              The sentence above contains <strong className="text-rose-500">{NEGATION_COUNT} negation words</strong>{" "}
+              (not, no, never, without, unless, except, decline, excluded, prohibited, opt out).
+              Every second &ldquo;not&rdquo; reverses the previous one. Here&rsquo;s what it means in plain English:
+            </p>
+            <div className="rounded border border-emerald-500/20 bg-emerald-500/5 p-2">
+              <p className="font-medium text-emerald-700 dark:text-emerald-300">{PLAIN_TEXT}</p>
+            </div>
+            <p className="mt-1 text-muted-foreground">
+              The original is <strong>{CLAUSE_TEXT.split(/\s+/).length} words</strong>. The plain version is{" "}
+              <strong>{PLAIN_TEXT.split(/\s+/).length} words</strong>. The negations serve no purpose except
+              to discourage you from reading carefully.
+            </p>
+          </div>
+        </details>
+
+        <button
+          onClick={handleSubmit}
+          disabled={!checked}
+          className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
+            checked
+              ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+              : "bg-muted text-muted-foreground/40 cursor-not-allowed"
+          }`}
+        >
+          {submitted ? "Confirmed ✓" : "Confirm & activate Premium Gold Access"}
+        </button>
+
+        {submitted && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2 text-[9px] text-amber-700 dark:text-amber-300">
+            <strong>You agreed to receive marketing communications</strong> — or did you?
+            The checkbox sentence had {NEGATION_COUNT} negations, making it nearly impossible
+            to parse. Most users check the box without understanding what they consented to.
           </div>
         )}
       </div>
+
     </DemoShell>
   );
 }

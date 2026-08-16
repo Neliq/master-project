@@ -1,237 +1,212 @@
 "use client";
 
 import * as React from "react";
-import { Coins, ShoppingCart, AlertCircle, Check, Sparkles } from "lucide-react";
+import { DemoShell } from "@/components/demos/demo-shell";
+import { Coins, CreditCard, Swords, Lock } from "lucide-react";
+
+/*
+ * Intermediate Currency — Condition 3: Lexical Tokenization mapped to Forced Exchange
+ *
+ * Thesis: C_virtual is a localized, non-standard token system and T_price(n)
+ * the extracted price text of the item. The feature fires if the price is
+ * strictly expressed in the virtual lexicon AND the system actively gates the
+ * final transaction behind the prior execution of the exchange vector:
+ *
+ *   T_price(n) ∈ C_virtual  ∧  TransactionStatus(n) ⟹ Executed(E_exchange)
+ *
+ * Variant A (dark): the item is priced ONLY in gems (no fiat price anywhere),
+ * and the Pay action stays locked until the user has executed the coin
+ * exchange with fiat money.
+ * Variant B (benign): the same item also carries a fiat price, and payment
+ * never requires the exchange vector.
+ */
+
+const ITEM_NAME = "Mythic Sword of Dawn";
+const PRICE_GEMS = 2500;
+const PRICE_USD = 24.99;
+const PACK_GEMS = 3000;
+const PACK_USD = 29.99;
+const START_BALANCE = 800;
 
 export function IntermediateCurrencyCond3({
-  mode = "user",
-  annotations = [],
-  onRestart,
+  mode = "user", annotations = [], onRestart,
 }: {
   mode?: "user" | "auditor";
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [selected, setSelected] = React.useState<number | null>(null);
-  const [done, setDone] = React.useState(false);
-  const reset = () => { setSelected(null); setDone(false); };
+  const [balance, setBalance] = React.useState(START_BALANCE);
+  const [paid, setPaid] = React.useState(false);
 
-  const needed = 1200;
-  const has = 100;
-  const missing = needed - has;
+  const reset = () => {
+    setBalance(START_BALANCE);
+    setPaid(false);
+  };
 
-  const bundles = [
-    { coins: 500,  price: "$4.99",  tag: null },
-    { coins: 1000, price: "$9.99",  tag: "Popular" },
-    { coins: 2000, price: "$19.99", tag: "Best Value" },
-  ];
-
+  const enough = balance >= PRICE_GEMS;
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Coins needed</span>
-        <span className="font-mono font-semibold">{missing.toLocaleString()}</span>
+        <span className="text-muted-foreground">Wallet balance</span>
+        <span className="font-mono font-semibold tabular-nums">{balance.toLocaleString()} Gems</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Smallest bundle</span>
-        <span className="font-mono font-semibold">500</span>
+        <span className="text-muted-foreground">T_price(n) — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">&ldquo;{PRICE_GEMS.toLocaleString()} Gems&rdquo; ∈ C_virtual</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">500 covers</span>
-        <span className="font-mono font-semibold text-red-500">45% of need</span>
+        <span className="text-muted-foreground">T_price(n) — benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">&ldquo;{PRICE_GEMS.toLocaleString()} Gems &middot; ${PRICE_USD.toFixed(2)}&rdquo;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Min purchase</span>
-        <span className="font-mono font-semibold text-amber-500">1,000 (still short)</span>
+        <span className="text-muted-foreground">Gating — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">Pay locked until E_exchange executed {enough ? "✓" : "✗"}</span>
       </div>
     </>
   ) : null;
 
-  if (done) {
-    return (
-      <div className="rounded-lg border bg-background overflow-hidden">
-        <div className="p-4 text-center space-y-3">
-          <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center mx-auto">
-            <Check className="w-6 h-6 text-green-600" />
+  return (
+    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+      title="Intermediate Currency: Lexical Tokenization mapped to Forced Exchange"
+      caption="Lexical Tokenization mapped to Forced Exchange — the price exists only in the virtual token lexicon, and the transaction cannot complete until you have first executed the coin exchange with real money."
+      auditorStats={stats}
+      deltaNote={`Both panels show the same sword and the same gem balance. Variant A prices it strictly in the virtual lexicon ("${PRICE_GEMS.toLocaleString()} Gems") and keeps Pay locked until you execute the coin exchange; Variant B adds a fiat price ($${PRICE_USD.toFixed(2)}) and lets you pay directly — no exchange vector required.`}
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-background overflow-hidden">
+            <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-emerald-500/15 via-teal-500/15 to-indigo-500/15">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 shadow">
+                <Swords className="h-6 w-6 text-white" />
+              </div>
+              <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[8px] font-bold text-emerald-600 dark:text-emerald-300">
+                <Coins className="h-2.5 w-2.5" /> {balance.toLocaleString()} Gems
+              </div>
+            </div>
+            <div className="p-3">
+              <div className="mb-1 flex items-start justify-between gap-2">
+                <h3 className="text-[11px] font-semibold">{ITEM_NAME}</h3>
+                {/* Fiat price disclosed alongside the token price */}
+                <span className="shrink-0 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-300">
+                  {PRICE_GEMS.toLocaleString()} Gems &middot; ${PRICE_USD.toFixed(2)}
+                </span>
+              </div>
+              <p className="mb-3 text-[9px] leading-relaxed text-muted-foreground">
+                A legendary blade forged from dawnlight. +45 attack, unique trail effect.
+              </p>
+              <button
+                onClick={() => setPaid(true)}
+                className="flex w-full items-center justify-center gap-1.5 rounded-md bg-emerald-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+              >
+                <CreditCard className="h-3 w-3" /> Pay ${PRICE_USD.toFixed(2)} (fiat)
+              </button>
+              <p className="mt-2 text-center text-[8px] text-muted-foreground">
+                Your gem balance ({balance.toLocaleString()}) is irrelevant here — you can pay with a card directly.
+              </p>
+            </div>
           </div>
-          <h3 className="text-sm font-semibold">Coins Added!</h3>
-          <p className="text-[10px] text-muted-foreground">
-            You bought {selected!.toLocaleString()} coins for {bundles.find(b => b.coins === selected)!.price}.
-          </p>
-          <div className="bg-muted/50 rounded-md p-2 text-[10px] space-y-1">
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Previous balance</span>
-              <span>{has.toLocaleString()} coins</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Added</span>
-              <span>+{selected!.toLocaleString()} coins</span>
-            </div>
-            <div className="flex justify-between font-semibold border-t pt-1">
-              <span>New balance</span>
-              <span>{(has + selected!).toLocaleString()} coins</span>
-            </div>
-            <div className="flex justify-between text-amber-600">
-              <span>Item cost</span>
-              <span>-{needed.toLocaleString()} coins</span>
-            </div>
-            <div className="flex justify-between font-semibold border-t pt-1">
-              <span>Remaining</span>
-              <span>{(has + selected! - needed).toLocaleString()} coins</span>
-            </div>
-          </div>
-          {selected! === 2000 && (
-            <div className="bg-amber-50 dark:bg-amber-500/5 border border-amber-200 dark:border-amber-500/20 rounded-md p-2 text-[10px] text-amber-700 dark:text-amber-400">
-              You have 900 leftover coins with nothing to spend them on.
-              They&apos;ll sit in your wallet until they expire.
+
+          {paid && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <CreditCard className="h-3 w-3" /> Fiat payment, no exchange executed
+              </div>
+              <p className="text-muted-foreground">
+                T<sub>price</sub>(n) = &ldquo;{PRICE_GEMS.toLocaleString()} Gems &middot; ${PRICE_USD.toFixed(2)}&rdquo; — the
+                price is not strictly in C<sub>virtual</sub>, and TransactionStatus(n) never implied Executed(E
+                <sub>exchange</sub>). The transaction completed against your card in one step.
+              </p>
             </div>
           )}
-          <button
-            onClick={reset}
-            className="text-[10px] text-muted-foreground hover:text-foreground underline underline-offset-2"
-          >
-            Restart demo
-          </button>
         </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-3">
-      {/* ── Insufficient balance card ── */}
-      <div className="rounded-lg border bg-background overflow-hidden">
-        <div className="p-3">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0">
-              <AlertCircle className="w-4 h-4 text-amber-600" />
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-background overflow-hidden">
+          <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-rose-500/15 via-purple-500/15 to-indigo-500/15">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-rose-500 to-purple-600 shadow">
+              <Swords className="h-6 w-6 text-white" />
             </div>
-            <div>
-              <h3 className="text-sm font-semibold">Insufficient Coins</h3>
-              <p className="text-[10px] text-muted-foreground">You don&apos;t have enough to complete this purchase</p>
+            <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-rose-500/15 px-2 py-0.5 text-[8px] font-bold text-rose-600 dark:text-rose-300">
+              <Coins className="h-2.5 w-2.5" /> {balance.toLocaleString()} Gems
             </div>
           </div>
+          <div className="p-3">
+            <div className="mb-1 flex items-start justify-between gap-2">
+              <h3 className="text-[11px] font-semibold">{ITEM_NAME}</h3>
+              {/* Strictly virtual lexicon — no fiat price anywhere on the page */}
+              <span className="shrink-0 rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-bold text-rose-600 dark:bg-rose-500/10 dark:text-rose-300">
+                {PRICE_GEMS.toLocaleString()} Gems
+              </span>
+            </div>
+            <p className="mb-3 text-[9px] leading-relaxed text-muted-foreground">
+              A legendary blade forged from dawnlight. +45 attack, unique trail effect.
+            </p>
 
-          {/* Balance breakdown */}
-          <div className="bg-muted/50 rounded-md p-2.5 space-y-1.5 mb-3">
-            <div className="flex justify-between text-[10px]">
-              <span className="text-muted-foreground">Item cost</span>
-              <span className="font-semibold">{needed.toLocaleString()} coins</span>
-            </div>
-            <div className="flex justify-between text-[10px]">
-              <span className="text-muted-foreground">Your balance</span>
-              <span>{has.toLocaleString()} coins</span>
-            </div>
-            <div className="flex justify-between text-[10px] border-t pt-1.5">
-              <span className="font-medium text-red-600">You need</span>
-              <span className="font-bold text-red-600">{missing.toLocaleString()} more coins</span>
-            </div>
-          </div>
+            {/* Pay action gated behind the exchange vector */}
+            <button
+              onClick={() => enough && setPaid(true)}
+              disabled={!enough}
+              className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold transition-colors ${
+                enough
+                  ? "bg-rose-600 text-white hover:bg-rose-700 cursor-pointer"
+                  : "bg-muted text-muted-foreground/50 cursor-not-allowed"
+              }`}
+            >
+              {enough ? (
+                <>Pay {PRICE_GEMS.toLocaleString()} Gems</>
+              ) : (
+                <>
+                  <Lock className="h-3 w-3" /> Insufficient Gems — top up to continue
+                </>
+              )}
+            </button>
 
-          {/* Visual bar */}
-          <div className="mb-1">
-            <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-1">
-              <span>Your coins</span>
-              <span>{has} / {needed}</span>
-            </div>
-            <div className="h-2 bg-muted rounded-full overflow-hidden">
-              <div
-                className="h-full bg-red-400 rounded-full transition-all"
-                style={{ width: `${(has / needed) * 100}%` }}
-              />
+            {/* The mandatory exchange vector (E_exchange) */}
+            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2">
+              <div className="mb-1 flex items-center gap-1.5 text-[9px] font-semibold text-amber-700 dark:text-amber-300">
+                <Coins className="h-3 w-3" /> Exchange — the only way to pay
+              </div>
+              <button
+                onClick={() => setBalance((b) => b + PACK_GEMS)}
+                disabled={paid}
+                className={`w-full rounded-md py-1.5 text-[9px] font-semibold transition-colors ${
+                  paid
+                    ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
+                    : "bg-amber-500 text-white hover:bg-amber-600 cursor-pointer"
+                }`}
+              >
+                {paid ? "Exchange already executed" : `Buy ${PACK_GEMS.toLocaleString()} Gems — $${PACK_USD.toFixed(2)}`}
+              </button>
+              <p className="mt-1 text-[7px] leading-relaxed text-muted-foreground">
+                No card payments accepted for this item. Fiat money must first be converted into gems.
+              </p>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* ── Buy coins section ── */}
-      <div className="rounded-lg border bg-background overflow-hidden">
-        <div className="p-3">
-          <div className="flex items-center gap-1.5 mb-3">
-            <Coins className="w-3.5 h-3.5 text-amber-600" />
-            <h4 className="text-xs font-semibold">Buy Coins</h4>
-            <span className="text-[9px] text-muted-foreground ml-auto">None match {missing.toLocaleString()}</span>
+        {paid && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Forced exchange executed
+            </div>
+            <p className="text-muted-foreground">
+              T<sub>price</sub>(n) = &ldquo;{PRICE_GEMS.toLocaleString()} Gems&rdquo; ∈ C<sub>virtual</sub> — no fiat price was
+              shown for this item — <strong className="text-foreground">and</strong> TransactionStatus(n) ⟹ Executed(E
+              <sub>exchange</sub>): the Pay button stayed locked until you bought {PACK_GEMS.toLocaleString()} Gems with
+              ${PACK_USD.toFixed(2)} of real money. You paid ${PACK_USD.toFixed(2)} for a ${PRICE_USD.toFixed(2)} item and now
+              carry {(balance - PRICE_GEMS).toLocaleString()} leftover Gems.
+            </p>
+            <p className="text-muted-foreground">
+              Both conjuncts hold: the price lives only in the virtual lexicon, and the transaction is gated behind the
+              prior execution of the exchange vector.
+            </p>
           </div>
-
-          <div className="space-y-2">
-            {bundles.map((b) => {
-              const isSelected = selected === b.coins;
-              const isEnough = b.coins >= missing;
-              const leftover = isEnough ? b.coins - missing : 0;
-
-              return (
-                <button
-                  key={b.coins}
-                  onClick={() => setSelected(b.coins)}
-                  className={`w-full rounded-lg border-2 p-2.5 flex items-center gap-3 transition-all text-left ${
-                    isSelected
-                      ? "border-indigo-500 bg-indigo-50 dark:bg-indigo-500/10"
-                      : "border-border hover:border-indigo-300 dark:hover:border-indigo-500/50"
-                  }`}
-                >
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${
-                    isSelected
-                      ? "bg-indigo-500 text-white"
-                      : "bg-muted text-muted-foreground"
-                  }`}>
-                    {isSelected ? (
-                      <Check className="w-5 h-5" />
-                    ) : (
-                      <Coins className="w-5 h-5" />
-                    )}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-xs font-semibold">{b.coins.toLocaleString()} coins</span>
-                      {b.tag && (
-                        <span className={`text-[8px] font-bold px-1.5 py-0.5 rounded-full ${
-                          b.tag === "Best Value"
-                            ? "bg-amber-500 text-white"
-                            : "bg-indigo-500/10 text-indigo-600"
-                        }`}>
-                          {b.tag.toUpperCase()}
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-2 mt-0.5">
-                      <span className="text-[10px] text-muted-foreground">{b.price}</span>
-                      {isEnough ? (
-                        <span className="text-[9px] text-green-600">
-                          ✓ enough &middot; {leftover.toLocaleString()} leftover
-                        </span>
-                      ) : (
-                        <span className="text-[9px] text-red-500">
-                          ✗ still {(missing - b.coins).toLocaleString()} short
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <button
-            onClick={() => selected && setDone(true)}
-            disabled={!selected}
-            className={`w-full rounded-lg py-2.5 text-xs font-semibold mt-3 transition-colors ${
-              selected
-                ? "bg-indigo-600 hover:bg-indigo-700 text-white"
-                : "bg-muted text-muted-foreground cursor-not-allowed"
-            }`}
-          >
-            {selected
-              ? `Buy ${selected.toLocaleString()} Coins for ${bundles.find(b => b.coins === selected)!.price}`
-              : "Select a bundle"
-            }
-          </button>
-
-          <p className="text-[8px] text-center text-muted-foreground mt-2 leading-relaxed">
-            All bundles are non-refundable. Coins never expire.
-            <br />No bundle matches your exact need — you&apos;ll always have leftover.
-          </p>
-        </div>
+        )}
       </div>
-    </div>
+    </DemoShell>
   );
 }

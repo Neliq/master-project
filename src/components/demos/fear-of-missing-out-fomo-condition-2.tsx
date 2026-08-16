@@ -2,6 +2,28 @@
 
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
+import { ShoppingCart, Zap } from "lucide-react";
+
+/*
+ * Fear Of Missing Out (FOMO) — Condition 2: Visual Pulsation Frequency
+ * of Urgency Indicators
+ *
+ * Thesis: the algorithm monitors the temporal update rate of urgency-
+ * signaling visual elements — countdown timers, stock counters, "selling
+ * fast" badges. The feature triggers if any urgency indicator refreshes
+ * at a sub-second cadence, creating artificial temporal scarcity through
+ * rapid visual churn:
+ *
+ *   min_{n ∈ N_urgency} Δt_refresh(n) < τ_pulsation ≈ 1000 ms
+ *
+ * Variant A (dark): the "only X left" stock counter rewrites itself every
+ * 600 ms and the "Selling fast" badge pulses — churn below the perceptual
+ * threshold while the real inventory never changes.
+ * Variant B (benign): the same product shows a static, truthful stock
+ * indicator (min Δt_refresh = ∞ ≥ τ_pulsation).
+ */
+
+const REAL_STOCK = 8;
 
 export function FearOfMissingOutFomoCond2({
   mode = "user", annotations = [], onRestart,
@@ -10,50 +32,176 @@ export function FearOfMissingOutFomoCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [secs, setSecs] = React.useState(120);
-  const expired = secs <= 0;
-  const reset = () => setSecs(120);
+  const [phase, setPhase] = React.useState<"idle" | "bought">("idle");
+  const [stock, setStock] = React.useState(7); // the churning display counter (Variant A)
+
+  const reset = () => {
+    setPhase("idle");
+    setStock(7);
+  };
+
+  // Variant A: sub-second churn — 600 ms refresh (< τ_pulsation ≈ 1000 ms).
   React.useEffect(() => {
-    if (expired) return;
-    const id = window.setInterval(() => setSecs(s => Math.max(0, s - 1)), 1000);
+    if (phase !== "idle") return;
+    const id = window.setInterval(() => {
+      setStock(5 + Math.floor(Math.random() * 5)); // 5–9, rewriting ~1.7×/second
+    }, 600);
     return () => window.clearInterval(id);
-  }, [expired]);
-  const mm = String(Math.floor(secs / 60)).padStart(2, "0");
-  const ss = String(secs % 60).padStart(2, "0");
+  }, [phase]);
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Timer resets on expiry</span>
-        <span className="font-mono font-semibold">Yes</span>
+        <span className="text-muted-foreground">min Δt_refresh (A)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">600 ms</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Urgency type</span>
-        <span className="font-mono font-semibold">Manufactured</span>
+        <span className="text-muted-foreground">τ_pulsation threshold</span>
+        <span className="font-mono font-semibold tabular-nums">≈ 1000 ms</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">600 &lt; 1000</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">triggers</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Real inventory</span>
+        <span className="font-mono font-semibold tabular-nums">{REAL_STOCK} units</span>
       </div>
     </>
   ) : null;
 
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Fear Of Missing Out (FOMO): Fabricated Inventory Scarcity"
-      caption="Fabricated Inventory Scarcity — manufactured countdown creates pressure to act before thinking." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border-blue-500/40 bg-blue-500/5 p-3 text-xs">
-          <div className="mb-1 font-medium text-blue-700 dark:text-blue-300">Fabricated Inventory Scarcity</div>
-          <div className="flex justify-center gap-1 py-3">
-            {mm.split("").map((d,i) => (
-              <div key={i} className="bg-foreground text-background h-10 w-8 rounded-md flex items-center justify-center font-mono text-lg font-bold">{d}</div>
-            ))}
-            <div className="flex items-center text-lg font-bold">:</div>
-            {ss.split("").map((d,i) => (
-              <div key={i} className="bg-foreground text-background h-10 w-8 rounded-md flex items-center justify-center font-mono text-lg font-bold">{d}</div>
-            ))}
+      title="Fear Of Missing Out (FOMO): Visual Pulsation Frequency of Urgency Indicators"
+      caption="Visual Pulsation Frequency of Urgency Indicators — an urgency indicator refreshing at a sub-second cadence manufactures temporal scarcity through rapid visual churn."
+      auditorStats={stats}
+      deltaNote="Variant A’s stock counter rewrites itself every 600 ms (min Δt_refresh = 600 ms < τ_pulsation ≈ 1000 ms) and the “Selling fast” badge pulses, while real inventory stays at 8. Variant B shows the same product with a static indicator — no sub-second churn at all."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-start justify-between gap-2">
+              <div className="min-w-0">
+                <h3 className="text-[11px] font-semibold">AeroGlide X Wireless Headphones</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">Noise-cancelling over-ear · Graphite</p>
+              </div>
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+                In stock
+              </span>
+            </div>
+
+            {/* Static, truthful indicator — zero churn */}
+            <div className="mt-3 flex items-center gap-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 px-3 py-2">
+              <svg className="size-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              <div>
+                <div className="text-[9px] font-medium text-emerald-700 dark:text-emerald-300">
+                  In stock — {REAL_STOCK} units
+                </div>
+                <div className="text-[8px] text-muted-foreground">
+                  Static counter · min Δt_refresh = ∞ ≥ τ_pulsation
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-2 flex items-center justify-between text-[9px] text-muted-foreground">
+              <span className="line-through">$195</span>
+              <span className="font-semibold text-foreground">$119</span>
+            </div>
+
+            <button
+              onClick={() => setPhase("bought")}
+              disabled={phase === "bought"}
+              className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
+                phase === "bought"
+                  ? "bg-muted text-muted-foreground/60 cursor-default"
+                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+              }`}
+            >
+              <ShoppingCart className="size-3" />
+              {phase === "bought" ? "Added to cart" : "Add to cart"}
+            </button>
+
+            {phase === "bought" && (
+              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M20 6L9 17l-5-5" />
+                  </svg>
+                  No churn, no pressure
+                </div>
+                <p className="text-muted-foreground mt-0.5">
+                  The indicator is static and truthful — min Δt_refresh = ∞ ≥ τ_pulsation. The stock figure
+                  ({REAL_STOCK}) never flickers, so nothing manufactures urgency beyond the product itself.
+                </p>
+              </div>
+            )}
           </div>
-          {!expired ? (
-            <button className="bg-blue-500 hover:bg-blue-600 text-white w-full rounded-md py-2 text-sm font-bold">Claim 50% off</button>
-          ) : (
-            <button onClick={reset} className="bg-blue-500 hover:bg-blue-600 text-white w-full rounded-md py-2 text-sm font-bold">New offer</button>
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-start justify-between gap-2">
+            <div className="min-w-0">
+              <h3 className="text-[11px] font-semibold">AeroGlide X Wireless Headphones</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">Noise-cancelling over-ear · Graphite</p>
+            </div>
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+              Selling fast
+            </span>
+          </div>
+
+          {/* Churning counter — sub-second refresh */}
+          <div className="mt-3 flex items-center gap-2 rounded-md border border-rose-500/30 bg-rose-500/5 px-3 py-2">
+            <Zap className="size-3.5 text-rose-600 dark:text-rose-400 shrink-0 animate-pulse" />
+            <div>
+              <div className="font-mono text-[13px] font-bold tabular-nums text-rose-700 dark:text-rose-300">
+                Only {stock} left in stock
+              </div>
+              <div className="text-[8px] text-muted-foreground">
+                Rewriting every 600 ms · min Δt_refresh = 600 ms &lt; τ_pulsation ≈ 1000 ms
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-2 flex items-center justify-between text-[9px] text-muted-foreground">
+            <span className="line-through">$195</span>
+            <span className="font-semibold text-foreground">$119</span>
+            <span className="text-[8px] font-semibold uppercase tracking-wider text-rose-500 animate-pulse">
+              Selling fast
+            </span>
+          </div>
+
+          <button
+            onClick={() => setPhase("bought")}
+            disabled={phase === "bought"}
+            className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
+              phase === "bought"
+                ? "bg-muted text-muted-foreground/60 cursor-default"
+                : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+            }`}
+          >
+            <ShoppingCart className="size-3" />
+            {phase === "bought" ? "Added to cart" : "Add to cart"}
+          </button>
+
+          {phase === "bought" && (
+            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 9v4m0 4h.01" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+                Sub-second pulsation
+              </div>
+              <p className="text-muted-foreground">
+                The stock counter rewrote itself roughly 10 times in the last 6 seconds while the real
+                inventory ({REAL_STOCK} units) never changed. min Δt_refresh(n) = 600 ms &lt; τ_pulsation ≈ 1000 ms —
+                the rapid visual churn manufactures an artificial sense of temporal scarcity to override
+                rational deliberation.
+              </p>
+            </div>
           )}
         </div>
       </div>

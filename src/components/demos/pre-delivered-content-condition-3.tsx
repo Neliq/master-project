@@ -2,6 +2,31 @@
 
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
+import { CheckCircle2, Download, FolderOpen } from "lucide-react";
+
+/*
+ * Pre-Delivered Content — Condition 3: Semantic Framing of Local Assets
+ * as Purchase Opportunities
+ *
+ * Thesis: the algorithm compares the semantic framing of content items
+ * already present on the user's storage device. The feature triggers if
+ * locally stored assets are described as "unlockable," "premium," or
+ * "downloadable" when the download has already occurred:
+ *
+ *   Frame(T_asset) = Purchaseable  ∧  IsLocal(A_asset) = True
+ *
+ * Variant A (dark): the library frames on-disk assets as "Download" /
+ * "Unlock premium" purchase opportunities even though every byte already
+ * lives in the install folder.
+ * Variant B (benign): the same assets are labelled "Installed — Ready to
+ * play"; nothing is reframed as a purchase.
+ */
+
+const ASSETS = [
+  { name: "4K Texture Pack", size: "4.2 GB", path: "…/NebulaDrift/data/textures_4k/" },
+  { name: "Void Campaign Expansion", size: "1.8 GB", path: "…/NebulaDrift/data/campaign_void/" },
+  { name: "OST & Art Book", size: "2.4 GB", path: "…/NebulaDrift/media/ost_artbook/" },
+];
 
 export function PreDeliveredContentCond3({
   mode = "user", annotations = [], onRestart,
@@ -10,32 +35,154 @@ export function PreDeliveredContentCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [done, setDone] = React.useState(false);
-  const reset = () => setDone(false);
+  const [clicked, setClicked] = React.useState<number | null>(null);
+
+  const reset = () => setClicked(null);
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Dismissal vectors</span>
-        <span className="font-mono font-semibold">0</span>
+        <span className="text-muted-foreground">Frame(T_asset) — dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">&ldquo;Purchaseable&rdquo;</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Frame(T_asset) — benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">&ldquo;Installed&rdquo;</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">IsLocal(A_asset)</span>
+        <span className="font-mono font-semibold tabular-nums">True (all 3)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">On-disk footprint</span>
+        <span className="font-mono font-semibold tabular-nums">8.4 GB</span>
       </div>
     </>
   ) : null;
 
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Pre-Delivered Content: Transactional Key Provision"
-      caption="Transactional Key Provision — there is no way to dismiss this element." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-1 font-medium">Transactional Key Provision</div>
-          <p className="text-muted-foreground text-[10px]">An overlay has appeared. No close button, no X, no escape key.</p>
+      title="Pre-Delivered Content: Semantic Framing of Local Assets as Purchase Opportunities"
+      caption="Semantic Framing of Local Assets as Purchase Opportunities — already-downloaded content is semantically reframed as downloadable or unlockable, turning a consumed storage cost into a purchase opportunity."
+      auditorStats={stats}
+      deltaNote="Variant A labels on-disk assets “Download” / “Unlock premium” — Frame(T_asset) = Purchaseable while IsLocal(A_asset) = True. Variant B labels the identical assets “Installed — Ready to play”, so the completed download is presented as completed."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-center justify-between gap-2">
+              <h3 className="text-[11px] font-semibold">Nebula Drift — Library</h3>
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+                All installed
+              </span>
+            </div>
+            <p className="text-[9px] text-muted-foreground mt-0.5">
+              Every asset below was delivered with your purchase and is already on this device.
+            </p>
+
+            <div className="mt-3 space-y-1.5">
+              {ASSETS.map((a, i) => (
+                <button
+                  key={a.name}
+                  onClick={() => setClicked(i)}
+                  className="w-full rounded-md border border-emerald-500/20 bg-emerald-500/5 p-2 text-left transition-colors hover:border-emerald-500/40 cursor-pointer"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-medium text-foreground/90">{a.name}</div>
+                      <div className="mt-0.5 flex items-center gap-1 text-[8px] text-muted-foreground/60 font-mono">
+                        <FolderOpen className="size-2.5 shrink-0" />
+                        {a.path}
+                      </div>
+                    </div>
+                    <div className="flex shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5">
+                      <CheckCircle2 className="size-3 text-emerald-600 dark:text-emerald-400" />
+                      <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                        Installed
+                      </span>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {clicked !== null && (
+              <div className="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                  <CheckCircle2 className="size-3" />
+                  Already local
+                </div>
+                <p className="text-muted-foreground mt-0.5">
+                  “{ASSETS[clicked].name}” ({ASSETS[clicked].size}) is at {ASSETS[clicked].path} — IsLocal(A_asset) = True and
+                  Frame(T_asset) = “Installed”. Nothing to download, nothing to buy.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
-        <div className="bg-background rounded-md border-blue-500/40 border-2 p-4 text-center text-xs">
-          <div className="mb-2 font-semibold">Action required</div>
-          <button onClick={() => setDone(true)} className="bg-blue-500 hover:bg-blue-600 text-white mt-3 rounded-md px-3 py-1.5 text-[10px] font-medium">
-            Continue
-          </button>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-center justify-between gap-2">
+            <h3 className="text-[11px] font-semibold">Nebula Drift — Library</h3>
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+              3 downloads available
+            </span>
+          </div>
+          <p className="text-[9px] text-muted-foreground mt-0.5">
+            Premium add-ons are ready to download — grab them before they&rsquo;re gone.
+          </p>
+
+          <div className="mt-3 space-y-1.5">
+            {ASSETS.map((a, i) => (
+              <button
+                key={a.name}
+                onClick={() => setClicked(i)}
+                className="w-full rounded-md border border-border bg-background p-2 text-left transition-colors hover:border-rose-500/40 cursor-pointer"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <div className="min-w-0">
+                    <div className="text-[10px] font-medium text-foreground/90">{a.name}</div>
+                    <div className="mt-0.5 flex items-center gap-1 text-[8px] text-muted-foreground/60 font-mono">
+                      <FolderOpen className="size-2.5 shrink-0" />
+                      {a.path}
+                    </div>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-1 rounded-full border border-rose-500/30 bg-rose-500/10 px-2 py-0.5">
+                    <Download className="size-3 text-rose-600 dark:text-rose-400" />
+                    <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-700 dark:text-rose-300">
+                      Download
+                    </span>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <p className="mt-2 text-[8px] text-muted-foreground/50">
+            Tap any row to see what the client is really asking for.
+          </p>
+
+          {clicked !== null && (
+            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 9v4m0 4h.01" />
+                  <circle cx="12" cy="12" r="10" />
+                </svg>
+                Reframed download
+              </div>
+              <p className="text-muted-foreground">
+                The button says <strong className="text-rose-500">“Download”</strong> but &ldquo;{ASSETS[clicked].name}&rdquo; ({ASSETS[clicked].size})
+                is already sitting at <span className="font-mono">{ASSETS[clicked].path}</span>. IsLocal(A_asset) = True, yet
+                Frame(T_asset) = “Purchaseable” — the transfer already happened during install; the label merely
+                reframes an already-consumed storage cost as a purchase opportunity.
+              </p>
+              <p className="text-muted-foreground">
+                Pressing it would reveal a $9.99 “unlock premium” checkout for bytes that never left your machine.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </DemoShell>

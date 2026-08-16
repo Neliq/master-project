@@ -3,6 +3,39 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Choice Overload — Condition 1: Excessive Element Quantization
+ *
+ * Thesis: C_choices = {c_1, ..., c_n} is the set of distinct actionable
+ * input nodes (vendor checkboxes, cookie toggles) inside one decision
+ * context M_decision. tau_cognitive_limit models Miller's 7 ± 2 working
+ * memory band. The feature triggers when the sheer volume of granular
+ * choices exceeds a heuristic upper bound:
+ *
+ *   |C_choices| > tau_overload   (e.g. > 20 individual toggles)
+ *
+ * Variant A (dark): 24 vendor toggles with no "Reject all" affordance —
+ * the only one-click path is "Accept all", so the path of least
+ * resistance is the provider-favorable default (Hick's Law in action).
+ * Variant B (benign): the same 24 toggles, same vendors, same payload,
+ * but a "Reject all" button sits next to "Accept all" with equal
+ * prominence, so declining is one click.
+ */
+
+const VENDORS = [
+  "Meta Ads", "Google Ads", "TikTok Ads", "Criteo", "Taboola", "Outbrain",
+  "AdRoll", "The Trade Desk", "Amazon Ads", "Microsoft Ads", "Pinterest Ads",
+  "Snap Ads", "X Ads", "LinkedIn Ads", "PubMatic", "Index Exchange",
+  "Magnite", "TripleLift", "Verizon Media", "Sovrn", "Rubicon Project",
+  "Sharethrough", "SpotX", "OpenX",
+];
+
+const TAU_OVERLOAD = 20;
+const MILLER_LOW = 5;
+const MILLER_HIGH = 9;
+
+type Decision = "accept" | "save" | "reject" | null;
+
 export function ChoiceOverloadCond1({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,35 +43,206 @@ export function ChoiceOverloadCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [unlocked, setUnlocked] = React.useState(false);
-  const reset = () => setUnlocked(false);
+  const [toggles, setToggles] = React.useState<Record<string, boolean>>(
+    () => Object.fromEntries(VENDORS.map((v) => [v, false]))
+  );
+  const [decision, setDecision] = React.useState<Decision>(null);
+
+  const reset = () => {
+    setToggles(Object.fromEntries(VENDORS.map((v) => [v, false])));
+    setDecision(null);
+  };
+
+  const flip = (vendor: string) =>
+    setToggles((t) => ({ ...t, [vendor]: !t[vendor] }));
+
+  const rejectAll = () => {
+    setToggles(Object.fromEntries(VENDORS.map((v) => [v, false])));
+    setDecision("reject");
+  };
+
+  const enabledCount = Object.values(toggles).filter(Boolean).length;
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Free path available</span>
-        <span className="font-mono font-semibold">No</span>
+        <span className="text-muted-foreground">|C_choices| (vendor toggles)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">{VENDORS.length}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">τ_overload (upper bound)</span>
+        <span className="font-mono font-semibold tabular-nums">{TAU_OVERLOAD}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">|C_choices| &gt; τ_overload</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">
+          {VENDORS.length} &gt; {TAU_OVERLOAD} ✓
+        </span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Miller band (7 ± 2)</span>
+        <span className="font-mono font-semibold tabular-nums">{MILLER_LOW}–{MILLER_HIGH} items</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Toggles on</span>
+        <span className="font-mono font-semibold tabular-nums">{enabledCount} / {VENDORS.length}</span>
       </div>
     </>
   ) : null;
 
+  const toggleList = (accent: "rose" | "emerald") => (
+    <div className="mt-2 max-h-40 space-y-1 overflow-y-auto rounded-md border bg-background p-2">
+      {VENDORS.map((v) => (
+        <label key={v} className="flex cursor-pointer items-center justify-between gap-2 rounded px-1 py-0.5 transition-colors hover:bg-muted/50">
+          <span className="text-[9px] text-muted-foreground truncate">{v}</span>
+          <input
+            type="checkbox"
+            checked={!!toggles[v]}
+            onChange={() => flip(v)}
+            className={`h-3 w-3 flex-shrink-0 ${accent === "rose" ? "accent-rose-500" : "accent-emerald-500"}`}
+          />
+        </label>
+      ))}
+    </div>
+  );
+
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Choice Overload: Excessive Element Quantization"
-      caption="Excessive Element Quantization — content is blocked without payment." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-1 font-medium">Excessive Element Quantization</div>
-          <div className="rounded-md border-green-500/40 bg-green-500/5 p-4 text-center" style={{opacity: unlocked ? 1 : 0.2}}>
-            <div className="text-2xl">{unlocked ? "🔓" : "🏦"}</div>
-            <div className="mt-1 text-[10px]">{unlocked ? "Vault opened" : "Premium vault"}</div>
-          </div>
-          {!unlocked && (
-            <button onClick={() => setUnlocked(true)} className="bg-green-500 hover:bg-green-600 text-white mt-2 w-full rounded-md py-2 text-[10px] font-medium">
-              Open vault — $19.99/mo
+      caption="Excessive Element Quantization — 24 granular vendor toggles with no one-click reject path: declining means manually switching off 24 switches, while accepting is a single click."
+      auditorStats={stats}
+      deltaNote="Both variants expose the identical 24-vendor toggle list with the same starting state. Variant A offers only 'Accept all' and 'Save my choices', so the path of least resistance is the provider-favorable default; Variant B adds a 'Reject all' button of equal prominence, making the user-favorable action one click too."
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-start justify-between gap-2">
+              <div>
+                <h3 className="text-[11px] font-semibold">We value your privacy</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">
+                  We and our {VENDORS.length} partners use cookies and similar technologies to
+                  store and access information on your device. You can accept all, reject all,
+                  or manage each partner individually below.
+                </p>
+              </div>
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+                {VENDORS.length} partners
+              </span>
+            </div>
+
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <button
+                onClick={() => setDecision("accept")}
+                className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              >
+                Accept all
+              </button>
+              <button
+                onClick={rejectAll}
+                className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              >
+                Reject all
+              </button>
+            </div>
+            <button
+              onClick={() => setDecision("save")}
+              className="mt-2 w-full rounded-md border border-emerald-500/40 bg-emerald-500/5 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/10 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            >
+              Save my choices
             </button>
+
+            {toggleList("emerald")}
+
+            <p className="text-[8px] text-muted-foreground/60 mt-2">
+              Rejecting all disables every partner toggle in one click; you can always
+              revisit these settings later.
+            </p>
+          </div>
+
+          {decision && (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {decision === "accept"
+                  ? "All accepted"
+                  : decision === "reject"
+                    ? "All rejected in one click"
+                    : `Choices saved (${enabledCount} partner${enabledCount === 1 ? "" : "s"} on)`}
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                {decision === "accept"
+                  ? "You accepted all 24 partners with one click — the same number of choices you would otherwise have to manage individually when declining."
+                  : decision === "reject"
+                    ? `You rejected all ${VENDORS.length} partners with a single click. A 'Reject all' affordance with the same prominence as 'Accept all' restores informed refusal.`
+                    : "You manually configured your choices. Because a reject-all path exists, opting out never requires 24 individual switches."}
+              </p>
+            </div>
           )}
         </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <h3 className="text-[11px] font-semibold">We value your privacy</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">
+                We and our {VENDORS.length} partners use cookies and similar technologies to
+                store and access information on your device. You can accept all or manage each
+                partner individually below.
+              </p>
+            </div>
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+              {VENDORS.length} partners
+            </span>
+          </div>
+
+          <div className="mt-3 space-y-2">
+            <button
+              onClick={() => setDecision("accept")}
+              className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[11px] font-bold transition-colors cursor-pointer"
+            >
+              Accept all
+            </button>
+            <button
+              onClick={() => setDecision("save")}
+              className="w-full rounded-md border border-border bg-background text-muted-foreground hover:text-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            >
+              Save my choices
+            </button>
+          </div>
+
+          {toggleList("rose")}
+
+          <p className="text-[8px] text-muted-foreground/40 mt-2 italic">
+            There is no &ldquo;reject all&rdquo; — decline by switching off each of the{" "}
+            {VENDORS.length} partners individually.
+          </p>
+        </div>
+
+        {decision && (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              {decision === "accept" ? "Overload exploited" : "Manual decline"}
+            </div>
+            <p className="text-muted-foreground">
+              <strong className="font-mono text-rose-500">|C_choices| = {VENDORS.length} &gt; τ_overload = {TAU_OVERLOAD}</strong>{" "}
+              — the interface renders {VENDORS.length} distinct actionable toggles in one
+              decision context, far beyond the {MILLER_LOW}–{MILLER_HIGH} item working-memory
+              band.
+            </p>
+            <p className="text-muted-foreground">
+              {decision === "accept"
+                ? `You accepted all ${VENDORS.length} partners in one click. Refusing would have meant manually switching off ${VENDORS.length} individual toggles with no reject-all shortcut — so the path of least resistance (Hick's Law) leads straight to the provider-favorable default.`
+                : `You manually switched ${enabledCount} of ${VENDORS.length} partners off. The absence of a reject-all button makes refusal a ${VENDORS.length}-step slog, so most users give up and accept — exactly what the quantization is designed to achieve.`}
+            </p>
+          </div>
+        )}
       </div>
     </DemoShell>
   );

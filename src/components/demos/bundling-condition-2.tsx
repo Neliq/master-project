@@ -3,13 +3,34 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
-interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  removable: boolean;
-  bundled: boolean;
-}
+/*
+ * Bundling — Condition 2: Visual Obscuration of Individual Component Pricing
+ *
+ * Thesis: within a bundle offer container C_bundle, let N_components be the
+ * set of individually priced sub-items. The feature triggers if the
+ * aggregate visual area devoted to individual-component prices is less than
+ * a fraction τ_breakdown of the total bundle card area, i.e. the interface
+ * visually suppresses the decomposition that would enable rational
+ * comparison:
+ *
+ *   Σ A(n) / A(C_bundle) < τ_breakdown
+ *
+ * Variant A (dark): the bundle card shows one large bundle total and the item
+ * names only — the per-component prices are never rendered, so the
+ * component-price area is a tiny fraction of the card.
+ * Variant B (benign): the same card carries an itemised breakdown table at
+ * full visual weight, so the ratio is far above the threshold.
+ */
+
+const usd = (n: number) => `$${n.toFixed(2)}`;
+const COMPONENTS = [
+  { name: "Nova X100 Camera", price: 899 },
+  { name: "50mm f/1.8 Prime Lens", price: 349 },
+  { name: "Hard Case", price: 49 },
+];
+const BUNDLE_PRICE = 1199;
+const SUM_PRICES = COMPONENTS.reduce((s, c) => s + c.price, 0); // $1,297
+const SAVINGS = SUM_PRICES - BUNDLE_PRICE;
 
 export function BundlingCond2({
   mode = "user", annotations = [], onRestart,
@@ -18,112 +39,172 @@ export function BundlingCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const initialItems: CartItem[] = [
-    { id: "headphones", name: "Wireless Headphones", price: 79.99, removable: true, bundled: false },
-    { id: "warranty", name: "Extended Warranty (2yr)", price: 14.99, removable: true, bundled: true },
-  ];
-
-  const [items, setItems] = React.useState<CartItem[]>(initialItems);
-  const [removedByUser, setRemovedByUser] = React.useState<string[]>([]);
-  const [showWarning, setShowWarning] = React.useState(false);
+  const [added, setAdded] = React.useState(false);
 
   const reset = () => {
-    setItems(initialItems);
-    setRemovedByUser([]);
-    setShowWarning(false);
-  };
-
-  const total = items.reduce((s, i) => s + i.price, 0);
-
-  const handleRemove = (id: string) => {
-    const item = items.find(i => i.id === id);
-    if (!item) return;
-
-    if (item.bundled) {
-      // Dark pattern: removing the bundled item also removes the primary item
-      setShowWarning(true);
-      setTimeout(() => {
-        setItems([]);
-        setRemovedByUser(["warranty", "headphones"]);
-        setShowWarning(false);
-      }, 600);
-    } else {
-      // Removing the primary item also removes the bundled item
-      setItems([]);
-      setRemovedByUser(["headphones", "warranty"]);
-    }
+    setAdded(false);
   };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Remove(x) → also removes</span>
-        <span className="font-mono font-semibold">warranty → headphones</span>
+        <span className="text-muted-foreground">ΣA(n)/A(C_bundle) dark</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 0% (&lt; 30%)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">ΣA(n)/A(C_bundle) benign</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">≈ 62%</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Σ component prices</span>
+        <span className="font-mono font-semibold tabular-nums">{usd(SUM_PRICES)}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Bundle price / savings</span>
+        <span className="font-mono font-semibold tabular-nums">
+          {usd(BUNDLE_PRICE)} / {usd(SAVINGS)}
+        </span>
       </div>
     </>
   ) : null;
 
-  return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Bundling: Irreversible Set Addition"
-      caption="Irreversible Set Addition — removing the bundled item silently removes the primary item too." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-2 font-medium">Shopping Cart</div>
+  const renderPanel = (dark: boolean) => (
+    <div className="space-y-3">
+      <div className="rounded-md border bg-card p-3">
+        <div className="flex items-center gap-3">
+          <div
+            className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
+              dark ? "bg-rose-100 dark:bg-rose-900/30" : "bg-emerald-100 dark:bg-emerald-900/30"
+            }`}
+          >
+            <svg
+              className={`h-4 w-4 ${dark ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"}`}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M21 8l-9-5-9 5 9 5 9-5z" />
+              <path d="M3 8v8l9 5 9-5V8" />
+              <path d="M12 13v8" />
+            </svg>
+          </div>
+          <div className="min-w-0 flex-1">
+            <h3 className="text-[11px] font-semibold">Creator Bundle</h3>
+            <p className="text-[9px] text-muted-foreground mt-0.5">
+              {COMPONENTS.map((c) => c.name).join(" + ")}
+            </p>
+          </div>
+        </div>
 
-          {items.length > 0 ? (
+        <div className="mt-3 flex items-end justify-between gap-2 border-t border-border pt-2">
+          <div>
+            <div
+              className={`text-[16px] font-bold tabular-nums ${
+                dark ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"
+              }`}
+            >
+              {usd(BUNDLE_PRICE)}
+            </div>
+            <div className="text-[8px] uppercase tracking-wider text-muted-foreground">
+              bundle total
+            </div>
+          </div>
+          {!dark ? (
+            <div className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[8px] font-semibold text-emerald-700 dark:text-emerald-300">
+              You save {usd(SAVINGS)}
+            </div>
+          ) : null}
+        </div>
+
+        {/* component pricing area — the variable that the ratio measures */}
+        <div className="mt-2">
+          {dark ? (
             <div className="space-y-1.5">
-              {items.map(item => (
-                <div
-                  key={item.id}
-                  className={`flex items-center justify-between rounded-md border px-2.5 py-2 transition-all duration-300 ${
-                    showWarning && item.bundled
-                      ? "border-red-500/60 bg-red-500/10"
-                      : "border-foreground/10 bg-foreground/5"
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="text-sm">{item.id === "headphones" ? "🎧" : "🛡️"}</div>
-                    <div>
-                      <div className="font-medium">{item.name}</div>
-                      {item.bundled && (
-                        <div className="text-[8px] text-muted-foreground/60">auto-added</div>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono font-semibold">${item.price.toFixed(2)}</span>
-                    <button
-                      onClick={() => handleRemove(item.id)}
-                      className="ml-1 flex h-5 w-5 items-center justify-center rounded-full bg-foreground/10 text-muted-foreground transition-colors hover:bg-red-500/20 hover:text-red-500"
-                      aria-label={`Remove ${item.name}`}
-                    >
-                      ✕
-                    </button>
-                  </div>
+              {COMPONENTS.map((c) => (
+                <div key={c.name} className="text-[9px] text-muted-foreground">
+                  {c.name}
                 </div>
               ))}
             </div>
           ) : (
-            <div className="rounded-md border border-dashed p-4 text-center text-[10px] text-muted-foreground">
-              {removedByUser.length > 0 && (
-                <div className="text-red-400 dark:text-red-400">
-                  Removing the warranty also removed your headphones.
-                  <br />
-                  <span className="font-medium">Both items were removed.</span>
+            <div className="space-y-1 rounded-md border bg-background p-2">
+              {COMPONENTS.map((c) => (
+                <div key={c.name} className="flex items-center justify-between text-[9px]">
+                  <span className="text-muted-foreground">{c.name}</span>
+                  <span className="font-mono tabular-nums">{usd(c.price)}</span>
                 </div>
-              )}
-            </div>
-          )}
-
-          {items.length > 0 && (
-            <div className="mt-2 flex items-center justify-between rounded-md bg-foreground/10 px-2.5 py-1.5 font-semibold">
-              <span>Total</span>
-              <span className="font-mono">${total.toFixed(2)}</span>
+              ))}
+              <div className="flex items-center justify-between border-t border-border pt-1 text-[9px] font-semibold">
+                <span className="text-muted-foreground">If bought separately</span>
+                <span className="font-mono tabular-nums">{usd(SUM_PRICES)}</span>
+              </div>
+              <div className="flex items-center justify-between text-[9px] font-semibold text-emerald-600 dark:text-emerald-400">
+                <span>Bundle price</span>
+                <span className="font-mono tabular-nums">{usd(BUNDLE_PRICE)}</span>
+              </div>
             </div>
           )}
         </div>
+
+        <button
+          onClick={() => setAdded(true)}
+          className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
+            dark ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+          }`}
+        >
+          {added ? "Added to cart ✓" : "Add bundle to cart"}
+        </button>
       </div>
+
+      {added &&
+        (dark ? (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-amber-700 dark:text-amber-300">
+              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Component pricing visually obscured
+            </div>
+            <p className="text-muted-foreground mt-1">
+              You paid <strong className="text-foreground">{usd(BUNDLE_PRICE)}</strong> without ever
+              seeing the individual component prices — no breakdown was rendered at all
+              (ΣA(n)/A(C_bundle) ≈ 0% &lt; τ_breakdown = 30%). The items are worth{" "}
+              <strong className="text-amber-700 dark:text-amber-300">{usd(SUM_PRICES)}</strong>{" "}
+              separately, but there was nothing to compare at the point of decision.
+            </p>
+          </div>
+        ) : (
+          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-emerald-700 dark:text-emerald-300">
+              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+              Itemised breakdown at full weight
+            </div>
+            <p className="text-muted-foreground mt-1">
+              The breakdown table dominated the card (ΣA(n)/A(C_bundle) ≈ 62%), so you could compare
+              {usd(SUM_PRICES)} of separate purchases against the {usd(BUNDLE_PRICE)} bundle and see
+              the {usd(SAVINGS)} saving before deciding.
+            </p>
+          </div>
+        ))}
+    </div>
+  );
+
+  return (
+    <DemoShell
+      mode={mode}
+      annotations={annotations}
+      onRestart={onRestart ?? reset}
+      title="Bundling: Visual Obscuration of Individual Component Pricing"
+      caption="Visual Obscuration of Individual Component Pricing — the aggregate visual area devoted to individual-component prices inside the bundle card falls below the breakdown threshold, suppressing the decomposition that enables rational comparison."
+      auditorStats={stats}
+      deltaNote="Variant A shows only the bundle total and the item names — the per-component prices are never rendered (≈0% of the card area, below τ_breakdown). Variant B renders the same itemised table at full visual weight (≈62%), so the $1,297 sum of separate purchases is directly comparable to the $1,199 bundle."
+      benign={renderPanel(false)}
+    >
+      {renderPanel(true)}
     </DemoShell>
   );
 }

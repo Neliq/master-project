@@ -3,6 +3,25 @@
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
 
+/*
+ * Immortal Accounts — Condition 3: Absolute Absence of Deletion Vectors
+ *
+ * Thesis: K_del is the semantic set of account-termination keywords
+ * ({"delete account", "deactivate", "close account", "remove profile"}) and
+ * T_DOM is the collection of all visible text nodes in the account settings
+ * and profile sub-pages. The feature triggers if the intersection is empty:
+ *
+ *   K_del ∩ T_DOM = ∅
+ *
+ * Variant A (dark): the settings page ships zero termination keywords — only
+ * euphemisms like "data retention" and "marketing preferences", and the
+ * settings search returns "no results" for every exit keyword. Variant B
+ * (benign): a plainly labelled "Delete account" control exists, so the
+ * intersection is non-empty.
+ */
+
+const KEYWORDS = ["delete account", "deactivate", "close account", "remove profile"];
+
 export function ImmortalAccountsCond3({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -10,36 +29,236 @@ export function ImmortalAccountsCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [sent, setSent] = React.useState(false);
-  const reset = () => setSent(false);
+  const [tab, setTab] = React.useState<"profile" | "privacy" | "data">("privacy");
+  const [query, setQuery] = React.useState("");
+  const [scanned, setScanned] = React.useState(false);
+
+  const reset = () => {
+    setTab("privacy");
+    setQuery("");
+    setScanned(false);
+  };
+
+  // Variant A has no termination text anywhere; Variant B renders one "Delete account" node.
+  const hitsBenign = query.trim().length > 0 && KEYWORDS.some((k) => k.includes(query.trim().toLowerCase())) ? 1 : 0;
+  const queryNoResults = query.trim().length > 0;
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Messages sent without consent</span>
-        <span className="font-mono font-semibold">{sent ? "47" : "0"}</span>
+        <span className="text-muted-foreground">K_del keywords</span>
+        <span className="font-mono font-semibold tabular-nums">{KEYWORDS.length}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Visible text nodes |T_DOM|</span>
+        <span className="font-mono font-semibold tabular-nums">14</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">K_del &cap; T_DOM (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-rose-500">&empty; (0 nodes)</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">K_del &cap; T_DOM (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-emerald-500">&ne; &empty; (1 node)</span>
       </div>
     </>
   ) : null;
 
+  const tabs = (
+    <div className="flex gap-1 rounded-md border border-border bg-muted/40 p-1">
+      {(["profile", "privacy", "data"] as const).map((t) => (
+        <button
+          key={t}
+          onClick={() => setTab(t)}
+          className={`flex-1 rounded px-2 py-1 text-[9px] font-medium capitalize transition-colors cursor-pointer ${
+            tab === t ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          {t === "data" ? "Data & storage" : t}
+        </button>
+      ))}
+    </div>
+  );
+
+  const privacyDark = (
+    <div className="space-y-1.5">
+      <div className="flex items-center justify-between rounded-md border border-border bg-background px-2.5 py-2">
+        <div>
+          <div className="text-[10px] font-medium">Download my data</div>
+          <div className="text-[8px] text-muted-foreground/60">Export a copy of everything we store.</div>
+        </div>
+        <span className="font-mono text-[8px] text-muted-foreground">ZIP</span>
+      </div>
+      <div className="flex items-center justify-between rounded-md border border-border bg-background px-2.5 py-2">
+        <div>
+          <div className="text-[10px] font-medium">Marketing preferences</div>
+          <div className="text-[8px] text-muted-foreground/60">Emails, notifications and offers.</div>
+        </div>
+        <span className="font-mono text-[8px] text-muted-foreground">ON</span>
+      </div>
+      <div className="flex items-center justify-between rounded-md border border-border bg-background px-2.5 py-2">
+        <div>
+          <div className="text-[10px] font-medium">Data retention period</div>
+          <div className="text-[8px] text-muted-foreground/60">How long we keep your profile.</div>
+        </div>
+        <span className="font-mono text-[8px] text-muted-foreground">10 yrs</span>
+      </div>
+    </div>
+  );
+
+  const privacyBenign = (
+    <div className="space-y-1.5">
+      <div className="flex items-center justify-between rounded-md border border-rose-500/30 bg-rose-500/5 px-2.5 py-2">
+        <div>
+          <div className="text-[10px] font-medium text-rose-600 dark:text-rose-400">Delete account</div>
+          <div className="text-[8px] text-muted-foreground/60">Permanently remove your account and all data.</div>
+        </div>
+        <span className="font-mono text-[8px] text-rose-500">K_del &cap; T_DOM</span>
+      </div>
+      <div className="flex items-center justify-between rounded-md border border-border bg-background px-2.5 py-2">
+        <div>
+          <div className="text-[10px] font-medium">Download my data</div>
+          <div className="text-[8px] text-muted-foreground/60">Export a copy of everything we store.</div>
+        </div>
+        <span className="font-mono text-[8px] text-muted-foreground">ZIP</span>
+      </div>
+      <div className="flex items-center justify-between rounded-md border border-border bg-background px-2.5 py-2">
+        <div>
+          <div className="text-[10px] font-medium">Marketing preferences</div>
+          <div className="text-[8px] text-muted-foreground/60">Emails, notifications and offers.</div>
+        </div>
+        <span className="font-mono text-[8px] text-muted-foreground">ON</span>
+      </div>
+    </div>
+  );
+
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
-      title="Immortal Accounts: External Action Requirement"
-      caption="External Action Requirement — messages appear to come from the user without consent." auditorStats={stats}>
-      <div className="space-y-3">
-        <div className="rounded-md border bg-foreground/5 p-3 text-xs">
-          <div className="mb-1 font-medium">External Action Requirement</div>
-          <p className="text-muted-foreground text-[10px]">Find friends already on the platform.</p>
-          <button onClick={() => setSent(true)} className="bg-foreground text-background mt-2 w-full rounded-md py-2 text-[10px] font-medium">
-            {sent ? "Invites sent" : "Send invites"}
-          </button>
-        </div>
-        {sent && (
-          <div className="rounded-md border border-slate-400/30 bg-slate-100 p-3 text-[10px]">
-            <div className="font-medium text-slate-700 dark:text-slate-300">47 invites sent as you!</div>
-            <div className="text-muted-foreground mt-1">Messages appear to come from YOUR account.</div>
+      title="Immortal Accounts: Absolute Absence of Deletion Vectors"
+      caption="Absolute Absence of Deletion Vectors — the settings sub-pages contain no termination keywords at all (K_del ∩ T_DOM = ∅), so the interface offers no structural exit affordance."
+      auditorStats={stats}
+      deltaNote={`In Variant A none of K_del = {${KEYWORDS.join(", ")}} appears anywhere in the visible settings DOM — even the search box returns "no results" — so K_del ∩ T_DOM = ∅ and the feature triggers. In Variant B the same settings page renders a plainly labelled "Delete account" node, making the intersection non-empty.`}
+      benign={
+        <div className="space-y-3">
+          <div className="rounded-md border bg-card p-3">
+            <div className="flex items-center justify-between gap-2">
+              <div>
+                <h3 className="text-[11px] font-semibold">Settings</h3>
+                <p className="text-[9px] text-muted-foreground mt-0.5">Manage your account, privacy and data.</p>
+              </div>
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+                Exit found
+              </div>
+            </div>
+            <div className="relative mt-3">
+              <svg className="absolute left-2 top-1/2 h-3 w-3 -translate-y-1/2 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35" />
+              </svg>
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search settings…"
+                className="w-full rounded-md border border-border bg-background py-1.5 pl-7 pr-2 text-[10px] placeholder:text-muted-foreground/50"
+              />
+            </div>
+            {queryNoResults ? (
+              <div className={`mt-2 rounded-md border p-2 text-[9px] ${
+                hitsBenign > 0
+                  ? "border-emerald-500/30 bg-emerald-500/5"
+                  : "border-border bg-background"
+              }`}>
+                {hitsBenign > 0 ? (
+                  <>
+                    <span className="font-semibold text-emerald-700 dark:text-emerald-300">{hitsBenign} result for &ldquo;{query}&rdquo;</span>
+                    <span className="text-muted-foreground"> — Delete account (Account &gt; Privacy).</span>
+                  </>
+                ) : (
+                  <span className="text-muted-foreground">No results for &ldquo;{query}&rdquo; — nothing matched in Settings, Privacy or Data.</span>
+                )}
+              </div>
+            ) : null}
+            <div className="mt-3">{tabs}</div>
+            <div className="mt-3">{privacyBenign}</div>
           </div>
-        )}
+          <button
+            onClick={() => setScanned(true)}
+            className="w-full rounded-md border border-emerald-500/40 bg-emerald-500/5 text-emerald-700 dark:text-emerald-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+          >
+            Scan settings DOM for exit keywords
+          </button>
+          {scanned ? (
+            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                Exit vector present
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                K_del &cap; T_DOM = {"{delete account}"} &ne; &empty; — the keyword &ldquo;delete account&rdquo; is rendered
+                in the settings DOM, so a structural exit affordance exists.
+              </p>
+            </div>
+          ) : null}
+        </div>
+      }>
+      {/* ── Variant A: dark pattern ── */}
+      <div className="space-y-3">
+        <div className="rounded-md border bg-card p-3">
+          <div className="flex items-center justify-between gap-2">
+            <div>
+              <h3 className="text-[11px] font-semibold">Settings</h3>
+              <p className="text-[9px] text-muted-foreground mt-0.5">Manage your account, privacy and data.</p>
+            </div>
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+              No exit
+            </div>
+          </div>
+          <div className="relative mt-3">
+            <svg className="absolute left-2 top-1/2 h-3 w-3 -translate-y-1/2 text-muted-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35" />
+            </svg>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search settings…"
+              className="w-full rounded-md border border-border bg-background py-1.5 pl-7 pr-2 text-[10px] placeholder:text-muted-foreground/50"
+            />
+          </div>
+          {queryNoResults ? (
+            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2 text-[9px]">
+              <span className="font-semibold text-amber-700 dark:text-amber-300">No results for &ldquo;{query}&rdquo;</span>
+              <span className="text-muted-foreground"> — nothing matched in Settings, Privacy or Data.</span>
+            </div>
+          ) : null}
+          <div className="mt-3">{tabs}</div>
+          <div className="mt-3">{privacyDark}</div>
+        </div>
+        <button
+          onClick={() => setScanned(true)}
+          className="w-full rounded-md border border-rose-500/40 bg-rose-500/5 text-rose-700 dark:text-rose-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+        >
+          Scan settings DOM for exit keywords
+        </button>
+        {scanned ? (
+          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 9v4m0 4h.01" />
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              Triggered: K_del &cap; T_DOM = &empty;
+            </div>
+            <p className="text-muted-foreground mt-0.5">
+              Scan of all visible text nodes found <strong className="text-foreground">0</strong> occurrences of any
+              termination keyword: {KEYWORDS.map((k) => `"${k}"`).join(", ")} all return zero hits. Only euphemisms
+              (&ldquo;data retention&rdquo;, &ldquo;marketing preferences&rdquo;) are rendered — the interface offers no
+              structural exit affordance, so the account is effectively immortal.
+            </p>
+          </div>
+        ) : null}
       </div>
     </DemoShell>
   );

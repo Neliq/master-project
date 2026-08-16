@@ -1,0 +1,1222 @@
+{
+ "corpus": {
+  "patterns": 62,
+  "conditions_per_pattern": 3,
+  "instances": 372,
+  "classified": 372,
+  "missing": []
+ },
+ "condition_0": {
+  "tp": 185,
+  "fp": 1,
+  "tn": 185,
+  "fn": 1,
+  "precision": 0.9946236559139785,
+  "recall": 0.9946236559139785,
+  "f1": 0.9946236559139785,
+  "accuracy": 0.9946236559139785
+ },
+ "condition_1": {
+  "tp": 183,
+  "fp": 0,
+  "tn": 186,
+  "fn": 3,
+  "precision": 1.0,
+  "recall": 0.9838709677419355,
+  "f1": 0.991869918699187,
+  "accuracy": 0.9919354838709677
+ },
+ "mcnemar": {
+  "b": 1,
+  "c": 2,
+  "n": 3,
+  "chi2": 0.3333333333333333,
+  "p_exact_binomial": 1.0
+ },
+ "kappa": {
+  "c0": 0.989247311827957,
+  "c1": 0.9838709677419355
+ },
+ "by_layer": {
+  "c0": {
+   "1": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 62,
+    "fp": 0,
+    "tn": 62,
+    "fn": 0
+   },
+   "2": {
+    "f1": 0.9919999999999999,
+    "precision": 0.9841269841269841,
+    "recall": 1.0,
+    "tp": 62,
+    "fp": 1,
+    "tn": 61,
+    "fn": 0
+   },
+   "3": {
+    "f1": 0.991869918699187,
+    "precision": 1.0,
+    "recall": 0.9838709677419355,
+    "tp": 61,
+    "fp": 0,
+    "tn": 62,
+    "fn": 1
+   }
+  },
+  "c1": {
+   "1": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 62,
+    "fp": 0,
+    "tn": 62,
+    "fn": 0
+   },
+   "2": {
+    "f1": 0.991869918699187,
+    "precision": 1.0,
+    "recall": 0.9838709677419355,
+    "tp": 61,
+    "fp": 0,
+    "tn": 62,
+    "fn": 1
+   },
+   "3": {
+    "f1": 0.9836065573770492,
+    "precision": 1.0,
+    "recall": 0.967741935483871,
+    "tp": 60,
+    "fp": 0,
+    "tn": 62,
+    "fn": 2
+   }
+  }
+ },
+ "by_pattern": {
+  "c0": {
+   "grinding": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "complex-language": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "watch-ads-to-unlock-features": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "conflicting-information": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "forced-grace-period": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "drip-pricing": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "countdown-on-ads": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "disguised-ad": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "limited-time-message": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "activity-messages": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "pressured-selling": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "high-demand": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "false-hierarchy": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "information-without-context": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "sneak-into-basket": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "forced-continuity": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "fear-of-missing-out-fomo": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "psychological-tricks": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "endorsement-and-testimonials": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "persuasive-language": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "auto-play": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "small-or-moving-close-button": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "addictive-design": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "pay-to-play": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "low-stock": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "visual-prominence": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "hidden-information": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "plain-evil": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "cuteness": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "dead-end": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "infinite-scrolling": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "reduced-friction": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "choice-overload": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "confirmshaming": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "privacy-maze": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "automating-the-user-away": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "playing-by-appointment": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "encouraging-anti-social-behavior": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "social-pyramid": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "privacy-zuckering": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "pull-to-refresh": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "bad-defaults-preselection": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "wrong-language": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "customisation": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "friend-spam": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "positive-or-negative-framing": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "countdown-timer": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "trick-questions": {
+    "f1": 0.8571428571428571,
+    "precision": 0.75,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 1,
+    "tn": 2,
+    "fn": 0
+   },
+   "automatic-accept-third-party-term": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "pre-delivered-content": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "feedforward-ambiguity": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "address-book-leeching": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "pay-to-avoid": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "intermediate-currency": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "price-comparison-prevention": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "forced-registration": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "immortal-accounts": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "reference-pricing": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "bundling": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "labyrinthine-navigation": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "granting-and-interaction": {
+    "f1": 0.8,
+    "precision": 1.0,
+    "recall": 0.6666666666666666,
+    "tp": 2,
+    "fp": 0,
+    "tn": 3,
+    "fn": 1
+   },
+   "parasocial-pressure": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   }
+  },
+  "c1": {
+   "grinding": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "complex-language": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "watch-ads-to-unlock-features": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "conflicting-information": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "forced-grace-period": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "drip-pricing": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "countdown-on-ads": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "disguised-ad": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "limited-time-message": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "activity-messages": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "pressured-selling": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "high-demand": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "false-hierarchy": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "information-without-context": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "sneak-into-basket": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "forced-continuity": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "fear-of-missing-out-fomo": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "psychological-tricks": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "endorsement-and-testimonials": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "persuasive-language": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "auto-play": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "small-or-moving-close-button": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "addictive-design": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "pay-to-play": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "low-stock": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "visual-prominence": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "hidden-information": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "plain-evil": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "cuteness": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "dead-end": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "infinite-scrolling": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "reduced-friction": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "choice-overload": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "confirmshaming": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "privacy-maze": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "automating-the-user-away": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "playing-by-appointment": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "encouraging-anti-social-behavior": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "social-pyramid": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "privacy-zuckering": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "pull-to-refresh": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "bad-defaults-preselection": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "wrong-language": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "customisation": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "friend-spam": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "positive-or-negative-framing": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "countdown-timer": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "trick-questions": {
+    "f1": 0.8,
+    "precision": 1.0,
+    "recall": 0.6666666666666666,
+    "tp": 2,
+    "fp": 0,
+    "tn": 3,
+    "fn": 1
+   },
+   "automatic-accept-third-party-term": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "pre-delivered-content": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "feedforward-ambiguity": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "address-book-leeching": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "pay-to-avoid": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "intermediate-currency": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "price-comparison-prevention": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "forced-registration": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "immortal-accounts": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "reference-pricing": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "bundling": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "labyrinthine-navigation": {
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 3,
+    "fp": 0,
+    "tn": 3,
+    "fn": 0
+   },
+   "granting-and-interaction": {
+    "f1": 0.8,
+    "precision": 1.0,
+    "recall": 0.6666666666666666,
+    "tp": 2,
+    "fp": 0,
+    "tn": 3,
+    "fn": 1
+   },
+   "parasocial-pressure": {
+    "f1": 0.8,
+    "precision": 1.0,
+    "recall": 0.6666666666666666,
+    "tp": 2,
+    "fp": 0,
+    "tn": 3,
+    "fn": 1
+   }
+  }
+ }
+}
