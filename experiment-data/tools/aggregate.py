@@ -81,11 +81,13 @@ if n:
     p_exact = 2 * sum(comb(n, k) for k in range(min(b, c) + 1)) / (2 ** n)
     p_exact = min(p_exact, 1.0)
 
-# per-agent
-agents = sorted({f.stem for f in RAW.glob("agent-*.jsonl")})
+# per-agent: each agent judged only its own 37-38-instance subset, so the
+# confusion matrix must be computed from that agent's own JSONL rows only
+# (previously every agent row was attributed the aggregate matrix).
 per_agent = []
-for a in agents:
-    arows = [r for r in rows if r["instance_id"] in by_id]
+for f in sorted(RAW.glob("agent-*.jsonl")):
+    a = f.stem
+    arows = [json.loads(line) for line in f.read_text().splitlines() if line.strip()]
     for arm in ("c0", "c1"):
         tp = fp = tn = fn = 0
         for r in arows:

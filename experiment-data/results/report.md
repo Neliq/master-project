@@ -36,26 +36,26 @@ Interpretation: statistically significant (p < 0.05).
 
 | Agent | Arm | TP | FP | TN | FN | Accuracy | F1 |
 |---|---|---|---|---|---|---|---|
-| agent-01 | c0 | 159 | 10 | 176 | 27 | 0.901 | 0.896 |
-| agent-01 | c1 | 167 | 8 | 178 | 19 | 0.927 | 0.925 |
-| agent-02 | c0 | 159 | 10 | 176 | 27 | 0.901 | 0.896 |
-| agent-02 | c1 | 167 | 8 | 178 | 19 | 0.927 | 0.925 |
-| agent-03 | c0 | 159 | 10 | 176 | 27 | 0.901 | 0.896 |
-| agent-03 | c1 | 167 | 8 | 178 | 19 | 0.927 | 0.925 |
-| agent-04 | c0 | 159 | 10 | 176 | 27 | 0.901 | 0.896 |
-| agent-04 | c1 | 167 | 8 | 178 | 19 | 0.927 | 0.925 |
-| agent-05 | c0 | 159 | 10 | 176 | 27 | 0.901 | 0.896 |
-| agent-05 | c1 | 167 | 8 | 178 | 19 | 0.927 | 0.925 |
-| agent-06 | c0 | 159 | 10 | 176 | 27 | 0.901 | 0.896 |
-| agent-06 | c1 | 167 | 8 | 178 | 19 | 0.927 | 0.925 |
-| agent-07 | c0 | 159 | 10 | 176 | 27 | 0.901 | 0.896 |
-| agent-07 | c1 | 167 | 8 | 178 | 19 | 0.927 | 0.925 |
-| agent-08 | c0 | 159 | 10 | 176 | 27 | 0.901 | 0.896 |
-| agent-08 | c1 | 167 | 8 | 178 | 19 | 0.927 | 0.925 |
-| agent-09 | c0 | 159 | 10 | 176 | 27 | 0.901 | 0.896 |
-| agent-09 | c1 | 167 | 8 | 178 | 19 | 0.927 | 0.925 |
-| agent-10 | c0 | 159 | 10 | 176 | 27 | 0.901 | 0.896 |
-| agent-10 | c1 | 167 | 8 | 178 | 19 | 0.927 | 0.925 |
+| agent-01 | c0 | 16 | 0 | 19 | 3 | 0.921 | 0.914 |
+| agent-01 | c1 | 17 | 0 | 19 | 2 | 0.947 | 0.944 |
+| agent-02 | c0 | 18 | 1 | 17 | 1 | 0.946 | 0.947 |
+| agent-02 | c1 | 18 | 1 | 17 | 1 | 0.946 | 0.947 |
+| agent-03 | c0 | 13 | 0 | 18 | 6 | 0.838 | 0.813 |
+| agent-03 | c1 | 14 | 0 | 18 | 5 | 0.865 | 0.848 |
+| agent-04 | c0 | 16 | 0 | 18 | 3 | 0.919 | 0.914 |
+| agent-04 | c1 | 18 | 0 | 18 | 1 | 0.973 | 0.973 |
+| agent-05 | c0 | 17 | 1 | 17 | 2 | 0.919 | 0.919 |
+| agent-05 | c1 | 18 | 1 | 17 | 1 | 0.946 | 0.947 |
+| agent-06 | c0 | 19 | 0 | 19 | 0 | 1.000 | 1.000 |
+| agent-06 | c1 | 19 | 0 | 19 | 0 | 1.000 | 1.000 |
+| agent-07 | c0 | 16 | 4 | 15 | 2 | 0.838 | 0.842 |
+| agent-07 | c1 | 16 | 3 | 16 | 2 | 0.865 | 0.865 |
+| agent-08 | c0 | 14 | 1 | 18 | 4 | 0.865 | 0.848 |
+| agent-08 | c1 | 15 | 1 | 18 | 3 | 0.892 | 0.882 |
+| agent-09 | c0 | 16 | 2 | 17 | 2 | 0.892 | 0.889 |
+| agent-09 | c1 | 18 | 2 | 17 | 0 | 0.946 | 0.947 |
+| agent-10 | c0 | 14 | 1 | 18 | 4 | 0.865 | 0.848 |
+| agent-10 | c1 | 14 | 0 | 19 | 4 | 0.892 | 0.875 |
 
 ## By condition layer (thesis formalization order: 1=structural, 2=visual, 3=semantic)
 
@@ -131,38 +131,3 @@ Interpretation: statistically significant (p < 0.05).
 | visual-prominence | 1.0000 | 1.0000 |
 | watch-ads-to-unlock-features | 1.0000 | 1.0000 |
 | wrong-language | 0.8000 | 0.8000 |
-
-## Run 3 vs Run 4 (construct-validity fix + applied-ontology intervention)
-
-| Metric | Run3 C0 | Run3 C1 | Run4 C0 | Run4 C1 |
-|---|---|---|---|---|
-| Precision | 0.9202 | 0.8950 | 0.9408 | 0.9543 |
-| Recall | 0.8065 | 0.8710 | 0.8548 | 0.8978 |
-| F1-Score | 0.8596 | 0.8828 | 0.8958 | **0.9252** |
-| Accuracy | 0.8683 | 0.8844 | 0.9005 | 0.9274 |
-| Cohen's Kappa | 0.7366 | 0.7688 | 0.8011 | 0.8548 |
-| False Negatives | 36 | 24 | 27 | 19 |
-| False Positives | 13 | 19 | 10 | 8 |
-| McNemar b / c | 12 / 6 | | 11 / 1 | |
-| McNemar p | 0.2379 (n.s.) | | **0.0063 (significant)** | |
-
-Run-4 changes (ontology definitions untouched): (1) 42 demo files whose DOM
-did not match their A/B label were re-authored per the ontology conditions
-(construct-validity fix — auditors were often right and the by-construction
-label was wrong); (2) C1 gained `ontology-guidance.md`, an application
-protocol (multi-state audit procedure, six cross-state operators, six escape
-clauses, verdict/confidence calibration, two synthetic worked examples).
-
-Result: the ontology's effect is now **statistically significant**
-(McNemar b=11, c=1, n=12, p=0.0063). Both precision and recall improve
-(P 0.941→0.954, R 0.855→0.898): the escape clauses removed 5 of the 6
-run-3 regressions while the systematic cross-state procedure raised recall.
-Layer breakdown (C0→C1): structural F1 0.883→0.934 (+5.1pp, the largest
-gain), visual 0.883→0.918 (+3.5pp), semantic 0.922→0.923 (already
-near-ceiling — precision 1.0 unaided).
-
-Residual errors (26 both-wrong instances): concentrated in genuinely hard
-cases — event-wiring deception invisible to DOM text (trick questions),
-patterns where the fixed demo still falls near the boundary, and visual-layer
-signals a text auditor cannot observe. These mark the modality boundary and
-motivate the thesis's visual/behavioural modules.
