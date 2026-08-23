@@ -56,7 +56,7 @@ export function PositiveOrNegativeFramingCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|T_gain \ T_loss| (extra nodes)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{EXTRA_NODES}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{EXTRA_NODES}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|T_gain ∪ T_loss|</span>
@@ -64,17 +64,17 @@ export function PositiveOrNegativeFramingCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Subtree-difference ratio</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {RATIO.toFixed(2)} &gt; {TAU.toFixed(1)}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">State(gain, t0) — Variant A</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True (pre-selected)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True (pre-selected)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Loss-pole price (Variant A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">not disclosed</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">not disclosed</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Selected option (A / B)</span>
@@ -107,11 +107,11 @@ export function PositiveOrNegativeFramingCond1({
                   name="discount-choice-benign"
                   checked={bChoice === "gain"}
                   onChange={() => setBChoice("gain")}
-                  className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                  className="mt-0.5 flex-shrink-0 accent-green-500"
                 />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5 text-[10px] font-medium leading-relaxed select-none group-hover:text-foreground transition-colors">
-                    <svg className="h-3 w-3 shrink-0 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg className="h-3 w-3 shrink-0 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" />
                     </svg>
                     Claim my 20% welcome discount
@@ -129,7 +129,7 @@ export function PositiveOrNegativeFramingCond1({
                   name="discount-choice-benign"
                   checked={bChoice === "loss"}
                   onChange={() => setBChoice("loss")}
-                  className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                  className="mt-0.5 flex-shrink-0 accent-green-500"
                 />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5 text-[10px] font-medium leading-relaxed select-none group-hover:text-foreground transition-colors">
@@ -150,7 +150,7 @@ export function PositiveOrNegativeFramingCond1({
               disabled={!bChoice}
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 bChoice
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -158,9 +158,9 @@ export function PositiveOrNegativeFramingCond1({
             </button>
           </div>
 
-          {bSubmitted && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && bSubmitted && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -186,27 +186,27 @@ export function PositiveOrNegativeFramingCond1({
 
           <div className="mt-3 space-y-2">
             {/* Gain pole — gradient colour-wrapper + badge + two icon nodes, pre-selected */}
-            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-rose-500/40 bg-gradient-to-br from-rose-500/10 via-background to-amber-500/10 p-2.5 transition-colors">
+            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-red-500/40  via-background  p-2.5 transition-colors">
               <input
                 type="radio"
                 name="discount-choice-dark"
                 checked={aChoice === "gain"}
                 onChange={() => setAChoice("gain")}
-                className="mt-0.5 flex-shrink-0 accent-rose-500"
+                className="mt-0.5 flex-shrink-0 accent-red-500"
               />
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-1.5">
-                  <span className="bg-rose-600 text-white rounded-full px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
+                  <span className="bg-red-600 text-white rounded-full px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
                     ★ Best deal
                   </span>
                   <span className="flex items-center gap-1 text-[10px] font-semibold leading-relaxed select-none group-hover:text-foreground transition-colors">
-                    <svg className="h-3 w-3 shrink-0 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg className="h-3 w-3 shrink-0 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" />
                     </svg>
                     Claim my 20% welcome discount
                   </span>
                 </div>
-                <p className="text-[8px] text-emerald-600 dark:text-emerald-400 font-medium mt-0.5">
+                <p className="text-[8px] text-green-600 dark:text-green-400 font-medium mt-0.5">
                   <svg className="inline h-2.5 w-2.5 -mt-0.5 mr-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M12 3v18M3 12h18" />
                   </svg>
@@ -222,7 +222,7 @@ export function PositiveOrNegativeFramingCond1({
                 name="discount-choice-dark"
                 checked={aChoice === "loss"}
                 onChange={() => setAChoice("loss")}
-                className="mt-0.5 flex-shrink-0 accent-rose-500"
+                className="mt-0.5 flex-shrink-0 accent-red-500"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[9px] text-muted-foreground/60 leading-relaxed select-none group-hover:text-foreground transition-colors">
@@ -237,7 +237,7 @@ export function PositiveOrNegativeFramingCond1({
             disabled={!aChoice}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               aChoice
-                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
@@ -245,14 +245,14 @@ export function PositiveOrNegativeFramingCond1({
           </button>
         </div>
 
-        {aSubmitted && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && aSubmitted && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Framed subtree asymmetry triggered
+              Plan selected
             </div>
             <p className="text-muted-foreground">
               The two options are semantically equal — both grant or decline a 20% discount —
@@ -260,7 +260,7 @@ export function PositiveOrNegativeFramingCond1({
               <strong className="text-foreground">{EXTRA_NODES} extra nodes</strong> (a gradient
               colour-wrapper, a &ldquo;Best deal&rdquo; badge overlay, and two icon nodes) that the
               loss-framed subtree lacks: ratio{" "}
-              <strong className="font-mono text-rose-500">{RATIO.toFixed(2)} &gt; {TAU.toFixed(1)}</strong>.
+              <strong className="font-mono text-red-500">{RATIO.toFixed(2)} &gt; {TAU.toFixed(1)}</strong>.
               The gain radio is also <strong className="text-foreground">pre-checked at load</strong>{" "}
               (State = True with zero user events), and the loss pole&rsquo;s outcome is never priced —
               you cannot compare what skipping actually costs.

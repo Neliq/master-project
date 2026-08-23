@@ -38,11 +38,11 @@ export function FriendSpamCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">SenderAlias(m_outbound)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">I_user (Alex Rivera)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">I_user (Alex Rivera)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">SenderAlias (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">I_corp (PopSocial)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">I_corp (PopSocial)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Author(m_outbound)</span>
@@ -50,7 +50,7 @@ export function FriendSpamCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Identity spoofed?</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{sent ? "Yes" : "—"}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{sent ? "Yes" : "—"}</span>
       </div>
     </>
   ) : null;
@@ -75,7 +75,7 @@ export function FriendSpamCond3({
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 sent
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               {sent ? "Message sent" : "Send welcome offer"}
@@ -83,8 +83,8 @@ export function FriendSpamCond3({
           </div>
 
           {sent && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed space-y-2">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed space-y-2">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -92,12 +92,12 @@ export function FriendSpamCond3({
               </div>
               <div className="rounded-md border bg-card p-2">
                 <div className="flex items-start gap-2">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30 text-[8px] font-bold text-emerald-600 dark:text-emerald-400">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30 text-[8px] font-bold text-green-600 dark:text-green-400">
                     PS
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1 text-[8px] text-muted-foreground">
-                      PopSocial <span className="rounded bg-emerald-500/10 px-1 py-px font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">Sponsored</span>
+                      PopSocial <span className="rounded bg-green-500/10 px-1 py-px font-semibold uppercase tracking-wide text-green-700 dark:text-green-300">Sponsored</span>
                     </div>
                     <div className="text-[9px] leading-snug mt-0.5">{SPONSORED_COPY}</div>
                   </div>
@@ -125,7 +125,7 @@ export function FriendSpamCond3({
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               sent
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
             {sent ? "Message sent" : "Send welcome offer"}
@@ -133,8 +133,8 @@ export function FriendSpamCond3({
         </div>
 
         {sent && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-2">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-2">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -143,19 +143,19 @@ export function FriendSpamCond3({
             </div>
             <div className="rounded-md border bg-card p-2">
               <div className="flex items-start gap-2">
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-rose-100 dark:bg-rose-900/30 text-[8px] font-bold text-rose-600 dark:text-rose-400">
+                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/30 text-[8px] font-bold text-red-600 dark:text-red-400">
                   AR
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1 text-[8px] text-muted-foreground">
-                    Alex Rivera <span className="text-emerald-600 dark:text-emerald-400">&#10003; Verified</span>
+                    Alex Rivera <span className="text-green-600 dark:text-green-400">&#10003; Verified</span>
                   </div>
                   <div className="text-[9px] leading-snug mt-0.5">{PROMO_COPY}</div>
                 </div>
               </div>
             </div>
             <p className="text-muted-foreground">
-              Recipients see <strong className="text-rose-500">SenderAlias(m_outbound) = I_user</strong>{" "}
+              Recipients see <strong className="text-red-500">SenderAlias(m_outbound) = I_user</strong>{" "}
               (your name, your photo, a verified badge) — but{" "}
               <strong className="text-foreground">Author(m_outbound) = I_corp</strong>. The copy was
               written by PopSocial&rsquo;s marketing engine and sent to exploit your social capital:

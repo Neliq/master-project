@@ -34,9 +34,9 @@ const MUNDANE = [
 ];
 
 const HIGH_VALENCE = [
-  { title: "You're the 1,000,000th visitor! 🎉", body: "Tap to claim your surprise badge.", valence: 1 },
-  { title: "New message from Maya 💌", body: "She replied to your story from this morning.", valence: 1 },
-  { title: "Your post hit 1,000 likes 🔥", body: "It's trending in your network right now.", valence: 1 },
+  { title: "You're the 1,000,000th visitor! ", body: "Tap to claim your surprise badge.", valence: 1 },
+  { title: "New message from Maya ", body: "She replied to your story from this morning.", valence: 1 },
+  { title: "Your post hit 1,000 likes ", body: "It's trending in your network right now.", valence: 1 },
   { title: "Unlocked: 7-day streak! ⚡", body: "Keep going — your reward streak grows.", valence: 1 },
 ];
 
@@ -124,13 +124,13 @@ export function PullToRefreshCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">σ²_novelty [A]</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {varA.toFixed(3)} {historyA.length >= 2 ? `> ${TAU_SLOT_MACHINE}` : "(pending)"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">σ²_novelty [B]</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">
+        <span className="font-mono font-semibold tabular-nums text-green-500">
           {varB.toFixed(3)} — constant
         </span>
       </div>
@@ -152,16 +152,16 @@ export function PullToRefreshCond3({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Nest — your network</h3>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Deterministic
               </span>
             </div>
 
-            <div className="mt-2 min-h-[72px] rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5">
+            <div className="mt-2 min-h-[72px] rounded-md border border-green-500/30 bg-green-500/5 p-2.5">
               {outcomeB ? (
                 <div>
                   <div className="flex items-center gap-1.5 text-[10px] font-semibold text-foreground">
-                    <Info className="size-3 text-emerald-600 dark:text-emerald-400" />
+                    <Info className="size-3 text-green-600 dark:text-green-400" />
                     {outcomeB.title}
                   </div>
                   <p className="mt-0.5 text-[9px] text-muted-foreground">{outcomeB.body}</p>
@@ -179,7 +179,7 @@ export function PullToRefreshCond3({
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
                 refreshingB
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               {refreshingB ? "Refreshing…" : "Pull to refresh"}
@@ -189,8 +189,8 @@ export function PullToRefreshCond3({
             </p>
 
             {historyB.length >= 3 && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   No variable reward
                 </div>
@@ -210,17 +210,17 @@ export function PullToRefreshCond3({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Nest — your network</h3>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Variable-ratio
             </span>
           </div>
 
-          <div className="mt-2 min-h-[72px] rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5">
+          <div className="mt-2 min-h-[72px] rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
             {outcomeA ? (
               <div>
                 <div className="flex items-center gap-1.5 text-[10px] font-semibold text-foreground">
                   {outcomeA.valence === 1 ? (
-                    <Sparkles className="size-3 text-amber-500" />
+                    <Sparkles className="size-3 text-yellow-500" />
                   ) : (
                     <Info className="size-3 text-muted-foreground" />
                   )}
@@ -241,7 +241,7 @@ export function PullToRefreshCond3({
             className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
               refreshingA
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
             {refreshingA ? "Refreshing…" : "Pull to refresh"}
@@ -251,10 +251,10 @@ export function PullToRefreshCond3({
           </p>
 
           {refreshesA >= 6 && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
-                Slot-machine schedule detected
+                Feed refreshed
               </div>
               <p className="text-muted-foreground">
                 Over the last {Math.min(historyA.length, K)} refreshes the semantic-novelty variance is

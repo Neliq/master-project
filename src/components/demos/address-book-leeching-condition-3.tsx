@@ -35,11 +35,11 @@ export function AddressBookLeechingCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Frame(T_prompt)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">Benefactive (dark) / Informational (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">Benefactive (dark) / Informational (benign)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Subject(T_prompt)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">ThirdParty (dark) / FirstParty (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">ThirdParty (dark) / FirstParty (benign)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Contacts uploaded</span>
@@ -62,8 +62,8 @@ export function AddressBookLeechingCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <svg className="h-4 w-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                   <circle cx="9" cy="7" r="4" />
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -82,7 +82,7 @@ export function AddressBookLeechingCond3({
             <div className="mt-3 flex gap-2">
               <button
                 onClick={() => setAllowed("allowed")}
-                className="flex-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white px-2 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Allow access
               </button>
@@ -96,8 +96,8 @@ export function AddressBookLeechingCond3({
           </div>
 
           {allowed && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -116,8 +116,8 @@ export function AddressBookLeechingCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -125,7 +125,7 @@ export function AddressBookLeechingCond3({
               </svg>
             </div>
             <div className="min-w-0 flex-1">
-              <h3 className="text-[11px] font-semibold">Find your friends on SnapGrid! 🎉</h3>
+              <h3 className="text-[11px] font-semibold">Find your friends on SnapGrid! </h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">
                 Let your contacts know you&rsquo;re here! SnapGrid scans your address book to
                 connect you with people you already know — no effort required.
@@ -134,29 +134,29 @@ export function AddressBookLeechingCond3({
           </div>
           <button
             onClick={() => setAllowed("allowed")}
-            className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white px-2 py-2 text-[10px] font-semibold transition-colors cursor-pointer"
+            className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white px-2 py-2 text-[10px] font-semibold transition-colors cursor-pointer"
           >
             Allow &amp; find friends
           </button>
         </div>
 
-        {allowed && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && allowed && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Semantic reframe
+              Invite your friends
             </div>
             <p className="text-muted-foreground mt-0.5">
-              The prompt&rsquo;s text was a <strong className="text-rose-500">benefactive framing</strong>{" "}
+              The prompt&rsquo;s text was a <strong className="text-red-500">benefactive framing</strong>{" "}
               (&ldquo;find your friends,&rdquo; &ldquo;let your contacts know you&rsquo;re here&rdquo;) whose{" "}
-              <strong className="text-rose-500">subject is a third party</strong> — your friends, not the
+              <strong className="text-red-500">subject is a third party</strong> — your friends, not the
               service. The actual executed action:{" "}
               <strong className="text-foreground">{NETWORK_SIZE} contacts uploaded to SnapGrid&rsquo;s
               servers</strong> to build shadow profiles and map your social graph. A privacy-invasive
-              data permission was semantically reframed as a social courtesy, so you consented to
+              This lets you find friends who already use the app.
               something the prompt never named.
             </p>
           </div>

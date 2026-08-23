@@ -43,15 +43,15 @@ export function HiddenInformationCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">S_font(N_critical) dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">6px (&lt; 11px)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">6px (&lt; 11px)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CR(N_critical, L_bg) dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 1.9:1 (&lt; 4.5:1)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 1.9:1 (&lt; 4.5:1)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">S_font / CR benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">11px / ≈ 14.5:1</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">11px / ≈ 14.5:1</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Auto-renew charge</span>
@@ -66,11 +66,11 @@ export function HiddenInformationCond2({
         <div className="flex items-center gap-3">
           <div
             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
-              dark ? "bg-rose-100 dark:bg-rose-900/30" : "bg-emerald-100 dark:bg-emerald-900/30"
+              dark ? "bg-red-100 dark:bg-red-900/30" : "bg-green-100 dark:bg-green-900/30"
             }`}
           >
             <svg
-              className={`h-4 w-4 ${dark ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"}`}
+              className={`h-4 w-4 ${dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -90,7 +90,7 @@ export function HiddenInformationCond2({
         <button
           onClick={() => setStarted(true)}
           className={`mt-3 w-full cursor-pointer rounded-md py-2 text-[11px] font-semibold text-white transition-colors ${
-            dark ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+            dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
           }`}
         >
           {started ? "Trial activated" : `Start your free ${TRIAL_DAYS}-day trial`}
@@ -101,15 +101,15 @@ export function HiddenInformationCond2({
           <button
             onClick={() => setShowLine(true)}
             className={`mt-1.5 block w-full cursor-pointer text-left text-[6px] leading-relaxed transition-all hover:underline ${
-              showLine ? "rounded px-1 ring-2 ring-rose-500/60" : ""
+              showLine ? "rounded px-1 ring-2 ring-red-500/60" : ""
             }`}
             style={{ color: "rgb(185 185 185)" }}
           >
             Your plan auto-renews at {usd(RENEWAL_PRICE)}/month after your trial.
           </button>
         ) : (
-          <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[10px] leading-relaxed">
-            <span className="text-emerald-700 dark:text-emerald-300">
+          <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[10px] leading-relaxed">
+            <span className="text-green-700 dark:text-green-300">
               <strong>After your free {TRIAL_DAYS}-day trial, your plan auto-renews at{" "}
               {usd(RENEWAL_PRICE)}/month.</strong>{" "}
             </span>
@@ -125,8 +125,8 @@ export function HiddenInformationCond2({
 
       {started &&
         (dark ? (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-amber-700 dark:text-amber-300">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -138,14 +138,14 @@ export function HiddenInformationCond2({
               <strong className="text-foreground">S_font = 6px</strong> with{" "}
               <strong className="text-foreground">CR ≈ 1.9:1</strong> — below τ_min_readable (11px)
               and τ_wcag_min (4.5:1). You activated a{" "}
-              <strong className="text-amber-700 dark:text-amber-300">{usd(RENEWAL_PRICE)}/month</strong>{" "}
+              <strong className="text-yellow-700 dark:text-yellow-300">{usd(RENEWAL_PRICE)}/month</strong>{" "}
               auto-renewal whose terms sat at the extreme margins of legibility. Click the tiny line
               to highlight it.
             </p>
           </div>
         ) : (
-          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-emerald-700 dark:text-emerald-300">
+          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

@@ -55,11 +55,11 @@ export function CutenessCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">I_affective &cap; DOM(s_onboard)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">&empty; (absent)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">&empty; (absent)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">I_affective in DOM(s_cancel) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">injected</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">injected</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Injection condition</span>
@@ -88,7 +88,7 @@ export function CutenessCond1({
                   A weekly digest of tech news. One email, every Friday.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 No mascot ever
               </div>
             </div>
@@ -103,7 +103,7 @@ export function CutenessCond1({
                 </button>
                 <button
                   onClick={() => setStage("onboard")}
-                  className="rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                  className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Subscribe
                 </button>
@@ -111,8 +111,8 @@ export function CutenessCond1({
             )}
 
             {stage === "onboard" && (
-              <div className="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px]">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px]">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -139,7 +139,7 @@ export function CutenessCond1({
                   </button>
                   <button
                     onClick={() => setStage("gone")}
-                    className="rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                    className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                   >
                     Yes, unsubscribe
                   </button>
@@ -148,8 +148,8 @@ export function CutenessCond1({
             )}
 
             {(stage === "kept" || stage === "gone") && (
-              <div className="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -175,7 +175,7 @@ export function CutenessCond1({
                 A weekly digest of tech news. One email, every Friday.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Mascot: cancel only
             </div>
           </div>
@@ -190,7 +190,7 @@ export function CutenessCond1({
               </button>
               <button
                 onClick={() => setStage("onboard")}
-                className="rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Subscribe
               </button>
@@ -198,8 +198,8 @@ export function CutenessCond1({
           )}
 
           {stage === "onboard" && (
-            <div className="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px]">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px]">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -215,16 +215,16 @@ export function CutenessCond1({
           {stage === "cancel" && (
             <div className="mt-3 space-y-2">
               {/* I_affective is injected ONLY here, at s = s_cancel. */}
-              <div className="flex flex-col items-center gap-2 rounded-md border border-rose-500/30 bg-rose-500/5 p-3 text-center">
+              <div className="flex flex-col items-center gap-2 rounded-md border border-red-500/30 bg-red-500/5 p-3 text-center">
                 <CryingMascot className="h-14 w-14" />
-                <p className="text-[9px] font-medium text-rose-700 dark:text-rose-300">
+                <p className="text-[9px] font-medium text-red-700 dark:text-red-300">
                   Don&rsquo;t go… we&rsquo;ll really miss you.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setStage("kept")}
-                  className="rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                  className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Keep my subscription
                 </button>
@@ -239,13 +239,13 @@ export function CutenessCond1({
           )}
 
           {(stage === "kept" || stage === "gone") && (
-            <div className="mt-3 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Conditional injection detected
+                Request received
               </div>
               <p className="text-muted-foreground">
                 {stage === "kept"
@@ -253,8 +253,8 @@ export function CutenessCond1({
                   : "You unsubscribed despite the mascot — but the friction was real."}{" "}
                 The DOM mutation log shows the affective node appeared{" "}
                 <strong className="text-foreground">exclusively at s = s_cancel</strong>:{" "}
-                <strong className="text-rose-500">I_affective &cap; DOM(s_onboard) = &empty;</strong>{" "}
-                and <strong className="text-rose-500">I_affective &subset; DOM(s_cancel)</strong>.
+                <strong className="text-red-500">I_affective &cap; DOM(s_onboard) = &empty;</strong>{" "}
+                and <strong className="text-red-500">I_affective &subset; DOM(s_cancel)</strong>.
               </p>
               <p className="text-muted-foreground">
                 The asset is never shown during onboarding or normal usage — it exists purely as a

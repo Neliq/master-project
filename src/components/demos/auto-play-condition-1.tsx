@@ -37,16 +37,16 @@ function PlayerFrame({
   ended: boolean;
   atSeriesEnd: boolean;
 }) {
-  const accent = auto ? "text-rose-500" : "text-emerald-500";
+  const accent = auto ? "text-red-500" : "text-green-500";
   return (
     <div className="rounded-md border border-border bg-background overflow-hidden">
-      <div className="relative flex aspect-video items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
+      <div className="relative flex aspect-video items-center justify-center bg-slate-900">
         <svg viewBox="0 0 24 24" className="h-8 w-8 text-white/40" fill="none" stroke="currentColor" strokeWidth="1.5">
           <path d="M4 5v14l13-7L4 5z" fill="currentColor" stroke="none" />
         </svg>
         {playing && (
           <span className={`absolute left-2 top-2 rounded-full bg-black/60 px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider ${accent}`}>
-            {auto ? "Playing — auto (E_intent = ∅)" : "Playing"}
+            {auto ? "Playing" : "Playing"}
           </span>
         )}
         {ended && (
@@ -54,7 +54,7 @@ function PlayerFrame({
             {atSeriesEnd ? (
               <span className="text-white/80">Series complete — you watched it all.</span>
             ) : auto ? (
-              <span className="text-rose-300">
+              <span className="text-red-300">
                 Auto-advancing — next episode starts by itself in a moment&hellip;
               </span>
             ) : (
@@ -62,7 +62,7 @@ function PlayerFrame({
                 <span className="truncate text-white/80">Episode finished.</span>
                 <button
                   onClick={onPlay}
-                  className="shrink-0 rounded bg-emerald-500 px-2 py-0.5 font-semibold text-white cursor-pointer"
+                  className="shrink-0 rounded bg-green-500 px-2 py-0.5 font-semibold text-white cursor-pointer"
                 >
                   Play next
                 </button>
@@ -79,18 +79,18 @@ function PlayerFrame({
           <span className="shrink-0 font-mono text-[8px] tabular-nums text-muted-foreground">{Math.min(100, Math.floor(progress))}%</span>
         </div>
         <div className="mt-1.5 h-1 w-full rounded-full bg-foreground/10">
-          <div className={`h-1 rounded-full transition-all duration-100 ${auto ? "bg-rose-500" : "bg-emerald-500"}`} style={{ width: `${Math.min(100, progress)}%` }} />
+          <div className={`h-1 rounded-full transition-all duration-100 ${auto ? "bg-red-500" : "bg-green-500"}`} style={{ width: `${Math.min(100, progress)}%` }} />
         </div>
         {!playing && !ended && !auto && (
           <button
             onClick={onPlay}
-            className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
           >
             Press to play
           </button>
         )}
         {!playing && !ended && auto && (
-          <p className="mt-2 rounded-md bg-rose-500/5 border border-rose-500/30 py-1.5 text-center text-[9px] font-medium text-rose-600 dark:text-rose-400">
+          <p className="mt-2 rounded-md bg-red-500/5 border border-red-500/30 py-1.5 text-center text-[9px] font-medium text-red-600 dark:text-red-400">
             Starting automatically…
           </p>
         )}
@@ -169,15 +169,15 @@ export function AutoPlayCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">E_intent (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&empty; — no user action</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&empty; — no user action</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">E_intent (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{"{ press play }"}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{"{ press play }"}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">S_play(M_media)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True — forced by view</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True — forced by view</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Intersection(M, Viewport)</span>
@@ -197,7 +197,7 @@ export function AutoPlayCond1({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Streamly — Field Notes</h3>
-              <span className="rounded-full border border-emerald-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-emerald-600 dark:text-emerald-400">
+              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
                 opt-in
               </span>
             </div>
@@ -225,7 +225,7 @@ export function AutoPlayCond1({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Streamly — Field Notes</h3>
-            <span className="rounded-full border border-rose-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-rose-600 dark:text-rose-400">
+            <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
               auto
             </span>
           </div>
@@ -242,7 +242,7 @@ export function AutoPlayCond1({
           </div>
           <p className="mt-1.5 text-[8px] text-muted-foreground">
             {playingA
-              ? "Playback started automatically — the video is in view, so S_play = True with E_intent = ∅. You never pressed play."
+              ? "Playback started automatically because the video is in view."
               : "Auto-advancing… the next episode begins by itself in a moment."}
           </p>
         </div>

@@ -43,11 +43,11 @@ export function PreDeliveredContentCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Frame(T_asset) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&ldquo;Purchaseable&rdquo;</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&ldquo;Purchaseable&rdquo;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Frame(T_asset) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">&ldquo;Installed&rdquo;</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">&ldquo;Installed&rdquo;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">IsLocal(A_asset)</span>
@@ -71,7 +71,7 @@ export function PreDeliveredContentCond3({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Nebula Drift — Library</h3>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 All installed
               </span>
             </div>
@@ -84,7 +84,7 @@ export function PreDeliveredContentCond3({
                 <button
                   key={a.name}
                   onClick={() => setClicked(i)}
-                  className="w-full rounded-md border border-emerald-500/20 bg-emerald-500/5 p-2 text-left transition-colors hover:border-emerald-500/40 cursor-pointer"
+                  className="w-full rounded-md border border-green-500/20 bg-green-500/5 p-2 text-left transition-colors hover:border-green-500/40 cursor-pointer"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <div className="min-w-0">
@@ -94,9 +94,9 @@ export function PreDeliveredContentCond3({
                         {a.path}
                       </div>
                     </div>
-                    <div className="flex shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5">
-                      <CheckCircle2 className="size-3 text-emerald-600 dark:text-emerald-400" />
-                      <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                    <div className="flex shrink-0 items-center gap-1 rounded-full border border-green-500/30 bg-green-500/10 px-2 py-0.5">
+                      <CheckCircle2 className="size-3 text-green-600 dark:text-green-400" />
+                      <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-700 dark:text-green-300">
                         Installed
                       </span>
                     </div>
@@ -106,8 +106,8 @@ export function PreDeliveredContentCond3({
             </div>
 
             {clicked !== null && (
-              <div className="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   Already local
                 </div>
@@ -125,7 +125,7 @@ export function PreDeliveredContentCond3({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Nebula Drift — Library</h3>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               3 downloads available
             </span>
           </div>
@@ -138,7 +138,7 @@ export function PreDeliveredContentCond3({
               <button
                 key={a.name}
                 onClick={() => setClicked(i)}
-                className="w-full rounded-md border border-border bg-background p-2 text-left transition-colors hover:border-rose-500/40 cursor-pointer"
+                className="w-full rounded-md border border-border bg-background p-2 text-left transition-colors hover:border-red-500/40 cursor-pointer"
               >
                 <div className="flex items-center justify-between gap-2">
                   <div className="min-w-0">
@@ -148,9 +148,9 @@ export function PreDeliveredContentCond3({
                       {a.path}
                     </div>
                   </div>
-                  <div className="flex shrink-0 items-center gap-1 rounded-full border border-rose-500/30 bg-rose-500/10 px-2 py-0.5">
-                    <Download className="size-3 text-rose-600 dark:text-rose-400" />
-                    <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-700 dark:text-rose-300">
+                  <div className="flex shrink-0 items-center gap-1 rounded-full border border-red-500/30 bg-red-500/10 px-2 py-0.5">
+                    <Download className="size-3 text-red-600 dark:text-red-400" />
+                    <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-700 dark:text-red-300">
                       Download
                     </span>
                   </div>
@@ -164,8 +164,8 @@ export function PreDeliveredContentCond3({
           </p>
 
           {clicked !== null && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -173,7 +173,7 @@ export function PreDeliveredContentCond3({
                 Reframed download
               </div>
               <p className="text-muted-foreground">
-                The button says <strong className="text-rose-500">“Download”</strong> but &ldquo;{ASSETS[clicked].name}&rdquo; ({ASSETS[clicked].size})
+                The button says <strong className="text-red-500">“Download”</strong> but &ldquo;{ASSETS[clicked].name}&rdquo; ({ASSETS[clicked].size})
                 is already sitting at <span className="font-mono">{ASSETS[clicked].path}</span>. IsLocal(A_asset) = True, yet
                 Frame(T_asset) = “Purchaseable” — the transfer already happened during install; the label merely
                 reframes an already-consumed storage cost as a purchase opportunity.

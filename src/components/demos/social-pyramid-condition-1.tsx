@@ -57,7 +57,7 @@ export function SocialPyramidCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Access(U_core) (dark logic)</span>
-        <span className={`font-mono font-semibold tabular-nums ${locked ? "text-rose-500" : "text-emerald-500"}`}>
+        <span className={`font-mono font-semibold tabular-nums ${locked ? "text-red-500" : "text-green-500"}`}>
           {locked ? "Blocked" : "Open"}
         </span>
       </div>
@@ -73,8 +73,8 @@ export function SocialPyramidCond1({
       onClick={() => setExportDone(true)}
       className={`w-full rounded-md py-2 text-[10px] font-semibold transition-colors cursor-pointer ${
         accent === "rose"
-          ? "bg-rose-600 hover:bg-rose-700 text-white"
-          : "bg-emerald-600 hover:bg-emerald-700 text-white"
+          ? "bg-red-600 hover:bg-red-700 text-white"
+          : "bg-green-600 hover:bg-green-700 text-white"
       }`}
     >
       Export data (CSV)
@@ -91,8 +91,8 @@ export function SocialPyramidCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <svg className="h-4 w-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                   <path d="M7 10l5 5 5-5" />
                   <path d="M12 15V3" />
@@ -125,8 +125,8 @@ export function SocialPyramidCond1({
           </div>
 
           {exportDone && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -134,7 +134,7 @@ export function SocialPyramidCond1({
               </div>
               <p className="text-muted-foreground">
                 Access(U_core) = Open regardless of |R_user| — the export worked with only{" "}
-                <strong className="text-emerald-700 dark:text-emerald-300">{invites}</strong> referral
+                <strong className="text-green-700 dark:text-green-300">{invites}</strong> referral
                 {invites === 1 ? "" : "s"} on record, because recruitment was never a condition of use.
               </p>
             </div>
@@ -146,8 +146,8 @@ export function SocialPyramidCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="3" y="11" width="18" height="11" rx="2" />
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
@@ -161,14 +161,14 @@ export function SocialPyramidCond1({
           </div>
 
           {locked ? (
-            <div className="mt-3 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5">
-              <div className="text-[9px] font-medium text-amber-700 dark:text-amber-300">
-                🔒 Locked — invite {remaining} more friend{remaining === 1 ? "" : "s"} to unlock export
+            <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5">
+              <div className="text-[9px] font-medium text-yellow-700 dark:text-yellow-300">
+                 Locked — invite {remaining} more friend{remaining === 1 ? "" : "s"} to unlock export
               </div>
               <div className="mt-1.5 flex items-center gap-1.5">
                 <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted">
                   <div
-                    className="h-full rounded-full bg-amber-500 transition-all"
+                    className="h-full rounded-full bg-yellow-500 transition-all"
                     style={{ width: `${(invites / K_REFERRALS) * 100}%` }}
                   />
                 </div>
@@ -179,7 +179,7 @@ export function SocialPyramidCond1({
               <div className="mt-2 grid grid-cols-2 gap-1.5">
                 <button
                   onClick={invite}
-                  className="rounded-md bg-amber-500 hover:bg-amber-600 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                  className="rounded-md bg-yellow-500 hover:bg-yellow-600 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                 >
                   Invite a friend
                 </button>
@@ -191,12 +191,12 @@ export function SocialPyramidCond1({
                 </button>
               </div>
               {invites > 0 && (
-                <p className="mt-1.5 text-[8px] text-emerald-700 dark:text-emerald-300">
+                <p className="mt-1.5 text-[8px] text-green-700 dark:text-green-300">
                   ✓ {FRIEND_NAMES[invites - 1]} registered via your link
                 </p>
               )}
               {blockedNotice && (
-                <p className="mt-1.5 text-[8px] text-rose-700 dark:text-rose-300">
+                <p className="mt-1.5 text-[8px] text-red-700 dark:text-red-300">
                   Blocked: Access(U_core) = Blocked given |R_user| = {invites} &lt; k = {K_REFERRALS}.
                 </p>
               )}
@@ -206,17 +206,17 @@ export function SocialPyramidCond1({
           )}
         </div>
 
-        {exportDone && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && exportDone && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Referral gating triggered
+              Invite friends
             </div>
             <p className="text-muted-foreground">
-              Access(U_core) stayed <strong className="text-rose-500">Blocked</strong> while |R_user| ={" "}
+              Access(U_core) stayed <strong className="text-red-500">Blocked</strong> while |R_user| ={" "}
               {invites} &lt; k = {K_REFERRALS}. Your own data was held hostage until you recruited{" "}
               {K_REFERRALS} people: the platform converted your social network into unpaid marketing —
               every friend you drag in grows the platform&rsquo;s user base, not your utility.

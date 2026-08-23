@@ -106,7 +106,7 @@ export function AutomatingTheUserAwayCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">E_user (explicit interaction)</span>
-        <span className={`font-mono font-semibold tabular-nums ${variant === "dark" && autoStarted ? "text-rose-500" : "text-emerald-500"}`}>
+        <span className={`font-mono font-semibold tabular-nums ${variant === "dark" && autoStarted ? "text-red-500" : "text-green-500"}`}>
           {variant === "dark" && autoStarted ? "∅ (none)" : "required"}
         </span>
       </div>
@@ -116,7 +116,7 @@ export function AutomatingTheUserAwayCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Auto-advance</span>
-        <span className={`font-mono font-semibold tabular-nums ${variant === "dark" ? "text-rose-500" : "text-emerald-500"}`}>
+        <span className={`font-mono font-semibold tabular-nums ${variant === "dark" ? "text-red-500" : "text-green-500"}`}>
           {variant === "dark" ? "system-controlled" : "manual only"}
         </span>
       </div>
@@ -135,7 +135,7 @@ export function AutomatingTheUserAwayCond1({
           </p>
         </div>
         <div className={`text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 ${
-          isDark ? "text-rose-500 border-rose-500/30" : "text-emerald-500 border-emerald-500/30"
+          isDark ? "text-red-500 border-red-500/30" : "text-green-500 border-green-500/30"
         }`}>
           {isDark ? "Autonomous" : "User-driven"}
         </div>
@@ -148,8 +148,8 @@ export function AutomatingTheUserAwayCond1({
         </div>
         {phase === "ended" && variant === "dark" && videoIdx === 0 && (
           <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-            <div className="bg-card rounded-md border border-rose-500/40 px-4 py-2.5 text-center">
-              <div className="text-[10px] font-semibold text-rose-500">
+            <div className="bg-card rounded-md border border-red-500/40 px-4 py-2.5 text-center">
+              <div className="text-[10px] font-semibold text-red-500">
                 Up next — Episode 2 starts in {autoCountdown}s
               </div>
               <div className="text-[8px] text-muted-foreground mt-0.5">
@@ -161,7 +161,7 @@ export function AutomatingTheUserAwayCond1({
         {phase === "playing" && (
           <div className="absolute bottom-1.5 left-1.5 right-1.5">
             <div className="h-1 w-full rounded-full bg-black/40 overflow-hidden">
-              <div className={`h-full rounded-full ${isDark ? "bg-rose-500" : "bg-emerald-500"}`} style={{ width: `${progress}%` }} />
+              <div className={`h-full rounded-full ${isDark ? "bg-red-500" : "bg-green-500"}`} style={{ width: `${progress}%` }} />
             </div>
           </div>
         )}
@@ -174,8 +174,8 @@ export function AutomatingTheUserAwayCond1({
             onClick={() => startPlayback(isDark ? "dark" : "benign")}
             className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
               isDark
-                ? "bg-rose-600 hover:bg-rose-700 text-white"
-                : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                ? "bg-red-600 hover:bg-red-700 text-white"
+                : "bg-green-600 hover:bg-green-700 text-white"
             }`}
           >
             ▶ Play {EPISODES[videoIdx]}
@@ -183,7 +183,7 @@ export function AutomatingTheUserAwayCond1({
         )}
         {phase === "playing" && (
           <div className={`w-full rounded-md py-1.5 text-center text-[10px] font-medium ${
-            isDark ? "bg-rose-500/10 text-rose-700 dark:text-rose-300" : "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+            isDark ? "bg-red-500/10 text-red-700 dark:text-red-300" : "bg-green-500/10 text-green-700 dark:text-green-300"
           }`}>
             Playing… {Math.floor(progress)}%
           </div>
@@ -200,7 +200,7 @@ export function AutomatingTheUserAwayCond1({
               </div>
               <button
                 onClick={() => startPlayback("benign")}
-                className="shrink-0 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white px-2.5 py-1 text-[9px] font-medium transition-colors cursor-pointer"
+                className="shrink-0 rounded-md bg-green-600 hover:bg-green-700 text-white px-2.5 py-1 text-[9px] font-medium transition-colors cursor-pointer"
               >
                 ▶ Play
               </button>
@@ -208,7 +208,7 @@ export function AutomatingTheUserAwayCond1({
           </div>
         )}
         {phase === "ended" && variant === "dark" && autoStarted && videoIdx === 1 && (
-          <div className="text-[9px] text-rose-500/90 text-center py-1">
+          <div className="text-[9px] text-red-500/90 text-center py-1">
             Episode 2 is already playing — you never clicked anything.
           </div>
         )}
@@ -225,8 +225,8 @@ export function AutomatingTheUserAwayCond1({
       </div>
 
       {autoStarted && isDark && (
-        <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-          <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+          <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
             <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M12 9v4m0 4h.01" />
               <circle cx="12" cy="12" r="10" />

@@ -71,7 +71,7 @@ export function ChoiceOverloadCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Mean pairwise cosine sim</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{MEAN_SIM.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{MEAN_SIM.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">τ_similarity</span>
@@ -79,7 +79,7 @@ export function ChoiceOverloadCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Mean sim &gt; τ</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {MEAN_SIM.toFixed(2)} &gt; {TAU_SIMILARITY.toFixed(2)} ✓
         </span>
       </div>
@@ -126,7 +126,7 @@ export function ChoiceOverloadCond3({
                       key={p.name}
                       onClick={() => setSelected(p.name)}
                       className={`cursor-pointer border-b border-border/50 transition-colors last:border-b-0 ${
-                        selected === p.name ? "bg-emerald-500/10" : "hover:bg-muted/40"
+                        selected === p.name ? "bg-green-500/10" : "hover:bg-muted/40"
                       }`}
                     >
                       <td className="px-2 py-1.5 font-medium">{p.name}</td>
@@ -145,7 +145,7 @@ export function ChoiceOverloadCond3({
               disabled={!selected}
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 selected
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -153,9 +153,9 @@ export function ChoiceOverloadCond3({
             </button>
           </div>
 
-          {submitted && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && submitted && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -186,8 +186,8 @@ export function ChoiceOverloadCond3({
                 key={p.name}
                 className={`block cursor-pointer rounded-md border p-2 transition-colors ${
                   selected === p.name
-                    ? "border-rose-500 bg-rose-500/10"
-                    : "border-border bg-background hover:border-rose-500/40"
+                    ? "border-red-500 bg-red-500/10"
+                    : "border-border bg-background hover:border-red-500/40"
                 }`}
               >
                 <input
@@ -202,7 +202,7 @@ export function ChoiceOverloadCond3({
                     <div className="flex items-center gap-1.5">
                       <span className="text-[10px] font-semibold">{p.name}</span>
                       {p.name === MOST_EXPENSIVE && (
-                        <span className="bg-rose-600 text-white rounded-full px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
+                        <span className="bg-red-600 text-white rounded-full px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
                           ★ Most popular
                         </span>
                       )}
@@ -225,7 +225,7 @@ export function ChoiceOverloadCond3({
             disabled={!selected}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               selected
-                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
@@ -233,17 +233,17 @@ export function ChoiceOverloadCond3({
           </button>
         </div>
 
-        {submitted && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && submitted && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Semantic collapse triggered
+              Compare plans
             </div>
             <p className="text-muted-foreground">
-              <strong className="font-mono text-rose-500">
+              <strong className="font-mono text-red-500">
                 mean pairwise sim = {MEAN_SIM.toFixed(2)} &gt; τ_similarity = {TAU_SIMILARITY.toFixed(2)}
               </strong>{" "}
               — the {POLICIES.length} visible descriptions are semantically near-identical

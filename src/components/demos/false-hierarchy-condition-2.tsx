@@ -52,19 +52,19 @@ export function FalseHierarchyCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">W(B_business) = αA + βC + γF</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{W_BUSINESS.toFixed(1)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{W_BUSINESS.toFixed(1)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">W(B_user)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{W_USER.toFixed(1)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{W_USER.toFixed(1)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">W(B_business) / W(B_user)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{RATIO_DARK} &gt; τ ({TAU_HIERARCHY})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK} &gt; τ ({TAU_HIERARCHY})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Relational suppression</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">active</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">active</span>
       </div>
     </>
   ) : null;
@@ -79,8 +79,8 @@ export function FalseHierarchyCond2({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <Cookie className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <Cookie className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
               </div>
               <div>
                 <h3 className="text-[11px] font-semibold">Cookie consent</h3>
@@ -96,13 +96,13 @@ export function FalseHierarchyCond2({
             <div className="mt-3 grid grid-cols-1 gap-1.5">
               <button
                 onClick={() => setChoice("accept")}
-                className="w-full rounded-md border border-emerald-600/50 bg-background text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
+                className="w-full rounded-md border border-green-600/50 bg-background text-green-700 dark:text-green-300 hover:bg-green-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Accept all cookies
               </button>
               <button
                 onClick={() => setChoice("reject")}
-                className="w-full rounded-md border border-emerald-600/50 bg-background text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
+                className="w-full rounded-md border border-green-600/50 bg-background text-green-700 dark:text-green-300 hover:bg-green-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Reject all
               </button>
@@ -110,8 +110,8 @@ export function FalseHierarchyCond2({
           </div>
 
           {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
                 {choice === "accept" ? "Cookies accepted" : "All cookies rejected"} — fair choice
               </div>
@@ -127,8 +127,8 @@ export function FalseHierarchyCond2({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <Cookie className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <Cookie className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
             </div>
             <div>
               <h3 className="text-[11px] font-semibold">Cookie consent</h3>
@@ -144,7 +144,7 @@ export function FalseHierarchyCond2({
             {/* B_business: large area, saturated bg, bold type */}
             <button
               onClick={() => setChoice("accept")}
-              className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2.5 px-4 text-[12px] font-bold tracking-wide transition-colors cursor-pointer"
+              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 px-4 text-[12px] font-bold tracking-wide transition-colors cursor-pointer"
             >
               Accept all cookies
             </button>
@@ -159,16 +159,16 @@ export function FalseHierarchyCond2({
         </div>
 
         {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="w-3 h-3" />
-              Visual weight disparity fired
+              Preferences saved
             </div>
             <p className="text-muted-foreground">
               {choice === "accept"
                 ? "You hit the dominant button — 43 partners set tracking cookies."
                 : "You fought the layout to reach the pale reject option."}{" "}
-              <strong className="text-rose-500">
+              <strong className="text-red-500">
                 W(B_business) = {W_BUSINESS.toFixed(1)} vs W(B_user) = {W_USER.toFixed(1)} →
                 ratio {RATIO_DARK} &gt; τ_hierarchy ({TAU_HIERARCHY})
               </strong>

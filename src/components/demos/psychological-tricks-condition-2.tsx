@@ -80,7 +80,7 @@ function RowControl({
       type="checkbox"
       checked={value === "on"}
       onChange={onToggle}
-      className={`h-3.5 w-3.5 flex-shrink-0 ${accent === "rose" ? "accent-rose-500" : "accent-emerald-500"}`}
+      className={`h-3.5 w-3.5 flex-shrink-0 ${accent === "rose" ? "accent-red-500" : "accent-green-500"}`}
     />
   );
 }
@@ -106,19 +106,19 @@ export function PsychologicalTricksCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|C_matrix| (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">14 &gg; &tau;_fatigue</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">14 &gg; &tau;_fatigue</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|C_matrix| (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">3 &lt; &tau;_fatigue</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">3 &lt; &tau;_fatigue</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">D_favorable default</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">sharing = ON (pre-checked)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">sharing = ON (pre-checked)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">lim P_select(D_favorable)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&rarr; 1.0</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&rarr; 1.0</span>
       </div>
     </>
   ) : null;
@@ -134,7 +134,7 @@ export function PsychologicalTricksCond2({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">Finish setting up your account</h3>
-              <span className="text-[8px] font-mono uppercase tracking-wider rounded-full border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 px-2 py-0.5">
+              <span className="text-[8px] font-mono uppercase tracking-wider rounded-full border border-green-500/30 text-green-600 dark:text-green-400 px-2 py-0.5">
                 3 settings
               </span>
             </div>
@@ -159,15 +159,15 @@ export function PsychologicalTricksCond2({
 
             <button
               onClick={() => setFinished(true)}
-              className="mt-2.5 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Finish setup
             </button>
           </div>
 
           {finished && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -187,7 +187,7 @@ export function PsychologicalTricksCond2({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between">
             <h3 className="text-[11px] font-semibold">Finish setting up your account</h3>
-            <span className="text-[8px] font-mono uppercase tracking-wider rounded-full border border-rose-500/30 text-rose-600 dark:text-rose-400 px-2 py-0.5">
+            <span className="text-[8px] font-mono uppercase tracking-wider rounded-full border border-red-500/30 text-red-600 dark:text-red-400 px-2 py-0.5">
               14 settings
             </span>
           </div>
@@ -201,14 +201,14 @@ export function PsychologicalTricksCond2({
                 key={i}
                 className={`flex items-center justify-between gap-2 rounded-md border px-2.5 py-2 ${
                   row.hostile
-                    ? "border-rose-500/40 bg-rose-500/5"
+                    ? "border-red-500/40 bg-red-500/5"
                     : "border-border/60 bg-background"
                 }`}
               >
                 <span className="text-[10px] text-foreground/85">
                   {row.label}
                   {row.hostile && (
-                    <span className="ml-1.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
+                    <span className="ml-1.5 rounded-full bg-red-500/15 text-red-700 dark:text-red-300 border border-red-500/30 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
                       Pre-selected
                     </span>
                   )}
@@ -226,20 +226,20 @@ export function PsychologicalTricksCond2({
 
           <button
             onClick={() => setFinished(true)}
-            className="mt-2.5 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Finish setup
           </button>
         </div>
 
-        {finished && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && finished && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Cognitive overload triggered
+              Settings saved
             </div>
             <p className="text-muted-foreground">
               You just evaluated a <strong className="text-foreground">14-row matrix</strong> —

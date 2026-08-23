@@ -77,11 +77,11 @@ export function CountdownTimerCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">T_expire — Variant A</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">t_load + {DELTA_S}s (resets)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">t_load + {DELTA_S}s (resets)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">T_expire — Variant B</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">server-validated deadline</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">server-validated deadline</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&Delta;t_countdown (hardcoded)</span>
@@ -89,18 +89,18 @@ export function CountdownTimerCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Simulated refreshes (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{resetsA} — clock restored</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{resetsA} — clock restored</span>
       </div>
     </>
   ) : null;
 
   const timerBadge = (label: string, time: string, tone: "rose" | "emerald") => (
     <div className={`flex items-center justify-between rounded-md border px-2.5 py-2 ${
-      tone === "rose" ? "border-rose-500/40 bg-rose-500/10" : "border-emerald-500/40 bg-emerald-500/10"
+      tone === "rose" ? "border-red-500/40 bg-red-500/10" : "border-green-500/40 bg-green-500/10"
     }`}>
       <span className="text-[9px] font-medium text-muted-foreground">{label}</span>
       <span className={`font-mono text-[12px] font-bold tabular-nums tracking-wider ${
-        tone === "rose" ? "text-rose-600 dark:text-rose-300" : "text-emerald-600 dark:text-emerald-300"
+        tone === "rose" ? "text-red-600 dark:text-red-300" : "text-green-600 dark:text-green-300"
       }`}>
         {time}
       </span>
@@ -117,8 +117,8 @@ export function CountdownTimerCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <svg className="h-5 w-5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <svg className="h-5 w-5 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M2 7l10-5 10 5M4 10v10a1 1 0 001 1h14a1 1 0 001-1V10M2 7l2 13M22 7l-2 13" />
                 </svg>
               </div>
@@ -140,15 +140,15 @@ export function CountdownTimerCond1({
             className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               expiredB
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
             }`}
           >
             {expiredB ? "Offer expired" : paid ? "Paid ✓" : `Pay ${PRICE_NOW}`}
           </button>
 
           {expiredB && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -166,8 +166,8 @@ export function CountdownTimerCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <svg className="h-5 w-5 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <svg className="h-5 w-5 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M2 7l10-5 10 5M4 10v10a1 1 0 001 1h14a1 1 0 001-1V10M2 7l2 13M22 7l-2 13" />
               </svg>
             </div>
@@ -196,20 +196,20 @@ export function CountdownTimerCond1({
           className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
             expiredA
               ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-              : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+              : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
           }`}
         >
           {expiredA ? "Clock at zero…" : paid ? "Paid ✓" : `Pay ${PRICE_NOW} before time runs out`}
         </button>
 
         {resetsA > 0 && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Stateless expiration — synthetic urgency
+              Offer ends when the timer reaches zero
             </div>
             <p className="text-muted-foreground">
               After {resetsA} refresh{resetsA === 1 ? "" : "es"} the clock is back at {fmt(DELTA_S)}. T_expire = t_load + &Delta;t_countdown:
@@ -220,7 +220,7 @@ export function CountdownTimerCond1({
         )}
 
         {expiredA && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <p className="text-muted-foreground">
               The clock hit zero — and nothing happened: the offer is still there, the price unchanged. The countdown
               produced zero actual consequence, exactly as the stateless design intends. (Refresh to see it reset again.)

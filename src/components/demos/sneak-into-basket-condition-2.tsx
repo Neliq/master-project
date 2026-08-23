@@ -57,19 +57,19 @@ export function SneakIntoBasketCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δ_color(v_injected, v_user) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{DELTA_DARK} &lt; τ_camouflage ({TAU_CAMOUFLAGE})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DELTA_DARK} &lt; τ_camouflage ({TAU_CAMOUFLAGE})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δ_color — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{DELTA_BENIGN} &gt; τ_camouflage</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{DELTA_BENIGN} &gt; τ_camouflage</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Rendered as (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">identical bg · type · radius</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">identical bg · type · radius</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Total charged (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{fmt(HEADPHONES.price + WARRANTY.price)} incl. {fmt(WARRANTY.price)} unrequested</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{fmt(HEADPHONES.price + WARRANTY.price)} incl. {fmt(WARRANTY.price)} unrequested</span>
       </div>
     </>
   ) : null;
@@ -102,10 +102,10 @@ export function SneakIntoBasketCond2({
             <div className="space-y-1.5">{userLine(HEADPHONES.name, HEADPHONES.price)}</div>
 
             {/* Injected item — visually DISTINCT: tinted, dashed, badged */}
-            <div className="mt-2 rounded-md border-2 border-dashed border-amber-400/50 bg-amber-500/10 p-2">
+            <div className="mt-2 rounded-md border-2 border-dashed border-yellow-400/50 bg-yellow-500/10 p-2">
               <div className="mb-1 flex items-center gap-1">
-                <ShieldCheck className="h-3 w-3 text-amber-600 dark:text-amber-400" />
-                <span className="rounded-full bg-amber-500 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-white">
+                <ShieldCheck className="h-3 w-3 text-yellow-600 dark:text-yellow-400" />
+                <span className="rounded-full bg-yellow-500 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-white">
                   Suggested add-on
                 </span>
                 <span className="ml-auto text-[7px] text-muted-foreground">optional · not added by you</span>
@@ -117,12 +117,12 @@ export function SneakIntoBasketCond2({
               {!declined ? (
                 <button
                   onClick={() => setDeclined(true)}
-                  className="mt-1.5 w-full rounded border border-amber-400/60 py-1 text-[8px] font-semibold text-amber-700 dark:text-amber-300 transition-colors hover:bg-amber-500/10 cursor-pointer"
+                  className="mt-1.5 w-full rounded border border-yellow-400/60 py-1 text-[8px] font-semibold text-yellow-700 dark:text-yellow-300 transition-colors hover:bg-yellow-500/10 cursor-pointer"
                 >
                   Decline — remove from order
                 </button>
               ) : (
-                <div className="mt-1.5 rounded bg-emerald-500/10 px-2 py-1 text-[8px] font-medium text-emerald-700 dark:text-emerald-300">
+                <div className="mt-1.5 rounded bg-green-500/10 px-2 py-1 text-[8px] font-medium text-green-700 dark:text-green-300">
                   Declined — excluded from your total ✓
                 </div>
               )}
@@ -130,19 +130,19 @@ export function SneakIntoBasketCond2({
 
             <div className="mt-2 flex items-center justify-between border-t pt-2">
               <span className="text-[9px] font-medium">Total {declined && <span className="text-muted-foreground">(warranty declined)</span>}</span>
-              <span className="font-mono text-[11px] font-bold tabular-nums text-emerald-600 dark:text-emerald-400">{fmt(totalB)}</span>
+              <span className="font-mono text-[11px] font-bold tabular-nums text-green-600 dark:text-green-400">{fmt(totalB)}</span>
             </div>
             <button
               onClick={() => setCheckedOut(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
             >
               Pay {fmt(totalB)}
             </button>
           </div>
 
-          {checkedOut && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && checkedOut && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <Eye className="h-3 w-3" /> Nothing camouflaged
               </div>
               <p className="text-muted-foreground">
@@ -190,7 +190,7 @@ export function SneakIntoBasketCond2({
                     onClick={() => setAnswer(n)}
                     className={`flex-1 rounded-md border py-1.5 text-[10px] font-semibold transition-colors cursor-pointer ${
                       answer === n
-                        ? "border-rose-500/60 bg-rose-500/10 text-rose-600 dark:text-rose-300"
+                        ? "border-red-500/60 bg-red-500/10 text-red-600 dark:text-red-300"
                         : "border-border bg-background text-foreground hover:bg-muted"
                     }`}
                   >
@@ -203,19 +203,19 @@ export function SneakIntoBasketCond2({
 
           <div className="mt-2 flex items-center justify-between border-t pt-2">
             <span className="text-[9px] font-medium">Total</span>
-            <span className="font-mono text-[11px] font-bold tabular-nums text-rose-600 dark:text-rose-400">{fmt(HEADPHONES.price + WARRANTY.price)}</span>
+            <span className="font-mono text-[11px] font-bold tabular-nums text-red-600 dark:text-red-400">{fmt(HEADPHONES.price + WARRANTY.price)}</span>
           </div>
           <button
             onClick={() => setCheckedOut(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-rose-700 cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
           >
             Pay {fmt(HEADPHONES.price + WARRANTY.price)}
           </button>
         </div>
 
         {answer !== null && (
-          <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${answer === 1 ? "border-amber-500/30 bg-amber-500/5" : "border-emerald-500/30 bg-emerald-500/5"}`}>
-            <div className={`mb-0.5 flex items-center gap-1.5 font-semibold uppercase tracking-tight ${answer === 1 ? "text-amber-700 dark:text-amber-300" : "text-emerald-700 dark:text-emerald-300"}`}>
+          <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${answer === 1 ? "border-yellow-500/30 bg-yellow-500/5" : "border-green-500/30 bg-green-500/5"}`}>
+            <div className={`mb-0.5 flex items-center gap-1.5 font-semibold uppercase tracking-tight ${answer === 1 ? "text-yellow-700 dark:text-yellow-300" : "text-green-700 dark:text-green-300"}`}>
               {answer === 1 ? (
                 <>
                   <EyeOff className="h-3 w-3" /> The injected item escaped you
@@ -229,14 +229,14 @@ export function SneakIntoBasketCond2({
             <p className="text-muted-foreground">
               {answer === 1
                 ? `The ${WARRANTY.name} line reused your item's exact background, typography, and border radius — Δ_color = ${DELTA_DARK} < τ_camouflage (${TAU_CAMOUFLAGE}) — so it grouped visually with your own purchase and you read the cart as "1 item".`
-                : `You spotted the second line, but the styling gave no cue: Δ_color = ${DELTA_DARK} < τ_camouflage. Distinguishing the injected item from your own required deliberate counting — exactly the cognitive load the pattern exploits.`}
+                : "Your cart has been updated."}
             </p>
           </div>
         )}
 
-        {checkedOut && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && checkedOut && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -244,7 +244,7 @@ export function SneakIntoBasketCond2({
               Surcharge camouflaged into your total
             </div>
             <p className="text-muted-foreground">
-              You paid <strong className="text-rose-500">{fmt(HEADPHONES.price + WARRANTY.price)}</strong> —{" "}
+              You paid <strong className="text-red-500">{fmt(HEADPHONES.price + WARRANTY.price)}</strong> —{" "}
               {fmt(WARRANTY.price)} of it for the {WARRANTY.name} you never added. Because the line is typographically
               identical to your own item, it never triggered a visual inspection. Status-quo bias does the rest at
               checkout.

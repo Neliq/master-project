@@ -78,7 +78,7 @@ function highlightConfirmation(
   accent: "rose" | "emerald"
 ): React.ReactNode {
   const spans: { needle: string; cls: string }[] = [
-    { needle: entity, cls: "rounded-sm bg-amber-500/25 px-0.5 text-amber-800 dark:text-amber-200" },
+    { needle: entity, cls: "rounded-sm bg-yellow-500/25 px-0.5 text-yellow-800 dark:text-yellow-200" },
   ];
   keywords.forEach((k) => {
     if (text.toLowerCase().includes(k.toLowerCase())) {
@@ -86,8 +86,8 @@ function highlightConfirmation(
         needle: k,
         cls:
           accent === "rose"
-            ? "rounded-sm bg-rose-500/25 px-0.5 text-rose-800 dark:text-rose-200 font-semibold"
-            : "rounded-sm bg-emerald-500/25 px-0.5 text-emerald-800 dark:text-emerald-200 font-semibold",
+            ? "rounded-sm bg-red-500/25 px-0.5 text-red-800 dark:text-red-200 font-semibold"
+            : "rounded-sm bg-green-500/25 px-0.5 text-green-800 dark:text-green-200 font-semibold",
       });
     }
   });
@@ -140,15 +140,15 @@ export function ForcedGracePeriodCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">E_time entity (n_confirm)</span>
-        <span className="font-mono font-semibold tabular-nums text-amber-600 dark:text-amber-400">“30 days”</span>
+        <span className="font-mono font-semibold tabular-nums text-yellow-600 dark:text-yellow-400">“30 days”</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">min d(k, e) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{DIST_A} word{DIST_A === 1 ? "" : "s"} &lt; &tau; ({TAU_WORDS}) → fired</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DIST_A} word{DIST_A === 1 ? "" : "s"} &lt; &tau; ({TAU_WORDS}) → fired</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">min d(k, e) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">
+        <span className="font-mono font-semibold tabular-nums text-green-500">
           {Number.isFinite(DIST_B) ? `${DIST_B} words &gt; &tau; (${TAU_WORDS})` : "∞ — no delay / no reversal keyword"}
         </span>
       </div>
@@ -167,7 +167,7 @@ export function ForcedGracePeriodCond3({
       <button
         onClick={onRequest}
         className={`mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer ${
-          accent === "rose" ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+          accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
         }`}
       >
         <Trash2 className="size-3.5" />
@@ -189,7 +189,7 @@ export function ForcedGracePeriodCond3({
         {highlightConfirmation(text, entity, keywords, accent)}
       </div>
       <div className="mt-1.5 text-[7px] text-muted-foreground/50">
-        W(n_confirm) — word sequence parsed by the semantic-proximity heuristic
+        Account deletion details
       </div>
       {note}
     </div>
@@ -213,7 +213,7 @@ export function ForcedGracePeriodCond3({
               <div className="mt-2.5 flex gap-1.5">
                 <button
                   onClick={() => setStageB("resolved")}
-                  className="flex flex-1 items-center justify-center gap-1.5 rounded-md bg-emerald-600 py-1.5 text-[9px] font-semibold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+                  className="flex flex-1 items-center justify-center gap-1.5 rounded-md bg-green-600 py-1.5 text-[9px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
                 >
                   Delete my account
                 </button>
@@ -226,8 +226,8 @@ export function ForcedGracePeriodCond3({
               </div>
             )}
           {stageB === "resolved" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="size-3" />
                 No delay — no reversal hook
               </div>
@@ -257,7 +257,7 @@ export function ForcedGracePeriodCond3({
                   setStageA("resolved");
                   setAborted(true);
                 }}
-                className="flex flex-1 items-center justify-center gap-1.5 rounded-md bg-rose-600 py-1.5 text-[9px] font-semibold text-white transition-colors hover:bg-rose-700 cursor-pointer"
+                className="flex flex-1 items-center justify-center gap-1.5 rounded-md bg-red-600 py-1.5 text-[9px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
               >
                 <LogIn className="size-3" />
                 Log in now
@@ -271,10 +271,10 @@ export function ForcedGracePeriodCond3({
             </div>
           )}
         {stageA === "resolved" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="size-3" />
-              {aborted ? "Reversal trap fired" : "Trap armed"}
+              {aborted ? "Request updated" : "Request pending"}
             </div>
             {aborted ? (
               <p className="text-muted-foreground">

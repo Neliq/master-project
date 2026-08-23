@@ -85,11 +85,11 @@ export function LabyrinthineNavigationCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d(v_home, v_target) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{DARK_DEPTH} clicks</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DARK_DEPTH} clicks</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d(v_home, v_target) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{BENIGN_DEPTH} clicks</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{BENIGN_DEPTH} clicks</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Heuristic threshold &tau;_depth</span>
@@ -97,7 +97,7 @@ export function LabyrinthineNavigationCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Trigger: {DARK_DEPTH} &gt; {TAU_DEPTH}</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">TRUE</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
       </div>
     </>
   ) : null;
@@ -113,7 +113,7 @@ export function LabyrinthineNavigationCond1({
           <div className="rounded-md border bg-card p-3">
             <div className="mb-2 flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">Settings</h3>
-              <span className="rounded-full border border-emerald-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
                 depth 1 / 2
               </span>
             </div>
@@ -126,7 +126,7 @@ export function LabyrinthineNavigationCond1({
               </button>
               <button
                 onClick={() => setConfirming(true)}
-                className="w-full rounded-md border border-emerald-600/50 bg-emerald-500/10 p-2 text-left text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 transition-colors hover:bg-emerald-500/20 cursor-pointer"
+                className="w-full rounded-md border border-green-600/50 bg-green-500/10 p-2 text-left text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors hover:bg-green-500/20 cursor-pointer"
               >
                 Delete account
               </button>
@@ -151,7 +151,7 @@ export function LabyrinthineNavigationCond1({
                 </button>
                 <button
                   onClick={() => { setConfirming(false); setOutcome("deleted"); }}
-                  className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                  className="w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Confirm deletion
                 </button>
@@ -160,8 +160,8 @@ export function LabyrinthineNavigationCond1({
           )}
 
           {outcome === "deleted" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -180,7 +180,7 @@ export function LabyrinthineNavigationCond1({
         {confirming ? (
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-2">
-              <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-600 dark:text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-yellow-600 dark:text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
@@ -202,7 +202,7 @@ export function LabyrinthineNavigationCond1({
               </button>
               <button
                 onClick={() => { setConfirming(false); setOutcome("deleted"); }}
-                className="w-full rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Submit request
               </button>
@@ -281,13 +281,13 @@ export function LabyrinthineNavigationCond1({
         )}
 
         {outcome === "deleted" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Excessive navigational depth triggered
+              Account settings
             </div>
             <p className="text-muted-foreground">
               d(v_home, v_target) = {DARK_DEPTH} &gt; &tau;_depth = {TAU_DEPTH}. To delete your account you

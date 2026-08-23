@@ -77,21 +77,21 @@ export function AddictiveDesignCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">T_session</span>
-        <span className={`font-mono font-semibold tabular-nums ${overThreshold ? "text-rose-500" : ""}`}>
+        <span className={`font-mono font-semibold tabular-nums ${overThreshold ? "text-red-500" : ""}`}>
           {mm}:{ss} {overThreshold ? `> &tau; (${HYPER_ENGAGEMENT_S}s)` : ""}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&forall;e &isin; E_stop : Visible(e, t)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">False — all suppressed</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">False — all suppressed</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CR(e, L_bg) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">1.4 &lt; 3.0</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">1.4 &lt; 3.0</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CR(e, L_bg) (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">12.5 &ge; 3.0</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">12.5 &ge; 3.0</span>
       </div>
     </>
   ) : null;
@@ -107,7 +107,7 @@ export function AddictiveDesignCond2({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">The Market Reader</h3>
-              <span className="rounded-full border border-emerald-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-emerald-600 dark:text-emerald-400">
+              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
                 Page {page} of 3
               </span>
             </div>
@@ -115,17 +115,17 @@ export function AddictiveDesignCond2({
             {/* Scroll position indicator — a stopping cue that IS present */}
             <div className="mt-2 h-1 w-full rounded-full bg-foreground/10">
               <div
-                className="h-1 rounded-full bg-emerald-500 transition-all duration-300"
+                className="h-1 rounded-full bg-green-500 transition-all duration-300"
                 style={{ width: `${(page / 3) * 100}%` }}
               />
             </div>
 
             <div className="mt-2">
               {page > 1 && (
-                <div className="mb-2 flex items-center gap-2 text-[8px] font-mono uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
-                  <span className="h-px flex-1 bg-emerald-500/30" />
+                <div className="mb-2 flex items-center gap-2 text-[8px] font-mono uppercase tracking-wider text-green-700 dark:text-green-300">
+                  <span className="h-px flex-1 bg-green-500/30" />
                   New for you — page {page}
-                  <span className="h-px flex-1 bg-emerald-500/30" />
+                  <span className="h-px flex-1 bg-green-500/30" />
                 </div>
               )}
               <PageContent page={page} />
@@ -143,12 +143,12 @@ export function AddictiveDesignCond2({
               {page < 3 ? (
                 <button
                   onClick={() => setPage((p) => p + 1)}
-                  className="rounded-md bg-emerald-600 hover:bg-emerald-700 px-3 py-1 text-[9px] font-medium text-white transition-colors cursor-pointer"
+                  className="rounded-md bg-green-600 hover:bg-green-700 px-3 py-1 text-[9px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Next page &rarr;
                 </button>
               ) : (
-                <span className="rounded-md border border-emerald-500/40 bg-emerald-500/5 px-2 py-1 text-[8px] font-mono font-semibold text-emerald-700 dark:text-emerald-300">
+                <span className="rounded-md border border-green-500/40 bg-green-500/5 px-2 py-1 text-[8px] font-mono font-semibold text-green-700 dark:text-green-300">
                   End of results — you&rsquo;ve seen everything
                 </span>
               )}
@@ -156,7 +156,7 @@ export function AddictiveDesignCond2({
 
             <div className="mt-2 flex items-center justify-between text-[8px] font-mono text-muted-foreground">
               <span>Reading for {mm}:{ss}</span>
-              <span className="text-emerald-600 dark:text-emerald-400">stopping cues present</span>
+              <span className="text-green-600 dark:text-green-400">stopping cues present</span>
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@ export function AddictiveDesignCond2({
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">The Market Reader</h3>
             {/* No page indicator — suppressed */}
-            <span className="rounded-full border border-rose-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-rose-600 dark:text-rose-400">
+            <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
               {page}/3 &bull; hidden
             </span>
           </div>

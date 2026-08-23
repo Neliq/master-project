@@ -66,15 +66,15 @@ export function ImmortalAccountsCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(N_delete) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{AREA_DELETE_DARK} px² ({DELETE_W_DARK}×{DELETE_H_DARK})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{AREA_DELETE_DARK} px² ({DELETE_W_DARK}×{DELETE_H_DARK})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{RATIO_DARK.toFixed(3)} &lt; &tau; ({TAU_EXIT_VISIBILITY}) → fired</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK.toFixed(3)} &lt; &tau; ({TAU_EXIT_VISIBILITY}) → fired</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{RATIO_BENIGN.toFixed(2)} ≥ &tau;</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{RATIO_BENIGN.toFixed(2)} ≥ &tau;</span>
       </div>
     </>
   ) : null;
@@ -95,8 +95,8 @@ export function ImmortalAccountsCond2({
             onClick={onCancel}
             className={`w-full rounded-md py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer ${
               accent === "rose"
-                ? "bg-rose-600 hover:bg-rose-700"
-                : "bg-emerald-600 hover:bg-emerald-700"
+                ? "bg-red-600 hover:bg-red-700"
+                : "bg-green-600 hover:bg-green-700"
             }`}
           >
             Keep my account
@@ -132,8 +132,8 @@ export function ImmortalAccountsCond2({
         </div>
         <span className={`rounded-full border px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider shrink-0 ${
           accent === "rose"
-            ? "border-rose-500/30 text-rose-500"
-            : "border-emerald-500/30 text-emerald-500"
+            ? "border-red-500/30 text-red-500"
+            : "border-green-500/30 text-green-500"
         }`}>
           {created ? "Account created" : "2.0 / 2.0 GB used"}
         </span>
@@ -153,7 +153,7 @@ export function ImmortalAccountsCond2({
         <button
           onClick={onCreated}
           className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2.5 text-[10px] font-bold text-white transition-colors cursor-pointer ${
-            accent === "rose" ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+            accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
           }`}
         >
           <UserPlus className="size-3.5" />
@@ -171,8 +171,8 @@ export function ImmortalAccountsCond2({
         ) : (
           <div className={`rounded-md border p-2 text-center text-[9px] font-medium ${
             accent === "rose"
-              ? "border-rose-500/30 bg-rose-500/5 text-rose-600 dark:text-rose-300"
-              : "border-emerald-500/30 bg-emerald-500/5 text-emerald-600 dark:text-emerald-300"
+              ? "border-red-500/30 bg-red-500/5 text-red-600 dark:text-red-300"
+              : "border-green-500/30 bg-green-500/5 text-green-600 dark:text-green-300"
           }`}>
             Account deleted
           </div>
@@ -195,7 +195,7 @@ export function ImmortalAccountsCond2({
             "emerald",
             <button
               onClick={() => setStageB("confirm")}
-              className="flex w-full items-center justify-center gap-1.5 rounded-md border border-emerald-500/40 bg-emerald-500/5 py-2 text-[10px] font-semibold text-emerald-600 transition-colors hover:bg-emerald-500/10 cursor-pointer dark:text-emerald-300"
+              className="flex w-full items-center justify-center gap-1.5 rounded-md border border-green-500/40 bg-green-500/5 py-2 text-[10px] font-semibold text-green-600 transition-colors hover:bg-green-500/10 cursor-pointer dark:text-green-300"
             >
               <Trash2 className="size-3.5" />
               Delete account
@@ -208,8 +208,8 @@ export function ImmortalAccountsCond2({
             createdB
           )}
           {stageB === "deleted" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="size-3" />
                 Visual parity — no trigger
               </div>
@@ -222,7 +222,7 @@ export function ImmortalAccountsCond2({
             </div>
           )}
           {createdB && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
               <strong>Sign-up completed in one click.</strong> Now compare the effort required to
               leave: the “Delete account” button above is exactly as large as this CTA.
             </div>
@@ -236,7 +236,7 @@ export function ImmortalAccountsCond2({
           <div className="text-center">
             <button
               onClick={() => setStageA("confirm")}
-              className="text-[8px] font-normal text-muted-foreground/40 underline decoration-muted-foreground/30 underline-offset-2 transition-colors hover:text-rose-500 cursor-pointer"
+              className="text-[8px] font-normal text-muted-foreground/40 underline decoration-muted-foreground/30 underline-offset-2 transition-colors hover:text-red-500 cursor-pointer"
             >
               Delete account
             </button>
@@ -252,10 +252,10 @@ export function ImmortalAccountsCond2({
           createdA
         )}
         {stageA === "deleted" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="size-3" />
-              Visual subordination detected
+              Account deletion
             </div>
             <p className="text-muted-foreground">
               You deleted your account — but the only affordance was an 8px gray link.{" "}
@@ -266,13 +266,13 @@ export function ImmortalAccountsCond2({
               “Sign up” CTA&rsquo;s bounding-box area with low contrast and thin weight.
             </p>
             <p className="text-muted-foreground">
-              The deletion path exists — it is simply subordinated to the point of invisibility.
+              You can delete your account from this page.
               This is the Immortal Accounts mechanism: not removing the exit, but demoting it.
             </p>
           </div>
         )}
-        {createdA && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2 text-[9px] text-amber-700 dark:text-amber-300">
+        {mode === "auditor" && createdA && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px] text-yellow-700 dark:text-yellow-300">
             <strong>Sign-up took one click.</strong> Leaving takes hunting through 8px gray text —
             the asymmetry the heuristic measures is exactly the one you just felt.
           </div>

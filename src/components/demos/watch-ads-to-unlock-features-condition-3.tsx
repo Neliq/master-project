@@ -64,15 +64,15 @@ export function WatchAdsToUnlockFeaturesCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Hyperbole(T_reward)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0.95</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0.95</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Utility(R_actual)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0.00 (cosmetic)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0.00 (cosmetic)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Hype gap</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0.95 &gt; τ_hype_gap</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0.95 &gt; τ_hype_gap</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">τ_hype_gap</span>
@@ -85,10 +85,10 @@ export function WatchAdsToUnlockFeaturesCond3({
     const isDark = accent === "rose";
     return (
       <div className={`mt-2 rounded-md border p-2.5 text-[9px] leading-relaxed ${
-        isDark ? "border-amber-500/30 bg-amber-500/5" : "border-emerald-500/30 bg-emerald-500/5"
+        isDark ? "border-yellow-500/30 bg-yellow-500/5" : "border-green-500/30 bg-green-500/5"
       }`}>
         <div className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
-          isDark ? "text-amber-700 dark:text-amber-300" : "text-emerald-700 dark:text-emerald-300"
+          isDark ? "text-yellow-700 dark:text-yellow-300" : "text-green-700 dark:text-green-300"
         }`}>
           <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             {isDark ? <path d="M12 3l1.9 5.7L20 10l-5 4 1.5 7L12 17.5 7.5 21 9 14l-5-4 6.1-1.3L12 3z" /> : <path d="M20 6L9 17l-5-5" />}
@@ -97,8 +97,8 @@ export function WatchAdsToUnlockFeaturesCond3({
         </div>
         <div className="mt-1.5 rounded-md border border-border bg-background p-2">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-amber-100 dark:bg-amber-900/30">
-              <svg className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-yellow-100 dark:bg-yellow-900/30">
+              <svg className="h-3.5 w-3.5 text-yellow-600 dark:text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z" />
               </svg>
             </div>
@@ -130,20 +130,20 @@ export function WatchAdsToUnlockFeaturesCond3({
   const renderCratePanel = (accent: "rose" | "emerald") => {
     const isDark = accent === "rose";
     return (
-      <div className={`rounded-md border p-3 ${isDark ? "border-amber-500/40 bg-amber-500/5" : "border-emerald-500/30 bg-emerald-500/5"}`}>
+      <div className={`rounded-md border p-3 ${isDark ? "border-yellow-500/40 bg-yellow-500/5" : "border-green-500/30 bg-green-500/5"}`}>
         <div className="flex items-center justify-between gap-2">
           <div className="min-w-0">
-            <h3 className={`text-[11px] font-bold ${isDark ? "text-amber-700 dark:text-amber-300" : "text-foreground"}`}>
+            <h3 className={`text-[11px] font-bold ${isDark ? "text-yellow-700 dark:text-yellow-300" : "text-foreground"}`}>
               {isDark ? "★ EXCLUSIVE ★ AMAZING ★ PREMIUM LEGENDARY CRATE" : "Common crate — 1 cosmetic sticker"}
             </h3>
-            <p className={`text-[9px] mt-0.5 ${isDark ? "text-amber-700/70 dark:text-amber-200/70" : "text-muted-foreground"}`}>
+            <p className={`text-[9px] mt-0.5 ${isDark ? "text-yellow-700/70 dark:text-yellow-200/70" : "text-muted-foreground"}`}>
               {isDark
                 ? "Contains legendary ultra-rare loot! 0.01% drop rate! Watch one ad to open it FREE!"
                 : "Contains one cosmetic sticker (no gameplay effect). Watch one ad to open it free."}
             </p>
           </div>
           <div className={`text-[8px] font-mono font-bold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 ${
-            isDark ? "text-amber-600 dark:text-amber-300 border-amber-500/40" : "text-muted-foreground border-border"
+            isDark ? "text-yellow-600 dark:text-yellow-300 border-yellow-500/40" : "text-muted-foreground border-border"
           }`}>
             {isDark ? "Mythic" : "Common"}
           </div>
@@ -157,8 +157,8 @@ export function WatchAdsToUnlockFeaturesCond3({
             }}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
               isDark
-                ? "bg-amber-500 hover:bg-amber-600 text-white"
-                : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                ? "bg-yellow-500 hover:bg-yellow-600 text-white"
+                : "bg-green-600 hover:bg-green-700 text-white"
             }`}
           >
             Watch 1 ad to open ({AD_SECONDS}s)
@@ -169,11 +169,11 @@ export function WatchAdsToUnlockFeaturesCond3({
           <div className="mt-3 rounded-md border border-border bg-card p-2">
             <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
               <span>Ad</span>
-              <span className={isDark ? "text-amber-500" : "text-emerald-500"}>0:0{Math.max(0, adLeft)}</span>
+              <span className={isDark ? "text-yellow-500" : "text-green-500"}>0:0{Math.max(0, adLeft)}</span>
             </div>
             <div className="mt-1 h-1.5 w-full rounded-full bg-muted overflow-hidden">
               <div
-                className={`h-full rounded-full transition-all duration-300 ${isDark ? "bg-amber-500" : "bg-emerald-500"}`}
+                className={`h-full rounded-full transition-all duration-300 ${isDark ? "bg-yellow-500" : "bg-green-500"}`}
                 style={{ width: `${((AD_SECONDS - adLeft) / AD_SECONDS) * 100}%` }}
               />
             </div>
@@ -185,8 +185,8 @@ export function WatchAdsToUnlockFeaturesCond3({
             onClick={() => setCrateOpened(true)}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-bold transition-colors cursor-pointer ${
               isDark
-                ? "bg-amber-500 hover:bg-amber-600 text-white"
-                : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                ? "bg-yellow-500 hover:bg-yellow-600 text-white"
+                : "bg-green-600 hover:bg-green-700 text-white"
             }`}
           >
             Open crate

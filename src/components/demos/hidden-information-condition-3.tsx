@@ -52,13 +52,13 @@ export function HiddenInformationCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">IsConcealed(N_adverse) dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           True (collapsed &lt;details&gt;)
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">IsConcealed(N_adverse) benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">False</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">False</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Monthly service fee</span>
@@ -73,11 +73,11 @@ export function HiddenInformationCond3({
         <div className="flex items-center gap-3">
           <div
             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
-              dark ? "bg-rose-100 dark:bg-rose-900/30" : "bg-emerald-100 dark:bg-emerald-900/30"
+              dark ? "bg-red-100 dark:bg-red-900/30" : "bg-green-100 dark:bg-green-900/30"
             }`}
           >
             <svg
-              className={`h-4 w-4 ${dark ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"}`}
+              className={`h-4 w-4 ${dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -107,7 +107,7 @@ export function HiddenInformationCond3({
         <button
           onClick={() => setStarted(true)}
           className={`mt-2 w-full cursor-pointer rounded-md py-2 text-[11px] font-semibold text-white transition-colors ${
-            dark ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+            dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
           }`}
           title={dark ? "Auto-renews monthly — a $5.00 monthly service fee applies" : undefined}
         >
@@ -125,11 +125,11 @@ export function HiddenInformationCond3({
             </div>
           </details>
         ) : (
-          <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] leading-relaxed">
+          <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] leading-relaxed">
             <span className="text-muted-foreground">
-              A <strong className="text-emerald-700 dark:text-emerald-300">{usd(SERVICE_FEE)} monthly
+              A <strong className="text-green-700 dark:text-green-300">{usd(SERVICE_FEE)} monthly
               service fee</strong> applies after your {TRIAL_DAYS}-day free trial. Your subscription
-              auto-renews monthly — <strong className="text-emerald-700 dark:text-emerald-300">you
+              auto-renews monthly — <strong className="text-green-700 dark:text-green-300">you
               can cancel at any time</strong> in settings.
             </span>
           </div>
@@ -151,10 +151,10 @@ export function HiddenInformationCond3({
           <div className="text-muted-foreground">
             K_adverse ∩ T_DOM = {"{service fee, auto-renew, cancel}"} ≠ ∅
           </div>
-          <div className={dark ? "text-rose-500" : "text-emerald-600 dark:text-emerald-400"}>
+          <div className={dark ? "text-red-500" : "text-green-600 dark:text-green-400"}>
             IsConcealed(N_adverse) = {dark ? "True — inside collapsed <details> + hover tooltip" : "False — plain visible text"}
           </div>
-          <div className={dark ? "text-rose-500" : "text-emerald-600 dark:text-emerald-400"}>
+          <div className={dark ? "text-red-500" : "text-green-600 dark:text-green-400"}>
             ⟹ trigger: K_adverse ∩ T_DOM ≠ ∅ ∧ IsConcealed = {dark ? "True" : "False"}
           </div>
         </div>
@@ -162,8 +162,8 @@ export function HiddenInformationCond3({
 
       {started &&
         (dark ? (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-amber-700 dark:text-amber-300">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -179,8 +179,8 @@ export function HiddenInformationCond3({
             </p>
           </div>
         ) : (
-          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-emerald-700 dark:text-emerald-300">
+          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

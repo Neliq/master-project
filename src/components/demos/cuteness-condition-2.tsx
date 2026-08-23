@@ -60,19 +60,19 @@ export function CutenessCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">I_affective in I(s_onboard)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">&notin; (withheld)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">&notin; (withheld)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">I_affective in I(s_cancel) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&isin; (injected)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&isin; (injected)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(i) / A_viewport (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{AREA_RATIO.toFixed(2)} &gt; {TAU_PROMINENCE}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{AREA_RATIO.toFixed(2)} &gt; {TAU_PROMINENCE}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CR(i, L_bg) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{CONTRAST}:1 &gt; {CONTRAST_THRESHOLD}:1</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{CONTRAST}:1 &gt; {CONTRAST_THRESHOLD}:1</span>
       </div>
     </>
   ) : null;
@@ -93,7 +93,7 @@ export function CutenessCond2({
                   $19.99/month — unlimited downloads and 4K streaming.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Active
               </div>
             </div>
@@ -101,7 +101,7 @@ export function CutenessCond2({
             {stage === "overview" && (
               <div className="mt-3 space-y-2">
                 <div className="flex items-center gap-2 rounded-md border border-border bg-background p-2.5 text-[9px] text-muted-foreground">
-                  <svg className="h-4 w-4 shrink-0 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="h-4 w-4 shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="3" y="3" width="18" height="18" rx="3" />
                     <path d="M8 12l3 3 5-6" />
                   </svg>
@@ -130,7 +130,7 @@ export function CutenessCond2({
                   </button>
                   <button
                     onClick={() => setStage("gone")}
-                    className="rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                    className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                   >
                     Yes, cancel
                   </button>
@@ -139,8 +139,8 @@ export function CutenessCond2({
             )}
 
             {(stage === "kept" || stage === "gone") && (
-              <div className="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -165,7 +165,7 @@ export function CutenessCond2({
                 $19.99/month — unlimited downloads and 4K streaming.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Mascot: s_cancel only
             </div>
           </div>
@@ -173,7 +173,7 @@ export function CutenessCond2({
           {stage === "overview" && (
             <div className="mt-3 space-y-2">
               <div className="flex items-center gap-2 rounded-md border border-border bg-background p-2.5 text-[9px] text-muted-foreground">
-                <svg className="h-4 w-4 shrink-0 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg className="h-4 w-4 shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect x="3" y="3" width="18" height="18" rx="3" />
                   <path d="M8 12l3 3 5-6" />
                 </svg>
@@ -191,9 +191,9 @@ export function CutenessCond2({
           {stage === "cancel" && (
             <div className="mt-3 space-y-2">
               {/* Injected at s_cancel only: viewport-dominant scale + high contrast. */}
-              <div className="flex flex-col items-center gap-2 rounded-md bg-gradient-to-b from-rose-600 to-rose-700 p-4 shadow-lg shadow-rose-500/30">
+              <div className="flex flex-col items-center gap-2 rounded-md   p-4 shadow-lg shadow-red-500/30">
                 <GiantMascot />
-                <p className="text-[9px] font-semibold uppercase tracking-wider text-rose-100">
+                <p className="text-[9px] font-semibold uppercase tracking-wider text-red-100">
                   Don&rsquo;t leave us…
                 </p>
               </div>
@@ -203,7 +203,7 @@ export function CutenessCond2({
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setStage("kept")}
-                  className="rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                  className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Keep my plan
                 </button>
@@ -218,20 +218,20 @@ export function CutenessCond2({
           )}
 
           {(stage === "kept" || stage === "gone") && (
-            <div className="mt-3 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Context-dependent injection detected
+                Your request has been received
               </div>
               <p className="text-muted-foreground">
                 {stage === "kept"
                   ? "You kept the plan — the giant pleading face made canceling feel cruel."
                   : "You cancelled anyway, but the image was engineered to stop you."}{" "}
-                The mascot is <strong className="text-rose-500">I_affective &notin; I(s_onboard)</strong>{" "}
-                and <strong className="text-rose-500">I_affective &isin; I(s_cancel)</strong> — withheld
+                The mascot is <strong className="text-red-500">I_affective &notin; I(s_onboard)</strong>{" "}
+                and <strong className="text-red-500">I_affective &isin; I(s_cancel)</strong> — withheld
                 during normal use, injected into termination.
               </p>
               <p className="text-muted-foreground">

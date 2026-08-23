@@ -44,19 +44,19 @@ export function PriceComparisonPreventionCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Q_rendered — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">∅</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">∅</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Q_rendered — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{"{per l, per 100 ml}"}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{"{per l, per 100 ml}"}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Intersection</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">∅ → trigger</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">∅ → trigger</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Cheaper per liter</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">1 L (PLN 8.99/l)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">1 L (PLN 8.99/l)</span>
       </div>
     </>
   ) : null;
@@ -77,7 +77,7 @@ export function PriceComparisonPreventionCond3({
                   Same product, two sizes. Unit qualifiers are present.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Qualifiers present
               </div>
             </div>
@@ -88,7 +88,7 @@ export function PriceComparisonPreventionCond3({
                   <div className="min-w-0">
                     <div className="text-[10px] font-medium">{it.name}</div>
                     <div className="text-[8px] text-muted-foreground">{it.size}</div>
-                    <div className="text-[10px] font-medium text-emerald-700 dark:text-emerald-300">{it.unit}</div>
+                    <div className="text-[10px] font-medium text-green-700 dark:text-green-300">{it.unit}</div>
                   </div>
                   <div className="text-[13px] font-bold tabular-nums">{it.price}</div>
                 </div>
@@ -97,14 +97,14 @@ export function PriceComparisonPreventionCond3({
 
             <button
               onClick={() => setCompared(true)}
-              className="mt-2.5 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Compare unit prices
             </button>
 
             {compared && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-                <div className="font-semibold text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+                <div className="font-semibold text-green-700 dark:text-green-300">
                   Q_standard ∩ Q_rendered = {"{per l, per 100 ml}"} ≠ ∅
                 </div>
                 <p className="text-muted-foreground mt-1">
@@ -126,7 +126,7 @@ export function PriceComparisonPreventionCond3({
                 Same product, two sizes. Nothing but headline prices.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Qualifiers stripped
             </div>
           </div>
@@ -145,14 +145,14 @@ export function PriceComparisonPreventionCond3({
 
           <button
             onClick={() => setCompared(true)}
-            className="mt-2.5 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Compare unit prices
           </button>
 
           {compared && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-              <div className="font-semibold text-amber-700 dark:text-amber-300">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+              <div className="font-semibold text-yellow-700 dark:text-yellow-300">
                 Q_standard ∩ Q_rendered = ∅
               </div>
               <p className="text-muted-foreground mt-1">

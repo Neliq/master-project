@@ -51,7 +51,7 @@ export function PlainEvilCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Σ Active(D_i, M_context)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{ACTIVE_COUNT}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{ACTIVE_COUNT}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">τ_hostility (catastrophic)</span>
@@ -59,7 +59,7 @@ export function PlainEvilCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">{ACTIVE_COUNT} ≥ {TAU_HOSTILITY}</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">singularity ✓</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">singularity ✓</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Active stack</span>
@@ -96,7 +96,7 @@ export function PlainEvilCond1({
                 type="checkbox"
                 checked={benignProtected}
                 onChange={(e) => setBenignProtected(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                className="mt-0.5 flex-shrink-0 accent-green-500"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[9px] font-medium">Add optional 2-year protection plan — <span className="font-mono">+$39.99</span></div>
@@ -116,15 +116,15 @@ export function PlainEvilCond1({
 
             <button
               onClick={() => setSubmitted(true)}
-              className="mt-3 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
             >
               Complete purchase — $301.99
             </button>
           </div>
 
           {submitted && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -142,7 +142,7 @@ export function PlainEvilCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           {/* 1. Scarcity / urgency */}
-          <div className="flex items-center gap-1.5 rounded-md border border-rose-500/40 bg-rose-500/10 px-2 py-1.5 text-[9px] font-semibold text-rose-700 dark:text-rose-300">
+          <div className="flex items-center gap-1.5 rounded-md border border-red-500/40 bg-red-500/10 px-2 py-1.5 text-[9px] font-semibold text-red-700 dark:text-red-300">
             <svg className="h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="12" cy="13" r="8" />
               <path d="M12 9v4l2.5 2.5M9 2h6" />
@@ -157,12 +157,12 @@ export function PlainEvilCond1({
           </div>
 
           {/* 2. Sneak into Basket — pre-checked add-on, styled like part of the summary */}
-          <label className="mt-2 flex cursor-pointer items-start gap-2 rounded-md border border-rose-500/30 bg-rose-500/5 p-2 transition-colors">
+          <label className="mt-2 flex cursor-pointer items-start gap-2 rounded-md border border-red-500/30 bg-red-500/5 p-2 transition-colors">
             <input
               type="checkbox"
               checked={darkProtected}
               onChange={(e) => setDarkProtected(e.target.checked)}
-              className="mt-0.5 flex-shrink-0 accent-rose-500"
+              className="mt-0.5 flex-shrink-0 accent-red-500"
             />
             <div className="min-w-0 flex-1">
               <div className="text-[9px] font-medium">Protect your purchase — 2-year protection plan <span className="font-mono">+$39.99</span></div>
@@ -185,15 +185,15 @@ export function PlainEvilCond1({
 
           <button
             onClick={() => setSubmitted(true)}
-            className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[11px] font-bold transition-colors cursor-pointer"
+            className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[11px] font-bold transition-colors cursor-pointer"
           >
             Complete purchase
           </button>
         </div>
 
         {submitted && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

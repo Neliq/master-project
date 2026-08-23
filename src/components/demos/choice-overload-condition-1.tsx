@@ -67,7 +67,7 @@ export function ChoiceOverloadCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|C_choices| (vendor toggles)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{VENDORS.length}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{VENDORS.length}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">τ_overload (upper bound)</span>
@@ -75,7 +75,7 @@ export function ChoiceOverloadCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|C_choices| &gt; τ_overload</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {VENDORS.length} &gt; {TAU_OVERLOAD} ✓
         </span>
       </div>
@@ -99,7 +99,7 @@ export function ChoiceOverloadCond1({
             type="checkbox"
             checked={!!toggles[v]}
             onChange={() => flip(v)}
-            className={`h-3 w-3 flex-shrink-0 ${accent === "rose" ? "accent-rose-500" : "accent-emerald-500"}`}
+            className={`h-3 w-3 flex-shrink-0 ${accent === "rose" ? "accent-red-500" : "accent-green-500"}`}
           />
         </label>
       ))}
@@ -124,7 +124,7 @@ export function ChoiceOverloadCond1({
                   or manage each partner individually below.
                 </p>
               </div>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 {VENDORS.length} partners
               </span>
             </div>
@@ -132,20 +132,20 @@ export function ChoiceOverloadCond1({
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
                 onClick={() => setDecision("accept")}
-                className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Accept all
               </button>
               <button
                 onClick={rejectAll}
-                className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Reject all
               </button>
             </div>
             <button
               onClick={() => setDecision("save")}
-              className="mt-2 w-full rounded-md border border-emerald-500/40 bg-emerald-500/5 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/10 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md border border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300 hover:bg-green-500/10 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Save my choices
             </button>
@@ -159,8 +159,8 @@ export function ChoiceOverloadCond1({
           </div>
 
           {decision && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -193,7 +193,7 @@ export function ChoiceOverloadCond1({
                 partner individually below.
               </p>
             </div>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               {VENDORS.length} partners
             </span>
           </div>
@@ -201,7 +201,7 @@ export function ChoiceOverloadCond1({
           <div className="mt-3 space-y-2">
             <button
               onClick={() => setDecision("accept")}
-              className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[11px] font-bold transition-colors cursor-pointer"
+              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[11px] font-bold transition-colors cursor-pointer"
             >
               Accept all
             </button>
@@ -222,23 +222,23 @@ export function ChoiceOverloadCond1({
         </div>
 
         {decision && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              {decision === "accept" ? "Overload exploited" : "Manual decline"}
+              {decision === "accept" ? "All partners accepted" : "Manual decline"}
             </div>
             <p className="text-muted-foreground">
-              <strong className="font-mono text-rose-500">|C_choices| = {VENDORS.length} &gt; τ_overload = {TAU_OVERLOAD}</strong>{" "}
+              <strong className="font-mono text-red-500">|C_choices| = {VENDORS.length} &gt; τ_overload = {TAU_OVERLOAD}</strong>{" "}
               — the interface renders {VENDORS.length} distinct actionable toggles in one
               decision context, far beyond the {MILLER_LOW}–{MILLER_HIGH} item working-memory
               band.
             </p>
             <p className="text-muted-foreground">
               {decision === "accept"
-                ? `You accepted all ${VENDORS.length} partners in one click. Refusing would have meant manually switching off ${VENDORS.length} individual toggles with no reject-all shortcut — so the path of least resistance (Hick's Law) leads straight to the provider-favorable default.`
+                ? `All ${VENDORS.length} partners were accepted. You can review or change these settings below.`
                 : `You manually switched ${enabledCount} of ${VENDORS.length} partners off. The absence of a reject-all button makes refusal a ${VENDORS.length}-step slog, so most users give up and accept — exactly what the quantization is designed to achieve.`}
             </p>
           </div>

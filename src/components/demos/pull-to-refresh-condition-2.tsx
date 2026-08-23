@@ -148,13 +148,13 @@ export function PullToRefreshCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δt_animation [A]</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {(ANIM_DELAY_A / 1000).toFixed(2)}s — hardcoded
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δt_animation [B]</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">= Δt_network</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">= Δt_network</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">τ_suspense (threshold)</span>
@@ -174,7 +174,7 @@ export function PullToRefreshCond2({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Pulse — your feed</h3>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 {feed.length} posts
               </span>
             </div>
@@ -188,13 +188,13 @@ export function PullToRefreshCond2({
             </div>
 
             {phaseB === "refreshing" ? (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5">
-                <div className="flex items-center gap-1.5 text-[9px] text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5">
+                <div className="flex items-center gap-1.5 text-[9px] text-green-700 dark:text-green-300">
                   <RefreshSpinner /> Refreshing — {Math.round(elapsedB)}ms
                 </div>
                 <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-muted">
                   <div
-                    className="h-full rounded-full bg-emerald-500 transition-all"
+                    className="h-full rounded-full bg-green-500 transition-all"
                     style={{ width: `${Math.min(100, (elapsedB / 500) * 100)}%` }}
                   />
                 </div>
@@ -206,15 +206,15 @@ export function PullToRefreshCond2({
             ) : (
               <button
                 onClick={refreshB}
-                className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Refresh feed
               </button>
             )}
 
             {phaseB === "done" && netB !== null && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   Animation tracks the network
                 </div>
@@ -233,7 +233,7 @@ export function PullToRefreshCond2({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Pulse — your feed</h3>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               {feed.length} posts
             </span>
           </div>
@@ -258,7 +258,7 @@ export function PullToRefreshCond2({
               </div>
               <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-muted">
                 <div
-                  className="h-full rounded-full bg-rose-500 transition-all"
+                  className="h-full rounded-full bg-red-500 transition-all"
                   style={{ width: `${Math.min(100, (elapsedA / ANIM_DELAY_A) * 100)}%` }}
                 />
               </div>
@@ -272,15 +272,15 @@ export function PullToRefreshCond2({
           ) : (
             <button
               onClick={refreshA}
-              className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Refresh feed
             </button>
           )}
 
           {phaseA === "done" && netA !== null && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
                 Anticipation injected
               </div>
@@ -294,7 +294,7 @@ export function PullToRefreshCond2({
               </p>
               <p className="text-muted-foreground">
                 The extra {(ANIM_DELAY_A - netA).toFixed(0)}ms of spinning served no technical purpose —
-                the interface manufactured anticipation to maximize the dopamine spike before the reveal.
+                The update will appear shortly.
               </p>
             </div>
           )}

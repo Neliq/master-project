@@ -37,15 +37,15 @@ export function ConfirmshamingCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Tag(N_decline)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&lt;span&gt;</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&lt;span&gt;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">role=&quot;button&quot; on decline</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">absent</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">absent</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Keyboard-focusable exit</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">no</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">no</span>
       </div>
     </>
   ) : null;
@@ -70,7 +70,7 @@ export function ConfirmshamingCond1({
             <div className="mt-3 space-y-2">
               <button
                 onClick={() => setChoice("accept")}
-                className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
+                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
               >
                 Yes, claim my 10% discount
               </button>
@@ -83,9 +83,9 @@ export function ConfirmshamingCond1({
             </div>
           </div>
 
-          {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && choice && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -114,7 +114,7 @@ export function ConfirmshamingCond1({
           <div className="mt-3 space-y-2">
             <button
               onClick={() => setChoice("accept")}
-              className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
+              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
             >
               Yes, claim my 10% discount
             </button>
@@ -130,14 +130,14 @@ export function ConfirmshamingCond1({
           </div>
         </div>
 
-        {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && choice && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Structural asymmetry triggered
+              Preferences updated
             </div>
             <p className="text-muted-foreground">
               Tag(N_accept) = <strong className="text-foreground">&lt;button&gt;</strong> but{" "}

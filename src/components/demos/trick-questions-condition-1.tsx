@@ -47,11 +47,11 @@ export function TrickQuestionsCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Programmatic label (L_aria)</span>
-        <span className="font-mono font-semibold tabular-nums max-w-[55%] truncate text-right text-rose-500">{ARIA_LABEL_DARK}</span>
+        <span className="font-mono font-semibold tabular-nums max-w-[55%] truncate text-right text-red-500">{ARIA_LABEL_DARK}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">SemanticDist(L_aria, L_visual)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">1.0 &gt; &tau;</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">1.0 &gt; &tau;</span>
       </div>
     </>
   ) : null;
@@ -72,7 +72,7 @@ export function TrickQuestionsCond1({
                   You are currently subscribed. Manage your preference below.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Subscribed
               </div>
             </div>
@@ -82,7 +82,7 @@ export function TrickQuestionsCond1({
                 type="checkbox"
                 checked={checked}
                 onChange={(e) => setChecked(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                className="mt-0.5 flex-shrink-0 accent-green-500"
                 aria-label={ARIA_LABEL_BENIGN}
               />
               <div className="min-w-0 flex-1">
@@ -97,15 +97,15 @@ export function TrickQuestionsCond1({
 
             <button
               onClick={() => setSaved(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Save preferences
             </button>
           </div>
 
           {saved && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -129,7 +129,7 @@ export function TrickQuestionsCond1({
                 You are currently subscribed. Manage your preference below.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
               Subscribed
             </div>
           </div>
@@ -139,7 +139,7 @@ export function TrickQuestionsCond1({
               type="checkbox"
               checked={checked}
               onChange={(e) => setChecked(e.target.checked)}
-              className="mt-0.5 flex-shrink-0 accent-rose-500"
+              className="mt-0.5 flex-shrink-0 accent-red-500"
               aria-label={ARIA_LABEL_DARK}
             />
             <div className="min-w-0 flex-1">
@@ -154,26 +154,23 @@ export function TrickQuestionsCond1({
 
           <button
             onClick={() => setSaved(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Save preferences
           </button>
         </div>
 
-        {saved && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && saved && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Structural double-bind triggered
+              Subscription updated
             </div>
             <p className="text-muted-foreground">
-              You read <strong className="text-foreground">“{VISUAL_LABEL}”</strong> and checked the
-              box — that looks like confirming your subscription. But the control&rsquo;s programmatic
-              label is <strong className="text-rose-500">“{ARIA_LABEL_DARK}”</strong>, so the action
-              executed was the semantic opposite: {checked ? "you have been UNSUBSCRIBED from the newsletter." : "the setting is interpreted as an opt-out request."}
+              {checked ? "Your newsletter subscription has been cancelled." : "Your newsletter subscription remains active."}
             </p>
             <p className="text-muted-foreground">
               A screen reader or an automated agent reads L_aria, not the painted text — the two

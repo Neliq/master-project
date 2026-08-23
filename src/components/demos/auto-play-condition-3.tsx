@@ -81,19 +81,19 @@ export function AutoPlayCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Frame(T_autoplay)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{"{ Continuation, Next }"}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{"{ Continuation, Next }"}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Frame(T_autoplay)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">explicit disclosure</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">explicit disclosure</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&not;&exist; &ldquo;autoplay&rdquo; in T_visible</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True — word absent</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True — word absent</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&not;&exist; &ldquo;autoplay&rdquo; in T_visible</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">False — disclosed</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">False — disclosed</span>
       </div>
     </>
   ) : null;
@@ -109,7 +109,7 @@ export function AutoPlayCond3({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Streamly — end of episode</h3>
-              <span className="rounded-full border border-emerald-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-emerald-600 dark:text-emerald-400">
+              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
                 Autoplay: {autoB ? "ON" : "OFF"}
               </span>
             </div>
@@ -132,7 +132,7 @@ export function AutoPlayCond3({
                 {!startedB && !autoB && (
                   <button
                     onClick={() => setStartedB(true)}
-                    className="shrink-0 rounded bg-emerald-600 hover:bg-emerald-700 px-2.5 py-1 text-[9px] font-semibold text-white transition-colors cursor-pointer"
+                    className="shrink-0 rounded bg-green-600 hover:bg-green-700 px-2.5 py-1 text-[9px] font-semibold text-white transition-colors cursor-pointer"
                   >
                     Play now
                   </button>
@@ -140,7 +140,7 @@ export function AutoPlayCond3({
               </div>
             </div>
 
-            <div className="mt-2 flex items-center justify-between gap-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2">
+            <div className="mt-2 flex items-center justify-between gap-2 rounded-md border border-green-500/30 bg-green-500/5 p-2">
               <div>
                 <div className="text-[9px] font-medium text-foreground/85">Autoplay</div>
                 <div className="text-[8px] text-muted-foreground">
@@ -152,7 +152,7 @@ export function AutoPlayCond3({
                 role="switch"
                 aria-checked={autoB}
                 className={`relative h-4 w-7 shrink-0 rounded-full transition-colors cursor-pointer ${
-                  autoB ? "bg-emerald-500" : "bg-foreground/20"
+                  autoB ? "bg-green-500" : "bg-foreground/20"
                 }`}
               >
                 <span
@@ -170,12 +170,12 @@ export function AutoPlayCond3({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Streamly — end of episode</h3>
-            <span className="rounded-full border border-rose-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-rose-600 dark:text-rose-400">
+            <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
               Up next
             </span>
           </div>
 
-          <div className="mt-2 rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5">
+          <div className="mt-2 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
             <div className="text-[8px] font-mono uppercase tracking-wider text-muted-foreground">
               Continue watching
             </div>
@@ -188,7 +188,7 @@ export function AutoPlayCond3({
                     : `Up next — starting in ${countA}s`}
                 </div>
               </div>
-              <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-rose-500" fill="currentColor">
+              <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-red-500" fill="currentColor">
                 <path d="M4 5v14l13-7L4 5z" />
               </svg>
             </div>
@@ -198,9 +198,9 @@ export function AutoPlayCond3({
             Nothing here says &ldquo;autoplay.&rdquo; The word appears nowhere on this screen —
             the automatic start is framed purely as your seamless viewing experience.
           </p>
-          {startedA && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          {mode === "auditor" && startedA && (
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />

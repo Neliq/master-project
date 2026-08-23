@@ -56,19 +56,19 @@ export function DisguisedAdCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">sim(v_ad, v_native) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{SIM_DARK} &gt; τ_blend ({TAU_BLEND})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{SIM_DARK} &gt; τ_blend ({TAU_BLEND})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">sim(v_ad, v_native) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{SIM_BENIGN} &le; τ_blend</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{SIM_BENIGN} &le; τ_blend</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Matched features (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">bg · type · radius · ratio</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">bg · type · radius · ratio</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Disclosure (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">none — fully camouflaged</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">none — fully camouflaged</span>
       </div>
     </>
   ) : null;
@@ -87,11 +87,11 @@ export function DisguisedAdCond2({
       onClick={onOpen}
       className="w-full rounded-md border bg-card p-2 text-left transition-colors hover:bg-muted/60 cursor-pointer"
     >
-      <div className="mb-1.5 flex h-10 items-center justify-center rounded bg-gradient-to-br from-indigo-500/15 via-purple-500/15 to-pink-500/15">
+      <div className="mb-1.5 flex h-10 items-center justify-center rounded   ">
         {card.icon === "cpu" ? (
-          <Cpu className="h-4 w-4 text-indigo-500" />
+          <Cpu className="h-4 w-4 text-blue-500" />
         ) : (
-          <Rocket className="h-4 w-4 text-purple-500" />
+          <Rocket className="h-4 w-4 text-blue-500" />
         )}
       </div>
       <h4 className="text-[10px] font-semibold leading-snug">{card.title}</h4>
@@ -112,15 +112,15 @@ export function DisguisedAdCond2({
           <div className="space-y-2">
             {CARDS.filter((c) => c.id !== "ad").map((c) => articleCard(c, () => setClicked("article")))}
             {/* Ad card — visually DISTINCT (sim ≤ τ_blend) */}
-            <div className="rounded-md border-2 border-dashed border-amber-400/50 bg-amber-500/10 p-2">
+            <div className="rounded-md border-2 border-dashed border-yellow-400/50 bg-yellow-500/10 p-2">
               <div className="mb-1.5 flex items-center justify-between">
-                <span className="flex items-center gap-1 rounded-full bg-amber-500 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-white">
+                <span className="flex items-center gap-1 rounded-full bg-yellow-500 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-white">
                   <Megaphone className="h-2.5 w-2.5" /> Sponsored
                 </span>
                 <span className="text-[7px] font-medium text-muted-foreground">ad · third-party</span>
               </div>
               <div className="mb-1.5 flex h-10 items-center justify-center rounded bg-white/40 dark:bg-white/5">
-                <Rocket className="h-4 w-4 text-amber-500" />
+                <Rocket className="h-4 w-4 text-yellow-500" />
               </div>
               <h4 className="text-[10px] font-semibold leading-snug">Try the AI that writes your code for you</h4>
               <p className="mt-0.5 text-[8px] leading-relaxed text-muted-foreground">
@@ -128,7 +128,7 @@ export function DisguisedAdCond2({
               </p>
               <button
                 onClick={() => setClicked("ad")}
-                className="mt-1.5 w-full rounded border border-amber-400/60 py-1 text-[8px] font-semibold text-amber-700 dark:text-amber-300 transition-colors hover:bg-amber-500/10 cursor-pointer"
+                className="mt-1.5 w-full rounded border border-yellow-400/60 py-1 text-[8px] font-semibold text-yellow-700 dark:text-yellow-300 transition-colors hover:bg-yellow-500/10 cursor-pointer"
               >
                 Learn more about this offer
               </button>
@@ -136,13 +136,13 @@ export function DisguisedAdCond2({
           </div>
 
           {clicked === "article" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-muted-foreground">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-muted-foreground">
               Opening the article — that card was genuine editorial content on the host domain.
             </div>
           )}
           {clicked === "ad" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <Megaphone className="h-3 w-3" /> Clearly an ad before you clicked
               </div>
               <p className="text-muted-foreground">
@@ -162,8 +162,8 @@ export function DisguisedAdCond2({
             c.id === "ad" ? (
               /* Ad card — styled pixel-identically to the articles (sim > τ_blend), zero disclosure */
               <div key={c.id} className="relative rounded-md border bg-card p-2">
-                <div className="mb-1.5 flex h-10 items-center justify-center rounded bg-gradient-to-br from-indigo-500/15 via-purple-500/15 to-pink-500/15">
-                  <Rocket className="h-4 w-4 text-purple-500" />
+                <div className="mb-1.5 flex h-10 items-center justify-center rounded   ">
+                  <Rocket className="h-4 w-4 text-blue-500" />
                 </div>
                 <h4 className="text-[10px] font-semibold leading-snug">{c.title}</h4>
                 <p className="mt-0.5 text-[8px] leading-relaxed text-muted-foreground">{c.snippet}</p>
@@ -182,13 +182,13 @@ export function DisguisedAdCond2({
         </div>
 
         {clicked === "article" && (
-          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-muted-foreground">
+          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-muted-foreground">
             Opening the article — that card was genuine editorial content on the host domain.
           </div>
         )}
         {clicked === "ad" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -196,7 +196,7 @@ export function DisguisedAdCond2({
               Morphological mimicry — you clicked an ad
             </div>
             <p className="text-muted-foreground">
-              max sim(v<sub>ad</sub>, v<sub>i</sub>) = <strong className="text-rose-500">{SIM_DARK} &gt; τ<sub>blend</sub></strong>{" "}
+              max sim(v<sub>ad</sub>, v<sub>i</sub>) = <strong className="text-red-500">{SIM_DARK} &gt; τ<sub>blend</sub></strong>{" "}
               ({TAU_BLEND}). The ad reuses the exact background color, typography, border radius, and aspect ratio of the
               article cards, so Gestalt grouping merges it into the editorial contexture. There is no disclosure at all —
               no &ldquo;AD&rdquo; tag, no &ldquo;Sponsored&rdquo; marker, and a &ldquo;Read more&rdquo; label that mimics a native

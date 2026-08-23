@@ -50,7 +50,7 @@ export function PersuasiveLanguageCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|E(N_coercive)| (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{E_COERCIVE} listeners</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{E_COERCIVE} listeners</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|E(N_neutral)|</span>
@@ -58,7 +58,7 @@ export function PersuasiveLanguageCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Listener skew (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{E_COERCIVE}/{E_NEUTRAL} &gt; {TAU_LISTENER}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{E_COERCIVE}/{E_NEUTRAL} &gt; {TAU_LISTENER}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Hover events fired</span>
@@ -83,7 +83,7 @@ export function PersuasiveLanguageCond1({
                   Limited-time price on wireless earbuds.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 {E_NEUTRAL} listeners
               </div>
             </div>
@@ -98,15 +98,15 @@ export function PersuasiveLanguageCond1({
 
             <button
               onClick={() => setCart("added")}
-              className="mt-3 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Add to cart
             </button>
           </div>
 
-          {cart && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && cart && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -132,7 +132,7 @@ export function PersuasiveLanguageCond1({
                 Limited-time price on wireless earbuds.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               {E_COERCIVE} listeners
             </div>
           </div>
@@ -149,15 +149,15 @@ export function PersuasiveLanguageCond1({
             onKeyDown={() => { if (hoverFires > -1) setHoverFires((n) => n + 1); }}
             className={`mt-3 rounded-md border p-2.5 transition-all cursor-pointer select-none ${
               coerciveHovered
-                ? "border-rose-500 bg-rose-500/10 ring-2 ring-rose-500/40"
-                : "border-rose-500/40 bg-rose-500/5"
+                ? "border-red-500 bg-red-500/10 ring-2 ring-red-500/40"
+                : "border-red-500/40 bg-red-500/5"
             }`}
           >
-            <p className={`text-[10px] font-bold uppercase tracking-wide text-rose-600 dark:text-rose-400 transition-transform ${coerciveHovered ? "scale-[1.02]" : ""}`}>
+            <p className={`text-[10px] font-bold uppercase tracking-wide text-red-600 dark:text-red-400 transition-transform ${coerciveHovered ? "scale-[1.02]" : ""}`}>
               ⏰ Act now — Don&rsquo;t miss out on this price!
             </p>
             {coerciveHovered && (
-              <p className="mt-1 text-[8px] font-mono text-rose-500/80">
+              <p className="mt-1 text-[8px] font-mono text-red-500/80">
                 mouseenter fired — listener activity: {hoverFires} events
               </p>
             )}
@@ -170,22 +170,22 @@ export function PersuasiveLanguageCond1({
             onClick={() => setCart("added")}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium text-white transition-all cursor-pointer ${
               coerciveHovered
-                ? "bg-rose-500 ring-2 ring-rose-300 scale-[1.02]"
-                : "bg-rose-600 hover:bg-rose-700"
+                ? "bg-red-500 ring-2 ring-red-300 scale-[1.02]"
+                : "bg-red-600 hover:bg-red-700"
             }`}
           >
             Add to cart
           </button>
         </div>
 
-        {cart && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && cart && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Listener skew detected
+              Popular choice
             </div>
             <p className="text-muted-foreground">
               {hoverFires > 0

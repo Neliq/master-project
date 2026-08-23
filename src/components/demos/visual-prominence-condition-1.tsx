@@ -42,7 +42,7 @@ export function VisualProminenceCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|Desc(N_favorable)| (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{DESC_FAVORABLE} nodes</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DESC_FAVORABLE} nodes</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">median |Desc(sibling)|</span>
@@ -50,11 +50,11 @@ export function VisualProminenceCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Subtree ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{RATIO_DARK.toFixed(1)} &gt; {TAU_BLOAT}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK.toFixed(1)} &gt; {TAU_BLOAT}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Subtree ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">1.0 &le; {TAU_BLOAT}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">1.0 &le; {TAU_BLOAT}</span>
       </div>
     </>
   ) : null;
@@ -92,7 +92,7 @@ export function VisualProminenceCond1({
                   Confirm your purchase details below.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Subtree ratio 1.0
               </div>
             </div>
@@ -108,16 +108,16 @@ export function VisualProminenceCond1({
               </button>
               <button
                 onClick={() => setChoice("purchase")}
-                className="rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Complete purchase
               </button>
             </div>
           </div>
 
-          {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && choice && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -142,7 +142,7 @@ export function VisualProminenceCond1({
                 Confirm your purchase details below.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Subtree ratio 6.2
             </div>
           </div>
@@ -152,19 +152,19 @@ export function VisualProminenceCond1({
           {/* The favorable action: a structurally bloated subtree — 3 nested
               wrapper layers, a gradient overlay, an icon container, a badge. */}
           <div className="relative mt-3"> {/* wrapper A */}
-            <div className="rounded-md bg-gradient-to-r from-rose-500 to-orange-500 p-[1.5px] shadow-lg shadow-rose-500/20"> {/* wrapper B */}
-              <div className="relative overflow-hidden rounded-md bg-rose-600"> {/* wrapper C */}
-                <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)]" />
+            <div className="rounded-md   p-[1.5px] shadow-lg shadow-red-500/20"> {/* wrapper B */}
+              <div className="relative overflow-hidden rounded-md bg-red-600"> {/* wrapper C */}
+                <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-white/10" />
                 <button
                   onClick={() => setChoice("purchase")}
-                  className="relative flex w-full items-center justify-center gap-1.5 py-2.5 text-[10px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-rose-500 cursor-pointer"
+                  className="relative flex w-full items-center justify-center gap-1.5 py-2.5 text-[10px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-red-500 cursor-pointer"
                 >
                   <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
                   Complete purchase
                 </button>
-                <span className="absolute -top-1.5 -right-1.5 rounded-full bg-amber-400 px-1.5 py-px text-[7px] font-bold text-black shadow-sm">
+                <span className="absolute -top-1.5 -right-1.5 rounded-full bg-yellow-400 px-1.5 py-px text-[7px] font-bold text-black shadow-sm">
                   SAVE 20%
                 </span>
               </div>
@@ -180,14 +180,14 @@ export function VisualProminenceCond1({
           </button>
         </div>
 
-        {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && choice && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Subtree bloat detected
+              Order confirmed
             </div>
             <p className="text-muted-foreground">
               {choice === "purchase"
@@ -196,7 +196,7 @@ export function VisualProminenceCond1({
               <strong className="text-foreground">{DESC_FAVORABLE} descendant nodes</strong> (nested wrapper
               divs, a gradient overlay, an icon container, a badge) against a median of{" "}
               <strong className="text-foreground">{DESC_SIBLING_MEDIAN}</strong> for its siblings — a ratio of{" "}
-              <strong className="text-rose-500">{RATIO_DARK.toFixed(1)} &gt; {TAU_BLOAT}</strong>.
+              <strong className="text-red-500">{RATIO_DARK.toFixed(1)} &gt; {TAU_BLOAT}</strong>.
             </p>
             <p className="text-muted-foreground">
               Extra structural weight is pure decoration: it exists to make the business action look and

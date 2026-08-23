@@ -63,7 +63,7 @@ export function PlayingByAppointmentCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Appointment (t_depletion + τ)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{fmtAppointment(refills)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{fmtAppointment(refills)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">State(A_core) dark / benign</span>
@@ -88,7 +88,7 @@ export function PlayingByAppointmentCond1({
                   Harvest pumpkins. Energy refills over time — but you decide when to play.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 User-paced
               </div>
             </div>
@@ -97,17 +97,17 @@ export function PlayingByAppointmentCond1({
               <span className="text-muted-foreground">Energy</span>
               <span className="flex items-center gap-0.5">
                 {Array.from({ length: MAX_ENERGY }, (_, i) => (
-                  <span key={i} className={`inline-block h-2.5 w-2.5 rounded-sm ${i < energy ? "bg-emerald-500" : "bg-foreground/10"}`} />
+                  <span key={i} className={`inline-block h-2.5 w-2.5 rounded-sm ${i < energy ? "bg-green-500" : "bg-foreground/10"}`} />
                 ))}
               </span>
             </div>
             <p className="text-[9px] text-muted-foreground mt-1.5">
-              Pumpkins harvested: <span className="font-mono font-semibold tabular-nums text-emerald-600 dark:text-emerald-400">{harvests} 🎃</span>{" "}
+              Pumpkins harvested: <span className="font-mono font-semibold tabular-nums text-green-600 dark:text-green-400">{harvests} </span>{" "}
               · refill: 1 energy / {REFILL_MINUTES} min
             </p>
 
             {depleted && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
                 Energy empty — no problem. Keep harvesting at your own pace; energy simply
                 refills in the background.
               </div>
@@ -115,15 +115,15 @@ export function PlayingByAppointmentCond1({
 
             <button
               onClick={() => setHarvests((h) => h + 1)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Harvest a pumpkin (+1)
             </button>
           </div>
 
           {revealed && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -147,7 +147,7 @@ export function PlayingByAppointmentCond1({
                 Harvest pumpkins. When energy runs out, the farm closes — until we say otherwise.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Scheduled
             </div>
           </div>
@@ -156,29 +156,29 @@ export function PlayingByAppointmentCond1({
             <span className="text-muted-foreground">Energy</span>
             <span className="flex items-center gap-0.5">
               {Array.from({ length: MAX_ENERGY }, (_, i) => (
-                <span key={i} className={`inline-block h-2.5 w-2.5 rounded-sm ${i < energy ? "bg-rose-500" : "bg-foreground/10"}`} />
+                <span key={i} className={`inline-block h-2.5 w-2.5 rounded-sm ${i < energy ? "bg-red-500" : "bg-foreground/10"}`} />
               ))}
             </span>
           </div>
           <p className="text-[9px] text-muted-foreground mt-1.5">
-            Pumpkins harvested: <span className="font-mono font-semibold tabular-nums text-amber-500">{harvests} 🎃</span>{" "}
+            Pumpkins harvested: <span className="font-mono font-semibold tabular-nums text-yellow-500">{harvests} </span>{" "}
             · refill: 1 energy / {REFILL_MINUTES} min
           </p>
 
           {depleted ? (
             <>
-              <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/10 p-2.5">
-                <p className="text-[10px] font-semibold text-amber-700 dark:text-amber-300">
+              <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/10 p-2.5">
+                <p className="text-[10px] font-semibold text-yellow-700 dark:text-yellow-300">
                   ⚡ Out of energy
                 </p>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
                   The farm is closed for now. Come back at{" "}
-                  <strong className="font-mono tabular-nums text-rose-500">{fmtAppointment(refills)}</strong>{" "}
+                  <strong className="font-mono tabular-nums text-red-500">{fmtAppointment(refills)}</strong>{" "}
                   to harvest again. (1 energy refills every {REFILL_MINUTES} min.)
                 </p>
                 <button
                   onClick={() => setRefills((r) => r + 1)}
-                  className="mt-2 w-full rounded-md border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 text-amber-700 dark:text-amber-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="mt-2 w-full rounded-md border border-yellow-500/40 bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   ⏩ Simulate waiting {REFILL_MINUTES} min
                 </button>
@@ -193,25 +193,25 @@ export function PlayingByAppointmentCond1({
           ) : (
             <button
               onClick={() => setHarvests((h) => h + 1)}
-              className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Harvest a pumpkin (+1)
             </button>
           )}
         </div>
 
-        {revealed && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && revealed && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Temporal gate triggered
+              Event details
             </div>
             <p className="text-muted-foreground">
               After {harvests} harvests the core action hit{" "}
-              <strong className="text-rose-500">State(A_core) = Blocked</strong> until t ≥ t_depletion + τ_refill
+              <strong className="text-red-500">State(A_core) = Blocked</strong> until t ≥ t_depletion + τ_refill
               (τ_refill = {REFILL_MINUTES} min/unit). The game dictates an appointment —{" "}
               <strong className="font-mono tabular-nums">{fmtAppointment(refills)}</strong> — that moves
               every time you wait. Your skill and effort are irrelevant; the schedule owns you,

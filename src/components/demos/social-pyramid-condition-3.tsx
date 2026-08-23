@@ -54,19 +54,19 @@ export function SocialPyramidCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Intensity(Reward_1..3) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">1 &rarr; 3 &rarr; 9</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">1 &rarr; 3 &rarr; 9</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Intensity — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">1 &rarr; 1 &rarr; 1</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">1 &rarr; 1 &rarr; 1</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Growth &Delta;I&#8323;/&Delta;I&#8322; (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{GROWTH_DARK} &gt; &tau;</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{GROWTH_DARK} &gt; &tau;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Growth (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{GROWTH_BENIGN} &le; &tau;</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{GROWTH_BENIGN} &le; &tau;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&tau;_escalation</span>
@@ -87,14 +87,14 @@ export function SocialPyramidCond3({
           className={`w-full rounded-md border p-2 text-left transition-colors cursor-pointer ${
             selected === t.tier
               ? accent === "rose"
-                ? "border-rose-500/60 bg-rose-500/5"
-                : "border-emerald-500/60 bg-emerald-500/5"
+                ? "border-red-500/60 bg-red-500/5"
+                : "border-green-500/60 bg-green-500/5"
               : "border-border bg-background hover:bg-muted"
           }`}
         >
           <div className="flex items-center justify-between">
             <span className={`font-mono text-[8px] font-semibold uppercase tracking-wider ${
-              accent === "rose" ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"
+              accent === "rose" ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
             }`}>
               Tier {t.tier} · {t.invites} invite{t.invites === 1 ? "" : "s"}
             </span>
@@ -104,7 +104,7 @@ export function SocialPyramidCond3({
           </div>
           <div className={`mt-0.5 text-[9px] leading-relaxed ${
             t.tier === 3 && accent === "rose"
-              ? "font-bold text-rose-600 dark:text-rose-400"
+              ? "font-bold text-red-600 dark:text-red-400"
               : "text-foreground/80"
           }`}>
             {t.reward}
@@ -131,8 +131,8 @@ export function SocialPyramidCond3({
           </div>
 
           {selected && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -156,24 +156,24 @@ export function SocialPyramidCond3({
             Invite friends to climb the ranks. Tap a tier to inspect it.
           </p>
           <div className="mt-2.5">{tierList(TIERS_DARK, "rose")}</div>
-          <p className="mt-2 text-center text-[8px] font-semibold uppercase tracking-wider text-rose-600 dark:text-rose-400">
-            🔥 You&rsquo;re just 2 invites from VIP Legend status!
+          <p className="mt-2 text-center text-[8px] font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">
+             You&rsquo;re just 2 invites from VIP Legend status!
           </p>
         </div>
 
-        {selected && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && selected && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Escalation triggered
+              Unlock the next reward
             </div>
             <p className="text-muted-foreground">
               Tier {selected} promises &ldquo;{TIERS_DARK.find((t) => t.tier === selected)?.reward}&rdquo; —
               semantic intensity runs 1 &rarr; 3 &rarr; 9 across tiers, so &Delta;I&#8323;/&Delta;I&#8322; ={" "}
-              <strong className="text-rose-500">{GROWTH_DARK}</strong> &gt; &tau;_escalation (
+              <strong className="text-red-500">{GROWTH_DARK}</strong> &gt; &tau;_escalation (
               {TAU_ESCALATION.toFixed(1)}). The linguistic framing of rewards follows an exponential
               curve: each tier&rsquo;s hype outpaces the previous one&rsquo;s, manufacturing urgency that
               pyramid-recruitment structures rely on.

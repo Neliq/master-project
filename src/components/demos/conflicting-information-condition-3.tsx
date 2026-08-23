@@ -42,7 +42,7 @@ export function ConflictingInformationCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Sem(t₁) ∧ Sem(t₂)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">unsatisfiable</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">unsatisfiable</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">N_container</span>
@@ -62,23 +62,23 @@ export function ConflictingInformationCond3({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                  <Crown className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                  <Crown className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
                 </div>
                 <h3 className="text-[11px] font-semibold">CloudPlus Pro</h3>
               </div>
-              <div className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">$12/mo</div>
+              <div className="text-[10px] font-bold text-green-600 dark:text-green-400">$12/mo</div>
             </div>
 
             <ul className="mt-3 space-y-1 text-[10px] text-foreground/80">
               <li className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-3 w-3 text-emerald-500" /> 50 GB storage
+                <CheckCircle2 className="h-3 w-3 text-green-500" /> 50 GB storage
               </li>
               <li className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-3 w-3 text-emerald-500" /> Unlimited projects
+                <CheckCircle2 className="h-3 w-3 text-green-500" /> Unlimited projects
               </li>
               <li className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-3 w-3 text-emerald-500" /> Priority support
+                <CheckCircle2 className="h-3 w-3 text-green-500" /> Priority support
               </li>
             </ul>
 
@@ -89,15 +89,15 @@ export function ConflictingInformationCond3({
 
             <button
               onClick={() => setChosen(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Choose Pro — $12/mo
             </button>
           </div>
 
           {chosen && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
                 Plan selected — claims consistent
               </div>
@@ -115,23 +115,23 @@ export function ConflictingInformationCond3({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-                <Crown className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+                <Crown className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
               </div>
               <h3 className="text-[11px] font-semibold">CloudPlus Pro — Unlimited</h3>
             </div>
-            <div className="text-[10px] font-bold text-rose-600 dark:text-rose-400">$12/mo</div>
+            <div className="text-[10px] font-bold text-red-600 dark:text-red-400">$12/mo</div>
           </div>
 
           <ul className="mt-3 space-y-1 text-[10px] text-foreground/80">
             <li className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-3 w-3 text-rose-500" /> Unlimited storage
+              <CheckCircle2 className="h-3 w-3 text-red-500" /> Unlimited storage
             </li>
             <li className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-3 w-3 text-rose-500" /> Unlimited projects
+              <CheckCircle2 className="h-3 w-3 text-red-500" /> Unlimited projects
             </li>
             <li className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-3 w-3 text-rose-500" /> Priority support
+              <CheckCircle2 className="h-3 w-3 text-red-500" /> Priority support
             </li>
           </ul>
 
@@ -142,24 +142,24 @@ export function ConflictingInformationCond3({
 
           <button
             onClick={() => setChosen(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Choose Pro — $12/mo
           </button>
         </div>
 
-        {chosen && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && chosen && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="w-3 h-3" />
-              Unsatisfiable conjunction detected
+              Storage details
             </div>
             <p className="text-muted-foreground">
               The card&rsquo;s headline claims <strong className="text-foreground">“Unlimited
               storage”</strong> while its own fine print states{" "}
-              <strong className="text-rose-500">“Storage is capped at 5 GB on all plans.”</strong>{" "}
+              <strong className="text-red-500">“Storage is capped at 5 GB on all plans.”</strong>{" "}
               The logical intersection of the constraints is empty:{" "}
-              <strong className="text-rose-500">Sem(t₁) ∧ Sem(t₂) ⇒ Unsatisfiable</strong> — a
+              <strong className="text-red-500">Sem(t₁) ∧ Sem(t₂) ⇒ Unsatisfiable</strong> — a
               paradox no plan could satisfy.
             </p>
             <p className="text-muted-foreground">

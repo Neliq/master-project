@@ -60,11 +60,11 @@ export function ForcedContinuityCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Consent_explicit(t) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">False — never asked</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">False — never asked</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Consent_explicit(t) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{bChoice ? "True — recorded" : "requested at t_expiry"}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{bChoice ? "True — recorded" : "requested at t_expiry"}</span>
       </div>
     </>
   ) : null;
@@ -87,7 +87,7 @@ export function ForcedContinuityCond1({
                     : `${daysLeft} day${daysLeft === 1 ? "" : "s"} of free trial remaining.`}
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 {bChoice === "cancel" ? "cancelled" : trialEnded && bChoice === "continue" ? "premium" : "trial"}
               </div>
             </div>
@@ -135,7 +135,7 @@ export function ForcedContinuityCond1({
                 <div className="mt-2 flex gap-2">
                   <button
                     onClick={() => setBChoice("continue")}
-                    className="flex-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                    className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                   >
                     Yes — charge me {PLAN_PRICE}/mo
                   </button>
@@ -182,7 +182,7 @@ export function ForcedContinuityCond1({
                   : `${daysLeft} day${daysLeft === 1 ? "" : "s"} of free trial remaining.`}
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 text-rose-500 border-rose-500/30">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 text-red-500 border-red-500/30">
               {trialEnded ? "S_premium" : "S_trial"}
             </div>
           </div>
@@ -202,13 +202,13 @@ export function ForcedContinuityCond1({
           )}
 
           {trialEnded && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Silently converted — charged {PLAN_PRICE}
+                Your Premium plan is now active
               </div>
               <p className="text-muted-foreground mt-0.5">
                 t ≥ t_expiry fired <strong className="text-foreground">S_account(t): S_trial → S_premium</strong> and{" "}

@@ -50,15 +50,15 @@ export function FriendSpamCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">E_backend_action(T_access)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">SendMessages()</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">SendMessages()</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|M_dispatched|</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{darkDone ? NETWORK_SIZE : 0} (dark) / {benignDone ? 0 : 0} (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{darkDone ? NETWORK_SIZE : 0} (dark) / {benignDone ? 0 : 0} (benign)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Contacts matched (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{MATCHED_FRIENDS.length}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{MATCHED_FRIENDS.length}</span>
       </div>
     </>
   ) : null;
@@ -80,7 +80,7 @@ export function FriendSpamCond1({
                   find friends already on the platform.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 {granted ? "Connected" : "Read-only"}
               </div>
             </div>
@@ -91,7 +91,7 @@ export function FriendSpamCond1({
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 granted
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               {granted ? "Access granted" : "Allow access to contacts"}
@@ -99,8 +99,8 @@ export function FriendSpamCond1({
           </div>
 
           {benignDone && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -134,7 +134,7 @@ export function FriendSpamCond1({
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               granted
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
             {granted ? "Access granted" : "Allow access to contacts"}

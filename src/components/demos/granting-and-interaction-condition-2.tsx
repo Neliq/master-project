@@ -49,19 +49,19 @@ export function GrantingAndInteractionCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Pos(M) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{POS_MODAL_DARK}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{POS_MODAL_DARK}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Pos(M) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{POS_MODAL_BENIGN}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{POS_MODAL_BENIGN}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δdist (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0px (identical)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0px (identical)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δt injection (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">~4ms after tap</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">~4ms after tap</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Notifications</span>
@@ -74,9 +74,9 @@ export function GrantingAndInteractionCond2({
     <span
       className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[8px] font-semibold uppercase tracking-wider ${
         notif === "granted"
-          ? "border-rose-500/30 text-rose-500"
+          ? "border-red-500/30 text-red-500"
           : notif === "declined"
-            ? "border-emerald-500/30 text-emerald-500"
+            ? "border-green-500/30 text-green-500"
             : "border-border text-muted-foreground"
       }`}
     >
@@ -89,8 +89,8 @@ export function GrantingAndInteractionCond2({
       onClick={() => setPlayed(true)}
       className={`w-full rounded-md py-3 text-[11px] font-bold transition-colors cursor-pointer ${
         accent === "rose"
-          ? "bg-rose-600 hover:bg-rose-700 text-white"
-          : "bg-emerald-600 hover:bg-emerald-700 text-white"
+          ? "bg-red-600 hover:bg-red-700 text-white"
+          : "bg-green-600 hover:bg-green-700 text-white"
       }`}
     >
       ▶ Play live stream
@@ -143,7 +143,7 @@ export function GrantingAndInteractionCond2({
                   </button>
                   <button
                     onClick={() => setNotif("granted")}
-                    className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                    className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Allow
                   </button>
@@ -153,8 +153,8 @@ export function GrantingAndInteractionCond2({
           </div>
 
           {played && notif !== "none" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -199,9 +199,9 @@ export function GrantingAndInteractionCond2({
 
             {/* The system prompt is injected at the exact coordinates of the Play button. */}
             {played && notif === "none" && (
-              <div className="absolute inset-0 z-10 rounded-md border-2 border-sky-500/60 bg-background p-3 shadow-lg">
+              <div className="absolute inset-0 z-10 rounded-md border-2 border-blue-500/60 bg-background p-3 shadow-lg">
                 <div className="flex items-center gap-1.5">
-                  <svg className="h-3.5 w-3.5 text-sky-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
                     <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                   </svg>
@@ -219,12 +219,12 @@ export function GrantingAndInteractionCond2({
                   </button>
                   <button
                     onClick={() => setNotif("granted")}
-                    className="rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                    className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Allow
                   </button>
                 </div>
-                <p className="mt-1 text-center text-[7px] font-mono text-sky-600 dark:text-sky-400">
+                <p className="mt-1 text-center text-[7px] font-mono text-blue-600 dark:text-blue-400">
                   injected at {POS_MODAL_DARK} — same coordinates as Play
                 </p>
               </div>
@@ -233,13 +233,13 @@ export function GrantingAndInteractionCond2({
         </div>
 
         {played && notif === "none" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Misdirection active
+              Notification settings
             </div>
             <p className="text-muted-foreground">
               Your tap was meant for B_benign (Play), but Pos(M_system_prompt, t) &asymp; Pos(B_benign, t)
@@ -251,10 +251,10 @@ export function GrantingAndInteractionCond2({
 
         {played && notif !== "none" && (
           <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
-            notif === "granted" ? "border-rose-500/30 bg-rose-500/5" : "border-emerald-500/30 bg-emerald-500/5"
+            notif === "granted" ? "border-red-500/30 bg-red-500/5" : "border-green-500/30 bg-green-500/5"
           }`}>
             <div className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
-              notif === "granted" ? "text-rose-700 dark:text-rose-300" : "text-emerald-700 dark:text-emerald-300"
+              notif === "granted" ? "text-red-700 dark:text-red-300" : "text-green-700 dark:text-green-300"
             }`}>
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 {notif === "granted" ? (
@@ -263,7 +263,7 @@ export function GrantingAndInteractionCond2({
                   <path d="M20 6L9 17l-5-5" />
                 )}
               </svg>
-              {notif === "granted" ? "Involuntary grant" : "Momentum dodged"}
+              {notif === "granted" ? "Notifications enabled" : "Momentum dodged"}
             </div>
             <p className="text-muted-foreground">
               {notif === "granted"

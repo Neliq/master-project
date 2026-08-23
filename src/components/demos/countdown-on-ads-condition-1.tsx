@@ -118,7 +118,7 @@ export function CountdownOnAdsCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">State(B_skip)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">Disabled (A) / Enabled (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">Disabled (A) / Enabled (B)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Intercepted dismiss attempts</span>
@@ -140,15 +140,15 @@ export function CountdownOnAdsCond1({
             {phaseB === "idle" && (
               <button
                 onClick={playB}
-                className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 <Play className="size-3" /> Play video
               </button>
             )}
 
             {phaseB === "ad" && (
-              <div className="relative mt-2 overflow-hidden rounded-md border border-emerald-500/30">
-                <div className="bg-gradient-to-br from-emerald-600 to-teal-700 p-4 text-white">
+              <div className="relative mt-2 overflow-hidden rounded-md border border-green-500/30">
+                <div className="  p-4 text-white">
                   <div className="text-[8px] font-semibold uppercase tracking-widest opacity-80">
                     Sponsored
                   </div>
@@ -163,12 +163,12 @@ export function CountdownOnAdsCond1({
                   </div>
                 </div>
                 <div className="flex items-center justify-between bg-background px-2 py-1.5">
-                  <span className="text-[9px] font-semibold text-emerald-700 dark:text-emerald-300">
+                  <span className="text-[9px] font-semibold text-green-700 dark:text-green-300">
                     Skippable now — no wait
                   </span>
                   <button
                     onClick={skipB}
-                    className="rounded bg-emerald-600 hover:bg-emerald-700 px-2.5 py-1 text-[9px] font-semibold text-white transition-colors cursor-pointer"
+                    className="rounded bg-green-600 hover:bg-green-700 px-2.5 py-1 text-[9px] font-semibold text-white transition-colors cursor-pointer"
                   >
                     Skip ad
                   </button>
@@ -177,8 +177,8 @@ export function CountdownOnAdsCond1({
             )}
 
             {phaseB === "playing" && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-3 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-3 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   Video playing
                 </div>
@@ -199,15 +199,15 @@ export function CountdownOnAdsCond1({
           {phaseA === "idle" && (
             <button
               onClick={playA}
-              className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               <Play className="size-3" /> Play video
             </button>
           )}
 
           {phaseA === "ad" && (
-            <div className="relative mt-2 overflow-hidden rounded-md border border-rose-500/30">
-              <div className="bg-gradient-to-br from-rose-600 to-orange-700 p-4 text-white">
+            <div className="relative mt-2 overflow-hidden rounded-md border border-red-500/30">
+              <div className="  p-4 text-white">
                 <div className="text-[8px] font-semibold uppercase tracking-widest opacity-80">
                   Sponsored
                 </div>
@@ -248,24 +248,24 @@ export function CountdownOnAdsCond1({
                   className={`rounded px-2.5 py-1 text-[9px] font-semibold transition-colors ${
                     skipDisabledA
                       ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                      : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                      : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                   }`}
                 >
                   {skipDisabledA ? `Skip in ${remainingA}s` : "Skip ad"}
                 </button>
               </div>
               {interceptedFlash && (
-                <div className="flex items-center gap-1 border-t border-amber-500/30 bg-amber-500/10 px-2 py-1 text-[8px] font-semibold text-amber-700 dark:text-amber-300">
+                <div className="flex items-center gap-1 border-t border-yellow-500/30 bg-yellow-500/10 px-2 py-1 text-[8px] font-semibold text-yellow-700 dark:text-yellow-300">
                   <AlertTriangle className="size-2.5" />
-                  Interaction intercepted — B_skip is Disabled while t_active &lt; τ_lock
+                  Please wait…
                 </div>
               )}
             </div>
           )}
 
           {phaseA === "playing" && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
                 Temporal gating enforced
               </div>

@@ -49,15 +49,15 @@ export function ForcedContinuityCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Visible(w, t) in window (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">False — micro-text</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">False — micro-text</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CR(w, L_bg) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">1.8 &lt; 3.0</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">1.8 &lt; 3.0</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Visible(w, t) in window (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">True — banner, CR 7.4</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">True — banner, CR 7.4</span>
       </div>
     </>
   ) : null;
@@ -72,8 +72,8 @@ export function ForcedContinuityCond2({
         <div className="space-y-3">
           {/* Prominent renewal banner — Visible(w, t) = True */}
           {inNoticeWindow && (
-            <div className="rounded-md border border-amber-500/40 bg-amber-500/15 p-3">
-              <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
+            <div className="rounded-md border border-yellow-500/40 bg-yellow-500/15 p-3">
+              <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-yellow-700 dark:text-yellow-300">
                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
                   <path d="M12 9v4m0 4h.01" />
@@ -86,7 +86,7 @@ export function ForcedContinuityCond2({
               </p>
               <button
                 onClick={() => {}}
-                className="mt-2 rounded-md border border-amber-500/50 bg-background px-3 py-1 text-[10px] font-medium text-amber-700 dark:text-amber-300 hover:bg-amber-500/10 transition-colors cursor-pointer"
+                className="mt-2 rounded-md border border-yellow-500/50 bg-background px-3 py-1 text-[10px] font-medium text-yellow-700 dark:text-yellow-300 hover:bg-yellow-500/10 transition-colors cursor-pointer"
               >
                 Manage subscription
               </button>
@@ -103,7 +103,7 @@ export function ForcedContinuityCond2({
                     : `Renews in ${daysLeft} day${daysLeft === 1 ? "" : "s"}.`}
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Active
               </div>
             </div>
@@ -121,8 +121,8 @@ export function ForcedContinuityCond2({
           </button>
 
           {daysLeft === 0 && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -148,7 +148,7 @@ export function ForcedContinuityCond2({
                   : `Renews in ${daysLeft} day${daysLeft === 1 ? "" : "s"}.`}
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
               Active
             </div>
           </div>
@@ -156,7 +156,7 @@ export function ForcedContinuityCond2({
           {/* The only renewal notice: micro-text, low contrast, tiny area */}
           <div className="mt-2 rounded-md border border-border bg-background px-3 py-2">
             <span className="text-[7px] text-muted-foreground/40 leading-none">
-              Renewal notice (w ∈ W_renewal): plan renews in {daysLeft}d — {PLAN_PRICE} charged to •••• 4242
+              Renews in {daysLeft} days · {PLAN_PRICE}/month · •••• 4242
             </span>
           </div>
 
@@ -174,13 +174,13 @@ export function ForcedContinuityCond2({
         </button>
 
         {daysLeft === 0 && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Renewed — no warning ever seen
+              Your plan renewed today
             </div>
             <p className="text-muted-foreground mt-0.5">
               The renewal notice existed the whole time, but at 7px with ~1.8:1 contrast its effective area was far

@@ -67,19 +67,19 @@ export function PayToAvoidCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">U_default (free tier)</span>
-        <span className={`font-mono font-semibold tabular-nums ${darkDegraded ? "text-rose-500" : "text-emerald-500"}`}>
+        <span className={`font-mono font-semibold tabular-nums ${darkDegraded ? "text-red-500" : "text-green-500"}`}>
           {darkDegraded ? U_DEFAULT_DARK : U_SYSTEM}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">D_artificial</span>
-        <span className={`font-mono font-semibold tabular-nums max-w-[55%] truncate text-right ${darkDegraded ? "text-rose-500" : "text-emerald-500"}`}>
+        <span className={`font-mono font-semibold tabular-nums max-w-[55%] truncate text-right ${darkDegraded ? "text-red-500" : "text-green-500"}`}>
           {darkDegraded ? "{throttle, watermark, ad}" : "∅ (none)"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">U_default / U_system</span>
-        <span className={`font-mono font-semibold tabular-nums ${darkDegraded ? "text-rose-500" : "text-emerald-500"}`}>
+        <span className={`font-mono font-semibold tabular-nums ${darkDegraded ? "text-red-500" : "text-green-500"}`}>
           {ratio.toFixed(3)} {darkDegraded ? "(≪ 1)" : "(= 1)"}
         </span>
       </div>
@@ -102,8 +102,8 @@ export function PayToAvoidCond1({
           </div>
           <div className={`text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 ${
             isDark
-              ? "text-rose-500 border-rose-500/30"
-              : "text-emerald-500 border-emerald-500/30"
+              ? "text-red-500 border-red-500/30"
+              : "text-green-500 border-green-500/30"
           }`}>
             {plan === "paid" ? "Paid plan" : "Free plan"}
           </div>
@@ -114,13 +114,13 @@ export function PayToAvoidCond1({
           <div className="text-[9px] text-muted-foreground font-mono">city-map-project · preview.png</div>
           {degraded && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="text-[16px] font-black uppercase tracking-widest text-rose-500/40 -rotate-12 select-none">
+              <div className="text-[16px] font-black uppercase tracking-widest text-red-500/40 -rotate-12 select-none">
                 SwiftDrop watermark
               </div>
             </div>
           )}
           {degraded && (
-            <div className="absolute bottom-1 left-1 text-[8px] font-mono uppercase tracking-wider bg-rose-500/15 text-rose-600 dark:text-rose-300 rounded px-1.5 py-0.5">
+            <div className="absolute bottom-1 left-1 text-[8px] font-mono uppercase tracking-wider bg-red-500/15 text-red-600 dark:text-red-300 rounded px-1.5 py-0.5">
               non-removable watermark (free)
             </div>
           )}
@@ -130,12 +130,12 @@ export function PayToAvoidCond1({
         <div className="mt-3 space-y-1.5">
           <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
             <span>{downloading ? (degraded ? "↓ 40 KB/s (artificially capped)" : "↓ 18 MB/s") : "idle"}</span>
-            <span className={degraded ? "text-rose-500" : "text-emerald-500"}>{Math.floor(progress)}%</span>
+            <span className={degraded ? "text-red-500" : "text-green-500"}>{Math.floor(progress)}%</span>
           </div>
           <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
             <div
               className={`h-full rounded-full transition-all duration-200 ${
-                degraded ? "bg-rose-500" : "bg-emerald-500"
+                degraded ? "bg-red-500" : "bg-green-500"
               }`}
               style={{ width: `${progress}%` }}
             />
@@ -145,8 +145,8 @@ export function PayToAvoidCond1({
               onClick={() => setDownloading((d) => !d)}
               className={`flex-1 rounded-md py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
                 isDark
-                  ? "bg-rose-600 hover:bg-rose-700 text-white"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                  ? "bg-red-600 hover:bg-red-700 text-white"
+                  : "bg-green-600 hover:bg-green-700 text-white"
               }`}
             >
               {downloading ? "Pause" : "Download (free plan)"}
@@ -160,12 +160,12 @@ export function PayToAvoidCond1({
             </button>
           </div>
           {degraded && (
-            <div className="text-[8px] text-rose-500/90 leading-relaxed">
-              D_artificial active: speed throttle (40 KB/s vs 18 MB/s capacity) · watermark · 1 queued ad
+            <div className="text-[8px] text-red-500/90 leading-relaxed">
+              Free plan · Includes ads and standard download speeds
             </div>
           )}
           {!isDark && !degraded && (
-            <div className="text-[8px] text-emerald-600 dark:text-emerald-400 leading-relaxed">
+            <div className="text-[8px] text-green-600 dark:text-green-400 leading-relaxed">
               No degradation injected: U_default = U_system = {U_SYSTEM}. The download crawls only if you
               pause it yourself.
             </div>
@@ -173,7 +173,7 @@ export function PayToAvoidCond1({
         </div>
 
         {/* Upgrade card */}
-        <div className={`mt-3 rounded-md border p-2.5 ${isDark ? "border-amber-500/30 bg-amber-500/5" : "border-emerald-500/30 bg-emerald-500/5"}`}>
+        <div className={`mt-3 rounded-md border p-2.5 ${isDark ? "border-yellow-500/30 bg-yellow-500/5" : "border-green-500/30 bg-green-500/5"}`}>
           <div className="text-[10px] font-semibold">
             {isDark ? "Remove engineered friction — $3.99/mo" : "Upgrade for extra features — $3.99/mo"}
           </div>
@@ -189,8 +189,8 @@ export function PayToAvoidCond1({
               plan === "paid"
                 ? "bg-muted text-muted-foreground/50 cursor-default"
                 : isDark
-                  ? "bg-amber-500 hover:bg-amber-600 text-white cursor-pointer"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  ? "bg-yellow-500 hover:bg-yellow-600 text-white cursor-pointer"
+                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
             }`}
           >
             {plan === "paid" ? "Upgrade applied ✓" : "Pay $3.99/mo"}
@@ -199,9 +199,9 @@ export function PayToAvoidCond1({
 
         {plan === "paid" && (
           <div className={`mt-2 rounded-md border p-2.5 text-[9px] leading-relaxed ${
-            isDark ? "border-emerald-500/30 bg-emerald-500/5" : "border-emerald-500/30 bg-emerald-500/5"
+            isDark ? "border-green-500/30 bg-green-500/5" : "border-green-500/30 bg-green-500/5"
           }`}>
-            <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

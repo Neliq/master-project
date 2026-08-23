@@ -60,15 +60,15 @@ export function CustomisationCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d(S_0, S_reject_all) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{2} clicks</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{2} clicks</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d(S_0, S_reject_all) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{1} click</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{1} click</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Formula: 1 = 1 &and; 2 &ge; 2</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">TRUE</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
       </div>
     </>
   ) : null;
@@ -84,8 +84,8 @@ export function CustomisationCond1({
           {!customising ? (
             <div className="rounded-md border bg-card p-3">
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                  <svg className="h-4 w-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                  <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6m2-6h6m2 8h6" />
                   </svg>
                 </div>
@@ -100,13 +100,13 @@ export function CustomisationCond1({
               <div className="mt-3 grid grid-cols-2 gap-2">
                 <button
                   onClick={() => { setOutcome("accepted"); setAcceptedVia("layer1"); }}
-                  className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+                  className="w-full rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
                 >
                   Accept All
                 </button>
                 <button
                   onClick={() => setOutcome("rejected")}
-                  className="w-full rounded-md border border-emerald-600/50 bg-background hover:bg-emerald-500/10 py-2 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 transition-colors cursor-pointer"
+                  className="w-full rounded-md border border-green-600/50 bg-background hover:bg-green-500/10 py-2 text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors cursor-pointer"
                 >
                   Reject All
                 </button>
@@ -137,7 +137,7 @@ export function CustomisationCond1({
                       checked={onIds.includes(c.id)}
                       disabled={c.locked}
                       onChange={() => toggle(c.id)}
-                      className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${c.locked ? "" : "accent-emerald-500"}`}
+                      className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${c.locked ? "" : "accent-green-500"}`}
                     />
                     <span className="min-w-0 flex-1">
                       <span className={`block text-[10px] leading-relaxed ${c.locked ? "text-muted-foreground/50" : "text-foreground/80"}`}>
@@ -151,13 +151,13 @@ export function CustomisationCond1({
               <div className="mt-2.5 grid grid-cols-2 gap-2">
                 <button
                   onClick={() => { setCustomising(false); setOutcome("rejected"); }}
-                  className="w-full rounded-md border border-emerald-600/50 bg-background hover:bg-emerald-500/10 py-1.5 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 transition-colors cursor-pointer"
+                  className="w-full rounded-md border border-green-600/50 bg-background hover:bg-green-500/10 py-1.5 text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors cursor-pointer"
                 >
                   Reject All
                 </button>
                 <button
                   onClick={() => { setCustomising(false); setOutcome("accepted"); setAcceptedVia("custom"); }}
-                  className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+                  className="w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer"
                 >
                   Save preferences
                 </button>
@@ -166,8 +166,8 @@ export function CustomisationCond1({
           )}
 
           {outcome !== "none" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -187,8 +187,8 @@ export function CustomisationCond1({
         {!customising ? (
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-                <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+                <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6m2-6h6m2 8h6" />
                 </svg>
               </div>
@@ -202,7 +202,7 @@ export function CustomisationCond1({
             </div>
             <button
               onClick={() => { setOutcome("accepted"); setAcceptedVia("layer1"); }}
-              className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 py-2.5 text-[11px] font-bold text-white shadow-md transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 py-2.5 text-[11px] font-bold text-white shadow-md transition-colors cursor-pointer"
             >
               Accept All
             </button>
@@ -229,7 +229,7 @@ export function CustomisationCond1({
                     checked={onIds.includes(c.id)}
                     disabled={c.locked}
                     onChange={() => toggle(c.id)}
-                    className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${c.locked ? "" : "accent-rose-500"}`}
+                    className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${c.locked ? "" : "accent-red-500"}`}
                   />
                   <span className="min-w-0 flex-1">
                     <span className={`block text-[10px] leading-relaxed ${c.locked ? "text-muted-foreground/50" : "text-foreground/80"}`}>
@@ -249,7 +249,7 @@ export function CustomisationCond1({
               </button>
               <button
                 onClick={() => { setCustomising(false); setOutcome("accepted"); setAcceptedVia("custom"); }}
-                className="w-full rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Save preferences
               </button>
@@ -261,17 +261,17 @@ export function CustomisationCond1({
         )}
 
         {outcome !== "none" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Path depth asymmetry triggered
+              Review privacy settings
             </div>
             <p className="text-muted-foreground">
               {outcome === "accepted" && acceptedVia === "layer1"
-                ? `d(S_0, S_accept_all) = 1: “Accept All” sat directly on the primary layer, one click away. Rejecting would have demanded a detour into S_custom — “Customise settings”, then the buried “Reject All” button (d(S_0, S_reject_all) = 2). The path of least resistance is biased toward the provider.`
+                ? `Your settings were saved. You can review or change them from the privacy menu.`
                 : outcome === "accepted"
                 ? `You confirmed your custom selection, but rejecting outright was the harder road: “Reject All” lives only inside the nested customisation layer (d(S_0, S_reject_all) = 2), while “Accept All” on layer 1 was d = 1. The interface taxes every attempt to exercise autonomy.`
                 : `You found it — d(S_0, S_reject_all) = 2 ≥ 2, while d(S_0, S_accept_all) = 1. The user-favorable macro-action was banished to the secondary “Customise settings” menu, exactly as the pattern prescribes: 1 = 1 ∧ 2 ≥ 2 → trigger.`}

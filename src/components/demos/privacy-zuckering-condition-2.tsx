@@ -46,11 +46,11 @@ export function PrivacyZuckeringCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">W(N_invasive)/W(N_preserving) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">3.6 &gt; τ_privacy_skew</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">3.6 &gt; τ_privacy_skew</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">W(N_invasive)/W(N_preserving) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">1.0 — symmetric</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">1.0 — symmetric</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Invasive default (A / B)</span>
@@ -73,7 +73,7 @@ export function PrivacyZuckeringCond2({
       aria-checked={on}
       onClick={() => setOn(!on)}
       className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors cursor-pointer ${
-        on ? (accent === "rose" ? "bg-rose-500" : "bg-emerald-500") : "bg-muted"
+        on ? (accent === "rose" ? "bg-red-500" : "bg-green-500") : "bg-muted"
       }`}
     >
       <span
@@ -120,7 +120,7 @@ export function PrivacyZuckeringCond2({
               </div>
             </div>
 
-            <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed text-emerald-700 dark:text-emerald-300">
+            <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed text-green-700 dark:text-green-300">
               <strong>Visual weight ratio = 1.0</strong> — identical hitboxes, contrast, and accent saturation on both
               options. The privacy-preserving state is the default, so no visual nudge pushes you toward sharing.
             </div>
@@ -137,7 +137,7 @@ export function PrivacyZuckeringCond2({
 
           <div className="mt-3 space-y-2">
             {/* Invasive: large, saturated, high-contrast, pre-set ON */}
-            <div className="flex items-center justify-between gap-3 rounded-md border border-rose-500/40 bg-rose-500/10 px-3 py-3 shadow-sm">
+            <div className="flex items-center justify-between gap-3 rounded-md border border-red-500/40 bg-red-500/10 px-3 py-3 shadow-sm">
               <div className="min-w-0 flex-1">
                 <div className="text-[11px] font-bold text-foreground select-none">Share my data with advertising partners</div>
                 <div className="text-[9px] text-muted-foreground/70 mt-0.5">
@@ -161,18 +161,16 @@ export function PrivacyZuckeringCond2({
             </div>
           </div>
 
-          <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Visual-weight asymmetry
+              Privacy settings saved
             </div>
             <p className="text-muted-foreground mt-0.5">
-              <strong className="text-foreground">W(N_invasive) / W(N_preserving) = 3.6 &gt; τ_privacy_skew</strong>: the sharing option is
-              larger, more saturated, higher-contrast, and pre-set ON, while the preserving option is small, dim, and
-              OFF. The interface&rsquo;s visual gravity pushes your eye — and your default — toward surrendering data.
+              Sharing is currently enabled. You can change this preference in Privacy settings.
             </p>
           </div>
         </div>

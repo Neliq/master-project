@@ -55,11 +55,11 @@ export function ImmortalAccountsCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">K_del &cap; T_DOM (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&empty; (0 nodes)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&empty; (0 nodes)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">K_del &cap; T_DOM (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">&ne; &empty; (1 node)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">&ne; &empty; (1 node)</span>
       </div>
     </>
   ) : null;
@@ -108,12 +108,12 @@ export function ImmortalAccountsCond3({
 
   const privacyBenign = (
     <div className="space-y-1.5">
-      <div className="flex items-center justify-between rounded-md border border-rose-500/30 bg-rose-500/5 px-2.5 py-2">
+      <div className="flex items-center justify-between rounded-md border border-red-500/30 bg-red-500/5 px-2.5 py-2">
         <div>
-          <div className="text-[10px] font-medium text-rose-600 dark:text-rose-400">Delete account</div>
+          <div className="text-[10px] font-medium text-red-600 dark:text-red-400">Delete account</div>
           <div className="text-[8px] text-muted-foreground/60">Permanently remove your account and all data.</div>
         </div>
-        <span className="font-mono text-[8px] text-rose-500">K_del &cap; T_DOM</span>
+        <span className="font-mono text-[8px] text-red-500">K_del &cap; T_DOM</span>
       </div>
       <div className="flex items-center justify-between rounded-md border border-border bg-background px-2.5 py-2">
         <div>
@@ -146,7 +146,7 @@ export function ImmortalAccountsCond3({
                 <h3 className="text-[11px] font-semibold">Settings</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">Manage your account, privacy and data.</p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Exit found
               </div>
             </div>
@@ -165,12 +165,12 @@ export function ImmortalAccountsCond3({
             {queryNoResults ? (
               <div className={`mt-2 rounded-md border p-2 text-[9px] ${
                 hitsBenign > 0
-                  ? "border-emerald-500/30 bg-emerald-500/5"
+                  ? "border-green-500/30 bg-green-500/5"
                   : "border-border bg-background"
               }`}>
                 {hitsBenign > 0 ? (
                   <>
-                    <span className="font-semibold text-emerald-700 dark:text-emerald-300">{hitsBenign} result for &ldquo;{query}&rdquo;</span>
+                    <span className="font-semibold text-green-700 dark:text-green-300">{hitsBenign} result for &ldquo;{query}&rdquo;</span>
                     <span className="text-muted-foreground"> — Delete account (Account &gt; Privacy).</span>
                   </>
                 ) : (
@@ -183,13 +183,13 @@ export function ImmortalAccountsCond3({
           </div>
           <button
             onClick={() => setScanned(true)}
-            className="w-full rounded-md border border-emerald-500/40 bg-emerald-500/5 text-emerald-700 dark:text-emerald-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="w-full rounded-md border border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Scan settings DOM for exit keywords
           </button>
           {scanned ? (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -211,7 +211,7 @@ export function ImmortalAccountsCond3({
               <h3 className="text-[11px] font-semibold">Settings</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Manage your account, privacy and data.</p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               No exit
             </div>
           </div>
@@ -228,8 +228,8 @@ export function ImmortalAccountsCond3({
             />
           </div>
           {queryNoResults ? (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2 text-[9px]">
-              <span className="font-semibold text-amber-700 dark:text-amber-300">No results for &ldquo;{query}&rdquo;</span>
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px]">
+              <span className="font-semibold text-yellow-700 dark:text-yellow-300">No results for &ldquo;{query}&rdquo;</span>
               <span className="text-muted-foreground"> — nothing matched in Settings, Privacy or Data.</span>
             </div>
           ) : null}
@@ -238,13 +238,13 @@ export function ImmortalAccountsCond3({
         </div>
         <button
           onClick={() => setScanned(true)}
-          className="w-full rounded-md border border-rose-500/40 bg-rose-500/5 text-rose-700 dark:text-rose-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+          className="w-full rounded-md border border-red-500/40 bg-red-500/5 text-red-700 dark:text-red-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
           Scan settings DOM for exit keywords
         </button>
         {scanned ? (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

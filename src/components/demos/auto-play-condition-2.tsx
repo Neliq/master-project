@@ -68,19 +68,19 @@ export function AutoPlayCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Visibility(B_cancel)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">6px &middot; 25% opacity &rarr; 0</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">6px &middot; 25% opacity &rarr; 0</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Visibility(B_cancel)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">40px &middot; 100% opacity</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">40px &middot; 100% opacity</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Cost(S_play &rarr; False)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&gg; 1 — delayed + tiny + low contrast</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&gg; 1 — delayed + tiny + low contrast</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Cost(S_play &rarr; False)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">1 click</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">1 click</span>
       </div>
     </>
   ) : null;
@@ -96,13 +96,13 @@ export function AutoPlayCond2({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Streamly — auto-advance</h3>
-              <span className="rounded-full border border-emerald-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-emerald-600 dark:text-emerald-400">
+              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
                 {stopped ? "stopped" : "playing"}
               </span>
             </div>
             <div className="mt-2 rounded-md border border-border bg-background p-3">
               <div className="flex items-center gap-2">
-                <svg viewBox="0 0 24 24" className="h-5 w-5 text-emerald-500" fill="currentColor">
+                <svg viewBox="0 0 24 24" className="h-5 w-5 text-green-500" fill="currentColor">
                   <path d="M4 5v14l13-7L4 5z" />
                 </svg>
                 <div className="min-w-0 flex-1">
@@ -115,15 +115,15 @@ export function AutoPlayCond2({
               {!stopped && (
                 <button
                   onClick={() => setStopped(true)}
-                  className="mt-2.5 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+                  className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer"
                 >
                   Stop autoplay
                 </button>
               )}
             </div>
             {stopped && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -144,7 +144,7 @@ export function AutoPlayCond2({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Streamly — auto-advance</h3>
-            <span className="rounded-full border border-rose-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-rose-600 dark:text-rose-400">
+            <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
               {stopped ? "stopped" : "playing"}
             </span>
           </div>
@@ -153,7 +153,7 @@ export function AutoPlayCond2({
             className="mt-2 relative cursor-default rounded-md border border-border bg-background p-3"
           >
             <div className="flex items-center gap-2">
-              <svg viewBox="0 0 24 24" className="h-5 w-5 text-rose-500" fill="currentColor">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 text-red-500" fill="currentColor">
                 <path d="M4 5v14l13-7L4 5z" />
               </svg>
               <div className="min-w-0 flex-1">
@@ -179,15 +179,15 @@ export function AutoPlayCond2({
 
             <p className="mt-2 text-[8px] leading-relaxed text-muted-foreground/60">
               {!affordanceReadyA && !stopped
-                ? "No cancel control visible yet…"
+                ? "Playback controls are loading…"
                 : clicksOnPlayerA > 0 && !stopped
                   ? `You clicked the player ${clicksOnPlayerA}x — nothing pauses. The tiny dot in the corner is the only stop control.`
-                  : "The only stop control is the 6px dot in the corner."}
+                  : "Tap the control in the corner to stop playback."}
             </p>
           </div>
-          {stopped && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          {mode === "auditor" && stopped && (
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -199,7 +199,7 @@ export function AutoPlayCond2({
                 <span className="font-mono">Visibility(B_cancel) &rarr; 0</span>. Every normal
                 click on the player was ignored, so{" "}
                 <span className="font-mono">Cost(S_play &rarr; False) &gg; 1</span>: the friction
-                of stopping is the dark pattern.
+                of stopping is available below the player.
               </p>
             </div>
           )}

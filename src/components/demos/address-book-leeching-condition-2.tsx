@@ -39,7 +39,7 @@ export function AddressBookLeechingCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(N_invite_all) / A(N_skip)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{DOMINANCE_DARK} &gt; &tau; (dark) / {DOMINANCE_BENIGN} (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DOMINANCE_DARK} &gt; &tau; (dark) / {DOMINANCE_BENIGN} (benign)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&tau;_invite_dominance</span>
@@ -74,7 +74,7 @@ export function AddressBookLeechingCond2({
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
                 onClick={() => setInvited("all")}
-                className="rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2 py-2.5 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors cursor-pointer"
+                className="rounded-md border border-green-500/40 bg-green-500/10 px-2 py-2.5 text-[10px] font-semibold text-green-700 dark:text-green-300 hover:bg-green-500/20 transition-colors cursor-pointer"
               >
                 Invite all {NETWORK_SIZE} contacts
               </button>
@@ -91,8 +91,8 @@ export function AddressBookLeechingCond2({
           </div>
 
           {invited !== "none" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -117,7 +117,7 @@ export function AddressBookLeechingCond2({
 
           <button
             onClick={() => setInvited("all")}
-            className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white px-4 py-4 text-[11px] font-bold shadow-lg shadow-rose-600/20 transition-colors cursor-pointer"
+            className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white px-4 py-4 text-[11px] font-bold shadow-lg shadow-red-600/20 transition-colors cursor-pointer"
           >
             Invite all {NETWORK_SIZE} contacts
           </button>
@@ -134,8 +134,8 @@ export function AddressBookLeechingCond2({
         </div>
 
         {invited !== "none" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -144,7 +144,7 @@ export function AddressBookLeechingCond2({
             </div>
             <p className="text-muted-foreground mt-0.5">
               {invited === "all"
-                ? `The full-width, high-contrast button made "invite all ${NETWORK_SIZE}" the path of least resistance — its bounding-box area exceeded the skip link ${DOMINANCE_DARK}×, far past the τ_invite_dominance threshold, pressuring you toward sharing your entire address book.`
+                ? `The larger button makes it easy to invite everyone at once. You can also skip this step below.`
                 : `You found the skip link — but at ${DOMINANCE_DARK}× the size difference, it existed as a mere formality. The interface steered every other user toward the collective invite.`}
             </p>
           </div>

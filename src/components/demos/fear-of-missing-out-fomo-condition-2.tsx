@@ -53,7 +53,7 @@ export function FearOfMissingOutFomoCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">min Δt_refresh (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">600 ms</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">600 ms</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">τ_pulsation threshold</span>
@@ -61,7 +61,7 @@ export function FearOfMissingOutFomoCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">600 &lt; 1000</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">triggers</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">triggers</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Real inventory</span>
@@ -84,18 +84,18 @@ export function FearOfMissingOutFomoCond2({
                 <h3 className="text-[11px] font-semibold">AeroGlide X Wireless Headphones</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">Noise-cancelling over-ear · Graphite</p>
               </div>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 In stock
               </span>
             </div>
 
             {/* Static, truthful indicator — zero churn */}
-            <div className="mt-3 flex items-center gap-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 px-3 py-2">
-              <svg className="size-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <div className="mt-3 flex items-center gap-2 rounded-md border border-green-500/30 bg-green-500/5 px-3 py-2">
+              <svg className="size-3.5 text-green-600 dark:text-green-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>
               <div>
-                <div className="text-[9px] font-medium text-emerald-700 dark:text-emerald-300">
+                <div className="text-[9px] font-medium text-green-700 dark:text-green-300">
                   In stock — {REAL_STOCK} units
                 </div>
                 <div className="text-[8px] text-muted-foreground">
@@ -115,7 +115,7 @@ export function FearOfMissingOutFomoCond2({
               className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
                 phase === "bought"
                   ? "bg-muted text-muted-foreground/60 cursor-default"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               <ShoppingCart className="size-3" />
@@ -123,8 +123,8 @@ export function FearOfMissingOutFomoCond2({
             </button>
 
             {phase === "bought" && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -147,16 +147,16 @@ export function FearOfMissingOutFomoCond2({
               <h3 className="text-[11px] font-semibold">AeroGlide X Wireless Headphones</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Noise-cancelling over-ear · Graphite</p>
             </div>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Selling fast
             </span>
           </div>
 
           {/* Churning counter — sub-second refresh */}
-          <div className="mt-3 flex items-center gap-2 rounded-md border border-rose-500/30 bg-rose-500/5 px-3 py-2">
-            <Zap className="size-3.5 text-rose-600 dark:text-rose-400 shrink-0 animate-pulse" />
+          <div className="mt-3 flex items-center gap-2 rounded-md border border-red-500/30 bg-red-500/5 px-3 py-2">
+            <Zap className="size-3.5 text-red-600 dark:text-red-400 shrink-0 animate-pulse" />
             <div>
-              <div className="font-mono text-[13px] font-bold tabular-nums text-rose-700 dark:text-rose-300">
+              <div className="font-mono text-[13px] font-bold tabular-nums text-red-700 dark:text-red-300">
                 Only {stock} left in stock
               </div>
               <div className="text-[8px] text-muted-foreground">
@@ -168,7 +168,7 @@ export function FearOfMissingOutFomoCond2({
           <div className="mt-2 flex items-center justify-between text-[9px] text-muted-foreground">
             <span className="line-through">$195</span>
             <span className="font-semibold text-foreground">$119</span>
-            <span className="text-[8px] font-semibold uppercase tracking-wider text-rose-500 animate-pulse">
+            <span className="text-[8px] font-semibold uppercase tracking-wider text-red-500 animate-pulse">
               Selling fast
             </span>
           </div>
@@ -179,7 +179,7 @@ export function FearOfMissingOutFomoCond2({
             className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
               phase === "bought"
                 ? "bg-muted text-muted-foreground/60 cursor-default"
-                : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
             <ShoppingCart className="size-3" />
@@ -187,18 +187,18 @@ export function FearOfMissingOutFomoCond2({
           </button>
 
           {phase === "bought" && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Sub-second pulsation
+                Limited-time availability
               </div>
               <p className="text-muted-foreground">
                 The stock counter rewrote itself roughly 10 times in the last 6 seconds while the real
                 inventory ({REAL_STOCK} units) never changed. min Δt_refresh(n) = 600 ms &lt; τ_pulsation ≈ 1000 ms —
-                the rapid visual churn manufactures an artificial sense of temporal scarcity to override
+                the changing availability message may affect how quickly you decide
                 rational deliberation.
               </p>
             </div>

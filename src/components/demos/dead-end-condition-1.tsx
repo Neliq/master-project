@@ -46,11 +46,11 @@ export function DeadEndCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Edges &rarr; V_forced (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">3 / 3</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">3 / 3</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Edges &rarr; neutral exit (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0 &rarr; No Escape Path</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0 &rarr; No Escape Path</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Dismissal attempts (dark)</span>
@@ -68,7 +68,7 @@ export function DeadEndCond1({
   const bannerBody = (accent: "rose" | "emerald") => (
     <>
       <div className="flex items-start gap-2">
-        <svg className={`mt-0.5 h-4 w-4 shrink-0 ${accent === "rose" ? "text-rose-500" : "text-emerald-500"}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg className={`mt-0.5 h-4 w-4 shrink-0 ${accent === "rose" ? "text-red-500" : "text-green-500"}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M3 11l18-8-8 18-2-8-8-2z" />
         </svg>
         <div className="min-w-0 flex-1">
@@ -82,7 +82,7 @@ export function DeadEndCond1({
         <div className="mt-2.5 space-y-1.5">
           <button
             onClick={() => setOutcomeA("accept-all")}
-            className={`w-full rounded-md py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer ${accent === "rose" ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"}`}
+            className={`w-full rounded-md py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer ${accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"}`}
           >
             Accept all
           </button>
@@ -106,7 +106,7 @@ export function DeadEndCond1({
         <div className="mt-2.5 space-y-1.5">
           <button
             onClick={() => setOutcomeB("accept-all")}
-            className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+            className="w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer"
           >
             Accept all
           </button>
@@ -138,10 +138,10 @@ export function DeadEndCond1({
     const emerald = o === "reject" || o === "exit" ? benign : false;
     return (
       <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
-        emerald ? "border-emerald-500/30 bg-emerald-500/5" : "border-amber-500/30 bg-amber-500/5"
+        emerald ? "border-green-500/30 bg-green-500/5" : "border-yellow-500/30 bg-yellow-500/5"
       }`}>
         <div className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
-          emerald ? "text-emerald-700 dark:text-emerald-300" : "text-amber-700 dark:text-amber-300"
+          emerald ? "text-green-700 dark:text-green-300" : "text-yellow-700 dark:text-yellow-300"
         }`}>
           {emerald ? (
             <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -169,7 +169,7 @@ export function DeadEndCond1({
             )
           ) : (
             o === "accept-all" ? (
-              <>You chose consent deliberately: target(e) &isin; V_forced by choice, not by trap.</>
+              <>Your selection has been saved.</>
             ) : o === "reject" ? (
               <>Edge &rarr; v_prev (neutral exit): non-essential cookies rejected, the site remains usable with no compliance required.</>
             ) : (
@@ -189,9 +189,9 @@ export function DeadEndCond1({
       deltaNote="In Variant A all three buttons (Accept all, Essential only, and a mislabelled Reject all) map into V_forced, and backdrop/Esc clicks have no edge — No Escape Path. In Variant B a real rejection edge and a close vector return to v_prev, the neutral pre-banner state."
       benign={
         <div className="space-y-3">
-          <div className="rounded-md border border-emerald-500/30 bg-card p-3">
+          <div className="rounded-md border border-green-500/30 bg-card p-3">
             <div className="flex items-center justify-between gap-2">
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500">
                 Overlay &middot; z-index: 120
               </div>
               <div className="text-[8px] font-mono text-muted-foreground/60">E_out = {outcomeB ? "∅" : "3 edges"}</div>
@@ -213,11 +213,11 @@ export function DeadEndCond1({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div
-          className="rounded-md border border-rose-500/30 bg-card p-3"
+          className="rounded-md border border-red-500/30 bg-card p-3"
           onMouseDown={(e) => { if (e.target === e.currentTarget) setEscapeAttempts((n) => n + 1); }}
         >
           <div className="flex items-center justify-between gap-2">
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500">
               Overlay &middot; z-index: 120
             </div>
             <div className="text-[8px] font-mono text-muted-foreground/60">E_out = {outcomeA ? "∅" : "3 edges → V_forced"}</div>

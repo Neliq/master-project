@@ -52,15 +52,15 @@ export function IntermediateCurrencyCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">T_price(n) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&ldquo;{PRICE_GEMS.toLocaleString()} Gems&rdquo; ∈ C_virtual</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&ldquo;{PRICE_GEMS.toLocaleString()} Gems&rdquo; ∈ C_virtual</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">T_price(n) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">&ldquo;{PRICE_GEMS.toLocaleString()} Gems &middot; ${PRICE_USD.toFixed(2)}&rdquo;</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">&ldquo;{PRICE_GEMS.toLocaleString()} Gems &middot; ${PRICE_USD.toFixed(2)}&rdquo;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Gating — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">Pay locked until E_exchange executed {enough ? "✓" : "✗"}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">Pay locked until E_exchange executed {enough ? "✓" : "✗"}</span>
       </div>
     </>
   ) : null;
@@ -74,11 +74,11 @@ export function IntermediateCurrencyCond3({
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-background overflow-hidden">
-            <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-emerald-500/15 via-teal-500/15 to-indigo-500/15">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 shadow">
+            <div className="relative flex h-24 items-center justify-center   ">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg   shadow">
                 <Swords className="h-6 w-6 text-white" />
               </div>
-              <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[8px] font-bold text-emerald-600 dark:text-emerald-300">
+              <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-green-500/15 px-2 py-0.5 text-[8px] font-bold text-green-600 dark:text-green-300">
                 <Coins className="h-2.5 w-2.5" /> {balance.toLocaleString()} Gems
               </div>
             </div>
@@ -86,7 +86,7 @@ export function IntermediateCurrencyCond3({
               <div className="mb-1 flex items-start justify-between gap-2">
                 <h3 className="text-[11px] font-semibold">{ITEM_NAME}</h3>
                 {/* Fiat price disclosed alongside the token price */}
-                <span className="shrink-0 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-300">
+                <span className="shrink-0 rounded-full bg-green-50 px-2 py-0.5 text-[10px] font-bold text-green-600 dark:bg-green-500/10 dark:text-green-300">
                   {PRICE_GEMS.toLocaleString()} Gems &middot; ${PRICE_USD.toFixed(2)}
                 </span>
               </div>
@@ -95,7 +95,7 @@ export function IntermediateCurrencyCond3({
               </p>
               <button
                 onClick={() => setPaid(true)}
-                className="flex w-full items-center justify-center gap-1.5 rounded-md bg-emerald-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+                className="flex w-full items-center justify-center gap-1.5 rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
               >
                 <CreditCard className="h-3 w-3" /> Pay ${PRICE_USD.toFixed(2)} (fiat)
               </button>
@@ -106,8 +106,8 @@ export function IntermediateCurrencyCond3({
           </div>
 
           {paid && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CreditCard className="h-3 w-3" /> Fiat payment, no exchange executed
               </div>
               <p className="text-muted-foreground">
@@ -122,11 +122,11 @@ export function IntermediateCurrencyCond3({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-background overflow-hidden">
-          <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-rose-500/15 via-purple-500/15 to-indigo-500/15">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-rose-500 to-purple-600 shadow">
+          <div className="relative flex h-24 items-center justify-center   ">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg   shadow">
               <Swords className="h-6 w-6 text-white" />
             </div>
-            <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-rose-500/15 px-2 py-0.5 text-[8px] font-bold text-rose-600 dark:text-rose-300">
+            <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-red-500/15 px-2 py-0.5 text-[8px] font-bold text-red-600 dark:text-red-300">
               <Coins className="h-2.5 w-2.5" /> {balance.toLocaleString()} Gems
             </div>
           </div>
@@ -134,7 +134,7 @@ export function IntermediateCurrencyCond3({
             <div className="mb-1 flex items-start justify-between gap-2">
               <h3 className="text-[11px] font-semibold">{ITEM_NAME}</h3>
               {/* Strictly virtual lexicon — no fiat price anywhere on the page */}
-              <span className="shrink-0 rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-bold text-rose-600 dark:bg-rose-500/10 dark:text-rose-300">
+              <span className="shrink-0 rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold text-red-600 dark:bg-red-500/10 dark:text-red-300">
                 {PRICE_GEMS.toLocaleString()} Gems
               </span>
             </div>
@@ -148,7 +148,7 @@ export function IntermediateCurrencyCond3({
               disabled={!enough}
               className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold transition-colors ${
                 enough
-                  ? "bg-rose-600 text-white hover:bg-rose-700 cursor-pointer"
+                  ? "bg-red-600 text-white hover:bg-red-700 cursor-pointer"
                   : "bg-muted text-muted-foreground/50 cursor-not-allowed"
               }`}
             >
@@ -162,8 +162,8 @@ export function IntermediateCurrencyCond3({
             </button>
 
             {/* The mandatory exchange vector (E_exchange) */}
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2">
-              <div className="mb-1 flex items-center gap-1.5 text-[9px] font-semibold text-amber-700 dark:text-amber-300">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2">
+              <div className="mb-1 flex items-center gap-1.5 text-[9px] font-semibold text-yellow-700 dark:text-yellow-300">
                 <Coins className="h-3 w-3" /> Exchange — the only way to pay
               </div>
               <button
@@ -172,7 +172,7 @@ export function IntermediateCurrencyCond3({
                 className={`w-full rounded-md py-1.5 text-[9px] font-semibold transition-colors ${
                   paid
                     ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                    : "bg-amber-500 text-white hover:bg-amber-600 cursor-pointer"
+                    : "bg-yellow-500 text-white hover:bg-yellow-600 cursor-pointer"
                 }`}
               >
                 {paid ? "Exchange already executed" : `Buy ${PACK_GEMS.toLocaleString()} Gems — $${PACK_USD.toFixed(2)}`}
@@ -184,9 +184,9 @@ export function IntermediateCurrencyCond3({
           </div>
         </div>
 
-        {paid && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && paid && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

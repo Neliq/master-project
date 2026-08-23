@@ -54,11 +54,11 @@ export function WrongLanguageCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Lang(N_critical) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">es</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">es</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Confidence</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0.99 &gt; &tau;_lang_id (0.90)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0.99 &gt; &tau;_lang_id (0.90)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Consent given?</span>
@@ -74,7 +74,7 @@ export function WrongLanguageCond3({
           <h3 className="text-[11px] font-semibold">Checkout — order summary</h3>
           <p className="text-[9px] text-muted-foreground mt-0.5">Acme Store · 2 items · Free shipping</p>
         </div>
-        <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+        <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
           html lang=&ldquo;{SESSION_LANG_ATTR}&rdquo;
         </div>
       </div>
@@ -104,7 +104,7 @@ export function WrongLanguageCond3({
           type="checkbox"
           checked={agreed}
           onChange={(e) => setAgreed(e.target.checked)}
-          className={`mt-0.5 flex-shrink-0 ${dark ? "accent-rose-500" : "accent-emerald-500"}`}
+          className={`mt-0.5 flex-shrink-0 ${dark ? "accent-red-500" : "accent-green-500"}`}
         />
         <span className="min-w-0 flex-1 text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
           {dark ? CHECKBOX_LABEL_DARK : CHECKBOX_LABEL_BENIGN}
@@ -117,8 +117,8 @@ export function WrongLanguageCond3({
         className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
           agreed
             ? dark
-              ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
-              : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+              ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+              : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
             : "bg-muted text-muted-foreground/40 cursor-not-allowed"
         }`}
       >
@@ -136,13 +136,13 @@ export function WrongLanguageCond3({
       benign={
         <div className="space-y-3">
           {checkout(false)}
-          {placed && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && placed && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                Order placed — informed consent
+                Order placed
               </div>
               <p className="text-muted-foreground mt-0.5">
                 The critical node was rendered in the session language: Lang(N_critical) = en = L_session. You read the
@@ -155,25 +155,18 @@ export function WrongLanguageCond3({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         {checkout(true)}
-        {placed && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && placed && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Localized linguistic discrepancy triggered
+              Order placed
             </div>
-            <p className="text-muted-foreground">
-              The page declares <strong className="text-foreground">html lang=&ldquo;en&rdquo;</strong> and the whole
-              checkout is English — but the critical legal node, the consent checkbox, is in{" "}
-              <strong className="text-rose-500">Spanish</strong>: Lang(N_critical) = es ≠ L_session = en, with language
-              identification confidence <span className="font-mono">0.99 &gt; &tau;_lang_id (0.90)</span>.
-            </p>
-            <p className="text-muted-foreground">
-              {agreed
-                ? "You checked a box whose text you could not read (“Acepto…” = “I accept…”) and placed the order. The disclosure was engineered to be opaque exactly where your consent was legally required."
-                : "The checkbox is deliberately unreadable, so you cannot verify what you are consenting to — the barrier itself prevents informed consent."}
+            <p className="text-muted-foreground mt-0.5">
+              {agreed ? "Your order has been placed." : "Your order was not placed."}{" "}
+              You can review your order details from your account.
             </p>
           </div>
         )}

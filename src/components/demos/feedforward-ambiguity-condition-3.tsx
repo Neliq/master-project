@@ -49,15 +49,15 @@ export function FeedforwardAmbiguityCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Outcome_System(n) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">OptInAll()</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">OptInAll()</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Sim(Intent, Outcome)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{SIM_DARK} &lt; &tau;_clarity ({TAU_CLARITY})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{SIM_DARK} &lt; &tau;_clarity ({TAU_CLARITY})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Outcome domain</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">D_critical (finance · privacy)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">D_critical (finance · privacy)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Subscribed?</span>
@@ -98,17 +98,17 @@ export function FeedforwardAmbiguityCond3({
                   type="email"
                   defaultValue=""
                   placeholder="you@example.com"
-                  className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-emerald-500/50"
+                  className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-green-500/50"
                 />
                 <input
                   type="password"
                   placeholder="Password"
-                  className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-emerald-500/50"
+                  className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-green-500/50"
                 />
               </div>
               <button
                 onClick={() => setStep(2)}
-                className="mt-3 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Continue
               </button>
@@ -122,7 +122,7 @@ export function FeedforwardAmbiguityCond3({
               <div className="mt-3">{planCard}</div>
               <button
                 onClick={() => { setSubscribed(true); setStep("done"); }}
-                className="mt-3 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Subscribe — $29/month
               </button>
@@ -136,8 +136,8 @@ export function FeedforwardAmbiguityCond3({
           )}
 
           {step === "done" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -162,17 +162,17 @@ export function FeedforwardAmbiguityCond3({
                 type="email"
                 defaultValue=""
                 placeholder="you@example.com"
-                className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-rose-500/50"
+                className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-red-500/50"
               />
               <input
                 type="password"
                 placeholder="Password"
-                className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-rose-500/50"
+                className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-red-500/50"
               />
             </div>
             <button
               onClick={() => setStep(2)}
-              className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Continue
             </button>
@@ -186,7 +186,7 @@ export function FeedforwardAmbiguityCond3({
             <div className="mt-3">{planCard}</div>
             <button
               onClick={() => { setSubscribed(true); setStep("done"); }}
-              className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Next
             </button>
@@ -200,16 +200,16 @@ export function FeedforwardAmbiguityCond3({
         )}
 
         {step === "done" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Semantic divergence triggered
+              Order placed
             </div>
             <p className="text-muted-foreground">
-              You clicked <strong className="text-rose-500">“Next”</strong> — a label whose predicted intent is{" "}
+              You clicked <strong className="text-red-500">“Next”</strong> — a label whose predicted intent is{" "}
               <span className="font-mono">advance</span>. The backend actually executed{" "}
               <strong className="text-foreground">OptInAll()</strong>: you were subscribed to the{" "}
               <strong className="text-foreground">$29/month Pro plan</strong> with auto-renewal, and opted into{" "}
@@ -217,7 +217,7 @@ export function FeedforwardAmbiguityCond3({
             </p>
             <p className="text-muted-foreground">
               Sim(Intent_NLP(&ldquo;Next&rdquo;), OptInAll()) ={" "}
-              <span className="font-mono text-rose-500">{SIM_DARK} &lt; &tau;_clarity ({TAU_CLARITY})</span> — the label
+              <span className="font-mono text-red-500">{SIM_DARK} &lt; &tau;_clarity ({TAU_CLARITY})</span> — the label
               and the outcome are semantically almost unrelated — and the outcome sits in{" "}
               <span className="font-mono">D_critical</span> (finance + privacy). There was no step 3.
             </p>

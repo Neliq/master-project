@@ -77,7 +77,7 @@ export function LowStockCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Q_stock(t2) — current load (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{quantA} left</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{quantA} left</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&Delta;t since first load</span>
@@ -85,7 +85,7 @@ export function LowStockCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">HasTransaction(t1, t2) — A</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{loadsA >= 2 ? "False — no purchase logged" : "—"}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{loadsA >= 2 ? "False — no purchase logged" : "—"}</span>
       </div>
     </>
   ) : null;
@@ -100,8 +100,8 @@ export function LowStockCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <svg className="h-5 w-5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <svg className="h-5 w-5 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 3v3m6.366-.366l-2.12 2.12M21 12h-3m.366 6.366l-2.12-2.12M12 21v-3m-6.366.366l2.12-2.12M3 12h3m-.366-6.366l2.12 2.12" />
                 </svg>
               </div>
@@ -112,7 +112,7 @@ export function LowStockCond3({
                 </p>
                 <div className="mt-1.5 flex items-center gap-2">
                   <span className="text-[11px] font-bold">{ITEM_PRICE}</span>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-green-500/40 bg-green-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-700 dark:text-green-300">
                     In stock — {stockB} remaining
                   </span>
                 </div>
@@ -123,7 +123,7 @@ export function LowStockCond3({
           <div className="rounded-md border border-border bg-background p-2.5">
             <div className="flex items-center justify-between text-[9px]">
               <span className="font-mono text-muted-foreground">Live stock feed — backend source</span>
-              <span className="font-mono font-semibold tabular-nums text-emerald-500">{stockB} units</span>
+              <span className="font-mono font-semibold tabular-nums text-green-500">{stockB} units</span>
             </div>
             <div className="mt-1 flex items-center justify-between text-[9px]">
               <span className="font-mono text-muted-foreground">Load count (simulated reloads)</span>
@@ -131,7 +131,7 @@ export function LowStockCond3({
             </div>
             <div className="mt-1 flex items-center justify-between text-[9px]">
               <span className="font-mono text-muted-foreground">Transaction log (t1 → t2)</span>
-              <span className="font-mono font-semibold tabular-nums text-emerald-500">{soldB} purchase{soldB === 1 ? "" : "s"}</span>
+              <span className="font-mono font-semibold tabular-nums text-green-500">{soldB} purchase{soldB === 1 ? "" : "s"}</span>
             </div>
             <div className="mt-1 flex items-center justify-between text-[9px]">
               <span className="font-mono text-muted-foreground">Session clock (&Delta;t)</span>
@@ -148,15 +148,15 @@ export function LowStockCond3({
             </button>
             <button
               onClick={buyB}
-              className="flex-1 rounded-md border border-emerald-500/40 bg-emerald-500/10 py-1.5 text-[10px] font-medium text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors cursor-pointer"
+              className="flex-1 rounded-md border border-green-500/40 bg-green-500/10 py-1.5 text-[10px] font-medium text-green-700 dark:text-green-300 hover:bg-green-500/20 transition-colors cursor-pointer"
             >
               Someone bought one
             </button>
           </div>
 
           {loadsB > 1 && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -175,8 +175,8 @@ export function LowStockCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <svg className="h-5 w-5 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <svg className="h-5 w-5 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 3v3m6.366-.366l-2.12 2.12M21 12h-3m.366 6.366l-2.12-2.12M12 21v-3m-6.366.366l2.12-2.12M3 12h3m-.366-6.366l2.12 2.12" />
               </svg>
             </div>
@@ -187,7 +187,7 @@ export function LowStockCond3({
               </p>
               <div className="mt-1.5 flex items-center gap-2">
                 <span className="text-[11px] font-bold">{ITEM_PRICE}</span>
-                <span className="inline-flex items-center gap-1 rounded-full border border-rose-500/40 bg-rose-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-600 dark:text-rose-300 animate-pulse">
+                <span className="inline-flex items-center gap-1 rounded-full border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-red-600 dark:text-red-300 animate-pulse">
                   Only {quantA} left!
                 </span>
               </div>
@@ -202,7 +202,7 @@ export function LowStockCond3({
           </div>
           <div className="mt-1 flex items-center justify-between text-[9px]">
             <span className="font-mono text-muted-foreground">Transaction log (t1 → t2)</span>
-            <span className="font-mono font-semibold tabular-nums text-rose-500">0 purchases</span>
+            <span className="font-mono font-semibold tabular-nums text-red-500">0 purchases</span>
           </div>
           <div className="mt-1 flex items-center justify-between text-[9px]">
             <span className="font-mono text-muted-foreground">Session clock (&Delta;t)</span>
@@ -217,18 +217,18 @@ export function LowStockCond3({
           Reload page
         </button>
 
-        {inconsistent && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && inconsistent && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Inconsistent quantifier detected
+              Stock updated
             </div>
             <p className="text-muted-foreground">
               Load t1: <strong className="text-foreground">“Only {QUANT_CYCLE[0]} left”</strong> &nbsp;·&nbsp; load t2:{" "}
-              <strong className="text-rose-500">“Only {quantA} left”</strong>, with &Delta;t = {elapsed}s &lt; 60s
+              <strong className="text-red-500">“Only {quantA} left”</strong>, with &Delta;t = {elapsed}s &lt; 60s
               and <strong className="text-foreground">zero transactions</strong> in between (¬HasTransaction(t1, t2)).
             </p>
             <p className="text-muted-foreground">

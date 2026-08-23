@@ -36,23 +36,23 @@ export function ReferencePricingCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_ref &gt; P_cur — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">299 &gt; 199</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">299 &gt; 199</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_ref &gt; P_cur — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">n/a — single price</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">n/a — single price</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CSS(N_ref) ∩ S_strike</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{"{line-through}"} ≠ ∅</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{"{line-through}"} ≠ ∅</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Anchor present</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">yes (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">yes (dark)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Perceived saving</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">33% anchored</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">33% anchored</span>
       </div>
     </>
   ) : null;
@@ -71,7 +71,7 @@ export function ReferencePricingCond3({
                 <h3 className="text-[11px] font-semibold">Nordic Wool Throw Blanket</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">150 × 200 cm · Recycled wool · Grey</p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Single price
               </div>
             </div>
@@ -79,7 +79,7 @@ export function ReferencePricingCond3({
             <div className="mt-2.5 rounded-md border bg-background p-3">
               <div className="text-[18px] font-bold tabular-nums">PLN 199.00</div>
               <div className="text-[9px] leading-relaxed text-muted-foreground mt-1.5">
-                Lowest price in the last 30 days: <span className="font-mono font-semibold text-emerald-700 dark:text-emerald-300">PLN 199.00</span>{" "}
+                Lowest price in the last 30 days: <span className="font-mono font-semibold text-green-700 dark:text-green-300">PLN 199.00</span>{" "}
                 (EU Omnibus Directive). No other price is shown — nothing to anchor on.
               </div>
             </div>
@@ -92,8 +92,8 @@ export function ReferencePricingCond3({
             </button>
 
             {probed && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-                <div className="font-semibold text-emerald-700 dark:text-emerald-300">CSS(N_ref) ∩ S_strike = ∅</div>
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+                <div className="font-semibold text-green-700 dark:text-green-300">CSS(N_ref) ∩ S_strike = ∅</div>
                 <p className="text-muted-foreground mt-1">
                   There is no secondary price node at all — no anchor, no perceived saving.
                   The 30-day baseline is stated factually, as consumer law requires.
@@ -111,17 +111,17 @@ export function ReferencePricingCond3({
               <h3 className="text-[11px] font-semibold">Nordic Wool Throw Blanket</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">150 × 200 cm · Recycled wool · Grey</p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Dual price
             </div>
           </div>
 
           <div className="mt-2.5 rounded-md border bg-background p-3">
             <div className="flex items-baseline gap-2">
-              <span className="text-[18px] font-bold tabular-nums text-rose-600 dark:text-rose-400">PLN 199.00</span>
+              <span className="text-[18px] font-bold tabular-nums text-red-600 dark:text-red-400">PLN 199.00</span>
               <span className="text-[11px] text-muted-foreground line-through">PLN 299.00</span>
             </div>
-            <div className="mt-1.5 flex items-center gap-1.5 text-[9px] font-semibold text-amber-600 dark:text-amber-400">
+            <div className="mt-1.5 flex items-center gap-1.5 text-[9px] font-semibold text-yellow-600 dark:text-yellow-400">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
@@ -136,15 +136,13 @@ export function ReferencePricingCond3({
             Why the slash?
           </button>
 
-          {probed && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-              <div className="font-semibold text-amber-700 dark:text-amber-300">
+          {mode === "auditor" && probed && (
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+              <div className="font-semibold text-yellow-700 dark:text-yellow-300">
                 P_ref (299.00) &gt; P_cur (199.00) ∧ CSS(N_ref) ∩ S_strike = {"{line-through}"} ≠ ∅
               </div>
               <p className="text-muted-foreground mt-1">
-                Anchoring is active: the structurally deprecated reference price
-                artificially emphasises the current price&rsquo;s value. Every glance at the
-                pair registers a 33% &ldquo;saving&rdquo; — even though no factual baseline is shown.
+                The previous price is shown for comparison with today&rsquo;s price.
               </p>
             </div>
           )}

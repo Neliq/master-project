@@ -40,23 +40,23 @@ export function FalseHierarchyCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Tag(B_business)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&lt;button&gt;</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&lt;button&gt;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Tag(B_user)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&lt;a&gt; link</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&lt;a&gt; link</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">S_padding(B_user)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 0px</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 0px</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d(start → reject_all)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">2 &gt; d(start → accept_all) = 1</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">2 &gt; d(start → accept_all) = 1</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Downgrade detected</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">true</span>
+        <span className="text-muted-foreground">Current plan</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">true</span>
       </div>
     </>
   ) : null;
@@ -71,8 +71,8 @@ export function FalseHierarchyCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <Cookie className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <Cookie className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
               </div>
               <div>
                 <h3 className="text-[11px] font-semibold">Cookie consent</h3>
@@ -89,13 +89,13 @@ export function FalseHierarchyCond1({
             <div className="mt-3 grid grid-cols-1 gap-1.5">
               <button
                 onClick={() => setChoice("accept")}
-                className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
+                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Accept all cookies
               </button>
               <button
                 onClick={() => setChoice("reject")}
-                className="w-full rounded-md border border-emerald-600/50 bg-background text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
+                className="w-full rounded-md border border-green-600/50 bg-background text-green-700 dark:text-green-300 hover:bg-green-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Reject all
               </button>
@@ -103,8 +103,8 @@ export function FalseHierarchyCond1({
           </div>
 
           {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
                 {choice === "accept" ? "Cookies accepted" : "All cookies rejected"} — as chosen
               </div>
@@ -120,8 +120,8 @@ export function FalseHierarchyCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <Cookie className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <Cookie className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
             </div>
             <div>
               <h3 className="text-[11px] font-semibold">Cookie consent</h3>
@@ -138,7 +138,7 @@ export function FalseHierarchyCond1({
             {/* B_business: primary interactive component — one click to accept */}
             <button
               onClick={() => setChoice("accept")}
-              className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 px-3 text-[11px] font-semibold transition-colors cursor-pointer"
+              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 px-3 text-[11px] font-semibold transition-colors cursor-pointer"
             >
               Accept all cookies
             </button>
@@ -175,7 +175,7 @@ export function FalseHierarchyCond1({
                         type="checkbox"
                         defaultChecked={on as boolean}
                         disabled={label === "Essential cookies"}
-                        className="h-3 w-3 accent-rose-500"
+                        className="h-3 w-3 accent-red-500"
                       />
                     </label>
                   ))}
@@ -189,7 +189,7 @@ export function FalseHierarchyCond1({
                   </button>
                   <button
                     onClick={() => setChoice("accept")}
-                    className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                    className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Save preferences
                   </button>
@@ -199,18 +199,18 @@ export function FalseHierarchyCond1({
           </div>
         </div>
 
-        {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && choice && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="w-3 h-3" />
-              Structural downgrade fired
+              Cookie preferences saved
             </div>
             <p className="text-muted-foreground">
               {choice === "accept"
                 ? "You clicked the big button — 43 partner networks now set tracking cookies, in one click."
                 : "You found the tiny link and rejected everything — but only after a detour through the nested cookie-settings screen."}{" "}
               The math behind the banner:{" "}
-              <strong className="text-rose-500">
+              <strong className="text-red-500">
                 Tag(B_business) = &lt;button&gt; ∧ Tag(B_user) = &lt;a&gt; ∧ S_padding(B_user) ≈ 0 ∧ d(start → reject_all) = 2 &gt; d(start → accept_all) = 1
               </strong>
               .

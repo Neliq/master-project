@@ -33,19 +33,19 @@ export function ConfirmshamingCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">S_sentiment(N_accept)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">+0.72 &gt; 0</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">+0.72 &gt; 0</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">S_sentiment(N_decline)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">-0.81 &laquo; 0</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">-0.81 &laquo; 0</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Polarization |&Delta;|</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">1.53 &gt; 1.0</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">1.53 &gt; 1.0</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Exit-route valence</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">toxic (shame)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">toxic (shame)</span>
       </div>
     </>
   ) : null;
@@ -60,7 +60,7 @@ export function ConfirmshamingCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-2.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-emerald-400 to-green-600 text-white">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 22c-4.5-3.5-8-6.6-8-10.5C4 7.6 7 5 10.5 5c1.9 0 3.7.9 4.9 2.4 1.2-1.5 3-2.4 4.9-2.4 3.5 0 6.5 2.6 6.5 6.5 0 3.9-3.5 7-8 10.5z" />
                   <path d="M8 3c1.5 0 2.5 1 3 2" />
@@ -77,7 +77,7 @@ export function ConfirmshamingCond3({
             <div className="mt-3 space-y-2">
               <button
                 onClick={() => setChoice("accept")}
-                className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
+                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
               >
                 Yes, add a $2 donation
               </button>
@@ -91,8 +91,8 @@ export function ConfirmshamingCond3({
           </div>
 
           {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -110,7 +110,7 @@ export function ConfirmshamingCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-2.5">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-emerald-400 to-green-600 text-white">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 22c-4.5-3.5-8-6.6-8-10.5C4 7.6 7 5 10.5 5c1.9 0 3.7.9 4.9 2.4 1.2-1.5 3-2.4 4.9-2.4 3.5 0 6.5 2.6 6.5 6.5 0 3.9-3.5 7-8 10.5z" />
                 <path d="M8 3c1.5 0 2.5 1 3 2" />
@@ -127,7 +127,7 @@ export function ConfirmshamingCond3({
           <div className="mt-3 space-y-2">
             <button
               onClick={() => setChoice("accept")}
-              className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
+              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
             >
               Yes, I care about the planet — add the donation
             </button>
@@ -140,20 +140,20 @@ export function ConfirmshamingCond3({
           </div>
         </div>
 
-        {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && choice && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Semantic asymmetry triggered
+              Choose an option
             </div>
             <p className="text-muted-foreground">
               S_sentiment(N_accept) ≈ <strong className="text-foreground">+0.72 &gt; 0</strong> but
               S_sentiment(N_decline) ≈ <strong className="text-foreground">-0.81 &laquo; 0</strong>.
               To decline, you must literally assert “I don&rsquo;t care about the environment” —
-              the functional exit route carries a toxic semantic score that manufactures guilt.
+              The alternative is available if you would rather not contribute.
             </p>
             <p className="text-muted-foreground">
               {choice === "decline"

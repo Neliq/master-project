@@ -37,15 +37,15 @@ export function ConfirmshamingCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Vis(N_decline)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0.31 &rarr; &tau;_min</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0.31 &rarr; &tau;_min</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Decline font size</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">9px</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">9px</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Decline contrast ratio</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">1.6:1</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">1.6:1</span>
       </div>
     </>
   ) : null;
@@ -72,7 +72,7 @@ export function ConfirmshamingCond2({
             <div className="mt-3 grid grid-cols-1 gap-2">
               <button
                 onClick={() => setChoice("accept")}
-                className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
+                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
               >
                 Start 7-day free trial
               </button>
@@ -86,8 +86,8 @@ export function ConfirmshamingCond2({
           </div>
 
           {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -117,7 +117,7 @@ export function ConfirmshamingCond2({
           <div className="mt-3 space-y-1">
             <button
               onClick={() => setChoice("accept")}
-              className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2.5 text-[12px] font-bold uppercase tracking-wide shadow-lg shadow-rose-500/25 transition-colors cursor-pointer"
+              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[12px] font-bold uppercase tracking-wide shadow-lg shadow-red-500/25 transition-colors cursor-pointer"
             >
               Yes, start my free trial now
             </button>
@@ -133,8 +133,8 @@ export function ConfirmshamingCond2({
         </div>
 
         {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -150,7 +150,7 @@ export function ConfirmshamingCond2({
             </p>
             <p className="text-muted-foreground">
               {choice === "decline"
-                ? "You found the exit only by hunting for it — the visual hierarchy was engineered to hide it."
+                ? "Your preferences have been updated."
                 : "You took the hyper-illuminated path — the only option the layout actually presents."}
             </p>
           </div>

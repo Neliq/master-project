@@ -44,15 +44,15 @@ export function InformationWithoutContextCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">U_val (unit) in S_cluster?</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">missing</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">missing</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">B_val (baseline) in S_cluster?</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">missing</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">missing</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">U_val ∉ S ∨ B_val ∉ S</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">true</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">true</span>
       </div>
     </>
   ) : null;
@@ -67,8 +67,8 @@ export function InformationWithoutContextCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <Zap className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <Zap className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
               </div>
               <div>
                 <h3 className="text-[11px] font-semibold">TechNook — flash sale</h3>
@@ -80,7 +80,7 @@ export function InformationWithoutContextCond3({
 
             {/* anchored metric: unit + baseline inside the cluster */}
             <div className="mt-3 rounded-md bg-background border border-border p-2.5 text-center">
-              <div className="text-[16px] font-bold text-emerald-600 dark:text-emerald-400">
+              <div className="text-[16px] font-bold text-green-600 dark:text-green-400">
                 SAVE 50%
               </div>
               <div className="text-[10px] text-foreground/80 mt-0.5">
@@ -90,15 +90,15 @@ export function InformationWithoutContextCond3({
 
             <button
               onClick={() => setClaimed(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Claim offer
             </button>
           </div>
 
-          {claimed && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && claimed && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
                 Offer claimed — value anchored
               </div>
@@ -114,8 +114,8 @@ export function InformationWithoutContextCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <Zap className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <Zap className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
             </div>
             <div>
               <h3 className="text-[11px] font-semibold">TechNook — flash sale</h3>
@@ -125,7 +125,7 @@ export function InformationWithoutContextCond3({
 
           {/* v = 50: prominent, unanchored — no unit, no denominator */}
           <div className="mt-3 rounded-md bg-background border border-border p-2.5 text-center">
-            <div className="text-[22px] font-black leading-none text-rose-500">SAVE {FLASH}</div>
+            <div className="text-[22px] font-black leading-none text-red-500">SAVE {FLASH}</div>
             <div className="text-[8px] text-muted-foreground/50 mt-1.5">
               Limited time offer. Terms apply.
             </div>
@@ -133,22 +133,22 @@ export function InformationWithoutContextCond3({
 
           <button
             onClick={() => setClaimed(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Claim offer
           </button>
         </div>
 
-        {claimed && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && claimed && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="w-3 h-3" />
-              Unanchored metric fired
+              Offer details
             </div>
             <p className="text-muted-foreground">
-              The prominent value <strong className="text-rose-500">v = {VALUE_V}</strong> was
+              The prominent value <strong className="text-red-500">v = {VALUE_V}</strong> was
               rendered with no unit and no denominator in its cluster —{" "}
-              <strong className="text-rose-500">
+              <strong className="text-red-500">
                 U_val ∉ S_cluster ∧ B_val ∉ S_cluster
               </strong>
               . “Save {FLASH}” could mean {FLASH}%, {FLASH} PLN, or {FLASH} PLN off a 1,000 PLN

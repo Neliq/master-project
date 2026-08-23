@@ -54,19 +54,19 @@ export function ComplexLanguageCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">D_DOM(N_complex) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{DEPTH_DARK} &gt; &tau;_legal_depth ({TAU_LEGAL_DEPTH})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DEPTH_DARK} &gt; &tau;_legal_depth ({TAU_LEGAL_DEPTH})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">D_DOM(N_complex) (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{DEPTH_BENIGN}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{DEPTH_BENIGN}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Mean clause length (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{CLAUSE_DARK.length} &gt; &tau;_clause ({TAU_CLAUSE_LENGTH})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{CLAUSE_DARK.length} &gt; &tau;_clause ({TAU_CLAUSE_LENGTH})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Clause length (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{CLAUSE_BENIGN.length} chars</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{CLAUSE_BENIGN.length} chars</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Agreed?</span>
@@ -91,14 +91,14 @@ export function ComplexLanguageCond1({
                   Pro plan — $29.99/month. Review the terms before agreeing.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Depth {DEPTH_BENIGN}
               </div>
             </div>
 
             <div className="mt-3 max-h-36 overflow-y-auto rounded-md border bg-background p-2">
               <p className="text-[10px] leading-relaxed text-foreground/80">
-                <span className="font-semibold text-emerald-600 dark:text-emerald-400">14.2 Automatic Renewal — </span>
+                <span className="font-semibold text-green-600 dark:text-green-400">14.2 Automatic Renewal — </span>
                 {CLAUSE_BENIGN}
               </p>
               <p className="mt-1.5 text-[8px] text-muted-foreground/60">
@@ -111,7 +111,7 @@ export function ComplexLanguageCond1({
                 type="checkbox"
                 checked={agreed}
                 onChange={(e) => setAgreed(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                className="mt-0.5 flex-shrink-0 accent-green-500"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -128,7 +128,7 @@ export function ComplexLanguageCond1({
               disabled={!agreed}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 agreed
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -137,8 +137,8 @@ export function ComplexLanguageCond1({
           </div>
 
           {submitted && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -162,7 +162,7 @@ export function ComplexLanguageCond1({
                 Pro plan — $29.99/month. Review the terms before agreeing.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Depth {DEPTH_DARK}
             </div>
           </div>
@@ -185,7 +185,7 @@ export function ComplexLanguageCond1({
                       <p className="mt-1 text-[8px] leading-relaxed text-foreground/70">
                         {CLAUSE_DARK}
                       </p>
-                      <p className="mt-1 text-[7px] italic text-rose-500/70">
+                      <p className="mt-1 text-[7px] italic text-red-500/70">
                         D_DOM = {DEPTH_DARK} — the clause lives 6 levels below the page surface.
                       </p>
                     </details>
@@ -200,7 +200,7 @@ export function ComplexLanguageCond1({
               type="checkbox"
               checked={agreed}
               onChange={(e) => setAgreed(e.target.checked)}
-              className="mt-0.5 flex-shrink-0 accent-rose-500"
+              className="mt-0.5 flex-shrink-0 accent-red-500"
             />
             <div className="min-w-0 flex-1">
               <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -217,7 +217,7 @@ export function ComplexLanguageCond1({
             disabled={!agreed}
             className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               agreed
-                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
@@ -225,20 +225,20 @@ export function ComplexLanguageCond1({
           </button>
         </div>
 
-        {submitted && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && submitted && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Structural nesting depth triggered
+              Additional terms
             </div>
             <p className="text-muted-foreground">
               The clause that commits you to <strong className="text-foreground">automatic monthly renewal at $29.99</strong>{" "}
-              was buried at DOM depth <span className="font-mono text-rose-500">{DEPTH_DARK} &gt; &tau;_legal_depth ({TAU_LEGAL_DEPTH})</span>,
+              was buried at DOM depth <span className="font-mono text-red-500">{DEPTH_DARK} &gt; &tau;_legal_depth ({TAU_LEGAL_DEPTH})</span>,
               inside three nested collapsibles — and its mean clause length is{" "}
-              <span className="font-mono text-rose-500">{CLAUSE_DARK.length} &gt; &tau;_clause_length ({TAU_CLAUSE_LENGTH})</span>{" "}
+              <span className="font-mono text-red-500">{CLAUSE_DARK.length} &gt; &tau;_clause_length ({TAU_CLAUSE_LENGTH})</span>{" "}
               characters. Both branches of the trigger fire.
             </p>
             <p className="text-muted-foreground">
@@ -249,7 +249,7 @@ export function ComplexLanguageCond1({
               <summary className="cursor-pointer font-medium text-muted-foreground transition-colors hover:text-foreground">
                 Show plain-English translation
               </summary>
-              <p className="mt-1 rounded border border-emerald-500/20 bg-emerald-500/5 p-2 text-emerald-700 dark:text-emerald-300">
+              <p className="mt-1 rounded border border-green-500/20 bg-green-500/5 p-2 text-green-700 dark:text-green-300">
                 {CLAUSE_BENIGN}
               </p>
             </details>

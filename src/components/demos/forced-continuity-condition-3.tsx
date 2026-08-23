@@ -85,11 +85,11 @@ export function ForcedContinuityCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">FKGL(T_cancel) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{FKGL_DARK} — diff {(FKGL_DARK - FKGL_SIGNUP).toFixed(1)} &gt; 2</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{FKGL_DARK} — diff {(FKGL_DARK - FKGL_SIGNUP).toFixed(1)} &gt; 2</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">FKGL(T_cancel) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{FKGL_BENIGN} — diff 0.0</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{FKGL_BENIGN} — diff 0.0</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Guilt lexemes in cancel</span>
@@ -111,7 +111,7 @@ export function ForcedContinuityCond3({
         </div>
         <button
           onClick={() => {}}
-          className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+          className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
         >
           Start free trial
         </button>
@@ -136,7 +136,7 @@ export function ForcedContinuityCond3({
             <button
               onClick={() => setBTab("signup")}
               className={`flex-1 py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
-                bTab === "signup" ? "bg-emerald-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
+                bTab === "signup" ? "bg-green-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
               }`}
             >
               Signup flow
@@ -144,7 +144,7 @@ export function ForcedContinuityCond3({
             <button
               onClick={() => setBTab("cancel")}
               className={`flex-1 py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
-                bTab === "cancel" ? "bg-emerald-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
+                bTab === "cancel" ? "bg-green-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
               }`}
             >
               Cancellation flow
@@ -161,14 +161,14 @@ export function ForcedContinuityCond3({
                 FKGL ≈ {FKGL_BENIGN} — the same reading level as signup. Guilt lexemes: {GUILT_BENIGN}.
               </p>
               {bCancelled ? (
-                <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] text-emerald-700 dark:text-emerald-300">
+                <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] text-green-700 dark:text-green-300">
                   <strong>Cancelled.</strong> One click, plain language, no guilt trip. FKGL(T_cancel) − FKGL(T_signup)
                   = 0.0 ≤ 2 — the semantic asymmetry heuristic does not fire.
                 </div>
               ) : (
                 <button
                   onClick={() => setBCancelled(true)}
-                  className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Cancel my subscription
                 </button>
@@ -184,7 +184,7 @@ export function ForcedContinuityCond3({
           <button
             onClick={() => setATab("cancel")}
             className={`flex-1 py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
-              aTab === "cancel" ? "bg-rose-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
+              aTab === "cancel" ? "bg-red-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
             }`}
           >
             Cancellation flow
@@ -192,7 +192,7 @@ export function ForcedContinuityCond3({
           <button
             onClick={() => setATab("signup")}
             className={`flex-1 py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
-              aTab === "signup" ? "bg-rose-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
+              aTab === "signup" ? "bg-red-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
             }`}
           >
             Signup flow
@@ -207,16 +207,16 @@ export function ForcedContinuityCond3({
             <p className="mt-1.5 text-[8px] leading-relaxed text-muted-foreground/70">{CANCEL_COPY_DARK}</p>
             <p className="text-[8px] text-muted-foreground/60 mt-1.5">
               FKGL ≈ {FKGL_DARK} — a jump of {(FKGL_DARK - FKGL_SIGNUP).toFixed(1)} grades from the signup page.
-              Guilt lexemes embedded: {GUILT_DARK} (“abandon your progress,” “lose your benefits,” “irreversible,” …).
+              Please review the information below before cancelling.
             </p>
             {aCancelled ? (
-              <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M12 9v4m0 4h.01" />
                     <circle cx="12" cy="12" r="10" />
                   </svg>
-                  Semantic asymmetry triggered
+                  Subscription updated
                 </div>
                 <p className="text-muted-foreground mt-0.5">
                   <strong className="text-foreground">FKGL(T_cancel) − FKGL(T_signup) = {(FKGL_DARK - FKGL_SIGNUP).toFixed(1)} &gt; 2</strong>{" "}
@@ -228,7 +228,7 @@ export function ForcedContinuityCond3({
             ) : (
               <button
                 onClick={() => setACancelled(true)}
-                className="mt-2 w-full rounded-md border border-rose-500/40 bg-background py-1.5 text-[10px] font-medium text-rose-600 hover:bg-rose-500/10 dark:text-rose-400 transition-colors cursor-pointer"
+                className="mt-2 w-full rounded-md border border-red-500/40 bg-background py-1.5 text-[10px] font-medium text-red-600 hover:bg-red-500/10 dark:text-red-400 transition-colors cursor-pointer"
               >
                 I still want to cancel
               </button>

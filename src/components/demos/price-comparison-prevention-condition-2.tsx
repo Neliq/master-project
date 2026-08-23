@@ -40,15 +40,15 @@ export function PriceComparisonPreventionCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">fontSize ratio — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">8/14 ≈ 0.57 &lt; τ</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">8/14 ≈ 0.57 &lt; τ</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">fontSize ratio — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">10/14 ≈ 0.71 ≥ τ</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">10/14 ≈ 0.71 ≥ τ</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CR(N_unit, bg) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 2.6 (vs 7.6 headline)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 2.6 (vs 7.6 headline)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">τ_suppress</span>
@@ -56,7 +56,7 @@ export function PriceComparisonPreventionCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Cheaper per 100 g</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">Crunchy (PLN 2.29)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">Crunchy (PLN 2.29)</span>
       </div>
     </>
   ) : null;
@@ -77,7 +77,7 @@ export function PriceComparisonPreventionCond2({
                   Two sizes of the same line. Unit prices are clearly rendered.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Unit prices visible
               </div>
             </div>
@@ -88,7 +88,7 @@ export function PriceComparisonPreventionCond2({
                   <div className="min-w-0">
                     <div className="text-[10px] font-medium">{it.name}</div>
                     <div className="text-[8px] text-muted-foreground">{it.size}</div>
-                    <div className="text-[10px] font-medium text-emerald-700 dark:text-emerald-300">{it.unit}</div>
+                    <div className="text-[10px] font-medium text-green-700 dark:text-green-300">{it.unit}</div>
                   </div>
                   <div className="text-[13px] font-bold tabular-nums">{it.price}</div>
                 </div>
@@ -97,14 +97,14 @@ export function PriceComparisonPreventionCond2({
 
             <button
               onClick={() => setCompared(true)}
-              className="mt-2.5 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Compare per 100 g
             </button>
 
             {compared && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-                <div className="font-semibold text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+                <div className="font-semibold text-green-700 dark:text-green-300">
                   Fruity: PLN 2.58/100 g · Crunchy: PLN 2.29/100 g
                 </div>
                 <p className="text-muted-foreground mt-1">
@@ -126,7 +126,7 @@ export function PriceComparisonPreventionCond2({
                 Two sizes of the same line. Headline prices only.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Unit prices suppressed
             </div>
           </div>
@@ -146,14 +146,14 @@ export function PriceComparisonPreventionCond2({
 
           <button
             onClick={() => setCompared(true)}
-            className="mt-2.5 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Compare per 100 g
           </button>
 
           {compared && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-              <div className="font-semibold text-amber-700 dark:text-amber-300">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+              <div className="font-semibold text-yellow-700 dark:text-yellow-300">
                 fontSize(N_unit)/fontSize(N_headline) = 8/14 ≈ 0.57 &lt; τ_suppress (0.70)
               </div>
               <p className="text-muted-foreground mt-1">

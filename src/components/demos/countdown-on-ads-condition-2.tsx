@@ -93,7 +93,7 @@ export function CountdownOnAdsCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">N_close ∈ DOM(t)?</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">∉ for t &lt; τ_lock (A) / ∈ from t=0 (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">∉ for t &lt; τ_lock (A) / ∈ from t=0 (B)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Clicks that opened the ad (A)</span>
@@ -115,14 +115,14 @@ export function CountdownOnAdsCond2({
             {phaseB === "idle" && (
               <button
                 onClick={playB}
-                className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 <Play className="size-3" /> Play video
               </button>
             )}
 
             {phaseB === "ad" && (
-              <div className="relative mt-2 overflow-hidden rounded-md border border-emerald-500/30">
+              <div className="relative mt-2 overflow-hidden rounded-md border border-green-500/30">
                 <button
                   onClick={() => setPhaseB("playing")}
                   aria-label="Close advertisement"
@@ -130,7 +130,7 @@ export function CountdownOnAdsCond2({
                 >
                   <X className="size-3" />
                 </button>
-                <div className="bg-gradient-to-br from-emerald-600 to-teal-700 p-4 text-white">
+                <div className="  p-4 text-white">
                   <div className="text-[8px] font-semibold uppercase tracking-widest opacity-80">
                     Sponsored
                   </div>
@@ -148,16 +148,16 @@ export function CountdownOnAdsCond2({
                   <span className="font-mono text-[9px] text-muted-foreground">
                     {Math.max(0, TAU_LOCK - tActiveB)}s
                   </span>
-                  <span className="text-[8px] text-emerald-700 dark:text-emerald-300">
-                    N_close in DOM since t = 0
+                  <span className="text-[8px] text-green-700 dark:text-green-300">
+                    You can close this ad at any time
                   </span>
                 </div>
               </div>
             )}
 
             {phaseB === "playing" && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-3 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-3 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   Video playing
                 </div>
@@ -177,14 +177,14 @@ export function CountdownOnAdsCond2({
           {phaseA === "idle" && (
             <button
               onClick={playA}
-              className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               <Play className="size-3" /> Play video
             </button>
           )}
 
           {phaseA === "ad" && (
-            <div className="relative mt-2 overflow-hidden rounded-md border border-rose-500/30">
+            <div className="relative mt-2 overflow-hidden rounded-md border border-red-500/30">
               {/* No X, no skip, no timer — the exit node is absent from DOM(t). */}
               {closeVisibleA && (
                 <button
@@ -197,7 +197,7 @@ export function CountdownOnAdsCond2({
               )}
               <div
                 onClick={clickAdSurfaceA}
-                className={`cursor-pointer bg-gradient-to-br from-rose-600 to-orange-700 p-4 text-white transition-opacity ${
+                className={`cursor-pointer   p-4 text-white transition-opacity ${
                   closeVisibleA ? "" : "hover:opacity-95"
                 }`}
               >
@@ -226,13 +226,13 @@ export function CountdownOnAdsCond2({
               )}
               {closeVisibleA && (
                 <div className="flex items-center justify-between bg-background px-2 py-1.5">
-                  <span className="font-mono text-[9px] text-rose-600 dark:text-rose-300">
+                  <span className="font-mono text-[9px] text-red-600 dark:text-red-300">
                     N_close ∈ DOM(τ_lock) — at t = {tActiveA}s
                   </span>
                 </div>
               )}
               {adOpenedA && !closeVisibleA && (
-                <div className="flex items-center gap-1 border-t border-amber-500/30 bg-amber-500/10 px-2 py-1 text-[8px] font-semibold text-amber-700 dark:text-amber-300">
+                <div className="flex items-center gap-1 border-t border-yellow-500/30 bg-yellow-500/10 px-2 py-1 text-[8px] font-semibold text-yellow-700 dark:text-yellow-300">
                   <AlertTriangle className="size-2.5" />
                   Your click opened the advertiser’s site — the ad was the only clickable surface.
                 </div>
@@ -241,8 +241,8 @@ export function CountdownOnAdsCond2({
           )}
 
           {phaseA === "playing" && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
                 Dynamic affordance injection
               </div>

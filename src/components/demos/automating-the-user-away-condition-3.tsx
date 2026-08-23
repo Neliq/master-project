@@ -87,7 +87,7 @@ export function AutomatingTheUserAwayCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">t_window (total)</span>
-        <span className={`font-mono font-semibold tabular-nums ${dark ? "text-rose-500" : "text-emerald-500"}`}>
+        <span className={`font-mono font-semibold tabular-nums ${dark ? "text-red-500" : "text-green-500"}`}>
           {windowSeconds.toFixed(1)}s
         </span>
       </div>
@@ -101,7 +101,7 @@ export function AutomatingTheUserAwayCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Verdict</span>
-        <span className={`font-mono font-semibold tabular-nums ${dark ? "text-rose-500" : "text-emerald-500"}`}>
+        <span className={`font-mono font-semibold tabular-nums ${dark ? "text-red-500" : "text-green-500"}`}>
           {dark ? "1.0 &lt; 2.0 → manufactured" : "5.0 ≥ 2.0 → adequate"}
         </span>
       </div>
@@ -122,7 +122,7 @@ export function AutomatingTheUserAwayCond3({
             </p>
           </div>
           <div className={`text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 ${
-            isDark ? "text-rose-500 border-rose-500/30" : "text-emerald-500 border-emerald-500/30"
+            isDark ? "text-red-500 border-red-500/30" : "text-green-500 border-green-500/30"
           }`}>
             {isDark ? "t_window 1.0s" : "t_window 5.0s"}
           </div>
@@ -133,8 +133,8 @@ export function AutomatingTheUserAwayCond3({
             onClick={() => openDialog(isDark ? "dark" : "benign")}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
               isDark
-                ? "bg-rose-600 hover:bg-rose-700 text-white"
-                : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                ? "bg-red-600 hover:bg-red-700 text-white"
+                : "bg-green-600 hover:bg-green-700 text-white"
             }`}
           >
             Show consent prompt
@@ -142,16 +142,16 @@ export function AutomatingTheUserAwayCond3({
         )}
 
         {activeHere && (
-          <div className={`mt-3 rounded-md border-2 p-3 ${isDark ? "border-rose-500/50 bg-rose-500/5" : "border-emerald-500/50 bg-emerald-500/5"}`}>
+          <div className={`mt-3 rounded-md border-2 p-3 ${isDark ? "border-red-500/50 bg-red-500/5" : "border-green-500/50 bg-green-500/5"}`}>
             <div className="text-[10px] font-semibold text-foreground">
               Share location with 14 partners?
             </div>
             <p className="text-[9px] text-muted-foreground mt-1 leading-relaxed">
               By continuing you agree to share location data with 14 advertising partners.
               {isDark ? (
-                <> <strong className="text-rose-500">Consent will be registered in 2 seconds.</strong></>
+                <> <strong className="text-red-500">Consent will be registered in 2 seconds.</strong></>
               ) : (
-                <> Nothing is shared unless you tick the box and click <strong className="text-emerald-600 dark:text-emerald-400">I agree</strong> below — the timer never registers consent.</>
+                <> Nothing is shared unless you tick the box and click <strong className="text-green-600 dark:text-green-400">I agree</strong> below — the timer never registers consent.</>
               )}
             </p>
 
@@ -160,17 +160,17 @@ export function AutomatingTheUserAwayCond3({
                 type="checkbox"
                 defaultChecked={isDark}
                 disabled={isDark}
-                className={`h-3.5 w-3.5 ${isDark ? "accent-rose-500" : "accent-emerald-500"}`}
+                className={`h-3.5 w-3.5 ${isDark ? "accent-red-500" : "accent-green-500"}`}
               />
               <span className="text-[9px] text-foreground/80">I agree to share my location</span>
               {isDark && (
-                <span className="text-[8px] text-rose-500/80">(pre-checked — consent assumed)</span>
+                <span className="text-[8px] text-red-500/80">(pre-checked — consent assumed)</span>
               )}
             </label>
 
             <div className="mt-2.5 flex items-center justify-between">
               <div className="font-mono text-[16px] font-bold tabular-nums leading-none">
-                <span className={isDark ? "text-rose-500" : "text-emerald-500"}>{remaining}</span>
+                <span className={isDark ? "text-red-500" : "text-green-500"}>{remaining}</span>
               </div>
               <div className="text-[8px] font-mono tabular-nums text-muted-foreground">
                 t_window = {windowSeconds.toFixed(1)}s · ticks {tickMs}ms
@@ -178,7 +178,7 @@ export function AutomatingTheUserAwayCond3({
             </div>
             <div className="mt-1.5 h-1.5 w-full rounded-full bg-muted overflow-hidden">
               <div
-                className={`h-full rounded-full transition-all duration-300 ${isDark ? "bg-rose-500" : "bg-emerald-500"}`}
+                className={`h-full rounded-full transition-all duration-300 ${isDark ? "bg-red-500" : "bg-green-500"}`}
                 style={{ width: `${((ticksTotal - remaining) / ticksTotal) * 100}%` }}
               />
             </div>
@@ -190,14 +190,14 @@ export function AutomatingTheUserAwayCond3({
                     setDialogOpen(false);
                     setConsented(true);
                   }}
-                  className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-semibold transition-colors cursor-pointer"
+                  className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-semibold transition-colors cursor-pointer"
                 >
                   Confirm
                 </button>
                 <div className="text-center text-[8px] text-muted-foreground">
                   Customize <span className="text-muted-foreground/50">(coming soon)</span>
                 </div>
-                <div className="rounded-md border border-rose-500/30 bg-rose-500/5 px-2 py-1.5 text-[8px] text-rose-500/90 leading-relaxed">
+                <div className="rounded-md border border-red-500/30 bg-red-500/5 px-2 py-1.5 text-[8px] text-red-500/90 leading-relaxed">
                   2 ticks × 500ms = a 1.0s window — below the ~2.0s reaction baseline. Even if you do
                   nothing, consent registers automatically when the timer ends.
                 </div>
@@ -209,7 +209,7 @@ export function AutomatingTheUserAwayCond3({
                     setDialogOpen(false);
                     setConsented(true);
                   }}
-                  className="flex-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-semibold transition-colors cursor-pointer"
+                  className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-semibold transition-colors cursor-pointer"
                 >
                   I agree
                 </button>
@@ -227,12 +227,12 @@ export function AutomatingTheUserAwayCond3({
           </div>
         )}
 
-        {showConsented && (
+        {mode === "auditor" && showConsented && (
           <div className={`mt-3 rounded-md border p-2.5 text-[9px] leading-relaxed ${
-            isDark ? "border-amber-500/30 bg-amber-500/5" : "border-emerald-500/30 bg-emerald-500/5"
+            isDark ? "border-yellow-500/30 bg-yellow-500/5" : "border-green-500/30 bg-green-500/5"
           }`}>
             <div className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
-              isDark ? "text-amber-700 dark:text-amber-300" : "text-emerald-700 dark:text-emerald-300"
+              isDark ? "text-yellow-700 dark:text-yellow-300" : "text-green-700 dark:text-green-300"
             }`}>
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 {isDark ? (
@@ -248,15 +248,15 @@ export function AutomatingTheUserAwayCond3({
             </div>
             <p className="text-muted-foreground mt-0.5">
               {isDark
-                ? "The countdown itself was treated as consent: with t_window = 1.0s < 2.0s and SemanticType(T_prompt) = TimedConsent, the interface manufactured consent through temporal coercion — location sharing with 14 partners is now ON even though you never affirmatively chose it."
+                ? "The countdown ended before you could review the request. Location sharing with 14 partners is now on."
                 : "Your explicit click registered the consent. The 5.0s window was semantically adequate: t_window ≥ 2.0s, so the decision was not coerced by time."}
             </p>
           </div>
         )}
 
         {showDeclined && (
-          <div className="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

@@ -51,7 +51,7 @@ export function ForcedRegistrationCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">∀π : S_auth ∈ π (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True — no guest path</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True — no guest path</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Current stage</span>
@@ -122,8 +122,8 @@ export function ForcedRegistrationCond1({
           onClick={() => setStage("done")}
           className={`w-full rounded-md py-2 text-[10px] font-semibold transition-colors cursor-pointer ${
             accent === "rose"
-              ? "bg-rose-600 hover:bg-rose-700 text-white"
-              : "bg-emerald-600 hover:bg-emerald-700 text-white"
+              ? "bg-red-600 hover:bg-red-700 text-white"
+              : "bg-green-600 hover:bg-green-700 text-white"
           }`}
         >
           Create account &amp; place order
@@ -149,7 +149,7 @@ export function ForcedRegistrationCond1({
             <div className="grid grid-cols-1 gap-2">
               <button
                 onClick={() => setStage("done")}
-                className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
+                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
               >
                 Checkout as guest
               </button>
@@ -166,8 +166,8 @@ export function ForcedRegistrationCond1({
 
           {stage === "done" && (
             <>
-              <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px]">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px]">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -177,8 +177,8 @@ export function ForcedRegistrationCond1({
                   Thank you! Your headphones are on the way — no account was required.
                 </p>
               </div>
-              <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -202,14 +202,14 @@ export function ForcedRegistrationCond1({
         {stage === "cart" && (
           <button
             onClick={() => setStage("auth")}
-            className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
+            className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
           >
             Proceed to checkout
           </button>
         )}
 
         {stage === "auth" && (
-          <div className="rounded-md border border-rose-500/30 bg-rose-500/5 p-2 text-[9px] text-rose-700 dark:text-rose-300">
+          <div className="rounded-md border border-red-500/30 bg-red-500/5 p-2 text-[9px] text-red-700 dark:text-red-300">
             <strong>No guest checkout exists.</strong> Every path to your order passes through account
             creation — S_auth is the only node on the graph.
           </div>
@@ -219,8 +219,8 @@ export function ForcedRegistrationCond1({
 
         {stage === "done" && (
           <>
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px]">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px]">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -230,13 +230,13 @@ export function ForcedRegistrationCond1({
                 Thank you, {email || "new customer"}! Your headphones are on the way.
               </p>
             </div>
-            <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Absolute State Blocking triggered
+                Account required to complete checkout
               </div>
               <p className="text-muted-foreground">
                 &forall;&pi; &isin; Paths(S_intent &rarr; S_terminal) : S_auth &isin; &pi; — the interface

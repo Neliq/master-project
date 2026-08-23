@@ -42,15 +42,15 @@ export function PayToPlayCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(O_unlock)/A_viewport (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 0.95 &gt; τ</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 0.95 &gt; τ</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(O_unlock)/A_viewport (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">≈ 0.28</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">≈ 0.28</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Dismiss target A(N_dismiss)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">16×16 px &lt; 44×44</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">16×16 px &lt; 44×44</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Paywall dismissed?</span>
@@ -81,7 +81,7 @@ export function PayToPlayCond2({
                 </p>
               </div>
               {purchased ? (
-                <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+                <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                   Playing
                 </div>
               ) : (
@@ -92,13 +92,13 @@ export function PayToPlayCond2({
             </div>
 
             {!purchased && !dismissed && (
-              <div className="mt-3 flex flex-wrap items-center gap-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2">
+              <div className="mt-3 flex flex-wrap items-center gap-2 rounded-md border border-green-500/30 bg-green-500/5 p-2">
                 <span className="text-[9px] text-muted-foreground flex-1 min-w-[120px]">
-                  Rent this episode — <span className="font-mono font-semibold text-emerald-600 dark:text-emerald-400">$3.99</span> one-time.
+                  Rent this episode — <span className="font-mono font-semibold text-green-600 dark:text-green-400">$3.99</span> one-time.
                 </span>
                 <button
                   onClick={() => setPurchased(true)}
-                  className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="rounded-md bg-green-600 hover:bg-green-700 text-white px-3 py-2.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Rent $3.99
                 </button>
@@ -119,8 +119,8 @@ export function PayToPlayCond2({
           </div>
 
           {revealed && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -155,19 +155,19 @@ export function PayToPlayCond2({
 
           {!purchased && !dismissed && (
             <div className="absolute inset-0 z-10 flex items-center justify-center bg-background/95 p-3">
-              <div className="w-full rounded-md border border-rose-500/40 bg-card p-4 text-center">
-                <svg className="mx-auto h-6 w-6 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="w-full rounded-md border border-red-500/40 bg-card p-4 text-center">
+                <svg className="mx-auto h-6 w-6 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect x="3" y="11" width="18" height="11" rx="2" />
                   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                 </svg>
                 <h4 className="mt-2 text-[13px] font-bold">Unlock {EPISODE_TITLE}</h4>
                 <p className="mt-1 text-[10px] text-muted-foreground">
-                  Only <span className="font-mono font-semibold text-amber-500">$3.99</span> for this
+                  Only <span className="font-mono font-semibold text-yellow-500">$3.99</span> for this
                   episode — unlock the full season for $9.99!
                 </p>
                 <button
                   onClick={() => setPurchased(true)}
-                  className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
+                  className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
                 >
                   Unlock now — $3.99
                 </button>
@@ -187,7 +187,7 @@ export function PayToPlayCond2({
           )}
 
           {purchased && (
-            <div className="border-t border-border p-2.5 text-[9px] text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
+            <div className="border-t border-border p-2.5 text-[9px] text-green-700 dark:text-green-300 flex items-center gap-1.5">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>
@@ -196,26 +196,26 @@ export function PayToPlayCond2({
           )}
         </div>
 
-        {revealed && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && revealed && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Paywall dominance triggered
+              Episode unlocked
             </div>
             <p className="text-muted-foreground">
               {dismissed ? (
                 <>
                   You dismissed the overlay — but only after hunting for a{" "}
-                  <strong className="text-rose-500">16 × 16 px</strong> target (A(N_dismiss) &lt; 44 × 44,
+                  <strong className="text-red-500">16 × 16 px</strong> target (A(N_dismiss) &lt; 44 × 44,
                   a WCAG violation). {purchased ? "You also paid $3.99 to unlock the episode." : "The paywall visually dominated the panel until then."}
                 </>
               ) : (
                 <>
                   The overlay covered nearly the entire panel — A(O_unlock)/A_viewport ≈ 0.95 &gt; τ_occlusion —
-                  and its dismiss &ldquo;&times;&rdquo; was a <strong className="text-rose-500">16 × 16 px</strong>{" "}
+                  and its dismiss &ldquo;&times;&rdquo; was a <strong className="text-red-500">16 × 16 px</strong>{" "}
                   sliver, well under the 44 × 44 px WCAG minimum. The paywall becomes the central visual
                   event; the content is buried beneath it.
                 </>

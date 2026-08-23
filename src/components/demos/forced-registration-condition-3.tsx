@@ -39,11 +39,11 @@ export function ForcedRegistrationCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Sent(L(N_guest)) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{SENT_DARK.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{SENT_DARK.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Sent(L(N_guest)) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">+{SENT_BENIGN.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">+{SENT_BENIGN.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Threshold &tau;_guest_sent</span>
@@ -51,7 +51,7 @@ export function ForcedRegistrationCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Trigger (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{SENT_DARK.toFixed(2)} &lt; &tau; &rarr; yes</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{SENT_DARK.toFixed(2)} &lt; &tau; &rarr; yes</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Selected option</span>
@@ -93,7 +93,7 @@ export function ForcedRegistrationCond3({
 
           <button
             onClick={() => setChoice("guest")}
-            className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
+            className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
           >
             Checkout as guest
           </button>
@@ -108,15 +108,15 @@ export function ForcedRegistrationCond3({
           </button>
 
           {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
                 Neutral framing
               </div>
               <p className="text-muted-foreground">
-                Sent(L(N_guest)) = <strong className="text-emerald-700 dark:text-emerald-300">+{SENT_BENIGN.toFixed(2)}</strong>{" "}
+                Sent(L(N_guest)) = <strong className="text-green-700 dark:text-green-300">+{SENT_BENIGN.toFixed(2)}</strong>{" "}
                 &ge; &tau;_guest_sent ({TAU_SENT.toFixed(2)}) — the guest label is a neutral description of
                 what happens, not a list of what you lose. No sentiment pressure tilts the choice.
               </p>
@@ -131,7 +131,7 @@ export function ForcedRegistrationCond3({
 
         <button
           onClick={() => setChoice("account")}
-          className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
+          className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
         >
           Create account &amp; check out
         </button>
@@ -151,19 +151,19 @@ export function ForcedRegistrationCond3({
           </p>
         </div>
 
-        {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && choice && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Semantic framing triggered
+              Registration required
             </div>
             {choice === "guest" ? (
               <p className="text-muted-foreground">
                 You took the guest path despite the framing. Sent(L(N_guest)) ={" "}
-                <strong className="text-rose-500">{SENT_DARK.toFixed(2)}</strong> &lt; &tau;_guest_sent
+                <strong className="text-red-500">{SENT_DARK.toFixed(2)}</strong> &lt; &tau;_guest_sent
                 ({TAU_SENT.toFixed(2)}) — the label semantically punishes the privacy-respecting choice:
                 &ldquo;without benefits&rdquo;, &ldquo;you&rsquo;ll miss out&rdquo;. The user-favorable
                 option is framed as a loss, so choosing it feels like a sacrifice.

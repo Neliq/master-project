@@ -40,8 +40,8 @@ function PermissionChips({ perms, accent }: { perms: readonly string[]; accent: 
           key={p}
           className={`rounded-full border px-1.5 py-0.5 font-mono text-[8px] font-semibold ${
             accent === "rose"
-              ? "border-rose-500/40 bg-rose-500/5 text-rose-700 dark:text-rose-300"
-              : "border-emerald-500/40 bg-emerald-500/5 text-emerald-700 dark:text-emerald-300"
+              ? "border-red-500/40 bg-red-500/5 text-red-700 dark:text-red-300"
+              : "border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300"
           }`}
         >
           {p}
@@ -70,19 +70,19 @@ export function GrantingAndInteractionCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Perms_disclosed (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{DISCLOSED_DARK.join(", ")}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DISCLOSED_DARK.join(", ")}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Perms_actual (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{ACTUAL_DARK.join(", ")}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{ACTUAL_DARK.join(", ")}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&Delta;_perms (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">|{ACTUAL_DARK.length} &minus; {DISCLOSED_DARK.length}| = {GAP_DARK} (&gt; 0)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">|{ACTUAL_DARK.length} &minus; {DISCLOSED_DARK.length}| = {GAP_DARK} (&gt; 0)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&Delta;_perms (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{GAP_BENIGN} (= 0)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{GAP_BENIGN} (= 0)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Call state</span>
@@ -108,8 +108,8 @@ export function GrantingAndInteractionCond3({
       onClick={() => (accent === "rose" ? setAStage("request") : setBStage("request"))}
       className={`mt-2 w-full rounded-md py-2 text-[10px] font-semibold transition-colors cursor-pointer ${
         accent === "rose"
-          ? "bg-rose-600 hover:bg-rose-700 text-white"
-          : "bg-emerald-600 hover:bg-emerald-700 text-white"
+          ? "bg-red-600 hover:bg-red-700 text-white"
+          : "bg-green-600 hover:bg-green-700 text-white"
       }`}
     >
       Join video call
@@ -155,7 +155,7 @@ export function GrantingAndInteractionCond3({
                   </button>
                   <button
                     onClick={() => setBStage("inCall")}
-                    className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                    className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Allow camera &amp; microphone
                   </button>
@@ -164,8 +164,8 @@ export function GrantingAndInteractionCond3({
             )}
 
             {bStage === "inCall" && (
-              <div className="mt-2 flex h-20 items-center justify-center rounded-md border border-emerald-500/30 bg-emerald-500/5">
-                <span className="text-[9px] font-medium text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2 flex h-20 items-center justify-center rounded-md border border-green-500/30 bg-green-500/5">
+                <span className="text-[9px] font-medium text-green-700 dark:text-green-300">
                   You&rsquo;re in the call — camera &amp; mic active
                 </span>
               </div>
@@ -173,8 +173,8 @@ export function GrantingAndInteractionCond3({
           </div>
 
           {bStage === "inCall" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -215,7 +215,7 @@ export function GrantingAndInteractionCond3({
           )}
 
           {aStage === "request" && (
-            <div className="mt-2 rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5">
+            <div className="mt-2 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
               <p className="text-[9px] leading-relaxed text-muted-foreground">
                 &ldquo;MeetNow&rdquo; would like to{" "}
                 <strong className="text-foreground">access your camera</strong>.
@@ -235,7 +235,7 @@ export function GrantingAndInteractionCond3({
                 </button>
                 <button
                   onClick={() => setAStage("inCall")}
-                  className="rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                  className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                 >
                   Allow
                 </button>
@@ -244,8 +244,8 @@ export function GrantingAndInteractionCond3({
           )}
 
           {aStage === "inCall" && (
-            <div className="mt-2 flex h-20 items-center justify-center rounded-md border border-rose-500/30 bg-rose-500/5">
-              <span className="text-[9px] font-medium text-rose-700 dark:text-rose-300">
+            <div className="mt-2 flex h-20 items-center justify-center rounded-md border border-red-500/30 bg-red-500/5">
+              <span className="text-[9px] font-medium text-red-700 dark:text-red-300">
                 You&rsquo;re in the call — camera, mic &amp; location active
               </span>
             </div>
@@ -253,13 +253,13 @@ export function GrantingAndInteractionCond3({
         </div>
 
         {aStage === "inCall" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Scope creep triggered — &Delta;_perms = {GAP_DARK}
+              Permissions updated
             </div>
             <div>
               <p className="text-[8px] font-semibold uppercase tracking-wider text-muted-foreground">Request text mentioned</p>
@@ -271,7 +271,7 @@ export function GrantingAndInteractionCond3({
             </div>
             <p className="text-muted-foreground">
               The natural-language request disclosed only the camera, but the browser API call enumerated{" "}
-              <strong className="text-rose-500">{ACTUAL_DARK.join(", ")}</strong>. |Perms_actual \ Perms_disclosed|
+              <strong className="text-red-500">{ACTUAL_DARK.join(", ")}</strong>. |Perms_actual \ Perms_disclosed|
               = {GAP_DARK} &gt; 0 — the semantic-disclosure gap means you consented to microphone and
               location access without ever being told they were being requested.
             </p>

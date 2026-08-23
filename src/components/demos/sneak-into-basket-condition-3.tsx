@@ -59,15 +59,15 @@ export function SneakIntoBasketCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Entailment(T, &ldquo;optional add-on&rdquo;)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">UserConsented — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">False (pre-checked for you)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">False (pre-checked for you)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">UserConsented — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{donationB ? "True (you checked)" : "False (you declined)"}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{donationB ? "True (you checked)" : "False (you declined)"}</span>
       </div>
     </>
   ) : null;
@@ -80,13 +80,13 @@ export function SneakIntoBasketCond3({
     accent: "rose" | "emerald",
     tiny: boolean
   ) => (
-    <div className={`rounded-md border p-2 ${accent === "rose" ? "border-border bg-background" : "border-emerald-500/30 bg-emerald-500/5"}`}>
+    <div className={`rounded-md border p-2 ${accent === "rose" ? "border-border bg-background" : "border-green-500/30 bg-green-500/5"}`}>
       <label className="flex cursor-pointer items-start gap-2">
         <input
           type="checkbox"
           checked={checked}
           onChange={(e) => onToggle(e.target.checked)}
-          className={`mt-0.5 flex-shrink-0 ${accent === "rose" ? "accent-rose-500" : "accent-emerald-500"}`}
+          className={`mt-0.5 flex-shrink-0 ${accent === "rose" ? "accent-red-500" : "accent-green-500"}`}
         />
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline justify-between gap-2">
@@ -110,8 +110,8 @@ export function SneakIntoBasketCond3({
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-background overflow-hidden">
-            <div className="flex items-center gap-2 border-b bg-emerald-500/5 px-3 py-1.5">
-              <span className="text-[8px] font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+            <div className="flex items-center gap-2 border-b bg-green-500/5 px-3 py-1.5">
+              <span className="text-[8px] font-semibold uppercase tracking-wide text-green-700 dark:text-green-300">
                 Checkout
               </span>
               <span className="ml-auto text-[7px] text-muted-foreground">step 3 of 3 · review</span>
@@ -135,7 +135,7 @@ export function SneakIntoBasketCond3({
 
               <div className="mt-2 flex items-center justify-between border-t pt-2">
                 <span className="text-[9px] font-medium">Total</span>
-                <span className="font-mono text-[11px] font-bold tabular-nums text-emerald-600 dark:text-emerald-400">
+                <span className="font-mono text-[11px] font-bold tabular-nums text-green-600 dark:text-green-400">
                   {fmt(HEADPHONES.price + (donationB ? DONATION.price : 0))}
                 </span>
               </div>
@@ -146,21 +146,21 @@ export function SneakIntoBasketCond3({
               )}
               <button
                 onClick={() => setPaidB(true)}
-                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md bg-emerald-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
               >
                 <CreditCard className="h-3 w-3" /> Pay {fmt(HEADPHONES.price + (donationB ? DONATION.price : 0))}
               </button>
             </div>
           </div>
 
-          {paidB && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && paidB && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <HeartHandshake className="h-3 w-3" /> Consent preceded inclusion
               </div>
               <p className="text-muted-foreground">
                 The line&rsquo;s text still entails &ldquo;optional add-on&rdquo; — but UserConsented(N<sub>injected</sub>) ={" "}
-                <strong className="text-emerald-700 dark:text-emerald-300">{donationB ? "True" : "False"}</strong>{" "}
+                <strong className="text-green-700 dark:text-green-300">{donationB ? "True" : "False"}</strong>{" "}
                 {donationB
                   ? `— you ticked the box yourself, so the ${fmt(DONATION.price)} you paid was an informed choice.`
                   : "— you left it unchecked and paid the base price. The disclosure language here is a genuine choice, not camouflage."}
@@ -172,8 +172,8 @@ export function SneakIntoBasketCond3({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-background overflow-hidden">
-          <div className="flex items-center gap-2 border-b bg-rose-500/5 px-3 py-1.5">
-            <span className="text-[8px] font-semibold uppercase tracking-wide text-rose-700 dark:text-rose-300">
+          <div className="flex items-center gap-2 border-b bg-red-500/5 px-3 py-1.5">
+            <span className="text-[8px] font-semibold uppercase tracking-wide text-red-700 dark:text-red-300">
               Checkout
             </span>
             <span className="ml-auto text-[7px] text-muted-foreground">step 3 of 3 · review</span>
@@ -197,7 +197,7 @@ export function SneakIntoBasketCond3({
 
             <div className="mt-2 flex items-center justify-between border-t pt-2">
               <span className="text-[9px] font-medium">Total</span>
-              <span className="font-mono text-[11px] font-bold tabular-nums text-rose-600 dark:text-rose-400">
+              <span className="font-mono text-[11px] font-bold tabular-nums text-red-600 dark:text-red-400">
                 {fmt(HEADPHONES.price + (donationA ? DONATION.price : 0))}
               </span>
             </div>
@@ -208,25 +208,25 @@ export function SneakIntoBasketCond3({
             )}
             <button
               onClick={() => setPaidA(true)}
-              className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md bg-rose-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-rose-700 cursor-pointer"
+              className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md bg-red-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
             >
               <CreditCard className="h-3 w-3" /> Pay {fmt(HEADPHONES.price + (donationA ? DONATION.price : 0))}
             </button>
           </div>
         </div>
 
-        {paidA && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && paidA && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Semantic obscuration — charged without consent
+              Added to your order
             </div>
             <p className="text-muted-foreground">
               Entailment(T(N<sub>injected</sub>), &ldquo;optional add-on&rdquo;) ={" "}
-              <strong className="text-rose-500">True</strong> — the line&rsquo;s own description says &ldquo;This{" "}
+              <strong className="text-red-500">True</strong> — the line&rsquo;s own description says &ldquo;This{" "}
               <em>optional</em> donation&hellip;&rdquo; — yet UserConsented(N<sub>injected</sub>) ={" "}
               <strong className="text-foreground">False</strong>: the box was checked for you at mount and{" "}
               {fmt(DONATION.price)} was folded into the total before you ever saw it.

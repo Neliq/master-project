@@ -55,7 +55,7 @@ export function PositiveOrNegativeFramingCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">max(W_gain/W_loss, W_loss/W_gain)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {RATIO.toFixed(1)}× &gt; {TAU.toFixed(1)}
         </span>
       </div>
@@ -80,7 +80,7 @@ export function PositiveOrNegativeFramingCond2({
             <h3 className="text-[11px] font-semibold">Your Premium plan is renewing</h3>
             <p className="text-[9px] text-muted-foreground mt-0.5">
               Renewal is due in 3 days. Renew now at the discounted rate of{" "}
-              <span className="font-semibold text-emerald-600 dark:text-emerald-400">$29/mo (save 40%)</span>;
+              <span className="font-semibold text-green-600 dark:text-green-400">$29/mo (save 40%)</span>;
               the standard rate after renewal is $49/mo.
             </p>
 
@@ -89,8 +89,8 @@ export function PositiveOrNegativeFramingCond2({
                 onClick={() => setDecision("keep")}
                 className={`rounded-md py-2 text-[10px] font-medium transition-colors cursor-pointer ${
                   decision === "keep"
-                    ? "bg-emerald-600 text-white"
-                    : "bg-emerald-600/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-600/20 border border-emerald-500/40"
+                    ? "bg-green-600 text-white"
+                    : "bg-green-600/10 text-green-700 dark:text-green-300 hover:bg-green-600/20 border border-green-500/40"
                 }`}
               >
                 Renew at $29/mo (save 40%)
@@ -99,8 +99,8 @@ export function PositiveOrNegativeFramingCond2({
                 onClick={() => setDecision("cancel")}
                 className={`rounded-md py-2 text-[10px] font-medium transition-colors cursor-pointer ${
                   decision === "cancel"
-                    ? "bg-emerald-600 text-white"
-                    : "bg-emerald-600/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-600/20 border border-emerald-500/40"
+                    ? "bg-green-600 text-white"
+                    : "bg-green-600/10 text-green-700 dark:text-green-300 hover:bg-green-600/20 border border-green-500/40"
                 }`}
               >
                 Cancel my subscription
@@ -117,7 +117,7 @@ export function PositiveOrNegativeFramingCond2({
               disabled={!decision}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 decision
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -126,8 +126,8 @@ export function PositiveOrNegativeFramingCond2({
           </div>
 
           {submitted && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -148,7 +148,7 @@ export function PositiveOrNegativeFramingCond2({
           <h3 className="text-[11px] font-semibold">Your Premium plan is renewing</h3>
           <p className="text-[9px] text-muted-foreground mt-0.5">
             Renewal is due in 3 days. Renew now at the discounted rate of{" "}
-            <span className="font-semibold text-rose-600 dark:text-rose-400">$29/mo (save 40%)</span>;
+            <span className="font-semibold text-red-600 dark:text-red-400">$29/mo (save 40%)</span>;
             the standard rate after renewal is $49/mo.
           </p>
 
@@ -157,8 +157,8 @@ export function PositiveOrNegativeFramingCond2({
             onClick={() => setDecision("keep")}
             className={`mt-3 w-full rounded-md py-3.5 text-[12px] font-bold tracking-wide transition-colors cursor-pointer shadow-lg ${
               decision === "keep"
-                ? "bg-rose-600 text-white"
-                : "bg-rose-600 text-white hover:bg-rose-700"
+                ? "bg-red-600 text-white"
+                : "bg-red-600 text-white hover:bg-red-700"
             }`}
           >
             Renew at $29/mo — save 40% now
@@ -170,7 +170,7 @@ export function PositiveOrNegativeFramingCond2({
               onClick={() => setDecision("cancel")}
               className={`text-[8px] transition-colors cursor-pointer ${
                 decision === "cancel"
-                  ? "text-rose-500 font-semibold"
+                  ? "text-red-500 font-semibold"
                   : "text-muted-foreground/40 hover:text-muted-foreground underline"
               }`}
             >
@@ -186,7 +186,7 @@ export function PositiveOrNegativeFramingCond2({
             disabled={!decision}
             className={`mt-4 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               decision
-                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
@@ -194,19 +194,19 @@ export function PositiveOrNegativeFramingCond2({
           </button>
         </div>
 
-        {submitted && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && submitted && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Visual weight asymmetry triggered
+              Plan updated
             </div>
             <p className="text-muted-foreground">
               The gain pole is a full-width, high-contrast button while the loss pole is a
               8px grey link:{" "}
-              <strong className="font-mono text-rose-500">
+              <strong className="font-mono text-red-500">
                 W(F_gain) = {W_GAIN.toLocaleString()}, W(F_loss) = {W_LOSS.toLocaleString()}, ratio {RATIO.toFixed(1)}×
               </strong>{" "}
               — far past <span className="font-mono">τ_frame_asymmetry = {TAU.toFixed(1)}</span>.

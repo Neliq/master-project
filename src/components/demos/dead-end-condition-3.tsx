@@ -56,7 +56,7 @@ function renderHighlighted(text: string, coerciveSet: Set<string>) {
     return (
       <React.Fragment key={i}>
         {isCoercive ? (
-          <mark className="rounded-sm bg-amber-500/25 px-0.5 text-amber-800 dark:text-amber-200">{w}</mark>
+          <mark className="rounded-sm bg-yellow-500/25 px-0.5 text-yellow-800 dark:text-yellow-200">{w}</mark>
         ) : (
           <span>{w}</span>
         )}
@@ -86,15 +86,15 @@ export function DeadEndCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Coercive tokens (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{A.count} of {A.total}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{A.count} of {A.total}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Coercion density (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{ratioA.toFixed(2)} &gt; &tau; ({TAU_COERCION})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{ratioA.toFixed(2)} &gt; &tau; ({TAU_COERCION})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Coercion density (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{B.count} / {B.total} = {(B.count / B.total).toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{B.count} / {B.total} = {(B.count / B.total).toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Imperative/urgency lexemes</span>
@@ -110,7 +110,7 @@ export function DeadEndCond3({
           <h3 className="text-[11px] font-semibold">
             {accent === "rose" ? (
               <>
-                <span className="text-amber-600 dark:text-amber-400">⚠</span> ACTION REQUIRED
+                <span className="text-yellow-600 dark:text-yellow-400">⚠</span> ACTION REQUIRED
               </>
             ) : (
               "Storage notice"
@@ -129,7 +129,7 @@ export function DeadEndCond3({
       </div>
       {analyzed ? (
         <div className={`mt-2 rounded-md border p-2 text-[8px] leading-relaxed ${
-          accent === "rose" ? "border-amber-500/30 bg-amber-500/5 text-amber-700 dark:text-amber-300" : "border-emerald-500/30 bg-emerald-500/5 text-emerald-700 dark:text-emerald-300"
+          accent === "rose" ? "border-yellow-500/30 bg-yellow-500/5 text-yellow-700 dark:text-yellow-300" : "border-green-500/30 bg-green-500/5 text-green-700 dark:text-green-300"
         }`}>
           {accent === "rose" ? (
             <>Highlighted: {A.count} coercive tokens / {A.total} words = {(ratioA * 100).toFixed(0)}% density &gt; &tau;_coercion ({TAU_COERCION}) &rarr; trigger.</>
@@ -142,7 +142,7 @@ export function DeadEndCond3({
         <button
           onClick={() => (accent === "rose" ? setChoiceA("upgraded") : setChoiceB("upgraded"))}
           className={`flex-1 rounded-md py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer ${
-            accent === "rose" ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+            accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
           }`}
         >
           Upgrade now — save 50% TODAY
@@ -155,7 +155,7 @@ export function DeadEndCond3({
         </button>
       </div>
       {accent === "rose" && choiceA ? (
-        <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+        <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
           <p className="text-muted-foreground">
             {choiceA === "upgraded"
               ? "You upgraded. Every exit from this state ran through the payment action — and the copy kept pushing with imperative verbs ('MUST', 'ACT NOW'). Structural entrapment compounded by linguistic pressure."
@@ -164,7 +164,7 @@ export function DeadEndCond3({
         </div>
       ) : null}
       {accent === "emerald" && choiceB ? (
-        <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
+        <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
           <p className="text-muted-foreground">
             {choiceB === "upgraded"
               ? "You upgraded after a calm, factual explanation — a deliberate choice, not a pressured one."
@@ -186,7 +186,7 @@ export function DeadEndCond3({
           {trapPage("emerald")}
           <button
             onClick={() => setAnalyzed(true)}
-            className="w-full rounded-md border border-emerald-500/40 bg-emerald-500/5 text-emerald-700 dark:text-emerald-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="w-full rounded-md border border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Analyze coercion density
           </button>
@@ -197,7 +197,7 @@ export function DeadEndCond3({
         {trapPage("rose")}
         <button
           onClick={() => setAnalyzed(true)}
-          className="w-full rounded-md border border-rose-500/40 bg-rose-500/5 text-rose-700 dark:text-rose-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+          className="w-full rounded-md border border-red-500/40 bg-red-500/5 text-red-700 dark:text-red-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
           Analyze coercion density
         </button>

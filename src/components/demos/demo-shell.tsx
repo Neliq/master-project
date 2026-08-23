@@ -130,19 +130,19 @@ export function DemoShell({
     <Card
       className={cn(
         "border-foreground/10 ring-1 ring-foreground/5 overflow-hidden",
-        isAuditor && "ring-2 ring-amber-500/40 border-amber-500/40",
+        isAuditor && "ring-2 ring-yellow-500/40 border-yellow-500/40",
         className
       )}
     >
       <CardHeader
         className={cn(
           "border-b py-3",
-          isAuditor ? "bg-amber-500/10" : "bg-muted/30"
+          isAuditor ? "bg-yellow-500/10" : "bg-muted/30"
         )}
       >
         <div className="flex items-center gap-2">
           {isAuditor ? (
-            <Eye className="text-amber-700 dark:text-amber-300 size-3.5" />
+            <Eye className="text-yellow-700 dark:text-yellow-300 size-3.5" />
           ) : (
             <Beaker className="text-muted-foreground size-3.5" />
           )}
@@ -150,19 +150,19 @@ export function DemoShell({
             {isAuditor ? `${title} — auditor view` : title}
           </CardTitle>
           {isAuditor && (
-            <span className="bg-amber-500 text-white ml-auto rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide">
+            <span className="bg-yellow-500 text-white ml-auto rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide">
               Audit
             </span>
           )}
         </div>
-        {caption ? (
+        {caption && isAuditor ? (
           <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
             {caption}
           </p>
         ) : null}
       </CardHeader>
       <CardContent className="space-y-4 pt-5">
-        {hint && !isAuditor ? (
+        {hint && isAuditor ? (
           <div className="border-foreground/10 bg-muted/40 flex items-start gap-2 rounded-md border px-3 py-2 text-xs leading-relaxed">
             <Info className="text-muted-foreground mt-0.5 size-3.5 shrink-0" />
             <span className="text-muted-foreground">{hint}</span>
@@ -183,9 +183,9 @@ export function DemoShell({
           data-dp-simulation
           data-dp-speed={speed}
           onClickCapture={isAuditor ? handleClickCapture : undefined}
-          className="bg-background relative rounded-md border p-4 ring-1 ring-foreground/5"
+          className="bg-background relative rounded-md border p-4 ring-1 ring-foreground/5 grayscale"
         >
-          {benign ? (
+          {benign && isAuditor ? (
             <>
               <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 {/* ── Variant A: the dark pattern ── */}
@@ -199,7 +199,7 @@ export function DemoShell({
                 >
                   <div className="bg-red-500/10 border-red-500/40 text-red-800 dark:text-red-200 mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
                     <AlertTriangle className="size-3" />
-                    Variant A — Dark pattern
+                    {isAuditor ? "Variant A — Dark pattern" : "Option A"}
                   </div>
                   {children}
                 </div>
@@ -208,18 +208,18 @@ export function DemoShell({
                   className={cn(
                     "rounded-md border p-3",
                     isAuditor
-                      ? "ring-2 ring-emerald-500/40 border-emerald-500/40"
-                      : "ring-1 ring-emerald-500/30"
+                      ? "ring-2 ring-green-500/40 border-green-500/40"
+                      : "ring-1 ring-green-500/30"
                   )}
                 >
-                  <div className="bg-emerald-500/10 border-emerald-500/40 text-emerald-800 dark:text-emerald-200 mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
+                  <div className="bg-green-500/10 border-green-500/40 text-green-800 dark:text-green-200 mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
                     <CheckCircle2 className="size-3" />
-                    Variant B — Non-dark pattern
+                    {isAuditor ? "Variant B — Non-dark pattern" : "Option B"}
                   </div>
                   {benign}
                 </div>
               </div>
-              {deltaNote ? (
+              {deltaNote && isAuditor ? (
                 <div className="border-foreground/10 bg-muted/40 mt-3 flex items-start gap-2 rounded-md border px-3 py-2 text-xs leading-relaxed">
                   <Info className="text-muted-foreground mt-0.5 size-3.5 shrink-0" />
                   <span className="text-muted-foreground">
@@ -255,21 +255,21 @@ export function DemoShell({
         {/* rendered here in user mode they do not exist at all.       */}
         {/* ============================================================ */}
         {isAuditor ? (
-          <div className="space-y-3 border-t-2 border-dashed border-amber-500/40 pt-4">
-            <div className="text-amber-700 dark:text-amber-300 flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider">
+          <div className="space-y-3 border-t-2 border-dashed border-yellow-500/40 pt-4">
+            <div className="text-yellow-700 dark:text-yellow-300 flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider">
               <Eye className="size-3" />
               Auditor view (hidden from users)
             </div>
 
             {annotations.length > 0 ? (
-              <div className="border-l-4 border-amber-500 bg-amber-500/5 space-y-2 rounded-r-md p-3">
-                <div className="text-amber-700 dark:text-amber-300 text-[10px] font-bold uppercase tracking-wider">
+              <div className="border-l-4 border-yellow-500 bg-yellow-500/5 space-y-2 rounded-r-md p-3">
+                <div className="text-yellow-700 dark:text-yellow-300 text-[10px] font-bold uppercase tracking-wider">
                   Dark pattern elements
                 </div>
                 <ul className="space-y-1.5 text-xs">
                   {annotations.map((a, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="bg-amber-500 text-white shrink-0 rounded-full px-1.5 py-0.5 font-mono text-[9px] font-bold">
+                      <span className="bg-yellow-500 text-white shrink-0 rounded-full px-1.5 py-0.5 font-mono text-[9px] font-bold">
                         {i + 1}
                       </span>
                       <div>
@@ -286,15 +286,15 @@ export function DemoShell({
             ) : null}
 
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              <div className="border-l-4 border-purple-500 bg-purple-500/5 space-y-2 rounded-r-md p-3">
-                <div className="text-purple-700 dark:text-purple-300 text-[10px] font-bold uppercase tracking-wider">
+              <div className="border-l-4 border-blue-500 bg-blue-500/5 space-y-2 rounded-r-md p-3">
+                <div className="text-blue-700 dark:text-blue-300 text-[10px] font-bold uppercase tracking-wider">
                   Presentation controls
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
                   {onRestart ? (
                     <button
                       onClick={onRestart}
-                      className="bg-purple-500 text-white hover:bg-purple-600 inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium"
+                      className="bg-blue-500 text-white hover:bg-blue-600 inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium"
                     >
                       <RotateCcw className="size-3" />
                       Restart
@@ -310,7 +310,7 @@ export function DemoShell({
                           className={cn(
                             "rounded px-1.5 py-0.5 font-mono text-[10px] font-semibold",
                             speed === s
-                              ? "bg-purple-500 text-white"
+                              ? "bg-blue-500 text-white"
                               : "text-muted-foreground hover:text-foreground"
                           )}
                         >

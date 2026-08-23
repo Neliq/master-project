@@ -147,11 +147,11 @@ export function PullToRefreshCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">R_elastic(ΔY) friction</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&gt; 0 — non-linear (A) / = 0 (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&gt; 0 — non-linear (A) / = 0 (B)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">E_refresh()</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">needs ΔY ≥ τ_commit (A) / fires on tap (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">needs ΔY ≥ τ_commit (A) / fires on tap (B)</span>
       </div>
     </>
   ) : null;
@@ -167,7 +167,7 @@ export function PullToRefreshCond1({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Pulse — your feed</h3>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 {feed.length} posts
               </span>
             </div>
@@ -179,7 +179,7 @@ export function PullToRefreshCond1({
                 </div>
               ))}
               {refreshingA && (
-                <div className="flex items-center gap-1.5 rounded border border-emerald-500/30 bg-emerald-500/5 px-2 py-1.5 text-[9px] text-emerald-700 dark:text-emerald-300">
+                <div className="flex items-center gap-1.5 rounded border border-green-500/30 bg-green-500/5 px-2 py-1.5 text-[9px] text-green-700 dark:text-green-300">
                   <RefreshSpinner /> Refreshing…
                 </div>
               )}
@@ -191,7 +191,7 @@ export function PullToRefreshCond1({
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
                 refreshingA
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               {refreshingA ? "Refreshing…" : "Refresh feed"}
@@ -201,8 +201,8 @@ export function PullToRefreshCond1({
             </p>
 
             {refreshCount >= 1 && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   No action commitment
                 </div>
@@ -221,7 +221,7 @@ export function PullToRefreshCond1({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Pulse — your feed</h3>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               {feed.length} posts
             </span>
           </div>
@@ -233,7 +233,7 @@ export function PullToRefreshCond1({
               </div>
             ))}
             {refreshingA && (
-              <div className="flex items-center gap-1.5 rounded border border-rose-500/30 bg-rose-500/5 px-2 py-1.5 text-[9px] text-rose-600 dark:text-rose-300">
+              <div className="flex items-center gap-1.5 rounded border border-red-500/30 bg-red-500/5 px-2 py-1.5 text-[9px] text-red-600 dark:text-red-300">
                 <RefreshSpinner /> Refreshing…
               </div>
             )}
@@ -250,8 +250,8 @@ export function PullToRefreshCond1({
                 refreshingA
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                   : pulling
-                    ? "bg-rose-700 text-white cursor-grabbing"
-                    : "bg-rose-600 hover:bg-rose-700 text-white cursor-grab"
+                    ? "bg-red-700 text-white cursor-grabbing"
+                    : "bg-red-600 hover:bg-red-700 text-white cursor-grab"
               }`}
             >
               {refreshingA
@@ -266,8 +266,8 @@ export function PullToRefreshCond1({
           </div>
 
           {committedA && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
                 Action commitment enforced
               </div>

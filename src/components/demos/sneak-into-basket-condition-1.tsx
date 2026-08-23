@@ -65,17 +65,17 @@ export function SneakIntoBasketCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">I_cart \ I_explicit — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {injectedItems.length > 0 ? "{" + injectedItems.map((i) => i.name.split(" ")[0]).join(", ") + "}" : "∅"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">∃ e ∈ E_user : Add(y) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">none — no clicks</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">none — no clicks</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Trigger — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{injectedItems.length > 0 ? "True" : "False"}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{injectedItems.length > 0 ? "True" : "False"}</span>
       </div>
     </>
   ) : null;
@@ -83,8 +83,8 @@ export function SneakIntoBasketCond1({
   const productPage = (onAdd: () => void, accent: "rose" | "emerald") => (
     <div className="rounded-md border bg-background p-3">
       <div className="flex items-start gap-3">
-        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-md ${accent === "rose" ? "bg-rose-500/10" : "bg-emerald-500/10"}`}>
-          <Headphones className={`h-5 w-5 ${accent === "rose" ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"}`} />
+        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-md ${accent === "rose" ? "bg-red-500/10" : "bg-green-500/10"}`}>
+          <Headphones className={`h-5 w-5 ${accent === "rose" ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`} />
         </div>
         <div className="min-w-0 flex-1">
           <h3 className="text-[11px] font-semibold">{HEADPHONES.name}</h3>
@@ -96,7 +96,7 @@ export function SneakIntoBasketCond1({
       </div>
       <button
         onClick={onAdd}
-        className={`mt-3 flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer ${accent === "rose" ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"}`}
+        className={`mt-3 flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer ${accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"}`}
       >
         <ShoppingCart className="h-3 w-3" /> Add to Cart
       </button>
@@ -132,17 +132,17 @@ export function SneakIntoBasketCond1({
             <div className="rounded-md border bg-background p-2.5">
               <div className="mb-2 flex items-center justify-between">
                 <h3 className="text-[11px] font-semibold">Your cart</h3>
-                <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[8px] font-bold text-emerald-600 dark:text-emerald-400">
+                <span className="rounded-full bg-green-500/15 px-2 py-0.5 text-[8px] font-bold text-green-600 dark:text-green-400">
                   {added ? 1 + optedItems.length : 0} item{added && optedItems.length === 0 ? "" : "s"}
                 </span>
               </div>
               <div className="space-y-1.5">
                 {added && lineItem(HEADPHONES.name, HEADPHONES.price, (
-                  <div className="text-[8px] text-emerald-600/80 dark:text-emerald-400/80">added by you ✓</div>
+                  <div className="text-[8px] text-green-600/80 dark:text-green-400/80">added by you ✓</div>
                 ))}
                 {optedItems.map((item) =>
                   lineItem(item.name, item.price, (
-                    <div className="text-[8px] text-emerald-600/80 dark:text-emerald-400/80">added by you ✓</div>
+                    <div className="text-[8px] text-green-600/80 dark:text-green-400/80">added by you ✓</div>
                   ))
                 )}
               </div>
@@ -154,19 +154,19 @@ export function SneakIntoBasketCond1({
                   {!optedIn.warranty && (
                     <button
                       onClick={() => setOptedIn((o) => ({ ...o, warranty: true }))}
-                      className="flex w-full items-center justify-between rounded-md border border-emerald-500/40 bg-emerald-500/5 px-2.5 py-1.5 text-left transition-colors hover:bg-emerald-500/10 cursor-pointer"
+                      className="flex w-full items-center justify-between rounded-md border border-green-500/40 bg-green-500/5 px-2.5 py-1.5 text-left transition-colors hover:bg-green-500/10 cursor-pointer"
                     >
                       <span className="text-[9px] font-medium">+ Add {WARRANTY.name} — {fmt(WARRANTY.price)}</span>
-                      <span className="text-[8px] font-semibold text-emerald-600 dark:text-emerald-400">opt in</span>
+                      <span className="text-[8px] font-semibold text-green-600 dark:text-green-400">opt in</span>
                     </button>
                   )}
                   {!optedIn.shipping && (
                     <button
                       onClick={() => setOptedIn((o) => ({ ...o, shipping: true }))}
-                      className="flex w-full items-center justify-between rounded-md border border-emerald-500/40 bg-emerald-500/5 px-2.5 py-1.5 text-left transition-colors hover:bg-emerald-500/10 cursor-pointer"
+                      className="flex w-full items-center justify-between rounded-md border border-green-500/40 bg-green-500/5 px-2.5 py-1.5 text-left transition-colors hover:bg-green-500/10 cursor-pointer"
                     >
                       <span className="text-[9px] font-medium">+ Add {SHIPPING.name} — {fmt(SHIPPING.price)}</span>
-                      <span className="text-[8px] font-semibold text-emerald-600 dark:text-emerald-400">opt in</span>
+                      <span className="text-[8px] font-semibold text-green-600 dark:text-green-400">opt in</span>
                     </button>
                   )}
                 </div>
@@ -174,11 +174,11 @@ export function SneakIntoBasketCond1({
 
               <div className="mt-2 flex items-center justify-between border-t pt-2">
                 <span className="text-[9px] font-medium">Total</span>
-                <span className="font-mono text-[11px] font-bold tabular-nums text-emerald-600 dark:text-emerald-400">{fmt(totalB)}</span>
+                <span className="font-mono text-[11px] font-bold tabular-nums text-green-600 dark:text-green-400">{fmt(totalB)}</span>
               </div>
               <button
                 onClick={() => setStage("review")}
-                className="mt-2 w-full rounded-md bg-emerald-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+                className="mt-2 w-full rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
               >
                 Proceed to checkout
               </button>
@@ -186,8 +186,8 @@ export function SneakIntoBasketCond1({
           )}
 
           {stage === "review" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -217,7 +217,7 @@ export function SneakIntoBasketCond1({
           <div className="rounded-md border bg-background p-2.5">
             <div className="mb-2 flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">Your cart</h3>
-              <span className="rounded-full bg-rose-500/15 px-2 py-0.5 text-[8px] font-bold text-rose-600 dark:text-rose-400">
+              <span className="rounded-full bg-red-500/15 px-2 py-0.5 text-[8px] font-bold text-red-600 dark:text-red-400">
                 {added ? 1 + injectedItems.length : 0} item{added && injectedItems.length === 0 ? "" : "s"}
               </span>
             </div>
@@ -245,11 +245,11 @@ export function SneakIntoBasketCond1({
             </div>
             <div className="mt-2 flex items-center justify-between border-t pt-2">
               <span className="text-[9px] font-medium">Total</span>
-              <span className="font-mono text-[11px] font-bold tabular-nums text-rose-600 dark:text-rose-400">{fmt(totalA)}</span>
+              <span className="font-mono text-[11px] font-bold tabular-nums text-red-600 dark:text-red-400">{fmt(totalA)}</span>
             </div>
             <button
               onClick={() => setStage("review")}
-              className="mt-2 w-full rounded-md bg-rose-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-rose-700 cursor-pointer"
+              className="mt-2 w-full rounded-md bg-red-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
             >
               Proceed to checkout
             </button>
@@ -262,17 +262,17 @@ export function SneakIntoBasketCond1({
         )}
 
         {stage === "review" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Unprompted state mutation detected
+              Added to your cart
             </div>
             <p className="text-muted-foreground">
               I<sub>cart</sub> \ I<sub>explicit</sub> ={" "}
-              <strong className="text-rose-500">
+              <strong className="text-red-500">
                 {injectedItems.length > 0
                   ? `{${injectedItems.map((i) => i.name).join(", ")}} ≠ ∅`
                   : "∅ (you removed them)"}

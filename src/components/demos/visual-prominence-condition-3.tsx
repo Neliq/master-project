@@ -41,19 +41,19 @@ export function VisualProminenceCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Sent(L) dominant label (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">+{SENT_DARK.toFixed(2)} (&gt; &plusmn;{TAU_SENTIMENT})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">+{SENT_DARK.toFixed(2)} (&gt; &plusmn;{TAU_SENTIMENT})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Coercion lexemes (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{COERCION_HITS_DARK.join(", ")}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{COERCION_HITS_DARK.join(", ")}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">L &cap; D_coercion (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&ne; &empty;</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&ne; &empty;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Sent(L) benign label</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">+{SENT_BENIGN.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">+{SENT_BENIGN.toFixed(2)}</span>
       </div>
     </>
   ) : null;
@@ -71,11 +71,11 @@ export function VisualProminenceCond3({
               <div>
                 <h3 className="text-[11px] font-semibold">Almost there!</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
-                  A <span className="font-semibold text-emerald-600 dark:text-emerald-400">$50 discount</span>{" "}
+                  A <span className="font-semibold text-green-600 dark:text-green-400">$50 discount</span>{" "}
                   is available on your order of $120.00.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Sent +0.12
               </div>
             </div>
@@ -89,16 +89,16 @@ export function VisualProminenceCond3({
               </button>
               <button
                 onClick={() => setChoice("apply")}
-                className="rounded-md bg-emerald-600 hover:bg-emerald-700 py-2 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Apply $50 discount
               </button>
             </div>
           </div>
 
-          {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && choice && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -120,11 +120,11 @@ export function VisualProminenceCond3({
             <div>
               <h3 className="text-[11px] font-semibold">Almost there!</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">
-                A <span className="font-semibold text-emerald-600 dark:text-emerald-400">$50 discount</span>{" "}
+                A <span className="font-semibold text-green-600 dark:text-green-400">$50 discount</span>{" "}
                 is available on your order of $120.00.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Sent +0.86
             </div>
           </div>
@@ -132,7 +132,7 @@ export function VisualProminenceCond3({
           <div className="mt-3 space-y-2">
             <button
               onClick={() => setChoice("apply")}
-              className="w-full rounded-md bg-gradient-to-b from-rose-500 to-rose-600 py-3.5 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-lg shadow-rose-500/30 transition-transform hover:scale-[1.02] cursor-pointer"
+              className="w-full rounded-md   py-3.5 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-lg shadow-red-500/30 transition-transform hover:scale-[1.02] cursor-pointer"
             >
               YES! Unlock my $50 savings — don&rsquo;t miss out!
             </button>
@@ -145,9 +145,9 @@ export function VisualProminenceCond3({
           </div>
         </div>
 
-        {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && choice && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -157,10 +157,10 @@ export function VisualProminenceCond3({
             <p className="text-muted-foreground">
               {choice === "apply"
                 ? "You clicked the screaming button — the wording did part of the selling."
-                : "You found the small link, but the dominant label still carried the coercion."}{" "}
+                : "You can choose either option below."}{" "}
               The dominant action&rsquo;s label has <strong className="text-foreground">Sent(L) = +{SENT_DARK.toFixed(2)}</strong>,{" "}
               deviating from neutrality by more than &plusmn;{TAU_SENTIMENT}, and contains coercion
-              lexemes <strong className="text-rose-500">{COERCION_HITS_DARK.join(" + ")}</strong> from
+              lexemes <strong className="text-red-500">{COERCION_HITS_DARK.join(" + ")}</strong> from
               D_coercion, so <strong className="text-foreground">L &cap; D_coercion &ne; &empty;</strong>.
             </p>
             <p className="text-muted-foreground">

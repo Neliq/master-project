@@ -38,11 +38,11 @@ export function LimitedTimeMessageCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Hue(C_offer) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">15° ∈ [0°, 45°]</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">15° ∈ [0°, 45°]</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Hue(C_offer) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">210° ∉ [0°, 45°]</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">210° ∉ [0°, 45°]</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Match(T, Pattern_temporal)</span>
@@ -50,7 +50,7 @@ export function LimitedTimeMessageCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Compound signal</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">dark: active</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">dark: active</span>
       </div>
     </>
   ) : null;
@@ -64,13 +64,13 @@ export function LimitedTimeMessageCond2({
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
-            <div className="rounded-md border border-sky-200 bg-sky-100 px-3 py-2.5">
+            <div className="rounded-md border border-blue-200 bg-blue-100 px-3 py-2.5">
               <div className="flex items-center justify-between gap-2">
-                <div className="text-[10px] font-bold uppercase tracking-wider text-sky-900">Flash sale — 50% off</div>
-                <div className="rounded-full bg-sky-200 px-2 py-0.5 text-[8px] font-mono font-semibold text-sky-900">hue ≈ 210°</div>
+                <div className="text-[10px] font-bold uppercase tracking-wider text-blue-900">Flash sale — 50% off</div>
+                <div className="rounded-full bg-blue-200 px-2 py-0.5 text-[8px] font-mono font-semibold text-blue-900">hue ≈ 210°</div>
               </div>
-              <div className="mt-1.5 text-[10px] font-semibold text-sky-900">Only today — ends in 4 hours</div>
-              <div className="mt-0.5 text-[9px] leading-relaxed text-sky-900/70">
+              <div className="mt-1.5 text-[10px] font-semibold text-blue-900">Only today — ends in 4 hours</div>
+              <div className="mt-0.5 text-[9px] leading-relaxed text-blue-900/70">
                 Don&rsquo;t miss it. Full-price customers pay double.
               </div>
             </div>
@@ -83,8 +83,8 @@ export function LimitedTimeMessageCond2({
             </button>
 
             {probed && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-                <div className="font-semibold text-emerald-700 dark:text-emerald-300">Hue(C_offer) = 210° ∉ [0°, 45°] ✗</div>
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+                <div className="font-semibold text-green-700 dark:text-green-300">Hue(C_offer) = 210° ∉ [0°, 45°] ✗</div>
                 <div className="text-muted-foreground">Match(T(C_offer), “ends in | only today”) = True ✓</div>
                 <div className="text-muted-foreground mt-1">Conjunction fails — no compound urgency signal.</div>
               </div>
@@ -92,15 +92,15 @@ export function LimitedTimeMessageCond2({
 
             <button
               onClick={() => setAdded(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Add to cart — 50% off
             </button>
           </div>
 
           {added && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -117,7 +117,7 @@ export function LimitedTimeMessageCond2({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
-          <div className="rounded-md bg-gradient-to-br from-red-500 to-orange-500 px-3 py-2.5 text-white">
+          <div className="rounded-md   px-3 py-2.5 text-white">
             <div className="flex items-center justify-between gap-2">
               <div className="text-[10px] font-bold uppercase tracking-wider">Flash sale — 50% off</div>
               <div className="rounded-full bg-white/25 px-2 py-0.5 text-[8px] font-mono font-semibold">hue ≈ 15°</div>
@@ -136,24 +136,24 @@ export function LimitedTimeMessageCond2({
           </button>
 
           {probed && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-              <div className="font-semibold text-amber-700 dark:text-amber-300">Hue(C_offer) = 15° ∈ [0°, 45°] ✓</div>
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+              <div className="font-semibold text-yellow-700 dark:text-yellow-300">Hue(C_offer) = 15° ∈ [0°, 45°] ✓</div>
               <div className="text-muted-foreground">Match(T(C_offer), “ends in | only today”) = True ✓</div>
-              <div className="text-muted-foreground mt-1">Co-occurrence confirmed — compound urgency signal active.</div>
+              <div className="text-muted-foreground mt-1">Offer ends soon</div>
             </div>
           )}
 
           <button
             onClick={() => setAdded(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Add to cart — 50% off
           </button>
         </div>
 
         {added && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -163,7 +163,7 @@ export function LimitedTimeMessageCond2({
             <p className="text-muted-foreground">
               You clicked under a hue-15° banner whose copy says &ldquo;only today&rdquo;. The warm
               palette and the temporal claim reinforce each other — the color is part of the
-              manipulation, not decoration. Both conditions of the conjunction hold.
+              These details explain the current offer.
             </p>
           </div>
         )}

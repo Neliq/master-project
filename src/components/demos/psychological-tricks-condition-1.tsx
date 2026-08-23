@@ -39,7 +39,7 @@ function TierCard({
   onSelect: () => void;
   accent: "rose" | "emerald";
 }) {
-  const ring = accent === "rose" ? "ring-rose-500/50 border-rose-500/40" : "ring-emerald-500/50 border-emerald-500/40";
+  const ring = accent === "rose" ? "ring-red-500/50 border-red-500/40" : "ring-green-500/50 border-green-500/40";
   return (
     <button
       onClick={onSelect}
@@ -50,7 +50,7 @@ function TierCard({
       <div className="flex items-center justify-between gap-1">
         <span className="text-[10px] font-semibold">{tier.name}</span>
         {tier.featured && (
-          <span className="rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
+          <span className="rounded-full bg-yellow-500/15 text-yellow-700 dark:text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
             Most popular
           </span>
         )}
@@ -83,19 +83,19 @@ export function PsychologicalTricksCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Cost(O_target) vs Cost(O_decoy)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">$12 &asymp; $12</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">$12 &asymp; $12</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Metrics where V(O_decoy) &lt; V(O_target)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">3 / 3</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">3 / 3</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_select(O_target)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&rarr; Max</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&rarr; Max</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Decoy present</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">yes (O_decoy)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">yes (O_decoy)</span>
       </div>
     </>
   ) : null;
@@ -121,8 +121,8 @@ export function PsychologicalTricksCond1({
           </div>
 
           {selected && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -150,14 +150,14 @@ export function PsychologicalTricksCond1({
           </div>
         </div>
 
-        {selected && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && selected && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Asymmetric dominance detected
+              Plan selected
             </div>
             <p className="text-muted-foreground">
               <strong className="text-foreground">V(O_target) &gg; V(O_decoy)</strong> and{" "}
@@ -168,7 +168,7 @@ export function PsychologicalTricksCond1({
             </p>
             <p className="text-muted-foreground">
               {selected === "pro"
-                ? "You picked the target tier — exactly where the decoy was engineered to steer you."
+                ? "You selected Pro. It includes more storage and additional features."
                 : "Even when choosing elsewhere, the decoy re-frames Pro as the rational pick in every comparison."}
             </p>
           </div>

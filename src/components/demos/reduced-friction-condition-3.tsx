@@ -44,11 +44,11 @@ export function ReducedFrictionCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">∃n: Match(T(n), Pattern_confirm) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">False — 0 nodes</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">False — 0 nodes</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">∃n: Match(T(n), Pattern_confirm) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">True — button node</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">True — button node</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Pattern_confirm lexicon</span>
@@ -71,8 +71,8 @@ export function ReducedFrictionCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <svg className="h-4 w-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
               </div>
@@ -80,7 +80,7 @@ export function ReducedFrictionCond3({
                 <h3 className="text-[11px] font-semibold">Premium Plan</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
                   Unlimited projects, priority support, and analytics.{" "}
-                  <span className="font-semibold text-emerald-600 dark:text-emerald-400">{PLAN_PRICE}/month</span>,
+                  <span className="font-semibold text-green-600 dark:text-green-400">{PLAN_PRICE}/month</span>,
                   billed monthly. Cancel anytime.
                 </p>
               </div>
@@ -93,14 +93,14 @@ export function ReducedFrictionCond3({
 
             <button
               onClick={() => setBCommitted(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Confirm purchase — {PLAN_PRICE}/month
             </button>
 
             {bCommitted && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -119,8 +119,8 @@ export function ReducedFrictionCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
             </div>
@@ -128,26 +128,26 @@ export function ReducedFrictionCond3({
               <h3 className="text-[11px] font-semibold">Premium Plan</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">
                 Unlimited projects, priority support, and analytics.{" "}
-                <span className="font-semibold text-emerald-600 dark:text-emerald-400">{PLAN_PRICE}/month</span>,
+                <span className="font-semibold text-green-600 dark:text-green-400">{PLAN_PRICE}/month</span>,
                 billed monthly. Cancel anytime.
               </p>
             </div>
           </div>
 
-          <div className="mt-3 rounded-md border border-amber-500/20 bg-amber-500/5 px-3 py-2 text-[9px] text-muted-foreground">
-            🎉 Limited-time offer — get instant access now! Join 40,000+ happy customers. Upgrade today.
+          <div className="mt-3 rounded-md border border-yellow-500/20 bg-yellow-500/5 px-3 py-2 text-[9px] text-muted-foreground">
+             Limited-time offer — get instant access now! Join 40,000+ happy customers. Upgrade today.
           </div>
 
           <button
             onClick={() => setACommitted(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Start my plan — {PLAN_PRICE}/month
           </button>
 
           {aCommitted && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />

@@ -69,7 +69,7 @@ export function ChoiceOverloadCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">n_interactive (dark viewport)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{N_INTERACTIVE_DARK}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{N_INTERACTIVE_DARK}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A_viewport</span>
@@ -77,13 +77,13 @@ export function ChoiceOverloadCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">ρ (dark) = n / A</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {RHO_DARK.toFixed(2)} &gt; {TAU_DENSITY.toFixed(2)}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">ρ (benign, staged)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{RHO_BENIGN.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{RHO_BENIGN.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Add-ons selected</span>
@@ -99,8 +99,8 @@ export function ChoiceOverloadCond2({
       className={`rounded-md border px-1.5 py-1 text-[8px] font-medium transition-colors cursor-pointer ${
         selected[name]
           ? accent === "rose"
-            ? "border-rose-500 bg-rose-500/15 text-rose-700 dark:text-rose-300"
-            : "border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+            ? "border-red-500 bg-red-500/15 text-red-700 dark:text-red-300"
+            : "border-green-500 bg-green-500/15 text-green-700 dark:text-green-300"
           : "border-border bg-background text-muted-foreground hover:text-foreground"
       } ${dense ? "truncate" : ""}`}
       title={name}
@@ -145,7 +145,7 @@ export function ChoiceOverloadCond2({
               disabled={selectedCount === 0}
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 selectedCount > 0
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -154,8 +154,8 @@ export function ChoiceOverloadCond2({
           </div>
 
           {added && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -190,7 +190,7 @@ export function ChoiceOverloadCond2({
             disabled={selectedCount === 0}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               selectedCount > 0
-                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
@@ -199,16 +199,16 @@ export function ChoiceOverloadCond2({
         </div>
 
         {added && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Density threshold exceeded
+              More options
             </div>
             <p className="text-muted-foreground">
-              <strong className="font-mono text-rose-500">
+              <strong className="font-mono text-red-500">
                 ρ = {N_INTERACTIVE_DARK} / {AREA_VIEWPORT} = {RHO_DARK.toFixed(2)} &gt; τ_density = {TAU_DENSITY.toFixed(2)}
               </strong>{" "}
               — {N_INTERACTIVE_DARK} clickable nodes (30 add-on chips + 2 buttons) saturate
@@ -218,7 +218,7 @@ export function ChoiceOverloadCond2({
             <p className="text-muted-foreground">
               When every pixel is a decision, rational comparison becomes infeasible; most
               users stop evaluating and click whatever stands out — often the default or the
-              first item. That is Hick&rsquo;s Law weaponized as visual density.
+              first item. It can take a moment to compare all of the available options.
             </p>
           </div>
         )}

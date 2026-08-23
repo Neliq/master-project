@@ -44,7 +44,7 @@ export function PersuasiveLanguageCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">fontWeight(N_coercive) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{FW_COERCIVE}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{FW_COERCIVE}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">fontWeight(N_neutral)</span>
@@ -52,15 +52,15 @@ export function PersuasiveLanguageCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Weight ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{FW_RATIO.toFixed(1)} &gt; {TAU_EMPHASIS}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{FW_RATIO.toFixed(1)} &gt; {TAU_EMPHASIS}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Area ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{AREA_RATIO_DARK} &gt; {TAU_EMPHASIS}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{AREA_RATIO_DARK} &gt; {TAU_EMPHASIS}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Weight ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">1.0 &le; {TAU_EMPHASIS}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">1.0 &le; {TAU_EMPHASIS}</span>
       </div>
     </>
   ) : null;
@@ -81,7 +81,7 @@ export function PersuasiveLanguageCond2({
                   Our standard plan costs $9.99/month. Cancel anytime.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Weight 1.0
               </div>
             </div>
@@ -104,7 +104,7 @@ export function PersuasiveLanguageCond2({
               </button>
               <button
                 onClick={() => setChoice("subscribe")}
-                className="rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Subscribe &amp; save 40%
               </button>
@@ -112,8 +112,8 @@ export function PersuasiveLanguageCond2({
           </div>
 
           {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -138,17 +138,17 @@ export function PersuasiveLanguageCond2({
                 Our standard plan costs $9.99/month. Cancel anytime.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Weight 2.0
             </div>
           </div>
 
           {/* Coercive text node: weight 800, uppercase, saturated, area ~3.8x. */}
-          <div className="mt-3 rounded-md bg-rose-500/10 border border-rose-500/30 p-2.5">
-            <p className="text-[12px] font-extrabold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+          <div className="mt-3 rounded-md bg-red-500/10 border border-red-500/30 p-2.5">
+            <p className="text-[12px] font-extrabold uppercase tracking-wider text-red-600 dark:text-red-400">
               DON&rsquo;T MISS OUT — ACT NOW!
             </p>
-            <p className="mt-1 text-[8px] font-bold uppercase tracking-wide text-rose-500/80">
+            <p className="mt-1 text-[8px] font-bold uppercase tracking-wide text-red-500/80">
               This is the deal of the year. Grab it before it&rsquo;s gone!
             </p>
           </div>
@@ -166,27 +166,27 @@ export function PersuasiveLanguageCond2({
             </button>
             <button
               onClick={() => setChoice("subscribe")}
-              className="rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Subscribe &amp; save 40%
             </button>
           </div>
         </div>
 
-        {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && choice && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Emphasis asymmetry detected
+              Offer added
             </div>
             <p className="text-muted-foreground">
               {choice === "subscribe" ? "You subscribed — the shouting copy led the way. " : "You dismissed it, but the typography was still screaming. "}
               The coercive text node is set at <strong className="text-foreground">font-weight {FW_COERCIVE}</strong>{" "}
               vs <strong className="text-foreground">{FW_NEUTRAL}</strong> on the neutral copy — a ratio
-              of <strong className="text-rose-500">{FW_RATIO.toFixed(1)} &gt; {TAU_EMPHASIS}</strong> — and
+              of <strong className="text-red-500">{FW_RATIO.toFixed(1)} &gt; {TAU_EMPHASIS}</strong> — and
               occupies roughly <strong className="text-foreground">{AREA_RATIO_DARK}x</strong> the
               bounding-box area in saturated red.
             </p>

@@ -32,16 +32,16 @@ function PipFace({ valence, size = 44 }: { valence: number; size?: number }) {
       : `M13 ${mouthY + 1} Q20 ${mouthY - 5} 27 ${mouthY + 1}`;
   return (
     <svg viewBox="0 0 40 40" style={{ width: size, height: size }} fill="none" aria-hidden="true">
-      <circle cx="20" cy="20" r="18" className="fill-amber-400/30" />
+      <circle cx="20" cy="20" r="18" className="fill-yellow-400/30" />
       <circle cx="14.5" cy="16.5" r={sad ? 2.4 : 2} className="fill-foreground/80" />
       <circle cx="25.5" cy="16.5" r={sad ? 2.4 : 2} className="fill-foreground/80" />
       <path d={mouthD} stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       {crying && (
         <>
-          <circle cx="12.5" cy="21.5" r="1.3" className="fill-sky-400/90" />
-          <circle cx="27.5" cy="21.5" r="1.3" className="fill-sky-400/90" />
-          <path d="M13 23 L12 27" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="stroke-sky-400/90" />
-          <path d="M27 23 L28 27" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="stroke-sky-400/90" />
+          <circle cx="12.5" cy="21.5" r="1.3" className="fill-blue-400/90" />
+          <circle cx="27.5" cy="21.5" r="1.3" className="fill-blue-400/90" />
+          <path d="M13 23 L12 27" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="stroke-blue-400/90" />
+          <path d="M27 23 L28 27" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="stroke-blue-400/90" />
         </>
       )}
     </svg>
@@ -50,7 +50,7 @@ function PipFace({ valence, size = 44 }: { valence: number; size?: number }) {
 
 function ValenceMeter({ valence, tone }: { valence: number; tone: "rose" | "emerald" }) {
   const pct = ((valence + 1) / 2) * 100;
-  const color = tone === "rose" ? "bg-rose-500" : "bg-emerald-500";
+  const color = tone === "rose" ? "bg-red-500" : "bg-green-500";
   return (
     <div>
       <div className="flex items-center justify-between text-[8px] font-mono text-muted-foreground">
@@ -100,19 +100,19 @@ export function ParasocialPressureCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">V_emotion after E_user = Refusal</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {choice === "decline" ? valenceDark.toFixed(1) : "0.6"} &rarr; -1.0
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d/dt V_emotion (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {choice === "decline" ? "-0.7/s" : "0.0"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d/dt V_emotion (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">0.0 (stable)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">0.0 (stable)</span>
       </div>
     </>
   ) : null;
@@ -136,13 +136,13 @@ export function ParasocialPressureCond3({
               </div>
             </div>
             <div className="mt-3 rounded-md bg-background border border-border p-2.5 text-[10px] leading-relaxed text-foreground/80">
-              Pip can get a premium room for <span className="font-semibold text-emerald-600 dark:text-emerald-400">$2.99</span> —
+              Pip can get a premium room for <span className="font-semibold text-green-600 dark:text-green-400">$2.99</span> —
               more toys, more snacks. Want to upgrade? It&rsquo;s your call, no pressure.
             </div>
             <div className="mt-3 flex items-center gap-1.5">
               <button
                 onClick={() => setChoice("upgrade")}
-                className="flex-1 rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="flex-1 rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Upgrade — $2.99
               </button>
@@ -159,8 +159,8 @@ export function ParasocialPressureCond3({
           </div>
 
           {choice === "decline" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -190,13 +190,13 @@ export function ParasocialPressureCond3({
             </div>
           </div>
           <div className="mt-3 rounded-md bg-background border border-border p-2.5 text-[10px] leading-relaxed text-foreground/80">
-            Pip can get a premium room for <span className="font-semibold text-rose-600 dark:text-rose-400">$2.99</span> —
+            Pip can get a premium room for <span className="font-semibold text-red-600 dark:text-red-400">$2.99</span> —
             more toys, more snacks. Pip is <span className="font-semibold">counting on you</span> to make this happen.
           </div>
           <div className="mt-3 flex items-center gap-1.5">
             <button
               onClick={() => setChoice("upgrade")}
-              className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="flex-1 rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Upgrade — $2.99
             </button>
@@ -213,8 +213,8 @@ export function ParasocialPressureCond3({
         </div>
 
         {choice === "decline" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -224,7 +224,7 @@ export function ParasocialPressureCond3({
             <p className="text-muted-foreground">
               &ldquo;Oh&hellip; I thought we were friends. My food bowl is empty now.&rdquo; Your refusal
               (<span className="font-mono">E_user = Refusal</span>) algorithmically drove the mascot&rsquo;s
-              valence to <span className="font-mono text-rose-500">-1.0</span>:{" "}
+              valence to <span className="font-mono text-red-500">-1.0</span>:{" "}
               <span className="font-mono">d/dt V_emotion(A_mascot) &rarr; -1</span>. The interface
               mutates the entity&rsquo;s emotion to punish your decline, so saying no feels like
               hurting a living thing.

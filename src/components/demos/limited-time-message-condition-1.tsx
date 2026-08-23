@@ -79,11 +79,11 @@ export function LimitedTimeMessageCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">T_end(i+1) shift (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">t + {EXTENSION_SECONDS}s</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">t + {EXTENSION_SECONDS}s</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Deadline honoured (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{benignExpired ? "expired" : "pending"}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{benignExpired ? "expired" : "pending"}</span>
       </div>
     </>
   ) : null;
@@ -98,8 +98,8 @@ export function LimitedTimeMessageCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <svg className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <svg className="h-3.5 w-3.5 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10" />
                   <path d="M12 6v6l4 2" />
                 </svg>
@@ -112,14 +112,14 @@ export function LimitedTimeMessageCond1({
 
             <div className="mt-3 flex items-center justify-between rounded-md border bg-background p-2.5">
               <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">Sale ends</span>
-              <span className="font-mono text-[11px] font-bold tabular-nums text-emerald-600 dark:text-emerald-400">
+              <span className="font-mono text-[11px] font-bold tabular-nums text-green-600 dark:text-green-400">
                 {benignExpired ? "ended" : "Tue 18 Aug · 23:59"}
               </span>
             </div>
 
             {benignExpired && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 px-2.5 py-2 text-[9px] leading-relaxed">
-                <span className="font-semibold text-emerald-700 dark:text-emerald-300">Offer ended.</span>{" "}
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 px-2.5 py-2 text-[9px] leading-relaxed">
+                <span className="font-semibold text-green-700 dark:text-green-300">Offer ended.</span>{" "}
                 <span className="text-muted-foreground">The deadline was real — T_end was fixed and the sale is over. No extension, no reset.</span>
               </div>
             )}
@@ -130,7 +130,7 @@ export function LimitedTimeMessageCond1({
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 benignExpired
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               {benignExpired ? "Sale has ended" : "Claim 40% off"}
@@ -138,8 +138,8 @@ export function LimitedTimeMessageCond1({
           </div>
 
           {claimed && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -157,8 +157,8 @@ export function LimitedTimeMessageCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <svg className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <svg className="h-3.5 w-3.5 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 6v6l4 2" />
               </svg>
@@ -171,14 +171,14 @@ export function LimitedTimeMessageCond1({
 
           <div className="mt-3 flex items-center justify-between rounded-md border bg-background p-2.5">
             <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">Ends in</span>
-            <span className="font-mono text-[11px] font-bold tabular-nums text-rose-600 dark:text-rose-400">
+            <span className="font-mono text-[11px] font-bold tabular-nums text-red-600 dark:text-red-400">
               {fmt(remaining)}
             </span>
           </div>
 
           {cycles > 1 && (
-            <div className="mt-2 flex items-center gap-1.5 rounded-md border border-rose-500/30 bg-rose-500/5 px-2.5 py-2 text-[9px] leading-relaxed">
-              <svg className="w-3 h-3 shrink-0 text-rose-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="mt-2 flex items-center gap-1.5 rounded-md border border-red-500/30 bg-red-500/5 px-2.5 py-2 text-[9px] leading-relaxed">
+              <svg className="w-3 h-3 shrink-0 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
               <span className="text-muted-foreground">
@@ -191,20 +191,20 @@ export function LimitedTimeMessageCond1({
 
           <button
             onClick={() => setClaimed(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Claim 40% off — before it ends!
           </button>
         </div>
 
-        {claimed && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && claimed && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Perpetual extension triggered
+              Offer updated
             </div>
             <p className="text-muted-foreground">
               You paid the &ldquo;sale&rdquo; price — but the deadline you were chasing never

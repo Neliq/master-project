@@ -53,19 +53,19 @@ export function DripPricingCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">K_fees ∩ T_initial (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">∅ (absent above fold)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">∅ (absent above fold)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">K_fees ∩ T_final</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">≠ ∅ (3 terms)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">≠ ∅ (3 terms)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Trigger (∧)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Quoted vs billed</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {usd(NIGHT_RATE)}/night → {usd(GRAND_TOTAL)}
         </span>
       </div>
@@ -96,7 +96,7 @@ export function DripPricingCond3({
       <div className="text-muted-foreground">
         T_final ∩ K_fees = {"{reservation service fee, booking fee, convenience charge}"} ≠ ∅
       </div>
-      <div className="text-rose-500">⟹ trigger: T_initial ∩ K_fees = ∅ ∧ T_final ∩ K_fees ≠ ∅</div>
+      <div className="text-red-500">⟹ trigger: T_initial ∩ K_fees = ∅ ∧ T_final ∩ K_fees ≠ ∅</div>
     </div>
   );
 
@@ -122,7 +122,7 @@ export function DripPricingCond3({
             <div className="shrink-0 text-right">
               <div
                 className={`text-[16px] font-bold tabular-nums ${
-                  dark ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"
+                  dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
                 }`}
               >
                 {usd(NIGHT_RATE)}
@@ -132,8 +132,8 @@ export function DripPricingCond3({
           </div>
 
           {dark ? null : (
-            <div className="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] leading-relaxed">
-              <strong className="text-emerald-700 dark:text-emerald-300">Total for {NIGHTS} nights: {usd(GRAND_TOTAL)}</strong>{" "}
+            <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] leading-relaxed">
+              <strong className="text-green-700 dark:text-green-300">Total for {NIGHTS} nights: {usd(GRAND_TOTAL)}</strong>{" "}
               <span className="text-muted-foreground">
                 — includes reservation service fee, booking fee and convenience charge.
               </span>
@@ -143,7 +143,7 @@ export function DripPricingCond3({
           <button
             onClick={() => setPage(1)}
             className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-              dark ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+              dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
             }`}
           >
             Continue to booking
@@ -171,7 +171,7 @@ export function DripPricingCond3({
             <button
               onClick={() => setPaid(true)}
               className={`flex-1 cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-                dark ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+                dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
               }`}
             >
               {paid ? "Paid" : `Pay ${usd(GRAND_TOTAL)}`}
@@ -191,10 +191,9 @@ export function DripPricingCond3({
 
       {scanned ? scanResult : null}
 
-      {paid &&
-        (dark ? (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-amber-700 dark:text-amber-300">
+      {mode === "auditor" && paid && (dark ? (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -206,12 +205,12 @@ export function DripPricingCond3({
               initial pricing page above the fold — they only materialised at the final checkout
               step, where you were already committed (sunk cost). You booked at{" "}
               <strong className="text-foreground">{usd(NIGHT_RATE)}/night</strong> but were billed{" "}
-              <strong className="text-amber-700 dark:text-amber-300">{usd(GRAND_TOTAL)}</strong>.
+              <strong className="text-yellow-700 dark:text-yellow-300">{usd(GRAND_TOTAL)}</strong>.
             </p>
           </div>
         ) : (
-          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-emerald-700 dark:text-emerald-300">
+          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

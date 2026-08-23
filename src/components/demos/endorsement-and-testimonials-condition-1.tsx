@@ -42,7 +42,7 @@ const DISTRIBUTION = [
   { stars: 1, pct: 0, organic: 5 },
 ];
 
-function Stars({ n, className = "text-amber-400" }: { n: number; className?: string }) {
+function Stars({ n, className = "text-yellow-400" }: { n: number; className?: string }) {
   return (
     <span className={`inline-flex items-center gap-px ${className}`} aria-label={`${n} out of 5 stars`}>
       {[1, 2, 3, 4, 5].map((i) => (
@@ -101,15 +101,15 @@ export function EndorsementAndTestimonialsCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Mean(S(R_total))</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 5.0</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 5.0</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Var(S(R_total))</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 0.00</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 0.00</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">D_rendered vs D_organic</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">mismatch</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">mismatch</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Reviews rendered</span>
@@ -128,7 +128,7 @@ export function EndorsementAndTestimonialsCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-2.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M4 14v-2a8 8 0 0 1 16 0v2" />
                   <path d="M4 14h3v5H4z" />
@@ -154,13 +154,13 @@ export function EndorsementAndTestimonialsCond1({
               <span className="text-[12px] font-bold">$129</span>
               <button
                 onClick={() => setAdded(true)}
-                className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="rounded-md bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Add to cart
               </button>
             </div>
             {added && (
-              <div className="text-[9px] text-emerald-600 dark:text-emerald-400 mt-1.5">
+              <div className="text-[9px] text-green-600 dark:text-green-400 mt-1.5">
                 Added to cart — priced against honest reviews (4.1★).
               </div>
             )}
@@ -187,13 +187,13 @@ export function EndorsementAndTestimonialsCond1({
                   </div>
                 ))}
               </div>
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2">
-                <div className="text-[8px] font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300 mb-1">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2">
+                <div className="text-[8px] font-semibold uppercase tracking-wider text-green-700 dark:text-green-300 mb-1">
                   Rendered vs organic distribution
                 </div>
                 <div className="space-y-1.5">
                   {DISTRIBUTION.map((d) => (
-                    <DistributionBar key={d.stars} star={d.stars} pct={d.organic} organic={d.organic} barClass="bg-emerald-500" />
+                    <DistributionBar key={d.stars} star={d.stars} pct={d.organic} organic={d.organic} barClass="bg-green-500" />
                   ))}
                 </div>
                 <p className="text-[8px] text-muted-foreground mt-1">
@@ -204,8 +204,8 @@ export function EndorsementAndTestimonialsCond1({
           )}
 
           {reviewsOpen && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -224,7 +224,7 @@ export function EndorsementAndTestimonialsCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-2.5">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M4 14v-2a8 8 0 0 1 16 0v2" />
                 <path d="M4 14h3v5H4z" />
@@ -250,13 +250,13 @@ export function EndorsementAndTestimonialsCond1({
             <span className="text-[12px] font-bold">$129</span>
             <button
               onClick={() => setAdded(true)}
-              className="rounded-md bg-rose-600 hover:bg-rose-700 text-white px-3 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="rounded-md bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Add to cart
             </button>
           </div>
           {added && (
-            <div className="text-[9px] text-amber-600 dark:text-amber-400 mt-1.5">
+            <div className="text-[9px] text-yellow-600 dark:text-yellow-400 mt-1.5">
               Added to cart — you bought on the strength of a statistically impossible 5.0★.
             </div>
           )}
@@ -283,13 +283,13 @@ export function EndorsementAndTestimonialsCond1({
                 </div>
               ))}
             </div>
-            <div className="mt-2 rounded-md border border-rose-500/30 bg-rose-500/5 p-2">
-              <div className="text-[8px] font-semibold uppercase tracking-wider text-rose-700 dark:text-rose-300 mb-1">
+            <div className="mt-2 rounded-md border border-red-500/30 bg-red-500/5 p-2">
+              <div className="text-[8px] font-semibold uppercase tracking-wider text-red-700 dark:text-red-300 mb-1">
                 Rendered vs organic distribution
               </div>
               <div className="space-y-1.5">
                 {DISTRIBUTION.map((d) => (
-                  <DistributionBar key={d.stars} star={d.stars} pct={d.pct} organic={d.organic} barClass="bg-rose-500" />
+                  <DistributionBar key={d.stars} star={d.stars} pct={d.pct} organic={d.organic} barClass="bg-red-500" />
                 ))}
               </div>
               <p className="text-[8px] text-muted-foreground mt-1">
@@ -299,14 +299,14 @@ export function EndorsementAndTestimonialsCond1({
           </div>
         )}
 
-        {reviewsOpen && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && reviewsOpen && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Statistical implausibility detected
+              Review summary
             </div>
             <p className="text-muted-foreground">
               Mean(S(R_total)) ≈ 5.0 and Var(S(R_total)) ≈ 0.00. A genuine feedback pool scatters

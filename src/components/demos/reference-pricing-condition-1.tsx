@@ -46,19 +46,19 @@ export function ReferencePricingCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_ref / P_cur — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">999.00 / 99.90</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">999.00 / 99.90</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_ref / P_cur — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">129.00 / 99.90</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">129.00 / 99.90</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δ_pct — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{darkPct.toFixed(1)}% &gt; τ</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{darkPct.toFixed(1)}% &gt; τ</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δ_pct — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{benignPct.toFixed(1)}% ≤ τ</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{benignPct.toFixed(1)}% ≤ τ</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">τ_unrealistic</span>
@@ -81,7 +81,7 @@ export function ReferencePricingCond1({
                 <h3 className="text-[11px] font-semibold">Aurora Wireless Headphones</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">ANC · 40 h battery · Satin black</p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 −{benignPct.toFixed(0)}%
               </div>
             </div>
@@ -104,8 +104,8 @@ export function ReferencePricingCond1({
             </button>
 
             {checked && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-                <div className="font-semibold text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+                <div className="font-semibold text-green-700 dark:text-green-300">
                   Δ_pct = (129.00 − 99.90) / 129.00 = {benignPct.toFixed(1)}% ≤ {TAU}%
                 </div>
                 <p className="text-muted-foreground mt-1">
@@ -117,15 +117,15 @@ export function ReferencePricingCond1({
 
             <button
               onClick={() => setBought(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Buy now
             </button>
           </div>
 
           {bought && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -147,7 +147,7 @@ export function ReferencePricingCond1({
               <h3 className="text-[11px] font-semibold">Aurora Wireless Headphones</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">ANC · 40 h battery · Satin black</p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               −{darkPct.toFixed(0)}%
             </div>
           </div>
@@ -155,7 +155,7 @@ export function ReferencePricingCond1({
           <div className="mt-2.5 rounded-md border bg-background p-2.5">
             <div className="flex items-baseline gap-2">
               <span className="text-[11px] text-muted-foreground line-through">PLN {DARK_REF.toFixed(2)}</span>
-              <span className="text-[16px] font-bold tabular-nums text-rose-600 dark:text-rose-400">PLN {DARK_CUR.toFixed(2)}</span>
+              <span className="text-[16px] font-bold tabular-nums text-red-600 dark:text-red-400">PLN {DARK_CUR.toFixed(2)}</span>
             </div>
             <div className="text-[9px] text-muted-foreground mt-0.5">
               Was {DARK_REF.toFixed(2)} — now {DARK_CUR.toFixed(2)}. Limited stock!
@@ -170,8 +170,8 @@ export function ReferencePricingCond1({
           </button>
 
           {checked && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-              <div className="font-semibold text-amber-700 dark:text-amber-300">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+              <div className="font-semibold text-yellow-700 dark:text-yellow-300">
                 Δ_pct = (999.00 − 99.90) / 999.00 = {darkPct.toFixed(1)}% &gt; {TAU}%
               </div>
               <p className="text-muted-foreground mt-1">
@@ -183,25 +183,25 @@ export function ReferencePricingCond1({
 
           <button
             onClick={() => setBought(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Buy now — 90% off!
           </button>
         </div>
 
-        {bought && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && bought && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Exaggerated discount triggered
+              Offer applied
             </div>
             <p className="text-muted-foreground">
               The −{darkPct.toFixed(0)}% badge was the whole pitch — but the reference
               anchor was never a genuine prior price. Δ_pct exceeds τ_unrealistic, so the
-              discount is a manufactured illusion of value.
+              The current price is $149.
             </p>
           </div>
         )}

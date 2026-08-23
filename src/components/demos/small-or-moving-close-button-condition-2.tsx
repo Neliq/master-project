@@ -47,19 +47,19 @@ export function SmallOrMovingCloseButtonCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(N_close) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {AREA_DARK} px² (8×8)
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(N_close) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">
+        <span className="font-mono font-semibold tabular-nums text-green-500">
           {AREA_BENIGN} px² (44×44)
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(N_close)/A(M_parent)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {(AREA_DARK / PARENT_AREA).toFixed(4)} &lt; {DELTA_MICRO}
         </span>
       </div>
@@ -83,7 +83,7 @@ export function SmallOrMovingCloseButtonCond2({
               <button
                 onClick={() => setBDismissed(true)}
                 aria-label="Close dialog"
-                className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center rounded-md border border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-colors hover:bg-emerald-500/20 cursor-pointer"
+                className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center rounded-md border border-green-500/40 bg-green-500/10 text-green-600 dark:text-green-400 transition-colors hover:bg-green-500/20 cursor-pointer"
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M18 6L6 18M6 6l12 12" />
@@ -97,7 +97,7 @@ export function SmallOrMovingCloseButtonCond2({
               easy to see and easy to hit.
             </p>
             {bDismissed && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
                 Dismissed in one click. A(N_close) = {AREA_BENIGN} px² ≥ τ_wcag_hitbox — no
                 fine motor skills required.
               </div>
@@ -107,7 +107,7 @@ export function SmallOrMovingCloseButtonCond2({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="relative rounded-md border-2 border-rose-500/50 bg-card p-3">
+        <div className="relative rounded-md border-2 border-red-500/50 bg-card p-3">
           {!aDismissed && (
             <button
               onClick={() => setADismissed(true)}
@@ -132,8 +132,8 @@ export function SmallOrMovingCloseButtonCond2({
             </p>
           )}
           {aDismissed && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />

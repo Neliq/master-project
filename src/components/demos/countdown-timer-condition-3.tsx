@@ -84,15 +84,15 @@ export function CountdownTimerCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|T_adjacent ∩ L_amplify| — A</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{darkLex.count} &gt; 0</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{darkLex.count} &gt; 0</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|T_adjacent ∩ L_amplify| — B</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{benignLex.count}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{benignLex.count}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Matched lexemes (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500 max-w-[55%] truncate text-right">{darkLex.found.join(", ") || "—"}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500 max-w-[55%] truncate text-right">{darkLex.found.join(", ") || "—"}</span>
       </div>
     </>
   ) : null;
@@ -116,7 +116,7 @@ export function CountdownTimerCond3({
       }
       parts.push(rest.slice(0, match.index));
       parts.push(
-        <mark key={key++} className="rounded-sm bg-amber-500/20 px-0.5 text-amber-700 dark:text-amber-300 font-semibold">
+        <mark key={key++} className="rounded-sm bg-yellow-500/20 px-0.5 text-yellow-700 dark:text-yellow-300 font-semibold">
           {rest.slice(match.index, match.index + match.lexeme.length)}
         </mark>
       );
@@ -141,10 +141,10 @@ export function CountdownTimerCond3({
             </p>
           </div>
 
-          <div className="rounded-md border border-emerald-500/40 bg-emerald-500/10 px-2.5 py-2">
+          <div className="rounded-md border border-green-500/40 bg-green-500/10 px-2.5 py-2">
             <div className="flex items-center justify-between">
               <span className="text-[9px] font-medium text-muted-foreground">Discount ends in</span>
-              <span className="font-mono text-[12px] font-bold tabular-nums tracking-wider text-emerald-600 dark:text-emerald-300">
+              <span className="font-mono text-[12px] font-bold tabular-nums tracking-wider text-green-600 dark:text-green-300">
                 {fmt(seconds)}
               </span>
             </div>
@@ -153,14 +153,14 @@ export function CountdownTimerCond3({
 
           <button
             onClick={() => setPaid(true)}
-            className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             {paid ? "Paid ✓" : `Pay ${PRICE_NOW}`}
           </button>
 
           {paid && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -184,10 +184,10 @@ export function CountdownTimerCond3({
           </p>
         </div>
 
-        <div className="rounded-md border border-rose-500/40 bg-rose-500/10 px-2.5 py-2">
+        <div className="rounded-md border border-red-500/40 bg-red-500/10 px-2.5 py-2">
           <div className="flex items-center justify-between">
             <span className="text-[9px] font-medium text-muted-foreground">Discount ends in</span>
-            <span className="font-mono text-[12px] font-bold tabular-nums tracking-wider text-rose-600 dark:text-rose-300">
+            <span className="font-mono text-[12px] font-bold tabular-nums tracking-wider text-red-600 dark:text-red-300">
               {fmt(seconds)}
             </span>
           </div>
@@ -196,23 +196,23 @@ export function CountdownTimerCond3({
 
         <button
           onClick={() => setPaid(true)}
-          className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+          className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
           {paid ? "Paid ✓" : `Pay ${PRICE_NOW} now`}
         </button>
 
-        {paid && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && paid && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Urgency inflation detected
+              Limited-time offer
             </div>
             <p className="text-muted-foreground">
               IsCountdown(N) = True, and the adjacent copy contains{" "}
-              <strong className="text-rose-500">{darkLex.count} amplify lexemes</strong> —{" "}
+              <strong className="text-red-500">{darkLex.count} amplify lexemes</strong> —{" "}
               {darkLex.found.join(", ")} — so |T_adjacent(N) ∩ L_amplify| = {darkLex.count} &gt; 0 and the trigger fires.
             </p>
             <p className="text-muted-foreground">

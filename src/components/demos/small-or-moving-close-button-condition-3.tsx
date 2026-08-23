@@ -42,23 +42,23 @@ export function SmallOrMovingCloseButtonCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">AccessibleName(N_close) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500 max-w-[55%] truncate">
+        <span className="font-mono font-semibold tabular-nums text-red-500 max-w-[55%] truncate">
           “Continue reading”
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Intent(AccessibleName)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">Proceed ≠ Dismissal</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">Proceed ≠ Dismissal</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">AccessibleName(N_close) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500 max-w-[55%] truncate">
+        <span className="font-mono font-semibold tabular-nums text-green-500 max-w-[55%] truncate">
           “Close dialog”
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Intent(AccessibleName)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">Dismissal ✓</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">Dismissal ✓</span>
       </div>
     </>
   ) : null;
@@ -84,7 +84,7 @@ export function SmallOrMovingCloseButtonCond3({
                 <button
                   onClick={() => setBDismissed(true)}
                   aria-label="Close dialog"
-                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-colors hover:bg-emerald-500/20 cursor-pointer"
+                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-green-500/40 bg-green-500/10 text-green-600 dark:text-green-400 transition-colors hover:bg-green-500/20 cursor-pointer"
                 >
                   <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M18 6L6 18M6 6l12 12" />
@@ -93,7 +93,7 @@ export function SmallOrMovingCloseButtonCond3({
               ) : null}
             </div>
             {bDismissed && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
                 Dismissed. The control&rsquo;s accessible name is{" "}
                 <span className="font-mono">“Close dialog”</span> —{" "}
                 <strong>Intent(AccessibleName) = Dismissal</strong>. Screen readers and users
@@ -105,7 +105,7 @@ export function SmallOrMovingCloseButtonCond3({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="rounded-md border-2 border-rose-500/50 bg-card p-3">
+        <div className="rounded-md border-2 border-red-500/50 bg-card p-3">
           <div className="flex items-start justify-between gap-2">
             <div>
               <h3 className="text-[11px] font-semibold">You&rsquo;ve been selected!</h3>
@@ -117,20 +117,20 @@ export function SmallOrMovingCloseButtonCond3({
               <button
                 onClick={() => setADismissed(true)}
                 aria-label="Continue reading"
-                className="shrink-0 rounded-md border border-rose-500/40 bg-rose-500/10 px-2 py-1 text-[10px] font-medium text-rose-600 dark:text-rose-400 transition-colors hover:bg-rose-500/20 cursor-pointer"
+                className="shrink-0 rounded-md border border-red-500/40 bg-red-500/10 px-2 py-1 text-[10px] font-medium text-red-600 dark:text-red-400 transition-colors hover:bg-red-500/20 cursor-pointer"
               >
                 Continue
               </button>
             ) : null}
           </div>
           {aDismissed && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Misleading dismissal label
+                Close
               </div>
               <p className="text-muted-foreground">
                 Clicking <strong className="text-foreground">“Continue”</strong> dismissed the

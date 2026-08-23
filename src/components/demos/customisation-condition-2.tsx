@@ -77,11 +77,11 @@ export function CustomisationCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Mean offsetX — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{meanOffsetDark.toFixed(1)}px</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{meanOffsetDark.toFixed(1)}px</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Max offsetX — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{maxOffsetDark}px</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{maxOffsetDark}px</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Threshold &tau;_indent</span>
@@ -89,7 +89,7 @@ export function CustomisationCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Trigger: {meanOffsetDark.toFixed(1)} &gt; {TAU_INDENT}</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">TRUE</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
       </div>
     </>
   ) : null;
@@ -99,7 +99,7 @@ export function CustomisationCond2({
       key={t.id}
       className={`flex cursor-pointer items-start gap-2 rounded-md border p-1.5 transition-colors ${
         t.depth * INDENT_STEP > TAU_INDENT
-          ? "border-amber-500/40 bg-amber-500/5"
+          ? "border-yellow-500/40 bg-yellow-500/5"
           : "border-border bg-background hover:border-foreground/20"
       }`}
       style={{ marginLeft: `${offsetPx}px` }}
@@ -108,7 +108,7 @@ export function CustomisationCond2({
         type="checkbox"
         checked={onIds.includes(t.id)}
         onChange={() => toggle(t.id)}
-        className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${accent === "rose" ? "accent-rose-500" : "accent-emerald-500"}`}
+        className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${accent === "rose" ? "accent-red-500" : "accent-green-500"}`}
       />
       <span className="min-w-0 flex-1">
         <span className="block text-[10px] leading-relaxed text-foreground/80">{t.label}</span>
@@ -169,7 +169,7 @@ export function CustomisationCond2({
           <div className="rounded-md border bg-card p-3">
             <div className="mb-2 flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">Privacy settings</h3>
-              <span className="rounded-full border border-emerald-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
                 flat list
               </span>
             </div>
@@ -178,7 +178,7 @@ export function CustomisationCond2({
             </div>
             <button
               onClick={() => setSaved(true)}
-              className="mt-2.5 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Save preferences
             </button>
@@ -188,8 +188,8 @@ export function CustomisationCond2({
           </div>
 
           {saved && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -217,20 +217,20 @@ export function CustomisationCond2({
           </div>
           <button
             onClick={() => setSaved(true)}
-            className="mt-2.5 w-full rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+            className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
           >
             Save preferences
           </button>
         </div>
 
-        {saved && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && saved && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Visual indentation depth triggered
+              Privacy settings saved
             </div>
             <p className="text-muted-foreground">
               Mean offsetX = {meanOffsetDark.toFixed(1)}px &gt; &tau;_indent = {TAU_INDENT}px over all{" "}

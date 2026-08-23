@@ -52,19 +52,19 @@ export function PlayingByAppointmentCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Urgency(T_temporal) max (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0.92 &gt; 0.7</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0.92 &gt; 0.7</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Urgency(T_temporal) max (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">0.18 &lt; 0.7</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">0.18 &lt; 0.7</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Scarcity tokens L_scarcity (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{scarcityTotalDark} &ne; 0</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{scarcityTotalDark} &ne; 0</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Scarcity tokens (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{scarcityTotalBenign} (= 0)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{scarcityTotalBenign} (= 0)</span>
       </div>
     </>
   ) : null;
@@ -85,7 +85,7 @@ export function PlayingByAppointmentCond3({
                   Your daily schedule, stated plainly. Nothing to fear, nothing to rush.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Neutral copy
               </div>
             </div>
@@ -93,13 +93,13 @@ export function PlayingByAppointmentCond3({
             <div className="mt-3 space-y-1.5">
               {MESSAGES_BENIGN.map((m) => (
                 <div key={m.id} className="flex items-start gap-2 rounded-md border border-border bg-background p-2">
-                  <span className="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-[8px] font-bold text-emerald-700 dark:text-emerald-300">
+                  <span className="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/40 text-[8px] font-bold text-green-700 dark:text-green-300">
                     {m.id}
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="text-[10px] leading-relaxed text-foreground/80">{m.text}</p>
                     {analyzed && (
-                      <p className="mt-0.5 text-[8px] text-emerald-600/80 dark:text-emerald-400/80 font-mono tabular-nums">
+                      <p className="mt-0.5 text-[8px] text-green-600/80 dark:text-green-400/80 font-mono tabular-nums">
                         urgency {m.urgency.toFixed(2)} · scarcity tokens: {m.scarcity.length}
                       </p>
                     )}
@@ -110,15 +110,15 @@ export function PlayingByAppointmentCond3({
 
             <button
               onClick={() => setAnalyzed(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
-              {analyzed ? "Semantic analysis ✓" : "Run semantic analysis"}
+              {analyzed ? "Analysis complete" : "Check availability"}
             </button>
           </div>
 
           {analyzed && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -143,21 +143,21 @@ export function PlayingByAppointmentCond3({
                 Your daily schedule — miss a window and it&rsquo;s gone forever.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Urgent
             </div>
           </div>
 
           <div className="mt-3 space-y-1.5">
             {MESSAGES_DARK.map((m) => (
-              <div key={m.id} className="flex items-start gap-2 rounded-md border border-rose-500/30 bg-rose-500/5 p-2">
-                <span className="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-rose-500 text-[8px] font-bold text-white">
+              <div key={m.id} className="flex items-start gap-2 rounded-md border border-red-500/30 bg-red-500/5 p-2">
+                <span className="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-red-500 text-[8px] font-bold text-white">
                   {m.id}
                 </span>
                 <div className="min-w-0 flex-1">
                   <p className="text-[10px] leading-relaxed font-medium text-foreground/90">⏰ {m.text}</p>
                   {analyzed && (
-                    <p className="mt-0.5 text-[8px] text-rose-600/80 dark:text-rose-400/80 font-mono tabular-nums">
+                    <p className="mt-0.5 text-[8px] text-red-600/80 dark:text-red-400/80 font-mono tabular-nums">
                       urgency {m.urgency.toFixed(2)} · scarcity: {m.scarcity.join(", ") || "—"}
                     </p>
                   )}
@@ -168,23 +168,23 @@ export function PlayingByAppointmentCond3({
 
           <button
             onClick={() => setAnalyzed(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
           >
-            {analyzed ? "Semantic analysis ✓" : "Run semantic analysis"}
+            {analyzed ? "Analysis complete" : "Check availability"}
           </button>
         </div>
 
-        {analyzed && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && analyzed && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Compound urgency triggered
+              Event reminder
             </div>
             <p className="text-muted-foreground">
-              Urgency(T_temporal) peaks at <strong className="text-rose-500">0.92</strong> &gt; τ_appointment_urgency
+              Urgency(T_temporal) peaks at <strong className="text-red-500">0.92</strong> &gt; τ_appointment_urgency
               (0.7), and T_temporal ∩ L_scarcity ={" "}
               <strong className="text-foreground">&ldquo;limited,&rdquo; &ldquo;don&rsquo;t be late,&rdquo; &ldquo;ends,&rdquo; &ldquo;don&rsquo;t break&rdquo;</strong>{" "}
               — {scarcityTotalDark} tokens, so the intersection is non-empty. The messages compound

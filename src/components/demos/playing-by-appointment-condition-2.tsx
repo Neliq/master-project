@@ -38,15 +38,15 @@ export function PlayingByAppointmentCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(N_temporal)/A_viewport (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 0.75 &gt; τ</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 0.75 &gt; τ</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(N_temporal)/A_viewport (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">≈ 0.10</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">≈ 0.10</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Saturation(N_temporal) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0.92 &gt; 0.8</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0.92 &gt; 0.8</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Time remaining</span>
@@ -102,7 +102,7 @@ export function PlayingByAppointmentCond2({
               className={`mt-2 w-full rounded-md py-2 text-[10px] font-medium transition-all ${
                 claimed
                   ? "bg-muted text-muted-foreground/50 cursor-default"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               {claimed ? "Reward claimed ✓" : "Claim event reward"}
@@ -110,8 +110,8 @@ export function PlayingByAppointmentCond2({
           </div>
 
           {claimed && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -128,7 +128,7 @@ export function PlayingByAppointmentCond2({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="overflow-hidden rounded-md border bg-card">
-          <div className="animate-pulse bg-gradient-to-r from-red-600 via-orange-500 to-rose-600 p-4 text-center">
+          <div className="animate-pulse    p-4 text-center">
             <p className="text-[9px] font-bold uppercase tracking-widest text-red-100">
               ⏰ Limited-time event ends soon!
             </p>
@@ -143,7 +143,7 @@ export function PlayingByAppointmentCond2({
           <div className="p-3">
             <div className="flex items-start justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Harvest Moon Festival</h3>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
                 Ending soon
               </div>
             </div>
@@ -157,7 +157,7 @@ export function PlayingByAppointmentCond2({
               className={`mt-2 w-full rounded-md py-2 text-[10px] font-bold transition-all ${
                 claimed
                   ? "bg-muted text-muted-foreground/50 cursor-default"
-                  : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                  : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
               }`}
             >
               {claimed ? "Reward claimed ✓" : "Claim reward — before time runs out!"}
@@ -165,17 +165,17 @@ export function PlayingByAppointmentCond2({
           </div>
         </div>
 
-        {claimed && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && claimed && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Temporal-gate prominence triggered
+              Event details
             </div>
             <p className="text-muted-foreground">
-              The pulsing countdown banner covered roughly <strong className="text-rose-500">75% of the
+              The pulsing countdown banner covered roughly <strong className="text-red-500">75% of the
               panel</strong> — A(N_temporal)/A_viewport ≈ 0.75 &gt; τ_appointment — at a{" "}
               <strong className="text-foreground">0.92-saturation</strong> red-orange gradient with an
               urgency label (&ldquo;last chance&rdquo;). The artificial schedule constraint was turned into the

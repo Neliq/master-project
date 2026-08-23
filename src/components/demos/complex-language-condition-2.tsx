@@ -65,15 +65,15 @@ export function ComplexLanguageCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">FKGL(N_complex) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{FKGL_DARK.toFixed(1)} &gt; 12</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{FKGL_DARK.toFixed(1)} &gt; 12</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">FKGL (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{FKGL_BENIGN.toFixed(1)}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{FKGL_BENIGN.toFixed(1)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">fontSize / S_base (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{RATIO_DARK} &lt; &tau;_shrink ({TAU_SHRINK})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK} &lt; &tau;_shrink ({TAU_SHRINK})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">S_base / fontSize</span>
@@ -100,7 +100,7 @@ export function ComplexLanguageCond2({
                 <h3 className="text-[11px] font-semibold">Checkout</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">Design Tools Pro — one-time license</p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 FKGL {FKGL_BENIGN.toFixed(1)}
               </div>
             </div>
@@ -114,22 +114,22 @@ export function ComplexLanguageCond2({
 
             <div className="mt-3 rounded-md border bg-background p-2.5">
               <p className="text-[12px] leading-relaxed text-foreground/80">{PLAIN_BENIGN}</p>
-              <p className="mt-1 text-[8px] text-emerald-600/70 dark:text-emerald-400/70">
+              <p className="mt-1 text-[8px] text-green-600/70 dark:text-green-400/70">
                 Body-size text, FKGL {FKGL_BENIGN.toFixed(1)} — readable by anyone.
               </p>
             </div>
 
             <button
               onClick={() => setPaid(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Pay $29.99
             </button>
           </div>
 
           {paid && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -151,7 +151,7 @@ export function ComplexLanguageCond2({
               <h3 className="text-[11px] font-semibold">Checkout</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Design Tools Pro — one-time license</p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               FKGL {FKGL_DARK.toFixed(1)}
             </div>
           </div>
@@ -165,33 +165,33 @@ export function ComplexLanguageCond2({
 
           <div className="mt-3 rounded-md border bg-background p-2.5">
             <p className="text-[7px] leading-relaxed text-muted-foreground/60">{LEGALESE_DARK}</p>
-            <p className="mt-1 text-[7px] italic text-rose-500/60">
+            <p className="mt-1 text-[7px] italic text-red-500/60">
               Rendered at {DARK_FONT_SIZE}px under a {BASE_FONT_SIZE}px body — ratio {RATIO_DARK} &lt; &tau;_shrink ({TAU_SHRINK}).
             </p>
           </div>
 
           <button
             onClick={() => setPaid(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Pay $29.99
           </button>
         </div>
 
-        {paid && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && paid && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Visual density trigger fired
+              Review the details below
             </div>
             <p className="text-muted-foreground">
               The passage governing your charge was written at a{" "}
-              <strong className="text-rose-500">FKGL of {FKGL_DARK.toFixed(1)}</strong> (&gt; 12) and shrunk to{" "}
+              <strong className="text-red-500">FKGL of {FKGL_DARK.toFixed(1)}</strong> (&gt; 12) and shrunk to{" "}
               <span className="font-mono">{DARK_FONT_SIZE}px</span> — a fontSize/S_base ratio of{" "}
-              <span className="font-mono text-rose-500">{RATIO_DARK} &lt; &tau;_shrink ({TAU_SHRINK})</span>.
+              <span className="font-mono text-red-500">{RATIO_DARK} &lt; &tau;_shrink ({TAU_SHRINK})</span>.
             </p>
             <p className="text-muted-foreground">
               Both conditions of the heuristic hold: the text is <em>visually inconspicuous</em> (below the site&rsquo;s
@@ -202,7 +202,7 @@ export function ComplexLanguageCond2({
               <summary className="cursor-pointer font-medium text-muted-foreground transition-colors hover:text-foreground">
                 Show what it actually said
               </summary>
-              <p className="mt-1 rounded border border-emerald-500/20 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+              <p className="mt-1 rounded border border-green-500/20 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
                 {PLAIN_BENIGN}
               </p>
             </details>

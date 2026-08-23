@@ -115,15 +115,15 @@ export function InfiniteScrollingCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Boundary lexemes found in A</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Boundary lexemes found in B</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{boundaryHitsB}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{boundaryHitsB}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">∃ n: Match(T(n), Pattern_boundary)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">False (A) / True (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">False (A) / True (B)</span>
       </div>
     </>
   ) : null;
@@ -145,7 +145,7 @@ export function InfiniteScrollingCond3({
                   announced.
                 </p>
               </div>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 {Math.min(page, TOTAL_PAGES_B)} of {TOTAL_PAGES_B}
               </span>
             </div>
@@ -157,7 +157,7 @@ export function InfiniteScrollingCond3({
                 </div>
               ))}
               {page >= TOTAL_PAGES_B && (
-                <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 px-2 py-2 text-center text-[9px] font-semibold text-emerald-700 dark:text-emerald-300">
+                <div className="rounded-md border border-green-500/30 bg-green-500/5 px-2 py-2 text-center text-[9px] font-semibold text-green-700 dark:text-green-300">
                   End of results — no more items
                 </div>
               )}
@@ -178,7 +178,7 @@ export function InfiniteScrollingCond3({
                   className={`rounded-md px-3 py-1.5 text-[10px] font-medium transition-colors ${
                     loading
                       ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                      : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                      : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   }`}
                 >
                   {loading ? "Loading…" : "Next page"}
@@ -187,8 +187,8 @@ export function InfiniteScrollingCond3({
             )}
 
             {loadsB >= 2 && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   Boundary markers present
                 </div>
@@ -216,7 +216,7 @@ export function InfiniteScrollingCond3({
                 feed can end?
               </p>
             </div>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               {itemsCount} items
             </span>
           </div>
@@ -228,7 +228,7 @@ export function InfiniteScrollingCond3({
               </div>
             ))}
             {loading && (
-              <div className="flex items-center gap-1.5 rounded border border-rose-500/30 bg-rose-500/5 px-2 py-1.5 text-[9px] text-rose-600 dark:text-rose-300">
+              <div className="flex items-center gap-1.5 rounded border border-red-500/30 bg-red-500/5 px-2 py-1.5 text-[9px] text-red-600 dark:text-red-300">
                 <RefreshSpinner /> Appending next batch…
               </div>
             )}
@@ -240,17 +240,17 @@ export function InfiniteScrollingCond3({
             className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
               loading
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
             {loading ? "Loading…" : "Show more results"}
           </button>
 
           {loadsA >= 3 && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
-                Semantic attenuation detected
+                More posts are loading
               </div>
               <p className="text-muted-foreground">
                 After {itemsCount} items and {loadsA} load cycles, the semantic scan still finds zero

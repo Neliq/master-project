@@ -45,21 +45,21 @@ export function BundlingCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">C_state after E_purchase (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {"{Camera, Warranty}"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">∃ e: add primary alone?</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">No</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">No</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Warranty checkbox (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">checked &amp; disabled</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">checked &amp; disabled</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Forced subtotal (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {usd(CAMERA.price + WARRANTY.price)}
         </span>
       </div>
@@ -82,11 +82,11 @@ export function BundlingCond1({
           <div className="flex items-start gap-3">
             <div
               className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-md ${
-                dark ? "bg-rose-100 dark:bg-rose-900/30" : "bg-emerald-100 dark:bg-emerald-900/30"
+                dark ? "bg-red-100 dark:bg-red-900/30" : "bg-green-100 dark:bg-green-900/30"
               }`}
             >
               <svg
-                className={`h-5 w-5 ${dark ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"}`}
+                className={`h-5 w-5 ${dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -111,8 +111,8 @@ export function BundlingCond1({
             <label
               className={`flex items-center justify-between gap-2 rounded-md border p-2 ${
                 dark
-                  ? "cursor-not-allowed border-rose-500/40 bg-rose-500/5"
-                  : "cursor-pointer border-border bg-background transition-colors hover:border-emerald-500/40"
+                  ? "cursor-not-allowed border-red-500/40 bg-red-500/5"
+                  : "cursor-pointer border-border bg-background transition-colors hover:border-green-500/40"
               }`}
             >
               <span className="flex items-center gap-2">
@@ -121,7 +121,7 @@ export function BundlingCond1({
                   checked={dark ? true : warrantyChecked}
                   disabled={dark}
                   onChange={(e) => setWarrantyChecked(e.target.checked)}
-                  className={`flex-shrink-0 ${dark ? "accent-rose-500" : "accent-emerald-500"}`}
+                  className={`flex-shrink-0 ${dark ? "accent-red-500" : "accent-green-500"}`}
                 />
                 <span className="min-w-0">
                   <span className="block text-[10px] font-medium">{WARRANTY.name}</span>
@@ -136,7 +136,7 @@ export function BundlingCond1({
             <button
               onClick={() => setAdded(true)}
               className={`w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-                dark ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+                dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
               }`}
             >
               {added ? "Added to cart ✓" : "Add to cart"}
@@ -169,10 +169,9 @@ export function BundlingCond1({
           </div>
         ) : null}
 
-        {added &&
-          (dark ? (
-            <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-amber-700 dark:text-amber-300">
+        {mode === "auditor" && added && (dark ? (
+            <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -184,13 +183,13 @@ export function BundlingCond1({
                 <strong className="text-foreground">{"{Camera, Warranty}"} ⊆ C_state</strong> — the
                 warranty checkbox is checked and disabled, so there is no discrete event e that adds
                 the camera alone (∄ e). You paid{" "}
-                <strong className="text-amber-700 dark:text-amber-300">{usd(subtotal)}</strong> for an
+                <strong className="text-yellow-700 dark:text-yellow-300">{usd(subtotal)}</strong> for an
                 item you never chose.
               </p>
             </div>
           ) : (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-emerald-700 dark:text-emerald-300">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -198,7 +197,7 @@ export function BundlingCond1({
               </div>
               <p className="text-muted-foreground mt-1">
                 A discrete event e exists: adding the camera alone yields C_state ={" "}
-                <strong className="text-emerald-700 dark:text-emerald-300">{"{Camera}"}</strong> for{" "}
+                <strong className="text-green-700 dark:text-green-300">{"{Camera}"}</strong> for{" "}
                 {usd(CAMERA.price)}. The warranty is an independent, unchecked option you can accept
                 or decline.
               </p>

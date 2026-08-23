@@ -34,7 +34,7 @@ function countLexemes(text: string): number {
 }
 
 const DARK_COPY =
-  "Claim your daily bonus! 🔥 Streak: 12 days — level up 3 XP away. Spin again for free coins — win big on the bonus wheel. Daily bonus resets soon. Don't lose your streak!";
+  "Claim your daily bonus!  Streak: 12 days — level up 3 XP away. Spin again for free coins — win big on the bonus wheel. Daily bonus resets soon. Don't lose your streak!";
 const BENIGN_COPY =
   "Your reward is ready. You've visited 12 days in a row. You can earn a few coins while playing. When you're ready, play again.";
 
@@ -50,8 +50,8 @@ function SpinButton({ onClick, disabled, dark }: { onClick: () => void; disabled
         disabled
           ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
           : dark
-            ? "bg-rose-600 hover:bg-rose-700 shadow-lg shadow-rose-600/25"
-            : "bg-emerald-600 hover:bg-emerald-700"
+            ? "bg-red-600 hover:bg-red-700 shadow-lg shadow-red-600/25"
+            : "bg-green-600 hover:bg-green-700"
       }`}
     >
       {dark ? "Spin again — claim reward" : "Play again"}
@@ -101,19 +101,19 @@ export function AddictiveDesignCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|{`{w in T : w in L_reinforcement}`}|</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{DARK_LEXEME_COUNT} (dark)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DARK_LEXEME_COUNT} (dark)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Lexemes (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{BENIGN_LEXEME_COUNT}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{BENIGN_LEXEME_COUNT}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Density / viewport</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">4.2 &gt; &tau;_addiction (1.0)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">4.2 &gt; &tau;_addiction (1.0)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Reward schedule (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">variable ratio: 0&hellip;50 &sigma;&sup2; high</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">variable ratio: 0&hellip;50 &sigma;&sup2; high</span>
       </div>
     </>
   ) : null;
@@ -129,7 +129,7 @@ export function AddictiveDesignCond3({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">LuckyPins</h3>
-              <span className="rounded-full border border-emerald-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-emerald-600 dark:text-emerald-400">
+              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
                 {coinsB} coins
               </span>
             </div>
@@ -138,12 +138,12 @@ export function AddictiveDesignCond3({
             </p>
             <div className="mt-2 flex items-center justify-center py-2">
               <svg viewBox="0 0 72 72" className="h-14 w-14" aria-hidden="true">
-                <circle cx="36" cy="36" r="32" className="fill-emerald-500/15 stroke-emerald-500/50" strokeWidth="3" />
-                <path d="M36 14 L41 31 L58 36 L41 41 L36 58 L31 41 L14 36 L31 31 Z" className="fill-emerald-500/40" />
+                <circle cx="36" cy="36" r="32" className="fill-green-500/15 stroke-green-500/50" strokeWidth="3" />
+                <path d="M36 14 L41 31 L58 36 L41 41 L36 58 L31 41 L14 36 L31 31 Z" className="fill-green-500/40" />
               </svg>
             </div>
             {lastB !== null && (
-              <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-center text-[9px] font-mono text-emerald-700 dark:text-emerald-300">
+              <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-center text-[9px] font-mono text-green-700 dark:text-green-300">
                 +{lastB} coins — same as last time, as expected
               </div>
             )}
@@ -161,26 +161,26 @@ export function AddictiveDesignCond3({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">LuckyPins</h3>
-            <span className="rounded-full border border-rose-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-rose-600 dark:text-rose-400">
+            <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
               {coinsA} coins
             </span>
           </div>
-          <p className="mt-2 rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5 text-[10px] leading-relaxed text-foreground/80">
+          <p className="mt-2 rounded-md border border-red-500/30 bg-red-500/5 p-2.5 text-[10px] leading-relaxed text-foreground/80">
             {DARK_COPY}
           </p>
           <div className="mt-2 flex items-center justify-center py-2">
             <svg viewBox="0 0 72 72" className={`h-14 w-14 transition-transform duration-150 ${spins > 0 ? "" : ""}`} aria-hidden="true">
-              <circle cx="36" cy="36" r="32" className="fill-rose-500/15 stroke-rose-500/50" strokeWidth="3" />
-              <path d="M36 14 L41 31 L58 36 L41 41 L36 58 L31 41 L14 36 L31 31 Z" className="fill-rose-500/40" />
+              <circle cx="36" cy="36" r="32" className="fill-red-500/15 stroke-red-500/50" strokeWidth="3" />
+              <path d="M36 14 L41 31 L58 36 L41 41 L36 58 L31 41 L14 36 L31 31 Z" className="fill-red-500/40" />
             </svg>
           </div>
           {lastA !== null && (
             <div className={`rounded-md border p-2 text-center text-[9px] font-mono ${
               lastA === 50
-                ? "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300 font-bold"
+                ? "border-yellow-500/40 bg-yellow-500/10 text-yellow-700 dark:text-yellow-300 font-bold"
                 : lastA === 0
                   ? "border-foreground/10 bg-muted/40 text-muted-foreground"
-                  : "border-rose-500/30 bg-rose-500/5 text-rose-700 dark:text-rose-300"
+                  : "border-red-500/30 bg-red-500/5 text-red-700 dark:text-red-300"
             }`}>
               {lastA === 50 ? "★ JACKPOT! +50 coins ★" : lastA === 0 ? "+0 coins — so close, spin again!" : `+${lastA} coins`}
             </div>
@@ -193,8 +193,8 @@ export function AddictiveDesignCond3({
           </p>
         </div>
         {jackpot && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

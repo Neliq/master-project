@@ -57,7 +57,7 @@ function ToggleRow({
         type="checkbox"
         checked={on}
         onChange={onChange}
-        className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${accent === "rose" ? "accent-rose-500" : "accent-emerald-500"}`}
+        className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${accent === "rose" ? "accent-red-500" : "accent-green-500"}`}
       />
       <span className="min-w-0 flex-1">
         <span className="block text-[10px] leading-relaxed text-foreground/80">{label}</span>
@@ -101,7 +101,7 @@ export function PrivacyMazeCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d(v_start, v_reject_all)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{DEPTH_REJECT} clicks</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DEPTH_REJECT} clicks</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Heuristic threshold &tau;_depth</span>
@@ -109,7 +109,7 @@ export function PrivacyMazeCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Trigger: {DEPTH_REJECT} &gt; {TAU_DEPTH}</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">TRUE</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
       </div>
     </>
   ) : null;
@@ -124,8 +124,8 @@ export function PrivacyMazeCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <svg className="h-4 w-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
               </div>
@@ -140,13 +140,13 @@ export function PrivacyMazeCond1({
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
                 onClick={() => { setOutcome("accepted"); setAcceptedVia("banner"); }}
-                className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+                className="w-full rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
               >
                 Accept All
               </button>
               <button
                 onClick={() => setOutcome("rejected")}
-                className="w-full rounded-md border border-emerald-600/50 bg-background hover:bg-emerald-500/10 py-2 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 transition-colors cursor-pointer"
+                className="w-full rounded-md border border-green-600/50 bg-background hover:bg-green-500/10 py-2 text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors cursor-pointer"
               >
                 Reject All
               </button>
@@ -157,8 +157,8 @@ export function PrivacyMazeCond1({
           </div>
 
           {outcome !== "none" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -178,8 +178,8 @@ export function PrivacyMazeCond1({
         {step === "banner" && (
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-                <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+                <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
               </div>
@@ -194,7 +194,7 @@ export function PrivacyMazeCond1({
             </div>
             <button
               onClick={() => { setOutcome("accepted"); setAcceptedVia("banner"); }}
-              className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 py-2.5 text-[11px] font-bold text-white shadow-md transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 py-2.5 text-[11px] font-bold text-white shadow-md transition-colors cursor-pointer"
             >
               Accept All
             </button>
@@ -233,7 +233,7 @@ export function PrivacyMazeCond1({
             </div>
             <button
               onClick={() => setStep(step === "purposes" ? "partners" : "advanced")}
-              className="mt-2.5 w-full rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Continue
             </button>
@@ -273,7 +273,7 @@ export function PrivacyMazeCond1({
         {step === "confirm" && (
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-2">
-              <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-600 dark:text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-yellow-600 dark:text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
@@ -294,7 +294,7 @@ export function PrivacyMazeCond1({
               </button>
               <button
                 onClick={() => setOutcome("rejected")}
-                className="w-full rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Yes, reject all
               </button>
@@ -303,13 +303,13 @@ export function PrivacyMazeCond1({
         )}
 
         {outcome !== "none" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Asymmetrical path depth triggered
+              Privacy settings
             </div>
             <p className="text-muted-foreground">
               {outcome === "accepted" && acceptedVia === "banner"

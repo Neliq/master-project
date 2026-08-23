@@ -44,11 +44,11 @@ export function LowStockCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">I_displayed(x) — frontend (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{I_DISPLAYED_DARK} (&le; &tau;)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{I_DISPLAYED_DARK} (&le; &tau;)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">I_displayed(x) — frontend (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{I_TRUE}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{I_TRUE}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">I_true(x) — backend DB</span>
@@ -71,8 +71,8 @@ export function LowStockCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <svg className="h-5 w-5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <svg className="h-5 w-5 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M2 7l10-5 10 5M4 10v10a1 1 0 001 1h14a1 1 0 001-1V10M2 7l2 13M22 7l-2 13" />
                 </svg>
               </div>
@@ -83,7 +83,7 @@ export function LowStockCond1({
                 </p>
                 <div className="mt-1.5 flex items-center gap-2">
                   <span className="text-[11px] font-bold">{ITEM_PRICE}</span>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-green-500/40 bg-green-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-700 dark:text-green-300">
                     <svg className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
@@ -95,15 +95,15 @@ export function LowStockCond1({
 
             <button
               onClick={() => setAdded(true)}
-              className="mt-3 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               {added ? "Added to cart ✓" : "Add to cart"}
             </button>
           </div>
 
           {added && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -121,8 +121,8 @@ export function LowStockCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <svg className="h-5 w-5 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <svg className="h-5 w-5 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M2 7l10-5 10 5M4 10v10a1 1 0 001 1h14a1 1 0 001-1V10M2 7l2 13M22 7l-2 13" />
               </svg>
             </div>
@@ -133,7 +133,7 @@ export function LowStockCond1({
               </p>
               <div className="mt-1.5 flex items-center gap-2">
                 <span className="text-[11px] font-bold">{ITEM_PRICE}</span>
-                <span className="inline-flex items-center gap-1 rounded-full border border-rose-500/40 bg-rose-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-600 dark:text-rose-300 animate-pulse">
+                <span className="inline-flex items-center gap-1 rounded-full border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-red-600 dark:text-red-300 animate-pulse">
                   <svg className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M12 9v4m0 4h.01" />
                     <circle cx="12" cy="12" r="10" />
@@ -147,7 +147,7 @@ export function LowStockCond1({
           <div className="mt-3 flex gap-2">
             <button
               onClick={() => setAdded(true)}
-              className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               {added ? "Added to cart ✓" : "Add to cart"}
             </button>
@@ -160,19 +160,19 @@ export function LowStockCond1({
           </div>
         </div>
 
-        {verified && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && verified && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Inventory fabrication detected
+              Only ${I_DISPLAYED_DARK} left
             </div>
             <p className="text-muted-foreground">
-              The frontend badge claims <strong className="text-rose-500">“Only {I_DISPLAYED_DARK} left at this price!”</strong> — that
+              The frontend badge claims <strong className="text-red-500">“Only {I_DISPLAYED_DARK} left at this price!”</strong> — that
               satisfies I_displayed(x) = {I_DISPLAYED_DARK} &le; &tau;_scarcity = {TAU_SCARCITY}, the panic threshold.
-              But the backend database holds <strong className="text-emerald-500">I_true(x) = {I_TRUE} units</strong>.
+              But the backend database holds <strong className="text-green-500">I_true(x) = {I_TRUE} units</strong>.
             </p>
             <p className="text-muted-foreground">
               Because I_displayed(x) &lt;&lt; I_true(x), the low number was algorithmically generated to manufacture
@@ -182,7 +182,7 @@ export function LowStockCond1({
         )}
 
         {added && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <p className="text-muted-foreground">
               You rushed to add the item while the panic badge was pulsing. A user who clicks “Verify stock”
               (or who reloads) discovers the stock never actually depletes — it is stuck at a fabricated low threshold.

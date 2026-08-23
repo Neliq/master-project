@@ -48,11 +48,11 @@ export function ConflictingInformationCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Prop(t₁) ∧ Prop(t₂) ⇒ ⊥</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">unsatisfiable</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">unsatisfiable</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d_DOM(t₁, t₂)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{NODE_GAP_DARK}px &lt; τ ({PROXIMITY_THRESHOLD}px)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{NODE_GAP_DARK}px &lt; τ ({PROXIMITY_THRESHOLD}px)</span>
       </div>
     </>
   ) : null;
@@ -67,8 +67,8 @@ export function ConflictingInformationCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <Zap className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <Zap className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
               </div>
               <div>
                 <h3 className="text-[11px] font-semibold">AcmeStream Pro</h3>
@@ -85,15 +85,15 @@ export function ConflictingInformationCond1({
 
             <button
               onClick={() => setStarted(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Start free trial
             </button>
           </div>
 
           {started && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
                 Trial started — $0.00 charged
               </div>
@@ -110,8 +110,8 @@ export function ConflictingInformationCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <Flame className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <Flame className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
             </div>
             <div>
               <h3 className="text-[11px] font-semibold">AcmeStream Pro</h3>
@@ -126,29 +126,29 @@ export function ConflictingInformationCond1({
               No charges during your trial period.
             </div>
             {/* t2 — the contradictory claim, placed NODE_GAP_DARK px away */}
-            <div className="text-[9px] font-semibold text-rose-500 mt-1 border-t border-dashed border-border pt-1">
+            <div className="text-[9px] font-semibold text-red-500 mt-1 border-t border-dashed border-border pt-1">
               Payment of $49.00 due today at signup.
             </div>
           </div>
 
           <button
             onClick={() => setStarted(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Start free trial
           </button>
         </div>
 
-        {started && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && started && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="w-3 h-3" />
-              Contradiction triggered — $49.00 charged
+              Payment complete — $49.00 charged
             </div>
             <p className="text-muted-foreground">
               The card told you <strong className="text-foreground">“No charges during your trial
               period”</strong> and, {NODE_GAP_DARK}px below it,{" "}
-              <strong className="text-rose-500">“Payment of $49.00 due today.”</strong>{" "}
+              <strong className="text-red-500">“Payment of $49.00 due today.”</strong>{" "}
               Prop(t₁) ∧ Prop(t₂) is logically unsatisfiable — both can&rsquo;t be true — yet the
               interface co-locates them so the free claim dominates your reading. Your card was
               charged today.

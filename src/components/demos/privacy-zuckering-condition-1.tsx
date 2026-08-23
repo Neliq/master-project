@@ -59,11 +59,11 @@ export function PrivacyZuckeringCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">∃ t_alt (essential w/o monetization) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">¬∃ — fused toggle</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">¬∃ — fused toggle</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">∃ t_alt (essential w/o monetization) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">∃ — granular toggles</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">∃ — granular toggles</span>
       </div>
     </>
   ) : null;
@@ -87,7 +87,7 @@ export function PrivacyZuckeringCond1({
                 <label className="text-[9px] font-medium text-muted-foreground">Email</label>
                 <input
                   defaultValue="alex@example.com"
-                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-green-500/40"
                 />
               </div>
               <div>
@@ -95,7 +95,7 @@ export function PrivacyZuckeringCond1({
                 <input
                   type="password"
                   defaultValue="hunter2"
-                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-green-500/40"
                 />
               </div>
             </div>
@@ -107,14 +107,14 @@ export function PrivacyZuckeringCond1({
                   type="checkbox"
                   checked={bEssential}
                   onChange={(e) => setBEssential(e.target.checked)}
-                  className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                  className="mt-0.5 flex-shrink-0 accent-green-500"
                 />
                 <div className="min-w-0 flex-1">
                   <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
                     I agree to the Terms of Service and Privacy Policy (essential)
                   </div>
                   <div className="text-[8px] text-muted-foreground/50 mt-0.5">
-                    Required to operate your account — D_essential only.
+                    Required to use NoteDrop.
                   </div>
                 </div>
               </label>
@@ -124,14 +124,14 @@ export function PrivacyZuckeringCond1({
                   type="checkbox"
                   checked={bMonetization}
                   onChange={(e) => setBMonetization(e.target.checked)}
-                  className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                  className="mt-0.5 flex-shrink-0 accent-green-500"
                 />
                 <div className="min-w-0 flex-1">
                   <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
                     Optional: allow us to share your data with advertising partners
                   </div>
                   <div className="text-[8px] text-muted-foreground/50 mt-0.5">
-                    Not required to use NoteDrop. You can stay opted out — D_monetization only.
+                    Optional — you can change this later in Settings.
                   </div>
                 </div>
               </label>
@@ -142,7 +142,7 @@ export function PrivacyZuckeringCond1({
               disabled={!bEssential}
               className={`mt-2 w-full rounded-md py-2 text-[10px] font-medium transition-all ${
                 bEssential
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -150,17 +150,15 @@ export function PrivacyZuckeringCond1({
             </button>
 
             {bCreated && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
-                  Granular consent — t_alt exists
+                  Account created
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  Essential access ({bEssential ? "granted" : "denied"}) and monetization access ({bMonetization ? "granted" : "denied"}) were decided
-                  independently. <strong className="text-emerald-600 dark:text-emerald-400">∃ t_alt: Access(D_essential) ∧ ¬Access(D_monetization)</strong>{" "}
-                  — the granularity violation never fires.
+                  Your NoteDrop account is ready. You can update your communication preferences at any time.
                 </p>
               </div>
             )}
@@ -180,7 +178,7 @@ export function PrivacyZuckeringCond1({
               <label className="text-[9px] font-medium text-muted-foreground">Email</label>
               <input
                 defaultValue="alex@example.com"
-                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-rose-500/40"
+                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-red-500/40"
               />
             </div>
             <div>
@@ -188,27 +186,25 @@ export function PrivacyZuckeringCond1({
               <input
                 type="password"
                 defaultValue="hunter2"
-                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-rose-500/40"
+                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-red-500/40"
               />
             </div>
           </div>
 
           {/* The single fused toggle: one checkbox, both data classes */}
           <div className="mt-3">
-            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-rose-500/30 bg-rose-500/5 p-3 transition-colors">
+            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-red-500/30 bg-red-500/5 p-3 transition-colors">
               <input
                 type="checkbox"
                 checked={aAll}
                 onChange={(e) => setAAll(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-rose-500"
+                className="mt-0.5 flex-shrink-0 accent-red-500"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
                   I agree to the Terms of Service, Privacy Policy, and data sharing with advertising partners
                 </div>
-                <div className="text-[8px] text-muted-foreground/50 mt-0.5">
-                  One checkbox — creating an account requires agreeing to everything at once.
-                </div>
+
               </div>
             </label>
           </div>
@@ -218,7 +214,7 @@ export function PrivacyZuckeringCond1({
             disabled={!aAll}
             className={`mt-2 w-full rounded-md py-2 text-[10px] font-medium transition-all ${
               aAll
-                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
@@ -226,19 +222,16 @@ export function PrivacyZuckeringCond1({
           </button>
 
           {aCreated && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Bundled consent — granularity violation
+                Account created
               </div>
               <p className="text-muted-foreground mt-0.5">
-                <strong className="text-foreground">T_accept = True ⟹ Access(D_essential) ∧ Access(D_monetization)</strong> — checking the
-                single box surrendered both the data needed to run your account and the data used for profiling and
-                brokerage, inseparably. <strong className="text-foreground">¬∃ t_alt</strong>: there was no way to create the account while
-                denying monetization, because the categories were fused into one indivisible toggle.
+                Welcome to NoteDrop. Your account is ready to use.
               </p>
             </div>
           )}

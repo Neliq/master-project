@@ -74,7 +74,7 @@ export function DripPricingCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P(s_n) final total</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{usd(TOTAL_PRICE)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{usd(TOTAL_PRICE)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">I_added (optional items)</span>
@@ -82,7 +82,7 @@ export function DripPricingCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_dripped = P(s_n) − P(s₀)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{usd(DRIPPED)} &gt; 0</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{usd(DRIPPED)} &gt; 0</span>
       </div>
     </>
   ) : null;
@@ -98,7 +98,7 @@ export function DripPricingCond1({
             <div key={label} className="min-w-0 flex-1">
               <div
                 className={`h-1 rounded-full ${
-                  i <= step ? (dark ? "bg-rose-500" : "bg-emerald-500") : "bg-muted"
+                  i <= step ? (dark ? "bg-red-500" : "bg-green-500") : "bg-muted"
                 }`}
               />
               <div
@@ -125,14 +125,14 @@ export function DripPricingCond1({
                 className={`text-[8px] uppercase tracking-wider ${
                   dark
                     ? "text-muted-foreground"
-                    : "font-semibold text-emerald-600 dark:text-emerald-400"
+                    : "font-semibold text-green-600 dark:text-green-400"
                 }`}
               >
                 {dark ? "advertised from" : "all-inclusive total"}
               </div>
               <div
                 className={`text-[15px] font-bold tabular-nums ${
-                  dark ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"
+                  dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
                 }`}
               >
                 {usd(price)}
@@ -151,7 +151,7 @@ export function DripPricingCond1({
               <div key={f.label} className="flex items-center justify-between text-[9px]">
                 <span className="flex items-center gap-1.5 text-muted-foreground">
                   {dark && step === f.step ? (
-                    <span className="rounded bg-rose-500/10 px-1 py-px font-mono text-[7px] font-bold uppercase tracking-wide text-rose-600 dark:text-rose-400">
+                    <span className="rounded bg-red-500/10 px-1 py-px font-mono text-[7px] font-bold uppercase tracking-wide text-red-600 dark:text-red-400">
                       new
                     </span>
                   ) : null}
@@ -164,7 +164,7 @@ export function DripPricingCond1({
               <span className="text-muted-foreground">Total at this state</span>
               <span
                 className={`font-mono tabular-nums ${
-                  dark ? "text-foreground" : "text-emerald-600 dark:text-emerald-400"
+                  dark ? "text-foreground" : "text-green-600 dark:text-green-400"
                 }`}
               >
                 {usd(price)}
@@ -183,7 +183,7 @@ export function DripPricingCond1({
             <button
               onClick={next}
               className={`flex-1 cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-                dark ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+                dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
               }`}
             >
               {step < STEPS.length - 1 ? "Continue" : confirmed ? "Paid" : `Pay ${usd(price)}`}
@@ -191,21 +191,20 @@ export function DripPricingCond1({
           </div>
         </div>
 
-        {confirmed &&
-          (dark ? (
-            <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-amber-700 dark:text-amber-300">
+        {mode === "auditor" && confirmed && (dark ? (
+            <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Sequential price inflation detected
+                Updated total
               </div>
               <p className="text-muted-foreground mt-1">
                 You paid <strong className="text-foreground">{usd(TOTAL_PRICE)}</strong> for a flight
                 advertised at <strong className="text-foreground">{usd(BASE_PRICE)}</strong>. Check the
                 trigger: P(s_n) = {usd(TOTAL_PRICE)} &gt; P(s₀) + I_added = {usd(BASE_PRICE)} + $0.00
-                ⟹ P_dripped = <strong className="text-amber-700 dark:text-amber-300">{usd(DRIPPED)}</strong>{" "}
+                ⟹ P_dripped = <strong className="text-yellow-700 dark:text-yellow-300">{usd(DRIPPED)}</strong>{" "}
                 &gt; 0.
               </p>
               <p className="text-muted-foreground mt-1">
@@ -215,8 +214,8 @@ export function DripPricingCond1({
               </p>
             </div>
           ) : (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-emerald-700 dark:text-emerald-300">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -224,7 +223,7 @@ export function DripPricingCond1({
               </div>
               <p className="text-muted-foreground mt-1">
                 The all-inclusive total of{" "}
-                <strong className="text-emerald-700 dark:text-emerald-300">{usd(TOTAL_PRICE)}</strong>{" "}
+                <strong className="text-green-700 dark:text-green-300">{usd(TOTAL_PRICE)}</strong>{" "}
                 was shown from s₀ onward, so P(s_i) never changed: P(s_n) = P(s₀) and P_dripped =
                 $0.00.
               </p>

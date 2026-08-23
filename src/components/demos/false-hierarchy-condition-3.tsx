@@ -44,11 +44,11 @@ export function FalseHierarchyCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Intent(L(B₂)) ≡ ¬Intent(L(B₁))</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">true</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">true</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Tag(B_business) / Tag(B_user)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&lt;button&gt; / &lt;a&gt; (padding ≈ 0)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&lt;button&gt; / &lt;a&gt; (padding ≈ 0)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">N_parent</span>
@@ -67,8 +67,8 @@ export function FalseHierarchyCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <Scale className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <Scale className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
               </div>
               <div>
                 <h3 className="text-[11px] font-semibold">Personalisation &amp; tracking</h3>
@@ -83,22 +83,22 @@ export function FalseHierarchyCond3({
             {/* B1: direct positive clause */}
             <button
               onClick={() => setChoice("accept")}
-              className="mt-3 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Accept tracking
             </button>
             {/* B2: direct negative clause — single parse */}
             <button
               onClick={() => setChoice("decline")}
-              className="mt-1.5 w-full rounded-md border border-emerald-600/50 bg-background text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-1.5 w-full rounded-md border border-green-600/50 bg-background text-green-700 dark:text-green-300 hover:bg-green-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Decline tracking
             </button>
           </div>
 
           {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
                 Opposition verified — no parsing trap
               </div>
@@ -114,8 +114,8 @@ export function FalseHierarchyCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <Shield className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <Shield className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
             </div>
             <div>
               <h3 className="text-[11px] font-semibold">Personalisation &amp; tracking</h3>
@@ -130,7 +130,7 @@ export function FalseHierarchyCond3({
           {/* B1: single positive clause — business-favorable */}
           <button
             onClick={() => setChoice("accept")}
-            className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
           >
             I accept tracking
           </button>
@@ -148,15 +148,15 @@ export function FalseHierarchyCond3({
           </a>
         </div>
 
-        {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && choice && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="w-3 h-3" />
               Opposition holds — phrasing rigged
             </div>
             <p className="text-muted-foreground">
-              The NLP pass succeeds: <strong className="text-rose-500">Intent(L(B₁)) = accept</strong>{" "}
-              and <strong className="text-rose-500">Intent(L(B₂)) = reject ≡ ¬accept</strong> — the
+              The NLP pass succeeds: <strong className="text-red-500">Intent(L(B₁)) = accept</strong>{" "}
+              and <strong className="text-red-500">Intent(L(B₂)) = reject ≡ ¬accept</strong> — the
               two nodes are strict semantic opposites in the same container, so the binary
               precondition is satisfied. But the user-favorable clause is a double negative:
               “No, I don&rsquo;t accept tracking” requires an extra parse that rushed users skip —

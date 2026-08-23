@@ -69,15 +69,15 @@ export function ForcedGracePeriodCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">NER entity E_time</span>
-        <span className="font-mono font-semibold tabular-nums text-amber-600 dark:text-amber-400">“{DAYS_WAIT} days” → {WAIT_HOURS} h</span>
+        <span className="font-mono font-semibold tabular-nums text-yellow-600 dark:text-yellow-400">“{DAYS_WAIT} days” → {WAIT_HOURS} h</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δt = T_execute − T_request</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{WAIT_HOURS} h (A) / 0 h (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{WAIT_HOURS} h (A) / 0 h (B)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δt ≥ Δt_min ({DT_MIN_HOURS} h)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True (A) → fired / False (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True (A) → fired / False (B)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Simulated clock (A)</span>
@@ -97,7 +97,7 @@ export function ForcedGracePeriodCond1({
           {stageB === "idle" ? (
             <div className="rounded-md border bg-card p-3">
               <div className="flex items-center gap-1.5">
-                <Hourglass className="size-3.5 text-emerald-500" />
+                <Hourglass className="size-3.5 text-green-500" />
                 <h3 className="text-[11px] font-semibold">CloudPhoto Pro — $9.99/mo</h3>
               </div>
               <p className="mt-1 text-[9px] text-muted-foreground">
@@ -105,14 +105,14 @@ export function ForcedGracePeriodCond1({
               </p>
               <button
                 onClick={() => setStageB("done")}
-                className="mt-2.5 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Delete my account
               </button>
             </div>
           ) : (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-3 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-3 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="size-3" />
                 Request executed instantly
               </div>
@@ -130,7 +130,7 @@ export function ForcedGracePeriodCond1({
         {stageA === "idle" ? (
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-1.5">
-              <Hourglass className="size-3.5 text-rose-500" />
+              <Hourglass className="size-3.5 text-red-500" />
               <h3 className="text-[11px] font-semibold">CloudPhoto Pro — $9.99/mo</h3>
             </div>
             <p className="mt-1 text-[9px] text-muted-foreground">
@@ -141,7 +141,7 @@ export function ForcedGracePeriodCond1({
                 setStageA("pending");
                 setHoursA(0);
               }}
-              className="mt-2.5 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Delete my account
             </button>
@@ -150,7 +150,7 @@ export function ForcedGracePeriodCond1({
           <div className="space-y-3">
             <div className="rounded-md border bg-card p-3">
               <div className="flex items-center gap-1.5">
-                <CalendarClock className="size-3.5 text-rose-500" />
+                <CalendarClock className="size-3.5 text-red-500" />
                 <h3 className="text-[11px] font-semibold">Deletion request received</h3>
               </div>
 
@@ -158,7 +158,7 @@ export function ForcedGracePeriodCond1({
               <div className="mt-2 rounded-md border border-border bg-background p-2 text-[9px] leading-relaxed">
                 <p className="text-muted-foreground">
                   We&rsquo;ve received your request. Your account will be permanently deleted in{" "}
-                  <mark className="rounded-sm bg-amber-500/25 px-0.5 text-amber-800 dark:text-amber-200">
+                  <mark className="rounded-sm bg-yellow-500/25 px-0.5 text-yellow-800 dark:text-yellow-200">
                     30 days
                   </mark>
                   .
@@ -181,7 +181,7 @@ export function ForcedGracePeriodCond1({
                   </span>
                   <span>{T_EXECUTE}</span>
                 </div>
-                <div className="flex items-center justify-between text-rose-500">
+                <div className="flex items-center justify-between text-red-500">
                   <span>Δt = T_execute − T_request</span>
                   <span>{WAIT_HOURS} h ≥ Δt_min ({DT_MIN_HOURS} h)</span>
                 </div>
@@ -194,7 +194,7 @@ export function ForcedGracePeriodCond1({
                 </div>
                 <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">
                   <div
-                    className="h-full rounded-full bg-rose-500 transition-[width] duration-150"
+                    className="h-full rounded-full bg-red-500 transition-[width] duration-150"
                     style={{ width: `${pct}%` }}
                   />
                 </div>
@@ -203,22 +203,22 @@ export function ForcedGracePeriodCond1({
               <div className="mt-2.5 flex gap-1.5">
                 <button
                   onClick={() => setHoursA(WAIT_HOURS)}
-                  className="flex-1 rounded-md border border-rose-500/40 bg-rose-500/5 py-1.5 text-[9px] font-semibold text-rose-600 transition-colors hover:bg-rose-500/10 cursor-pointer dark:text-rose-300"
+                  className="flex-1 rounded-md border border-red-500/40 bg-red-500/5 py-1.5 text-[9px] font-semibold text-red-600 transition-colors hover:bg-red-500/10 cursor-pointer dark:text-red-300"
                 >
                   Fast-forward 30 days
                 </button>
               </div>
             </div>
 
-            {elapsedComplete && (
-              <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-                <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            {mode === "auditor" && elapsedComplete && (
+              <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+                <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                   <AlertTriangle className="size-3" />
-                  Artificial delay detected
+                  Deletion scheduled
                 </div>
                 <p className="text-muted-foreground">
                   <span className="font-mono text-foreground">
-                    T_execute − T_request = {WAIT_HOURS} h ≥ Δt_min ({DT_MIN_HOURS} h)
+                    Your account will be deleted in {DAYS_WAIT} days.
                   </span>{" "}
                   — the NER-extracted entity “{DAYS_WAIT} days” turned a one-click request into a
                   720-hour wait. Deletion is a database row; nothing about it technically requires

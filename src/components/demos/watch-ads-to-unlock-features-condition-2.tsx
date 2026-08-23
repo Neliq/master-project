@@ -56,11 +56,11 @@ export function WatchAdsToUnlockFeaturesCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_visual (rendered bar)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{visualCountDark}/{ADS_REQUIRED}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{visualCountDark}/{ADS_REQUIRED}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_visual − P_actual</span>
-        <span className={`font-mono font-semibold tabular-nums ${mismatch > 0.1 ? "text-rose-500" : "text-emerald-500"}`}>
+        <span className={`font-mono font-semibold tabular-nums ${mismatch > 0.1 ? "text-red-500" : "text-green-500"}`}>
           {mismatch.toFixed(2)} {mismatch > 0.1 ? "&gt; τ" : "≤ τ"}
         </span>
       </div>
@@ -79,14 +79,14 @@ export function WatchAdsToUnlockFeaturesCond2({
       <div className="mt-3 space-y-1">
         <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
           <span>Reward progress</span>
-          <span className={isDark ? "text-rose-500" : "text-emerald-500"}>
+          <span className={isDark ? "text-red-500" : "text-green-500"}>
             {label} / {ADS_REQUIRED} ads
           </span>
         </div>
         <div className="h-2 w-full rounded-full bg-muted overflow-hidden relative">
           <div
             className={`h-full rounded-full transition-all duration-300 ${
-              isDark ? "bg-rose-500" : "bg-emerald-500"
+              isDark ? "bg-red-500" : "bg-green-500"
             }`}
             style={{ width: `${pct}%` }}
           />
@@ -101,7 +101,7 @@ export function WatchAdsToUnlockFeaturesCond2({
         {isDark && (
           <div className="flex items-center justify-between text-[8px] text-muted-foreground">
             <span className="text-foreground/70">▮ = actual ({Math.round(pActual * 100)}%)</span>
-            <span className="text-rose-500">bar overstates by {(mismatch * 100).toFixed(0)}%</span>
+            <span className="text-red-500">bar overstates by {(mismatch * 100).toFixed(0)}%</span>
           </div>
         )}
       </div>
@@ -125,7 +125,7 @@ export function WatchAdsToUnlockFeaturesCond2({
                   completed ad — nothing else.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 {adsWatched}/{ADS_REQUIRED}
               </div>
             </div>
@@ -138,7 +138,7 @@ export function WatchAdsToUnlockFeaturesCond2({
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 adsWatched >= ADS_REQUIRED
                   ? "bg-muted text-muted-foreground/50 cursor-default"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               {adsWatched >= ADS_REQUIRED ? "All ads watched" : `Watch ad (+1 completed)`}
@@ -153,15 +153,15 @@ export function WatchAdsToUnlockFeaturesCond2({
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 adsWatched < ADS_REQUIRED
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               Claim HD export
             </button>
 
             {claimed && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -186,7 +186,7 @@ export function WatchAdsToUnlockFeaturesCond2({
                 Watch {ADS_REQUIRED} rewarded ads to unlock 1080p export. Almost there — keep going!
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-amber-500 rounded-full border border-amber-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-yellow-500 rounded-full border border-yellow-500/30 px-2 py-0.5 shrink-0">
               {visualCountDark}/{ADS_REQUIRED}
             </div>
           </div>
@@ -199,14 +199,14 @@ export function WatchAdsToUnlockFeaturesCond2({
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               adsWatched >= ADS_REQUIRED
                 ? "bg-muted text-muted-foreground/50 cursor-default"
-                : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
             {adsWatched >= ADS_REQUIRED ? "All ads watched" : `Watch ad (+1 completed)`}
           </button>
 
           {visualCountDark >= ADS_REQUIRED && !claimed && (
-            <div className="mt-2 flex items-center gap-1.5 rounded-md border border-amber-500/30 bg-amber-500/5 px-2 py-1.5 text-[9px] font-semibold text-amber-700 dark:text-amber-300">
+            <div className="mt-2 flex items-center gap-1.5 rounded-md border border-yellow-500/30 bg-yellow-500/5 px-2 py-1.5 text-[9px] font-semibold text-yellow-700 dark:text-yellow-300">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
@@ -223,15 +223,15 @@ export function WatchAdsToUnlockFeaturesCond2({
             className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               visualCountDark < ADS_REQUIRED
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                : "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
             Claim HD export
           </button>
 
           {claimAttempted && !claimed && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -241,7 +241,7 @@ export function WatchAdsToUnlockFeaturesCond2({
               <p className="text-muted-foreground">
                 The bar showed <strong className="text-foreground">{visualCountDark}/{ADS_REQUIRED}</strong> and
                 announced the reward was ready, but only{" "}
-                <strong className="text-rose-500">{adsWatched}/{ADS_REQUIRED}</strong> ads were actually
+                <strong className="text-red-500">{adsWatched}/{ADS_REQUIRED}</strong> ads were actually
                 completed. P_visual − P_actual = {(mismatch).toFixed(2)} &gt; τ_mislead (0.10) — the
                 false sense of near-completion exists purely to keep you in the ad loop. The true
                 requirement was never {visualCountDark} ads; it was always {ADS_REQUIRED}.
@@ -250,8 +250,8 @@ export function WatchAdsToUnlockFeaturesCond2({
           )}
 
           {claimed && (
-            <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>

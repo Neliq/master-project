@@ -62,15 +62,15 @@ export function PrivacyZuckeringCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Specificity(N_disclosure) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0.12 &lt; τ_vague</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0.12 &lt; τ_vague</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Specificity(N_disclosure) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">0.93 — named entities</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">0.93 — named entities</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Disclosure terms (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">“partners” · “affiliates”</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">“partners” · “affiliates”</span>
       </div>
     </>
   ) : null;
@@ -96,7 +96,7 @@ export function PrivacyZuckeringCond3({
               <p className="text-[9px] leading-relaxed text-muted-foreground mt-1">
                 {DISCLOSURE_SPECIFIC}
               </p>
-              <p className="text-[8px] text-emerald-600 dark:text-emerald-400 mt-1 font-medium">
+              <p className="text-[8px] text-green-600 dark:text-green-400 mt-1 font-medium">
                 Specificity ≈ 0.93 — the actual entities are named.
               </p>
             </div>
@@ -106,7 +106,7 @@ export function PrivacyZuckeringCond3({
                 type="checkbox"
                 checked={accepted}
                 onChange={(e) => setAccepted(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                className="mt-0.5 flex-shrink-0 accent-green-500"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -120,7 +120,7 @@ export function PrivacyZuckeringCond3({
               disabled={!accepted}
               className={`mt-2 w-full rounded-md py-2 text-[10px] font-medium transition-all ${
                 accepted
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -128,15 +128,15 @@ export function PrivacyZuckeringCond3({
             </button>
 
             {created && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
                   Entities disclosed by name
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  |E_actual| = {ENTITY_COUNT}, but <strong className="text-emerald-600 dark:text-emerald-400">Specificity(N_disclosure) = 0.93</strong> — you
+                  |E_actual| = {ENTITY_COUNT}, but <strong className="text-green-600 dark:text-green-400">Specificity(N_disclosure) = 0.93</strong> — you
                   were told exactly who gets the payload. The scale of distribution is visible, not masked.
                 </p>
               </div>
@@ -169,7 +169,7 @@ export function PrivacyZuckeringCond3({
               type="checkbox"
               checked={accepted}
               onChange={(e) => setAccepted(e.target.checked)}
-              className="mt-0.5 flex-shrink-0 accent-rose-500"
+              className="mt-0.5 flex-shrink-0 accent-red-500"
             />
             <div className="min-w-0 flex-1">
               <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -183,16 +183,16 @@ export function PrivacyZuckeringCond3({
             disabled={!accepted}
             className={`mt-2 w-full rounded-md py-2 text-[10px] font-medium transition-all ${
               accepted
-                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
             Create account
           </button>
 
-          {created && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          {mode === "auditor" && created && (
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -204,7 +204,7 @@ export function PrivacyZuckeringCond3({
                 affiliates” — <strong className="text-foreground">Specificity(N_disclosure) = 0.12 &lt; τ_vague</strong>. The real recipients of
                 your data:
               </p>
-              <div className="mt-1.5 max-h-24 overflow-y-auto rounded border border-amber-500/20 bg-background p-2">
+              <div className="mt-1.5 max-h-24 overflow-y-auto rounded border border-yellow-500/20 bg-background p-2">
                 <ul className="space-y-0.5">
                   {ENTITIES_SAMPLE.map((e) => (
                     <li key={e} className="text-[8px] font-mono text-muted-foreground">{e}</li>

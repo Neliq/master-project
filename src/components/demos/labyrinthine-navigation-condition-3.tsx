@@ -71,11 +71,11 @@ export function LabyrinthineNavigationCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">min Sim(L(e_i), Topic(v_target)) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{minDarkSim.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{minDarkSim.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">min Sim — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{minBenignSim.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{minBenignSim.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Required threshold &tau;_semantic</span>
@@ -83,7 +83,7 @@ export function LabyrinthineNavigationCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Trigger: {minDarkSim.toFixed(2)} &lt; {TAU_SEMANTIC.toFixed(2)}</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">TRUE</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
       </div>
     </>
   ) : null;
@@ -110,7 +110,7 @@ export function LabyrinthineNavigationCond3({
           ))}
         </div>
         {current.target ? (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2 text-[9px] text-muted-foreground">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px] text-muted-foreground">
             {step + 1 === path.length
               ? "You reached the destination. Confirm below."
               : "Destination reached — this is v_target."}
@@ -136,7 +136,7 @@ export function LabyrinthineNavigationCond3({
                 <span className="flex items-center justify-between gap-2">
                   <span className="truncate">{e.label}</span>
                   <span className={`shrink-0 font-mono text-[8px] tabular-nums ${
-                    e.sim < TAU_SEMANTIC ? "text-rose-500" : "text-emerald-600 dark:text-emerald-400"
+                    e.sim < TAU_SEMANTIC ? "text-red-500" : "text-green-600 dark:text-green-400"
                   }`}>
                     Sim {e.sim.toFixed(2)}
                   </span>
@@ -157,7 +157,7 @@ export function LabyrinthineNavigationCond3({
       deltaNote={`In Variant A every intermediate label fails the scent test — the minimum similarity to Topic(v_target) is ${minDarkSim.toFixed(2)} < τ_semantic = ${TAU_SEMANTIC.toFixed(2)} (“Storage management” says nothing about deletion). In Variant B the same path is labelled plainly, with a minimum similarity of ${minBenignSim.toFixed(2)}.`}
       benign={
         <div className="space-y-3">
-          <div className="rounded-md border border-emerald-500/40 bg-emerald-500/5 p-2 text-[9px] text-muted-foreground">
+          <div className="rounded-md border border-green-500/40 bg-green-500/5 p-2 text-[9px] text-muted-foreground">
             <strong className="text-foreground">Your goal:</strong> delete your account — follow
             the menu.
           </div>
@@ -177,7 +177,7 @@ export function LabyrinthineNavigationCond3({
                 </button>
                 <button
                   onClick={() => { setConfirming(false); setOutcome("deleted"); }}
-                  className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                  className="w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Confirm deletion
                 </button>
@@ -185,8 +185,8 @@ export function LabyrinthineNavigationCond3({
             </div>
           )}
           {outcome === "deleted" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -203,7 +203,7 @@ export function LabyrinthineNavigationCond3({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="rounded-md border border-rose-500/40 bg-rose-500/5 p-2 text-[9px] text-muted-foreground">
+        <div className="rounded-md border border-red-500/40 bg-red-500/5 p-2 text-[9px] text-muted-foreground">
           <strong className="text-foreground">Your goal:</strong> delete your account — find the
           way through the menu.
         </div>
@@ -211,7 +211,7 @@ export function LabyrinthineNavigationCond3({
         {confirming && (
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-2">
-              <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-amber-600 dark:text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-yellow-600 dark:text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
@@ -231,7 +231,7 @@ export function LabyrinthineNavigationCond3({
               </button>
               <button
                 onClick={() => { setConfirming(false); setOutcome("deleted"); }}
-                className="w-full rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Confirm
               </button>
@@ -239,13 +239,13 @@ export function LabyrinthineNavigationCond3({
           </div>
         )}
         {outcome === "deleted" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Semantic obfuscation triggered
+              Account settings
             </div>
             <p className="text-muted-foreground">
               Every intermediate label undercut the information scent: “Usage &amp; diagnostics”

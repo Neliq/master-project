@@ -53,11 +53,11 @@ export function IntermediateCurrencyCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">fontSize(N_real)/S_base — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{TINY_SIZE_PX}px/{BASE_SIZE_PX}px = {RATIO_DARK} &lt; 0.5</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{TINY_SIZE_PX}px/{BASE_SIZE_PX}px = {RATIO_DARK} &lt; 0.5</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">fontSize(N_real)/S_base — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{BASE_SIZE_PX}px/{BASE_SIZE_PX}px = {RATIO_BENIGN} &ge; 0.5</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{BASE_SIZE_PX}px/{BASE_SIZE_PX}px = {RATIO_BENIGN} &ge; 0.5</span>
       </div>
     </>
   ) : null;
@@ -71,18 +71,18 @@ export function IntermediateCurrencyCond2({
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-background overflow-hidden">
-            <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-emerald-500/15 via-teal-500/15 to-indigo-500/15">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 shadow">
+            <div className="relative flex h-24 items-center justify-center   ">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg   shadow">
                 <Gem className="h-6 w-6 text-white" />
               </div>
-              <div className="absolute top-2 right-2 rounded-full bg-amber-500 px-2 py-0.5 text-[8px] font-bold text-white">
+              <div className="absolute top-2 right-2 rounded-full bg-yellow-500 px-2 py-0.5 text-[8px] font-bold text-white">
                 LIMITED
               </div>
             </div>
             <div className="p-3">
               <div className="mb-1 flex items-start justify-between gap-2">
                 <h3 className="text-[11px] font-semibold">{ITEM_NAME}</h3>
-                <span className="shrink-0 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-300">
+                <span className="shrink-0 rounded-full bg-green-50 px-2 py-0.5 text-[10px] font-bold text-green-600 dark:bg-green-500/10 dark:text-green-300">
                   {GEM_PRICE.toLocaleString()} Gems
                 </span>
               </div>
@@ -95,7 +95,7 @@ export function IntermediateCurrencyCond2({
               </p>
               <button
                 onClick={() => setBought(true)}
-                className="flex w-full items-center justify-center gap-1.5 rounded-md bg-emerald-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-emerald-700 cursor-pointer"
+                className="flex w-full items-center justify-center gap-1.5 rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
               >
                 <ShoppingCart className="h-3 w-3" />
                 Buy for {GEM_PRICE.toLocaleString()} Gems
@@ -103,9 +103,9 @@ export function IntermediateCurrencyCond2({
             </div>
           </div>
 
-          {bought && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && bought && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <SearchCheck className="h-3 w-3" /> Full-size real-price disclosure
               </div>
               <p className="text-muted-foreground">
@@ -120,18 +120,18 @@ export function IntermediateCurrencyCond2({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-background overflow-hidden">
-          <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-rose-500/15 via-purple-500/15 to-indigo-500/15">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-rose-500 to-purple-600 shadow">
+          <div className="relative flex h-24 items-center justify-center   ">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg   shadow">
               <Gem className="h-6 w-6 text-white" />
             </div>
-            <div className="absolute top-2 right-2 rounded-full bg-amber-500 px-2 py-0.5 text-[8px] font-bold text-white">
+            <div className="absolute top-2 right-2 rounded-full bg-yellow-500 px-2 py-0.5 text-[8px] font-bold text-white">
               LIMITED
             </div>
           </div>
           <div className="p-3">
             <div className="mb-1 flex items-start justify-between gap-2">
               <h3 className="text-[11px] font-semibold">{ITEM_NAME}</h3>
-              <span className="shrink-0 rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-bold text-rose-600 dark:bg-rose-500/10 dark:text-rose-300">
+              <span className="shrink-0 rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold text-red-600 dark:bg-red-500/10 dark:text-red-300">
                 {GEM_PRICE.toLocaleString()} Gems
               </span>
             </div>
@@ -148,7 +148,7 @@ export function IntermediateCurrencyCond2({
             </p>
             <button
               onClick={() => setBought(true)}
-              className="flex w-full items-center justify-center gap-1.5 rounded-md bg-rose-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-rose-700 cursor-pointer"
+              className="flex w-full items-center justify-center gap-1.5 rounded-md bg-red-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
             >
               <ShoppingCart className="h-3 w-3" />
               Buy for {GEM_PRICE.toLocaleString()} Gems
@@ -157,8 +157,8 @@ export function IntermediateCurrencyCond2({
         </div>
 
         {bought && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -168,7 +168,7 @@ export function IntermediateCurrencyCond2({
             <p className="text-muted-foreground">
               N<sub>real</sub> = {REAL_PRICE} was <strong className="text-foreground">not absent</strong> — it was printed at{" "}
               {TINY_SIZE_PX}px against a {BASE_SIZE_PX}px base body text: fontSize(N<sub>real</sub>)/S<sub>base</sub> ={" "}
-              <strong className="text-rose-500">{RATIO_DARK} &lt; 0.5</strong>. The dollar figure exists in the viewport, so it
+              <strong className="text-red-500">{RATIO_DARK} &lt; 0.5</strong>. The dollar figure exists in the viewport, so it
               survives an automated scan, but a human eye registers only &ldquo;{GEM_PRICE.toLocaleString()} Gems&rdquo;. You
               bought in gems; the ${REAL_PRICE.slice(1)} never registered.
             </p>

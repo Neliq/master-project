@@ -44,32 +44,32 @@ const BENIGN_TESTIMONIALS: BenignReview[] = [
   {
     stars: 4,
     quote: "The meal-plan add-on made the difference for me. Lost 9 kg over three months — slow, but steady.",
-    name: "Julia Nowak", initials: "JN", color: "bg-emerald-500", date: "12 May 2026",
+    name: "Julia Nowak", initials: "JN", color: "bg-green-500", date: "12 May 2026",
     handle: "@julia.nowak", followers: 214, joined: "2021", url: "https://profile.example.com/julia-nowak",
   },
   {
     stars: 5,
     quote: "Energy levels are noticeably steadier after two weeks. Not magic, but I'll keep taking it.",
-    name: "Tomasz Rybak", initials: "TR", color: "bg-indigo-500", date: "3 May 2026",
+    name: "Tomasz Rybak", initials: "TR", color: "bg-blue-500", date: "3 May 2026",
     handle: "@tomasz.r", followers: 89, joined: "2023", url: "https://profile.example.com/tomasz-rybak",
   },
   {
     stars: 3,
     quote: "Joints feel a little better, though I'm also swimming twice a week, so hard to isolate the cause.",
-    name: "Alicja Pawlak", initials: "AP", color: "bg-amber-500", date: "28 Apr 2026",
+    name: "Alicja Pawlak", initials: "AP", color: "bg-yellow-500", date: "28 Apr 2026",
     handle: "@alicja.p", followers: 402, joined: "2020", url: "https://profile.example.com/alicja-pawlak",
   },
   {
     stars: 5,
     quote: "Fair price, no side effects, and the shipping was fast. Would order again.",
-    name: "Marek Kowal", initials: "MK", color: "bg-rose-500", date: "17 Apr 2026",
+    name: "Marek Kowal", initials: "MK", color: "bg-red-500", date: "17 Apr 2026",
     handle: "@marek.k", followers: 56, joined: "2024", url: "https://profile.example.com/marek-kowal",
   },
 ];
 
 function Stars({ n }: { n: number }) {
   return (
-    <span className="inline-flex items-center gap-px text-amber-400" aria-label={`${n} out of 5 stars`}>
+    <span className="inline-flex items-center gap-px text-yellow-400" aria-label={`${n} out of 5 stars`}>
       {[1, 2, 3, 4, 5].map((i) => (
         <svg
           key={i}
@@ -105,15 +105,15 @@ export function EndorsementAndTestimonialsCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Cards with N_attribution</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0 / 4</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0 / 4</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">∃C: ¬∃N_attribution</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">true</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">true</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Name + photo + profile link</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0 rendered</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0 rendered</span>
       </div>
     </>
   ) : null;
@@ -139,7 +139,7 @@ export function EndorsementAndTestimonialsCond2({
                 key={i}
                 onClick={() => setRevealed(i)}
                 className={`rounded-md border bg-card p-2.5 text-left transition-colors cursor-pointer ${
-                  revealed === i ? "ring-2 ring-emerald-500/50 border-emerald-500/40" : "border-border hover:border-emerald-500/40"
+                  revealed === i ? "ring-2 ring-green-500/50 border-green-500/40" : "border-border hover:border-green-500/40"
                 }`}
               >
                 <Stars n={t.stars} />
@@ -150,13 +150,13 @@ export function EndorsementAndTestimonialsCond2({
                   </span>
                   <div className="min-w-0">
                     <p className="text-[8px] font-semibold leading-tight text-foreground">{t.name}</p>
-                    <p className="text-[7px] leading-tight text-emerald-600 dark:text-emerald-400">
+                    <p className="text-[7px] leading-tight text-green-600 dark:text-green-400">
                       Verified buyer · {t.handle} · {t.date}
                     </p>
                     <a
                       href={t.url}
                       onClick={(e) => e.stopPropagation()}
-                      className="text-[7px] font-medium text-emerald-600 dark:text-emerald-400 underline underline-offset-2 hover:text-emerald-700 dark:hover:text-emerald-300"
+                      className="text-[7px] font-medium text-green-600 dark:text-green-400 underline underline-offset-2 hover:text-green-700 dark:hover:text-green-300"
                     >
                       View profile →
                     </a>
@@ -188,7 +188,7 @@ export function EndorsementAndTestimonialsCond2({
               </p>
               <a
                 href={BENIGN_TESTIMONIALS[revealed].url}
-                className="mt-1 inline-block text-[8px] font-semibold text-emerald-600 dark:text-emerald-400 underline underline-offset-2 hover:text-emerald-700 dark:hover:text-emerald-300"
+                className="mt-1 inline-block text-[8px] font-semibold text-green-600 dark:text-green-400 underline underline-offset-2 hover:text-green-700 dark:hover:text-green-300"
               >
                 View full profile →
               </a>
@@ -211,7 +211,7 @@ export function EndorsementAndTestimonialsCond2({
               key={i}
               onClick={() => setRevealed(i)}
               className={`rounded-md border bg-card p-2.5 text-left transition-colors cursor-pointer ${
-                revealed === i ? "ring-2 ring-rose-500/50 border-rose-500/40" : "border-border hover:border-rose-500/40"
+                revealed === i ? "ring-2 ring-red-500/50 border-red-500/40" : "border-border hover:border-red-500/40"
               }`}
             >
               <Stars n={t.stars} />
@@ -233,8 +233,8 @@ export function EndorsementAndTestimonialsCond2({
         </div>
 
         {revealed !== null && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -245,7 +245,7 @@ export function EndorsementAndTestimonialsCond2({
               This card contains no full name, no photograph, and no linked profile:{" "}
               <strong className="text-foreground">¬∃ N_attribution ∈ Descendants(C_testimonial)</strong>.
               The identity behind the claim cannot be verified, so the glowing endorsement may be
-              fabricated social proof engineered to build trust in the product.
+              This review could not be verified.
             </p>
           </div>
         )}

@@ -24,7 +24,7 @@ import { DemoShell } from "@/components/demos/demo-shell";
 function Mascot({ size = 36, pleading = false }: { size?: number; pleading?: boolean }) {
   return (
     <svg viewBox="0 0 40 40" style={{ width: size, height: size }} fill="none" aria-hidden="true">
-      <circle cx="20" cy="20" r="18" className="fill-amber-400/30" />
+      <circle cx="20" cy="20" r="18" className="fill-yellow-400/30" />
       {pleading ? (
         <>
           <circle cx="14.5" cy="16" r="2.6" className="fill-foreground/80" />
@@ -32,8 +32,8 @@ function Mascot({ size = 36, pleading = false }: { size?: number; pleading?: boo
           <circle cx="14.5" cy="17" r="0.9" className="fill-white" />
           <circle cx="25.5" cy="17" r="0.9" className="fill-white" />
           <path d="M13 26 Q20 31 27 26" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="12.5" cy="21" r="1.2" className="fill-sky-400/80" />
-          <circle cx="27.5" cy="21" r="1.2" className="fill-sky-400/80" />
+          <circle cx="12.5" cy="21" r="1.2" className="fill-blue-400/80" />
+          <circle cx="27.5" cy="21" r="1.2" className="fill-blue-400/80" />
         </>
       ) : (
         <>
@@ -60,15 +60,15 @@ export function ParasocialPressureCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">min d_spatial(i, N_prompt)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">4px &lt; &tau;_social</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">4px &lt; &tau;_social</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(i) / A_viewport (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0.18 &gt; 0.05</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0.18 &gt; 0.05</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(i) / A_viewport (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">0.02 &lt; 0.05</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">0.02 &lt; 0.05</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&tau;_social (intimacy radius)</span>
@@ -97,18 +97,18 @@ export function ParasocialPressureCond2({
             </p>
             <button
               onClick={() => setSupported(true)}
-              className="mt-3 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Support now — $2.99
             </button>
-            <div className="mt-2 flex items-center justify-between text-[8px] font-mono text-emerald-600 dark:text-emerald-400">
+            <div className="mt-2 flex items-center justify-between text-[8px] font-mono text-green-600 dark:text-green-400">
               <span>d = 96px &gt; &tau;_social</span>
               <span>A(i)/A_viewport = 0.02 &lt; 0.05</span>
             </div>
           </div>
           {supported && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -132,10 +132,10 @@ export function ParasocialPressureCond2({
             <span className="font-semibold text-foreground">$2.99</span> contribution — entirely
             optional.
           </p>
-          <div className="mt-3 flex items-center gap-3 rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5">
+          <div className="mt-3 flex items-center gap-3 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
             <div className="flex shrink-0 flex-col items-center">
               <Mascot size={44} pleading />
-              <span className="mt-1 text-[7px] font-mono text-rose-600 dark:text-rose-400">d = 4px</span>
+              <span className="mt-1 text-[7px] font-mono text-red-600 dark:text-red-400">d = 4px</span>
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-[8px] leading-relaxed text-muted-foreground">
@@ -143,19 +143,19 @@ export function ParasocialPressureCond2({
               </p>
               <button
                 onClick={() => setSupported(true)}
-                className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Support now — $2.99
               </button>
-              <div className="mt-1.5 text-[8px] font-mono text-rose-600 dark:text-rose-400">
+              <div className="mt-1.5 text-[8px] font-mono text-red-600 dark:text-red-400">
                 A(i)/A_viewport = 0.18 &gt; 0.05
               </div>
             </div>
           </div>
         </div>
         {supported && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

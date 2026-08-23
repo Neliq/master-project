@@ -34,11 +34,11 @@ export function ReferencePricingCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CR(N_ref, bg) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">2.31 &lt; 3.00</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">2.31 &lt; 3.00</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CR(N_ref, bg) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">7.23 ≥ 3.00</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">7.23 ≥ 3.00</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">τ_ref_cr</span>
@@ -46,11 +46,11 @@ export function ReferencePricingCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">fontSize ratio — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">20/9 = 2.22 &gt; τ_skew</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">20/9 = 2.22 &gt; τ_skew</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">fontSize ratio — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">15/12 = 1.25</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">15/12 = 1.25</span>
       </div>
     </>
   ) : null;
@@ -69,7 +69,7 @@ export function ReferencePricingCond2({
                 <h3 className="text-[11px] font-semibold">Summit Trail Running Shoes</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">Grip sole · Breathable mesh · EU 36–46</p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Balanced pricing
               </div>
             </div>
@@ -93,8 +93,8 @@ export function ReferencePricingCond2({
             </button>
 
             {measured && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-                <div className="font-semibold text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+                <div className="font-semibold text-green-700 dark:text-green-300">
                   CR(N_ref, L_bg) = 7.23 ≥ τ_ref_cr (3.00)
                 </div>
                 <p className="text-muted-foreground mt-1">
@@ -114,14 +114,14 @@ export function ReferencePricingCond2({
               <h3 className="text-[11px] font-semibold">Summit Trail Running Shoes</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Grip sole · Breathable mesh · EU 36–46</p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Faded baseline
             </div>
           </div>
 
           <div className="mt-2.5 rounded-md border bg-background p-3">
             <div className="flex items-baseline gap-2.5">
-              <span className="text-[20px] font-extrabold tabular-nums text-rose-600 dark:text-rose-400">PLN 199.00</span>
+              <span className="text-[20px] font-extrabold tabular-nums text-red-600 dark:text-red-400">PLN 199.00</span>
               <span className="text-[9px] text-gray-400 line-through">was PLN 299.00</span>
             </div>
             <div className="text-[9px] text-muted-foreground mt-1">
@@ -137,8 +137,8 @@ export function ReferencePricingCond2({
           </button>
 
           {measured && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-              <div className="font-semibold text-amber-700 dark:text-amber-300">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
+              <div className="font-semibold text-yellow-700 dark:text-yellow-300">
                 CR(N_ref, L_bg) = 2.31 &lt; τ_ref_cr (3.00) ∧ 20/9 = 2.22 &gt; τ_size_skew (1.5)
               </div>
               <p className="text-muted-foreground mt-1">

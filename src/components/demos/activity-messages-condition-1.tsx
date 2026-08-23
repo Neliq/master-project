@@ -79,11 +79,11 @@ export function ActivityMessagesCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">E_real(t) — backend log entries</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0 (fabricated) / {events.length} (real)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0 (fabricated) / {events.length} (real)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">M_displayed ⊆ E_real?</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">No — M ∉ E_real (A)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">No — M ∉ E_real (A)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Injection interval</span>
@@ -97,12 +97,12 @@ export function ActivityMessagesCond1({
       key={ev.id}
       className={`flex items-start gap-2 rounded-md border p-2 text-[9px] leading-snug ${
         dark
-          ? "border-rose-500/30 bg-rose-500/5"
-          : "border-emerald-500/30 bg-emerald-500/5"
+          ? "border-red-500/30 bg-red-500/5"
+          : "border-green-500/30 bg-green-500/5"
       }`}
     >
       <svg
-        className={`mt-0.5 h-3 w-3 shrink-0 ${dark ? "text-rose-500" : "text-emerald-500"}`}
+        className={`mt-0.5 h-3 w-3 shrink-0 ${dark ? "text-red-500" : "text-green-500"}`}
         viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
       >
         <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
@@ -115,7 +115,7 @@ export function ActivityMessagesCond1({
         ) : (
           <p className="text-foreground/85">
             <strong>{ev.name}</strong> ({ev.city}) purchased <strong>{ev.item}</strong>{" "}
-            <span className="font-mono text-emerald-600 dark:text-emerald-400">· {ev.order} · {ev.ts}</span>
+            <span className="font-mono text-green-600 dark:text-green-400">· {ev.order} · {ev.ts}</span>
           </p>
         )}
       </div>
@@ -149,7 +149,7 @@ export function ActivityMessagesCond1({
           <div className="rounded-md border border-border bg-background p-2.5">
             <div className="flex items-center justify-between text-[9px]">
               <span className="font-mono text-muted-foreground">Backend event log — E_real(t)</span>
-              <span className="font-mono font-semibold tabular-nums text-emerald-500">{events.length} entr{events.length === 1 ? "y" : "ies"}</span>
+              <span className="font-mono font-semibold tabular-nums text-green-500">{events.length} entr{events.length === 1 ? "y" : "ies"}</span>
             </div>
             <ul className="mt-1.5 space-y-1">
               {events.map((ev) => (
@@ -164,14 +164,14 @@ export function ActivityMessagesCond1({
 
           <button
             onClick={() => setVerified(true)}
-            className="w-full rounded-md border border-emerald-500/40 bg-emerald-500/10 py-1.5 text-[10px] font-medium text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 transition-colors cursor-pointer"
+            className="w-full rounded-md border border-green-500/40 bg-green-500/10 py-1.5 text-[10px] font-medium text-green-700 dark:text-green-300 hover:bg-green-500/20 transition-colors cursor-pointer"
           >
             Verify against backend
           </button>
 
-          {verified && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && verified && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -206,7 +206,7 @@ export function ActivityMessagesCond1({
         <div className="rounded-md border border-border bg-background p-2.5">
           <div className="flex items-center justify-between text-[9px]">
             <span className="font-mono text-muted-foreground">Backend event log — E_real(t)</span>
-            <span className="font-mono font-semibold tabular-nums text-rose-500">0 entries</span>
+            <span className="font-mono font-semibold tabular-nums text-red-500">0 entries</span>
           </div>
           <p className="mt-1.5 text-[8px] italic text-muted-foreground/60">
             Querying transactions for this product… no records found.
@@ -220,19 +220,19 @@ export function ActivityMessagesCond1({
           Verify against backend
         </button>
 
-        {verified && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && verified && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Event fabrication detected
+              New activity
             </div>
             <p className="text-muted-foreground">
               The stream shows <strong className="text-foreground">{events.length} message{events.length === 1 ? "" : "s"}</strong> of the form
               “Sarah from New York just purchased this item” — M_displayed(t) ≠ ∅ — yet the backend event log E_real(t)
-              contains <strong className="text-rose-500">zero matching transactions</strong>.
+              contains <strong className="text-red-500">zero matching transactions</strong>.
             </p>
             <p className="text-muted-foreground">
               Because M_displayed(t) ∉ E_real(t), every pop-up is algorithmically generated with no structural mapping to

@@ -28,7 +28,7 @@ function PriceRow({ label, value, tone }: { label: string; value: string; tone?:
   return (
     <div className="flex items-center justify-between text-[9px]">
       <span className="text-muted-foreground">{label}</span>
-      <span className={`font-mono font-semibold tabular-nums ${tone === "rose" ? "text-rose-500" : tone === "emerald" ? "text-emerald-500" : ""}`}>
+      <span className={`font-mono font-semibold tabular-nums ${tone === "rose" ? "text-red-500" : tone === "emerald" ? "text-green-500" : ""}`}>
         {value}
       </span>
     </div>
@@ -54,7 +54,7 @@ export function PsychologicalTricksCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_anchor (fabricated MSRP)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">$299</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">$299</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_actual</span>
@@ -62,7 +62,7 @@ export function PsychologicalTricksCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_anchor / P_actual</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">2.01</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">2.01</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Your WTP (live)</span>
@@ -81,7 +81,7 @@ export function PsychologicalTricksCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-2.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-amber-400 to-orange-600 text-white">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M3 12h18" />
                   <path d="M9 3v18" />
@@ -114,7 +114,7 @@ export function PsychologicalTricksCond3({
                 step={5}
                 value={wtp}
                 onChange={(e) => setWtp(Number(e.target.value))}
-                className="mt-1.5 w-full accent-emerald-500 cursor-pointer"
+                className="mt-1.5 w-full accent-green-500 cursor-pointer"
                 aria-label="What would you pay for this lamp"
               />
               <div className="mt-0.5 flex justify-between text-[8px] text-muted-foreground/70 font-mono">
@@ -125,15 +125,15 @@ export function PsychologicalTricksCond3({
 
             <button
               onClick={() => setBought(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Buy now
             </button>
           </div>
 
           {bought && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -152,7 +152,7 @@ export function PsychologicalTricksCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-2.5">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-amber-400 to-orange-600 text-white">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M3 12h18" />
                 <path d="M9 3v18" />
@@ -171,14 +171,14 @@ export function PsychologicalTricksCond3({
           <div className="mt-2.5 flex items-end gap-2">
             <div>
               <span className="text-[10px] font-mono text-muted-foreground/70 line-through">$299</span>
-              <span className="ml-1.5 rounded-full bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider">
+              <span className="ml-1.5 rounded-full bg-red-500/15 text-red-700 dark:text-red-300 border border-red-500/30 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider">
                 MSRP
               </span>
             </div>
           </div>
           <div className="mt-1 flex items-baseline gap-1.5">
             <span className="text-[14px] font-bold">$149</span>
-            <span className="rounded-full bg-rose-600 text-white px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider">
+            <span className="rounded-full bg-red-600 text-white px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider">
               Save 50% — today only
             </span>
           </div>
@@ -197,7 +197,7 @@ export function PsychologicalTricksCond3({
               step={5}
               value={wtp}
               onChange={(e) => setWtp(Number(e.target.value))}
-              className="mt-1.5 w-full accent-rose-500 cursor-pointer"
+              className="mt-1.5 w-full accent-red-500 cursor-pointer"
               aria-label="What would you pay for this lamp"
             />
             <div className="mt-0.5 flex justify-between text-[8px] text-muted-foreground/70 font-mono">
@@ -208,15 +208,15 @@ export function PsychologicalTricksCond3({
 
           <button
             onClick={() => setBought(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Buy now
           </button>
         </div>
 
         {bought && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -227,11 +227,8 @@ export function PsychologicalTricksCond3({
             <PriceRow label="P_actual (real market value)" value={`$${PRICE}`} tone="emerald" />
             <PriceRow label="Anchor ratio P_anchor / P_actual" value="2.01" tone="rose" />
             <p className="text-muted-foreground mt-0.5">
-              You processed the $299 anchor before the $149 price, so the price registered as a
-              50% discount — but that MSRP is fabricated; the lamp&rsquo;s actual value is $149.
-              Your WTP settled at{" "}
-              <strong className="text-foreground">${wtp}</strong> against a contaminated reference
-              point: <strong className="text-foreground">WTP(U_anchored) &gt; WTP(U_baseline)</strong>.
+              The original price is shown for comparison with today&rsquo;s price of $149.
+              The lamp is currently available for <strong className="text-foreground">${wtp}</strong>.
             </p>
           </div>
         )}

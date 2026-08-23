@@ -42,8 +42,8 @@ function CartSummary() {
 
 function PaymentConfirmed() {
   return (
-    <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-3 text-[9px] leading-relaxed">
-      <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+    <div className="rounded-md border border-green-500/30 bg-green-500/5 p-3 text-[9px] leading-relaxed">
+      <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
         <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
           <path d="M20 6L9 17l-5-5" />
         </svg>
@@ -89,7 +89,7 @@ export function PressuredSellingCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Click(B_proceed) ⇒ Visibility(M_upsell)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {upsellOpen ? "True (injected)" : stage === "cart" ? "—" : "False"}
         </span>
       </div>
@@ -121,7 +121,7 @@ export function PressuredSellingCond1({
             {stage === "cart" ? (
               <button
                 onClick={proceedBenign}
-                className="mt-3 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Proceed to payment
               </button>
@@ -132,8 +132,8 @@ export function PressuredSellingCond1({
             )}
           </div>
           {stage === "payment" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -158,7 +158,7 @@ export function PressuredSellingCond1({
           {stage === "cart" ? (
             <button
               onClick={proceedDark}
-              className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Proceed to payment
             </button>
@@ -170,8 +170,8 @@ export function PressuredSellingCond1({
         </div>
 
         {upsellOpen && stage === "cart" && (
-          <div className="rounded-md border-2 border-rose-500/50 bg-card shadow-lg p-3 relative">
-            <div className="flex items-center gap-1.5 text-[8px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+          <div className="rounded-md border-2 border-red-500/50 bg-card shadow-lg p-3 relative">
+            <div className="flex items-center gap-1.5 text-[8px] font-bold uppercase tracking-wider text-red-600 dark:text-red-400">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 8v4m0 4h.01" />
@@ -180,14 +180,14 @@ export function PressuredSellingCond1({
             </div>
             <h4 className="text-[11px] font-semibold mt-1.5">Wait! Don&rsquo;t leave without this!</h4>
             <p className="text-[9px] text-muted-foreground mt-0.5 leading-relaxed">
-              Add <strong className="text-rose-600 dark:text-rose-400">SpeedShip 1-Click Express</strong>{" "}
+              Add <strong className="text-red-600 dark:text-red-400">SpeedShip 1-Click Express</strong>{" "}
               (<span className="font-mono tabular-nums">$2.99/mo</span>) and your order ships first, always.
               This is the secondary offer <span className="font-mono">I_secondary</span>.
             </p>
             <div className="mt-2.5 grid grid-cols-2 gap-2">
               <button
                 onClick={() => resolveUpsell("accepted")}
-                className="rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Yes, add it
               </button>
@@ -205,16 +205,16 @@ export function PressuredSellingCond1({
         )}
 
         {upsellDecision && stage === "payment" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Flow was commandeered
+              Protection plan
             </div>
             <p className="text-muted-foreground">
-              Your click on B_proceed triggered{" "}
+              Your order is ready. Would you like to add the protection plan?{" "}
               <strong className="text-foreground">Click(B_proceed) ⇒ Visibility(M_upsell) = True</strong> —
               the modal was force-injected before s_final. You could not pay until you
               {upsellDecision === "accepted" ? " accepted the $2.99/mo upsell." : " declined the upsell."}{" "}

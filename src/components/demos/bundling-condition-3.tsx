@@ -60,7 +60,7 @@ export function BundlingCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">H(T_bundled) tokens (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{bundledTokens}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{bundledTokens}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">H(T_standalone) tokens</span>
@@ -68,7 +68,7 @@ export function BundlingCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Entropy ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {entropyRatio.toFixed(2)} (&lt; 0.5)
         </span>
       </div>
@@ -111,7 +111,7 @@ export function BundlingCond3({
               <ul className="mt-1.5 grid grid-cols-1 gap-0.5">
                 {specRows.map((s) => (
                   <li key={s} className="flex items-center gap-1 text-[8px] text-muted-foreground">
-                    <svg className="h-2 w-2 shrink-0 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <svg className="h-2 w-2 shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                     {s}
@@ -124,7 +124,7 @@ export function BundlingCond3({
           <button
             onClick={() => setAdded(true)}
             className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-              dark ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+              dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
             }`}
           >
             {added ? "Added to cart ✓" : "Add bundle to cart"}
@@ -142,7 +142,7 @@ export function BundlingCond3({
               <ul className="mt-1.5 space-y-0.5">
                 {STANDALONE_SPECS.map((s) => (
                   <li key={s} className="flex items-center gap-1 text-[8px] text-muted-foreground">
-                    <svg className="h-2 w-2 shrink-0 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <svg className="h-2 w-2 shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                     {s}
@@ -158,8 +158,8 @@ export function BundlingCond3({
 
         {added &&
           (dark ? (
-            <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-amber-700 dark:text-amber-300">
+            <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -170,14 +170,14 @@ export function BundlingCond3({
                 Inside the bundle the lens gets a {bundledTokens}-token one-liner with zero spec
                 rows, while the standalone listing carries {standaloneTokens} tokens and{" "}
                 {STANDALONE_SPECS.length} spec rows — H(T_bundled)/H(T_standalone) ={" "}
-                <strong className="text-amber-700 dark:text-amber-300">{entropyRatio.toFixed(2)}</strong>{" "}
+                <strong className="text-yellow-700 dark:text-yellow-300">{entropyRatio.toFixed(2)}</strong>{" "}
                 &lt; τ_description (0.5). The suppressed granularity stops you from valuing the
                 components of the $1,199 bundle.
               </p>
             </div>
           ) : (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-emerald-700 dark:text-emerald-300">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>

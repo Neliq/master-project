@@ -45,15 +45,15 @@ export function FeedforwardAmbiguityCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">H(CV_class(N_icon))</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{ENTROPY_DARK} &gt; &tau;_entropy ({TAU_ENTROPY})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{ENTROPY_DARK} &gt; &tau;_entropy ({TAU_ENTROPY})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Tooltip T_hover</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">∅ (absent)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">∅ (absent)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Accessible label</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">∅ (absent)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">∅ (absent)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Data sharing</span>
@@ -101,7 +101,7 @@ export function FeedforwardAmbiguityCond2({
                   <div className="text-[10px] font-medium text-foreground/80">Two-factor authentication</div>
                   <div className="text-[8px] text-muted-foreground/50 mt-0.5">Add an extra code at login.</div>
                 </div>
-                <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+                <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                   On
                 </span>
               </div>
@@ -127,7 +127,7 @@ export function FeedforwardAmbiguityCond2({
                   onClick={() => { setSharing(!sharing); setPressed("toggle"); }}
                   className={`shrink-0 rounded-full px-2.5 py-1 text-[9px] font-semibold transition-colors cursor-pointer ${
                     sharing
-                      ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                      ? "bg-green-600 text-white hover:bg-green-700"
                       : "border border-border bg-background text-foreground/70 hover:text-foreground"
                   }`}
                 >
@@ -138,8 +138,8 @@ export function FeedforwardAmbiguityCond2({
           </div>
 
           {pressed === "toggle" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -166,7 +166,7 @@ export function FeedforwardAmbiguityCond2({
               <div className="text-[9px] text-muted-foreground/60">Account protection</div>
               <button
                 onClick={() => setPressed("2fa")}
-                className="flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-rose-500/50 hover:text-rose-500 cursor-pointer"
+                className="flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-red-500/50 hover:text-red-500 cursor-pointer"
                 aria-hidden
                 tabIndex={-1}
               >
@@ -177,7 +177,7 @@ export function FeedforwardAmbiguityCond2({
               <div className="text-[9px] text-muted-foreground/60">Activity alerts</div>
               <button
                 onClick={() => setPressed("push")}
-                className="flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-rose-500/50 hover:text-rose-500 cursor-pointer"
+                className="flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-red-500/50 hover:text-red-500 cursor-pointer"
                 aria-hidden
                 tabIndex={-1}
               >
@@ -190,8 +190,8 @@ export function FeedforwardAmbiguityCond2({
                 onClick={() => { setSharing(true); setPressed("share"); }}
                 className={`flex h-7 w-7 items-center justify-center rounded-md border transition-colors cursor-pointer ${
                   sharing
-                    ? "border-rose-500/50 text-rose-500"
-                    : "border-border text-muted-foreground hover:border-rose-500/50 hover:text-rose-500"
+                    ? "border-red-500/50 text-red-500"
+                    : "border-border text-muted-foreground hover:border-red-500/50 hover:text-red-500"
                 }`}
                 aria-hidden
                 tabIndex={-1}
@@ -202,24 +202,24 @@ export function FeedforwardAmbiguityCond2({
           </div>
 
           <p className="mt-2 text-[8px] italic text-muted-foreground/50">
-            No control here has a text label, a hover tooltip, or an accessible name.
+            Choose an option to continue.
           </p>
         </div>
 
         {pressed !== "none" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Iconographic entropy triggered
+              Setting updated
             </div>
             {pressed === "share" && (
               <>
                 <p className="text-muted-foreground">
                   You clicked a bare icon. Its classifier meaning distribution is broad — share / export / sync /
-                  network — giving <span className="font-mono text-rose-500">H(CV_class) = {ENTROPY_DARK} &gt; &tau;_entropy ({TAU_ENTROPY})</span>,
+                  network — giving <span className="font-mono text-red-500">H(CV_class) = {ENTROPY_DARK} &gt; &tau;_entropy ({TAU_ENTROPY})</span>,
                   with <span className="font-mono">T_hover = ∅</span> (no tooltip) and no accessible label.
                 </p>
                 <p className="text-muted-foreground">
@@ -237,11 +237,11 @@ export function FeedforwardAmbiguityCond2({
             )}
             {pressed === "push" && (
               <p className="text-muted-foreground">
-                You clicked the bell icon — that toggled push notifications off. You could not know that without guessing.
+                Push notifications are now off.
               </p>
             )}
             <p className="text-muted-foreground">
-              Feedforward was deliberately removed from every critical control, forcing users to gamble on icon meanings.
+              Your setting has been updated.
             </p>
           </div>
         )}

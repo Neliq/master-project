@@ -50,17 +50,17 @@ export function DripPricingCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CR(N_fee, L_bg)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 1.9:1 (&lt; 4.5:1)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 1.9:1 (&lt; 4.5:1)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">V(N_base)/V(N_fee)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {PROMINENCE_RATIO} &gt; τ (1.5)
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Advertised vs charged</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {usd(BASE_PRICE)} → {usd(TOTAL_PRICE)}
         </span>
       </div>
@@ -73,11 +73,11 @@ export function DripPricingCond2({
         <div className="flex items-center gap-3">
           <div
             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
-              dark ? "bg-rose-100 dark:bg-rose-900/30" : "bg-emerald-100 dark:bg-emerald-900/30"
+              dark ? "bg-red-100 dark:bg-red-900/30" : "bg-green-100 dark:bg-green-900/30"
             }`}
           >
             <svg
-              className={`h-4 w-4 ${dark ? "text-rose-600 dark:text-rose-400" : "text-emerald-600 dark:text-emerald-400"}`}
+              className={`h-4 w-4 ${dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -100,7 +100,7 @@ export function DripPricingCond2({
           <div>
             <div
               className={`font-bold tabular-nums ${
-                dark ? "text-[20px] text-rose-600 dark:text-rose-400" : "text-[14px] text-emerald-600 dark:text-emerald-400"
+                dark ? "text-[20px] text-red-600 dark:text-red-400" : "text-[14px] text-green-600 dark:text-green-400"
               }`}
             >
               {usd(BASE_PRICE)}
@@ -114,7 +114,7 @@ export function DripPricingCond2({
               <div className="text-[8px] uppercase tracking-wider text-muted-foreground">
                 all-inclusive
               </div>
-              <div className="text-[14px] font-bold tabular-nums text-emerald-600 dark:text-emerald-400">
+              <div className="text-[14px] font-bold tabular-nums text-green-600 dark:text-green-400">
                 {usd(TOTAL_PRICE)}
               </div>
             </div>
@@ -127,7 +127,7 @@ export function DripPricingCond2({
             <button
               onClick={() => setHighlighted(true)}
               className={`cursor-pointer text-[8px] transition-all hover:underline ${
-                highlighted ? "rounded px-1 ring-2 ring-rose-500/60" : ""
+                highlighted ? "rounded px-1 ring-2 ring-red-500/60" : ""
               }`}
               style={{ color: "rgb(185 185 185)" }}
             >
@@ -139,7 +139,7 @@ export function DripPricingCond2({
               <span className="text-muted-foreground">·</span>
               <span>service charge {usd(SERVICE_CHARGE)}</span>
               <span className="text-muted-foreground">·</span>
-              <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+              <span className="font-semibold text-green-600 dark:text-green-400">
                 total {usd(TOTAL_PRICE)}
               </span>
             </div>
@@ -149,17 +149,16 @@ export function DripPricingCond2({
         <button
           onClick={() => setPaid(true)}
           className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-            dark ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+            dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
           }`}
         >
           {dark ? "Book ticket" : `Book ticket — ${usd(TOTAL_PRICE)} total`}
         </button>
       </div>
 
-      {paid &&
-        (dark ? (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-amber-700 dark:text-amber-300">
+      {mode === "auditor" && paid && (dark ? (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -170,7 +169,7 @@ export function DripPricingCond2({
               You were charged <strong className="text-foreground">{usd(TOTAL_PRICE)}</strong>, but the
               page advertised the ticket at <strong className="text-foreground">{usd(BASE_PRICE)}</strong>.
               The only mention of the fees is an 8px line at ≈1.9:1 contrast — measured
-              V(N_base)/V(N_fee) = <strong className="text-amber-700 dark:text-amber-300">{PROMINENCE_RATIO}</strong>{" "}
+              V(N_base)/V(N_fee) = <strong className="text-yellow-700 dark:text-yellow-300">{PROMINENCE_RATIO}</strong>{" "}
               &gt; τ_prominence. Click the fee line in the card to highlight the suppressed node.
             </p>
             <p className="text-muted-foreground mt-1">
@@ -180,8 +179,8 @@ export function DripPricingCond2({
             </p>
           </div>
         ) : (
-          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-emerald-700 dark:text-emerald-300">
+          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

@@ -55,23 +55,23 @@ export function PlainEvilCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">ρ_coerce (coercive density)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{RHO_COERCE.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{RHO_COERCE.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">σ_FKGL (complexity outliers)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{SIGMA_FKGL.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{SIGMA_FKGL.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">σ_sent (sentiment spread)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{SIGMA_SENT.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{SIGMA_SENT.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">ρ_connot (connotative score)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{RHO_CONNOT.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{RHO_CONNOT.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">‖H_sem‖₂ (L2 norm)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {NORM.toFixed(2)} &gt; {TAU_SEM.toFixed(2)}
         </span>
       </div>
@@ -108,13 +108,13 @@ export function PlainEvilCond3({
             <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
               <button
                 onClick={() => { setDecision("delete"); setRevealed(true); }}
-                className="rounded-md border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                className="rounded-md border border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20 py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Delete my account
               </button>
               <button
                 onClick={() => { setDecision("keep"); setRevealed(true); }}
-                className="rounded-md border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                className="rounded-md border border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20 py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Keep my account
               </button>
@@ -126,8 +126,8 @@ export function PlainEvilCond3({
           </div>
 
           {revealed && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -145,12 +145,12 @@ export function PlainEvilCond3({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
-          <h3 className="text-[11px] font-semibold text-rose-600 dark:text-rose-400">
+          <h3 className="text-[11px] font-semibold text-red-600 dark:text-red-400">
             Are you ABSOLUTELY sure you want to delete your account?
           </h3>
 
-          <div className="mt-2 space-y-1.5 rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5 text-[9px] leading-relaxed">
-            <p className="text-rose-700 dark:text-rose-300 font-medium">
+          <div className="mt-2 space-y-1.5 rounded-md border border-red-500/30 bg-red-500/5 p-2.5 text-[9px] leading-relaxed">
+            <p className="text-red-700 dark:text-red-300 font-medium">
               This action is FINAL. Your 1,284 photos and 9 years of memories will be GONE
               FOREVER. They can NEVER be recovered. If you delete now, you will REGRET it.
             </p>
@@ -173,7 +173,7 @@ export function PlainEvilCond3({
           <div className="mt-3 space-y-1.5">
             <button
               onClick={() => { setDecision("keep"); setRevealed(true); }}
-              className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
+              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
             >
               No — keep my account!
             </button>
@@ -186,17 +186,17 @@ export function PlainEvilCond3({
           </div>
         </div>
 
-        {revealed && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && revealed && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Hostile semantics triggered
+              Review your order
             </div>
             <p className="text-muted-foreground">
-              <strong className="font-mono text-rose-500">
+              <strong className="font-mono text-red-500">
                 ‖H_sem‖₂ = √({RHO_COERCE.toFixed(2)}² + {SIGMA_FKGL.toFixed(2)}² + {SIGMA_SENT.toFixed(2)}² + {RHO_CONNOT.toFixed(2)}²) = {NORM.toFixed(2)} &gt; {TAU_SEM.toFixed(2)}
               </strong>
             </p>

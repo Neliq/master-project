@@ -31,7 +31,7 @@ function countLexemes(text: string): number {
   return REWARD_LEXEMES.filter((l) => lower.includes(l)).length;
 }
 
-const COPY_A_TITLE = "Daily reward ready! 🎁";
+const COPY_A_TITLE = "Daily reward ready! ";
 const COPY_A_SUBTITLE =
   "Watch this offer to claim your bonus — an exclusive deal unlocked just for you.";
 
@@ -94,15 +94,15 @@ export function CountdownOnAdsCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Frame(T_ad_context)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">∈ {`{Reward, Offer, Bonus}`} (A)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">∈ {`{Reward, Offer, Bonus}`} (A)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">UserAction</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">ForcedViewing (A) / Voluntary (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">ForcedViewing (A) / Voluntary (B)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Reward lexemes in ad copy</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{A_LEXEMES} (A) / {B_LEXEMES} (B)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{A_LEXEMES} (A) / {B_LEXEMES} (B)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">τ_lock (wait behind framing)</span>
@@ -124,15 +124,15 @@ export function CountdownOnAdsCond3({
             {phaseB === "idle" && (
               <button
                 onClick={playB}
-                className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Continue to next level
               </button>
             )}
 
             {phaseB === "ad" && (
-              <div className="mt-2 overflow-hidden rounded-md border border-emerald-500/30">
-                <div className="bg-gradient-to-br from-slate-600 to-slate-800 p-4 text-white">
+              <div className="mt-2 overflow-hidden rounded-md border border-green-500/30">
+                <div className="from-slate-600 to-slate-800 p-4 text-white">
                   <div className="flex items-center gap-1.5 text-[8px] font-semibold uppercase tracking-widest opacity-80">
                     <Gift className="size-3" /> Advertisement
                   </div>
@@ -148,7 +148,7 @@ export function CountdownOnAdsCond3({
                   </span>
                   <button
                     onClick={() => setPhaseB("playing")}
-                    className="rounded bg-emerald-600 hover:bg-emerald-700 px-2.5 py-1 text-[9px] font-semibold text-white transition-colors cursor-pointer"
+                    className="rounded bg-green-600 hover:bg-green-700 px-2.5 py-1 text-[9px] font-semibold text-white transition-colors cursor-pointer"
                   >
                     Skip ad
                   </button>
@@ -157,8 +157,8 @@ export function CountdownOnAdsCond3({
             )}
 
             {phaseB === "playing" && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-3 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-3 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   Neutral framing
                 </div>
@@ -181,15 +181,15 @@ export function CountdownOnAdsCond3({
           {phaseA === "idle" && (
             <button
               onClick={playA}
-              className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Continue to next level
             </button>
           )}
 
           {phaseA === "ad" && (
-            <div className="mt-2 overflow-hidden rounded-md border border-rose-500/30">
-              <div className="bg-gradient-to-br from-amber-500 to-orange-600 p-4 text-white">
+            <div className="mt-2 overflow-hidden rounded-md border border-red-500/30">
+              <div className="  p-4 text-white">
                 <div className="flex items-center gap-1.5 text-[8px] font-semibold uppercase tracking-widest">
                   <Gift className="size-3" /> Your daily reward is ready
                 </div>
@@ -213,7 +213,7 @@ export function CountdownOnAdsCond3({
                       setClaimed(true);
                       setPhaseA("playing");
                     }}
-                    className="w-full rounded bg-amber-500 hover:bg-amber-600 px-2.5 py-1 text-[9px] font-bold text-white transition-colors cursor-pointer"
+                    className="w-full rounded bg-yellow-500 hover:bg-yellow-600 px-2.5 py-1 text-[9px] font-bold text-white transition-colors cursor-pointer"
                   >
                     Claim reward
                   </button>
@@ -223,10 +223,10 @@ export function CountdownOnAdsCond3({
           )}
 
           {phaseA === "playing" && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
-                Exchange framing detected
+                Reward available
               </div>
               <p className="text-muted-foreground">
                 {claimed

@@ -44,7 +44,7 @@ export function VisualProminenceCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(N_favorable) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{AREA_FAVORABLE.toLocaleString()} px&sup2;</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{AREA_FAVORABLE.toLocaleString()} px&sup2;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(E_baseline) mean</span>
@@ -52,11 +52,11 @@ export function VisualProminenceCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Area ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{RATIO_DARK.toFixed(1)} &gt; {TAU_AREA}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK.toFixed(1)} &gt; {TAU_AREA}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Area ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">1.0 &le; {TAU_AREA}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">1.0 &le; {TAU_AREA}</span>
       </div>
     </>
   ) : null;
@@ -67,7 +67,7 @@ export function VisualProminenceCond2({
         type="checkbox"
         checked={showBoxes}
         onChange={(e) => setShowBoxes(e.target.checked)}
-        className="h-3 w-3 accent-purple-500"
+        className="h-3 w-3 accent-blue-500"
       />
       Visualize bounding boxes
     </label>
@@ -89,7 +89,7 @@ export function VisualProminenceCond2({
                   We use cookies to improve your experience. Choose how much you share.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Ratio 1.0
               </div>
             </div>
@@ -109,7 +109,7 @@ export function VisualProminenceCond2({
               </button>
               <button
                 onClick={() => setChoice("accept")}
-                className="rounded-md bg-emerald-600 hover:bg-emerald-700 py-2 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Accept all
               </button>
@@ -118,9 +118,9 @@ export function VisualProminenceCond2({
             <div className="mt-2">{boxToggle}</div>
           </div>
 
-          {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && choice && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -146,7 +146,7 @@ export function VisualProminenceCond2({
                 We use cookies to improve your experience. Choose how much you share.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Ratio 5.5
             </div>
           </div>
@@ -154,16 +154,16 @@ export function VisualProminenceCond2({
           <div className="relative mt-3">
             {/* The dominant action: full-width, deeply padded, glowing. */}
             <div
-              className={showBoxes ? "relative rounded-md border-2 border-dashed border-rose-500/80 p-1" : ""}
+              className={showBoxes ? "relative rounded-md border-2 border-dashed border-red-500/80 p-1" : ""}
             >
               <button
                 onClick={() => setChoice("accept")}
-                className="w-full rounded-md bg-gradient-to-b from-rose-500 to-rose-600 py-5 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-lg shadow-rose-500/30 transition-transform hover:scale-[1.02] cursor-pointer"
+                className="w-full rounded-md   py-5 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-lg shadow-red-500/30 transition-transform hover:scale-[1.02] cursor-pointer"
               >
                 Accept all cookies
               </button>
               {showBoxes && (
-                <span className="absolute -top-2.5 left-1 rounded bg-rose-500 px-1 py-px text-[7px] font-mono font-bold text-white">
+                <span className="absolute -top-2.5 left-1 rounded bg-red-500 px-1 py-px text-[7px] font-mono font-bold text-white">
                   A(N_fav) &asymp; 26,880 px&sup2;
                 </span>
               )}
@@ -171,7 +171,7 @@ export function VisualProminenceCond2({
 
             {/* The baseline: two micro-links, barely interactive surfaces. */}
             <div className="mt-2 flex items-center justify-center gap-4">
-              <div className={showBoxes ? "relative rounded border-2 border-dashed border-emerald-500/80 px-1 py-0.5" : ""}>
+              <div className={showBoxes ? "relative rounded border-2 border-dashed border-green-500/80 px-1 py-0.5" : ""}>
                 <button
                   onClick={() => setChoice("manage")}
                   className="text-[9px] text-muted-foreground underline decoration-dotted underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
@@ -179,12 +179,12 @@ export function VisualProminenceCond2({
                   Manage preferences
                 </button>
                 {showBoxes && (
-                  <span className="absolute -top-2 left-0 rounded bg-emerald-500 px-1 py-px text-[7px] font-mono font-bold text-white">
+                  <span className="absolute -top-2 left-0 rounded bg-green-500 px-1 py-px text-[7px] font-mono font-bold text-white">
                     baseline
                   </span>
                 )}
               </div>
-              <div className={showBoxes ? "relative rounded border-2 border-dashed border-emerald-500/80 px-1 py-0.5" : ""}>
+              <div className={showBoxes ? "relative rounded border-2 border-dashed border-green-500/80 px-1 py-0.5" : ""}>
                 <button
                   onClick={() => setChoice("decline")}
                   className="text-[9px] text-muted-foreground underline decoration-dotted underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
@@ -198,14 +198,14 @@ export function VisualProminenceCond2({
           </div>
         </div>
 
-        {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && choice && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Bounding box dominance detected
+              Selection saved
             </div>
             <p className="text-muted-foreground">
               {choice === "accept"
@@ -213,12 +213,11 @@ export function VisualProminenceCond2({
                 : "You hunted for the tiny link and clicked it. Most users never find it."}{" "}
               The dominant action measures <strong className="text-foreground">{AREA_FAVORABLE.toLocaleString()} px&sup2;</strong>{" "}
               against a mean baseline of <strong className="text-foreground">{AREA_BASELINE.toLocaleString()} px&sup2;</strong> —{" "}
-              <strong className="text-rose-500">ratio {RATIO_DARK.toFixed(1)} &gt; {TAU_AREA}</strong>.
+              <strong className="text-red-500">ratio {RATIO_DARK.toFixed(1)} &gt; {TAU_AREA}</strong>.
             </p>
             <p className="text-muted-foreground">
               Per Fitts’s Law, a larger target requires less motor effort to hit. The accept surface is
-              deliberately so large that clicking it is the path of least resistance — the alternatives
-              are not hidden, they are simply microscopic.
+              is larger than the other actions on the page. The alternatives remain available below.
             </p>
           </div>
         )}

@@ -57,11 +57,11 @@ export function GrindingCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">{"E(L_i → L_{i+1}) (dark)"}</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{needDark(dark.stage)} forges</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{needDark(dark.stage)} forges</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">{"E(L_i → L_{i+1}) (benign)"}</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{needBenign(benign.stage)} forges</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{needBenign(benign.stage)} forges</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">{"V(L_{i+1}) reward"}</span>
@@ -90,7 +90,7 @@ export function GrindingCond1({
                   Forge swords to level up. Each level needs a few more — always fair.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Fair curve
               </div>
             </div>
@@ -100,22 +100,22 @@ export function GrindingCond1({
               <span className="font-mono tabular-nums">{benign.progress}/{benign.required} forges · +{GOLD_PER_LEVEL} gold</span>
             </div>
             <div className="mt-1 bg-foreground/10 h-2.5 rounded-full overflow-hidden">
-              <div className="bg-emerald-500 h-full transition-all" style={{ width: `${Math.min(100, (benign.progress / benign.required) * 100)}%` }} />
+              <div className="bg-green-500 h-full transition-all" style={{ width: `${Math.min(100, (benign.progress / benign.required) * 100)}%` }} />
             </div>
             <p className="text-[9px] text-muted-foreground mt-1.5">
-              Gold earned so far: <span className="font-mono font-semibold tabular-nums text-emerald-600 dark:text-emerald-400">{benign.stage * GOLD_PER_LEVEL} 🪙</span>
+              Gold earned so far: <span className="font-mono font-semibold tabular-nums text-green-600 dark:text-green-400">{benign.stage * GOLD_PER_LEVEL} </span>
             </p>
 
             <div className="mt-2 flex gap-2">
               <button
                 onClick={() => setActions((a) => a + 1)}
-                className="flex-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Forge a sword (+1)
               </button>
               <button
                 onClick={() => setActions((a) => a + 5)}
-                className="flex-1 rounded-md border border-emerald-500/40 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                className="flex-1 rounded-md border border-green-500/40 text-green-700 dark:text-green-300 hover:bg-green-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Forge ×5
               </button>
@@ -123,8 +123,8 @@ export function GrindingCond1({
           </div>
 
           {revealed && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -150,7 +150,7 @@ export function GrindingCond1({
                 Forge swords to level up. Keep forging. Keep forging…
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Grind
             </div>
           </div>
@@ -160,43 +160,43 @@ export function GrindingCond1({
             <span className="font-mono tabular-nums">{dark.progress}/{dark.required} forges · +{GOLD_PER_LEVEL} gold</span>
           </div>
           <div className="mt-1 bg-foreground/10 h-2.5 rounded-full overflow-hidden">
-            <div className="bg-rose-500 h-full transition-all" style={{ width: `${Math.min(100, (dark.progress / dark.required) * 100)}%` }} />
+            <div className="bg-red-500 h-full transition-all" style={{ width: `${Math.min(100, (dark.progress / dark.required) * 100)}%` }} />
           </div>
           <p className="text-[9px] text-muted-foreground mt-1.5">
-            Gold earned so far: <span className="font-mono font-semibold tabular-nums text-amber-500">{dark.stage * GOLD_PER_LEVEL} 🪙</span>{" "}
+            Gold earned so far: <span className="font-mono font-semibold tabular-nums text-yellow-500">{dark.stage * GOLD_PER_LEVEL} </span>{" "}
             {dark.stage >= 3 && (
-              <span className="text-rose-500/80">— next level needs {needDark(dark.stage)} forges for the same {GOLD_PER_LEVEL} gold.</span>
+              <span className="text-red-500/80">— next level needs {needDark(dark.stage)} forges for the same {GOLD_PER_LEVEL} gold.</span>
             )}
           </p>
 
           <div className="mt-2 flex gap-2">
             <button
               onClick={() => setActions((a) => a + 1)}
-              className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Forge a sword (+1)
             </button>
             <button
               onClick={() => setActions((a) => a + 5)}
-              className="flex-1 rounded-md border border-rose-500/40 text-rose-700 dark:text-rose-300 hover:bg-rose-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="flex-1 rounded-md border border-red-500/40 text-red-700 dark:text-red-300 hover:bg-red-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Forge ×5
             </button>
           </div>
         </div>
 
-        {revealed && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && revealed && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Exponential wall triggered
+              Continue playing
             </div>
             <p className="text-muted-foreground">
               After {actions} forges you are on level {dark.stage + 1} — and the next level needs{" "}
-              <strong className="text-rose-500">{needDark(dark.stage)} forges</strong> ({"E(L_i → L_{i+1})"} ∝ c^i,
+              <strong className="text-red-500">{needDark(dark.stage)} forges</strong> ({"E(L_i → L_{i+1})"} ∝ c^i,
               c = 2) for the same <strong className="text-foreground">+{GOLD_PER_LEVEL} gold</strong>{" "}
               ({"V(L_{i+1})"} ≈ V(L_i) + k, linear). The effort curve doubles every level while the reward
               barely moves — a wall designed to exhaust your patience until you pay to skip the tedium.

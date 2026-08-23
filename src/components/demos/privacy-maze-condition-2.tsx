@@ -43,11 +43,11 @@ export function PrivacyMazeCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P(B_manage)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{P_MANAGE.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{P_MANAGE.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P(B_accept) / P(B_manage)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{PROMINENCE_RATIO.toFixed(1)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{PROMINENCE_RATIO.toFixed(1)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Baseline &delta;_contrast</span>
@@ -66,8 +66,8 @@ export function PrivacyMazeCond2({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <svg className="h-4 w-4 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                   <circle cx="12" cy="12" r="3" />
                 </svg>
@@ -83,13 +83,13 @@ export function PrivacyMazeCond2({
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
                 onClick={() => setOutcome("accepted")}
-                className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+                className="w-full rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
               >
                 Accept All
               </button>
               <button
                 onClick={() => setOutcome("rejected")}
-                className="w-full rounded-md border border-emerald-600/50 bg-background hover:bg-emerald-500/10 py-2 text-[10px] font-semibold text-emerald-700 dark:text-emerald-300 transition-colors cursor-pointer"
+                className="w-full rounded-md border border-green-600/50 bg-background hover:bg-green-500/10 py-2 text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors cursor-pointer"
               >
                 Reject All
               </button>
@@ -100,8 +100,8 @@ export function PrivacyMazeCond2({
           </div>
 
           {outcome !== "none" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -119,8 +119,8 @@ export function PrivacyMazeCond2({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                 <circle cx="12" cy="12" r="3" />
               </svg>
@@ -137,7 +137,7 @@ export function PrivacyMazeCond2({
 
           <button
             onClick={() => setOutcome("accepted")}
-            className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 py-3 text-[12px] font-bold text-white shadow-lg transition-all hover:shadow-xl cursor-pointer"
+            className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 py-3 text-[12px] font-bold text-white shadow-lg transition-all hover:shadow-xl cursor-pointer"
           >
             Accept All
           </button>
@@ -163,13 +163,13 @@ export function PrivacyMazeCond2({
         </div>
 
         {outcome !== "none" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Visual prominence disparity triggered
+              Privacy settings saved
             </div>
             <p className="text-muted-foreground">
               {outcome === "accepted"

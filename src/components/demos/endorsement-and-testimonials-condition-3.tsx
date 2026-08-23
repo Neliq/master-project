@@ -26,9 +26,9 @@ const DARK_REVIEWS = [
 ];
 
 const BENIGN_REVIEWS = [
-  { initials: "MK", color: "bg-emerald-500", text: "Genuinely surprised — the texture is light and my skin feels softer after a week." },
-  { initials: "AB", color: "bg-indigo-500", text: "A bit pricey, but a little goes a long way. I use it only at night." },
-  { initials: "RW", color: "bg-amber-500", text: "Works fine for me, though the pump broke after a month of use." },
+  { initials: "MK", color: "bg-green-500", text: "Genuinely surprised — the texture is light and my skin feels softer after a week." },
+  { initials: "AB", color: "bg-blue-500", text: "A bit pricey, but a little goes a long way. I use it only at night." },
+  { initials: "RW", color: "bg-yellow-500", text: "Works fine for me, though the pump broke after a month of use." },
 ];
 
 function Avatar({ reuse, initials, color }: { reuse?: boolean; initials?: string; color?: string }) {
@@ -54,7 +54,7 @@ function SimilarityRow({ label, value, tone }: { label: string; value: string; t
   return (
     <div className="flex items-center justify-between text-[9px]">
       <span className="text-muted-foreground">{label}</span>
-      <span className={`font-mono font-semibold tabular-nums ${tone === "rose" ? "text-rose-500" : "text-emerald-500"}`}>
+      <span className={`font-mono font-semibold tabular-nums ${tone === "rose" ? "text-red-500" : "text-green-500"}`}>
         {value}
       </span>
     </div>
@@ -76,19 +76,19 @@ export function EndorsementAndTestimonialsCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Similarity(I_avatar, I_stock)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 1.00</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 1.00</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Similarity(T(r_i), T(r_j))</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0.81 &gt; &tau;_template</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0.81 &gt; &tau;_template</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Unique avatars rendered</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">1 / 3</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">1 / 3</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Verdict</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">bot-generated</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">bot-generated</span>
       </div>
     </>
   ) : null;
@@ -103,7 +103,7 @@ export function EndorsementAndTestimonialsCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-2.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-rose-400 to-pink-600 text-white">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
@@ -140,8 +140,8 @@ export function EndorsementAndTestimonialsCond3({
           </button>
 
           {checked && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -162,7 +162,7 @@ export function EndorsementAndTestimonialsCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-2.5">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-rose-400 to-pink-600 text-white">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
@@ -199,8 +199,8 @@ export function EndorsementAndTestimonialsCond3({
         </button>
 
         {checked && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

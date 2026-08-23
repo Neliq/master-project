@@ -43,15 +43,15 @@ export function FeedforwardAmbiguityCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Resolve(N) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">SubmitOrder() · charge {TOTAL}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">SubmitOrder() · charge {TOTAL}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Distance(Expect, Resolve)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0.87 &gt; &tau;_feedforward ({TAU_FEEDFORWARD})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0.87 &gt; &tau;_feedforward ({TAU_FEEDFORWARD})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Outcome domain</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">D_critical (finance)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">D_critical (finance)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Order placed?</span>
@@ -64,7 +64,7 @@ export function FeedforwardAmbiguityCond1({
     <div className="mt-3 space-y-1.5 text-[9px] text-muted-foreground">
       <div className="flex justify-between"><span>Studio headphones</span><span className="font-mono">$59.00</span></div>
       <div className="flex justify-between"><span>Carry case</span><span className="font-mono">$25.00</span></div>
-      <div className="flex justify-between"><span>Shipping</span><span className="font-mono text-emerald-600 dark:text-emerald-400">Free</span></div>
+      <div className="flex justify-between"><span>Shipping</span><span className="font-mono text-green-600 dark:text-green-400">Free</span></div>
       <div className="flex justify-between border-t border-border pt-1.5 font-semibold text-foreground">
         <span>Total</span><span className="font-mono">{TOTAL}</span>
       </div>
@@ -90,7 +90,7 @@ export function FeedforwardAmbiguityCond1({
                 <h3 className="text-[11px] font-semibold">Order review</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">Step 2 of 2 — you are at the final confirmation.</p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Expect = Resolve
               </div>
             </div>
@@ -98,7 +98,7 @@ export function FeedforwardAmbiguityCond1({
             {step === "review" && (
               <button
                 onClick={() => setStep("placed")}
-                className="mt-3 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Place order — {TOTAL}
               </button>
@@ -106,8 +106,8 @@ export function FeedforwardAmbiguityCond1({
           </div>
 
           {step === "placed" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -129,7 +129,7 @@ export function FeedforwardAmbiguityCond1({
               <h3 className="text-[11px] font-semibold">Order review</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Step 2 of 3 — one more step after this one.</p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Expect ≠ Resolve
             </div>
           </div>
@@ -137,7 +137,7 @@ export function FeedforwardAmbiguityCond1({
           {step === "review" && (
             <button
               onClick={() => setStep("placed")}
-              className="mt-3 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Continue
             </button>
@@ -145,8 +145,8 @@ export function FeedforwardAmbiguityCond1({
         </div>
 
         {step === "placed" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -154,13 +154,13 @@ export function FeedforwardAmbiguityCond1({
               Action-outcome mapping conflicted
             </div>
             <p className="text-muted-foreground">
-              You clicked <strong className="text-rose-500">“Continue”</strong> expecting to advance to the next step.
+              You clicked <strong className="text-red-500">“Continue”</strong> expecting to advance to the next step.
               But the button&rsquo;s structural target — its formaction — resolves to{" "}
               <strong className="text-foreground">SubmitOrder()</strong>: your order was placed and{" "}
               <strong className="text-foreground">{TOTAL}</strong> charged, non-refundably.
             </p>
             <p className="text-muted-foreground">
-              Distance(Expect(&ldquo;Continue&rdquo;), SubmitOrder()) = <span className="font-mono text-rose-500">0.87 &gt; &tau;_feedforward ({TAU_FEEDFORWARD})</span>.
+              Distance(Expect(&ldquo;Continue&rdquo;), SubmitOrder()) = <span className="font-mono text-red-500">0.87 &gt; &tau;_feedforward ({TAU_FEEDFORWARD})</span>.
               The label and the execution semantics diverge, and the outcome lives in a high-stakes financial domain.
             </p>
             <p className="text-muted-foreground">

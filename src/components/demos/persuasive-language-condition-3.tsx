@@ -78,7 +78,7 @@ export function PersuasiveLanguageCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Sem(t1) &and; Sem(t2) model</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{SAT_DARK ? "SATISFIABLE" : "UNSAT"}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{SAT_DARK ? "SATISFIABLE" : "UNSAT"}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Contradictions found</span>
@@ -90,7 +90,7 @@ export function PersuasiveLanguageCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Framing (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">excitement + urgency</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">excitement + urgency</span>
       </div>
     </>
   ) : null;
@@ -103,19 +103,19 @@ export function PersuasiveLanguageCond3({
             <span className="font-semibold text-foreground">
               Sem(t{i + 1}) = &ldquo;{c.fact}&rdquo;
             </span>
-            <span className="font-mono text-emerald-600 dark:text-emerald-400 shrink-0">
+            <span className="font-mono text-green-600 dark:text-green-400 shrink-0">
               {c.truth ? "True" : "False"}
             </span>
           </div>
           {c.spin && (
-            <div className="mt-0.5 text-rose-600/90 dark:text-rose-400/90">
+            <div className="mt-0.5 text-red-600/90 dark:text-red-400/90">
               Connotation: &ldquo;{c.spin}&rdquo;
             </div>
           )}
         </div>
       ))}
       <div className={`rounded border p-1.5 text-[8px] font-mono font-semibold ${
-        dark ? "border-amber-500/40 bg-amber-500/5 text-amber-700 dark:text-amber-300" : "border-emerald-500/40 bg-emerald-500/5 text-emerald-700 dark:text-emerald-300"
+        dark ? "border-yellow-500/40 bg-yellow-500/5 text-yellow-700 dark:text-yellow-300" : "border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300"
       }`}>
         {dark
           ? `Sem(t1) AND Sem(t2) AND Sem(t3) AND Sem(t4) => ${SAT_DARK ? "SATISFIABLE" : "UNSAT"} — no contradiction`
@@ -132,7 +132,7 @@ export function PersuasiveLanguageCond3({
           <span>
             {spin && c.spin ? (
               <>
-                <span className="font-semibold text-rose-600 dark:text-rose-400">{c.spin}</span>{" "}
+                <span className="font-semibold text-red-600 dark:text-red-400">{c.spin}</span>{" "}
                 <span className="text-muted-foreground">({c.fact.toLowerCase()})</span>
               </>
             ) : (
@@ -160,7 +160,7 @@ export function PersuasiveLanguageCond3({
                   Here is what the Pro plan offers.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Neutral framing
               </div>
             </div>
@@ -175,7 +175,7 @@ export function PersuasiveLanguageCond3({
               </button>
               <button
                 onClick={() => setChoice("upgrade")}
-                className="rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Upgrade to Pro
               </button>
@@ -183,7 +183,7 @@ export function PersuasiveLanguageCond3({
 
             <button
               onClick={() => setVerified(true)}
-              className="mt-2 w-full rounded-md border border-emerald-500/30 bg-emerald-500/5 py-1 text-[9px] font-medium text-emerald-700 dark:text-emerald-300 transition-colors hover:bg-emerald-500/10 cursor-pointer"
+              className="mt-2 w-full rounded-md border border-green-500/30 bg-green-500/5 py-1 text-[9px] font-medium text-green-700 dark:text-green-300 transition-colors hover:bg-green-500/10 cursor-pointer"
             >
               Verify truth conditions
             </button>
@@ -191,8 +191,8 @@ export function PersuasiveLanguageCond3({
           </div>
 
           {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -218,7 +218,7 @@ export function PersuasiveLanguageCond3({
                 Don&rsquo;t be the one left behind — see what you&rsquo;d miss.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Loaded framing
             </div>
           </div>
@@ -233,7 +233,7 @@ export function PersuasiveLanguageCond3({
             </button>
             <button
               onClick={() => setChoice("upgrade")}
-              className="rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Upgrade now
             </button>
@@ -241,7 +241,7 @@ export function PersuasiveLanguageCond3({
 
           <button
             onClick={() => setVerified(true)}
-            className="mt-2 w-full rounded-md border border-amber-500/30 bg-amber-500/5 py-1 text-[9px] font-medium text-amber-700 dark:text-amber-300 transition-colors hover:bg-amber-500/10 cursor-pointer"
+            className="mt-2 w-full rounded-md border border-yellow-500/30 bg-yellow-500/5 py-1 text-[9px] font-medium text-yellow-700 dark:text-yellow-300 transition-colors hover:bg-yellow-500/10 cursor-pointer"
           >
             Verify truth conditions
           </button>
@@ -249,8 +249,8 @@ export function PersuasiveLanguageCond3({
         </div>
 
         {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -259,7 +259,7 @@ export function PersuasiveLanguageCond3({
             </div>
             <p className="text-muted-foreground">
               {choice === "upgrade" ? "You upgraded — pushed along by excitement and urgency. " : "You stayed, but the framing still did its emotional work. "}
-              The model check returns <strong className="text-emerald-600 dark:text-emerald-400">SATISFIABLE</strong>:{" "}
+              The model check returns <strong className="text-green-600 dark:text-green-400">SATISFIABLE</strong>:{" "}
               <strong className="text-foreground">Sem(t1) &and; Sem(t2) &and; Sem(t3) &and; Sem(t4)</strong>{" "}
               is consistent — zero contradictions, zero false claims.
             </p>

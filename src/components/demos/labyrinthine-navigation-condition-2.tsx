@@ -108,7 +108,7 @@ export function LabyrinthineNavigationCond2({
       <div key={node.id}>
         <div
           className={`flex items-center gap-1.5 rounded-md border bg-background p-1.5 transition-colors ${
-            isTarget ? "border-rose-500/40" : "border-border hover:bg-foreground/5"
+            isTarget ? "border-red-500/40" : "border-border hover:bg-foreground/5"
           }`}
           style={{ marginLeft: `${px}px` }}
         >
@@ -127,7 +127,7 @@ export function LabyrinthineNavigationCond2({
             ) : (
               <span className="h-3 w-3 shrink-0" />
             )}
-            <span className={`truncate text-[10px] ${isTarget ? "font-semibold text-rose-600 dark:text-rose-400" : "text-foreground/80"}`}>
+            <span className={`truncate text-[10px] ${isTarget ? "font-semibold text-red-600 dark:text-red-400" : "text-foreground/80"}`}>
               {node.label}
             </span>
           </button>
@@ -144,11 +144,11 @@ export function LabyrinthineNavigationCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">max D_render(n) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{DARK_MAX_INDENT}px</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DARK_MAX_INDENT}px</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">max D_render(n) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">0px</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">0px</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Cognitive-overload &tau;_nesting</span>
@@ -156,7 +156,7 @@ export function LabyrinthineNavigationCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Trigger: {DARK_MAX_INDENT} &gt; {TAU_NESTING}</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">TRUE</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
       </div>
     </>
   ) : null;
@@ -172,7 +172,7 @@ export function LabyrinthineNavigationCond2({
           <div className="rounded-md border bg-card p-3">
             <div className="mb-2 flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">Settings</h3>
-              <span className="rounded-full border border-emerald-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
                 flat list
               </span>
             </div>
@@ -183,7 +183,7 @@ export function LabyrinthineNavigationCond2({
                   onClick={() => label === "Data & cookies" && setFound(true)}
                   className={`w-full rounded-md border p-1.5 text-left text-[10px] transition-colors cursor-pointer ${
                     label === "Data & cookies"
-                      ? "border-emerald-500/40 bg-emerald-500/10 font-semibold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20"
+                      ? "border-green-500/40 bg-green-500/10 font-semibold text-green-700 dark:text-green-300 hover:bg-green-500/20"
                       : "border-border bg-background text-foreground/80 hover:bg-foreground/5"
                   }`}
                 >
@@ -200,8 +200,8 @@ export function LabyrinthineNavigationCond2({
           </div>
 
           {found && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -230,14 +230,14 @@ export function LabyrinthineNavigationCond2({
           </p>
         </div>
 
-        {found && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && found && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Visual nesting depth triggered
+              Account settings
             </div>
             <p className="text-muted-foreground">
               “Data &amp; cookies” — a basic privacy control — sat at level {DARK_MAX_DEPTH} with{" "}

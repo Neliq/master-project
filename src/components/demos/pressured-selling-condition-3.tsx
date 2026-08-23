@@ -73,7 +73,7 @@ export function PressuredSellingCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|W(M) ∩ D_pressure| (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{darkTokens}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{darkTokens}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|W(M)| (dark)</span>
@@ -81,13 +81,13 @@ export function PressuredSellingCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Pressure density (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {darkDensity.toFixed(3)} &gt; {TAU_AROUSAL}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Pressure density (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">
+        <span className="font-mono font-semibold tabular-nums text-green-500">
           {benignDensity.toFixed(3)}
         </span>
       </div>
@@ -110,7 +110,7 @@ export function PressuredSellingCond3({
                   {BENIGN_COPY}
                 </p>
               </div>
-              <div className="shrink-0 rounded-full border border-emerald-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              <div className="shrink-0 rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
                 Neutral copy
               </div>
             </div>
@@ -119,7 +119,7 @@ export function PressuredSellingCond3({
               <div className="mt-2.5 grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setDecision("accepted")}
-                  className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Add for $19.99
                 </button>
@@ -131,14 +131,14 @@ export function PressuredSellingCond3({
                 </button>
               </div>
             ) : (
-              <div className="mt-2.5 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
                 {decision === "accepted"
                   ? "Warranty added. The copy stated the facts — no manufactured panic."
                   : "Declined. The copy presented the option neutrally; declining was easy."}
               </div>
             )}
           </div>
-          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[8px] text-muted-foreground">
+          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[8px] text-muted-foreground">
             Density check: {benignTokens} pressure tokens / {benignWords} words ={" "}
             <span className="font-mono tabular-nums">{benignDensity.toFixed(3)}</span> — below{" "}
             τ_arousal = {TAU_AROUSAL}.
@@ -147,17 +147,17 @@ export function PressuredSellingCond3({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="rounded-md border-2 border-rose-500/50 bg-card p-3">
+        <div className="rounded-md border-2 border-red-500/50 bg-card p-3">
           <div className="flex items-start justify-between gap-2">
             <div>
               <h3 className="text-[11px] font-semibold">
-                <span className="text-rose-600 dark:text-rose-400">WAIT!</span> Don&rsquo;t miss out!
+                <span className="text-red-600 dark:text-red-400">WAIT!</span> Don&rsquo;t miss out!
               </h3>
               <p className="text-[9px] text-muted-foreground mt-0.5 leading-relaxed">
                 {DARK_COPY}
               </p>
             </div>
-            <div className="shrink-0 rounded-full border border-rose-500/40 bg-rose-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+            <div className="shrink-0 rounded-full border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">
               {darkTokens} pressure tokens
             </div>
           </div>
@@ -166,7 +166,7 @@ export function PressuredSellingCond3({
             <div className="mt-2.5 grid grid-cols-2 gap-2">
               <button
                 onClick={() => setDecision("accepted")}
-                className="rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Add for $19.99
               </button>
@@ -178,7 +178,7 @@ export function PressuredSellingCond3({
               </button>
             </div>
           ) : (
-            <div className="mt-2.5 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+            <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
               {decision === "accepted"
                 ? "Warranty added — but was it a considered choice or a reflex under pressure?"
                 : "Declined — but note the copy was engineered to make declining feel risky."}
@@ -187,8 +187,8 @@ export function PressuredSellingCond3({
         </div>
 
         {decision !== null && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

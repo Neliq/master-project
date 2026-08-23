@@ -46,11 +46,11 @@ export function SocialPyramidCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(N_ref) / A_viewport — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{AREA_DARK} (&gt; &tau;)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{AREA_DARK} (&gt; &tau;)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A(N_ref) / A_viewport — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{AREA_BENIGN} (&le; &tau;)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{AREA_BENIGN} (&le; &tau;)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&tau;_gamification</span>
@@ -114,8 +114,8 @@ export function SocialPyramidCond2({
           {contentCard}
 
           {copied && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -123,7 +123,7 @@ export function SocialPyramidCond2({
               </div>
               <p className="text-muted-foreground">
                 A(N_referral_progress)/A_viewport ={" "}
-                <strong className="text-emerald-700 dark:text-emerald-300">{AREA_BENIGN}</strong> &le;{" "}
+                <strong className="text-green-700 dark:text-green-300">{AREA_BENIGN}</strong> &le;{" "}
                 &tau;_gamification ({TAU_GAMIFICATION}) — the invite mechanic is a single muted line under
                 the actual content. Recruitment stays a secondary feature, and the app&rsquo;s core
                 utility dominates the screen.
@@ -135,16 +135,16 @@ export function SocialPyramidCond2({
     >
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="rounded-md border border-rose-500/30 bg-gradient-to-br from-rose-500/10 via-orange-500/5 to-amber-500/10 p-3">
+        <div className="rounded-md border border-red-500/30    p-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1.5">
-              <svg className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg className="h-3.5 w-3.5 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
               </svg>
               <span className="text-[11px] font-bold">Invite Friends</span>
             </div>
             <div className="flex gap-1">
-              <span className="rounded-full border border-amber-500/50 bg-amber-500/10 px-1.5 py-0.5 text-[8px] font-mono font-semibold text-amber-700 dark:text-amber-300">
+              <span className="rounded-full border border-yellow-500/50 bg-yellow-500/10 px-1.5 py-0.5 text-[8px] font-mono font-semibold text-yellow-700 dark:text-yellow-300">
                 Bronze
               </span>
               <span className="rounded-full border border-border px-1.5 py-0.5 text-[8px] font-mono text-muted-foreground">
@@ -161,14 +161,14 @@ export function SocialPyramidCond2({
               {invites}
               <span className="text-[10px] font-medium text-muted-foreground">/2 friends</span>
             </div>
-            <div className="mt-1 text-[8px] font-semibold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+            <div className="mt-1 text-[8px] font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">
               Unlock Silver in {Math.max(0, 2 - Math.min(invites, 2))} more!
             </div>
           </div>
 
           <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-muted">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-amber-500 to-rose-500 transition-all"
+              className="h-full rounded-full   transition-all"
               style={{ width: `${(Math.min(invites, 2) / 2) * 100}%` }}
             />
           </div>
@@ -179,7 +179,7 @@ export function SocialPyramidCond2({
                 invite();
                 setCopied(true);
               }}
-              className="rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+              className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
             >
               Copy invite link
             </button>
@@ -200,18 +200,18 @@ export function SocialPyramidCond2({
           <p className="mt-1.5">…and the actual app content, squeezed below the banner.</p>
         </div>
 
-        {copied && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && copied && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Gamification dominance triggered
+              Referral progress
             </div>
             <p className="text-muted-foreground">
               A(N_referral_progress)/A_viewport ={" "}
-              <strong className="text-rose-500">{AREA_DARK}</strong> &gt; &tau;_gamification (
+              <strong className="text-red-500">{AREA_DARK}</strong> &gt; &tau;_gamification (
               {TAU_GAMIFICATION}) — the progress bar, tier badges, live counter, and dual CTAs occupy
               more than half the viewport. Recruitment mechanics have been visually elevated to a core
               interface function: the app&rsquo;s own utility is what gets squeezed.

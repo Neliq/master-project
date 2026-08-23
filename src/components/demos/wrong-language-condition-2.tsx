@@ -47,11 +47,11 @@ export function WrongLanguageCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">L_DOM(N_critical) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">fr</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">fr</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Mismatch</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">fr ≠ en-US</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">fr ≠ en-US</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Consent choice</span>
@@ -63,8 +63,8 @@ export function WrongLanguageCond2({
   const banner = (dark: boolean) => (
     <div className="rounded-md border bg-card p-3">
       <div className="flex items-start gap-2">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-amber-100 dark:bg-amber-900/30">
-          <svg className="h-4 w-4 text-amber-600 dark:text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-yellow-100 dark:bg-yellow-900/30">
+          <svg className="h-4 w-4 text-yellow-600 dark:text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" />
             <circle cx="12" cy="12" r="4" />
           </svg>
@@ -76,7 +76,7 @@ export function WrongLanguageCond2({
           </p>
           <p className="text-[8px] text-muted-foreground/60 mt-1">
             Site language: English · Your locale: en-US · Cookie controls:{" "}
-            <span className={dark ? "font-semibold text-rose-500" : "font-semibold text-emerald-600 dark:text-emerald-400"}>
+            <span className={dark ? "font-semibold text-red-500" : "font-semibold text-green-600 dark:text-green-400"}>
               {dark ? "Français" : "English"}
             </span>
           </p>
@@ -87,8 +87,8 @@ export function WrongLanguageCond2({
           onClick={() => setChoice("all")}
           className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
             dark
-              ? "bg-rose-600 hover:bg-rose-700 text-white"
-              : "bg-emerald-600 hover:bg-emerald-700 text-white"
+              ? "bg-red-600 hover:bg-red-700 text-white"
+              : "bg-green-600 hover:bg-green-700 text-white"
           }`}
         >
           {ACCEPT_ALL}
@@ -97,14 +97,14 @@ export function WrongLanguageCond2({
           onClick={() => setChoice("essential")}
           className={`w-full rounded-md border py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
             dark
-              ? "border-rose-500/40 bg-background text-foreground/80 hover:text-foreground"
-              : "border-emerald-500/40 bg-background text-foreground/80 hover:text-foreground"
+              ? "border-red-500/40 bg-background text-foreground/80 hover:text-foreground"
+              : "border-green-500/40 bg-background text-foreground/80 hover:text-foreground"
           }`}
         >
           {dark ? REJECT_DARK : REJECT_BENIGN}
         </button>
       </div>
-      <p className={`mt-2 text-[8px] italic ${dark ? "text-rose-500/70" : "text-emerald-600/70 dark:text-emerald-400/70"}`}>
+      <p className={`mt-2 text-[8px] italic ${dark ? "text-red-500/70" : "text-green-600/70 dark:text-green-400/70"}`}>
         {dark ? NOTE_DARK : NOTE_BENIGN}
       </p>
     </div>
@@ -120,8 +120,8 @@ export function WrongLanguageCond2({
         <div className="space-y-3">
           {banner(false)}
           {choice !== "none" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -140,23 +140,21 @@ export function WrongLanguageCond2({
       <div className="space-y-3">
         {banner(true)}
         {choice !== "none" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Visual-linguistic locale mismatch triggered
+              Cookie preferences saved
             </div>
             <p className="text-muted-foreground">
-              Your browser declares <strong className="text-foreground">en-US</strong>, and the banner headline reads
-              English — but the critical node, the privacy opt-out control, is rendered in{" "}
-              <strong className="text-rose-500">French</strong>. L_DOM(N_critical) = fr ≠ L_browser = en-US.
+              Your cookie preferences have been saved. You can update them at any time in Privacy settings.
             </p>
             <p className="text-muted-foreground">
               {choice === "essential"
                 ? `You clicked “${REJECT_DARK}” — which is actually the user-favorable choice (rejecting non-essential cookies). But you could not read it, and most users in this position either guess wrong or abandon the banner and accept the default.`
-                : `You clicked “${ACCEPT_ALL}” — the one button in your own language. The opt-out was hidden behind a linguistic barrier, manufacturing consent for the business-favorable default.`}
+                : `You selected “${ACCEPT_ALL}”. You can change your cookie preferences in Settings.`}
             </p>
           </div>
         )}

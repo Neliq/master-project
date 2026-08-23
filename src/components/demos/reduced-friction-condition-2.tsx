@@ -49,19 +49,19 @@ export function ReducedFrictionCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d_spatial(delete, save) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">8px &lt; τ_safety</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">8px &lt; τ_safety</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d_spatial(delete, save) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">64px &ge; τ_safety</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">64px &ge; τ_safety</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Visual weight (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">identical — muscle memory</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">identical — muscle memory</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Confirmation node (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">present</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">present</span>
       </div>
     </>
   ) : null;
@@ -83,14 +83,14 @@ export function ReducedFrictionCond2({
                 <label className="text-[9px] font-medium text-muted-foreground">Display name</label>
                 <input
                   defaultValue="Alex Rivera"
-                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-green-500/40"
                 />
               </div>
               <div>
                 <label className="text-[9px] font-medium text-muted-foreground">Email</label>
                 <input
                   defaultValue="alex@example.com"
-                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-green-500/40"
                 />
               </div>
             </div>
@@ -98,12 +98,12 @@ export function ReducedFrictionCond2({
             <div className="mt-3 flex items-center justify-between gap-3">
               <button
                 onClick={() => setBSaved(true)}
-                className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="rounded-md bg-green-600 hover:bg-green-700 text-white px-4 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Save changes
               </button>
               {bSaved && (
-                <span className="text-[9px] font-medium text-emerald-600 dark:text-emerald-400">
+                <span className="text-[9px] font-medium text-green-600 dark:text-green-400">
                   Saved ✓
                 </span>
               )}
@@ -147,7 +147,7 @@ export function ReducedFrictionCond2({
                 </div>
               )}
               {bStep === "deleted" && (
-                <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+                <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
                   <strong>Delete executed only after explicit confirmation</strong> — the destructive action sat
                   64px away from the neutral controls, in a clearly marked danger zone.
                 </div>
@@ -167,21 +167,21 @@ export function ReducedFrictionCond2({
               <label className="text-[9px] font-medium text-muted-foreground">Display name</label>
               <input
                 defaultValue="Alex Rivera"
-                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-rose-500/40"
+                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-red-500/40"
               />
             </div>
             <div>
               <label className="text-[9px] font-medium text-muted-foreground">Email</label>
               <input
                 defaultValue="alex@example.com"
-                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-rose-500/40"
+                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-red-500/40"
               />
             </div>
           </div>
 
           {aDeleted ? (
-            <div className="mt-3 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -191,7 +191,7 @@ export function ReducedFrictionCond2({
               <p className="text-muted-foreground mt-0.5">
                 <strong className="text-foreground">d_spatial(N_destructive, N_neutral) = 8px &lt; τ_safety</strong>: the
                 destructive action was styled identically to the routine “Save changes” control and sat directly beside
-                it. A single click executed an irreversible delete — no confirmation node, no second step — exploiting
+                it. The item was deleted immediately. You can restore it from Trash.
                 the muscle memory trained on the neutral button.
               </p>
             </div>
@@ -201,13 +201,13 @@ export function ReducedFrictionCond2({
                 {/* Neutral control and destructive action share styling and sit adjacent */}
                 <button
                   onClick={() => setASaved(true)}
-                  className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Save changes
                 </button>
                 <button
                   onClick={() => setADeleted(true)}
-                  className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Delete account
                 </button>

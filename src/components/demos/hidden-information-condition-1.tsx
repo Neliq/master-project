@@ -85,14 +85,14 @@ export function HiddenInformationCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|W(N_document)|</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {DOCUMENT_WORDS} (&gt; 250)
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P(t_clause) dark / benign</span>
         <span className="font-mono font-semibold tabular-nums">
-          <span className="text-rose-500">False</span> / <span className="text-emerald-500">True</span>
+          <span className="text-red-500">False</span> / <span className="text-green-500">True</span>
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
@@ -107,7 +107,7 @@ export function HiddenInformationCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Renewal warning (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">visible — 7-day reminder</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">visible — 7-day reminder</span>
       </div>
     </>
   ) : null;
@@ -150,7 +150,7 @@ export function HiddenInformationCond1({
             ) : (
               <>
                 {CLAUSE_PARTS.before}
-                <strong className="font-bold text-emerald-700 dark:text-emerald-300">
+                <strong className="font-bold text-green-700 dark:text-green-300">
                   <em>{CLAUSE_PARTS.clause}</em>
                 </strong>
                 {CLAUSE_PARTS.after}
@@ -160,7 +160,7 @@ export function HiddenInformationCond1({
         </div>
 
         {!dark && (
-          <div className="mt-1.5 rounded-md border border-emerald-500/30 bg-emerald-500/5 px-2 py-1.5 text-[8px] leading-relaxed text-emerald-700 dark:text-emerald-300">
+          <div className="mt-1.5 rounded-md border border-green-500/30 bg-green-500/5 px-2 py-1.5 text-[8px] leading-relaxed text-green-700 dark:text-green-300">
             Your free first month ends after 30 days. After that you&rsquo;ll be billed{" "}
             <strong className="font-semibold">$49.99/month</strong> automatically unless you
             cancel — a reminder email arrives 7 days before each renewal.
@@ -172,7 +172,7 @@ export function HiddenInformationCond1({
             type="checkbox"
             checked={agreed}
             onChange={(e) => setAgreed(e.target.checked)}
-            className={`mt-0.5 flex-shrink-0 ${dark ? "accent-rose-500" : "accent-emerald-500"}`}
+            className={`mt-0.5 flex-shrink-0 ${dark ? "accent-red-500" : "accent-green-500"}`}
           />
           <span className="text-[9px] leading-relaxed text-foreground/80 select-none transition-colors group-hover:text-foreground">
             I agree to the Terms and Conditions.
@@ -184,7 +184,7 @@ export function HiddenInformationCond1({
           disabled={!agreed}
           className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
             agreed
-              ? `cursor-pointer text-white ${dark ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"}`
+              ? `cursor-pointer text-white ${dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"}`
               : "cursor-not-allowed bg-muted text-muted-foreground/40"
           }`}
         >
@@ -203,13 +203,13 @@ export function HiddenInformationCond1({
         <div
           className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
             dark
-              ? "border-amber-500/30 bg-amber-500/5"
-              : "border-emerald-500/30 bg-emerald-500/5"
+              ? "border-yellow-500/30 bg-yellow-500/5"
+              : "border-green-500/30 bg-green-500/5"
           }`}
         >
           <div
             className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
-              dark ? "text-amber-700 dark:text-amber-300" : "text-emerald-700 dark:text-emerald-300"
+              dark ? "text-yellow-700 dark:text-yellow-300" : "text-green-700 dark:text-green-300"
             }`}
           >
             <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -228,8 +228,8 @@ export function HiddenInformationCond1({
               </>
             ) : (
               <>
-                The same clause is wrapped in <strong className="text-emerald-700 dark:text-emerald-300">&lt;strong&gt;</strong>{" "}
-                and <em className="text-emerald-700 dark:text-emerald-300">&lt;em&gt;</em> — P(t_clause) = True —
+                The same clause is wrapped in <strong className="text-green-700 dark:text-green-300">&lt;strong&gt;</strong>{" "}
+                and <em className="text-green-700 dark:text-green-300">&lt;em&gt;</em> — P(t_clause) = True —
                 so the $49.99 auto-renewal is findable at a glance without reading all{" "}
                 {DOCUMENT_WORDS} words.
               </>
@@ -238,28 +238,27 @@ export function HiddenInformationCond1({
         </div>
       ) : null}
 
-      {created &&
-        (dark ? (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-amber-700 dark:text-amber-300">
+      {mode === "auditor" && created && (dark ? (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Structural burial detected
+              Order confirmed
             </div>
             <p className="text-muted-foreground mt-1">
               |W(N_document)| = <strong className="text-foreground">{DOCUMENT_WORDS} words</strong>{" "}
               &gt; τ_fatigue ∧ P(t_clause) = <strong className="text-foreground">False</strong> — you
               agreed to a subscription that auto-renews at{" "}
-              <strong className="text-amber-700 dark:text-amber-300">$49.99/month</strong> without any
+              <strong className="text-yellow-700 dark:text-yellow-300">$49.99/month</strong> without any
               emphasis marking the clause. The information technically exists in the document; it is
               rendered practically invisible.
             </p>
           </div>
         ) : (
-          <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-emerald-700 dark:text-emerald-300">
+          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

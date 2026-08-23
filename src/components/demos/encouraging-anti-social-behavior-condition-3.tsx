@@ -48,15 +48,15 @@ function Post({
 }) {
   const toneColor =
     tone === "civil"
-      ? "text-emerald-600 dark:text-emerald-400"
+      ? "text-green-600 dark:text-green-400"
       : tone === "heated"
-        ? "text-amber-600 dark:text-amber-400"
-        : "text-rose-600 dark:text-rose-400";
+        ? "text-yellow-600 dark:text-yellow-400"
+        : "text-red-600 dark:text-red-400";
   return (
     <div className="rounded-md border border-border bg-background p-2.5">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-1.5">
-          <div className={`flex h-4 w-4 items-center justify-center rounded-full text-[8px] font-bold text-white ${dark ? "bg-rose-500" : "bg-emerald-500"}`}>
+          <div className={`flex h-4 w-4 items-center justify-center rounded-full text-[8px] font-bold text-white ${dark ? "bg-red-500" : "bg-green-500"}`}>
             {author[0]}
           </div>
           <span className="text-[9px] font-medium text-foreground/80">{author}</span>
@@ -66,7 +66,7 @@ function Post({
       <p className="mt-1.5 text-[9px] leading-relaxed text-foreground/80">{text}</p>
       <div className="mt-1.5 flex items-center justify-between text-[8px] font-mono text-muted-foreground">
         <span>{views.toLocaleString()} views</span>
-        <span className={boosted && dark ? "font-bold text-rose-600 dark:text-rose-400" : ""}>
+        <span className={boosted && dark ? "font-bold text-red-600 dark:text-red-400" : ""}>
           {dark ? (boosted ? "▲ Boosted" : "Not boosted") : "Standard reach"}
         </span>
       </div>
@@ -103,15 +103,15 @@ export function EncouragingAntiSocialBehaviorCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">V_visibility (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">12,400 vs 48 &mdash; &prop; polarity</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">12,400 vs 48 &mdash; &prop; polarity</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">V_visibility (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">860 vs 840 &mdash; independent</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">860 vs 840 &mdash; independent</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Systemic incentive</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">hostility rewarded</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">hostility rewarded</span>
       </div>
     </>
   ) : null;
@@ -133,7 +133,7 @@ export function EncouragingAntiSocialBehaviorCond3({
                   onClick={() => { setBenignTone(t.id); setBenignPosted(false); }}
                   className={`flex-1 rounded-md border py-1 text-[9px] font-medium transition-colors cursor-pointer ${
                     benignTone === t.id
-                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                      ? "border-green-500 bg-green-500/10 text-green-700 dark:text-green-300"
                       : "border-border bg-background text-foreground/60 hover:text-foreground"
                   }`}
                 >
@@ -150,12 +150,12 @@ export function EncouragingAntiSocialBehaviorCond3({
             </p>
             <button
               onClick={() => setBenignPosted(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Post
             </button>
             {benignPosted && benignReach !== null && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 px-2 py-1.5 text-[8px] font-mono text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 px-2 py-1.5 text-[8px] font-mono text-green-700 dark:text-green-300">
                 Predicted reach: ~{benignReach.toLocaleString()} views — polarity does not affect distribution
               </div>
             )}
@@ -182,7 +182,7 @@ export function EncouragingAntiSocialBehaviorCond3({
                 onClick={() => { setTone(t.id); setPosted(false); }}
                 className={`flex-1 rounded-md border py-1 text-[9px] font-medium transition-colors cursor-pointer ${
                   tone === t.id
-                    ? "border-rose-500 bg-rose-500/10 text-rose-700 dark:text-rose-300"
+                    ? "border-red-500 bg-red-500/10 text-red-700 dark:text-red-300"
                     : "border-border bg-background text-foreground/60 hover:text-foreground"
                 }`}
               >
@@ -199,7 +199,7 @@ export function EncouragingAntiSocialBehaviorCond3({
           </p>
           <button
             onClick={() => setPosted(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
           >
             Post
           </button>
@@ -207,9 +207,9 @@ export function EncouragingAntiSocialBehaviorCond3({
             <div className={`mt-2 rounded-md border px-2 py-1.5 text-[8px] font-mono ${
               tone === "civil"
                 ? "border-foreground/10 bg-muted/40 text-muted-foreground"
-                : "border-rose-500/30 bg-rose-500/5 text-rose-700 dark:text-rose-300"
+                : "border-red-500/30 bg-red-500/5 text-red-700 dark:text-red-300"
             }`}>
-              Predicted reach: ~{darkReach.toLocaleString()} views — {tone === "civil" ? "low polarity, barely distributed" : "high polarity, boosted"}
+              Estimated reach: ~{darkReach.toLocaleString()} views
             </div>
           )}
         </div>

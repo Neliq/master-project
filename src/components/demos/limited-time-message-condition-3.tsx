@@ -45,23 +45,23 @@ export function LimitedTimeMessageCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Specificity(M_urgency) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">≈ 0.00</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 0.00</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Specificity(M_urgency) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">1.00 (“Friday 23:59 CET”)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">1.00 (“Friday 23:59 CET”)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">T_end ∈ DOM (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">No — absent</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">No — absent</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">T_end ∈ DOM (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">Fri 23:59 CET</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">Fri 23:59 CET</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Urgency_perceived</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">→ Max</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">→ Max</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Vague answers given</span>
@@ -79,13 +79,13 @@ export function LimitedTimeMessageCond3({
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
-            <div className="rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2.5 dark:border-emerald-500/30 dark:bg-emerald-500/10">
-              <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
+            <div className="rounded-md border border-green-200 bg-green-50 px-3 py-2.5 dark:border-green-500/30 dark:bg-green-500/10">
+              <div className="text-[10px] font-bold uppercase tracking-wider text-green-800 dark:text-green-300">
                 Seasonal sale — ends Friday 23:59
               </div>
               <div className="mt-1 text-[10px] font-semibold text-foreground">40% off everything.</div>
               <div className="mt-0.5 text-[9px] leading-relaxed text-muted-foreground">
-                Deadline: <span className="font-mono font-semibold text-emerald-700 dark:text-emerald-300">Friday, 23:59 CET</span> — 2 days, 6 hours from now.
+                Deadline: <span className="font-mono font-semibold text-green-700 dark:text-green-300">Friday, 23:59 CET</span> — 2 days, 6 hours from now.
               </div>
             </div>
 
@@ -97,8 +97,8 @@ export function LimitedTimeMessageCond3({
             </button>
 
             {asked > 0 && (
-              <div className="mt-2 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <span className="font-semibold text-emerald-700 dark:text-emerald-300">Concrete answer:</span>{" "}
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <span className="font-semibold text-green-700 dark:text-green-300">Concrete answer:</span>{" "}
                 <span className="text-muted-foreground">
                   Friday 23:59 CET. That timestamp exists in the DOM, so you can schedule
                   your purchase — and your comparison shopping — around a real constraint.
@@ -108,15 +108,15 @@ export function LimitedTimeMessageCond3({
 
             <button
               onClick={() => setPlanned(true)}
-              className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Plan my purchase
             </button>
           </div>
 
           {planned && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -133,7 +133,7 @@ export function LimitedTimeMessageCond3({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
-          <div className="rounded-md bg-gradient-to-br from-rose-500 to-red-600 px-3 py-2.5 text-white">
+          <div className="rounded-md   px-3 py-2.5 text-white">
             <div className="text-[10px] font-bold uppercase tracking-wider">Hurry — sale ends soon!</div>
             <div className="mt-1 text-[10px] font-semibold">40% off everything.</div>
             <div className="mt-0.5 text-[9px] leading-relaxed text-white/85">
@@ -149,8 +149,8 @@ export function LimitedTimeMessageCond3({
           </button>
 
           {asked > 0 && (
-            <div className="mt-2 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-              <span className="font-semibold text-amber-700 dark:text-amber-300">Answer:</span>{" "}
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              <span className="font-semibold text-yellow-700 dark:text-yellow-300">Answer:</span>{" "}
               <span className="text-muted-foreground">
                 &ldquo;{VAGUE_ANSWERS[Math.min(asked - 1, VAGUE_ANSWERS.length - 1)]}&rdquo;
               </span>
@@ -159,20 +159,20 @@ export function LimitedTimeMessageCond3({
 
           <button
             onClick={() => setPlanned(true)}
-            className="mt-2 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Plan my purchase
           </button>
         </div>
 
-        {planned && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && planned && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Ambiguous temporal bounding triggered
+              Offer details
             </div>
             <p className="text-muted-foreground">
               Specificity(M_urgency) ≈ 0 and T_end ∉ DOM — there is no timestamp anywhere

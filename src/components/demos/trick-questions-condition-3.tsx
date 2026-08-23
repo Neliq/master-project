@@ -69,11 +69,11 @@ export function TrickQuestionsCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Negation count N_neg (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{NEGATION_COUNT} (&ge; 2)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{NEGATION_COUNT} (&ge; 2)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Negation count (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{PLAIN_NEGATION_COUNT}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{PLAIN_NEGATION_COUNT}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Clause length</span>
@@ -96,8 +96,8 @@ export function TrickQuestionsCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-                <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+                <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
               </div>
@@ -106,9 +106,9 @@ export function TrickQuestionsCond3({
                   You&rsquo;ve been selected for an exclusive offer!
                 </h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
-                  As a valued customer, you qualify for <strong className="text-rose-600 dark:text-rose-400">Premium Gold Access</strong> — a{" "}
+                  As a valued customer, you qualify for <strong className="text-red-600 dark:text-red-400">Premium Gold Access</strong> — a{" "}
                   <span className="font-semibold">$49.99/mo</span> value, available to you for the introductory price of
-                  just <span className="font-semibold text-emerald-600 dark:text-emerald-400">$0.00 for the first 30 days</span>.
+                  just <span className="font-semibold text-green-600 dark:text-green-400">$0.00 for the first 30 days</span>.
                   After your trial, your plan auto-renews at full price unless you cancel.
                 </p>
               </div>
@@ -121,7 +121,7 @@ export function TrickQuestionsCond3({
                 type="checkbox"
                 checked={checked}
                 onChange={handleCheck}
-                className="mt-1 flex-shrink-0 accent-emerald-500"
+                className="mt-1 flex-shrink-0 accent-green-500"
               />
               <div className="min-w-0 space-y-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none transition-colors group-hover:text-foreground">
@@ -135,7 +135,7 @@ export function TrickQuestionsCond3({
           </div>
 
           {showReveal && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed text-emerald-700 dark:text-emerald-300">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed text-green-700 dark:text-green-300">
               <div className="mb-0.5 flex items-center gap-1.5 font-semibold uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
@@ -153,15 +153,15 @@ export function TrickQuestionsCond3({
             disabled={!checked}
             className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               checked
-                ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
             {submitted ? "Confirmed ✓" : "Confirm & activate Premium Gold Access"}
           </button>
 
-          {submitted && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+          {mode === "auditor" && submitted && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
               <strong>Consent recorded transparently.</strong> You read a one-sentence, zero-negation
               label and confirmed your opt-in. No syntactic acrobatics required.
             </div>
@@ -172,8 +172,8 @@ export function TrickQuestionsCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <svg className="h-4 w-4 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
             </div>
@@ -182,9 +182,9 @@ export function TrickQuestionsCond3({
                 You&rsquo;ve been selected for an exclusive offer!
               </h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">
-                As a valued customer, you qualify for <strong className="text-rose-600 dark:text-rose-400">Premium Gold Access</strong> — a{" "}
+                As a valued customer, you qualify for <strong className="text-red-600 dark:text-red-400">Premium Gold Access</strong> — a{" "}
                 <span className="font-semibold">$49.99/mo</span> value, available to you for the introductory price of
-                just <span className="font-semibold text-emerald-600 dark:text-emerald-400">$0.00 for the first 30 days</span>.
+                just <span className="font-semibold text-green-600 dark:text-green-400">$0.00 for the first 30 days</span>.
                 After your trial, your plan auto-renews at full price unless you cancel.
               </p>
             </div>
@@ -203,7 +203,7 @@ export function TrickQuestionsCond3({
               type="checkbox"
               checked={checked}
               onChange={handleCheck}
-              className="mt-1 flex-shrink-0 accent-rose-500"
+              className="mt-1 flex-shrink-0 accent-red-500"
             />
             <div className="min-w-0 space-y-1">
               <div className="text-[9px] leading-relaxed text-foreground/80 select-none transition-colors group-hover:text-foreground">
@@ -221,8 +221,8 @@ export function TrickQuestionsCond3({
         {showReveal && (
           <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed transition-all ${
             checked
-              ? "bg-emerald-500/5 border-emerald-500/30 text-emerald-700 dark:text-emerald-300"
-              : "bg-amber-500/5 border-amber-500/30 text-amber-700 dark:text-amber-300"
+              ? "bg-green-500/5 border-green-500/30 text-green-700 dark:text-green-300"
+              : "bg-yellow-500/5 border-yellow-500/30 text-yellow-700 dark:text-yellow-300"
           }`}>
             <div className="mb-0.5 flex items-center gap-1.5 font-semibold uppercase tracking-tight">
               {checked ? (
@@ -241,10 +241,10 @@ export function TrickQuestionsCond3({
                 </>
               )}
             </div>
-            <p className={checked ? "text-emerald-600/80 dark:text-emerald-400/80" : "text-amber-600/80 dark:text-amber-400/80"}>
+            <p className={checked ? "text-green-600/80 dark:text-green-400/80" : "text-yellow-600/80 dark:text-yellow-400/80"}>
               {checked
                 ? `Despite ${NEGATION_COUNT} negation modifiers stacked on the primary verbs, checking the box means exactly what it looks like: YES, I agree. The negations exist to make you believe you're declining when you're actually accepting.`
-                : "With the box unchecked, you haven't agreed to anything. The maze of negations was designed to pressure you into checking the box, not to inform your decision."}
+                : "Leave the box unchecked if you do not want to activate Premium Gold Access."}
             </p>
           </div>
         )}
@@ -255,12 +255,12 @@ export function TrickQuestionsCond3({
           </summary>
           <div className="mt-1 rounded-md border bg-card p-2">
             <p className="mb-1 text-muted-foreground">
-              The sentence above contains <strong className="text-rose-500">{NEGATION_COUNT} negation words</strong>{" "}
+              The sentence above contains <strong className="text-red-500">{NEGATION_COUNT} negation words</strong>{" "}
               (not, no, never, without, unless, except, decline, excluded, prohibited, opt out).
               Every second &ldquo;not&rdquo; reverses the previous one. Here&rsquo;s what it means in plain English:
             </p>
-            <div className="rounded border border-emerald-500/20 bg-emerald-500/5 p-2">
-              <p className="font-medium text-emerald-700 dark:text-emerald-300">{PLAIN_TEXT}</p>
+            <div className="rounded border border-green-500/20 bg-green-500/5 p-2">
+              <p className="font-medium text-green-700 dark:text-green-300">{PLAIN_TEXT}</p>
             </div>
             <p className="mt-1 text-muted-foreground">
               The original is <strong>{CLAUSE_TEXT.split(/\s+/).length} words</strong>. The plain version is{" "}
@@ -275,15 +275,15 @@ export function TrickQuestionsCond3({
           disabled={!checked}
           className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
             checked
-              ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+              ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
               : "bg-muted text-muted-foreground/40 cursor-not-allowed"
           }`}
         >
           {submitted ? "Confirmed ✓" : "Confirm & activate Premium Gold Access"}
         </button>
 
-        {submitted && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2 text-[9px] text-amber-700 dark:text-amber-300">
+        {mode === "auditor" && submitted && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px] text-yellow-700 dark:text-yellow-300">
             <strong>You agreed to receive marketing communications</strong> — or did you?
             The checkbox sentence had {NEGATION_COUNT} negations, making it nearly impossible
             to parse. Most users check the box without understanding what they consented to.

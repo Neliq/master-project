@@ -48,11 +48,11 @@ export function ForcedRegistrationCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">W(N_guest) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{W_GUEST_DARK}px²</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{W_GUEST_DARK}px²</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">W(N_guest) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{W_GUEST_BENIGN}px²</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{W_GUEST_BENIGN}px²</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">W(N_register)</span>
@@ -60,11 +60,11 @@ export function ForcedRegistrationCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{RATIO_DARK} &lt; &tau;</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK} &lt; &tau;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{RATIO_BENIGN} &ge; &tau;</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{RATIO_BENIGN} &ge; &tau;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&tau;_guest_visibility</span>
@@ -110,7 +110,7 @@ export function ForcedRegistrationCond2({
                 setCheckoutStarted(true);
                 setGuestUsed(true);
               }}
-              className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
+              className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
             >
               Checkout as guest
             </button>
@@ -123,15 +123,15 @@ export function ForcedRegistrationCond2({
           </div>
 
           {checkoutStarted && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
                 Visually balanced
               </div>
               <p className="text-muted-foreground">
-                W(N_guest)/W(N_register) = <strong className="text-emerald-700 dark:text-emerald-300">{RATIO_BENIGN}</strong>{" "}
+                W(N_guest)/W(N_register) = <strong className="text-green-700 dark:text-green-300">{RATIO_BENIGN}</strong>{" "}
                 &ge; &tau;_guest_visibility ({TAU_VISIBILITY}) — the guest button weighs exactly as much as
                 the account button. Same size, same fill, same prominence: no visual hierarchy steers
                 you toward registration.
@@ -147,7 +147,7 @@ export function ForcedRegistrationCond2({
 
         <button
           onClick={() => setCheckoutStarted(true)}
-          className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
+          className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
         >
           Create account &amp; checkout
         </button>
@@ -164,22 +164,22 @@ export function ForcedRegistrationCond2({
           Continue as guest
         </button>
 
-        {checkoutStarted && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && checkoutStarted && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Visual degradation triggered
+              Continue with registration
             </div>
             <p className="text-muted-foreground">
               {guestUsed ? (
                 <>
                   You found the guest path — but compare the two nodes: the guest link renders at a
-                  visual weight of <strong className="text-rose-500">{W_GUEST_DARK}px²</strong> against{" "}
-                  <strong className="text-rose-500">{W_REGISTER_DARK}px²</strong> for the registration
-                  button. W(N_guest)/W(N_register) = <strong className="text-rose-500">{RATIO_DARK}</strong>{" "}
+                  visual weight of <strong className="text-red-500">{W_GUEST_DARK}px²</strong> against{" "}
+                  <strong className="text-red-500">{W_REGISTER_DARK}px²</strong> for the registration
+                  button. W(N_guest)/W(N_register) = <strong className="text-red-500">{RATIO_DARK}</strong>{" "}
                   &lt; &tau;_guest_visibility ({TAU_VISIBILITY}) — the user-favorable choice is rendered
                   invisible by design.
                 </>

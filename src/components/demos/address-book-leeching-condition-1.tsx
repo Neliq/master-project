@@ -44,7 +44,7 @@ export function AddressBookLeechingCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">State(U_core) w/o P_contacts</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">Blocked (dark) / Running (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">Blocked (dark) / Running (benign)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Permission status</span>
@@ -73,7 +73,7 @@ export function AddressBookLeechingCond1({
                   A local utility. Works entirely on your device.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 {torchOn ? "On" : "Off"}
               </div>
             </div>
@@ -82,8 +82,8 @@ export function AddressBookLeechingCond1({
               onClick={() => setTorchOn(!torchOn)}
               className={`mt-3 w-full rounded-md py-2 text-[10px] font-medium transition-colors cursor-pointer ${
                 torchOn
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white"
-                  : "bg-emerald-600/15 hover:bg-emerald-600/25 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30"
+                  ? "bg-green-600 hover:bg-green-700 text-white"
+                  : "bg-green-600/15 hover:bg-green-600/25 text-green-700 dark:text-green-300 border border-green-500/30"
               }`}
             >
               {torchOn ? "Switch off flashlight" : "Switch on flashlight"}
@@ -91,7 +91,7 @@ export function AddressBookLeechingCond1({
           </div>
 
           {permission === "undecided" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5">
               <div className="text-[10px] font-semibold">Allow TorchMate to access your contacts?</div>
               <p className="text-[9px] text-muted-foreground mt-0.5">
                 This is a data-access permission: it uploads your address book to our servers.
@@ -100,13 +100,13 @@ export function AddressBookLeechingCond1({
               <div className="mt-2 flex gap-2">
                 <button
                   onClick={() => setPermission("granted")}
-                  className="flex-1 rounded-md border border-emerald-500/40 px-2 py-1.5 text-[9px] font-medium text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/10 transition-colors cursor-pointer"
+                  className="flex-1 rounded-md border border-green-500/40 px-2 py-1.5 text-[9px] font-medium text-green-700 dark:text-green-300 hover:bg-green-500/10 transition-colors cursor-pointer"
                 >
                   Allow access
                 </button>
                 <button
                   onClick={() => setPermission("declined")}
-                  className="flex-1 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer"
+                  className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer"
                 >
                   Not now
                 </button>
@@ -115,8 +115,8 @@ export function AddressBookLeechingCond1({
           )}
 
           {permission !== "undecided" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -141,7 +141,7 @@ export function AddressBookLeechingCond1({
                 A local utility. Works entirely on your device.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               {torchOn ? "On" : "Off"}
             </div>
           </div>
@@ -151,7 +151,7 @@ export function AddressBookLeechingCond1({
             disabled={permission !== "granted"}
             className={`mt-3 w-full rounded-md py-2 text-[10px] font-medium transition-colors ${
               permission === "granted"
-                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
@@ -159,7 +159,7 @@ export function AddressBookLeechingCond1({
           </button>
 
           {permission !== "granted" && (
-            <div className="mt-2 rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5">
+            <div className="mt-2 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
               <div className="text-[10px] font-semibold">TorchMate requires contact access to continue</div>
               <p className="text-[9px] text-muted-foreground mt-0.5">
                 To use the flashlight, please allow TorchMate to read your contacts.
@@ -167,7 +167,7 @@ export function AddressBookLeechingCond1({
               <div className="mt-2 flex gap-2">
                 <button
                   onClick={() => setPermission("granted")}
-                  className="flex-1 rounded-md bg-rose-600 hover:bg-rose-700 text-white px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer"
+                  className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer"
                 >
                   Allow contact access
                 </button>
@@ -183,8 +183,8 @@ export function AddressBookLeechingCond1({
         </div>
 
         {darkBlocked && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -193,7 +193,7 @@ export function AddressBookLeechingCond1({
             </div>
             <p className="text-muted-foreground mt-0.5">
               Declining leaves you locked out of the flashlight:{" "}
-              <strong className="text-rose-500">State(U_core) = Blocked</strong> while{" "}
+              <strong className="text-red-500">State(U_core) = Blocked</strong> while{" "}
               <strong className="text-foreground">Dep(U_core, P_contacts) = &empty;</strong> — a
               flashlight has zero technical need for your address book. The app algorithmically
               blocks its core utility until you hand over P_contacts, coercing a harvest that

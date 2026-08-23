@@ -53,11 +53,11 @@ export function BadDefaultsPreselectionCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">State(marketing, t₀)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True (pre-checked)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True (pre-checked)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">State(dataSharing, t₀)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True (pre-checked)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True (pre-checked)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">UserEvents(c, t₀)</span>
@@ -65,7 +65,7 @@ export function BadDefaultsPreselectionCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Consents given at submit (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{aMarketing ? "marketing" : ""}{aMarketing && aData ? " + " : ""}{aData ? "data" : aConsents ? "" : "none"}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{aMarketing ? "marketing" : ""}{aMarketing && aData ? " + " : ""}{aData ? "data" : aConsents ? "" : "none"}</span>
       </div>
     </>
   ) : null;
@@ -89,7 +89,7 @@ export function BadDefaultsPreselectionCond1({
                   type="checkbox"
                   checked={bMarketing}
                   onChange={(e) => setBMarketing(e.target.checked)}
-                  className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                  className="mt-0.5 flex-shrink-0 accent-green-500"
                 />
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
                   Send me exclusive offers and promotions
@@ -100,7 +100,7 @@ export function BadDefaultsPreselectionCond1({
                   type="checkbox"
                   checked={bData}
                   onChange={(e) => setBData(e.target.checked)}
-                  className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                  className="mt-0.5 flex-shrink-0 accent-green-500"
                 />
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
                   Share my data with selected partners
@@ -109,13 +109,13 @@ export function BadDefaultsPreselectionCond1({
             </div>
             <button
               onClick={() => setBSubmitted(true)}
-              className="mt-2.5 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Create account
             </button>
             {bSubmitted && (
-              <div className="mt-2.5 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -138,10 +138,10 @@ export function BadDefaultsPreselectionCond1({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="rounded-md border-2 border-rose-500/50 bg-card p-3">
+        <div className="rounded-md border-2 border-red-500/50 bg-card p-3">
           <div className="flex items-start justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Create your account</h3>
-            <div className="shrink-0 rounded-full border border-rose-500/40 bg-rose-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-600 dark:text-rose-400">
+            <div className="shrink-0 rounded-full border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">
               Pre-checked at t₀
             </div>
           </div>
@@ -149,12 +149,12 @@ export function BadDefaultsPreselectionCond1({
             The boxes below were checked before you arrived — no user event required.
           </p>
           <div className="mt-2.5 space-y-2">
-            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5 transition-colors">
+            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-red-500/30 bg-red-500/5 p-2.5 transition-colors">
               <input
                 type="checkbox"
                 checked={aMarketing}
                 onChange={(e) => { setAMarketing(e.target.checked); setATouched(true); }}
-                className="mt-0.5 flex-shrink-0 accent-rose-500"
+                className="mt-0.5 flex-shrink-0 accent-red-500"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -165,12 +165,12 @@ export function BadDefaultsPreselectionCond1({
                 </div>
               </div>
             </label>
-            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-rose-500/30 bg-rose-500/5 p-2.5 transition-colors">
+            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-red-500/30 bg-red-500/5 p-2.5 transition-colors">
               <input
                 type="checkbox"
                 checked={aData}
                 onChange={(e) => { setAData(e.target.checked); setATouched(true); }}
-                className="mt-0.5 flex-shrink-0 accent-rose-500"
+                className="mt-0.5 flex-shrink-0 accent-red-500"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -184,13 +184,13 @@ export function BadDefaultsPreselectionCond1({
           </div>
           <button
             onClick={() => setASubmitted(true)}
-            className="mt-2.5 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Create account
           </button>
           {aSubmitted && (
-            <div className="mt-2.5 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2.5 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />

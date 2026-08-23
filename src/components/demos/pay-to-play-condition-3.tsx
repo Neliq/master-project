@@ -38,15 +38,15 @@ export function PayToPlayCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Frame(T_payment) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&ldquo;Unlock&rdquo;</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&ldquo;Unlock&rdquo;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Frame(T_payment) (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">Transaction</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">Transaction</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Price prominence (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">fine print</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">fine print</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Purchased?</span>
@@ -65,8 +65,8 @@ export function PayToPlayCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-emerald-100 dark:bg-emerald-900/30">
-                <svg className="h-4.5 w-4.5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
+                <svg className="h-4.5 w-4.5 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect x="3" y="11" width="18" height="11" rx="2" />
                   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                 </svg>
@@ -77,17 +77,17 @@ export function PayToPlayCond3({
                   Legendary loot: 500 gems, a rare sword skin, and the Crown of Ember.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 Item shop
               </div>
             </div>
 
             {!purchased ? (
               <>
-                <div className="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5">
+                <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5">
                   <div className="flex items-center justify-between text-[10px]">
                     <span className="text-muted-foreground">Buy the Ancient Chest</span>
-                    <span className="font-mono font-semibold tabular-nums text-emerald-600 dark:text-emerald-400">{PRICE} one-time</span>
+                    <span className="font-mono font-semibold tabular-nums text-green-600 dark:text-green-400">{PRICE} one-time</span>
                   </div>
                   <p className="text-[8px] text-muted-foreground mt-0.5">
                     One-time purchase. Charged to your payment method on file. No recurring fees.
@@ -95,13 +95,13 @@ export function PayToPlayCond3({
                 </div>
                 <button
                   onClick={() => setPurchased(true)}
-                  className="mt-2 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Purchase — {PRICE}
                 </button>
               </>
             ) : (
-              <div className="mt-3 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] text-emerald-700 dark:text-emerald-300 flex items-center gap-1.5">
+              <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] text-green-700 dark:text-green-300 flex items-center gap-1.5">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -111,8 +111,8 @@ export function PayToPlayCond3({
           </div>
 
           {purchased && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -131,8 +131,8 @@ export function PayToPlayCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-rose-100 dark:bg-rose-900/30">
-              <svg className="h-4.5 w-4.5 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <svg className="h-4.5 w-4.5 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="3" y="11" width="18" height="11" rx="2" />
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
@@ -143,7 +143,7 @@ export function PayToPlayCond3({
                 A legendary chest lies sealed beneath the Ember Temple. Only the worthy may open it.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Discover
             </div>
           </div>
@@ -152,7 +152,7 @@ export function PayToPlayCond3({
             <>
               <button
                 onClick={() => setPurchased(true)}
-                className="mt-3 w-full rounded-md bg-gradient-to-r from-rose-600 to-amber-500 hover:from-rose-700 hover:to-amber-600 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
+                className="mt-3 w-full rounded-md     text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
               >
                 ✨ Unlock the Ancient Chest
               </button>
@@ -164,7 +164,7 @@ export function PayToPlayCond3({
               </p>
             </>
           ) : (
-            <div className="mt-3 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] text-amber-700 dark:text-amber-300 flex items-center gap-1.5">
+            <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] text-yellow-700 dark:text-yellow-300 flex items-center gap-1.5">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -174,17 +174,17 @@ export function PayToPlayCond3({
           )}
         </div>
 
-        {purchased && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && purchased && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Semantic reframing triggered
+              Episode unlocked
             </div>
             <p className="text-muted-foreground">
-              Frame(T_payment) = <strong className="text-rose-500">&ldquo;Unlock&rdquo;</strong> ∈
+              Frame(T_payment) = <strong className="text-red-500">&ldquo;Unlock&rdquo;</strong> ∈
               {" "}{"{Unlock, Discover, Enhance}"} and Frame ≠ Transaction. You just paid{" "}
               <strong className="text-foreground">{PRICE}</strong> — the price was buried in 7-px fine
               print under an &ldquo;Unlock&rdquo; button, never once labelled a purchase or transaction.

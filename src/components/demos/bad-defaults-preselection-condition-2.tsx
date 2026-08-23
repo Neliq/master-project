@@ -52,19 +52,19 @@ export function BadDefaultsPreselectionCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">V(c, t₀) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">False (collapsed accordion)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">False (collapsed accordion)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d_spatial(c, N_submit) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">~{260}px &gt; {TAU_PERIPHERAL}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">~{260}px &gt; {TAU_PERIPHERAL}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">V(c, t₀) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">True (visible viewport)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">True (visible viewport)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d_spatial(c, N_submit) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">~24px &lt; {TAU_PERIPHERAL}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">~24px &lt; {TAU_PERIPHERAL}</span>
       </div>
     </>
   ) : null;
@@ -83,12 +83,12 @@ export function BadDefaultsPreselectionCond2({
               One optional consent, right where you can see it.
             </p>
             <div className="mt-2.5 space-y-2">
-              <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 transition-colors">
+              <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-green-500/30 bg-green-500/5 p-2.5 transition-colors">
                 <input
                   type="checkbox"
                   checked={bConsent}
                   onChange={(e) => setBConsent(e.target.checked)}
-                  className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                  className="mt-0.5 flex-shrink-0 accent-green-500"
                 />
                 <div className="min-w-0 flex-1">
                   <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -101,14 +101,14 @@ export function BadDefaultsPreselectionCond2({
               </label>
               <button
                 onClick={() => setBSubmitted(true)}
-                className="w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Create account (N_submit)
               </button>
             </div>
             {bSubmitted && (
-              <div className="mt-2.5 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+              <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -128,7 +128,7 @@ export function BadDefaultsPreselectionCond2({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="rounded-md border-2 border-rose-500/50 bg-card p-3">
+        <div className="rounded-md border-2 border-red-500/50 bg-card p-3">
           <h3 className="text-[11px] font-semibold">Create your account</h3>
           <p className="text-[9px] text-muted-foreground mt-0.5">
             Nothing to read — just hit the button.
@@ -136,25 +136,25 @@ export function BadDefaultsPreselectionCond2({
           <div className="mt-2.5 space-y-2">
             <button
               onClick={() => setASubmitted(true)}
-              className="w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Create account (N_submit)
             </button>
             <details
               open={aExpanded}
               onToggle={(e) => setAExpanded(e.currentTarget.open)}
-              className="rounded-md border border-rose-500/30 bg-rose-500/5"
+              className="rounded-md border border-red-500/30 bg-red-500/5"
             >
               <summary className="cursor-pointer px-2.5 py-2 text-[9px] font-medium text-muted-foreground hover:text-foreground transition-colors select-none">
                 Show optional preferences (collapsed — below the fold)
               </summary>
-              <div className="border-t border-rose-500/20 p-2.5">
-                <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-rose-500/30 bg-background p-2 transition-colors">
+              <div className="border-t border-red-500/20 p-2.5">
+                <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-red-500/30 bg-background p-2 transition-colors">
                   <input
                     type="checkbox"
                     checked={aConsent}
                     onChange={(e) => setAConsent(e.target.checked)}
-                    className="mt-0.5 flex-shrink-0 accent-rose-500"
+                    className="mt-0.5 flex-shrink-0 accent-red-500"
                   />
                   <div className="min-w-0 flex-1">
                     <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -169,8 +169,8 @@ export function BadDefaultsPreselectionCond2({
             </details>
           </div>
           {aSubmitted && (
-            <div className="mt-2.5 rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-              <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+            <div className="mt-2.5 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
+              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />

@@ -46,15 +46,15 @@ export function AutomaticAcceptThirdPartyTermCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|E_declared| (named in text)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">0 (dark) / {BENIGN_DECLARED.length} (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">0 (dark) / {BENIGN_DECLARED.length} (benign)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|E_actual| (bound on accept)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{DARK_ACTUAL_TOTAL} (dark) / {BENIGN_DECLARED.length} (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DARK_ACTUAL_TOTAL} (dark) / {BENIGN_DECLARED.length} (benign)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|E_actual| &gg; |E_declared|</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True (dark) / False (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True (dark) / False (benign)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Consented?</span>
@@ -80,7 +80,7 @@ export function AutomaticAcceptThirdPartyTermCond2({
             <ul className="mt-2 space-y-1">
               {BENIGN_DECLARED.map((name) => (
                 <li key={name} className="flex items-center gap-2 rounded-md border border-border bg-background px-2 py-1.5">
-                  <svg className="h-3 w-3 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="h-3 w-3 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
                   <span className="text-[10px] font-medium text-foreground/80">{name}</span>
@@ -93,19 +93,19 @@ export function AutomaticAcceptThirdPartyTermCond2({
             </p>
             <button
               onClick={() => setBenignDone(true)}
-              className="mt-2.5 w-full rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Continue
             </button>
           </div>
 
           {benignDone && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                Fully resolved entities
+                Preferences saved
               </div>
               <p className="text-muted-foreground mt-0.5">
                 Your consent binds exactly the <strong className="text-foreground">{BENIGN_DECLARED.length}
@@ -127,15 +127,15 @@ export function AutomaticAcceptThirdPartyTermCond2({
           </p>
           <button
             onClick={() => setDarkDone(true)}
-            className="mt-2.5 w-full rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Continue
           </button>
         </div>
 
-        {darkDone && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-2">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && darkDone && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-2">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -143,7 +143,7 @@ export function AutomaticAcceptThirdPartyTermCond2({
               Opaque entity resolution
             </div>
             <p className="text-muted-foreground">
-              &ldquo;Trusted partners&rdquo; named <strong className="text-rose-500">0 entities</strong>{" "}
+              &ldquo;Trusted partners&rdquo; named <strong className="text-red-500">0 entities</strong>{" "}
               in the text you read — yet execution granted consent to{" "}
               <strong className="text-foreground">{DARK_ACTUAL_TOTAL} entities</strong>, including{" "}
               {DARK_ACTUAL.join(", ")} and {DARK_ACTUAL_TOTAL - DARK_ACTUAL.length} more:

@@ -65,11 +65,11 @@ export function ComplexLanguageCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">FKGL(N_text) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{FKGL_DARK.toFixed(1)} &gt; &tau;_edu ({TAU_EDUCATION_LIMIT})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{FKGL_DARK.toFixed(1)} &gt; &tau;_edu ({TAU_EDUCATION_LIMIT})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">FKGL (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{FKGL_BENIGN.toFixed(1)}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{FKGL_BENIGN.toFixed(1)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Public reading level (τ)</span>
@@ -96,7 +96,7 @@ export function ComplexLanguageCond3({
                 <h3 className="text-[11px] font-semibold">Create your account</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">Read the data-processing notice, then confirm.</p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 FKGL {FKGL_BENIGN.toFixed(1)}
               </div>
             </div>
@@ -110,7 +110,7 @@ export function ComplexLanguageCond3({
                 type="checkbox"
                 checked={agreed}
                 onChange={(e) => setAgreed(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                className="mt-0.5 flex-shrink-0 accent-green-500"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -127,7 +127,7 @@ export function ComplexLanguageCond3({
               disabled={!agreed}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 agreed
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -136,8 +136,8 @@ export function ComplexLanguageCond3({
           </div>
 
           {created && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -159,14 +159,14 @@ export function ComplexLanguageCond3({
               <h3 className="text-[11px] font-semibold">Create your account</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Read the data-processing notice, then confirm.</p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               FKGL {FKGL_DARK.toFixed(1)}
             </div>
           </div>
 
           <div className="mt-3 max-h-32 overflow-y-auto rounded-md border bg-background p-2.5">
             <p className="text-[9px] leading-relaxed text-foreground/70">{DISCLOSURE_DARK}</p>
-            <p className="mt-1 text-[7px] italic text-rose-500/70">
+            <p className="mt-1 text-[7px] italic text-red-500/70">
               FKGL {FKGL_DARK.toFixed(1)} — requires collegiate/legal education.
             </p>
           </div>
@@ -176,7 +176,7 @@ export function ComplexLanguageCond3({
               type="checkbox"
               checked={agreed}
               onChange={(e) => setAgreed(e.target.checked)}
-              className="mt-0.5 flex-shrink-0 accent-rose-500"
+              className="mt-0.5 flex-shrink-0 accent-red-500"
             />
             <div className="min-w-0 flex-1">
               <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -193,7 +193,7 @@ export function ComplexLanguageCond3({
             disabled={!agreed}
             className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               agreed
-                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
@@ -201,17 +201,17 @@ export function ComplexLanguageCond3({
           </button>
         </div>
 
-        {created && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && created && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Readability exceedance triggered
+              Additional terms
             </div>
             <p className="text-muted-foreground">
-              FKGL(N_text) = <span className="font-mono text-rose-500">{FKGL_DARK.toFixed(1)}</span> — the disclosure
+              FKGL(N_text) = <span className="font-mono text-red-500">{FKGL_DARK.toFixed(1)}</span> — the disclosure
               requires a graduate-level education — while the general public reads at grade{" "}
               <span className="font-mono">{TAU_EDUCATION_LIMIT}</span>. {FKGL_DARK.toFixed(1)} &gt; &tau;_education_limit, so the
               trigger fires.
@@ -225,7 +225,7 @@ export function ComplexLanguageCond3({
               <summary className="cursor-pointer font-medium text-muted-foreground transition-colors hover:text-foreground">
                 Show plain-English version
               </summary>
-              <p className="mt-1 rounded border border-emerald-500/20 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+              <p className="mt-1 rounded border border-green-500/20 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
                 {DISCLOSURE_BENIGN}
               </p>
             </details>

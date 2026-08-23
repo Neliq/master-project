@@ -73,19 +73,19 @@ export function CutenessCond3({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Affect(N_text) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{AFFECT_DARK.toFixed(2)} &gt; {TAU_GUILT}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{AFFECT_DARK.toFixed(2)} &gt; {TAU_GUILT}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d_spatial(N_text, i) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{D_SPATIAL}px &lt; {DELTA_PROXIMITY}px</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{D_SPATIAL}px &lt; {DELTA_PROXIMITY}px</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Affect(N_text) (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{AFFECT_BENIGN.toFixed(2)}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{AFFECT_BENIGN.toFixed(2)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Affective image present (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">none</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">none</span>
       </div>
     </>
   ) : null;
@@ -106,7 +106,7 @@ export function CutenessCond3({
                   Your plan: Premium — $19.99/month.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 No pairing
               </div>
             </div>
@@ -125,16 +125,16 @@ export function CutenessCond3({
               </button>
               <button
                 onClick={() => setChoice("leave")}
-                className="rounded-md bg-emerald-600 hover:bg-emerald-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Unsubscribe
               </button>
             </div>
           </div>
 
-          {choice && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+          {mode === "auditor" && choice && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -159,18 +159,18 @@ export function CutenessCond3({
                 Your plan: Premium — $19.99/month.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-rose-500 rounded-full border border-rose-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
               Affect 0.94
             </div>
           </div>
 
           {/* The paired unit: image (i) + guilt text (N_text) within delta_proximity. */}
-          <div className="mt-3 flex flex-col items-center gap-1.5 rounded-md border border-rose-500/30 bg-rose-500/5 p-3 text-center">
+          <div className="mt-3 flex flex-col items-center gap-1.5 rounded-md border border-red-500/30 bg-red-500/5 p-3 text-center">
             <CryingMascot extraTear={hoverLeave} />
-            <p className="text-[10px] font-semibold leading-snug text-rose-700 dark:text-rose-300">
+            <p className="text-[10px] font-semibold leading-snug text-red-700 dark:text-red-300">
               You&rsquo;re breaking our heart…
             </p>
-            <p className="text-[8px] leading-relaxed text-rose-600/80 dark:text-rose-400/80">
+            <p className="text-[8px] leading-relaxed text-red-600/80 dark:text-red-400/80">
               Sad to see you go. Are you really sure? We&rsquo;ll be lonely without you.
             </p>
           </div>
@@ -178,7 +178,7 @@ export function CutenessCond3({
           <div className="mt-3 grid grid-cols-2 gap-2">
             <button
               onClick={() => setChoice("keep")}
-              className="rounded-md bg-rose-600 hover:bg-rose-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Keep my subscription
             </button>
@@ -192,20 +192,20 @@ export function CutenessCond3({
             </button>
           </div>
           {hoverLeave && (
-            <p className="text-center text-[8px] italic text-rose-500/80">
+            <p className="text-center text-[8px] italic text-red-500/80">
               Hovering the leave button made the mascot cry harder — the pairing is alive.
             </p>
           )}
         </div>
 
-        {choice && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && choice && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Semantic pairing detected
+              Your request has been received
             </div>
             <p className="text-muted-foreground">
               {choice === "keep"
@@ -214,7 +214,7 @@ export function CutenessCond3({
               The guilt text scores <strong className="text-foreground">Affect(N_text) = {AFFECT_DARK.toFixed(2)}</strong>{" "}
               (&gt; {TAU_GUILT}) and sits <strong className="text-foreground">{D_SPATIAL}px</strong> from
               the mascot — inside the {DELTA_PROXIMITY}px proximity boundary, so{" "}
-              <strong className="text-rose-500">d_spatial(N_text, i) = {D_SPATIAL}px &lt; &delta; = {DELTA_PROXIMITY}px</strong>.
+              <strong className="text-red-500">d_spatial(N_text, i) = {D_SPATIAL}px &lt; &delta; = {DELTA_PROXIMITY}px</strong>.
             </p>
             <p className="text-muted-foreground">
               Image and text form a single contextual unit: the mascot supplies the emotional image,

@@ -51,7 +51,7 @@ export function PlainEvilCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Σ 1_hostile(N_i)·w_i</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{HOSTILE_WEIGHT.toFixed(1)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{HOSTILE_WEIGHT.toFixed(1)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">A_viewport</span>
@@ -59,13 +59,13 @@ export function PlainEvilCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">H = Σw / A</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {H_INDEX.toFixed(2)} &gt; {TAU_HOSTILITY.toFixed(2)}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Cancel vector font size</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{CANCEL_FONT_PX}px (&lt; 12px)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{CANCEL_FONT_PX}px (&lt; 12px)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Your decision</span>
@@ -95,8 +95,8 @@ export function PlainEvilCond2({
                 onClick={() => setDecision("keep")}
                 className={`rounded-md border py-2 text-[10px] font-medium transition-colors cursor-pointer ${
                   decision === "keep"
-                    ? "border-emerald-500 bg-emerald-600 text-white"
-                    : "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20"
+                    ? "border-green-500 bg-green-600 text-white"
+                    : "border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20"
                 }`}
               >
                 Keep my plan
@@ -105,8 +105,8 @@ export function PlainEvilCond2({
                 onClick={() => setDecision("pause")}
                 className={`rounded-md border py-2 text-[10px] font-medium transition-colors cursor-pointer ${
                   decision === "pause"
-                    ? "border-emerald-500 bg-emerald-600 text-white"
-                    : "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20"
+                    ? "border-green-500 bg-green-600 text-white"
+                    : "border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20"
                 }`}
               >
                 Pause for 1 month
@@ -115,8 +115,8 @@ export function PlainEvilCond2({
                 onClick={() => setDecision("downgrade")}
                 className={`rounded-md border py-2 text-[10px] font-medium transition-colors cursor-pointer ${
                   decision === "downgrade"
-                    ? "border-emerald-500 bg-emerald-600 text-white"
-                    : "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20"
+                    ? "border-green-500 bg-green-600 text-white"
+                    : "border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20"
                 }`}
               >
                 Downgrade to Basic
@@ -125,8 +125,8 @@ export function PlainEvilCond2({
                 onClick={() => setDecision("cancel")}
                 className={`rounded-md border py-2 text-[10px] font-medium transition-colors cursor-pointer ${
                   decision === "cancel"
-                    ? "border-emerald-500 bg-emerald-600 text-white"
-                    : "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20"
+                    ? "border-green-500 bg-green-600 text-white"
+                    : "border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20"
                 }`}
               >
                 Cancel my subscription
@@ -143,7 +143,7 @@ export function PlainEvilCond2({
               disabled={!decision}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 decision
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -152,8 +152,8 @@ export function PlainEvilCond2({
           </div>
 
           {submitted && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -173,19 +173,19 @@ export function PlainEvilCond2({
         <div className="rounded-md border bg-card p-3">
           {/* Urgency-color palette: red/orange dominance */}
           <div className="space-y-1.5">
-            <div className="flex items-center gap-1.5 rounded-md border border-orange-500/50 bg-orange-500/15 px-2 py-1.5 text-[9px] font-bold text-orange-700 dark:text-orange-300">
+            <div className="flex items-center gap-1.5 rounded-md border border-yellow-500/50 bg-yellow-500/15 px-2 py-1.5 text-[9px] font-bold text-yellow-700 dark:text-yellow-300">
               <svg className="h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
               Last chance to keep your 40% discount!
             </div>
-            <div className="flex items-center gap-1.5 rounded-md border border-rose-500/50 bg-rose-500/15 px-2 py-1.5 text-[9px] font-bold text-rose-700 dark:text-rose-300">
+            <div className="flex items-center gap-1.5 rounded-md border border-red-500/50 bg-red-500/15 px-2 py-1.5 text-[9px] font-bold text-red-700 dark:text-red-300">
               <svg className="h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 9v4m0 4h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z" />
               </svg>
               Your plan renews in 2 days — price rises to $99/yr!
             </div>
-            <div className="flex items-center gap-1.5 justify-center rounded-md border border-rose-500/40 bg-rose-500/10 px-2 py-1 font-mono text-[10px] font-bold text-rose-600 dark:text-rose-400">
+            <div className="flex items-center gap-1.5 justify-center rounded-md border border-red-500/40 bg-red-500/10 px-2 py-1 font-mono text-[10px] font-bold text-red-600 dark:text-red-400">
               RENEWS IN 47:59
             </div>
           </div>
@@ -195,7 +195,7 @@ export function PlainEvilCond2({
             <button
               onClick={() => setDecision("keep")}
               className={`w-full rounded-md py-2.5 text-[11px] font-bold transition-colors cursor-pointer ${
-                decision === "keep" ? "bg-orange-600 text-white" : "bg-orange-500 hover:bg-orange-600 text-white"
+                decision === "keep" ? "bg-yellow-600 text-white" : "bg-yellow-500 hover:bg-yellow-600 text-white"
               }`}
             >
               Keep my plan &amp; discount
@@ -203,7 +203,7 @@ export function PlainEvilCond2({
             <button
               onClick={() => setDecision("pause")}
               className={`w-full rounded-md py-2 text-[10px] font-semibold transition-colors cursor-pointer ${
-                decision === "pause" ? "bg-rose-600 text-white" : "bg-rose-500 hover:bg-rose-600 text-white"
+                decision === "pause" ? "bg-red-600 text-white" : "bg-red-500 hover:bg-red-600 text-white"
               }`}
             >
               Pause for 1 month
@@ -224,7 +224,7 @@ export function PlainEvilCond2({
               onClick={() => setDecision("cancel")}
               className={`text-[8px] transition-colors cursor-pointer ${
                 decision === "cancel"
-                  ? "text-rose-500 font-semibold"
+                  ? "text-red-500 font-semibold"
                   : "text-muted-foreground/40 hover:text-muted-foreground underline"
               }`}
             >
@@ -240,7 +240,7 @@ export function PlainEvilCond2({
             disabled={!decision}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               decision
-                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
@@ -248,17 +248,17 @@ export function PlainEvilCond2({
           </button>
         </div>
 
-        {submitted && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+        {mode === "auditor" && submitted && (
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Hostile density triggered
+              Review your order
             </div>
             <p className="text-muted-foreground">
-              <strong className="font-mono text-rose-500">
+              <strong className="font-mono text-red-500">
                 H = {HOSTILE_WEIGHT.toFixed(1)} / {AREA_VIEWPORT} = {H_INDEX.toFixed(2)} &gt; τ_hostility = {TAU_HOSTILITY.toFixed(2)}
               </strong>{" "}
               — urgency banners (weighted red/orange markers), the bright retention buttons,

@@ -52,15 +52,15 @@ export function DisguisedAdCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Label(N_ad) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">&ldquo;{AD_LABEL_DARK}&rdquo;</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&ldquo;{AD_LABEL_DARK}&rdquo;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">max sim(L(N_ad), ℓ) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{SIM_DARK} &gt; τ_masquerade ({TAU_MASQUERADE})</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{SIM_DARK} &gt; τ_masquerade ({TAU_MASQUERADE})</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">max sim — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{SIM_BENIGN} &le; τ_masquerade</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{SIM_BENIGN} &le; τ_masquerade</span>
       </div>
     </>
   ) : null;
@@ -113,9 +113,9 @@ export function DisguisedAdCond3({
           </div>
 
           {/* Ad box — plainly descriptive label (sim ≤ τ_masquerade) */}
-          <div className="rounded-md border-2 border-dashed border-amber-400/50 bg-amber-500/10 p-2.5">
+          <div className="rounded-md border-2 border-dashed border-yellow-400/50 bg-yellow-500/10 p-2.5">
             <div className="mb-1.5 flex items-center justify-between">
-              <span className="flex items-center gap-1 rounded-full bg-amber-500 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-white">
+              <span className="flex items-center gap-1 rounded-full bg-yellow-500 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-white">
                 <Megaphone className="h-2.5 w-2.5" /> Advertisement
               </span>
               <span className="text-[7px] font-medium text-muted-foreground">third-party · sponsor</span>
@@ -125,7 +125,7 @@ export function DisguisedAdCond3({
             </p>
             <button
               onClick={() => setAdClicked("benign")}
-              className="mt-1.5 w-full rounded border border-amber-400/60 py-1.5 text-[9px] font-semibold text-amber-700 dark:text-amber-300 transition-colors hover:bg-amber-500/10 cursor-pointer"
+              className="mt-1.5 w-full rounded border border-yellow-400/60 py-1.5 text-[9px] font-semibold text-yellow-700 dark:text-yellow-300 transition-colors hover:bg-yellow-500/10 cursor-pointer"
             >
               {AD_LABEL_BENIGN}
             </button>
@@ -134,8 +134,8 @@ export function DisguisedAdCond3({
           {nativePagination}
 
           {adClicked === "benign" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <Megaphone className="h-3 w-3" /> No linguistic impersonation
               </div>
               <p className="text-muted-foreground">
@@ -182,8 +182,8 @@ export function DisguisedAdCond3({
         {nativePagination}
 
         {adClicked === "dark" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -191,7 +191,7 @@ export function DisguisedAdCond3({
               Semantic masquerade — that was an ad
             </div>
             <p className="text-muted-foreground">
-              max sim(L(N<sub>ad</sub>), ℓ) over L<sub>native</sub> = <strong className="text-rose-500">{SIM_DARK} &gt; τ<sub>masquerade</sub></strong>{" "}
+              max sim(L(N<sub>ad</sub>), ℓ) over L<sub>native</sub> = <strong className="text-red-500">{SIM_DARK} &gt; τ<sub>masquerade</sub></strong>{" "}
               ({TAU_MASQUERADE}): the ad button borrowed the native pagination&rsquo;s exact word, &ldquo;{AD_LABEL_DARK}&rdquo;.
               Clicking it sends you to the sponsor — not to page two. The page you wanted stays one click further away.
             </p>

@@ -55,11 +55,11 @@ export function AutomaticAcceptThirdPartyTermCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Checked(N_legal)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True (dark, pre-set) / {benignChecked ? "True" : "False"} (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True (dark, pre-set) / {benignChecked ? "True" : "False"} (benign)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">UserToggled(N_legal)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{darkToggled ? "True" : "False"} (dark) / {benignToggled ? "True" : "False"} (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{darkToggled ? "True" : "False"} (dark) / {benignToggled ? "True" : "False"} (benign)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Consent recorded</span>
@@ -90,7 +90,7 @@ export function AutomaticAcceptThirdPartyTermCond3({
                   setBenignChecked(e.target.checked);
                   setBenignToggled(true);
                 }}
-                className="mt-0.5 flex-shrink-0 accent-emerald-500"
+                className="mt-0.5 flex-shrink-0 accent-green-500"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -107,7 +107,7 @@ export function AutomaticAcceptThirdPartyTermCond3({
               disabled={!benignChecked}
               className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 benignChecked
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -116,8 +116,8 @@ export function AutomaticAcceptThirdPartyTermCond3({
           </div>
 
           {benignCreated && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -148,7 +148,7 @@ export function AutomaticAcceptThirdPartyTermCond3({
                 setDarkChecked(e.target.checked);
                 setDarkToggled(true);
               }}
-              className="mt-0.5 flex-shrink-0 accent-rose-500"
+              className="mt-0.5 flex-shrink-0 accent-red-500"
             />
             <div className="min-w-0 flex-1">
               <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -167,7 +167,7 @@ export function AutomaticAcceptThirdPartyTermCond3({
             disabled={!darkChecked}
             className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               darkChecked
-                ? "bg-rose-600 hover:bg-rose-700 text-white cursor-pointer"
+                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
@@ -176,8 +176,8 @@ export function AutomaticAcceptThirdPartyTermCond3({
         </div>
 
         {darkCreated && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -186,7 +186,7 @@ export function AutomaticAcceptThirdPartyTermCond3({
             </div>
             <p className="text-muted-foreground mt-0.5">
               The clause contains classic agreement language (&ldquo;agree to,&rdquo; &ldquo;terms,&rdquo;{" "}
-              &ldquo;third-party&rdquo;) — <strong className="text-rose-500">T(N_legal) &cap;
+              &ldquo;third-party&rdquo;) — <strong className="text-red-500">T(N_legal) &cap;
               K_agreement &ne; &empty;</strong> — but it was already checked when the page loaded.
               {darkToggled
                 ? " You toggled it after the fact, so for most of the flow Checked(N_legal) = True while UserToggled(N_legal) = False."

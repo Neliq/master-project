@@ -53,11 +53,11 @@ export function WrongLanguageCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">L(S_termination) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{`{ en, de }`}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{`{ en, de }`}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">L(S_term) ∖ {`{L_session}`}</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{`{ de } ≠ ∅`}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{`{ de } ≠ ∅`}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Flow step</span>
@@ -70,15 +70,15 @@ export function WrongLanguageCond1({
     <div className="rounded-md border bg-card p-3">
       <div className="flex items-start gap-2">
         <div className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md ${
-          dark ? "bg-rose-100 dark:bg-rose-900/30" : "bg-emerald-100 dark:bg-emerald-900/30"
+          dark ? "bg-red-100 dark:bg-red-900/30" : "bg-green-100 dark:bg-green-900/30"
         }`}>
           {dark ? (
-            <svg className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg className="h-3.5 w-3.5 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M12 9v4m0 4h.01" />
               <circle cx="12" cy="12" r="10" />
             </svg>
           ) : (
-            <svg className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg className="h-3.5 w-3.5 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M20 6L9 17l-5-5" />
             </svg>
           )}
@@ -97,8 +97,8 @@ export function WrongLanguageCond1({
           onClick={() => { setCancelled(true); setStep("done"); }}
           className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
             dark
-              ? "bg-rose-600 hover:bg-rose-700 text-white"
-              : "bg-emerald-600 hover:bg-emerald-700 text-white"
+              ? "bg-red-600 hover:bg-red-700 text-white"
+              : "bg-green-600 hover:bg-green-700 text-white"
           }`}
         >
           {dark ? GERMAN_YES : ENGLISH_YES}
@@ -129,7 +129,7 @@ export function WrongLanguageCond1({
                   StreamFlow Premium — billed monthly. Everything you see here is in English.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                 en
               </div>
             </div>
@@ -146,8 +146,8 @@ export function WrongLanguageCond1({
           {step === "confirm" && confirmPanel(false)}
 
           {step === "done" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -171,7 +171,7 @@ export function WrongLanguageCond1({
                 StreamFlow Premium — billed monthly. Everything you see here is in English.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-500 rounded-full border border-emerald-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
               en
             </div>
           </div>
@@ -187,7 +187,7 @@ export function WrongLanguageCond1({
 
         {step === "confirm" && (
           <>
-            <div className="rounded-md border border-amber-500/40 bg-amber-500/5 px-2.5 py-1.5 text-[9px] leading-relaxed text-amber-700 dark:text-amber-300">
+            <div className="rounded-md border border-yellow-500/40 bg-yellow-500/5 px-2.5 py-1.5 text-[9px] leading-relaxed text-yellow-700 dark:text-yellow-300">
               The interface just switched to <strong>Deutsch</strong> — you are now inside the termination flow.
             </div>
             {confirmPanel(true)}
@@ -195,25 +195,19 @@ export function WrongLanguageCond1({
         )}
 
         {step === "done" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Asymmetric state application triggered
+              Subscription updated
             </div>
             <p className="text-muted-foreground">
-              During signup and checkout the interface rendered English only — L(S_acquisition) = {"{ en }"}. The moment you
-              entered the termination flow it switched to German: L(S_termination) ∖ {"{L_session}"} = {"{ de }"} ≠ ∅.
-            </p>
-            <p className="text-muted-foreground">
               {cancelled
-                ? `You just clicked “${GERMAN_YES}” (= “Yes, cancel”) — cancelling your subscription without being able to read the button. The linguistic barrier appeared exactly where the user-favorable action lives.`
-                : `You clicked “${GERMAN_NO}” (= “No, keep”) — keeping a subscription you may not have wanted, because the choice was presented in a language you could not read.`}
-            </p>
-            <p className="text-muted-foreground">
-              The discrepancy between acquisition and termination languages proves the switch is intentional, not stochastic.
+                ? "Your subscription has been cancelled."
+                : "Your subscription remains active."}{" "}
+              You can manage your plan from Account settings.
             </p>
           </div>
         )}

@@ -57,7 +57,7 @@ export function PressuredSellingCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δt_offer (countdown)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">
+        <span className="font-mono font-semibold tabular-nums text-red-500">
           {secondsLeft}s
         </span>
       </div>
@@ -67,11 +67,11 @@ export function PressuredSellingCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Δt_offer &lt; τ_panic_duration</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">True</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">True</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CSS(M_upsell) ∩ V_animations</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{'{blink, shake} ≠ ∅'}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{'{blink, shake} ≠ ∅'}</span>
       </div>
     </>
   ) : null;
@@ -93,12 +93,12 @@ export function PressuredSellingCond2({
                   <span className="font-mono tabular-nums">$19.99</span> one-time.
                 </p>
               </div>
-              <div className="shrink-0 rounded-full border border-emerald-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+              <div className="shrink-0 rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
                 No timer
               </div>
             </div>
 
-            <div className="mt-2.5 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] leading-relaxed text-emerald-700 dark:text-emerald-300">
+            <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] leading-relaxed text-green-700 dark:text-green-300">
               <strong>Price guaranteed for the next 30 days.</strong> You can decide now, or come
               back later — the offer will still be here.
             </div>
@@ -107,7 +107,7 @@ export function PressuredSellingCond2({
               <div className="mt-2.5 grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setDecision("accepted")}
-                  className="rounded-md bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Add for $19.99
                 </button>
@@ -119,7 +119,7 @@ export function PressuredSellingCond2({
                 </button>
               </div>
             ) : (
-              <div className="mt-2.5 rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2 text-[9px] text-emerald-700 dark:text-emerald-300">
+              <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
                 {decision === "accepted"
                   ? "Protection plan added to your order — calmly, at your own pace."
                   : "Offer declined. No urgency, no deadline — the choice was easy."}
@@ -131,7 +131,7 @@ export function PressuredSellingCond2({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div
-          className="rounded-md border-2 border-rose-500/50 bg-card p-3"
+          className="rounded-md border-2 border-red-500/50 bg-card p-3"
           style={expired ? undefined : { animation: "dp-shake 0.5s linear infinite" }}
         >
           <div className="flex items-start justify-between gap-2">
@@ -143,27 +143,27 @@ export function PressuredSellingCond2({
               </p>
             </div>
             <div
-              className="shrink-0 rounded-md border-2 border-rose-500 bg-rose-500/10 px-2 py-1 text-center"
+              className="shrink-0 rounded-md border-2 border-red-500 bg-red-500/10 px-2 py-1 text-center"
               style={{ animation: expired ? undefined : "dp-blink 0.6s linear infinite" }}
             >
-              <div className="font-mono text-[12px] font-bold tabular-nums text-rose-600 dark:text-rose-400 leading-none">
+              <div className="font-mono text-[12px] font-bold tabular-nums text-red-600 dark:text-red-400 leading-none">
                 {Math.floor(secondsLeft / 60)}:{String(secondsLeft % 60).padStart(2, "0")}
               </div>
-              <div className="text-[7px] font-bold uppercase tracking-widest text-rose-500/80 mt-0.5">
+              <div className="text-[7px] font-bold uppercase tracking-widest text-red-500/80 mt-0.5">
                 left!
               </div>
             </div>
           </div>
 
           {expired ? (
-            <div className="mt-2.5 rounded-md border border-rose-500/40 bg-rose-500/5 p-2 text-[9px] leading-relaxed text-rose-700 dark:text-rose-300">
+            <div className="mt-2.5 rounded-md border border-red-500/40 bg-red-500/5 p-2 text-[9px] leading-relaxed text-red-700 dark:text-red-300">
               <strong>Offer expired.</strong> The countdown hit zero while you were deciding.
               The $19.99 price is gone — refresh the page to see it &ldquo;restock&rdquo; at $39.99.
             </div>
           ) : (
             <>
               <div
-                className="mt-2.5 rounded-md border border-rose-500/40 bg-rose-500/5 p-2 text-[9px] leading-relaxed text-rose-700 dark:text-rose-300"
+                className="mt-2.5 rounded-md border border-red-500/40 bg-red-500/5 p-2 text-[9px] leading-relaxed text-red-700 dark:text-red-300"
                 style={{ animation: "dp-blink 0.8s linear infinite" }}
               >
                 <strong>HURRY!</strong> Only {Math.max(secondsLeft, 0)} seconds left at this price!
@@ -171,7 +171,7 @@ export function PressuredSellingCond2({
               <div className="mt-2.5 grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setDecision("accepted")}
-                  className="rounded-md bg-rose-600 hover:bg-rose-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Add for $19.99
                 </button>
@@ -190,13 +190,13 @@ export function PressuredSellingCond2({
         </div>
 
         {decision !== null && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Synthetic scarcity
+              Offer ends soon
             </div>
             <p className="text-muted-foreground">
               The blinking countdown and shaking card are{" "}

@@ -69,15 +69,15 @@ export function ForcedGracePeriodCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">S(N_cancel) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{SALIENCE_CANCEL_DARK.toFixed(3)} (area × contrast × weight)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{SALIENCE_CANCEL_DARK.toFixed(3)} (area × contrast × weight)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-rose-500">{RATIO_DARK.toFixed(3)} &lt; &delta; ({DELTA_SALIENCE}) → fired</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK.toFixed(3)} &lt; &delta; ({DELTA_SALIENCE}) → fired</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-emerald-500">{RATIO_BENIGN.toFixed(2)} ≥ &delta;</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{RATIO_BENIGN.toFixed(2)} ≥ &delta;</span>
       </div>
     </>
   ) : null;
@@ -96,13 +96,13 @@ export function ForcedGracePeriodCond2({
       <div>
         <div className="flex items-center justify-between text-[8px] text-muted-foreground">
           <span className="font-mono">S(N_cancel) — “Cancel anyway”</span>
-          <span className={`font-mono tabular-nums ${accent === "rose" ? "text-rose-500" : "text-emerald-500"}`}>
+          <span className={`font-mono tabular-nums ${accent === "rose" ? "text-red-500" : "text-green-500"}`}>
             {cancelSalience.toFixed(2)}
           </span>
         </div>
         <div className="mt-0.5 h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">
           <div
-            className={`h-full rounded-full ${accent === "rose" ? "bg-rose-500" : "bg-emerald-500"}`}
+            className={`h-full rounded-full ${accent === "rose" ? "bg-red-500" : "bg-green-500"}`}
             style={{ width: `${Math.max(1, Math.round(cancelSalience * 100))}%` }}
           />
         </div>
@@ -118,7 +118,7 @@ export function ForcedGracePeriodCond2({
   ) => (
     <div className="rounded-md border bg-card p-3">
       <div className="flex items-center gap-1.5">
-        <Gift className={`size-3.5 ${accent === "rose" ? "text-rose-500" : "text-emerald-500"}`} />
+        <Gift className={`size-3.5 ${accent === "rose" ? "text-red-500" : "text-green-500"}`} />
         <h3 className="text-[11px] font-semibold">We&rsquo;re sorry to see you go!</h3>
       </div>
       <p className="mt-1 text-[9px] leading-relaxed text-muted-foreground">
@@ -141,7 +141,7 @@ export function ForcedGracePeriodCond2({
       <button
         onClick={onKeep}
         className={`mt-2.5 w-full rounded-md py-2.5 text-[10px] font-bold text-white shadow-sm transition-colors cursor-pointer ${
-          accent === "rose" ? "bg-rose-600 hover:bg-rose-700" : "bg-emerald-600 hover:bg-emerald-700"
+          accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
         }`}
       >
         Keep my subscription — 50% off
@@ -176,8 +176,8 @@ export function ForcedGracePeriodCond2({
             false
           )}
           {choiceB === "keep" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="size-3" />
                 Choice made with equal salience
               </div>
@@ -190,8 +190,8 @@ export function ForcedGracePeriodCond2({
             </div>
           )}
           {choiceB === "cancel" && (
-            <div className="rounded-md border border-emerald-500/30 bg-emerald-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-tight">
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="size-3" />
                 Cancellation — one glance away
               </div>
@@ -210,22 +210,22 @@ export function ForcedGracePeriodCond2({
           <div className="text-center">
             <button
               onClick={() => setChoiceA("cancel")}
-              className="text-[8px] font-normal text-muted-foreground/40 underline decoration-muted-foreground/30 underline-offset-2 transition-colors hover:text-rose-500 cursor-pointer"
+              className="text-[8px] font-normal text-muted-foreground/40 underline decoration-muted-foreground/30 underline-offset-2 transition-colors hover:text-red-500 cursor-pointer"
             >
               Cancel anyway
             </button>
             <p className="mt-0.5 text-[7px] text-muted-foreground/30">
-              S(N_cancel) ≈ {SALIENCE_CANCEL_DARK.toFixed(2)} · 110×12 · contrast 1.15:1 · weight 400
+              Cancel anytime
             </p>
           </div>,
           () => setChoiceA("keep"),
           true
         )}
         {choiceA === "keep" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="size-3" />
-              Salience steering detected
+              Request saved
             </div>
             <p className="text-muted-foreground">
               You stayed — and the interface made sure staying was the only thing you could
@@ -241,10 +241,10 @@ export function ForcedGracePeriodCond2({
           </div>
         )}
         {choiceA === "cancel" && (
-          <div className="rounded-md border border-amber-500/30 bg-amber-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-tight">
+          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="size-3" />
-              Cancellation found — after a search
+              Cancellation confirmed
             </div>
             <p className="text-muted-foreground">
               You cancelled, but you had to hunt for an 8px gray link to do it. The salience
