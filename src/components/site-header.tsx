@@ -3,44 +3,35 @@
  */
 
 import Link from "next/link";
-import { Eye } from "lucide-react";
-
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-foreground/10 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-6">
+    <header className="site-header sticky top-0 z-50 border-b backdrop-blur">
+      <div className="mx-auto grid h-20 max-w-7xl grid-cols-3 items-center gap-4 px-4">
         <Link
           href="/"
-          className="group/logo flex items-center gap-2 font-heading text-base font-semibold tracking-tight"
+          className="justify-self-start text-xs font-semibold tracking-[0.16em] text-white transition-opacity hover:opacity-70"
         >
-          <span className="grid size-7 place-items-center rounded-md bg-foreground text-background transition-transform group-hover/logo:rotate-3">
-            <Eye className="size-4" aria-hidden />
-          </span>
-          <span className="flex items-baseline gap-1">
-            Darkpattern<span className="text-muted-foreground">.lab</span>
-          </span>
+          CATALOG
         </Link>
 
-        <nav
-          aria-label="Primary"
-          className="text-muted-foreground flex items-center gap-1 text-sm"
+        <Link
+          href="/"
+          className="justify-self-center text-center text-lg font-extrabold leading-[0.9] tracking-[0.12em] text-white transition-opacity hover:opacity-70"
         >
-          <Link
-            href="/"
-            className="hover:text-foreground rounded-md px-2.5 py-1.5 transition-colors"
-          >
-            Catalog
-          </Link>
-          <a
-            href="https://www.deceptive.design"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="hover:text-foreground rounded-md px-2.5 py-1.5 transition-colors"
-          >
-            Source taxonomy
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
-        </nav>
+          DARK PATTERN
+          <br />
+          LAB
+        </Link>
+
+        <a
+          href="https://www.deceptive.design"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="justify-self-end text-xs font-semibold tracking-[0.16em] text-white transition-opacity hover:opacity-70"
+        >
+          SOURCE
+          <span className="sr-only"> taxonomy (opens in a new tab)</span>
+        </a>
       </div>
     </header>
   );

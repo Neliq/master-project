@@ -88,8 +88,8 @@ export function DemoSection({
                 : "border-foreground/10 bg-muted/20"
             )}
           >
-            {mode === "auditor" ? <p className="text-muted-foreground max-w-2xl text-xs leading-relaxed">
-              Each example shows the pattern as an <strong className="text-foreground">A/B pair</strong>{" "}
+            {mode === "auditor" ? <p className="text-white max-w-2xl text-xs leading-relaxed">
+              Each example shows the pattern as an <strong className="text-white">A/B pair</strong>{" "}
               (thesis Ch. 4–5): <strong className="text-red-700 dark:text-red-300">Variant A</strong>{" "}
               executes the deceptive heuristic, <strong className="text-green-700 dark:text-green-300">Variant B</strong>{" "}
               is the same interface with it neutralised.{" "}
@@ -120,8 +120,8 @@ export function DemoSection({
             : "border-foreground/10 bg-muted/20"
         )}
       >
-        {mode === "auditor" ? <p className="text-muted-foreground max-w-2xl text-xs leading-relaxed">
-          Each example shows the pattern as an <strong className="text-foreground">A/B pair</strong>{" "}
+        {mode === "auditor" ? <p className="text-white max-w-2xl text-xs leading-relaxed">
+          Each example shows the pattern as an <strong className="text-white">A/B pair</strong>{" "}
           (thesis Ch. 4–5): <strong className="text-red-700 dark:text-red-300">Variant A</strong>{" "}
           executes the deceptive heuristic, <strong className="text-green-700 dark:text-green-300">Variant B</strong>{" "}
           is the same interface with it neutralised. Auditor view adds annotations,

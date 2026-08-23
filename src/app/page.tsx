@@ -7,6 +7,7 @@
  */
 
 import { PatternCard } from "@/components/pattern-card";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { CATEGORIES, PATTERNS, patternsInCategory } from "@/lib/patterns";
 
@@ -14,22 +15,21 @@ export default function HomePage() {
   const total = PATTERNS.length;
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
+    <div className="sandbox-page mx-auto max-w-7xl px-4 py-12 text-[#f5f5f5] sm:py-16">
       {/* Hero ─────────────────────────────────────────────────────── */}
-      <section className="grid gap-8 pb-12 sm:pb-16">
-        <div className="max-w-3xl">
-          <div className="text-muted-foreground mb-3 inline-flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-            <span className="bg-foreground/10 inline-block size-1.5 rounded-full" />
+      <section className="grid items-center gap-8 pb-12 sm:pb-16 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="flex flex-col gap-8">
+          <div className="max-w-3xl">
+          <div className="mb-3 inline-flex items-center gap-2 text-xs font-semibold tracking-wide text-white uppercase">
+            <span className="inline-block size-1.5 bg-white/45" />
             Educational reference
           </div>
-          <h1 className="text-4xl leading-tight font-semibold tracking-tight sm:text-5xl">
-            62 dark patterns,
+          <h1 className="text-5xl leading-24 font-light tracking-tight uppercase sm:text-8xl">
+            objective
             <br />
-            <span className="text-muted-foreground">
-              one objective definition each.
-            </span>
+            dark patterns
           </h1>
-          <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed">
+          <p className="sandbox-hero-description mt-5 max-w-2xl text-lg font-extralight leading-relaxed uppercase text-white">
             A catalog of manipulative design patterns observed in production
             interfaces. Every entry is described in terms of an objective,
             mathematically expressible condition — predicates you can
@@ -37,37 +37,49 @@ export default function HomePage() {
             Each pattern is demonstrated as an A/B pair: the deceptive
             variant next to the compliant, non-dark variant.
           </p>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge variant="secondary" className="rounded-full">
-            {total} patterns
-          </Badge>
-          <Badge variant="secondary" className="rounded-full">
-            {CATEGORIES.length} categories
-          </Badge>
-
-        </div>
-
-        {/* Category TOC */}
-        <div className="flex flex-col gap-3">
-          <h2 className="text-sm font-medium tracking-wide uppercase">
-            Browse by category
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {CATEGORIES.map((c) => (
-              <a
-                key={c.id}
-                href={`#${c.id}`}
-                className="hover:border-foreground/30 hover:bg-foreground/5 rounded-full border border-foreground/15 px-3 py-1.5 text-xs font-medium transition-colors"
-              >
-                {c.name}
-                <span className="text-muted-foreground ml-1.5 font-normal">
-                  {patternsInCategory(c.id).length}
-                </span>
-              </a>
-            ))}
           </div>
+
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge variant="outline" className="border-white/35 text-white">
+              {total} patterns
+            </Badge>
+            <Badge variant="outline" className="border-white/35 text-white">
+              {CATEGORIES.length} categories
+            </Badge>
+
+          </div>
+
+          {/* Category TOC */}
+          <div className="flex flex-col gap-3">
+            <h2 className="text-sm font-medium tracking-wide uppercase">
+              Browse by category
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {CATEGORIES.map((c) => (
+                <a
+                  key={c.id}
+                  href={`#${c.id}`}
+                  className="border border-white/30 px-3 py-1.5 text-xs font-medium transition-colors hover:border-white hover:bg-white/10"
+                >
+                  {c.name}
+                  <span className="ml-1.5 font-semibold text-white">
+                    {patternsInCategory(c.id).length}
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="relative h-[520px] w-full lg:-mt-12 lg:h-[800px] lg:self-start lg:translate-x-16">
+          <Image
+            src="/images/hero6.png"
+            alt=""
+            fill
+            priority
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            className="object-contain object-center"
+          />
         </div>
       </section>
 
@@ -90,11 +102,11 @@ export default function HomePage() {
                   >
                     {category.name}
                   </h2>
-                  <Badge variant="outline" className="rounded-full">
+                  <Badge variant="outline" className="border-white/35 text-white">
                     {items.length}
                   </Badge>
                 </div>
-                <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">
+                <p className="max-w-2xl text-sm font-medium leading-relaxed text-white">
                   {category.description}
                 </p>
               </div>

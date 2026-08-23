@@ -24,17 +24,17 @@ export function ViewModeToggle({
     <div
       role="group"
       aria-label="View mode"
-      className="inline-flex items-center gap-0.5 rounded-md border bg-muted/30 p-0.5 text-xs"
+      className="inline-flex items-center gap-0 border border-[#0000f2]/40 bg-white p-0 text-xs"
     >
       <button
         type="button"
         onClick={() => onChange("user")}
         aria-pressed={mode === "user"}
         className={cn(
-          "flex items-center gap-1.5 rounded-sm px-2.5 py-1 font-medium transition-colors",
+          "flex items-center gap-1.5 px-3 py-1.5 font-semibold transition-colors",
           mode === "user"
-            ? "bg-background text-foreground shadow-sm"
-            : "text-muted-foreground hover:text-foreground"
+            ? "bg-[#0000f2] text-white"
+            : "text-[#0000f2]/65 hover:bg-[#0000f2]/10 hover:text-[#0000f2]"
         )}
       >
         <EyeOff className="size-3" />
@@ -45,10 +45,10 @@ export function ViewModeToggle({
         onClick={() => onChange("auditor")}
         aria-pressed={mode === "auditor"}
         className={cn(
-          "flex items-center gap-1.5 rounded-sm px-2.5 py-1 font-medium transition-colors",
+          "flex items-center gap-1.5 px-3 py-1.5 font-semibold transition-colors",
           mode === "auditor"
-            ? "bg-amber-500/20 text-amber-700 dark:text-amber-300 shadow-sm"
-            : "text-muted-foreground hover:text-foreground"
+            ? "bg-[#0000f2] text-white"
+            : "text-[#0000f2]/65 hover:bg-[#0000f2]/10 hover:text-[#0000f2]"
         )}
       >
         <Eye className="size-3" />

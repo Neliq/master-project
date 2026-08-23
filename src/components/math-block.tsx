@@ -55,14 +55,14 @@ export function MathBlock({
   const givenHtml = given ? renderKatex(given, true) : null;
 
   return (
-    <div className="rounded-lg border bg-muted/30 px-4 py-3 ring-1 ring-foreground/5">
+    <div className="border border-white bg-white px-4 py-3 text-[#0000f2]">
       {title ? (
-        <div className="mb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+        <div className="mb-2 text-xs font-semibold tracking-wide text-[#0000f2] uppercase">
           {title}
         </div>
       ) : null}
       <div
-        className="overflow-x-auto text-foreground"
+        className="overflow-x-auto text-[#0000f2]"
         role="math"
         aria-label={ariaLabel ?? title ?? "Mathematical expression"}
         // The HTML is produced by KaTeX, which sanitises its own output.
@@ -70,7 +70,7 @@ export function MathBlock({
       />
       {givenHtml ? (
         <div className="mt-3 flex items-start gap-2 border-t pt-3">
-          <span className="shrink-0 font-mono text-xs text-muted-foreground">
+          <span className="shrink-0 font-mono text-xs font-semibold text-[#0000f2]">
             given
           </span>
           <div
@@ -81,7 +81,7 @@ export function MathBlock({
         </div>
       ) : null}
       {note ? (
-        <p className="text-muted-foreground mt-3 border-t pt-3 text-xs leading-relaxed">
+        <p className="mt-3 border-t border-[#0000f2]/20 pt-3 text-xs font-medium leading-relaxed text-[#0000f2]/75">
           {note}
         </p>
       ) : null}

@@ -4,6 +4,30 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: "Hermes Mono";
+  src: url("/fonts/hermes-courier.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hermes Rules";
+  src: url("/fonts/hermes-rules.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hermes Display";
+  src: url("/fonts/hermes-display.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 300 800;
+  font-style: normal;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -127,4 +151,110 @@
   html {
     @apply font-sans;
   }
+}
+
+/* Hermes Agent-inspired sandbox chrome. Demo internals intentionally remain
+   self-contained and keep their existing visual language. */
+.sandbox-body {
+  background: #0000f2;
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+}
+
+.site-header,
+.site-footer,
+.sandbox-page,
+.pattern-page {
+  text-transform: uppercase;
+}
+
+.site-header,
+.site-footer {
+  border-color: rgb(245 245 245 / 25%);
+  background: #0000f2;
+  color: #f5f5f5;
+}
+
+.demo-shell-frame {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+.site-header {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+}
+
+.site-footer {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+}
+
+.site-header > div {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+}
+
+.site-footer > div,
+.sandbox-page {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+}
+
+.sandbox-page *,
+.pattern-page,
+.pattern-page :not(.katex, .katex *) {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+}
+
+.sandbox-page h1,
+.sandbox-page h2,
+.sandbox-page h3 {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.sandbox-page .sandbox-card-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.sandbox-card-description {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+}
+
+.sandbox-card-meta {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+}
+
+.sandbox-card-image::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.32;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.2' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.sandbox-hero-description {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif;
+}
+
+.pattern-page h1,
+.pattern-page h2,
+.pattern-page h3 {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Simulation text is intentionally sans-serif, including nested font-mono
+   utilities, so the simulated product UI never inherits sandbox typography. */
+.pattern-page [data-dp-simulation],
+.pattern-page [data-dp-simulation] * {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif !important;
+  text-transform: none !important;
+}
+
+/* Never override KaTeX's own font metrics; changing them distorts formulas. */
+.pattern-page .katex,
+.pattern-page .katex * {
+  text-transform: none !important;
 }

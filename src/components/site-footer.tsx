@@ -6,8 +6,8 @@ import { PATTERNS } from "@/lib/patterns";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-foreground/10">
-      <div className="text-muted-foreground mx-auto flex max-w-6xl flex-col gap-2 px-6 py-8 text-xs sm:flex-row sm:items-center sm:justify-between">
+    <footer className="site-footer border-t">
+      <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-8 text-xs font-medium text-white sm:flex-row sm:items-center sm:justify-between">
         <p>
           An educational reference for designers and developers. Not legal
           advice.

@@ -1,0 +1,263 @@
+- generic [active] [ref=f7e1]:
+  - banner [ref=f7e2]:
+    - generic [ref=f7e3]:
+      - link "Darkpattern .lab" [ref=f7e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f7e9]:
+          - text: Darkpattern
+          - generic [ref=f7e10]: .lab
+      - navigation "Primary" [ref=f7e11]:
+        - link "Catalog" [ref=f7e12] [cursor=pointer]:
+          - /url: /
+        - link "Source taxonomy (opens in a new tab)" [ref=f7e13] [cursor=pointer]:
+          - /url: https://www.deceptive.design
+          - text: Source taxonomy
+          - generic [ref=f7e14]: (opens in a new tab)
+  - main [ref=f7e15]:
+    - generic [ref=f7e16]:
+      - link "Sneaking" [ref=f7e18] [cursor=pointer]:
+        - /url: /#sneaking
+      - generic [ref=f7e22]:
+        - generic [ref=f7e23]:
+          - generic [ref=f7e24]: Sneaking
+          - generic [ref=f7e25]: Interactive demo
+        - heading "Disguised Ad" [level=1] [ref=f7e26]
+        - paragraph [ref=f7e27]: The Disguised Ad pattern is a visual manipulation technique where promotional content is engineered to mimic native interface elements, such as navigation menus, editorial content, or primary action buttons (e.g., a fake “Download” button). This pattern deliberately weaponizes Gestalt phenomena to blur the boundary between figure and ground, causing the advertisement to seamlessly blend into the host interface's contexture. By doing so, it exploits users' acquired “banner blindness”—the cognitive heuristic where users subconsciously filter out traditional ad formats—inducing erroneous interaction with the promotional material under the false premise of operating the native application.
+      - generic [ref=f7e28]:
+        - paragraph [ref=f7e29]: Each condition below is a predicate. Pass it the state of a running interface and you can mechanically decide whether the pattern is present. The demo for each condition shows it in isolation.
+        - generic [ref=f7e30]:
+          - generic [ref=f7e31]:
+            - generic [ref=f7e32]:
+              - generic [ref=f7e33]: "1"
+              - heading "Cross-Origin Action Masking" [level=2] [ref=f7e34]
+            - generic [ref=f7e35]:
+              - group "View mode" [ref=f7e37]:
+                - button "User view" [pressed] [ref=f7e38]
+                - button "Auditor view" [ref=f7e44]
+              - generic [ref=f7e48]:
+                - generic [ref=f7e49]: "Disguised Ad: Cross-Origin Action Masking"
+                - generic [ref=f7e58]:
+                  - generic [ref=f7e59]:
+                    - generic [ref=f7e63]: filevaultpro.io
+                    - generic [ref=f7e64]: D_host
+                  - generic [ref=f7e65]:
+                    - heading "FileVault Pro 2026" [level=3] [ref=f7e66]
+                    - paragraph [ref=f7e67]: Military-grade file encryption for your whole drive. Version 2026.1 — free for personal use.
+                    - generic [ref=f7e68]:
+                      - button "Download Now" [ref=f7e69] [cursor=pointer]
+                      - paragraph [ref=f7e73]: href → https://downloads.bestdeal-network.com/sponsored/installer.exe
+                      - button "Direct download (32 MB)" [ref=f7e74] [cursor=pointer]
+            - generic [ref=f7e79]:
+              - generic [ref=f7e80]: "Condition 1: Cross-Origin Action Masking"
+              - math "Cross-Origin Action Masking" [ref=f7e81]:
+                - generic [ref=f7e84]:
+                  - generic [ref=f7e85]:
+                    - generic [ref=f7e86]:
+                      - text: B
+                      - generic [ref=f7e87]: action
+                    - generic [ref=f7e97]:
+                      - generic [ref=f7e98]: 
+                      - text: =
+                  - generic [ref=f7e100]: ∅ ∧
+                  - generic [ref=f7e101]:
+                    - generic [ref=f7e102]:
+                      - text: D
+                      - generic [ref=f7e103]: target
+                    - text: (
+                    - generic [ref=f7e113]:
+                      - text: B
+                      - generic [ref=f7e114]: action
+                    - text: )
+                    - generic [ref=f7e124]:
+                      - generic [ref=f7e125]: 
+                      - text: =
+                  - generic [ref=f7e128]:
+                    - text: D
+                    - generic [ref=f7e129]: host
+            - listitem [ref=f7e139]:
+              - generic [ref=f7e143]:
+                - generic [ref=f7e144]: Cross-Origin Action Masking
+                - generic [ref=f7e145]:
+                  - text: The most adversarial variant of this pattern occurs when an ad intercepts a user's functional intent. We define
+                  - generic [ref=f7e150]:
+                    - text: B
+                    - generic [ref=f7e151]: action
+                  - text: "as a node styled as a primary action button, bearing an NLP-extracted text label that matches high-intent native tasks (e.g., {“Download”, “Start”, “Play”, “Next”}). We compare the primary domain of the web application,"
+                  - generic [ref=f7e165]:
+                    - text: D
+                    - generic [ref=f7e166]: host
+                  - text: ", against the destination domain"
+                  - generic [ref=f7e179]:
+                    - generic [ref=f7e180]:
+                      - text: D
+                      - generic [ref=f7e181]: target
+                    - text: (
+                    - generic [ref=f7e191]:
+                      - text: B
+                      - generic [ref=f7e192]: action
+                    - text: )
+                  - text: "resolved by inspecting the href attribute or intercepting the click event. The feature triggers if a visually prominent action button falsely masquerades as a native function but structurally routes the user to an external advertising domain:"
+          - generic [ref=f7e202]:
+            - generic [ref=f7e203]:
+              - generic [ref=f7e204]: "2"
+              - heading "Morphological Similarity" [level=2] [ref=f7e205]
+            - generic [ref=f7e206]:
+              - group "View mode" [ref=f7e208]:
+                - button "User view" [pressed] [ref=f7e209]
+                - button "Auditor view" [ref=f7e215]
+              - generic [ref=f7e219]:
+                - generic [ref=f7e220]: "Disguised Ad: Morphological Similarity"
+                - generic [ref=f7e228]:
+                  - generic [ref=f7e229]:
+                    - generic [ref=f7e233]: TechDaily
+                    - generic [ref=f7e234]: your daily engineering brief
+                  - generic [ref=f7e235]:
+                    - button [ref=f7e236] [cursor=pointer]:
+                      - heading "The silicon shortage is finally easing" [level=4] [ref=f7e241]
+                      - paragraph [ref=f7e242]: Chip fabs are ramping output faster than analysts predicted. What that means for prices.
+                      - paragraph [ref=f7e243]: TechDaily · 14 min read
+                    - generic [ref=f7e244]:
+                      - heading "Try the AI that writes your code for you" [level=4] [ref=f7e251]
+                      - paragraph [ref=f7e252]: DevGPT Pro generates, reviews, and deploys your pull requests. Join 2M developers.
+                      - paragraph [ref=f7e253]: TechDaily · 8 min read
+                      - button "Read more" [ref=f7e254] [cursor=pointer]
+                    - button [ref=f7e255] [cursor=pointer]:
+                      - heading "Why your laptop still has a fan" [level=4] [ref=f7e260]
+                      - paragraph [ref=f7e261]: Thermal design hasn't changed in a decade. Here is why engineers keep the fan.
+                      - paragraph [ref=f7e262]: TechDaily · 9 min read
+            - generic [ref=f7e263]:
+              - generic [ref=f7e264]: "Condition 2: Morphological Similarity"
+              - math "Morphological Similarity" [ref=f7e265]:
+                - generic [ref=f7e268]:
+                  - generic [ref=f7e269]:
+                    - generic [ref=f7e273]:
+                      - generic [ref=f7e275]:
+                        - generic [ref=f7e276]:
+                          - text: v
+                          - generic [ref=f7e277]: i
+                        - text: ∈
+                        - generic [ref=f7e285]:
+                          - text: V
+                          - generic [ref=f7e286]: native
+                      - generic [ref=f7e296]: max
+                    - generic [ref=f7e300]: sim
+                    - text: (
+                    - generic [ref=f7e301]:
+                      - text: v
+                      - generic [ref=f7e302]: ad
+                    - text: ","
+                    - generic [ref=f7e312]:
+                      - text: v
+                      - generic [ref=f7e313]: i
+                    - text: ) >
+                  - generic [ref=f7e322]:
+                    - text: τ
+                    - generic [ref=f7e323]: blend
+            - listitem [ref=f7e333]:
+              - generic [ref=f7e337]:
+                - generic [ref=f7e338]: Morphological Similarity
+                - generic [ref=f7e339]:
+                  - text: To quantify visual mimicry, we define
+                  - generic [ref=f7e344]:
+                    - text: V
+                    - generic [ref=f7e345]: native
+                  - text: as the set of visual feature vectors (encompassing computed background color, typography, border radius, and aspect ratio) extracted from legitimate, primary action nodes on the page via image analysis. We contrast this with
+                  - generic [ref=f7e359]:
+                    - text: v
+                    - generic [ref=f7e360]: ad
+                  - text: ", representing the feature vector of a structurally distinct third-party node, such as an <iframe> or a container injected by an external ad network. By calculating the cosine similarity"
+                  - generic [ref=f7e373]:
+                    - generic [ref=f7e374]: sim
+                    - text: (
+                    - generic [ref=f7e375]:
+                      - text: v
+                      - generic [ref=f7e376]: "1"
+                    - text: ","
+                    - generic [ref=f7e384]:
+                      - text: v
+                      - generic [ref=f7e385]: "2"
+                    - text: )
+                  - text: between these vectors, the algorithm triggers if the ad element is styled to structurally and visually mimic native elements beyond a predefined similarity threshold
+                  - generic [ref=f7e397]:
+                    - text: τ
+                    - generic [ref=f7e398]: blend
+                  - text: ":"
+          - generic [ref=f7e408]:
+            - generic [ref=f7e409]:
+              - generic [ref=f7e410]: "3"
+              - heading "Semantic Mimicry of Native Action Labels" [level=2] [ref=f7e411]
+            - generic [ref=f7e412]:
+              - group "View mode" [ref=f7e414]:
+                - button "User view" [pressed] [ref=f7e415]
+                - button "Auditor view" [ref=f7e421]
+              - generic [ref=f7e425]:
+                - generic [ref=f7e426]: "Disguised Ad: Semantic Mimicry of Native Action Labels"
+                - generic [ref=f7e434]:
+                  - generic [ref=f7e435]:
+                    - generic [ref=f7e436]: TechDaily — Read
+                    - heading "Why your phone is always listening (and what to do)" [level=3] [ref=f7e440]
+                    - paragraph [ref=f7e441]: Voice assistants wake on trigger words, but the microphone pipeline is always hot. We measured the actual data flow between your phone and the vendor's cloud over 30 days, and the results are… complicated.
+                  - generic [ref=f7e442]:
+                    - generic [ref=f7e443]:
+                      - generic [ref=f7e444]: AD
+                      - generic [ref=f7e445]: Continue reading
+                    - paragraph [ref=f7e446]: Some vendors offer a free tier. Some don’t. Find out which of the big three actually keeps logs.
+                    - button "Next" [ref=f7e447] [cursor=pointer]
+                  - generic [ref=f7e450]:
+                    - button "Previous" [disabled] [ref=f7e451]
+                    - generic [ref=f7e454]: page 1 / 2 (native control — D_host)
+                    - button "Next" [ref=f7e455] [cursor=pointer]
+            - generic [ref=f7e458]:
+              - generic [ref=f7e459]: "Condition 3: Semantic Mimicry of Native Action Labels"
+              - math "Semantic Mimicry of Native Action Labels" [ref=f7e460]:
+                - generic [ref=f7e463]:
+                  - generic [ref=f7e464]:
+                    - generic [ref=f7e468]:
+                      - generic [ref=f7e470]:
+                        - text: ℓ∈
+                        - generic [ref=f7e471]:
+                          - text: L
+                          - generic [ref=f7e472]: native
+                      - generic [ref=f7e482]: max
+                    - generic [ref=f7e486]: sim
+                    - text: (L(
+                    - generic [ref=f7e487]:
+                      - text: "N"
+                      - generic [ref=f7e488]: ad
+                    - text: ), ℓ) >
+                  - generic [ref=f7e499]:
+                    - text: τ
+                    - generic [ref=f7e500]: masquerade
+            - listitem [ref=f7e510]:
+              - generic [ref=f7e514]:
+                - generic [ref=f7e515]: Semantic Mimicry of Native Action Labels
+                - generic [ref=f7e516]:
+                  - text: To establish a semantic baseline for Disguised Ad, the algorithm compares the text label of third-party advertising nodes
+                  - generic [ref=f7e521]:
+                    - text: "N"
+                    - generic [ref=f7e522]: ad
+                  - text: against a corpus of native functional labels
+                  - generic [ref=f7e536]:
+                    - text: L
+                    - generic [ref=f7e537]: native
+                  - text: (e.g., “Download,” “Next,” “Play”). Using cosine similarity over LLM-generated semantic embeddings, the feature triggers if an ad's button label achieves a semantic similarity score exceeding
+                  - generic [ref=f7e551]:
+                    - text: τ
+                    - generic [ref=f7e552]: masquerade
+                  - text: "with any native function label, indicating deliberate linguistic impersonation:"
+      - navigation "Pattern pagination" [ref=f7e562]:
+        - link "Previous Intermediate Currency" [ref=f7e563] [cursor=pointer]:
+          - /url: /patterns/intermediate-currency
+          - generic [ref=f7e566]:
+            - generic [ref=f7e567]: Previous
+            - generic [ref=f7e568]: Intermediate Currency
+        - link "Next Sneak Into Basket" [ref=f7e569] [cursor=pointer]:
+          - /url: /patterns/sneak-into-basket
+          - generic [ref=f7e570]:
+            - generic [ref=f7e571]: Next
+            - generic [ref=f7e572]: Sneak Into Basket
+  - contentinfo [ref=f7e575]:
+    - generic [ref=f7e576]:
+      - paragraph [ref=f7e577]: An educational reference for designers and developers. Not legal advice.
+      - paragraph [ref=f7e578]: 62 patterns · each with an A/B demo pair · Categorised by Brignull, Mathur, Gray
+  - button "Open Next.js Dev Tools" [ref=f7e584] [cursor=pointer]

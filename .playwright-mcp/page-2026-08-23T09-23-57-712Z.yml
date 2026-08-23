@@ -1,0 +1,242 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - link "Darkpattern .lab" [ref=f2e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f2e9]:
+          - text: Darkpattern
+          - generic [ref=f2e10]: .lab
+      - navigation "Primary" [ref=f2e11]:
+        - link "Catalog" [ref=f2e12] [cursor=pointer]:
+          - /url: /
+        - link "Source taxonomy (opens in a new tab)" [ref=f2e13] [cursor=pointer]:
+          - /url: https://www.deceptive.design
+          - text: Source taxonomy
+          - generic [ref=f2e14]: (opens in a new tab)
+  - main [ref=f2e15]:
+    - generic [ref=f2e16]:
+      - link "Attention Manipulation" [ref=f2e18] [cursor=pointer]:
+        - /url: /#attention-manipulation
+      - generic [ref=f2e24]:
+        - generic [ref=f2e25]:
+          - generic [ref=f2e26]: Attention Manipulation
+          - generic [ref=f2e27]: Interactive demo
+        - heading "Auto-Play" [level=1] [ref=f2e28]
+        - paragraph [ref=f2e29]: Auto-Play is an attention-commandeering dark pattern formally categorized under “Forced Action” and “Interface Interference.” It occurs when a system autonomously initiates the playback of continuous media—such as video advertisements, algorithmic feeds, or the next episode in a queue—without requiring an explicit, affirmative interaction from the user. By exploiting human inertia and the psychological difficulty of task-switching, the interface transitions from a state of “opt-in” consumption to “opt-out” consumption. This deliberately inflates engagement metrics and forces the user to actively intervene to halt systemic momentum, often while silently draining device resources such as bandwidth and battery.
+      - generic [ref=f2e30]:
+        - paragraph [ref=f2e31]: Each condition below is a predicate. Pass it the state of a running interface and you can mechanically decide whether the pattern is present. The demo for each condition shows it in isolation.
+        - generic [ref=f2e32]:
+          - generic [ref=f2e33]:
+            - generic [ref=f2e34]:
+              - generic [ref=f2e35]: "1"
+              - heading "Autonomous Media Execution" [level=2] [ref=f2e36]
+            - generic [ref=f2e37]:
+              - group "View mode" [ref=f2e39]:
+                - button "User view" [pressed] [ref=f2e40]
+                - button "Auditor view" [ref=f2e46]
+              - generic [ref=f2e50]:
+                - generic [ref=f2e51]: "Auto-Play: Autonomous Media Execution"
+                - generic [ref=f2e60]:
+                  - generic [ref=f2e61]:
+                    - heading "Streamly — Field Notes" [level=3] [ref=f2e62]
+                    - generic [ref=f2e63]: auto
+                  - generic [ref=f2e69]:
+                    - generic [ref=f2e70]:
+                      - generic [ref=f2e71]:
+                        - text: Field Notes — Episode 1
+                        - generic [ref=f2e72]: — The first river crossing
+                      - generic [ref=f2e73]: 0%
+                    - paragraph [ref=f2e75]: Starting automatically…
+                  - paragraph [ref=f2e76]: Auto-advancing… the next episode begins by itself in a moment.
+            - generic [ref=f2e77]:
+              - generic [ref=f2e78]: "Condition 1: Autonomous Media Execution"
+              - math "Autonomous Media Execution" [ref=f2e79]:
+                - generic [ref=f2e82]:
+                  - generic [ref=f2e83]:
+                    - generic [ref=f2e84]:
+                      - text: S
+                      - generic [ref=f2e85]: play
+                    - text: (
+                    - generic [ref=f2e95]:
+                      - text: M
+                      - generic [ref=f2e96]: media
+                    - text: ) =
+                  - generic [ref=f2e106]:
+                    - generic [ref=f2e107]: "True"
+                    - generic [ref=f2e108]: given
+                    - generic [ref=f2e109]:
+                      - text: E
+                      - generic [ref=f2e110]: intent
+                    - text: =
+                  - generic [ref=f2e120]: ∅ ∧
+                  - generic [ref=f2e121]:
+                    - generic [ref=f2e122]: Intersection
+                    - text: (
+                    - generic [ref=f2e123]:
+                      - text: M
+                      - generic [ref=f2e124]: media
+                    - text: ","
+                    - generic [ref=f2e134]: Viewport
+                    - text: ) >
+                  - generic [ref=f2e136]:
+                    - text: τ
+                    - generic [ref=f2e137]: visible
+            - listitem [ref=f2e147]:
+              - generic [ref=f2e151]:
+                - generic [ref=f2e152]: Autonomous Media Execution
+                - generic [ref=f2e153]:
+                  - text: To identify the removal of user-led intent, we define
+                  - generic [ref=f2e158]:
+                    - text: M
+                    - generic [ref=f2e159]: media
+                  - text: as a continuous audiovisual asset and
+                  - generic [ref=f2e172]:
+                    - generic [ref=f2e173]:
+                      - text: S
+                      - generic [ref=f2e174]: play
+                    - text: (M)
+                  - text: as its active playback state. We contrast this with
+                  - generic [ref=f2e188]:
+                    - text: E
+                    - generic [ref=f2e189]: intent
+                  - text: ", a discrete user action specifically targeting the play affordance. The feature triggers if the application algorithmically forces the playback state to active solely based on the spatial rendering"
+                  - generic [ref=f2e202]:
+                    - generic [ref=f2e203]: Intersection
+                    - text: (
+                    - generic [ref=f2e204]:
+                      - text: M
+                      - generic [ref=f2e205]: media
+                    - text: ","
+                    - generic [ref=f2e215]: Viewport
+                    - text: )
+                  - text: exceeding a visibility threshold
+                  - generic [ref=f2e220]:
+                    - text: τ
+                    - generic [ref=f2e221]: visible
+                  - text: ". This ensures media consumption begins as a side effect of navigation rather than a result of intent:"
+          - generic [ref=f2e231]:
+            - generic [ref=f2e232]:
+              - generic [ref=f2e233]: "2"
+              - heading "Affordance Suppression" [level=2] [ref=f2e234]
+            - generic [ref=f2e235]:
+              - group "View mode" [ref=f2e237]:
+                - button "User view" [pressed] [ref=f2e238]
+                - button "Auditor view" [ref=f2e244]
+              - generic [ref=f2e248]:
+                - generic [ref=f2e249]: "Auto-Play: Affordance Suppression"
+                - generic [ref=f2e258]:
+                  - generic [ref=f2e259]:
+                    - heading "Streamly — auto-advance" [level=3] [ref=f2e260]
+                    - generic [ref=f2e261]: playing
+                  - generic [ref=f2e262]:
+                    - generic [ref=f2e266]:
+                      - generic [ref=f2e267]: Field Notes — Episode 2
+                      - generic [ref=f2e268]: Next episode in 10s — tap anywhere to pause
+                    - paragraph [ref=f2e269]: Playback controls are loading…
+            - generic [ref=f2e270]:
+              - generic [ref=f2e271]: "Condition 2: Affordance Suppression"
+              - math "Affordance Suppression" [ref=f2e272]:
+                - generic [ref=f2e275]:
+                  - generic [ref=f2e276]:
+                    - generic [ref=f2e277]: Visibility
+                    - text: (
+                    - generic [ref=f2e278]:
+                      - text: B
+                      - generic [ref=f2e279]: cancel
+                    - text: ) →
+                  - generic [ref=f2e289]: 0 ∨
+                  - generic [ref=f2e290]:
+                    - generic [ref=f2e291]: Cost
+                    - text: (
+                    - generic [ref=f2e292]:
+                      - text: S
+                      - generic [ref=f2e293]: play
+                    - text: →
+                  - generic [ref=f2e303]:
+                    - generic [ref=f2e304]: "False"
+                    - text: ) ≫
+                  - generic [ref=f2e305]: "1"
+            - listitem [ref=f2e306]:
+              - generic [ref=f2e310]:
+                - generic [ref=f2e311]: Affordance Suppression
+                - generic [ref=f2e312]:
+                  - text: The hostility of an auto-play system is exacerbated by inflating the friction required to regain control. We identify
+                  - generic [ref=f2e317]:
+                    - text: B
+                    - generic [ref=f2e318]: cancel
+                  - text: as the interactive UI node required to abort the auto-advance or pause the media. By evaluating the visual prominence
+                  - generic [ref=f2e331]:
+                    - generic [ref=f2e332]: Visibility
+                    - text: (x)
+                  - text: and the interaction effort
+                  - generic [ref=f2e335]:
+                    - generic [ref=f2e336]:
+                      - generic [ref=f2e337]: Cost
+                      - text: (
+                      - generic [ref=f2e338]:
+                        - text: S
+                        - generic [ref=f2e339]: play
+                      - text: →
+                    - generic [ref=f2e349]:
+                      - generic [ref=f2e350]: "False"
+                      - text: )
+                  - text: ", the algorithm detects suppression. The feature triggers if the system deliberately minimizes, hides, or delays the rendering of the cancellation node, artificially increasing the cognitive and motor effort required to stop the automation:"
+          - generic [ref=f2e351]:
+            - generic [ref=f2e352]:
+              - generic [ref=f2e353]: "3"
+              - heading "Semantic Framing of Auto-Play as Content Continuation" [level=2] [ref=f2e354]
+            - generic [ref=f2e355]:
+              - group "View mode" [ref=f2e357]:
+                - button "User view" [pressed] [ref=f2e358]
+                - button "Auditor view" [ref=f2e364]
+              - generic [ref=f2e368]:
+                - generic [ref=f2e369]: "Auto-Play: Semantic Framing of Auto-Play as Content Continuation"
+                - generic [ref=f2e378]:
+                  - generic [ref=f2e379]:
+                    - heading "Streamly — end of episode" [level=3] [ref=f2e380]
+                    - generic [ref=f2e381]: Up next
+                  - generic [ref=f2e382]:
+                    - generic [ref=f2e383]: Continue watching
+                    - generic [ref=f2e385]:
+                      - generic [ref=f2e386]: Episode 4 — The Reveal
+                      - generic [ref=f2e387]: Up next — starting in 5s
+                  - paragraph [ref=f2e390]: Nothing here says “autoplay.” The word appears nowhere on this screen — the automatic start is framed purely as your seamless viewing experience.
+            - generic [ref=f2e391]:
+              - generic [ref=f2e392]: "Condition 3: Semantic Framing of Auto-Play as Content Continuation"
+              - math "Semantic Framing of Auto-Play as Content Continuation" [ref=f2e393]:
+                - generic [ref=f2e396]:
+                  - generic [ref=f2e397]:
+                    - generic [ref=f2e398]: Frame
+                    - text: (
+                    - generic [ref=f2e399]:
+                      - text: T
+                      - generic [ref=f2e400]: autoplay
+                    - text: ) ∈
+                  - generic [ref=f2e410]:
+                    - text: "{"
+                    - generic [ref=f2e411]: Continuation
+                    - text: ","
+                    - generic [ref=f2e412]: Next
+                    - text: "} ∧"
+                  - generic [ref=f2e413]:
+                    - text: ¬∃
+                    - generic [ref=f2e414]: “autoplay”
+                    - text: ∈
+                  - generic [ref=f2e416]:
+                    - text: T
+                    - generic [ref=f2e417]: visible
+            - listitem [ref=f2e427]:
+              - generic [ref=f2e431]:
+                - generic [ref=f2e432]: Semantic Framing of Auto-Play as Content Continuation
+                - generic [ref=f2e433]: "To establish a semantic baseline for Auto-Play, the algorithm inspects the labeling of the auto-play mechanism. The feature triggers if the interface semantically frames automatic content playback as a “next episode,” “continue watching,” or “up next” feature without an explicit “autoplay enabled” disclosure, reframing an automatic action as user-initiated continuity:"
+      - navigation "Pattern pagination" [ref=f2e434]:
+        - link "Previous Countdown On Ads" [ref=f2e435] [cursor=pointer]:
+          - /url: /patterns/countdown-on-ads
+          - generic [ref=f2e438]:
+            - generic [ref=f2e439]: Previous
+            - generic [ref=f2e440]: Countdown On Ads
+  - contentinfo [ref=f2e442]:
+    - generic [ref=f2e443]:
+      - paragraph [ref=f2e444]: An educational reference for designers and developers. Not legal advice.
+      - paragraph [ref=f2e445]: 62 patterns · each with an A/B demo pair · Categorised by Brignull, Mathur, Gray
+  - button "Open Next.js Dev Tools" [ref=f2e451] [cursor=pointer]

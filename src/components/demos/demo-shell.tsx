@@ -20,7 +20,6 @@ import * as React from "react";
 import type { ReactNode } from "react";
 import {
   AlertTriangle,
-  Beaker,
   CheckCircle2,
   Clock,
   Eye,
@@ -129,24 +128,19 @@ export function DemoShell({
   return (
     <Card
       className={cn(
-        "border-foreground/10 ring-1 ring-foreground/5 overflow-hidden",
+        "demo-shell-frame overflow-hidden rounded-none border border-white/40 py-0 ring-1 ring-white/20",
         isAuditor && "ring-2 ring-yellow-500/40 border-yellow-500/40",
         className
       )}
     >
       <CardHeader
         className={cn(
-          "border-b py-3",
-          isAuditor ? "bg-yellow-500/10" : "bg-muted/30"
+          "rounded-none border-b !py-3",
+          isAuditor ? "bg-yellow-500/10" : "bg-transparent"
         )}
       >
         <div className="flex items-center gap-2">
-          {isAuditor ? (
-            <Eye className="text-yellow-700 dark:text-yellow-300 size-3.5" />
-          ) : (
-            <Beaker className="text-muted-foreground size-3.5" />
-          )}
-          <CardTitle className="text-sm font-medium tracking-wide uppercase">
+          <CardTitle className="text-white text-sm font-medium tracking-wide uppercase">
             {isAuditor ? `${title} — auditor view` : title}
           </CardTitle>
           {isAuditor && (
@@ -183,7 +177,7 @@ export function DemoShell({
           data-dp-simulation
           data-dp-speed={speed}
           onClickCapture={isAuditor ? handleClickCapture : undefined}
-          className="bg-background relative rounded-md border p-4 ring-1 ring-foreground/5 grayscale"
+          className="relative border border-white bg-white p-4 ring-1 ring-white/20"
         >
           {benign && isAuditor ? (
             <>

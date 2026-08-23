@@ -1,0 +1,121 @@
+- generic [active] [ref=f4e1]:
+  - main [ref=f4e2]:
+    - generic [ref=f4e3]:
+      - generic:
+        - navigation [ref=f4e4]:
+          - generic [ref=f4e5]:
+            - link "Nous" [ref=f4e6] [cursor=pointer]:
+              - /url: https://nousresearch.com
+            - link "Docs" [ref=f4e7] [cursor=pointer]:
+              - /url: /docs
+          - generic [ref=f4e8]:
+            - link "Hermes Agent" [ref=f4e9] [cursor=pointer]:
+              - /url: /
+              - text: HermesAgent
+            - generic [ref=f4e10]:
+              - link "Discord" [ref=f4e11] [cursor=pointer]:
+                - /url: https://discord.gg/nousresearch
+              - link "X" [ref=f4e14] [cursor=pointer]:
+                - /url: https://x.com/NousResearch
+              - link "GitHub" [ref=f4e17] [cursor=pointer]:
+                - /url: https://github.com/NousResearch/hermes-agent
+          - generic [ref=f4e20]:
+            - button "Products" [ref=f4e22] [cursor=pointer]
+            - link "Install" [ref=f4e25] [cursor=pointer]:
+              - /url: "#downloads"
+        - generic [ref=f4e29]:
+          - paragraph [ref=f4e30]: Open Source • MIT License
+          - heading "The Agent That Grows With You" [level=1] [ref=f4e31]:
+            - generic [ref=f4e32]: The Agent
+            - generic [ref=f4e33]: That Grows
+            - generic [ref=f4e34]: With You
+          - generic [ref=f4e35]:
+            - generic [ref=f4e36]:
+              - paragraph [ref=f4e37]: Download Hermes Desktop App
+              - generic [ref=f4e38]:
+                - link ">/\\*~=~\\ +\\_ *_~//" [disabled]:
+                  - /url: "#install"
+            - generic [ref=f4e39]:
+              - paragraph [ref=f4e40]: Install via terminal
+              - generic [ref=f4e42]:
+                - tablist [ref=f4e43]:
+                  - tab "macOS / Linux" [ref=f4e44] [cursor=pointer]
+                  - tab "Windows" [ref=f4e45] [cursor=pointer]
+                - generic [ref=f4e48]:
+                  - generic [ref=f4e49]: curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+                  - button "Copy install command" [ref=f4e50] [cursor=pointer]
+        - generic [ref=f4e57]:
+          - generic [ref=f4e58]:
+            - paragraph [ref=f4e59]: Native App
+            - heading "Hermes Desktop for macOS, Windows & Linux" [level=2] [ref=f4e60]
+          - generic [ref=f4e61]:
+            - generic [ref=f4e63]:
+              - paragraph [ref=f4e64]: macOS 12+
+              - heading "Mac OS" [level=2] [ref=f4e65]
+              - link "Download desktop app" [ref=f4e66] [cursor=pointer]:
+                - /url: https://hermes-assets.nousresearch.com/Hermes-Setup.dmg?build=fcbd1076a938
+            - generic [ref=f4e71]:
+              - paragraph [ref=f4e72]: Windows 10/11
+              - heading "Windows" [level=2] [ref=f4e73]
+              - link "Download desktop app" [ref=f4e74] [cursor=pointer]:
+                - /url: https://hermes-assets.nousresearch.com/Hermes-Setup.exe?build=fcbd1076a938
+            - generic [ref=f4e79]:
+              - paragraph [ref=f4e80]: Any distro
+              - heading "Linux" [level=2] [ref=f4e81]
+              - link "Install via terminal" [ref=f4e82] [cursor=pointer]:
+                - /url: "#install"
+        - generic [ref=f4e86]:
+          - img "Hermes Agent" [ref=f4e87]
+          - generic [ref=f4e88]:
+            - generic [ref=f4e89]:
+              - generic [ref=f4e90]: Feature
+              - generic [ref=f4e91]: Preview
+            - generic [ref=f4e92]:
+              - article [ref=f4e93]:
+                - generic [ref=f4e94]:
+                  - paragraph [ref=f4e95]: "#1 Connect"
+                  - heading "Lives Everywhere" [level=2] [ref=f4e96]
+                - paragraph [ref=f4e98]: Telegram, Discord, Slack, WhatsApp, Signal, Email, CLI — and a growing list of platforms. One agent, one memory, every surface.
+              - article [ref=f4e99]:
+                - generic [ref=f4e100]:
+                  - paragraph [ref=f4e101]: "#2 Remember"
+                  - heading "Persistent Memory" [level=2] [ref=f4e102]
+                - paragraph [ref=f4e104]: It learns your projects, auto-generates skills, and never forgets how it solved a problem.
+              - article [ref=f4e105]:
+                - generic [ref=f4e106]:
+                  - paragraph [ref=f4e107]: "#3 Schedule"
+                  - heading "Focused Automation" [level=2] [ref=f4e108]
+                - paragraph [ref=f4e110]: Natural-language scheduling for reports, backups, and briefings — running unattended through the gateway, focused every time.
+              - article [ref=f4e111]:
+                - generic [ref=f4e112]:
+                  - paragraph [ref=f4e113]: "#4 Delegate"
+                  - heading "Tasks Multiplied" [level=2] [ref=f4e114]
+                - paragraph [ref=f4e116]: Isolated subagents with their own conversations, terminals, and Python RPC scripts for zero-context-cost pipelines.
+              - article [ref=f4e117]:
+                - generic [ref=f4e118]:
+                  - paragraph [ref=f4e119]: "#5 Search"
+                  - heading "Browse the Web" [level=2] [ref=f4e120]
+                - paragraph [ref=f4e122]: Web search, browser automation, vision, image generation, text-to-speech, and multi-model reasoning.
+              - article [ref=f4e123]:
+                - generic [ref=f4e124]:
+                  - paragraph [ref=f4e125]: "#6 Experiment"
+                  - heading "Isolated Sandboxing" [level=2] [ref=f4e126]
+                - paragraph [ref=f4e128]: Five backends — local, Docker, SSH, Singularity, Modal — with container hardening and namespace isolation.
+            - generic: Hermes
+      - generic:
+        - generic:
+          - paragraph: Free • Plus • Super • Ultra
+          - heading "Nous Portal" [level=2]
+          - paragraph: All paid tiers include monthly credits for use in Hermes Agent, access to 300+ cutting-edge models and built-in tool use
+          - link "View All Our Plans":
+            - /url: https://portal.nousresearch.com/manage-subscription
+        - generic:
+          - generic: Nous
+          - generic: Portal
+        - generic:
+          - paragraph: Hermes Agent v0.20.5
+        - generic:
+          - img "Nous Research"
+          - paragraph: Nous Research
+          - paragraph: MIT License · 2026
+  - alert [ref=f4e129]
