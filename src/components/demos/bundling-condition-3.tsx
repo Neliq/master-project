@@ -169,10 +169,8 @@ export function BundlingCond3({
               <p className="text-muted-foreground mt-1">
                 Inside the bundle the lens gets a {bundledTokens}-token one-liner with zero spec
                 rows, while the standalone listing carries {standaloneTokens} tokens and{" "}
-                {STANDALONE_SPECS.length} spec rows — H(T_bundled)/H(T_standalone) ={" "}
-                <strong className="text-yellow-700 dark:text-yellow-300">{entropyRatio.toFixed(2)}</strong>{" "}
-                &lt; τ_description (0.5). The suppressed granularity stops you from valuing the
-                components of the $1,199 bundle.
+                {STANDALONE_SPECS.length} detailed specification rows are available on the standalone listing. The bundle
+                includes a concise summary of the same components.
               </p>
             </div>
           ) : (

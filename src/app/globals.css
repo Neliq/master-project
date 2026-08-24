@@ -253,6 +253,134 @@
   text-transform: none !important;
 }
 
+/* Product UI stays mostly neutral. Saturated colors remain available for
+   semantic text/icons and for the auditor chrome outside data-dp-content. */
+[data-dp-content] [class*="bg-red-"],
+[data-dp-content] [class*="bg-rose-"],
+[data-dp-content] [class*="bg-orange-"],
+[data-dp-content] [class*="bg-amber-"],
+[data-dp-content] [class*="bg-yellow-"],
+[data-dp-content] [class*="bg-lime-"],
+[data-dp-content] [class*="bg-green-"],
+[data-dp-content] [class*="bg-emerald-"],
+[data-dp-content] [class*="bg-teal-"],
+[data-dp-content] [class*="bg-cyan-"],
+[data-dp-content] [class*="bg-sky-"],
+[data-dp-content] [class*="bg-blue-"],
+[data-dp-content] [class*="bg-indigo-"],
+[data-dp-content] [class*="bg-violet-"],
+[data-dp-content] [class*="bg-purple-"],
+[data-dp-content] [class*="bg-pink-"] {
+  background-color: rgb(115 115 115 / 12%) !important;
+}
+
+[data-dp-content] [class*="border-red-"],
+[data-dp-content] [class*="border-rose-"],
+[data-dp-content] [class*="border-orange-"],
+[data-dp-content] [class*="border-amber-"],
+[data-dp-content] [class*="border-yellow-"],
+[data-dp-content] [class*="border-lime-"],
+[data-dp-content] [class*="border-green-"],
+[data-dp-content] [class*="border-emerald-"],
+[data-dp-content] [class*="border-teal-"],
+[data-dp-content] [class*="border-cyan-"],
+[data-dp-content] [class*="border-sky-"],
+[data-dp-content] [class*="border-blue-"],
+[data-dp-content] [class*="border-indigo-"],
+[data-dp-content] [class*="border-violet-"],
+[data-dp-content] [class*="border-purple-"],
+[data-dp-content] [class*="border-pink-"],
+[data-dp-content] [class*="ring-red-"],
+[data-dp-content] [class*="ring-rose-"],
+[data-dp-content] [class*="ring-orange-"],
+[data-dp-content] [class*="ring-amber-"],
+[data-dp-content] [class*="ring-yellow-"],
+[data-dp-content] [class*="ring-green-"],
+[data-dp-content] [class*="ring-blue-"] {
+  border-color: rgb(115 115 115 / 35%) !important;
+  --tw-ring-color: rgb(115 115 115 / 35%) !important;
+}
+
+[data-dp-content] [class*="hover:bg-red-"]:hover,
+[data-dp-content] [class*="hover:bg-green-"]:hover,
+[data-dp-content] [class*="hover:bg-yellow-"]:hover,
+[data-dp-content] [class*="hover:bg-blue-"]:hover,
+[data-dp-content] [class*="hover:bg-rose-"]:hover,
+[data-dp-content] [class*="hover:bg-amber-"]:hover,
+[data-dp-content] [class*="hover:bg-orange-"]:hover,
+[data-dp-content] [class*="hover:bg-purple-"]:hover,
+[data-dp-content] [class*="hover:bg-pink-"]:hover {
+  background-color: rgb(115 115 115 / 22%) !important;
+}
+
+/* Filled actions stay visually actionable without reintroducing semantic
+   color. Disabled buttons are intentionally left to the browser opacity. */
+[data-dp-content] button:not(:disabled)[class*="bg-red-"],
+[data-dp-content] button:not(:disabled)[class*="bg-rose-"],
+[data-dp-content] button:not(:disabled)[class*="bg-orange-"],
+[data-dp-content] button:not(:disabled)[class*="bg-amber-"],
+[data-dp-content] button:not(:disabled)[class*="bg-yellow-"],
+[data-dp-content] button:not(:disabled)[class*="bg-green-"],
+[data-dp-content] button:not(:disabled)[class*="bg-emerald-"],
+[data-dp-content] button:not(:disabled)[class*="bg-blue-"],
+[data-dp-content] button:not(:disabled)[class*="bg-indigo-"],
+[data-dp-content] button:not(:disabled)[class*="bg-violet-"],
+[data-dp-content] button:not(:disabled)[class*="bg-purple-"],
+[data-dp-content] button:not(:disabled)[class*="bg-pink-"] {
+  background-color: rgb(38 38 38) !important;
+  border-color: rgb(38 38 38) !important;
+  color: rgb(255 255 255) !important;
+}
+
+[data-dp-content] button:not(:disabled)[class*="hover:bg-"]:hover {
+  background-color: rgb(0 0 0) !important;
+  border-color: rgb(0 0 0) !important;
+}
+
+/* Native selection controls are product affordances, not status indicators. */
+[data-dp-content] input[type="checkbox"],
+[data-dp-content] input[type="radio"],
+[data-dp-content] input[type="range"],
+[data-dp-content] progress {
+  accent-color: rgb(38 38 38) !important;
+}
+
+/* A/B is a controlled comparison: color must not reveal the answer. */
+[data-dp-content] [class*="text-red-"],
+[data-dp-content] [class*="text-rose-"],
+[data-dp-content] [class*="text-orange-"],
+[data-dp-content] [class*="text-amber-"],
+[data-dp-content] [class*="text-yellow-"],
+[data-dp-content] [class*="text-lime-"],
+[data-dp-content] [class*="text-green-"],
+[data-dp-content] [class*="text-emerald-"],
+[data-dp-content] [class*="text-teal-"],
+[data-dp-content] [class*="text-cyan-"],
+[data-dp-content] [class*="text-sky-"],
+[data-dp-content] [class*="text-blue-"],
+[data-dp-content] [class*="text-indigo-"],
+[data-dp-content] [class*="text-violet-"],
+[data-dp-content] [class*="text-purple-"],
+[data-dp-content] [class*="text-pink-"] {
+  color: rgb(64 64 64) !important;
+}
+
+/* Interaction outcomes belong in the product UI, not in a post-action
+   explainer card that gives away the dark-pattern mechanism. */
+[data-dp-content] [class*="border-yellow-500/30"][class*="bg-yellow-500/5"][class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"],
+[data-dp-content] [class*="border-green-500/30"][class*="bg-green-500/5"][class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"],
+[data-dp-content] [class*="border-red-500/30"][class*="bg-red-500/5"][class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"] {
+  display: none !important;
+}
+
+[data-dp-content] [class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"]:not([data-dp-result]) {
+  display: none !important;
+}
+
+[data-dp-result] {
+  display: block !important;
+}
+
 /* Never override KaTeX's own font metrics; changing them distorts formulas. */
 .pattern-page .katex,
 .pattern-page .katex * {

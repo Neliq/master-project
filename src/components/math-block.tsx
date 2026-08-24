@@ -43,6 +43,20 @@ function renderKatex(src: string, displayMode: boolean) {
   }
 }
 
+function GivenText({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(\$[^$]+\$)/g).map((part, index) =>
+        part.startsWith("$") && part.endsWith("$") ? (
+          <Math key={index}>{part.slice(1, -1)}</Math>
+        ) : (
+          <span key={index}>{part}</span>
+        ),
+      )}
+    </>
+  );
+}
+
 export function MathBlock({
   formula,
   given,
@@ -52,32 +66,32 @@ export function MathBlock({
   ariaLabel,
 }: MathBlockProps) {
   const main = renderKatex(formula ?? "", displayMode);
-  const givenHtml = given ? renderKatex(given, true) : null;
-
   return (
-    <div className="border border-white bg-white px-4 py-3 text-[#0000f2]">
+    <div
+      className="border border-white bg-white px-4 py-3 text-[#0000f2]"
+      style={{ textTransform: "none" }}
+    >
       {title ? (
-        <div className="mb-2 text-xs font-semibold tracking-wide text-[#0000f2] uppercase">
+        <div className="mb-2 text-xs font-semibold tracking-wide text-[#0000f2]">
           {title}
         </div>
       ) : null}
       <div
-        className="overflow-x-auto text-[#0000f2]"
+        className="overflow-x-auto"
+        style={{ color: "#0000f2" }}
         role="math"
         aria-label={ariaLabel ?? title ?? "Mathematical expression"}
         // The HTML is produced by KaTeX, which sanitises its own output.
         dangerouslySetInnerHTML={{ __html: main }}
       />
-      {givenHtml ? (
-        <div className="mt-3 flex items-start gap-2 border-t pt-3">
+      {given ? (
+        <div className="mt-3 flex items-start gap-2">
           <span className="shrink-0 font-mono text-xs font-semibold text-[#0000f2]">
-            given
+            Given
           </span>
-          <div
-            className="flex-1 overflow-x-auto"
-            // KaTeX-sanitised HTML.
-            dangerouslySetInnerHTML={{ __html: givenHtml }}
-          />
+          <div className="flex-1 overflow-x-auto leading-relaxed">
+            <GivenText text={given} />
+          </div>
         </div>
       ) : null}
       {note ? (

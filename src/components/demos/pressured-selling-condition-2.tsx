@@ -183,7 +183,7 @@ export function PressuredSellingCond2({
                 </button>
               </div>
               <p className="text-[8px] text-muted-foreground/60 mt-2 text-center">
-                T_offer ticking: Δt_offer = 59s &lt; τ_panic_duration = 300s
+                Offer expires in 59 seconds
               </p>
             </>
           )}

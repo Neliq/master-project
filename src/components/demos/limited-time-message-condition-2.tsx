@@ -152,19 +152,12 @@ export function LimitedTimeMessageCond2({
         </div>
 
         {added && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
-              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Compound visual-linguistic urgency
+          <div className="rounded-md border bg-background p-2.5">
+            <div className="flex items-center justify-between text-[9px]">
+              <span className="font-semibold">Flash sale item</span>
+              <span className="font-mono font-semibold">50% off</span>
             </div>
-            <p className="text-muted-foreground">
-              You clicked under a hue-15° banner whose copy says &ldquo;only today&rdquo;. The warm
-              palette and the temporal claim reinforce each other — the color is part of the
-              These details explain the current offer.
-            </p>
+            <div className="mt-1 text-[8px] text-muted-foreground">Added to your cart. Checkout whenever you&rsquo;re ready.</div>
           </div>
         )}
       </div>

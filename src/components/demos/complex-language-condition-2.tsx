@@ -166,7 +166,7 @@ export function ComplexLanguageCond2({
           <div className="mt-3 rounded-md border bg-background p-2.5">
             <p className="text-[7px] leading-relaxed text-muted-foreground/60">{LEGALESE_DARK}</p>
             <p className="mt-1 text-[7px] italic text-red-500/60">
-              Rendered at {DARK_FONT_SIZE}px under a {BASE_FONT_SIZE}px body — ratio {RATIO_DARK} &lt; &tau;_shrink ({TAU_SHRINK}).
+              Additional terms are shown in small print below.
             </p>
           </div>
 

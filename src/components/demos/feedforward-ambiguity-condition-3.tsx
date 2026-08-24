@@ -200,30 +200,15 @@ export function FeedforwardAmbiguityCond3({
         )}
 
         {step === "done" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
-              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Order placed
+          <div className="rounded-md border bg-background p-3">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-[11px] font-semibold">Subscription active</div>
+                <div className="text-[9px] text-muted-foreground">Pro plan · renews monthly</div>
+              </div>
+              <span className="font-mono text-[10px] font-semibold">$29/month</span>
             </div>
-            <p className="text-muted-foreground">
-              You clicked <strong className="text-red-500">“Next”</strong> — a label whose predicted intent is{" "}
-              <span className="font-mono">advance</span>. The backend actually executed{" "}
-              <strong className="text-foreground">OptInAll()</strong>: you were subscribed to the{" "}
-              <strong className="text-foreground">$29/month Pro plan</strong> with auto-renewal, and opted into{" "}
-              <strong className="text-foreground">all marketing channels</strong>.
-            </p>
-            <p className="text-muted-foreground">
-              Sim(Intent_NLP(&ldquo;Next&rdquo;), OptInAll()) ={" "}
-              <span className="font-mono text-red-500">{SIM_DARK} &lt; &tau;_clarity ({TAU_CLARITY})</span> — the label
-              and the outcome are semantically almost unrelated — and the outcome sits in{" "}
-              <span className="font-mono">D_critical</span> (finance + privacy). There was no step 3.
-            </p>
-            <p className="text-muted-foreground">
-              Feedforward was withheld at the exact moment a financial commitment was executed.
-            </p>
+            <div className="mt-2 border-t pt-2 text-[9px] text-muted-foreground">Marketing preferences updated.</div>
           </div>
         )}
       </div>

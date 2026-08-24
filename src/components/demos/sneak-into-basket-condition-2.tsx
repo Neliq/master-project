@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { DemoShell } from "@/components/demos/demo-shell";
-import { Headphones, ShieldCheck, Eye, EyeOff } from "lucide-react";
+import { Headphones, ShieldCheck, Eye } from "lucide-react";
 
 /*
  * Sneak Into Basket — Condition 2: Visual Indistinguishability of Surcharged Items
@@ -39,14 +39,11 @@ export function SneakIntoBasketCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  // Variant A's honesty quiz: "how many items did YOU add?"
-  const [answer, setAnswer] = React.useState<null | 1 | 2>(null);
   // Variant B: user declines the suggested add-on
   const [declined, setDeclined] = React.useState(false);
   const [checkedOut, setCheckedOut] = React.useState(false);
 
   const reset = () => {
-    setAnswer(null);
     setDeclined(false);
     setCheckedOut(false);
   };
@@ -108,7 +105,7 @@ export function SneakIntoBasketCond2({
                 <span className="rounded-full bg-yellow-500 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-white">
                   Suggested add-on
                 </span>
-                <span className="ml-auto text-[7px] text-muted-foreground">optional · not added by you</span>
+                <span className="ml-auto text-[7px] text-muted-foreground">optional protection</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-medium">{WARRANTY.name}</span>
@@ -176,31 +173,6 @@ export function SneakIntoBasketCond2({
             </div>
           </div>
 
-          {/* Honesty quiz: prove the camouflage */}
-          {!checkedOut && (
-            <div className="mt-2 rounded-md border bg-muted/30 p-2">
-              <p className="text-[8px] font-semibold uppercase tracking-wide text-muted-foreground">Quick check</p>
-              <p className="mt-0.5 text-[9px] text-muted-foreground">
-                You added <strong className="text-foreground">1 item</strong> to this cart. How many items does the cart show?
-              </p>
-              <div className="mt-1.5 flex gap-1.5">
-                {([1, 2] as const).map((n) => (
-                  <button
-                    key={n}
-                    onClick={() => setAnswer(n)}
-                    className={`flex-1 rounded-md border py-1.5 text-[10px] font-semibold transition-colors cursor-pointer ${
-                      answer === n
-                        ? "border-red-500/60 bg-red-500/10 text-red-600 dark:text-red-300"
-                        : "border-border bg-background text-foreground hover:bg-muted"
-                    }`}
-                  >
-                    {n} item{n === 1 ? "" : "s"}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
           <div className="mt-2 flex items-center justify-between border-t pt-2">
             <span className="text-[9px] font-medium">Total</span>
             <span className="font-mono text-[11px] font-bold tabular-nums text-red-600 dark:text-red-400">{fmt(HEADPHONES.price + WARRANTY.price)}</span>
@@ -212,27 +184,6 @@ export function SneakIntoBasketCond2({
             Pay {fmt(HEADPHONES.price + WARRANTY.price)}
           </button>
         </div>
-
-        {answer !== null && (
-          <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${answer === 1 ? "border-yellow-500/30 bg-yellow-500/5" : "border-green-500/30 bg-green-500/5"}`}>
-            <div className={`mb-0.5 flex items-center gap-1.5 font-semibold uppercase tracking-tight ${answer === 1 ? "text-yellow-700 dark:text-yellow-300" : "text-green-700 dark:text-green-300"}`}>
-              {answer === 1 ? (
-                <>
-                  <EyeOff className="h-3 w-3" /> The injected item escaped you
-                </>
-              ) : (
-                <>
-                  <Eye className="h-3 w-3" /> You caught it — by counting
-                </>
-              )}
-            </div>
-            <p className="text-muted-foreground">
-              {answer === 1
-                ? `The ${WARRANTY.name} line reused your item's exact background, typography, and border radius — Δ_color = ${DELTA_DARK} < τ_camouflage (${TAU_CAMOUFLAGE}) — so it grouped visually with your own purchase and you read the cart as "1 item".`
-                : "Your cart has been updated."}
-            </p>
-          </div>
-        )}
 
         {mode === "auditor" && checkedOut && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">

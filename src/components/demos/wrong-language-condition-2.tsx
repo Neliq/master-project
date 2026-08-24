@@ -82,7 +82,8 @@ export function WrongLanguageCond2({
           </p>
         </div>
       </div>
-      <div className="mt-3 flex flex-col gap-1.5">
+      {choice === "none" ? (
+        <div className="mt-3 flex flex-col gap-1.5">
         <button
           onClick={() => setChoice("all")}
           className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
@@ -103,7 +104,10 @@ export function WrongLanguageCond2({
         >
           {dark ? REJECT_DARK : REJECT_BENIGN}
         </button>
-      </div>
+        </div>
+      ) : (
+        <p className="mt-3 text-[9px] text-muted-foreground">Cookie preferences saved.</p>
+      )}
       <p className={`mt-2 text-[8px] italic ${dark ? "text-red-500/70" : "text-green-600/70 dark:text-green-400/70"}`}>
         {dark ? NOTE_DARK : NOTE_BENIGN}
       </p>
@@ -119,45 +123,13 @@ export function WrongLanguageCond2({
       benign={
         <div className="space-y-3">
           {banner(false)}
-          {choice !== "none" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
-                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M20 6L9 17l-5-5" />
-                </svg>
-                Consent recorded in your language
-              </div>
-              <p className="text-muted-foreground mt-0.5">
-                {choice === "all"
-                  ? "You accepted all cookies — the button said exactly that, in en-US."
-                  : "You rejected non-essential cookies — the control was rendered in your declared locale (L_DOM(N_critical) = en = L_browser), so you knew precisely what you were choosing."}
-              </p>
-            </div>
-          )}
+
         </div>
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         {banner(true)}
-        {choice !== "none" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
-              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Cookie preferences saved
-            </div>
-            <p className="text-muted-foreground">
-              Your cookie preferences have been saved. You can update them at any time in Privacy settings.
-            </p>
-            <p className="text-muted-foreground">
-              {choice === "essential"
-                ? `You clicked “${REJECT_DARK}” — which is actually the user-favorable choice (rejecting non-essential cookies). But you could not read it, and most users in this position either guess wrong or abandon the banner and accept the default.`
-                : `You selected “${ACCEPT_ALL}”. You can change your cookie preferences in Settings.`}
-            </p>
-          </div>
-        )}
+
       </div>
     </DemoShell>
   );

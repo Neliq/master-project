@@ -119,7 +119,7 @@ export function AutomatingTheUserAwayCond2({
           <div className={`text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 ${
             isDark ? "text-red-500 border-red-500/30" : "text-green-500 border-green-500/30"
           }`}>
-            {isDark ? "No cancel button" : "Cancel available"}
+            {isDark ? "Renewal options" : "Cancel available"}
           </div>
         </div>
 
@@ -145,10 +145,7 @@ export function AutomatingTheUserAwayCond2({
             />
           </div>
           <div className="mt-1.5 text-[8px] font-mono tabular-nums text-muted-foreground">
-            Δt_warning = {windowSeconds.toFixed(1)}s · τ_reaction ≈ {TAU_REACTION.toFixed(1)}s{" "}
-            <span className={isDark ? "text-red-500" : "text-green-500"}>
-              {isDark ? "(window < baseline)" : "(window ≥ baseline)"}
-            </span>
+            Renewal window: {windowSeconds.toFixed(1)}s
           </div>
         </div>
 
@@ -179,8 +176,7 @@ export function AutomatingTheUserAwayCond2({
                   Proceed with renewal
                 </button>
                 <div className="rounded-md border border-red-500/30 bg-red-500/5 px-2 py-1.5 text-[8px] text-red-500/90 leading-relaxed">
-                  B_cancel ∉ DOM(t) — no cancellation affordance exists on this screen. Your only
-                  options are to let it renew or proceed.
+                  Renewal options are shown above.
                 </div>
               </>
             ) : (

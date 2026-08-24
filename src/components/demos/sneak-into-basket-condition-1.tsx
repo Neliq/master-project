@@ -138,11 +138,11 @@ export function SneakIntoBasketCond1({
               </div>
               <div className="space-y-1.5">
                 {added && lineItem(HEADPHONES.name, HEADPHONES.price, (
-                  <div className="text-[8px] text-green-600/80 dark:text-green-400/80">added by you ✓</div>
+                  <div className="text-[8px] text-muted-foreground">selected in your cart</div>
                 ))}
                 {optedItems.map((item) =>
                   lineItem(item.name, item.price, (
-                    <div className="text-[8px] text-green-600/80 dark:text-green-400/80">added by you ✓</div>
+                    <div className="text-[8px] text-muted-foreground">selected in your cart</div>
                   ))
                 )}
               </div>
@@ -253,11 +253,7 @@ export function SneakIntoBasketCond1({
             >
               Proceed to checkout
             </button>
-            {injectedItems.length > 0 && (
-              <p className="mt-1.5 text-[8px] text-muted-foreground/70">
-                Note: no &ldquo;added by you&rdquo; markers appear on these lines — can you tell which items you added?
-              </p>
-            )}
+
           </div>
         )}
 

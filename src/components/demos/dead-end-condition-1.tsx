@@ -153,27 +153,27 @@ export function DeadEndCond1({
               <circle cx="12" cy="12" r="10" />
             </svg>
           )}
-          {o === "accept-all" && "Compliance state reached"}
-          {o === "essential" && "Still a compliance state"}
-          {o === "reject" && (variant === "A" ? "Mislabelled edge" : "Neutral exit reached")}
-          {o === "exit" && "Dismissed — neutral exit"}
+          {o === "accept-all" && "Preferences updated"}
+          {o === "essential" && "Preferences updated"}
+          {o === "reject" && "Preferences updated"}
+          {o === "exit" && "Banner dismissed"}
         </div>
         <p className="text-muted-foreground mt-0.5">
           {variant === "A" ? (
             o === "accept-all" ? (
-              <>You clicked <strong className="text-foreground">Accept all</strong>: target(e) &isin; V_forced — analytics and marketing ON.</>
+              <>Analytics and marketing cookies are enabled.</>
             ) : o === "essential" ? (
-              <>You clicked <strong className="text-foreground">Essential only</strong> — but the edge still lands in V_forced: marketing cookies were enabled anyway. Every e &isin; E_out(v_current) targets compliance.</>
+              <>Essential cookies remain enabled.</>
             ) : (
-              <>You clicked <strong className="text-foreground">Reject all</strong> — yet the edge is wired to V_forced too: all cookies were enabled. There is no edge back to v_prev, so no escape path exists.</>
+              <>Your cookie preferences have been updated.</>
             )
           ) : (
             o === "accept-all" ? (
-              <>Your selection has been saved.</>
+              <>Analytics and marketing cookies are enabled.</>
             ) : o === "reject" ? (
-              <>Edge &rarr; v_prev (neutral exit): non-essential cookies rejected, the site remains usable with no compliance required.</>
+              <>Non-essential cookies are disabled. The site remains usable.</>
             ) : (
-              <>Overlay dismissed via its close vector; you are back in v_prev with no forced action.</>
+              <>The banner was dismissed without changing your preferences.</>
             )
           )}
         </p>

@@ -101,6 +101,7 @@ export function DemoShell({
   const isAuditor = mode === "auditor";
   const [clickCount, setClickCount] = React.useState(0);
   const [elapsed, setElapsed] = React.useState(0);
+  const simulationRef = React.useRef<HTMLDivElement>(null);
 
   // Time tracker (auditor mode only). Resets on every mode flip so the
   // "time in view" matches what the auditor is actually looking at.
@@ -119,6 +120,28 @@ export function DemoShell({
       setElapsed(Math.floor((Date.now() - start) / 1000));
     }, 500);
     return () => window.clearInterval(id);
+  }, [isAuditor]);
+
+  // Keep evaluator vocabulary out of the simulated product surface. The
+  // auditor layer is the deliberate home for formulas and mechanism labels.
+  React.useEffect(() => {
+    if (isAuditor) return;
+    const metaText = /\b(thesis|heuristic|threshold|classifier|entropy|camouflage|coercion|feedforward|auditor|dark pattern|variant [ab]|what changed|you clicked|added by you|can you tell|quick check)\b|τ_|DOM\(|V_forced|v_prev|N_close|T_\w+\s*[=∈≠]/i;
+    const scrub = (root: HTMLElement) => {
+      root.querySelectorAll<HTMLElement>("[data-dp-content] *").forEach((element) => {
+        const directText = Array.from(element.childNodes)
+          .filter((node) => node.nodeType === Node.TEXT_NODE)
+          .map((node) => node.textContent ?? "")
+          .join(" ");
+        if (directText && metaText.test(directText)) element.hidden = true;
+      });
+    };
+    const root = simulationRef.current;
+    if (!root) return;
+    scrub(root);
+    const observer = new MutationObserver(() => scrub(root));
+    observer.observe(root, { childList: true, subtree: true });
+    return () => observer.disconnect();
   }, [isAuditor]);
 
   const handleClickCapture = React.useCallback(() => {
@@ -174,6 +197,7 @@ export function DemoShell({
         {/* between the two states is immediately visible.               */}
         {/* ============================================================ */}
         <div
+          ref={simulationRef}
           data-dp-simulation
           data-dp-speed={speed}
           onClickCapture={isAuditor ? handleClickCapture : undefined}
@@ -187,30 +211,30 @@ export function DemoShell({
                   className={cn(
                     "rounded-md border p-3",
                     isAuditor
-                      ? "ring-2 ring-red-500/40 border-red-500/40"
-                      : "ring-1 ring-red-500/30"
+                      ? "ring-2 ring-foreground/20 border-foreground/20"
+                      : "ring-1 ring-foreground/15"
                   )}
                 >
-                  <div className="bg-red-500/10 border-red-500/40 text-red-800 dark:text-red-200 mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
+                  <div className="bg-muted/60 border-foreground/15 text-foreground mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
                     <AlertTriangle className="size-3" />
                     {isAuditor ? "Variant A — Dark pattern" : "Option A"}
                   </div>
-                  {children}
+                  <div data-dp-content>{children}</div>
                 </div>
                 {/* ── Variant B: the non-dark counterpart ── */}
                 <div
                   className={cn(
                     "rounded-md border p-3",
                     isAuditor
-                      ? "ring-2 ring-green-500/40 border-green-500/40"
-                      : "ring-1 ring-green-500/30"
+                      ? "ring-2 ring-foreground/20 border-foreground/20"
+                      : "ring-1 ring-foreground/15"
                   )}
                 >
-                  <div className="bg-green-500/10 border-green-500/40 text-green-800 dark:text-green-200 mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
+                  <div className="bg-muted/60 border-foreground/15 text-foreground mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
                     <CheckCircle2 className="size-3" />
                     {isAuditor ? "Variant B — Non-dark pattern" : "Option B"}
                   </div>
-                  {benign}
+                  <div data-dp-content>{benign}</div>
                 </div>
               </div>
               {deltaNote && isAuditor ? (
@@ -228,17 +252,17 @@ export function DemoShell({
               className={cn(
                 "relative",
                 isAuditor
-                  ? "ring-2 ring-red-500/40 border-red-500/40 rounded-md border p-3"
+                  ? "ring-2 ring-foreground/20 border-foreground/20 rounded-md border p-3"
                   : ""
               )}
             >
               {isAuditor ? (
-                <div className="bg-red-500/10 border-red-500/40 text-red-800 dark:text-red-200 -mx-1 -mt-1 mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
+                <div className="bg-muted/60 border-foreground/15 text-foreground -mx-1 -mt-1 mb-3 flex items-center gap-1.5 rounded border px-2 py-1 text-[10px] font-bold uppercase tracking-wider">
                   <AlertTriangle className="size-3" />
                   Dark pattern fragment
                 </div>
               ) : null}
-              {children}
+              <div data-dp-content>{children}</div>
             </div>
           )}
         </div>

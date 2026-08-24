@@ -145,28 +145,15 @@ export function FeedforwardAmbiguityCond1({
         </div>
 
         {step === "placed" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
-              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Action-outcome mapping conflicted
+          <div className="rounded-md border bg-background p-3">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-[11px] font-semibold">Order confirmed</div>
+                <div className="text-[9px] text-muted-foreground">Studio headphones · 1 item</div>
+              </div>
+              <span className="font-mono text-[10px] font-semibold">{TOTAL}</span>
             </div>
-            <p className="text-muted-foreground">
-              You clicked <strong className="text-red-500">“Continue”</strong> expecting to advance to the next step.
-              But the button&rsquo;s structural target — its formaction — resolves to{" "}
-              <strong className="text-foreground">SubmitOrder()</strong>: your order was placed and{" "}
-              <strong className="text-foreground">{TOTAL}</strong> charged, non-refundably.
-            </p>
-            <p className="text-muted-foreground">
-              Distance(Expect(&ldquo;Continue&rdquo;), SubmitOrder()) = <span className="font-mono text-red-500">0.87 &gt; &tau;_feedforward ({TAU_FEEDFORWARD})</span>.
-              The label and the execution semantics diverge, and the outcome lives in a high-stakes financial domain.
-            </p>
-            <p className="text-muted-foreground">
-              There was no next step. &ldquo;Continue&rdquo; was the final purchase action all along — feedforward
-              stripped, commitment hidden.
-            </p>
+            <div className="mt-2 border-t pt-2 text-[9px] text-muted-foreground">Receipt sent to your account.</div>
           </div>
         )}
       </div>

@@ -207,42 +207,13 @@ export function FeedforwardAmbiguityCond2({
         </div>
 
         {pressed !== "none" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
-              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Setting updated
+          <div className="rounded-md border bg-background p-2.5 text-[9px]">
+            <div className="font-semibold">Settings updated</div>
+            <div className="mt-1 text-muted-foreground">
+              {pressed === "share" && "Data sharing with marketing partners is enabled."}
+              {pressed === "2fa" && "Two-factor authentication is already enabled."}
+              {pressed === "push" && "Push notifications are turned off."}
             </div>
-            {pressed === "share" && (
-              <>
-                <p className="text-muted-foreground">
-                  You clicked a bare icon. Its classifier meaning distribution is broad — share / export / sync /
-                  network — giving <span className="font-mono text-red-500">H(CV_class) = {ENTROPY_DARK} &gt; &tau;_entropy ({TAU_ENTROPY})</span>,
-                  with <span className="font-mono">T_hover = ∅</span> (no tooltip) and no accessible label.
-                </p>
-                <p className="text-muted-foreground">
-                  That icon was the <strong className="text-foreground">data-sharing control</strong>: you just enabled
-                  sharing your data with <strong className="text-foreground">12 marketing partners</strong>. A critical
-                  privacy outcome, executed with zero feedforward — nothing told you what would happen.
-                </p>
-              </>
-            )}
-            {pressed === "2fa" && (
-              <p className="text-muted-foreground">
-                You clicked the shield icon — that was two-factor authentication, which is already on. Nothing happened.
-                You could not know that without guessing.
-              </p>
-            )}
-            {pressed === "push" && (
-              <p className="text-muted-foreground">
-                Push notifications are now off.
-              </p>
-            )}
-            <p className="text-muted-foreground">
-              Your setting has been updated.
-            </p>
           </div>
         )}
       </div>

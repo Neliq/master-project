@@ -111,6 +111,7 @@ export default async function PatternPage({ params }: PageProps) {
         <Button
           variant="ghost"
           size="sm"
+          nativeButton={false}
           render={<Link href={`/#${pattern.category}`} />}
           className="-ml-2 gap-1.5 font-semibold text-white hover:text-white/80"
         >
@@ -206,18 +207,6 @@ export default async function PatternPage({ params }: PageProps) {
                     ariaLabel={c.title}
                   />
 
-                  {/* Auditor checklist item */}
-                  <li
-                    className="flex items-start gap-3 border border-white bg-white px-4 py-3 text-[#0000f2] list-none"
-                  >
-                    <CheckCircle2 className="text-[#0000f2]/65 mt-0.5 size-4 shrink-0" />
-                    <div className="text-sm">
-                      <div className="font-medium">{c.title}</div>
-                      <div className="text-[#0000f2]/65 mt-0.5 text-xs leading-relaxed">
-                        <InlineMath text={c.description} />
-                      </div>
-                    </div>
-                  </li>
                 </div>
               );
             })}

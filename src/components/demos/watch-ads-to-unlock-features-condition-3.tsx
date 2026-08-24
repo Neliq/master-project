@@ -84,7 +84,7 @@ export function WatchAdsToUnlockFeaturesCond3({
   const renderItemReveal = (accent: "rose" | "emerald") => {
     const isDark = accent === "rose";
     return (
-      <div className={`mt-2 rounded-md border p-2.5 text-[9px] leading-relaxed ${
+      <div data-dp-result className={`mt-2 rounded-md border p-2.5 text-[9px] leading-relaxed ${
         isDark ? "border-yellow-500/30 bg-yellow-500/5" : "border-green-500/30 bg-green-500/5"
       }`}>
         <div className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${

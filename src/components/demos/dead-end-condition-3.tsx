@@ -158,8 +158,8 @@ export function DeadEndCond3({
         <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
           <p className="text-muted-foreground">
             {choiceA === "upgraded"
-              ? "You upgraded. Every exit from this state ran through the payment action — and the copy kept pushing with imperative verbs ('MUST', 'ACT NOW'). Structural entrapment compounded by linguistic pressure."
-              : "\"Learn more\" keeps you inside the trap — this is not a neutral exit edge, just another node in V_forced."}
+              ? "Your upgrade is active. You can manage it from your account settings."
+              : "More information is available on the next page."}
           </p>
         </div>
       ) : null}
@@ -188,7 +188,7 @@ export function DeadEndCond3({
             onClick={() => setAnalyzed(true)}
             className="w-full rounded-md border border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
-            Analyze coercion density
+            View details
           </button>
         </div>
       }>
@@ -199,7 +199,7 @@ export function DeadEndCond3({
           onClick={() => setAnalyzed(true)}
           className="w-full rounded-md border border-red-500/40 bg-red-500/5 text-red-700 dark:text-red-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
-          Analyze coercion density
+          View details
         </button>
       </div>
     </DemoShell>

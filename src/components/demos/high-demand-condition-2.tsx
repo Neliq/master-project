@@ -178,7 +178,7 @@ export function HighDemandCond2({
                 {count} people bought this in the last hour
               </div>
               <div className="text-[8px] text-muted-foreground">
-                Incrementing every 450 ms · Δt_update = 450 ms &lt; τ_animate = 1000 ms
+                Live activity from the community
               </div>
             </div>
           </div>
@@ -214,10 +214,7 @@ export function HighDemandCond2({
                 Recent purchases
               </div>
               <p className="text-muted-foreground">
-                ∃n ∈ N_demand: IsAnimated(n) = True ∧ Δt_update = 450 ms &lt; τ_animate = 1000 ms — the badge
-                incremented to <strong className="text-red-500">{count}</strong> while the backend truth stayed at{" "}
-                <strong className="text-foreground">{BACKEND_PURCHASES}</strong>. The rapid churn fabricates urgency:
-                demand that never existed is rendered as a live, breathing crowd.
+                {count} shoppers viewed this item recently. Your order has been placed.
               </p>
             </div>
           )}

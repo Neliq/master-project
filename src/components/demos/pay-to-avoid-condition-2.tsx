@@ -106,9 +106,9 @@ export function PayToAvoidCond2({
     <div className="rounded-md border border-border bg-card p-3">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <h3 className="text-[11px] font-semibold">Thesis draft — chapter 4.pdf</h3>
+          <h3 className="text-[11px] font-semibold">Product guide — chapter 4.pdf</h3>
           <p className="text-[9px] text-muted-foreground mt-0.5">
-            48 pages · Free access is subject to a 10-second wait. Pay $1.99 to remove the wait.
+            48 pages · Free access begins after a short wait. Pay $1.99 for instant access.
           </p>
         </div>
         <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-muted-foreground rounded-full border border-border px-2 py-0.5 shrink-0">

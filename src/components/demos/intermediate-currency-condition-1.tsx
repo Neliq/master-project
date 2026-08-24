@@ -225,26 +225,18 @@ export function IntermediateCurrencyCond1({
 
         {step === "done" && (
           <div className="space-y-2">
-            <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
-                <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M12 9v4m0 4h.01" />
-                  <circle cx="12" cy="12" r="10" />
-                </svg>
-                Coins added to your wallet
+            <div className="rounded-md border bg-background p-3">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="text-[11px] font-semibold">Wallet updated</div>
+                  <div className="text-[9px] text-muted-foreground">{PACK_COINS.toLocaleString()} coins added</div>
+                </div>
+                <Coins className="h-4 w-4 text-muted-foreground" />
               </div>
-              <p className="text-muted-foreground">
-                target(E<sub>purchase</sub>) = V<sub>exchange</sub> <strong className="text-foreground">∧</strong>{" "}
-                target(E<sub>purchase</sub>) ≠ V<sub>checkout</sub> — you clicked &ldquo;Buy&rdquo; and were routed straight into
-                the coin storefront. You paid <strong className="text-red-500">${PACK_USD.toFixed(2)}</strong> for{" "}
-                {PACK_COINS.toLocaleString()} coins to buy a product priced at ${PRICE_USD.toFixed(2)}, and{" "}
-                <strong className="text-foreground">{LEFTOVER.toLocaleString()} coins</strong> remain stranded in your wallet —
-                an unspendable remainder that nudges you toward a future purchase.
-              </p>
-              <p className="text-muted-foreground">
-                The fiat gateway was never presented. The interface decouples the perceived cost from the real financial
-                impact: you paid in &ldquo;coins&rdquo;, not dollars.
-              </p>
+              <div className="mt-2 flex items-center justify-between border-t pt-2 text-[9px]">
+                <span className="text-muted-foreground">Available balance</span>
+                <span className="font-mono font-semibold">{LEFTOVER.toLocaleString()} coins</span>
+              </div>
             </div>
             <button onClick={reset} className="w-full rounded-md border py-1.5 text-[9px] font-medium text-muted-foreground transition-colors hover:text-foreground cursor-pointer">
               Restart demo

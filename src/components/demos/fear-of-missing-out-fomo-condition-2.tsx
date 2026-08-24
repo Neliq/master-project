@@ -160,7 +160,7 @@ export function FearOfMissingOutFomoCond2({
                 Only {stock} left in stock
               </div>
               <div className="text-[8px] text-muted-foreground">
-                Rewriting every 600 ms · min Δt_refresh = 600 ms &lt; τ_pulsation ≈ 1000 ms
+                Stock updates live
               </div>
             </div>
           </div>
@@ -196,10 +196,7 @@ export function FearOfMissingOutFomoCond2({
                 Limited-time availability
               </div>
               <p className="text-muted-foreground">
-                The stock counter rewrote itself roughly 10 times in the last 6 seconds while the real
-                inventory ({REAL_STOCK} units) never changed. min Δt_refresh(n) = 600 ms &lt; τ_pulsation ≈ 1000 ms —
-                the changing availability message may affect how quickly you decide
-                rational deliberation.
+                {REAL_STOCK} units are currently available. The item has been added to your cart.
               </p>
             </div>
           )}

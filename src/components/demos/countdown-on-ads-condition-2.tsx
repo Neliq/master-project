@@ -232,9 +232,18 @@ export function CountdownOnAdsCond2({
                 </div>
               )}
               {adOpenedA && !closeVisibleA && (
-                <div className="flex items-center gap-1 border-t border-yellow-500/30 bg-yellow-500/10 px-2 py-1 text-[8px] font-semibold text-yellow-700 dark:text-yellow-300">
-                  <AlertTriangle className="size-2.5" />
-                  Your click opened the advertiser’s site — the ad was the only clickable surface.
+                <div className="border-t border-border bg-[#171717] p-3 text-white">
+                  <div className="flex items-center justify-between text-[8px] font-semibold uppercase tracking-wider opacity-70">
+                    <span>Aurora Trek</span>
+                    <span>Advertiser site</span>
+                  </div>
+                  <h4 className="mt-1.5 text-[13px] font-bold">The light jacket for all seasons.</h4>
+                  <p className="mt-1 text-[9px] leading-relaxed text-white/75">
+                    Waterproof, windproof, and packable. Free returns for 90 days.
+                  </p>
+                  <button className="mt-2 rounded bg-white px-2.5 py-1 text-[8px] font-semibold text-black">
+                    Shop now
+                  </button>
                 </div>
               )}
             </div>

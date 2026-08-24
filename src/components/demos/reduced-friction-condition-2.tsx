@@ -189,10 +189,7 @@ export function ReducedFrictionCond2({
                 Account deleted — irreversible
               </div>
               <p className="text-muted-foreground mt-0.5">
-                <strong className="text-foreground">d_spatial(N_destructive, N_neutral) = 8px &lt; τ_safety</strong>: the
-                destructive action was styled identically to the routine “Save changes” control and sat directly beside
-                it. The item was deleted immediately. You can restore it from Trash.
-                the muscle memory trained on the neutral button.
+                The item was deleted immediately. You can restore it from Trash.
               </p>
             </div>
           ) : (

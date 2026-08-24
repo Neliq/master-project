@@ -136,21 +136,29 @@ export function DisguisedAdCond2({
           </div>
 
           {clicked === "article" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-muted-foreground">
-              Opening the article — that card was genuine editorial content on the host domain.
-            </div>
+            <article className="rounded-md border bg-card p-3">
+              <p className="text-[8px] font-semibold uppercase tracking-wider text-muted-foreground">TechDaily · article</p>
+              <h3 className="mt-1 text-[13px] font-bold">The silicon shortage is finally easing</h3>
+              <p className="mt-1 text-[9px] leading-relaxed text-muted-foreground">
+                Chip fabs are ramping output faster than analysts predicted. Capacity is returning across the supply chain,
+                bringing prices and delivery times back toward normal.
+              </p>
+            </article>
           )}
           {clicked === "ad" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
-                <Megaphone className="h-3 w-3" /> Clearly an ad before you clicked
+            <section className="rounded-md border bg-[#171717] p-3 text-white">
+              <div className="flex items-center justify-between text-[8px] font-semibold uppercase tracking-wider opacity-70">
+                <span>DevGPT Pro</span>
+                <span>Advertiser site</span>
               </div>
-              <p className="text-muted-foreground">
-                sim(v<sub>ad</sub>, v<sub>native</sub>) = {SIM_BENIGN} ≤ τ<sub>blend</sub> ({TAU_BLEND}): the tinted
-                background, dashed border, and SPONSORED badge push the ad&rsquo;s feature vector out of the editorial
-                cluster — banner blindness has nothing to attach to.
+              <h3 className="mt-2 text-[15px] font-bold">Ship better code, faster.</h3>
+              <p className="mt-1 text-[9px] leading-relaxed text-white/75">
+                Generate, review, and deploy pull requests with an AI pair programmer built for engineering teams.
               </p>
-            </div>
+              <button className="mt-3 rounded bg-white px-3 py-1.5 text-[9px] font-semibold text-black">
+                Start free trial
+              </button>
+            </section>
           )}
         </div>
       }>
@@ -182,30 +190,29 @@ export function DisguisedAdCond2({
         </div>
 
         {clicked === "article" && (
-          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-muted-foreground">
-            Opening the article — that card was genuine editorial content on the host domain.
-          </div>
+          <article className="rounded-md border bg-card p-3">
+            <p className="text-[8px] font-semibold uppercase tracking-wider text-muted-foreground">TechDaily · article</p>
+            <h3 className="mt-1 text-[13px] font-bold">The silicon shortage is finally easing</h3>
+            <p className="mt-1 text-[9px] leading-relaxed text-muted-foreground">
+              Chip fabs are ramping output faster than analysts predicted. Capacity is returning across the supply chain,
+              bringing prices and delivery times back toward normal.
+            </p>
+          </article>
         )}
         {clicked === "ad" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
-              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Morphological mimicry — you clicked an ad
+          <section className="rounded-md border bg-[#171717] p-3 text-white">
+            <div className="flex items-center justify-between text-[8px] font-semibold uppercase tracking-wider opacity-70">
+              <span>DevGPT Pro</span>
+              <span>Advertiser site</span>
             </div>
-            <p className="text-muted-foreground">
-              max sim(v<sub>ad</sub>, v<sub>i</sub>) = <strong className="text-red-500">{SIM_DARK} &gt; τ<sub>blend</sub></strong>{" "}
-              ({TAU_BLEND}). The ad reuses the exact background color, typography, border radius, and aspect ratio of the
-              article cards, so Gestalt grouping merges it into the editorial contexture. There is no disclosure at all —
-              no &ldquo;AD&rdquo; tag, no &ldquo;Sponsored&rdquo; marker, and a &ldquo;Read more&rdquo; label that mimics a native
-              action — so nothing breaks the camouflage.
+            <h3 className="mt-2 text-[15px] font-bold">Ship better code, faster.</h3>
+            <p className="mt-1 text-[9px] leading-relaxed text-white/75">
+              Generate, review, and deploy pull requests with an AI pair programmer built for engineering teams.
             </p>
-            <p className="text-muted-foreground">
-              You clicked &ldquo;Read more&rdquo; believing it was an article; the sponsor counted on exactly that.
-            </p>
-          </div>
+            <button className="mt-3 rounded bg-white px-3 py-1.5 text-[9px] font-semibold text-black">
+              Start free trial
+            </button>
+          </section>
         )}
       </div>
     </DemoShell>
