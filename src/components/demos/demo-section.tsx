@@ -24,7 +24,6 @@ import { getDemo } from "@/components/pattern-demo";
 import { ViewModeToggle } from "@/components/demos/view-mode-toggle";
 import { AUDITOR_ANNOTATIONS } from "@/lib/auditor-annotations";
 import { PATTERNS_BY_SLUG } from "@/lib/patterns";
-import { cn } from "@/lib/utils";
 import type { ViewMode } from "@/components/demos/demo-shell";
 
 export function DemoSection({
@@ -81,21 +80,8 @@ export function DemoSection({
       <div className="space-y-2">
         {showControls && (
           <div
-            className={cn(
-              "flex flex-wrap items-center justify-between gap-3 rounded-md border px-3 py-2",
-              mode === "auditor"
-                ? "border-yellow-500/40 bg-yellow-500/5"
-                : "border-foreground/10 bg-muted/20"
-            )}
+            className="flex flex-wrap items-center justify-start gap-3 rounded-md border border-foreground/10 bg-muted/20 px-3 py-2"
           >
-            {mode === "auditor" ? <p className="text-white max-w-2xl text-xs leading-relaxed">
-              Each example shows the pattern as an <strong className="text-white">A/B pair</strong>{" "}
-              (thesis Ch. 4–5): <strong className="text-red-700 dark:text-red-300">Variant A</strong>{" "}
-              executes the deceptive heuristic, <strong className="text-green-700 dark:text-green-300">Variant B</strong>{" "}
-              is the same interface with it neutralised.{" "}
-              <strong className="text-yellow-700 dark:text-yellow-300">Auditor view</strong> adds annotations
-              and live statistics.
-            </p> : null}
             <ViewModeToggle mode={mode} onChange={setMode} />
           </div>
         )}
@@ -113,21 +99,8 @@ export function DemoSection({
   return (
     <div className="space-y-3">
       <div
-        className={cn(
-          "flex flex-wrap items-center justify-between gap-3 rounded-md border px-3 py-2",
-          mode === "auditor"
-            ? "border-yellow-500/40 bg-yellow-500/5"
-            : "border-foreground/10 bg-muted/20"
-        )}
+        className="flex flex-wrap items-center justify-start gap-3 rounded-md border border-foreground/10 bg-muted/20 px-3 py-2"
       >
-        {mode === "auditor" ? <p className="text-white max-w-2xl text-xs leading-relaxed">
-          Each example shows the pattern as an <strong className="text-white">A/B pair</strong>{" "}
-          (thesis Ch. 4–5): <strong className="text-red-700 dark:text-red-300">Variant A</strong>{" "}
-          executes the deceptive heuristic, <strong className="text-green-700 dark:text-green-300">Variant B</strong>{" "}
-          is the same interface with it neutralised. Auditor view adds annotations,
-          presentation controls (restart), and live statistics — all visually separated
-          from the dark pattern itself.
-        </p> : null}
         <ViewModeToggle mode={mode} onChange={setMode} />
       </div>
 

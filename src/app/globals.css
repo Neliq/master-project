@@ -157,7 +157,7 @@
    self-contained and keep their existing visual language. */
 .sandbox-body {
   background: #0000f2;
-  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+  font-family: "Hermes Mono", "Courier New", monospace !important;
 }
 
 .site-header,
@@ -199,28 +199,38 @@
 .sandbox-page *,
 .pattern-page,
 .pattern-page :not(.katex, .katex *) {
-  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+  font-family: "Hermes Mono", "Courier New", monospace !important;
 }
 
 .sandbox-page h1,
 .sandbox-page h2,
 .sandbox-page h3 {
-  font-family: "Hermes Display", Georgia, "Times New Roman", serif;
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
   font-weight: 500;
   letter-spacing: 0.01em;
 }
 
 .sandbox-page .sandbox-card-title {
-  font-size: 1.5rem;
-  font-weight: 800;
+  display: block;
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+  font-size: 2rem;
+  font-weight: 500;
+  height: 2.2em;
+  line-height: 1.1;
+  overflow: hidden;
+  text-align: left;
+}
+
+.sandbox-page .sandbox-card-title * {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
 }
 
 .sandbox-card-description {
-  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+  font-family: "Hermes Mono", "Courier New", monospace !important;
 }
 
 .sandbox-card-meta {
-  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
+  font-family: "Hermes Mono", "Courier New", monospace !important;
 }
 
 .sandbox-card-image::after {
@@ -234,15 +244,19 @@
 }
 
 .sandbox-hero-description {
-  font-family: "Hermes Display", Georgia, "Times New Roman", serif;
+  font-family: "Hermes Mono", "Courier New", monospace;
 }
 
 .pattern-page h1,
 .pattern-page h2,
 .pattern-page h3 {
-  font-family: "Hermes Display", Georgia, "Times New Roman", serif;
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
   font-weight: 500;
   letter-spacing: 0.01em;
+}
+
+.pattern-page h1.pattern-page-title {
+  font-family: "Hermes Display", Georgia, "Times New Roman", serif !important;
 }
 
 /* Simulation text is intentionally sans-serif, including nested font-mono

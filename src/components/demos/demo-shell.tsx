@@ -21,12 +21,7 @@ import type { ReactNode } from "react";
 import {
   AlertTriangle,
   CheckCircle2,
-  Clock,
-  Eye,
-  Gauge,
   Info,
-  MousePointerClick,
-  RotateCcw,
 } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -79,8 +74,6 @@ export interface DemoShellProps {
   onSpeedChange?: (s: number) => void;
 }
 
-const SPEED_OPTIONS = [1, 2, 4] as const;
-
 export function DemoShell({
   title,
   caption,
@@ -91,36 +84,10 @@ export function DemoShell({
   deltaNote,
   className,
   mode = "user",
-  annotations = [],
-  auditorControls,
-  auditorStats,
   speed = 1,
-  onRestart,
-  onSpeedChange,
 }: DemoShellProps) {
   const isAuditor = mode === "auditor";
-  const [clickCount, setClickCount] = React.useState(0);
-  const [elapsed, setElapsed] = React.useState(0);
   const simulationRef = React.useRef<HTMLDivElement>(null);
-
-  // Time tracker (auditor mode only). Resets on every mode flip so the
-  // "time in view" matches what the auditor is actually looking at.
-  React.useEffect(() => {
-    if (!isAuditor) return;
-    const start = Date.now();
-    let first = true;
-    const id = window.setInterval(() => {
-      if (first) {
-        // Reset counters on the first tick after the mode flip (avoids a
-        // synchronous setState inside the effect body).
-        setElapsed(0);
-        setClickCount(0);
-        first = false;
-      }
-      setElapsed(Math.floor((Date.now() - start) / 1000));
-    }, 500);
-    return () => window.clearInterval(id);
-  }, [isAuditor]);
 
   // Keep evaluator vocabulary out of the simulated product surface. The
   // auditor layer is the deliberate home for formulas and mechanism labels.
@@ -144,22 +111,17 @@ export function DemoShell({
     return () => observer.disconnect();
   }, [isAuditor]);
 
-  const handleClickCapture = React.useCallback(() => {
-    if (isAuditor) setClickCount((c) => c + 1);
-  }, [isAuditor]);
-
   return (
     <Card
       className={cn(
         "demo-shell-frame overflow-hidden rounded-none border border-white/40 py-0 ring-1 ring-white/20",
-        isAuditor && "ring-2 ring-yellow-500/40 border-yellow-500/40",
         className
       )}
     >
       <CardHeader
         className={cn(
           "rounded-none border-b !py-3",
-          isAuditor ? "bg-yellow-500/10" : "bg-transparent"
+          "bg-transparent"
         )}
       >
         <div className="flex items-center gap-2">
@@ -178,7 +140,7 @@ export function DemoShell({
           </p>
         ) : null}
       </CardHeader>
-      <CardContent className="space-y-4 pt-5">
+      <CardContent className="space-y-4 pt-5 pb-5">
         {hint && isAuditor ? (
           <div className="border-foreground/10 bg-muted/40 flex items-start gap-2 rounded-md border px-3 py-2 text-xs leading-relaxed">
             <Info className="text-muted-foreground mt-0.5 size-3.5 shrink-0" />
@@ -200,7 +162,6 @@ export function DemoShell({
           ref={simulationRef}
           data-dp-simulation
           data-dp-speed={speed}
-          onClickCapture={isAuditor ? handleClickCapture : undefined}
           className="relative border border-white bg-white p-4 ring-1 ring-white/20"
         >
           {benign && isAuditor ? (
@@ -267,106 +228,6 @@ export function DemoShell({
           )}
         </div>
 
-        {/* ============================================================ */}
-        {/* AUDITOR-ONLY CHROME — strongly separated from the user UI.  */}
-        {/* All presentation controls, statistics, and explanations are  */}
-        {/* rendered here in user mode they do not exist at all.       */}
-        {/* ============================================================ */}
-        {isAuditor ? (
-          <div className="space-y-3 border-t-2 border-dashed border-yellow-500/40 pt-4">
-            <div className="text-yellow-700 dark:text-yellow-300 flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider">
-              <Eye className="size-3" />
-              Auditor view (hidden from users)
-            </div>
-
-            {annotations.length > 0 ? (
-              <div className="border-l-4 border-yellow-500 bg-yellow-500/5 space-y-2 rounded-r-md p-3">
-                <div className="text-yellow-700 dark:text-yellow-300 text-[10px] font-bold uppercase tracking-wider">
-                  Dark pattern elements
-                </div>
-                <ul className="space-y-1.5 text-xs">
-                  {annotations.map((a, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="bg-yellow-500 text-white shrink-0 rounded-full px-1.5 py-0.5 font-mono text-[9px] font-bold">
-                        {i + 1}
-                      </span>
-                      <div>
-                        <span className="font-medium">{a.label}</span>
-                        <span className="text-muted-foreground">
-                          {" "}
-                          — {a.description}
-                        </span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              <div className="border-l-4 border-blue-500 bg-blue-500/5 space-y-2 rounded-r-md p-3">
-                <div className="text-blue-700 dark:text-blue-300 text-[10px] font-bold uppercase tracking-wider">
-                  Presentation controls
-                </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  {onRestart ? (
-                    <button
-                      onClick={onRestart}
-                      className="bg-blue-500 text-white hover:bg-blue-600 inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium"
-                    >
-                      <RotateCcw className="size-3" />
-                      Restart
-                    </button>
-                  ) : null}
-                  {onSpeedChange ? (
-                    <div className="flex items-center gap-0.5 rounded-md border bg-background px-1 py-1 text-xs">
-                      <Gauge className="text-muted-foreground mx-0.5 size-3" />
-                      {SPEED_OPTIONS.map((s) => (
-                        <button
-                          key={s}
-                          onClick={() => onSpeedChange(s)}
-                          className={cn(
-                            "rounded px-1.5 py-0.5 font-mono text-[10px] font-semibold",
-                            speed === s
-                              ? "bg-blue-500 text-white"
-                              : "text-muted-foreground hover:text-foreground"
-                          )}
-                        >
-                          {s}x
-                        </button>
-                      ))}
-                    </div>
-                  ) : null}
-                  {auditorControls}
-                </div>
-              </div>
-              <div className="border-l-4 border-blue-500 bg-blue-500/5 space-y-2 rounded-r-md p-3">
-                <div className="text-blue-700 dark:text-blue-300 text-[10px] font-bold uppercase tracking-wider">
-                  Live statistics
-                </div>
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground flex items-center gap-1">
-                      <MousePointerClick className="size-3" /> Clicks on UI
-                    </span>
-                    <span className="font-mono font-semibold tabular-nums">
-                      {clickCount}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground flex items-center gap-1">
-                      <Clock className="size-3" /> Time in view
-                    </span>
-                    <span className="font-mono font-semibold tabular-nums">
-                      {elapsed}s
-                    </span>
-                  </div>
-                  {auditorStats}
-                </div>
-              </div>
-            </div>
-          </div>
-        ) : null}
       </CardContent>
     </Card>
   );

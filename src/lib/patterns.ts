@@ -2,7 +2,7 @@
  * Dark pattern registry for the educational site.
  *
  * 62 patterns sourced from the Master's thesis, organised by
- * Brignull's high-level taxonomy. Every pattern ships with its
+ * six thematic groups defined in the Master's thesis. Every pattern ships with its
  * formal conditions (extracted from the thesis LaTeX) and a
  * short summary derived from the thesis prose. The `built` flag
  * drives whether the subpage renders a full interactive demo or
@@ -71,14 +71,12 @@ import {
 } from "lucide-react";
 
 export type CategoryId =
-  | "sneaking"
-  | "urgency"
-  | "misdirection"
-  | "forced-action"
-  | "obstruction"
-  | "nagging"
-  | "interface-interference"
-  | "attention-manipulation";
+  | "information-manipulation"
+  | "choice-manipulation"
+  | "agency-manipulation"
+  | "engagement-exploitation"
+  | "social-exploitation"
+  | "compound-adversarial-architecture";
 
 export interface Category {
   id: CategoryId;
@@ -87,46 +85,12 @@ export interface Category {
 }
 
 export const CATEGORIES: Category[] = [
-  {
-    id: "sneaking",
-    name: "Sneaking",
-    description: "Covert transfer of money, attention or data the user never agreed to.",
-  },
-  {
-    id: "urgency",
-    name: "Urgency",
-    description: "Manufactured time pressure that pushes the user to act before they can think.",
-  },
-  {
-    id: "misdirection",
-    name: "Misdirection",
-    description: "Visual or linguistic bias that steers the user toward an outcome the designer prefers.",
-  },
-  {
-    id: "forced-action",
-    name: "Forced Action",
-    description: "A desired action is gated on surrendering data, attention, or social capital.",
-  },
-  {
-    id: "obstruction",
-    name: "Obstruction",
-    description: "Making a legitimate, user-benefiting flow harder than it has to be.",
-  },
-  {
-    id: "nagging",
-    name: "Nagging",
-    description: "Persistent, interruptive requests that the user has to actively dismiss.",
-  },
-  {
-    id: "interface-interference",
-    name: "Interface Interference",
-    description: "UI mechanics that subvert the user's mental model of how the control works.",
-  },
-  {
-    id: "attention-manipulation",
-    name: "Attention Manipulation",
-    description: "Designing the interface to fight for the user's attention rather than earn it.",
-  },
+  { id: "information-manipulation", name: "Information Manipulation", description: "Patterns that hide, distort, or degrade the information needed for an informed decision." },
+  { id: "choice-manipulation", name: "Choice Manipulation", description: "Patterns that rig the decision architecture while leaving the nominal options visible." },
+  { id: "agency-manipulation", name: "Agency Manipulation", description: "Patterns that obstruct, automate, or asymmetrically burden the user's actions." },
+  { id: "engagement-exploitation", name: "Engagement Exploitation", description: "Patterns that exploit time, attention, and self-regulation to drive continued engagement." },
+  { id: "social-exploitation", name: "Social Exploitation", description: "Patterns that weaponize social relationships, contacts, and trust." },
+  { id: "compound-adversarial-architecture", name: "Compound Adversarial Architecture", description: "A compound dark stack that combines multiple adversarial patterns." },
 ];
 
 /** A single formal condition for the dark pattern, rendered with KaTeX. */
@@ -238,11 +202,10 @@ export const ICONS: Record<IconName, LucideIcon> = {
 };
 
 export const PATTERNS: Pattern[] = [
-  // ── Obstruction ──,
   {
     slug: "immortal-accounts",
     name: "Immortal Accounts",
-    category: "obstruction",
+    category: "agency-manipulation",
     summary: "Immortal Accounts is a lifecycle-constrained specialization of Labyrinthine Navigation with a null-terminal state, closely associated with the “Roach Motel” category of deceptive design. It deliberately disrupts the expected sequential coherence of user actions. While a praxeological analysis of the interface expects that frictionless account creation projects a rational and equally accessible deletion process, this pattern ensures the offboarding state is either entirely absent from the graphical user interface, obfuscated beneath disproportionate navigational depth, or requires manual external intervention. This asymmetric friction weaponizes interaction cost to artificially inflate user retention.",
     iconName: "infinity",
     built: true,
@@ -260,7 +223,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "dead-end",
     name: "Dead End",
-    category: "obstruction",
+    category: "agency-manipulation",
     summary: "The Dead End pattern occurs when a user is guided into a specific interface state or navigational node from which they cannot easily return, exit, or proceed without completing a forced action (such as accepting tracking cookies or viewing an advertisement). It artificially restricts the user's autonomy by disabling standard navigational escape routes, effectively trapping them in a localized topological sink within the application's flow. This represents a direct, malicious violation of foundational usability heuristics, particularly the principle of \"User Control and Freedom,\" which mandates the presence of an emergency exit for users who navigate into unwanted states.",
     iconName: "lock",
     built: true,
@@ -278,7 +241,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "forced-grace-period",
     name: "Forced Grace Period",
-    category: "obstruction",
+    category: "agency-manipulation",
     summary: "The Forced Grace Period pattern introduces an artificial temporal barrier to an action that should technically be instantaneous, most commonly occurring during account deletion or subscription cancellation. Instead of processing the user's request immediately, the system places the account into a “pending” state for a mandatory waiting period. This architectural friction is a prime example of “sludge”—the deliberate introduction of unjustified ordeals to discourage the exercise of a user's rights. During this temporal window, the interface exploits behavioral habituation; standard, low-effort user actions, such as inadvertently logging back into the application, automatically abort the cancellation process. This effectively traps the user by weaponizing their own muscle memory against their explicit intent.",
     iconName: "hourglass",
     built: true,
@@ -296,7 +259,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "privacy-maze",
     name: "Privacy Maze",
-    category: "obstruction",
+    category: "agency-manipulation",
     summary: "The Privacy Maze pattern is a consent-scoped specialization of Labyrinthine Navigation. It deliberately introduces disproportionate navigational friction and complexity into the process of declining data collection or adjusting privacy settings. While maximizing data extraction (e.g., “Accept All”) is typically facilitated by a frictionless, single-click vector, minimizing data extraction requires the user to traverse a deep navigational graph, interact with an overwhelming density of granular toggles, and decipher obfuscated pathways. This architectural hostility actively exploits decision fatigue and default effects, ensuring that the cognitive cost of protecting one's privacy vastly outweighs the cost of surrendering it.",
     iconName: "map",
     built: true,
@@ -314,7 +277,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "labyrinthine-navigation",
     name: "Labyrinthine Navigation",
-    category: "obstruction",
+    category: "agency-manipulation",
     summary: "Labyrinthine Navigation is the foundational architectural implementation of exit friction, categorized formally under “Adding Steps.” It deliberately weaponizes complex information architecture to deter users from executing critical, user-beneficial actions (such as canceling a subscription or deleting an account). Drawing on Information Foraging Theory, this pattern degrades the interface's “information scent” by burying target nodes under deep, unintuitive hierarchies and utilizing misleading categorization. In extreme cases, it introduces circular navigational loops that induce severe cognitive disorientation, forcing the exhausted user to restart their search or abandon the goal entirely.",
     iconName: "git-branch",
     built: true,
@@ -332,7 +295,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "customisation",
     name: "Customisation (Interface Nesting)",
-    category: "obstruction",
+    category: "agency-manipulation",
     summary: "Customisation—often overlapping with the “Privacy Maze” or “Adding Steps” patterns—is a structural dark pattern that weaponizes interface depth to manipulate user consent. It occurs most frequently in Consent Management Platforms (CMPs) and privacy settings where the interface places the business-favorable macro-action (e.g., “Accept All”) on the primary, immediate layer of the interface. Conversely, the user-favorable equivalent (e.g., “Reject All” or granular opt-outs) is actively banished to a secondary or tertiary “Customise” menu. By forcing the user to navigate away from their primary task into a complex settings matrix, the interface imposes an artificial behavioral tax—punishing users who attempt to exercise their autonomy with increased cognitive load and time expenditure.",
     iconName: "sliders-horizontal",
     built: true,
@@ -347,11 +310,10 @@ export const PATTERNS: Pattern[] = [
     { conditionIndex: 2, demoSlug: "customisation-condition-3" },
   ],
   },
-  // ── Sneaking ──,
   {
     slug: "intermediate-currency",
     name: "Intermediate Currency",
-    category: "sneaking",
+    category: "information-manipulation",
     summary: "The Intermediate Currency pattern introduces an artificial layer of abstraction between the user's fiat money and the digital goods or services they wish to purchase. Distinct from general price comparison prevention, this pattern relies strictly on transactional coercion—forcing users to first buy a platform-specific virtual currency (e.g., “gems”, “tokens”, or “coins”). By enforcing this exchange redirection, the interface cognitively decouples the perceived cost from the actual real-world financial impact, leveraging the “fiduciary abstraction” effect to significantly reduce the psychological pain of paying. Furthermore, this pattern frequently employs asymmetric denominations, leaving the user with an unspendable remainder. This residual balance exploits mental accounting principles, acting as a sunk cost that pressures the user into initiating future, otherwise unintended purchases.",
     iconName: "coins",
     built: true,
@@ -369,7 +331,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "disguised-ad",
     name: "Disguised Ad",
-    category: "sneaking",
+    category: "information-manipulation",
     summary: "The Disguised Ad pattern is a visual manipulation technique where promotional content is engineered to mimic native interface elements, such as navigation menus, editorial content, or primary action buttons (e.g., a fake “Download” button). This pattern deliberately weaponizes Gestalt phenomena to blur the boundary between figure and ground, causing the advertisement to seamlessly blend into the host interface's contexture. By doing so, it exploits users' acquired “banner blindness”—the cognitive heuristic where users subconsciously filter out traditional ad formats—inducing erroneous interaction with the promotional material under the false premise of operating the native application.",
     iconName: "megaphone",
     built: true,
@@ -387,7 +349,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "sneak-into-basket",
     name: "Sneak Into Basket",
-    category: "sneaking",
+    category: "agency-manipulation",
     summary: "The Sneak Into Basket pattern, often categorized under the broader “Sneaking” or “Hiding Information” umbrella, occurs when an e-commerce platform automatically adds supplementary, unrequested items—such as extended warranties, premium shipping, or complementary products—to the user's shopping cart. This manipulative technique acts as intentionally introduced “noise” into the communication channel, aiming to cause a discrepancy between what the user actually intends to purchase and what the system forcefully suggests. Leveraging the psychological principle of status quo bias and the user's diminished cognitive bandwidth during the final checkout phases, it shifts the burden of effort onto the consumer to actively identify and remove the unwanted items before payment.",
     iconName: "shopping-cart",
     built: true,
@@ -405,7 +367,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "drip-pricing",
     name: "Drip Pricing, Hidden Costs, or Partitioned Pricing",
-    category: "sneaking",
+    category: "information-manipulation",
     summary: "Drip Pricing, also known as Partitioned Pricing or Hidden Costs, is a deceptive pricing strategy formally categorized under “Hiding Information.” The interface entices preliminary engagement by prominently advertising a low, incomplete base price. As the user progresses through the transactional flow, mandatory fees, service charges, taxes, or “handling” costs are incrementally revealed (dripped) or only disclosed at the final checkout step. This architecture relies on two powerful psychological vulnerabilities: the partitioned pricing effect, which artificially lowers the user's initial encoded memory of the total cost, and the sunk cost fallacy, which exploits the time and cognitive effort the user has already invested into the checkout process to deter cart abandonment once the true cost is revealed.",
     iconName: "receipt",
     built: true,
@@ -423,7 +385,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "bundling",
     name: "Bundling",
-    category: "sneaking",
+    category: "choice-manipulation",
     summary: "Bundling is an e-commerce and structural dark pattern formally recognized as a severe manipulation of choice architecture. While legitimate product bundling exists to offer discounts on complementary goods, the dark pattern variant deliberately forces the user into purchasing supplementary, often unwanted items or services in order to acquire the primary item of intent. It artificially restricts user autonomy by fusing discrete products into an inseparable transactional unit. By structurally obfuscating the individual value of the components and preventing granular choice, the interface coerces the user into accepting a higher total transaction cost under the guise of necessity.",
     iconName: "boxes",
     built: true,
@@ -441,7 +403,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "hidden-information",
     name: "Hidden Information",
-    category: "sneaking",
+    category: "information-manipulation",
     summary: "The Hidden Information pattern, frequently overlapping with “Sneaking” and “Interface Interference,” deliberately obscures critical details—such as auto-renewal clauses, additional fees, or extensive data-sharing agreements—by displacing them from the user's primary visual locus. Unlike complete omission, the information technically exists within the interface but is rendered practically invisible. This is achieved through typographical camouflage (diminutive font sizes and low contrast), spatial displacement (placing terms far below the “fold”), or structural burial within massive, unformatted blocks of legal jargon. The pattern weaponizes reading fatigue and established visual heuristics, assuming the user will not actively hunt for information that is purposefully visually downgraded or epistemically obstructed.",
     iconName: "eye-off",
     built: true,
@@ -459,7 +421,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "reduced-friction",
     name: "Reduced Friction",
-    category: "sneaking",
+    category: "agency-manipulation",
     summary: "Reduced Friction—also referred to as Frictionless Design when weaponized—is a behavioral dark pattern formally categorized under “Interface Interference” and “Forced Action.” While removing friction is traditionally a best practice in UX design to improve usability, it becomes a dark pattern when applied exclusively to high-stakes, business-favorable actions, such as spending money, subscribing, or granting broad data permissions. By deliberately stripping away necessary cognitive “cooling-off” periods and eliminating standard confirmation dialogues or secondary authentication steps, the interface ensures that accidental or impulsive clicks translate instantly into irreversible consequences. This architecture exploits the user's momentum to bypass deliberate, informed consent in favor of rapid, frictionless conversion.",
     iconName: "zap",
     built: true,
@@ -477,7 +439,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "forced-continuity",
     name: "Forced Continuity",
-    category: "sneaking",
+    category: "agency-manipulation",
     summary: "Forced Continuity is a financial dark pattern typically categorized under “Sneaking” or “Bait and Switch.” It occurs when a free trial or substantially discounted promotional period silently and automatically converts into a recurring, full-priced subscription without adequate prior warning or a transparent, frictionless cancellation mechanism. The interface exploits the user's natural memory decay regarding future billing dates, relying on the inertia of pre-authorized payment methods to initiate charges that are technically authorized but practically forgotten. This pattern represents a severe violation of the principle of contemporaneous consent, as it weaponizes the temporal distance between the initial signup and the first billing event.",
     iconName: "credit-card",
     built: true,
@@ -495,7 +457,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "privacy-zuckering",
     name: "Privacy Zuckering",
-    category: "sneaking",
+    category: "agency-manipulation",
     summary: "Privacy Zuckering—a term originally coined by the Electronic Frontier Foundation (EFF)—is a data-harvesting dark pattern formally categorized under “Sneaking” and “Interface Interference.” It occurs when an interface intentionally tricks, confuses, or coerces a user into surrendering significantly more personal data than they intend to. This is typically achieved through confusing privacy control matrices, bundling core functionality with unnecessary data brokerage consent, and obfuscating the extent of third-party sharing behind vague, euphemistic language. By weaponizing the user's desire for the primary service, the interface bypasses the principle of purpose limitation to maximize data extraction for secondary monetization.",
     iconName: "user",
     built: true,
@@ -513,7 +475,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "friend-spam",
     name: "Friend Spam",
-    category: "sneaking",
+    category: "social-exploitation",
     summary: "Friend Spam is a coercive and privacy-invasive dark pattern categorized under “Sneaking” and “Interface Interference.” It occurs when an application requests access to a user's contact list or social media graph under the explicit pretense of a benign utility—such as “finding friends already on the platform”—but then silently weaponizes those permissions to broadcast unsolicited promotional messages to the user's entire network. Critically, these outbound messages are often spoofed to appear as if they were personally drafted by the user, exploiting their social capital to bypass the recipients' trust thresholds. This pattern represents a dual violation of privacy: the non-consensual harvesting of the user's social graph and the deceptive appropriation of their identity for corporate marketing.",
     iconName: "send",
     built: true,
@@ -531,7 +493,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "address-book-leeching",
     name: "Address Book Leeching",
-    category: "sneaking",
+    category: "social-exploitation",
     summary: "Address Book Leeching is a severe data-harvesting dark pattern formally categorized under “Privacy Manipulation” and “Forced Action.” While closely related to Friend Spam, Leeching focuses specifically on the covert extraction, upload, and permanent retention of a user's entire contact list. Applications often gate access to their service behind mandatory contact permissions, falsely implying the data will be processed locally or used solely for a transient feature. Instead, the application exfiltrates the address book to a remote server to build “shadow profiles” of non-users, map social graphs, or monetize the data through third-party brokerage. This pattern represents a fundamental violation of both user and non-user privacy, as it builds relational databases of individuals who have never interacted with or consented to the service.",
     iconName: "contact",
     built: true,
@@ -549,7 +511,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "automatic-accept-third-party-term",
     name: "Automatic Accept Third Party Term",
-    category: "sneaking",
+    category: "agency-manipulation",
     summary: "Automatic Accept Third Party Term is a consent-based dark pattern formally categorized under “Sneaking” and “Forced Action.” It occurs when an interface structurally bundles the agreement to a primary service provider's Terms of Service with the hidden, mandatory acceptance of numerous third-party agreements. By collapsing multiple distinct legal or privacy contracts into a single, indivisible “I Accept” button, the system denies the user granular agency. This forces the user to unknowingly bind themselves to external data brokers, affiliate networks, or partner services without ever viewing their specific terms or having the ability to opt out of them individually, representing a severe violation of the principle of informed consent.",
     iconName: "file-check",
     built: true,
@@ -567,7 +529,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "pre-delivered-content",
     name: "Pre-Delivered Content",
-    category: "sneaking",
+    category: "agency-manipulation",
     summary: "The Pre-Delivered Content pattern—historically termed “On-Disc DLC”—is a manipulative resource-extraction strategy formally categorized under “Hidden Costs” and “Forced Action.” It occurs when a software provider covertly installs premium, locked digital assets (e.g., expansion packs or high-resolution textures) directly onto the user's local hardware without explicit consent. By offloading hosting and bandwidth burdens onto the user, the provider forcibly consumes private physical storage capacity. The interface then presents these locally stored assets as “locked” until a financial transaction is completed, effectively coercing the user into paying for access to data they have already been forced to host on their own machine.",
     iconName: "package",
     built: true,
@@ -582,11 +544,10 @@ export const PATTERNS: Pattern[] = [
     { conditionIndex: 2, demoSlug: "pre-delivered-content-condition-3" },
   ],
   },
-  // ── Urgency ──,
   {
     slug: "fear-of-missing-out-fomo",
     name: "Fear Of Missing Out (FOMO)",
-    category: "urgency",
+    category: "engagement-exploitation",
     summary: "The Fear Of Missing Out (FOMO) pattern is a psychological manipulation tactic formally categorized under “Deceptive Sniping” or “Urgency and Scarcity.” It aggressively pressures the user into an immediate transaction by fabricating artificial constraints on either time (temporal scarcity) or availability (inventory scarcity). Common implementations include fake countdown timers that reset upon page refresh, hardcoded low-stock warnings, and incessant social proof pop-ups. By inducing high cognitive arousal and panic, the interface bypasses the user's rational evaluation of the product's actual value or necessity, forcing compliance through the manufactured threat of exclusion.",
     iconName: "flame",
     built: true,
@@ -604,7 +565,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "high-demand",
     name: "High Demand",
-    category: "urgency",
+    category: "information-manipulation",
     summary: "The High Demand pattern is a manipulative psychological tactic formally categorized under “Social Proof” and “Urgency.” It functions by artificially injecting notifications or metrics that claim a large number of other users are concurrently viewing, purchasing, or booking the same item. By creating the illusion of intense competition for an ostensibly limited resource, the interface triggers the user's evolutionary Fear Of Missing Out (FOMO). This cognitive pressure circumvents deliberative cognitive processing and price-comparison behaviors, accelerating the transition from contemplation to an impulsive transaction. The pattern is explicitly deceptive when the displayed metrics are algorithmically fabricated or statistically detached from true backend analytics.",
     iconName: "trending-up",
     built: true,
@@ -622,7 +583,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "low-stock",
     name: "Low Stock",
-    category: "urgency",
+    category: "information-manipulation",
     summary: "The Low Stock pattern is a psychological manipulation tactic formally categorized under “Scarcity” and “Urgency.” It weaponizes the economic principle of supply and demand by artificially presenting an item as being on the verge of selling out (e.g., “Only 2 left at this price!”). By creating a manufactured constraint, the interface induces panic, triggering the user's Fear Of Missing Out (FOMO) and short-circuiting their ability to compare prices or calmly evaluate the necessity of the purchase. The pattern crosses into explicit deception when the inventory metrics are algorithmically fabricated, permanently stuck at a low threshold, or replenish upon page refresh, proving the scarcity is a visual overlay rather than a backend reality.",
     iconName: "package-x",
     built: true,
@@ -640,7 +601,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "activity-messages",
     name: "Activity Messages",
-    category: "urgency",
+    category: "information-manipulation",
     summary: "Activity Messages is a behavioral manipulation pattern formally categorized under “Social Proof” and “Urgency.” It functions by continuously injecting asynchronous notifications into the user's viewport, detailing the purported recent actions of other users—such as “Sarah from New York just purchased this item”. By creating a high-velocity stream of peer activity, the interface exploits the psychological heuristic of herd behavior to artificially inflate the perceived desirability and scarcity of the item. The pattern crosses into explicit deception when these event streams are algorithmically fabricated, temporally shifted to appear recent, or entirely decoupled from actual backend transaction logs.",
     iconName: "bell",
     built: true,
@@ -658,7 +619,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "countdown-timer",
     name: "Countdown Timer",
-    category: "urgency",
+    category: "information-manipulation",
     summary: "The Countdown Timer is a psychological manipulation tactic formally categorized under “Urgency” and “Deception.” It visualizes a strict temporal constraint—usually a rapidly ticking clock—imploring the user to complete a transaction before a promised discount or cart reservation expires. By imposing a highly salient artificial deadline, the interface induces cognitive stress and Fear Of Missing Out (FOMO), actively subverting the user's ability to comparison-shop or rationally deliberate. The pattern becomes explicitly deceptive when the timer is structurally fake: resetting upon page refresh, tied exclusively to local session variables, or resulting in zero actual consequence to the offer when the clock reaches zero.",
     iconName: "timer",
     built: true,
@@ -676,7 +637,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "limited-time-message",
     name: "Limited Time Message",
-    category: "urgency",
+    category: "information-manipulation",
     summary: "The Limited Time Message is a linguistic manipulation tactic formally categorized under “Urgency” and “Deception.” Unlike a strict Countdown Timer that relies on a specific numerical deadline, this pattern employs vague, high-arousal semantics (e.g., “Sale Ends Soon!” or “Today Only!”) to manufacture an artificial sense of scarcity. By deliberately omitting the exact expiration timestamp, the interface maximizes cognitive anxiety and Fear Of Missing Out (FOMO) while retaining the flexibility for the provider to perpetually extend the promotion. The pattern crosses into explicit deception when the “limited” offer is functionally permanent, representing the item's standard baseline price rather than a genuine, transient discount.",
     iconName: "hourglass",
     built: true,
@@ -691,11 +652,10 @@ export const PATTERNS: Pattern[] = [
     { conditionIndex: 2, demoSlug: "limited-time-message-condition-3" },
   ],
   },
-  // ── Misdirection ──,
   {
     slug: "price-comparison-prevention",
     name: "Price Comparison Prevention",
-    category: "misdirection",
+    category: "information-manipulation",
     summary: "The Price Comparison Prevention pattern, often implemented as part of a broader “Creating Barriers” strategy, deliberately obscures the true cost of a product or service to prevent the user from making informed, cross-platform or cross-product evaluations. Unlike Intermediate Currency, which coerces the user into a specific transactional pathway, this pattern functions strictly as an epistemic obstruction. Retailers utilize this strategy to intentionally generate search friction, exploiting the cognitive limits of consumers to reduce price elasticity and discourage competition. It is achieved structurally by decoupling prices from standard fiat comparables, omitting normalized unit metrics, or technically disabling the user's ability to extract product identifiers (e.g., blocking text selection or copy-paste functionalities) for external search.",
     iconName: "scale",
     built: true,
@@ -713,7 +673,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "reference-pricing",
     name: "Reference Pricing",
-    category: "misdirection",
+    category: "information-manipulation",
     summary: "The Reference Pricing pattern, categorized formally under “(De)Contextualizing Cues,” exploits the anchoring cognitive bias to manufacture the illusion of a significant discount. By presenting an artificially inflated “original” price adjacent to the actual selling price, the interface manipulates the consumer's transaction utility, altering their perception of the product's true market value. This pattern transitions into explicit deception when the reference price was never genuinely applied for a reasonable duration, or when the visual hierarchy deliberately obscures legally mandated historical pricing baselines, such as the lowest price in the preceding 30 days required by consumer protection laws like the European Union's Omnibus Directive.",
     iconName: "tag",
     built: true,
@@ -731,7 +691,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "conflicting-information",
     name: "Conflicting Information",
-    category: "misdirection",
+    category: "information-manipulation",
     summary: "Conflicting Information is a dark pattern formally categorized under “(De)Contextualizing Cues” or “Feedforward Ambiguity”. Distinct from Persuasive Language, this pattern crosses the threshold from subjective bias into objective deception by presenting mutually exclusive truth conditions. It occurs when an interface presents the user with contradictory semantic, visual, or structural signals regarding the outcome of an action. By intentionally creating a mismatch between visual affordances and textual meaning, or by placing logically unsatisfiable factual claims in close proximity (e.g., “Free Trial” juxtaposed with “Pay Today”), the interface induces severe cognitive overload and forces the user into errors of interpretation.",
     iconName: "split",
     built: true,
@@ -749,7 +709,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "information-without-context",
     name: "Information Without Context",
-    category: "misdirection",
+    category: "information-manipulation",
     summary: "Information Without Context is a dark pattern classified under “(De)Contextualizing Cues.” It occurs when an interface presents a compelling metric, claim, or data point (such as a discount, a popularity score, or a stock level) but deliberately omits the necessary baseline, unit of measurement, or temporal boundaries required for the user to rationally evaluate its significance. By stripping away this contextual architecture, the system forces the user to rely on emotional heuristics rather than logical comparison. This intentionally manufactures epistemic ambiguity, artificially amplifying the perceived urgency or value of an offer by denying the user the data required for a comparative evaluation.",
     iconName: "info",
     built: true,
@@ -767,7 +727,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "false-hierarchy",
     name: "False Hierarchy",
-    category: "misdirection",
+    category: "choice-manipulation",
     summary: "False Hierarchy is a structural and visual dark pattern formally categorized under “Interface Interference” and “Manipulating Visual Choice Architecture.” Distinct from general visual prominence, this pattern strictly requires a binary relational structure between two opposing actions. It intentionally assigns disproportionate visual prominence to the action that benefits the service provider (e.g., “Accept All Cookies”) while actively suppressing the visibility of the strictly opposing alternative action that benefits the user (e.g., “Reject All”). This creates a deceptive feedforward cue, overriding the user's conscious deliberation and inducing erroneous interaction with the highlighted element as if it were the mandatory path forward.",
     iconName: "layers",
     built: true,
@@ -785,7 +745,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "visual-prominence",
     name: "Visual Prominence",
-    category: "misdirection",
+    category: "choice-manipulation",
     summary: "Visual Prominence is a fundamental dark pattern formally categorized under “Manipulating Visual Choice Architecture.” While False Hierarchy manipulates the relationship between opposing choices, Visual Prominence operates as an absolute metric. It does not require semantic opposition and frequently occurs with a single dominant action. It deliberately weaponizes aesthetic variables—such as color saturation, relative luminance, typographical weight, and bounding box area—to unilaterally direct user attention toward a business-favorable action. By intentionally maximizing visual saliency and manipulating Fitts's Law, the interface makes the target action visually and physically unavoidable compared to the general baseline of the application.",
     iconName: "contrast",
     built: true,
@@ -803,7 +763,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "persuasive-language",
     name: "Persuasive Language",
-    category: "misdirection",
+    category: "choice-manipulation",
     summary: "The Persuasive Language pattern manipulates the user's decision-making process by substantially biasing the framing of choices. Detecting this pattern requires a strict distinction between denotation (the objective, factual goal) and connotation (the impression or intended, but hidden meaning). Unlike Conflicting Information, Persuasive Language operates strictly within the bounds of logical truth; it represents connotative bias without falsity. It deliberately attempts to evoke specific emotions—such as guilt, anxiety, or artificial excitement—to sway the user toward a business-favorable action. This pattern often overlaps with Confirmshaming, utilizing leading questions, emotionally charged vocabulary, and subjective adjectives rather than neutral descriptions, while mathematically maintaining a satisfiable truth state.",
     iconName: "type",
     built: true,
@@ -821,7 +781,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "cuteness",
     name: "Cuteness",
-    category: "misdirection",
+    category: "choice-manipulation",
     summary: "The Cuteness dark pattern is a distinct form of emotional and sensory manipulation. It leverages anthropomorphism and high-valence emotional imagery (such as a crying mascot, a sad animal, or exaggerated pleading expressions) to induce unwarranted guilt or empathy in the user. This pattern is almost exclusively deployed during separation flows—such as unsubscribing from a newsletter or canceling a service—acting as a psychological friction barrier rather than a structural one. By framing the user's objective, rational decision as an act of emotional harm to a fictional entity, the interface attempts to manufacture parasocial distress, coercing the user into abandoning their intended action.",
     iconName: "smile",
     built: true,
@@ -839,7 +799,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "positive-or-negative-framing",
     name: "Positive Or Negative Framing",
-    category: "misdirection",
+    category: "choice-manipulation",
     summary: "Positive or Negative Framing is a cognitive dark pattern grounded in Prospect Theory and the framing effect. It deliberately manipulates the user's choice architecture by presenting the business-favorable option as a significant gain, reward, or logically superior choice (positive framing), while simultaneously depicting the user-favorable alternative as a loss, risk, or foolish decision (negative framing). By artificially shifting the baseline of the decision, the interface exploits human loss aversion. Because the psychological pain of losing is empirically twice as powerful as the pleasure of gaining, the system effectively coerces the user into compliance to avoid manufactured negative consequences or social and financial penalties.",
     iconName: "scale",
     built: true,
@@ -857,7 +817,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "choice-overload",
     name: "Choice Overload",
-    category: "misdirection",
+    category: "choice-manipulation",
     summary: "Choice Overload, also known as Overchoice or Decision Fatigue, is a cognitive dark pattern formally categorized under “Interface Interference” or “Adding Steps.” It deliberately overwhelms the user's cognitive processing capacity by presenting an excessive, uncurated volume of granular options, toggles, or text. This pattern weaponizes Hick's Law, which states that the time required to make a decision increases logarithmically with the number and complexity of choices. The strategic goal is to induce decision fatigue, causing the user to abandon the customization process and succumb to the path of least resistance—a provider-favorable default, such as a single-click “Accept All” button designed to bypass a massive list of individual tracking vendors.",
     iconName: "list",
     built: true,
@@ -875,7 +835,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "plain-evil",
     name: "Plain Evil (Theoretical Construct)",
-    category: "misdirection",
+    category: "compound-adversarial-architecture",
     summary: "While not a formally recognized pattern in Thomas Mildner’s (or any established HCI) taxonomy, colloquially termed “Plain Evil,” this Compound Adversarial Architecture represents the theoretical absolute limit of adversarial choice architecture. It is a compound meta-pattern—or a “dark stack”—where multiple coercive strategies, such as Forced Grace Periods, Privacy Mazes, and Confirmshaming, are executed simultaneously. In this state, the interface ceases to be a tool for user interaction and becomes a purely adversarial environment. The system's strategic goal shifts from mere persuasion to the total neutralization of user agency, maximizing business-favorable outcomes through sheer technical exhaustion and psychological attrition.",
     iconName: "skull",
     built: true,
@@ -893,7 +853,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "endorsement-and-testimonials",
     name: "Endorsement And Testimonials",
-    category: "misdirection",
+    category: "information-manipulation",
     summary: "Endorsement And Testimonials is a manipulative dark pattern formally categorized under “Social Proof” and “Deception.” It occurs when an interface artificially engineers trust by presenting fabricated, paid, or algorithmically generated reviews as genuine user feedback. By exploiting the psychological heuristic where individuals look to the behavior of others to guide their decisions, this pattern tricks users into purchasing substandard products. The pattern crosses into explicit deception when the platform structurally prevents the verification of identities or systematically suppresses negative, organic testimonials to maintain a statistically improbable positive sentiment.",
     iconName: "star",
     built: true,
@@ -911,7 +871,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "confirmshaming",
     name: "Confirmshaming",
-    category: "misdirection",
+    category: "choice-manipulation",
     summary: "Confirmshaming is a manipulative linguistic and psychological dark pattern formally categorized under “Social Manipulation” and “Interface Interference.” It occurs when the interface copy designed for a dismissal or opt-out action is deliberately formulated to evoke guilt, shame, embarrassment, or feelings of inadequacy in the user. Instead of providing a neutral “No, thanks” or “Close” option, the system forces the user to click a self-deprecating statement—such as “No, I don't care about the environment”—to escape the modal. By attaching a high emotional tax to the act of declining, the interface aims to bully the user into selecting the business-favorable macro-action through the manufacture of cognitive dissonance.",
     iconName: "frown",
     built: true,
@@ -929,7 +889,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "psychological-tricks",
     name: "Psychological Tricks",
-    category: "misdirection",
+    category: "choice-manipulation",
     summary: "Psychological Tricks represent a meta-category of dark patterns formally classified under “Cognitive Manipulation” and “Deception.” Rather than relying on technical coercion or outright lies, these interfaces weaponize innate human cognitive biases—such as the framing effect, anchoring, and decision fatigue—to steer users toward suboptimal, business-favorable outcomes. By designing the choice architecture to exploit systemic flaws in human heuristics, the system circumvents deliberative economic evaluation. The interface preconfigures the choice architecture, ensuring that the user's intuitive, “System 1” thinking acts directly against their own best interests by prioritizing immediate cognitive ease over long-term utility.",
     iconName: "wand-sparkles",
     built: true,
@@ -944,11 +904,10 @@ export const PATTERNS: Pattern[] = [
     { conditionIndex: 2, demoSlug: "psychological-tricks-condition-3" },
   ],
   },
-  // ── Nagging ──,
   {
     slug: "pressured-selling",
     name: "Pressured Selling",
-    category: "nagging",
+    category: "choice-manipulation",
     summary: "Pressured Selling is a high-pressure e-commerce dark pattern that interrupts the user's transactional flow, typically right before the final checkout step, to force a rapid decision on an upsell, cross-sell, or premium subscription. It combines visual interference with psychological stressors to create a high-arousal environment. By deploying unexpected modal overlays, artificial scarcity claims, and emotionally charged language, the interface artificially depletes the user's cognitive resources. This forces them into increasing their cart value under the manufactured threat of missing a fleeting opportunity, effectively weaponizing the fear of missing out (FOMO) to override rational economic deliberation.",
     iconName: "megaphone",
     built: true,
@@ -963,11 +922,10 @@ export const PATTERNS: Pattern[] = [
     { conditionIndex: 2, demoSlug: "pressured-selling-condition-3" },
   ],
   },
-  // ── Interface Interference ──,
   {
     slug: "small-or-moving-close-button",
     name: "Small or Moving Close Button",
-    category: "interface-interference",
+    category: "agency-manipulation",
     summary: "The Small or Moving Close Button is a visual and interaction-based dark pattern formally classified under the “Hard To Close” taxonomy. It artificially restricts a user's ability to dismiss an overlay, modal, or advertisement by actively weaponizing Fitts's Law against the human motor system. This architectural hostility is achieved by rendering the dismissal vector (such as an “X” icon) perceptually or physically inaccessible due to microscopic scaling, camouflaging it via extremely low contrast, or implementing kinetic evasion where the button dynamically mutates its spatial coordinates to avoid the user's cursor.",
     iconName: "x",
     built: true,
@@ -985,7 +943,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "bad-defaults-preselection",
     name: "Bad Defaults / Preselection",
-    category: "interface-interference",
+    category: "choice-manipulation",
     summary: "The Bad Defaults or Preselection pattern exploits user inertia and the psychological status quo bias by initializing interface elements with values that disproportionately benefit the service provider. A primary example of this technique is the use of default-selected marketing consents or pre-checked terms of data sharing. It operates on the empirically proven premise that users overwhelmingly accept default configurations to minimize cognitive friction during task execution. By shifting the burden of action from an “opt-in” to an “opt-out” model, the interface intentionally designs a choice architecture where passive compliance guarantees business-favorable, and often user-hostile, outcomes.",
     iconName: "check-square",
     built: true,
@@ -1003,7 +961,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "trick-questions",
     name: "Trick Questions",
-    category: "interface-interference",
+    category: "choice-manipulation",
     summary: "The Trick Questions pattern operates within the “Sneaking” and “Interface Interference” domains. It employs deliberate linguistic obfuscation, convoluted phrasing, and syntactic traps (most notably, double negatives) to deceive the user into answering a question in a way they did not intend. This pattern frequently appears in consent management platforms, registration forms, and checkout flows. A classic implementation involves a series of checkboxes where the semantic polarity abruptly shifts—for instance, checking the first box means “I want to receive emails,” while checking the adjacent, visually identical box means “I do not want to share my data.” This exploits the user's reading fatigue and expectation of consistent interface logic, weaponizing cognitive load to induce automated, erroneous interactions.",
     iconName: "help-circle",
     built: true,
@@ -1021,7 +979,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "wrong-language",
     name: "Wrong Language",
-    category: "interface-interference",
+    category: "information-manipulation",
     summary: "The Wrong Language pattern is an obfuscation technique formally categorized under “Interface Interference” and “Hiding Information.” It occurs when an interface abruptly and intentionally switches the language of critical text nodes—such as Terms and Conditions, privacy opt-out forms, or cancellation flows—to a language different from the user's established session language. By creating an artificial linguistic barrier precisely at the point of a user-favorable action, the system exploits the user's inability to comprehend the choices, significantly increasing the likelihood of task abandonment or the blind acceptance of business-favorable defaults. This tactic represents a direct violation of the transparency principle, as it prevents the user from making an informed decision by weaponizing their cognitive and linguistic limitations.",
     iconName: "languages",
     built: true,
@@ -1039,7 +997,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "complex-language",
     name: "Complex Language",
-    category: "interface-interference",
+    category: "information-manipulation",
     summary: "The Complex Language pattern—also referred to as Legalese, Jargon, or Bafflement—is a linguistic dark pattern formally categorized under “Hiding Information” and “Interface Interference.” It deliberately utilizes overly technical, legalistic, or convoluted vocabulary and extremely long sentence structures to obscure the true meaning of a disclosure, privacy policy, or set of terms. By elevating the required reading comprehension level far beyond that of the average consumer, the interface artificially inflates the cognitive effort required to understand the agreement. This ensures that most users will succumb to decision fatigue and accept business-favorable terms without providing genuine, informed consent, effectively turning the disclosure into a social and cognitive barrier.",
     iconName: "pilcrow",
     built: true,
@@ -1057,7 +1015,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "feedforward-ambiguity",
     name: "Feedforward Ambiguity",
-    category: "interface-interference",
+    category: "information-manipulation",
     summary: "Feedforward Ambiguity is an interaction-based dark pattern formally categorized under “(De)Contextualizing Cues” and “Interface Interference.” While feedback informs a user about what has happened, feedforward informs the user about what will happen before they initiate an action. This pattern deliberately provides unclear, polysemous, or entirely missing cues regarding the consequence of an interaction. Common implementations include vague button labels (e.g., “Continue” to finalize a non-refundable purchase), icon-only buttons lacking accessible labels, or toggles that do not clearly indicate their activation state. This forces the user to guess the outcome, effectively inducing erroneous compliance with unintended financial or privacy commitments through a lack of functional transparency.",
     iconName: "circle-help",
     built: true,
@@ -1072,11 +1030,10 @@ export const PATTERNS: Pattern[] = [
     { conditionIndex: 2, demoSlug: "feedforward-ambiguity-condition-3" },
   ],
   },
-  // ── Forced Action ──,
   {
     slug: "forced-registration",
     name: "Forced Registration",
-    category: "forced-action",
+    category: "agency-manipulation",
     summary: "Forced Registration is a structural dark pattern formally categorized under “Forced Action” and is closely linked to predatory data harvesting strategies. It occurs when an interface mandates the creation of a persistent user account—requiring the submission of an email address, password, and often additional demographic data—to access core functionality or complete a transaction that fundamentally does not require an ongoing relationship. The most common manifestation is the deliberate omission of a “Guest Checkout” option in e-commerce, forcing the user to trade long-term personal data and inbox access for a one-time utility. This pattern weaponizes the user's sunk cost in the transaction to bypass the principle of data minimization.",
     iconName: "user-plus",
     built: true,
@@ -1094,7 +1051,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "social-pyramid",
     name: "Social Pyramid",
-    category: "forced-action",
+    category: "social-exploitation",
     summary: "The Social Pyramid pattern is a predatory growth-hacking technique formally categorized under “Social Manipulation” and “Forced Action.” It functionally mimics a digital multi-level marketing (MLM) scheme by gating core application features, essential progress, or promised rewards behind mandatory user recruitment. Instead of paying for a service with currency or data, the user is forced to pay with their social capital, aggressively incentivized to broadcast referral links to their personal network to unlock basic utility. The mathematical design of these systems ensures that the platform gains exponential user acquisition while individual users face rapidly compounding friction, effectively turning the user base into a non-compensated marketing workforce.",
     iconName: "users",
     built: true,
@@ -1112,7 +1069,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "granting-and-interaction",
     name: "Granting and Interaction",
-    category: "forced-action",
+    category: "agency-manipulation",
     summary: "The Granting and Interaction pattern is a structural dark pattern formally categorized under “Forced Action” and “Interface Interference,” primarily found in mobile applications and consent management platforms. It deliberately intertwines the act of interacting with a system with the act of granting system-level permissions—such as location, notifications, or camera access. This is achieved either by holding core interactions hostage until non-essential permissions are granted, or by utilizing deceptive interaction overlays to trick the user into inadvertently granting permissions while attempting to perform a routine interface action. By fusing utility with extraction, the interface entirely bypasses genuine, informed consent, forcing a trade-off between functionality and personal privacy.",
     iconName: "mouse-pointer-click",
     built: true,
@@ -1130,7 +1087,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "pay-to-play",
     name: "Pay-To-Play",
-    category: "forced-action",
+    category: "engagement-exploitation",
     summary: "The Pay-To-Play pattern—often overlapping with Pay-To-Win—is a predatory monetization strategy primarily found in freemium games, dating applications, and SaaS platforms, categorized under “Forced Action” and “Hidden Costs.” It lures users in with a seemingly free experience, only to artificially inflate the difficulty, inject massive temporal delays (grinding), or hard-block core progression once the user is psychologically invested. The interface then offers real-money microtransactions as the sole viable escape mechanism from this engineered frustration. Unlike legitimate premium models, this pattern relies on a bait-and-switch dynamic, where the “free” path is deliberately designed to become unplayable, uncompetitive, or mathematically impossible to complete over time.",
     iconName: "dollar-sign",
     built: true,
@@ -1148,7 +1105,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "grinding",
     name: "Grinding",
-    category: "forced-action",
+    category: "engagement-exploitation",
     summary: "Grinding is a temporal and interactive dark pattern, predominantly prevalent in gaming and gamified applications, formally categorized under “Playing with Time” and “Engagement Traps.” It forces the user to perform highly repetitive, low-skill, and monotonous tasks to achieve necessary progression, unlock core content, or maintain competitive parity. While some repetition is natural in engagement loops, Grinding becomes a dark pattern when the interaction cost is artificially and exponentially inflated. The goal is to artificially boost daily active user (DAU) metrics or to induce enough psychological fatigue that the user yields to microtransactions (Pay-To-Skip) to bypass the deliberately engineered tedium.",
     iconName: "timer",
     built: true,
@@ -1166,7 +1123,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "playing-by-appointment",
     name: "Playing By Appointment",
-    category: "forced-action",
+    category: "engagement-exploitation",
     summary: "The Playing By Appointment pattern is a behavioral manipulation tactic formally categorized under “Playing with Time” and “Engagement Traps.” Prevalent in freemium games, habit-tracking apps, and gamified educational platforms, this pattern dictates exactly when a user must interact with the system, effectively commandeering their real-world schedule. Rather than allowing the user to engage at their own pace, the interface employs rigid temporal mechanics—such as energy systems that take hours to refill, virtual assets that \"wither\" if not harvested at a specific hour, or daily streaks that vanish if a 24-hour window is missed. This artificially induces habituation and Fear Of Missing Out (FOMO), transforming software usage from a voluntary activity into a mandatory daily obligation.",
     iconName: "clock",
     built: true,
@@ -1184,7 +1141,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "watch-ads-to-unlock-features",
     name: "Watch Ads To Unlock Features Or Get Rewards",
-    category: "forced-action",
+    category: "engagement-exploitation",
     summary: "The “Watch Ads To Unlock Features Or Get Rewards” pattern—commonly referred to as Rewarded Video or Ad-Gating—is a monetization and attention-extraction strategy formally categorized under “Forced Action” and “Playing with Time.” It presents the user with a pseudo-choice: pay for a necessary resource, feature, or progression step with fiat currency, or pay with their attention by consuming an unskippable third-party advertisement. While theoretically presented as an optional bonus, the underlying economy of the application is deliberately balanced to artificially starve the user of essential resources, effectively coercing them into the ad-viewing loop to maintain a viable state or continue utilizing the software's core utility.",
     iconName: "play",
     built: true,
@@ -1202,7 +1159,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "pay-to-avoid",
     name: "Pay To Avoid",
-    category: "forced-action",
+    category: "engagement-exploitation",
     summary: "The Pay To Avoid pattern is a coercive monetization strategy formally categorized under “Forced Action” and “Interface Interference.” Instead of charging users for novel, premium features or enhanced utility, the system artificially degrades the baseline user experience—injecting excessive advertisements, capping download speeds, applying non-removable watermarks, or imposing severe usage limits. The provider then demands a financial transaction solely to remove this engineered friction and restore the software to a standard, functional state. This operates on a digital extortion model, where the user is paying not for an upgrade, but for the cessation of algorithmic hostility.",
     iconName: "shield",
     built: true,
@@ -1220,7 +1177,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "automating-the-user-away",
     name: "Automating The User Away",
-    category: "forced-action",
+    category: "agency-manipulation",
     summary: "The Automating The User Away pattern is a behavioral and structural dark pattern formally categorized under “Forced Action” and “Interface Interference.” It usurps user agency by autonomously executing high-engagement or high-stakes actions—such as auto-playing the next video, automatically rolling over a queue, or silently executing a transaction—without requiring explicit, contemporary user confirmation. By shifting the paradigm from “user-initiated action” to “system-initiated action that the user must actively interrupt,” the interface weaponizes human inertia and slow reaction times. This ensures that the business-favorable outcome occurs by default, effectively turning the user into a passive consumer of the system's internal logic.",
     iconName: "fast-forward",
     built: true,
@@ -1238,7 +1195,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "parasocial-pressure",
     name: "Parasocial Pressure",
-    category: "forced-action",
+    category: "social-exploitation",
     summary: "The Parasocial Pressure pattern is a behavioral manipulation tactic formally categorized under “Social Manipulation” and is closely related to “Confirmshaming.” It weaponizes the psychological phenomenon of parasocial interaction—the one-sided emotional attachment a user forms with a content creator, influencer, or anthropomorphized platform mascot. Instead of pitching a transaction based on objective utility, the interface coerces the user by fabricating a sense of personal obligation, guilt, or fear of disappointing the parasocial entity. By intertwining the platform's financial metrics with the simulated emotional state or livelihood of the beloved figure, the system circumvents deliberative economic evaluation in favor of empathy-driven compulsion.",
     iconName: "heart",
     built: true,
@@ -1256,7 +1213,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "encouraging-anti-social-behavior",
     name: "Encouraging Anti-Social Behavior",
-    category: "forced-action",
+    category: "social-exploitation",
     summary: "Encouraging Anti-Social Behavior is a behavioral manipulation pattern formally categorized under “Social Manipulation” and “Engagement Traps.” It occurs when an application explicitly gamifies, incentivizes, or algorithmically rewards users for engaging in actions that are socially harmful, annoying to their peers, or detrimental to social trust. Instead of generating value through genuine utility, the platform coerces the user into becoming a social disruption agent—rewarding them with in-app currency or algorithmic visibility in exchange for indiscriminately broadcasting to their address book or posting highly polarizing content. The interface essentially offloads its marketing and engagement costs onto the user's personal social capital, weaponizing human connections for platform growth.",
     iconName: "message-circle-warning",
     built: true,
@@ -1271,11 +1228,10 @@ export const PATTERNS: Pattern[] = [
     { conditionIndex: 2, demoSlug: "encouraging-anti-social-behavior-condition-3" },
   ],
   },
-  // ── Attention Manipulation ──,
   {
     slug: "addictive-design",
     name: "Addictive Design",
-    category: "attention-manipulation",
+    category: "engagement-exploitation",
     summary: "Addictive Design—often intersecting with “Engagement Traps” or “Attention Theft”—refers to a constellation of structural and algorithmic mechanisms designed to maximize a user's time-on-site far beyond their original conscious intent. Drawing from behavioral psychology and operant conditioning, this pattern employs variable ratio reinforcement schedules, frictionless continuation, and the deliberate removal of natural stopping cues. By continuously exploiting dopamine feedback loops through unpredictable rewards, the interface effectively neutralizes the user's capacity for self-regulation and time management, transitioning the user from intentional interaction to compulsive consumption.",
     iconName: "rocket",
     built: true,
@@ -1293,7 +1249,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "infinite-scrolling",
     name: "Infinite Scrolling",
-    category: "attention-manipulation",
+    category: "engagement-exploitation",
     summary: "Infinite Scrolling is an interaction pattern formally classified under “Engagement Traps” and “Interface Interference.” While initially designed for seamless mobile consumption, it functions as a dark pattern when it deliberately removes a user's navigational agency and natural stopping cues. By automatically appending new content to the Document Object Model (DOM) as the user approaches the bottom of the viewport, it forces continuous consumption. Furthermore, it often acts as a structural trap by perpetually displacing terminal navigational elements, such as the website's footer containing critical privacy or contact information, rendering them physically unreachable through standard interaction.",
     iconName: "arrow-down",
     built: true,
@@ -1311,7 +1267,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "pull-to-refresh",
     name: "Pull To Refresh (Variable-Reward Trap)",
-    category: "attention-manipulation",
+    category: "engagement-exploitation",
     summary: "While originally designed as a utilitarian mobile interaction paradigm, Pull To Refresh functions as a dark pattern—categorized under “Engagement Traps” and “Addictive Design”—when deliberately engineered to mimic the mechanics of a slot machine. The kinesthetic action of pulling downward against simulated elastic friction, followed by a period of suspense (the spinning visual indicator), directly targets dopamine anticipation pathways. When coupled with a variable ratio reinforcement schedule—where the user cannot predict whether the “pull” will yield a high-value social reward, mundane content, or nothing at all—it transforms a simple data-fetching action into a compulsive, habit-forming loop that encourages constant app re-checking and attention theft.",
     iconName: "refresh-cw",
     built: true,
@@ -1329,7 +1285,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "countdown-on-ads",
     name: "Countdown On Ads",
-    category: "attention-manipulation",
+    category: "engagement-exploitation",
     summary: "The Countdown On Ads pattern—categorized under “Playing with Time” and “Interface Interference”—deliberately commandeers the user's navigational agency by forcing the consumption of advertising content for a mandatory, unskippable duration. By withholding the functional “Close” or “Skip” affordance until a digital timer reaches zero, the interface artificially inflates ad-viewing metrics and captures forced user attention. In aggressive implementations, the countdown may be deceptive; it may lead to a secondary ad screen with a new timer or employ visually confusing elements to trick users into accidentally clicking the advertisement while waiting for the timer to expire, thereby weaponizing the user's desire to exit the ad state.",
     iconName: "tv",
     built: true,
@@ -1347,7 +1303,7 @@ export const PATTERNS: Pattern[] = [
   {
     slug: "auto-play",
     name: "Auto-Play",
-    category: "attention-manipulation",
+    category: "agency-manipulation",
     summary: "Auto-Play is an attention-commandeering dark pattern formally categorized under “Forced Action” and “Interface Interference.” It occurs when a system autonomously initiates the playback of continuous media—such as video advertisements, algorithmic feeds, or the next episode in a queue—without requiring an explicit, affirmative interaction from the user. By exploiting human inertia and the psychological difficulty of task-switching, the interface transitions from a state of “opt-in” consumption to “opt-out” consumption. This deliberately inflates engagement metrics and forces the user to actively intervene to halt systemic momentum, often while silently draining device resources such as bandwidth and battery.",
     iconName: "play",
     built: true,

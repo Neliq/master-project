@@ -5,9 +5,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Layers } from "lucide-react";
 
-import { type Pattern, ICONS, getCategory } from "@/lib/patterns";
+import { type Pattern, ICONS } from "@/lib/patterns";
 import { PATTERN_IMAGES } from "@/lib/pattern-images";
 import { cn } from "@/lib/utils";
 
@@ -18,21 +17,36 @@ export interface PatternCardProps {
 
 export function PatternCard({ pattern, className }: PatternCardProps) {
   const Icon = ICONS[pattern.iconName];
-  const category = getCategory(pattern.category);
   const image = PATTERN_IMAGES[pattern.slug];
+  const titleWords = pattern.name.split(/\s+/);
+  const titleMidpoint = Math.ceil(titleWords.length / 2);
+  const titleLines =
+    titleWords.length > 1
+      ? [titleWords.slice(0, titleMidpoint).join(" "), titleWords.slice(titleMidpoint).join(" ")]
+      : [pattern.name, ""];
 
   return (
     <Link
       href={`/patterns/${pattern.slug}`}
       className={cn(
         "group/pattern-card relative isolate flex h-full flex-col justify-between border border-white bg-white p-5 text-[#0000f2] transition-all",
-        "hover:-translate-y-0.5 hover:border-white hover:bg-white hover:shadow-sm",
+        "hover:-translate-y-0.5 hover:border-white hover:bg-white",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0000f2]",
         className
       )}
     >
+      <div className="mb-3 flex flex-col gap-1">
+        <h3 className="sandbox-card-title -mx-5 text-left text-2xl leading-snug font-bold">
+          {titleLines.map((line, index) => (
+            <span key={index} className="block">
+              {line}
+            </span>
+          ))}
+        </h3>
+      </div>
+
       {image ? (
-        <div className="sandbox-card-image relative -mx-5 -mt-5 mb-5 aspect-square overflow-hidden border-b border-[#0000f2]/15">
+        <div className="sandbox-card-image relative -mx-5 mb-3 aspect-square overflow-hidden border-y border-[#0000f2]/15">
           <Image
             src={image}
             alt=""
@@ -41,33 +55,16 @@ export function PatternCard({ pattern, className }: PatternCardProps) {
             className="object-cover"
           />
         </div>
-      ) : null}
-      <div className="flex items-start justify-between gap-3">
-        {image ? null : (
-          <div className="flex size-9 items-center justify-center border border-[#0000f2]/25 bg-[#0000f2]/10 text-[#0000f2]">
+      ) : (
+          <div className="mb-3 flex size-9 items-center justify-center border border-[#0000f2]/25 bg-[#0000f2]/10 text-[#0000f2]">
             <Icon className="size-4" aria-hidden />
           </div>
-        )}
-      </div>
+      )}
 
-      <div className="mt-4 flex flex-col gap-1">
-        <h3 className="sandbox-card-title text-lg leading-snug font-bold font-heading">
-          {pattern.name}
-        </h3>
-        <p className="sandbox-card-description line-clamp-3 text-xs font-medium leading-relaxed uppercase text-[#0000f2]/75">
+      <div className="flex flex-col gap-1">
+        <p className="sandbox-card-description -mx-5 line-clamp-3 text-xs font-medium leading-relaxed uppercase text-[#0000f2]/75">
           {pattern.summary}
         </p>
-      </div>
-
-      <div className="mt-4 flex items-center justify-between text-xs">
-        <span className="sandbox-card-meta inline-flex items-center gap-1 font-medium text-[#0000f2]/70">
-          <Layers className="size-3" aria-hidden />
-          {category.name}
-        </span>
-        <span className="sandbox-card-meta inline-flex items-center gap-0.5 font-semibold text-[#0000f2]/70 transition-colors group-hover/pattern-card:text-[#0000f2]">
-          Read
-          <ChevronRight className="size-3.5 transition-transform group-hover/pattern-card:translate-x-0.5" />
-        </span>
       </div>
     </Link>
   );

@@ -28,7 +28,6 @@ import {
   Layers,
 } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { MathBlock, Math } from "@/components/math-block";
@@ -107,13 +106,13 @@ export default async function PatternPage({ params }: PageProps) {
   return (
     <div className="pattern-page mx-auto max-w-6xl px-4 py-10 font-medium text-white sm:py-12">
       {/* Breadcrumb / back link */}
-      <div className="mb-6">
+      <div className="mb-2">
         <Button
           variant="ghost"
           size="sm"
           nativeButton={false}
           render={<Link href={`/#${pattern.category}`} />}
-          className="-ml-2 gap-1.5 font-semibold text-white hover:text-white/80"
+          className="-ml-2 gap-1.5 font-semibold text-white hover:text-[#0000f2]"
         >
           <Layers className="size-3.5" />
           {category.name}
@@ -122,14 +121,22 @@ export default async function PatternPage({ params }: PageProps) {
 
       {/* Header */}
       <header className="border-b border-white/25 pb-8">
-        <div className="flex items-start gap-4">
+        <div className="flex items-center gap-8">
+          <div className="min-w-0 flex-1">
+            <h1 className="pattern-page-title text-3xl font-semibold tracking-tight sm:text-4xl">
+              {pattern.name}
+            </h1>
+            <p className="mt-3 max-w-2xl text-base font-medium leading-relaxed text-white">
+              {pattern.summary}
+            </p>
+          </div>
           {image ? (
-            <div className="relative size-24 shrink-0 overflow-hidden border border-white">
+            <div className="relative min-w-0 max-w-lg flex-1 self-center aspect-square overflow-hidden border border-white">
               <Image
                 src={image}
                 alt=""
                 fill
-                sizes="96px"
+                sizes="(min-width: 640px) 160px, 128px"
                 className="object-cover"
               />
             </div>
@@ -138,40 +145,12 @@ export default async function PatternPage({ params }: PageProps) {
               <Icon className="size-5" aria-hidden />
             </div>
           )}
-          <div className="flex-1">
-            <div className="mb-2 flex flex-wrap items-center gap-2">
-              <Badge variant="secondary" className="border border-white bg-white font-semibold text-[#0000f2]">
-                {category.name}
-              </Badge>
-              {pattern.built ? (
-                <Badge
-                  variant="default"
-                  className="gap-1 border border-white/30 bg-white text-[#0000f2]"
-                >
-                  <FlaskConical className="size-3" />
-                  Interactive demo
-                </Badge>
-              ) : null}
-            </div>
-            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              {pattern.name}
-            </h1>
-            <p className="mt-3 max-w-2xl text-base font-medium leading-relaxed text-white">
-              {pattern.summary}
-            </p>
-          </div>
         </div>
       </header>
 
       {/* ── Grouped layout: demo + condition + checklist per condition ── */}
       {isGrouped ? (
         <section className="mt-8">
-          <p className="text-white/65 mb-6 max-w-2xl text-sm leading-relaxed">
-            Each condition below is a predicate. Pass it the state of a
-            running interface and you can mechanically decide whether the
-            pattern is present. The demo for each condition shows it in
-            isolation.
-          </p>
           <div className="flex flex-col gap-10">
             {pattern.conditions!.map((c, i) => {
               const cd = pattern.conditionDemos!.find(

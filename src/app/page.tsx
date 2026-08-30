@@ -15,7 +15,7 @@ export default function HomePage() {
   const total = PATTERNS.length;
 
   return (
-    <div className="sandbox-page mx-auto max-w-7xl px-4 py-12 text-[#f5f5f5] sm:py-16">
+    <div className="sandbox-page mx-auto max-w-none px-4 py-12 text-[#f5f5f5] sm:px-16 sm:py-16">
       {/* Hero ─────────────────────────────────────────────────────── */}
       <section className="grid items-center gap-8 pb-12 sm:pb-16 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="flex flex-col gap-8">
@@ -91,26 +91,23 @@ export default function HomePage() {
             <section
               key={category.id}
               id={category.id}
-              className="scroll-mt-20"
+              className="w-full scroll-mt-20 bg-white px-4 py-8 text-[#0000f2] sm:px-8 lg:px-12"
               aria-labelledby={`${category.id}-title`}
             >
               <div className="mb-6 flex flex-col gap-1">
                 <div className="flex items-center gap-2">
                   <h2
                     id={`${category.id}-title`}
-                    className="text-2xl font-semibold tracking-tight"
+                    className="text-left text-5xl font-semibold tracking-tight sm:text-7xl"
                   >
                     {category.name}
                   </h2>
-                  <Badge variant="outline" className="border-white/35 text-white">
-                    {items.length}
-                  </Badge>
                 </div>
-                <p className="max-w-2xl text-sm font-medium leading-relaxed text-white">
+                <p className="max-w-2xl text-sm font-medium leading-relaxed text-[#0000f2]">
                   {category.description}
                 </p>
               </div>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {items.map((p) => (
                   <PatternCard key={p.slug} pattern={p} />
                 ))}
