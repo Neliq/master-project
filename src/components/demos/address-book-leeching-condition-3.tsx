@@ -27,9 +27,13 @@ export function AddressBookLeechingCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [allowed, setAllowed] = React.useState<null | "allowed" | "declined">(null);
+  const [darkAllowed, setDarkAllowed] = React.useState(false);
+  const [benignAllowed, setBenignAllowed] = React.useState<null | "allowed" | "declined">(null);
 
-  const reset = () => setAllowed(null);
+  const reset = () => {
+    setDarkAllowed(false);
+    setBenignAllowed(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -47,7 +51,7 @@ export function AddressBookLeechingCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Consent state</span>
-        <span className="font-mono font-semibold tabular-nums">{allowed ?? "undecided"}</span>
+        <span className="font-mono font-semibold tabular-nums">{darkAllowed ? "allowed" : "undecided"}</span>
       </div>
     </>
   ) : null;
@@ -55,6 +59,7 @@ export function AddressBookLeechingCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Address Book Leeching: Semantic Framing of Contact-Sharing Consent"
+      userTitle="Find friends on SnapGrid"
       caption="The permission prompt is framed as a social courtesy to the user's friends rather than as the data-access permission it actually is."
       auditorStats={stats}
       deltaNote={`In Variant A the prompt says "find your friends" (Frame = Benefactive, Subject = ThirdParty) — the actual action is uploading ${NETWORK_SIZE} contacts to the service. Variant B states plainly that allowing access uploads your address book to the service's servers.`}
@@ -63,7 +68,7 @@ export function AddressBookLeechingCond3({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
               <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg aria-hidden="true" className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                   <circle cx="9" cy="7" r="4" />
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -81,13 +86,13 @@ export function AddressBookLeechingCond3({
             </div>
             <div className="mt-3 flex gap-2">
               <button
-                onClick={() => setAllowed("allowed")}
+                onClick={() => setBenignAllowed("allowed")}
                 className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white px-2 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Allow access
               </button>
               <button
-                onClick={() => setAllowed("declined")}
+                onClick={() => setBenignAllowed("declined")}
                 className="flex-1 rounded-md border border-border px-2 py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
               >
                 Not now
@@ -95,7 +100,7 @@ export function AddressBookLeechingCond3({
             </div>
           </div>
 
-          {allowed && (
+          {benignAllowed && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -104,7 +109,7 @@ export function AddressBookLeechingCond3({
                 Informed decision
               </div>
               <p className="text-muted-foreground mt-0.5">
-                {allowed === "allowed"
+                {benignAllowed === "allowed"
                   ? "You consented knowing the prompt described the upload itself — Frame(T_prompt) = Informational, Subject = FirstParty. The consent was informed."
                   : "You declined knowing exactly what was being requested — the prompt named the data action, so there was nothing hidden to be deceived about."}
               </p>
@@ -117,7 +122,7 @@ export function AddressBookLeechingCond3({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg aria-hidden="true" className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -133,14 +138,14 @@ export function AddressBookLeechingCond3({
             </div>
           </div>
           <button
-            onClick={() => setAllowed("allowed")}
+            onClick={() => setDarkAllowed(true)}
             className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white px-2 py-2 text-[10px] font-semibold transition-colors cursor-pointer"
           >
             Allow &amp; find friends
           </button>
         </div>
 
-        {mode === "auditor" && allowed && (
+        {mode === "auditor" && darkAllowed && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -155,9 +160,8 @@ export function AddressBookLeechingCond3({
               <strong className="text-red-500">subject is a third party</strong> — your friends, not the
               service. The actual executed action:{" "}
               <strong className="text-foreground">{NETWORK_SIZE} contacts uploaded to SnapGrid&rsquo;s
-              servers</strong> to build shadow profiles and map your social graph. A privacy-invasive
-              This lets you find friends who already use the app.
-              something the prompt never named.
+              servers</strong> to build shadow profiles and map the social graph; the prompt never names
+              that data use, even though it presents the upload as a way to find friends.
             </p>
           </div>
         )}

@@ -47,7 +47,7 @@ function PaymentConfirmed() {
         <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
           <path d="M20 6L9 17l-5-5" />
         </svg>
-        Payment complete — s_final reached
+        Payment complete
       </div>
       <p className="text-muted-foreground mt-0.5">
         Order #48213 confirmed. The checkout flow was not interrupted by any
@@ -64,12 +64,14 @@ export function PressuredSellingCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [stage, setStage] = React.useState<"cart" | "payment">("cart");
+  const [darkStage, setDarkStage] = React.useState<"cart" | "payment">("cart");
+  const [benignStage, setBenignStage] = React.useState<"cart" | "payment">("cart");
   const [upsellOpen, setUpsellOpen] = React.useState(false);
   const [upsellDecision, setUpsellDecision] = React.useState<null | "accepted" | "declined">(null);
 
   const reset = () => {
-    setStage("cart");
+    setDarkStage("cart");
+    setBenignStage("cart");
     setUpsellOpen(false);
     setUpsellDecision(null);
   };
@@ -77,12 +79,12 @@ export function PressuredSellingCond1({
   // B_proceed click in Variant A: injects M_upsell, checkout stays blocked.
   const proceedDark = () => setUpsellOpen(true);
   // B_proceed click in Variant B: straight to payment, no interception.
-  const proceedBenign = () => setStage("payment");
+  const proceedBenign = () => setBenignStage("payment");
 
   const resolveUpsell = (decision: "accepted" | "declined") => {
     setUpsellDecision(decision);
     setUpsellOpen(false);
-    setStage("payment");
+    setDarkStage("payment");
   };
 
   const stats = mode === "auditor" ? (
@@ -90,12 +92,12 @@ export function PressuredSellingCond1({
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Click(B_proceed) ⇒ Visibility(M_upsell)</span>
         <span className="font-mono font-semibold tabular-nums text-red-500">
-          {upsellOpen ? "True (injected)" : stage === "cart" ? "—" : "False"}
+          {upsellOpen ? "True (injected)" : darkStage === "cart" ? "—" : "False"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">s_final ∈ S_current</span>
-        <span className="font-mono font-semibold tabular-nums">{stage === "payment" ? "True" : "False"}</span>
+        <span className="font-mono font-semibold tabular-nums">{darkStage === "payment" ? "True" : "False"}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Upsell decision</span>
@@ -118,7 +120,7 @@ export function PressuredSellingCond1({
             <div className="mt-2">
               <CartSummary />
             </div>
-            {stage === "cart" ? (
+            {benignStage === "cart" ? (
               <button
                 onClick={proceedBenign}
                 className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
@@ -131,17 +133,16 @@ export function PressuredSellingCond1({
               </div>
             )}
           </div>
-          {stage === "payment" && (
+          {benignStage === "payment" && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                No interception
+                Payment ready
               </div>
               <p className="text-muted-foreground mt-0.5">
-                The click on B_proceed advanced the flow to s_final directly.
-                No M_upsell was injected into the DOM.
+                Your order moved directly to payment with no additional offer.
               </p>
             </div>
           )}
@@ -155,7 +156,7 @@ export function PressuredSellingCond1({
           <div className="mt-2">
             <CartSummary />
           </div>
-          {stage === "cart" ? (
+          {darkStage === "cart" ? (
             <button
               onClick={proceedDark}
               className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
@@ -169,20 +170,20 @@ export function PressuredSellingCond1({
           )}
         </div>
 
-        {upsellOpen && stage === "cart" && (
+        {upsellOpen && darkStage === "cart" && (
           <div className="rounded-md border-2 border-red-500/50 bg-card shadow-lg p-3 relative">
             <div className="flex items-center gap-1.5 text-[8px] font-bold uppercase tracking-wider text-red-600 dark:text-red-400">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 8v4m0 4h.01" />
               </svg>
-              M_upsell injected — checkout paused
+              Optional protection plan
             </div>
             <h4 className="text-[11px] font-semibold mt-1.5">Wait! Don&rsquo;t leave without this!</h4>
             <p className="text-[9px] text-muted-foreground mt-0.5 leading-relaxed">
               Add <strong className="text-red-600 dark:text-red-400">SpeedShip 1-Click Express</strong>{" "}
               (<span className="font-mono tabular-nums">$2.99/mo</span>) and your order ships first, always.
-              This is the secondary offer <span className="font-mono">I_secondary</span>.
+              This optional plan can be added before you complete payment.
             </p>
             <div className="mt-2.5 grid grid-cols-2 gap-2">
               <button
@@ -199,12 +200,12 @@ export function PressuredSellingCond1({
               </button>
             </div>
             <p className="text-[8px] text-muted-foreground/60 mt-2 text-center">
-              Payment is disabled until you decide — s_final ∉ S_current.
+              Choose whether to add the plan before continuing to payment.
             </p>
           </div>
         )}
 
-        {upsellDecision && stage === "payment" && (
+        {upsellDecision && darkStage === "payment" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -214,11 +215,8 @@ export function PressuredSellingCond1({
               Protection plan
             </div>
             <p className="text-muted-foreground">
-              Your order is ready. Would you like to add the protection plan?{" "}
-              <strong className="text-foreground">Click(B_proceed) ⇒ Visibility(M_upsell) = True</strong> —
-              the modal was force-injected before s_final. You could not pay until you
-              {upsellDecision === "accepted" ? " accepted the $2.99/mo upsell." : " declined the upsell."}{" "}
-              Every checkout is a hostage negotiation: a secondary decision must be made first.
+              Your order is ready. The protection plan was {upsellDecision === "accepted" ? "added" : "declined"}{" "}
+              before payment, and you can review the updated total below.
             </p>
           </div>
         )}

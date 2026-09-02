@@ -101,6 +101,7 @@ export function AutoPlayCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Auto-Play: Semantic Framing of Auto-Play as Content Continuation"
+      userTitle="Streamly — Recommended episode"
       caption="Semantic Framing of Auto-Play as Content Continuation — automatic playback is labeled 'Up Next' or 'Continue watching' with no 'autoplay' disclosure, reframing a system action as user-initiated continuity."
       auditorStats={stats}
       deltaNote="Variant A frames the auto-advance as 'Up Next' with a countdown and never prints the word 'autoplay' — the automation masquerades as continuity. Variant B keeps the identical end screen but adds an 'Autoplay: ON' toggle and a sentence that names autoplay explicitly, so the automatic behavior is disclosed and controllable."
@@ -195,8 +196,7 @@ export function AutoPlayCond3({
           </div>
 
           <p className="mt-2 text-[8px] text-muted-foreground/60">
-            Nothing here says &ldquo;autoplay.&rdquo; The word appears nowhere on this screen —
-            the automatic start is framed purely as your seamless viewing experience.
+            The next episode begins automatically after the countdown, presented as part of your seamless viewing experience.
           </p>
           {mode === "auditor" && startedA && (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">

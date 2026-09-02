@@ -67,7 +67,7 @@ export function LowStockCond3({
   };
 
   const stockB = Math.max(0, BASE_STOCK - soldB);
-  const inconsistent = loadsA >= 2 && elapsed < 60;
+  const inconsistent = loadsA >= 2 && quantA !== QUANT_CYCLE[0] && elapsed < 60;
 
   const stats = mode === "auditor" ? (
     <>

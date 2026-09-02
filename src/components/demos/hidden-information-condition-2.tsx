@@ -108,7 +108,7 @@ export function HiddenInformationCond2({
             Your plan auto-renews at {usd(RENEWAL_PRICE)}/month after your trial.
           </button>
         ) : (
-          <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[10px] leading-relaxed">
+          <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[11px] leading-relaxed">
             <span className="text-green-700 dark:text-green-300">
               <strong>After your free {TRIAL_DAYS}-day trial, your plan auto-renews at{" "}
               {usd(RENEWAL_PRICE)}/month.</strong>{" "}
@@ -125,23 +125,9 @@ export function HiddenInformationCond2({
 
       {started &&
         (dark ? (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
-              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Typographical camouflage active
-            </div>
-            <p className="text-muted-foreground mt-1">
-              The renewal disclosure was rendered at{" "}
-              <strong className="text-foreground">S_font = 6px</strong> with{" "}
-              <strong className="text-foreground">CR ≈ 1.9:1</strong> — below τ_min_readable (11px)
-              and τ_wcag_min (4.5:1). You activated a{" "}
-              <strong className="text-yellow-700 dark:text-yellow-300">{usd(RENEWAL_PRICE)}/month</strong>{" "}
-              auto-renewal whose terms sat at the extreme margins of legibility. Click the tiny line
-              to highlight it.
-            </p>
+          <div className="rounded-md border border-red-500/30 bg-red-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold text-red-700 dark:text-red-300">Trial activated</div>
+            <p className="mt-1 text-muted-foreground">Your CloudNimbus Pro trial is active. You can review renewal details before the first charge.</p>
           </div>
         ) : (
           <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">

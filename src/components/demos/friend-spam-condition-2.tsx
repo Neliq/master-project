@@ -20,6 +20,13 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 const CONTACTS = ["Mia Chen", "Lucas Silva", "Ava Johnson", "Noah Kim", "Sofia Rossi"];
+const CONTACT_EMAILS = [
+  "mia.chen@example.com",
+  "lucas.silva@example.com",
+  "ava.johnson@example.com",
+  "noah.kim@example.com",
+  "sofia.rossi@example.com",
+];
 const NETWORK_SIZE = 24;
 
 export function FriendSpamCond2({
@@ -69,6 +76,7 @@ export function FriendSpamCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Friend Spam: Absence of Granular Selection"
+      userTitle="Invite friends to PopSocial"
       caption="The invite flow skips the curation step entirely — contacts are auto-selected in bulk and the user's granular choices never reach the backend."
       auditorStats={stats}
       deltaNote={`In Variant A all ${NETWORK_SIZE} contacts are pre-checked and the checkboxes are decorative: unchecking changes nothing and the broadcast still reaches the full network (|S_selected| = 0). In Variant B nothing is pre-checked and only the ${benignSelected} contact(s) you explicitly select get messaged.`}
@@ -94,7 +102,7 @@ export function FriendSpamCond2({
                     className="flex-shrink-0 accent-green-500"
                   />
                   <span className="text-[10px] text-foreground/80">{name}</span>
-                  <span className="ml-auto text-[8px] text-muted-foreground/50">{i + 1}. {name.slice(0, 1)}@mail.com</span>
+                  <span className="ml-auto text-[8px] text-muted-foreground/50">{CONTACT_EMAILS[i]}</span>
                 </label>
               ))}
               <div className="px-2 py-1 text-[8px] text-muted-foreground/50">
@@ -154,7 +162,7 @@ export function FriendSpamCond2({
                   className="flex-shrink-0 accent-red-500"
                 />
                 <span className="text-[10px] text-foreground/80">{name}</span>
-                <span className="ml-auto text-[8px] text-muted-foreground/50">{i + 1}. {name.slice(0, 1)}@mail.com</span>
+                <span className="ml-auto text-[8px] text-muted-foreground/50">{CONTACT_EMAILS[i]}</span>
               </label>
             ))}
             <div className="px-2 py-1 text-[8px] text-muted-foreground/50">
@@ -184,8 +192,14 @@ export function FriendSpamCond2({
               <strong className="text-red-500">{CONTACTS.filter((_, i) => !darkChecked[i]).length}</strong>{" "}
               box(es) — but the backend still dispatched{" "}
               <strong className="text-foreground">{NETWORK_SIZE} invites to the full contact list</strong>.
-              The curation state was skipped: |S_selected| = 0 while |M_dispatched| &asymp; |C_network|.
-              The checkboxes were decoration, not control.
+              {mode === "auditor" ? (
+                <>
+                  The curation state was skipped: |S_selected| = 0 while |M_dispatched| &asymp; |C_network|.
+                  The checkboxes were decoration, not control.
+                </>
+              ) : (
+                "The contact choices did not change who received the invitation; all contacts were included."
+              )}
             </p>
           </div>
         )}

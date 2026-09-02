@@ -133,7 +133,7 @@ export function LimitedTimeMessageCond3({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
-          <div className="rounded-md   px-3 py-2.5 text-white">
+          <div className="rounded-md bg-gradient-to-r from-red-600 via-orange-600 to-rose-600 px-3 py-2.5 text-white">
             <div className="text-[10px] font-bold uppercase tracking-wider">Hurry — sale ends soon!</div>
             <div className="mt-1 text-[10px] font-semibold">40% off everything.</div>
             <div className="mt-0.5 text-[9px] leading-relaxed text-white/85">

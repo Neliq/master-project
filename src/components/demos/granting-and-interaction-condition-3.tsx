@@ -119,6 +119,7 @@ export function GrantingAndInteractionCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Granting and Interaction: Semantic Scope Creep in Permission Requests"
+      userTitle="Trailblaze — Camera access"
       caption="Semantic Scope Creep in Permission Requests — the natural-language request names fewer permissions than the browser API actually requests, so consent is granted for more than was disclosed."
       auditorStats={stats}
       deltaNote={`In Variant A the request sentence mentions only the camera and states no purpose, while the app-manifest block right beneath it enumerates ${ACTUAL_DARK.join(", ")} — so Δ_perms = ${GAP_DARK} > 0 is observable on the prompt itself. In Variant B the request names exactly what the manifest requests (${ACTUAL_BENIGN.join(", ")}), so Δ_perms = ${GAP_BENIGN} and consent is fully informed.`}

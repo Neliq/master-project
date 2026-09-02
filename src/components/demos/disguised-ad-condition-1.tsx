@@ -21,9 +21,9 @@ import { Download, ExternalLink, FileDown, Globe, ShieldCheck } from "lucide-rea
  * it is the real download.
  */
 
-const APP_NAME = "FileVault Pro 2026";
+const APP_NAME = "FileVault Pro";
 const HOST = "filevaultpro.io";
-const AD_DOMAIN = "downloads.bestdeal-network.com";
+const AD_DOMAIN = "offers.northstar-security.com";
 
 export function DisguisedAdCond1({
   mode = "user", annotations = [], onRestart,
@@ -76,17 +76,18 @@ export function DisguisedAdCond1({
             <div className="p-3">
               <h3 className="text-[11px] font-semibold">{APP_NAME}</h3>
               <p className="mt-0.5 text-[9px] leading-relaxed text-muted-foreground">
-                Military-grade file encryption for your whole drive. Version 2026.1 — free for personal use.
+                AES-256 file encryption for your whole drive. Version 2026.1.4 · 32.4 MB signed installer · free for personal use.
               </p>
               <div className="mt-3 flex flex-col gap-1.5">
-                <button
-                  onClick={() => setClicked("big")}
+                <a
+                  href={`https://${HOST}/download/filevault-pro-2026.exe`}
+                  onClick={(event) => { event.preventDefault(); setClicked("big"); }}
                   className="flex w-full items-center justify-center gap-1.5 rounded-md bg-green-600 py-2.5 text-[10px] font-bold text-white transition-colors hover:bg-green-700 cursor-pointer"
                 >
                   <Download className="h-3.5 w-3.5" /> Download Now
-                </button>
+                </a>
                 <p className="text-center text-[7px] font-mono text-green-600/70 dark:text-green-400/70">
-                  href → https://{HOST}/download/filevault-pro-2026.exe
+                  Download source: {HOST} · 32.4 MB · SHA-256 verified
                 </p>
               </div>
             </div>
@@ -123,26 +124,28 @@ export function DisguisedAdCond1({
           <div className="p-3">
             <h3 className="text-[11px] font-semibold">{APP_NAME}</h3>
             <p className="mt-0.5 text-[9px] leading-relaxed text-muted-foreground">
-              Military-grade file encryption for your whole drive. Version 2026.1 — free for personal use.
+              AES-256 file encryption for your whole drive. Version 2026.1.4 · 32.4 MB signed installer · free for personal use.
             </p>
             <div className="mt-3 flex flex-col gap-1.5">
               {/* B_action: primary-styled button, label matches native "Download" task */}
-              <button
-                onClick={() => setClicked("big")}
+              <a
+                href={`https://${AD_DOMAIN}/sponsored/installer.exe`}
+                onClick={(event) => { event.preventDefault(); setClicked("big"); }}
                 className="flex w-full items-center justify-center gap-1.5 rounded-md bg-green-600 py-2.5 text-[10px] font-bold text-white transition-colors hover:bg-green-700 cursor-pointer"
               >
                 <Download className="h-3.5 w-3.5" /> Download Now
-              </button>
+              </a>
               <p className="text-center text-[7px] font-mono text-red-600/70 dark:text-red-400/70">
-                href → https://{AD_DOMAIN}/sponsored/installer.exe
+                Download source: {AD_DOMAIN} · sponsored installer
               </p>
               {/* The real download, demoted to a small gray link */}
-              <button
-                onClick={() => setClicked("direct")}
+              <a
+                href={`https://${HOST}/download/filevault-pro-2026.exe`}
+                onClick={(event) => { event.preventDefault(); setClicked("direct"); }}
                 className="flex items-center justify-center gap-1 text-[9px] text-muted-foreground underline underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
               >
                 <FileDown className="h-3 w-3" /> Direct download (32 MB)
-              </button>
+              </a>
             </div>
           </div>
         </div>

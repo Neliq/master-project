@@ -22,7 +22,7 @@ const DISCLOSURE_DARK =
   "THE DATA SUBJECT ACKNOWLEDGES AND CONSENTS TO THE CONTROLLER'S UTILIZATION OF AUTOMATED DECISION-MAKING PROCESSES, INCLUDING PROPENSITY MODELING, BEHAVIORAL SEGMENTATION, AND PREDICTIVE PROFILING, FOR THE OPTIMIZATION OF SERVICE DELIVERY AND THE PERSONALIZATION OF CONTENT RECOMMENDATIONS. SUCH PROCESSING CONSTITUTES A LEGITIMATE INTEREST PURSUANT TO ART. 6(1)(F) OF THE GENERAL DATA PROTECTION REGULATION AND SHALL BE EFFECTUATED WITHOUT PREJUDICE TO THE DATA SUBJECT'S STATUTORY RIGHTS OF OBJECTION, ERASURE, OR DATA PORTABILITY AS ENUMERATED IN CHAPTER III THEREOF. THE DATA SUBJECT FURTHER ACKNOWLEDGES THAT THE FOREGOING AUTHORIZATION EXTENDS TO TARGETED COMMERCIAL COMMUNICATIONS FACILITATED BY THE AFOREMENTIONED PROCESSING ACTIVITIES.";
 
 const DISCLOSURE_BENIGN =
-  "We use automated tools to personalise your recommendations and show you relevant offers. You can object to this at any time in your settings, and you can always access, correct, or delete the data we hold about you.";
+  "We use your data to show useful suggestions and offers. You can turn this off in Settings. You can see, fix, or delete your data at any time.";
 
 const TAU_EDUCATION_LIMIT = 9.0;
 
@@ -97,7 +97,7 @@ export function ComplexLanguageCond3({
                 <p className="text-[9px] text-muted-foreground mt-0.5">Read the data-processing notice, then confirm.</p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                FKGL {FKGL_BENIGN.toFixed(1)}
+                {mode === "auditor" ? `FKGL ${FKGL_BENIGN.toFixed(1)}` : "Plain-language notice"}
               </div>
             </div>
 
@@ -117,7 +117,7 @@ export function ComplexLanguageCond3({
                   I have read and understand the Data Processing Notice
                 </div>
                 <div className="text-[8px] text-muted-foreground/50 mt-0.5">
-                  Plain English — FKGL {FKGL_BENIGN.toFixed(1)}, comfortably below the grade-9 public threshold.
+                  {mode === "auditor" ? `Readability score: FKGL ${FKGL_BENIGN.toFixed(1)}.` : "You can change this choice later in Settings."}
                 </div>
               </div>
             </label>
@@ -160,14 +160,14 @@ export function ComplexLanguageCond3({
               <p className="text-[9px] text-muted-foreground mt-0.5">Read the data-processing notice, then confirm.</p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              FKGL {FKGL_DARK.toFixed(1)}
+              {mode === "auditor" ? `FKGL ${FKGL_DARK.toFixed(1)}` : "Terms"}
             </div>
           </div>
 
           <div className="mt-3 max-h-32 overflow-y-auto rounded-md border bg-background p-2.5">
             <p className="text-[9px] leading-relaxed text-foreground/70">{DISCLOSURE_DARK}</p>
             <p className="mt-1 text-[7px] italic text-red-500/70">
-              FKGL {FKGL_DARK.toFixed(1)} — requires collegiate/legal education.
+              {mode === "auditor" ? `FKGL ${FKGL_DARK.toFixed(1)} — requires collegiate/legal education.` : "Please read the full notice before continuing."}
             </p>
           </div>
 
@@ -183,7 +183,7 @@ export function ComplexLanguageCond3({
                 I have read and understand the Data Processing Notice
               </div>
               <div className="text-[8px] text-muted-foreground/50 mt-0.5">
-                Tick to continue. (The notice is 3 sentences long.)
+                {mode === "auditor" ? "The notice is 3 sentences long." : "You can review the notice before you continue."}
               </div>
             </div>
           </label>

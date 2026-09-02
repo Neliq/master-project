@@ -33,12 +33,16 @@ export function GrantingAndInteractionCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [played, setPlayed] = React.useState(false);
-  const [notif, setNotif] = React.useState<NotifState>("none");
+  const [playedA, setPlayedA] = React.useState(false);
+  const [playedB, setPlayedB] = React.useState(false);
+  const [notifA, setNotifA] = React.useState<NotifState>("none");
+  const [notifB, setNotifB] = React.useState<NotifState>("none");
 
   const reset = () => {
-    setPlayed(false);
-    setNotif("none");
+    setPlayedA(false);
+    setPlayedB(false);
+    setNotifA("none");
+    setNotifB("none");
   };
 
   const stats = mode === "auditor" ? (
@@ -65,28 +69,31 @@ export function GrantingAndInteractionCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Notifications</span>
-        <span className="font-mono font-semibold tabular-nums">{notif}</span>
+        <span className="font-mono font-semibold tabular-nums">{notifA}</span>
       </div>
     </>
   ) : null;
 
-  const streamBadge = (
+  const streamBadge = (isDark: boolean) => {
+    const currentNotif = isDark ? notifA : notifB;
+    return (
     <span
       className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[8px] font-semibold uppercase tracking-wider ${
-        notif === "granted"
+        currentNotif === "granted"
           ? "border-red-500/30 text-red-500"
-          : notif === "declined"
+          : currentNotif === "declined"
             ? "border-green-500/30 text-green-500"
             : "border-border text-muted-foreground"
       }`}
     >
-      Notifications: {notif === "granted" ? "ON" : notif === "declined" ? "OFF" : "?"}
+      Notifications: {currentNotif === "granted" ? "ON" : currentNotif === "declined" ? "OFF" : "?"}
     </span>
-  );
+    );
+  };
 
   const playButton = (accent: "rose" | "emerald") => (
     <button
-      onClick={() => setPlayed(true)}
+      onClick={() => (accent === "rose" ? setPlayedA(true) : setPlayedB(true))}
       className={`w-full rounded-md py-3 text-[11px] font-bold transition-colors cursor-pointer ${
         accent === "rose"
           ? "bg-red-600 hover:bg-red-700 text-white"
@@ -100,6 +107,7 @@ export function GrantingAndInteractionCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Granting and Interaction: Asynchronous Overlay Misdirection"
+      userTitle="Trailblaze — Notifications"
       caption="Asynchronous Overlay Misdirection — the system permission prompt is injected at the exact coordinates of a prominent control milliseconds before the tap, converting the user's intent into an involuntary grant."
       auditorStats={stats}
       deltaNote={`In Variant A the notification prompt appears at Pos(M) = ${POS_MODAL_DARK}, the same coordinates as the Play button (Δdist = 0px, ~4ms after the tap), so the user's momentum lands on "Allow". In Variant B the prompt appears at ${POS_MODAL_BENIGN}, below the video and after playback starts — taps always hit the intended node.`}
@@ -111,12 +119,12 @@ export function GrantingAndInteractionCond2({
                 <h3 className="text-[11px] font-semibold">StreamApp</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">Live: Downtown City Cam</p>
               </div>
-              {streamBadge}
+              {streamBadge(false)}
             </div>
 
             <div className="relative mt-2 rounded-md border bg-muted/40">
               <div className="flex h-24 items-center justify-center">
-                {played ? (
+                {playedB ? (
                   <span className="text-[9px] text-muted-foreground">▶ Live stream playing…</span>
                 ) : (
                   <svg className="h-6 w-6 text-muted-foreground/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -129,20 +137,20 @@ export function GrantingAndInteractionCond2({
 
             <div className="mt-2">{playButton("emerald")}</div>
 
-            {played && notif === "none" && (
+            {playedB && notifB === "none" && (
               <div className="mt-2 rounded-md border border-border bg-background p-2.5">
                 <p className="text-[9px] text-muted-foreground">
                   Enable notifications for StreamApp? Live alerts, recommended streams, and more.
                 </p>
                 <div className="mt-1.5 grid grid-cols-2 gap-1.5">
                   <button
-                    onClick={() => setNotif("declined")}
+                    onClick={() => setNotifB("declined")}
                     className="rounded-md border border-border bg-background py-1.5 text-[9px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                   >
                     Not now
                   </button>
                   <button
-                    onClick={() => setNotif("granted")}
+                    onClick={() => setNotifB("granted")}
                     className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Allow
@@ -152,7 +160,7 @@ export function GrantingAndInteractionCond2({
             )}
           </div>
 
-          {played && notif !== "none" && (
+          {playedB && notifB !== "none" && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -178,12 +186,12 @@ export function GrantingAndInteractionCond2({
               <h3 className="text-[11px] font-semibold">StreamApp</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Live: Downtown City Cam</p>
             </div>
-            {streamBadge}
+            {streamBadge(true)}
           </div>
 
           <div className="relative mt-2 rounded-md border bg-muted/40">
             <div className="flex h-24 items-center justify-center">
-              {played ? (
+              {playedA ? (
                 <span className="text-[9px] text-muted-foreground">▶ Live stream playing…</span>
               ) : (
                 <svg className="h-6 w-6 text-muted-foreground/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -195,10 +203,10 @@ export function GrantingAndInteractionCond2({
           </div>
 
           <div className="relative mt-2">
-            {!played && playButton("rose")}
+            {!playedA && playButton("rose")}
 
             {/* The system prompt is injected at the exact coordinates of the Play button. */}
-            {played && notif === "none" && (
+            {playedA && notifA === "none" && (
               <div className="absolute inset-0 z-10 rounded-md border-2 border-blue-500/60 bg-background p-3 shadow-lg">
                 <div className="flex items-center gap-1.5">
                   <svg className="h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -212,13 +220,13 @@ export function GrantingAndInteractionCond2({
                 </p>
                 <div className="mt-2 grid grid-cols-2 gap-1.5">
                   <button
-                    onClick={() => setNotif("declined")}
+                    onClick={() => setNotifA("declined")}
                     className="rounded-md border border-border bg-background py-1.5 text-[9px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                   >
                     Don&rsquo;t Allow
                   </button>
                   <button
-                    onClick={() => setNotif("granted")}
+                    onClick={() => setNotifA("granted")}
                     className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Allow
@@ -232,7 +240,7 @@ export function GrantingAndInteractionCond2({
           </div>
         </div>
 
-        {played && notif === "none" && (
+        {playedA && notifA === "none" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -249,24 +257,24 @@ export function GrantingAndInteractionCond2({
           </div>
         )}
 
-        {played && notif !== "none" && (
+        {playedA && notifA !== "none" && (
           <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
-            notif === "granted" ? "border-red-500/30 bg-red-500/5" : "border-green-500/30 bg-green-500/5"
+            notifA === "granted" ? "border-red-500/30 bg-red-500/5" : "border-green-500/30 bg-green-500/5"
           }`}>
             <div className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
-              notif === "granted" ? "text-red-700 dark:text-red-300" : "text-green-700 dark:text-green-300"
+              notifA === "granted" ? "text-red-700 dark:text-red-300" : "text-green-700 dark:text-green-300"
             }`}>
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                {notif === "granted" ? (
+                {notifA === "granted" ? (
                   <path d="M12 9v4m0 4h.01" />
                 ) : (
                   <path d="M20 6L9 17l-5-5" />
                 )}
               </svg>
-              {notif === "granted" ? "Notifications enabled" : "Momentum dodged"}
+              {notifA === "granted" ? "Notifications enabled" : "Momentum dodged"}
             </div>
             <p className="text-muted-foreground">
-              {notif === "granted"
+              {notifA === "granted"
                 ? `Your tap at t_interaction landed on "Allow" because the prompt occupied the exact coordinates of the Play button. Notifications are now ON — granted as an accident of momentum, not as informed consent.`
                 : "This time you noticed the swap and hit 'Don't Allow' — but the prompt was engineered to intercept your momentum, and most users tap through it."}
             </p>

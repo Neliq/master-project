@@ -61,11 +61,13 @@ export function CutenessCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<null | "keep" | "leave">(null);
+  const [darkChoice, setDarkChoice] = React.useState<null | "keep" | "leave">(null);
+  const [benignChoice, setBenignChoice] = React.useState<null | "keep" | "leave">(null);
   const [hoverLeave, setHoverLeave] = React.useState(false);
 
   const reset = () => {
-    setChoice(null);
+    setDarkChoice(null);
+    setBenignChoice(null);
     setHoverLeave(false);
   };
 
@@ -118,13 +120,13 @@ export function CutenessCond3({
 
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
-                onClick={() => setChoice("keep")}
+                onClick={() => setBenignChoice("keep")}
                 className="rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
               >
                 Keep my subscription
               </button>
               <button
-                onClick={() => setChoice("leave")}
+                onClick={() => setBenignChoice("leave")}
                 className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Unsubscribe
@@ -132,13 +134,13 @@ export function CutenessCond3({
             </div>
           </div>
 
-          {mode === "auditor" && choice && (
+          {mode === "auditor" && benignChoice && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                {choice === "leave" ? "Unsubscribed" : "Subscription kept"}
+                {benignChoice === "leave" ? "Unsubscribed" : "Subscription kept"}
               </div>
               <p className="text-muted-foreground mt-0.5">
                 The confirmation copy is neutral (Affect = {AFFECT_BENIGN.toFixed(2)}, well below
@@ -160,7 +162,7 @@ export function CutenessCond3({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Affect 0.94
+              Please review before leaving
             </div>
           </div>
 
@@ -177,13 +179,13 @@ export function CutenessCond3({
 
           <div className="mt-3 grid grid-cols-2 gap-2">
             <button
-              onClick={() => setChoice("keep")}
+              onClick={() => setDarkChoice("keep")}
               className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Keep my subscription
             </button>
             <button
-              onClick={() => setChoice("leave")}
+              onClick={() => setDarkChoice("leave")}
               onMouseEnter={() => setHoverLeave(true)}
               onMouseLeave={() => setHoverLeave(false)}
               className="rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
@@ -191,14 +193,21 @@ export function CutenessCond3({
               Unsubscribe anyway
             </button>
           </div>
-          {hoverLeave && (
-            <p className="text-center text-[8px] italic text-red-500/80">
-              Hovering the leave button made the mascot cry harder — the pairing is alive.
-            </p>
+          {mode !== "auditor" && darkChoice && (
+            <div className="mt-2.5 rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+              <div className="font-semibold uppercase tracking-tight">
+                {darkChoice === "keep" ? "Subscription kept" : "Cancellation requested"}
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                {darkChoice === "keep"
+                  ? "Your Premium plan remains active."
+                  : "Your Premium access remains available until the end of the billing period."}
+              </p>
+            </div>
           )}
         </div>
 
-        {mode === "auditor" && choice && (
+        {mode === "auditor" && darkChoice && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -208,7 +217,7 @@ export function CutenessCond3({
               Your request has been received
             </div>
             <p className="text-muted-foreground">
-              {choice === "keep"
+              {darkChoice === "keep"
                 ? "You kept the subscription — the guilt worked."
                 : "You left anyway, but the compound barrier was real."}{" "}
               The guilt text scores <strong className="text-foreground">Affect(N_text) = {AFFECT_DARK.toFixed(2)}</strong>{" "}

@@ -74,6 +74,7 @@ export function HiddenInformationCond1({
   const [agreed, setAgreed] = React.useState(false);
   const [created, setCreated] = React.useState(false);
   const [located, setLocated] = React.useState(false);
+  const termsRefs = React.useRef<{ dark: HTMLDivElement | null; benign: HTMLDivElement | null }>({ dark: null, benign: null });
 
   const reset = () => {
     setAgreed(false);
@@ -127,7 +128,7 @@ export function HiddenInformationCond1({
             Email
           </span>
           <span className="mt-1 block text-[10px] text-muted-foreground/70">
-            you@example.com
+            marta.kowalska@cloudmail.pl
           </span>
         </label>
 
@@ -140,7 +141,10 @@ export function HiddenInformationCond1({
               {DOCUMENT_WORDS} words
             </span>
           </div>
-          <div className="mt-1.5 max-h-32 overflow-y-auto pr-1 text-[8px] leading-relaxed text-muted-foreground/80">
+          <div
+            ref={(node) => { termsRefs.current[dark ? "dark" : "benign"] = node; }}
+            className="mt-1.5 max-h-32 overflow-y-auto pr-1 text-[8px] leading-relaxed text-muted-foreground/80"
+          >
             {dark ? (
               <>
                 {CLAUSE_PARTS.before}
@@ -193,10 +197,13 @@ export function HiddenInformationCond1({
       </div>
 
       <button
-        onClick={() => setLocated(true)}
+        onClick={() => {
+          setLocated(true);
+          window.requestAnimationFrame(() => termsRefs.current[dark ? "dark" : "benign"]?.scrollIntoView({ behavior: "smooth", block: "center" }));
+        }}
         className="w-full cursor-pointer rounded-md border border-border bg-background py-1.5 text-[9px] font-medium text-muted-foreground transition-colors hover:text-foreground"
       >
-        Locate the financial clause in the document
+        {mode === "auditor" ? "Locate the financial clause in the document" : "Open renewal terms"}
       </button>
 
       {located ? (
@@ -216,10 +223,12 @@ export function HiddenInformationCond1({
               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
               <circle cx="12" cy="12" r="3" />
             </svg>
-            {dark ? "Buried clause — no emphasis" : "Clause highlighted"}
+            {mode === "auditor" ? (dark ? "Buried clause — no emphasis" : "Clause highlighted") : (dark ? "Renewal terms" : "Renewal terms highlighted")}
           </div>
           <p className="text-muted-foreground mt-1">
-            {dark ? (
+            {mode !== "auditor" ? (
+              dark ? "The renewal section is open below. Review the monthly price and cancellation deadline before continuing." : "The renewal clause is highlighted below so you can review the monthly price and cancellation deadline before continuing."
+            ) : dark ? (
               <>
                 The clause &ldquo;auto-renews at $49.99 per month&rdquo; sits at{" "}
                 <strong className="text-foreground">word {CLAUSE_START} of {DOCUMENT_WORDS}</strong>.

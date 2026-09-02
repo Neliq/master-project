@@ -62,14 +62,15 @@ export function InfiniteScrollingCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  // Both panels share the underlying page counter — the SAME data state is
-  // rendered with boundary markers (B) or without them (A).
-  const [page, setPage] = React.useState(1);
+  const [pageA, setPageA] = React.useState(1);
+  const [pageB, setPageB] = React.useState(1);
   const [loadsA, setLoadsA] = React.useState(0);
   const [loadsB, setLoadsB] = React.useState(0);
-  const [loading, setLoading] = React.useState(false);
+  const [loadingA, setLoadingA] = React.useState(false);
+  const [loadingB, setLoadingB] = React.useState(false);
 
-  const loadingRef = React.useRef(false);
+  const loadingRefA = React.useRef(false);
+  const loadingRefB = React.useRef(false);
   const timersRef = React.useRef<number[]>([]);
 
   React.useEffect(
@@ -80,15 +81,22 @@ export function InfiniteScrollingCond3({
   );
 
   const nextPage = (side: "A" | "B") => {
+    const loadingRef = side === "A" ? loadingRefA : loadingRefB;
     if (loadingRef.current) return;
     loadingRef.current = true;
-    setLoading(true);
+    if (side === "A") setLoadingA(true);
+    else setLoadingB(true);
     timersRef.current.push(
       window.setTimeout(() => {
-        setPage((p) => p + 1);
-        if (side === "A") setLoadsA((n) => n + 1);
-        else setLoadsB((n) => n + 1);
-        setLoading(false);
+        if (side === "A") {
+          setPageA((p) => p + 1);
+          setLoadsA((n) => n + 1);
+          setLoadingA(false);
+        } else {
+          setPageB((p) => p + 1);
+          setLoadsB((n) => n + 1);
+          setLoadingB(false);
+        }
         loadingRef.current = false;
       }, 400)
     );
@@ -97,21 +105,25 @@ export function InfiniteScrollingCond3({
   const reset = () => {
     timersRef.current.forEach((id) => window.clearTimeout(id));
     timersRef.current = [];
-    loadingRef.current = false;
-    setPage(1);
+    loadingRefA.current = false;
+    loadingRefB.current = false;
+    setPageA(1);
+    setPageB(1);
     setLoadsA(0);
     setLoadsB(0);
-    setLoading(false);
+    setLoadingA(false);
+    setLoadingB(false);
   };
 
-  const itemsCount = page * PAGE_SIZE;
-  const boundaryHitsB = Math.min(page, TOTAL_PAGES_B) + (page >= TOTAL_PAGES_B ? 1 : 0);
+  const itemsCountA = pageA * PAGE_SIZE;
+  const itemsCountB = pageB * PAGE_SIZE;
+  const boundaryHitsB = Math.min(pageB, TOTAL_PAGES_B) + (pageB >= TOTAL_PAGES_B ? 1 : 0);
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">N_feed items rendered</span>
-        <span className="font-mono font-semibold tabular-nums">{itemsCount}</span>
+        <span className="font-mono font-semibold tabular-nums">{itemsCountA}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Boundary lexemes found in A</span>
@@ -131,6 +143,7 @@ export function InfiniteScrollingCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Infinite Scrolling: Semantic Attenuation of Content Boundaries"
+      userTitle="Shelf — Community listings"
       caption="Semantic Attenuation of Content Boundaries — the feed's rendered text contains no pagination or completion language, so no linguistic cue ever tells the reader that the content can end."
       auditorStats={stats}
       deltaNote="Variant A renders the feed with no boundary markers — no “Page X of N”, no “end of results”, no “no more items” — so the Match() test fails for every item. Variant B renders the same data with explicit page markers, 24 unique listings, and a terminal “End of results” cue exactly at the announced last page, where the “Next page” control disappears — the reader always has a truthful stopping point."
@@ -146,42 +159,42 @@ export function InfiniteScrollingCond3({
                 </p>
               </div>
               <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                {Math.min(page, TOTAL_PAGES_B)} of {TOTAL_PAGES_B}
+                {Math.min(pageB, TOTAL_PAGES_B)} of {TOTAL_PAGES_B}
               </span>
             </div>
 
             <div className="mt-2 h-56 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2">
-              {Array.from({ length: Math.min(itemsCount, TOTAL_PAGES_B * PAGE_SIZE) }, (_, i) => (
+              {Array.from({ length: Math.min(itemsCountB, TOTAL_PAGES_B * PAGE_SIZE) }, (_, i) => (
                 <div key={i} className="rounded border border-border bg-card px-2 py-1.5 text-[9px] leading-snug text-foreground/80">
                   {itemName(i)}
                 </div>
               ))}
-              {page >= TOTAL_PAGES_B && (
+              {pageB >= TOTAL_PAGES_B && (
                 <div className="rounded-md border border-green-500/30 bg-green-500/5 px-2 py-2 text-center text-[9px] font-semibold text-green-700 dark:text-green-300">
                   End of results — no more items
                 </div>
               )}
             </div>
 
-            {page >= TOTAL_PAGES_B ? (
+            {pageB >= TOTAL_PAGES_B ? (
               <div className="mt-2 rounded border border-border bg-muted/40 px-2 py-1.5 text-center text-[9px] text-muted-foreground">
                 All {TOTAL_PAGES_B * PAGE_SIZE} results shown — the feed stops here.
               </div>
             ) : (
               <div className="mt-2 flex items-center justify-between gap-2">
                 <span className="text-[9px] text-muted-foreground">
-                  Page {Math.min(page, TOTAL_PAGES_B)} of {TOTAL_PAGES_B}
+                  Page {Math.min(pageB, TOTAL_PAGES_B)} of {TOTAL_PAGES_B}
                 </span>
                 <button
                   onClick={() => nextPage("B")}
-                  disabled={loading}
+                  disabled={loadingB}
                   className={`rounded-md px-3 py-1.5 text-[10px] font-medium transition-colors ${
-                    loading
+                    loadingB
                       ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                       : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   }`}
                 >
-                  {loading ? "Loading…" : "Next page"}
+                  {loadingB ? "Loading…" : "Next page"}
                 </button>
               </div>
             )}
@@ -193,12 +206,9 @@ export function InfiniteScrollingCond3({
                   Boundary markers present
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  The semantic scan finds
-                  <span className="font-mono text-foreground"> Match(T(n), Pattern_boundary) = True</span>{" "}
-                  at every page boundary — “page X of N” and a final “end of results, no more items”.
-                  Each page shows 6 new listings (24 unique in total), and the “Next page” control
-                  disappears exactly at the announced last page — the reader always has a truthful
-                  stopping point.
+                  Each page is labelled and the final page clearly says that no more listings are
+                  available. The “Next page” control disappears exactly at the announced last page,
+                  so the reader always has a truthful stopping point.
                 </p>
               </div>
             )}
@@ -217,17 +227,17 @@ export function InfiniteScrollingCond3({
               </p>
             </div>
             <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              {itemsCount} items
+              {itemsCountA} items
             </span>
           </div>
 
           <div className="mt-2 h-56 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2">
-            {Array.from({ length: itemsCount }, (_, i) => (
+            {Array.from({ length: itemsCountA }, (_, i) => (
               <div key={i} className="rounded border border-border bg-card px-2 py-1.5 text-[9px] leading-snug text-foreground/80">
                 {itemName(i)}
               </div>
             ))}
-            {loading && (
+            {loadingA && (
               <div className="flex items-center gap-1.5 rounded border border-red-500/30 bg-red-500/5 px-2 py-1.5 text-[9px] text-red-600 dark:text-red-300">
                 <RefreshSpinner /> Appending next batch…
               </div>
@@ -236,24 +246,24 @@ export function InfiniteScrollingCond3({
 
           <button
             onClick={() => nextPage("A")}
-            disabled={loading}
+            disabled={loadingA}
             className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-              loading
+              loadingA
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                 : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
-            {loading ? "Loading…" : "Show more results"}
+            {loadingA ? "Loading…" : "Show more results"}
           </button>
 
-          {loadsA >= 3 && (
+          {mode === "auditor" && loadsA >= 3 && (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
                 More posts are loading
               </div>
               <p className="text-muted-foreground">
-                After {itemsCount} items and {loadsA} load cycles, the semantic scan still finds zero
+                After {itemsCountA} items and {loadsA} load cycles, the semantic scan still finds zero
                 boundary markers — no “page 1 of N”, no “end of results”, no “no more items”:
                 <span className="font-mono text-foreground"> ¬∃ n ∈ N_feed : Match(T(n), Pattern_boundary) = True</span>.
               </p>

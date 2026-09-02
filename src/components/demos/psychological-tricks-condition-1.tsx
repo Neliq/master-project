@@ -75,9 +75,13 @@ export function PsychologicalTricksCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [selected, setSelected] = React.useState<string | null>(null);
+  const [darkSelected, setDarkSelected] = React.useState<string | null>(null);
+  const [benignSelected, setBenignSelected] = React.useState<string | null>(null);
 
-  const reset = () => setSelected(null);
+  const reset = () => {
+    setDarkSelected(null);
+    setBenignSelected(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -115,12 +119,12 @@ export function PsychologicalTricksCond1({
             </p>
             <div className="mt-2.5 grid grid-cols-2 gap-2">
               {BENIGN_TIERS.map((t) => (
-                <TierCard key={t.id} tier={t} selected={selected === t.id} onSelect={() => setSelected(t.id)} accent="emerald" />
+                <TierCard key={t.id} tier={t} selected={benignSelected === t.id} onSelect={() => setBenignSelected(t.id)} accent="emerald" />
               ))}
             </div>
           </div>
 
-          {selected && (
+          {benignSelected && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -145,12 +149,12 @@ export function PsychologicalTricksCond1({
           </p>
           <div className="mt-2.5 grid grid-cols-3 gap-1.5">
             {DARK_TIERS.map((t) => (
-              <TierCard key={t.id} tier={t} selected={selected === t.id} onSelect={() => setSelected(t.id)} accent="rose" />
+              <TierCard key={t.id} tier={t} selected={darkSelected === t.id} onSelect={() => setDarkSelected(t.id)} accent="rose" />
             ))}
           </div>
         </div>
 
-        {mode === "auditor" && selected && (
+        {mode === "auditor" && darkSelected && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -167,7 +171,7 @@ export function PsychologicalTricksCond1({
               <strong className="text-foreground">P_select(O_target) &rarr; Max</strong>.
             </p>
             <p className="text-muted-foreground">
-              {selected === "pro"
+              {darkSelected === "pro"
                 ? "You selected Pro. It includes more storage and additional features."
                 : "Even when choosing elsewhere, the decoy re-frames Pro as the rational pick in every comparison."}
             </p>

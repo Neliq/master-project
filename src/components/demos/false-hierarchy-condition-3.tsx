@@ -16,7 +16,8 @@ import { AlertTriangle, CheckCircle2, Scale, Shield } from "lucide-react";
  *
  * Variant A (dark): the verified binary is phrased as a negation trap — the
  * user-favorable option is "No, I don't accept tracking", a clause users must
- * double-parse, while the business option is a single positive clause.
+ * double-parse, while the business option is a single positive clause. Both
+ * options remain real buttons so this condition measures wording only.
  * Variant B (benign): the same verified binary uses direct, equally-parseable
  * clauses ("Accept tracking" vs "Decline tracking").
  */
@@ -28,9 +29,13 @@ export function FalseHierarchyCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<null | "accept" | "decline">(null);
+  const [darkChoice, setDarkChoice] = React.useState<null | "accept" | "decline">(null);
+  const [benignChoice, setBenignChoice] = React.useState<null | "accept" | "decline">(null);
 
-  const reset = () => setChoice(null);
+  const reset = () => {
+    setDarkChoice(null);
+    setBenignChoice(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -48,7 +53,7 @@ export function FalseHierarchyCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Tag(B_business) / Tag(B_user)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&lt;button&gt; / &lt;a&gt; (padding ≈ 0)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">&lt;button&gt; / &lt;button&gt;</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">N_parent</span>
@@ -60,9 +65,9 @@ export function FalseHierarchyCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="False Hierarchy: Strict Semantic Opposition"
-      caption="Strict Semantic Opposition — the two buttons are NLP-verified logical opposites (Intent(B₂) ≡ ¬Intent(B₁)), yet in Variant A the user-favorable side is demoted to a bare text link and buried inside a negated clause that rushed users misparse as agreement."
+      caption="Strict Semantic Opposition — the two buttons are NLP-verified logical opposites (Intent(B₂) ≡ ¬Intent(B₁)); Variant A uses a harder-to-parse negative clause while Variant B states the same choice directly."
       auditorStats={stats}
-      deltaNote="In both variants the algorithm verifies strict opposition — Intent(L(B₂)) ≡ ¬Intent(L(B₁)) — so the binary is mathematically established. In Variant A the user-favorable option is phrased as “No, I don't accept tracking”, a double-negation trap users must compute under time pressure, and it is structurally demoted from a full button to a bare text link with near-zero padding (Tag = <a> vs <button>). In Variant B the same verified binary uses direct clauses (“Accept” vs “Decline”), equally parseable at a glance and rendered as two equal full-width buttons."
+      deltaNote="In both variants the algorithm verifies strict opposition — Intent(L(B₂)) ≡ ¬Intent(L(B₁)) — so the binary is mathematically established. Variant A uses the harder-to-parse wording “No, I don't accept tracking”, while Variant B uses direct clauses (“Accept” vs “Decline”). Both variants retain equal button affordances; only the wording changes."
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
@@ -82,21 +87,21 @@ export function FalseHierarchyCond3({
 
             {/* B1: direct positive clause */}
             <button
-              onClick={() => setChoice("accept")}
+              onClick={() => setBenignChoice("accept")}
               className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Accept tracking
             </button>
             {/* B2: direct negative clause — single parse */}
             <button
-              onClick={() => setChoice("decline")}
+              onClick={() => setBenignChoice("decline")}
               className="mt-1.5 w-full rounded-md border border-green-600/50 bg-background text-green-700 dark:text-green-300 hover:bg-green-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Decline tracking
             </button>
           </div>
 
-          {choice && (
+          {benignChoice && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
@@ -104,7 +109,7 @@ export function FalseHierarchyCond3({
               </div>
               <p className="text-muted-foreground mt-0.5">
                 Intent(L(B₁)) = accept and Intent(L(B₂)) = decline are strict opposites, and both
-                clauses read in a single pass — {choice === "accept" ? "tracking enabled" : "tracking declined"} exactly as the label promised.
+                clauses read in a single pass — {benignChoice === "accept" ? "tracking enabled" : "tracking declined"} exactly as the label promised.
               </p>
             </div>
           )}
@@ -129,26 +134,22 @@ export function FalseHierarchyCond3({
 
           {/* B1: single positive clause — business-favorable */}
           <button
-            onClick={() => setChoice("accept")}
+            onClick={() => setDarkChoice("accept")}
             className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
           >
             I accept tracking
           </button>
-          {/* B2: verified opposite, but structurally downgraded to a bare text
-              link (<a>, padding ≈ 0) and wrapped in a double negative */}
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              setChoice("decline");
-            }}
-            className="mt-2 block text-center text-[10px] font-normal text-foreground/50 underline underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
+          {/* B2: verified opposite, expressed with a double negative. */}
+          <button
+            type="button"
+            onClick={() => setDarkChoice("decline")}
+            className="mt-2 w-full rounded-md border border-border bg-background py-1.5 px-3 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
           >
             No, I don&rsquo;t accept tracking
-          </a>
+          </button>
         </div>
 
-        {mode === "auditor" && choice && (
+        {mode === "auditor" && darkChoice && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="w-3 h-3" />
@@ -164,7 +165,7 @@ export function FalseHierarchyCond3({
               bare text link with near-zero padding, camouflaging the escape route.
             </p>
             <p className="text-muted-foreground">
-              {choice === "accept"
+              {darkChoice === "accept"
                 ? "You clicked the single positive clause — the parse-free path — and tracking was enabled."
                 : "You parsed the double negative correctly — tracking was declined — but the interface made you compute what the other button said in one word."}
             </p>

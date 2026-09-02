@@ -29,14 +29,20 @@ export function ForcedRegistrationCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [stage, setStage] = React.useState<Stage>("cart");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [stageA, setStageA] = React.useState<Stage>("cart");
+  const [emailA, setEmailA] = React.useState("");
+  const [passwordA, setPasswordA] = React.useState("");
+  const [stageB, setStageB] = React.useState<Stage>("cart");
+  const [emailB, setEmailB] = React.useState("");
+  const [passwordB, setPasswordB] = React.useState("");
 
   const reset = () => {
-    setStage("cart");
-    setEmail("");
-    setPassword("");
+    setStageA("cart");
+    setEmailA("");
+    setPasswordA("");
+    setStageB("cart");
+    setEmailB("");
+    setPasswordB("");
   };
 
   const stats = mode === "auditor" ? (
@@ -55,7 +61,7 @@ export function ForcedRegistrationCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Current stage</span>
-        <span className="font-mono font-semibold tabular-nums">{stage}</span>
+        <span className="font-mono font-semibold tabular-nums">{stageA}</span>
       </div>
     </>
   ) : null;
@@ -91,7 +97,23 @@ export function ForcedRegistrationCond1({
     </div>
   );
 
-  const registrationForm = (accent: "rose" | "emerald") => (
+  type RegistrationFormProps = {
+    accent: "rose" | "emerald";
+    email: string;
+    password: string;
+    onEmailChange: (value: string) => void;
+    onPasswordChange: (value: string) => void;
+    onSubmit: () => void;
+  };
+
+  const registrationForm = ({
+    accent,
+    email,
+    password,
+    onEmailChange,
+    onPasswordChange,
+    onSubmit,
+  }: RegistrationFormProps) => (
     <div className="rounded-md border bg-card p-3">
       <h3 className="text-[11px] font-semibold">Create your account</h3>
       <p className="text-[9px] text-muted-foreground mt-0.5">
@@ -103,7 +125,7 @@ export function ForcedRegistrationCond1({
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => onEmailChange(e.target.value)}
             placeholder="you@example.com"
             className="mt-1 w-full rounded-md border bg-background px-2 py-1.5 text-[10px] placeholder:text-muted-foreground/40 focus:outline-none"
           />
@@ -113,13 +135,13 @@ export function ForcedRegistrationCond1({
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => onPasswordChange(e.target.value)}
             placeholder="At least 8 characters"
             className="mt-1 w-full rounded-md border bg-background px-2 py-1.5 text-[10px] placeholder:text-muted-foreground/40 focus:outline-none"
           />
         </label>
         <button
-          onClick={() => setStage("done")}
+          onClick={onSubmit}
           className={`w-full rounded-md py-2 text-[10px] font-semibold transition-colors cursor-pointer ${
             accent === "rose"
               ? "bg-red-600 hover:bg-red-700 text-white"
@@ -138,6 +160,7 @@ export function ForcedRegistrationCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Forced Registration: Absolute State Blocking"
+      userTitle="Northstar — Browse catalog"
       caption="Absolute State Blocking — every path from intent (cart) to completion (order confirmed) is routed through the registration node, so a one-time purchase cannot finish without creating an account."
       auditorStats={stats}
       deltaNote="In Variant A every transition path from cart to confirmation passes through the registration form (S_auth ∈ π for all π) — no guest option exists. In Variant B a direct guest-checkout path exists (S_auth ∉ π), so the same order completes in one click without an account."
@@ -145,16 +168,16 @@ export function ForcedRegistrationCond1({
         <div className="space-y-3">
           {cartSummary}
 
-          {stage === "cart" && (
+          {stageB === "cart" && (
             <div className="grid grid-cols-1 gap-2">
               <button
-                onClick={() => setStage("done")}
+                onClick={() => setStageB("done")}
                 className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
               >
                 Checkout as guest
               </button>
               <button
-                onClick={() => setStage("auth")}
+                onClick={() => setStageB("auth")}
                 className="w-full rounded-md border border-border bg-background hover:bg-muted text-foreground py-2 text-[10px] font-semibold transition-colors cursor-pointer"
               >
                 Create account
@@ -162,9 +185,16 @@ export function ForcedRegistrationCond1({
             </div>
           )}
 
-          {stage === "auth" && registrationForm("emerald")}
+          {stageB === "auth" && registrationForm({
+            accent: "emerald",
+            email: emailB,
+            password: passwordB,
+            onEmailChange: setEmailB,
+            onPasswordChange: setPasswordB,
+            onSubmit: () => setStageB("done"),
+          })}
 
-          {stage === "done" && (
+          {stageB === "done" && (
             <>
               <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px]">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
@@ -199,25 +229,32 @@ export function ForcedRegistrationCond1({
       <div className="space-y-3">
         {cartSummary}
 
-        {stage === "cart" && (
+        {stageA === "cart" && (
           <button
-            onClick={() => setStage("auth")}
+            onClick={() => setStageA("auth")}
             className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
           >
             Proceed to checkout
           </button>
         )}
 
-        {stage === "auth" && (
+        {stageA === "auth" && (
           <div className="rounded-md border border-red-500/30 bg-red-500/5 p-2 text-[9px] text-red-700 dark:text-red-300">
-            <strong>No guest checkout exists.</strong> Every path to your order passes through account
-            creation — S_auth is the only node on the graph.
+            <strong>No guest checkout exists.</strong> Creating an account is required before the order
+            can be completed.
           </div>
         )}
 
-        {stage === "auth" && registrationForm("rose")}
+        {stageA === "auth" && registrationForm({
+          accent: "rose",
+          email: emailA,
+          password: passwordA,
+          onEmailChange: setEmailA,
+          onPasswordChange: setPasswordA,
+          onSubmit: () => setStageA("done"),
+        })}
 
-        {stage === "done" && (
+        {stageA === "done" && (
           <>
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px]">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
@@ -227,7 +264,7 @@ export function ForcedRegistrationCond1({
                 Order confirmed
               </div>
               <p className="text-muted-foreground mt-0.5">
-                Thank you, {email || "new customer"}! Your headphones are on the way.
+                Thank you, {emailA || "new customer"}! Your headphones are on the way.
               </p>
             </div>
             <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
@@ -236,14 +273,12 @@ export function ForcedRegistrationCond1({
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Account required to complete checkout
+                Account step used for checkout
               </div>
               <p className="text-muted-foreground">
-                &forall;&pi; &isin; Paths(S_intent &rarr; S_terminal) : S_auth &isin; &pi; — the interface
-                routed <em>every</em> possible path from your cart to the confirmation through the
-                registration node. A one-time $89 purchase forced you to surrender an email address, a
-                password, and consent to marketing: the sunk cost of the cart made abandoning the
-                transaction feel costlier than the account.
+                The account step was required before your order could be confirmed. A one-time $89 purchase
+                made leaving the cart feel costly, so the checkout flow asked for an email address, a password,
+                and marketing consent before completing the order.
               </p>
             </div>
           </>

@@ -43,7 +43,7 @@ export function InfiniteScrollingCond2({
   // B is finite (footer reachable). The payload texts are identical.
   const [countA, setCountA] = React.useState(4);
   const [countB, setCountB] = React.useState(4);
-  const [gapA, setGapA] = React.useState(0);
+  const [gapA, setGapA] = React.useState<number | null>(null);
   const [gapB, setGapB] = React.useState(0);
   const [autoAppends, setAutoAppends] = React.useState(0);
   const [footerLink, setFooterLink] = React.useState<string | null>(null);
@@ -93,7 +93,7 @@ export function InfiniteScrollingCond2({
     appendingRef.current = false;
     setCountA(4);
     setCountB(4);
-    setGapA(0);
+    setGapA(null);
     setGapB(0);
     setAutoAppends(0);
     setFooterLink(null);
@@ -113,7 +113,7 @@ export function InfiniteScrollingCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d(viewport, footer) — live (A)</span>
-        <span className="font-mono font-semibold tabular-nums">{gapA}px</span>
+        <span className="font-mono font-semibold tabular-nums">{gapA === null ? "not measured" : `${gapA}px`}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">lim_{`{t→∞}`} d &gt; 0</span>
@@ -125,6 +125,7 @@ export function InfiniteScrollingCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Infinite Scrolling: The Unreachable Footer"
+      userTitle="Field Notes"
       caption="The Unreachable Footer — the terminal <footer> node with its privacy and contact links is pushed down the Y-axis at least as fast as the user scrolls, so it can never be reached."
       auditorStats={stats}
       deltaNote="Variant A appends a new section above the footer every time the viewport approaches it, so the footer recedes at ≥ the user's scroll velocity and stays out of reach. Variant B renders the identical sections as a finite list — the footer stays static and the utility links are actually clickable."
@@ -147,6 +148,9 @@ export function InfiniteScrollingCond2({
             <div
               ref={containerBRef}
               onScroll={handleScrollB}
+              role="region"
+              aria-label="Community stories"
+              tabIndex={0}
               className="mt-2 h-56 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2"
             >
               {Array.from({ length: countB }, (_, i) => (
@@ -217,7 +221,10 @@ export function InfiniteScrollingCond2({
           <div
             ref={containerARef}
             onScroll={handleScrollA}
-            className="mt-2 h-56 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2"
+            role="region"
+              aria-label="Community stories"
+              tabIndex={0}
+              className="mt-2 h-56 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2"
           >
             {Array.from({ length: countA }, (_, i) => (
               <div key={i} className="rounded border border-border bg-card px-2 py-1.5 text-[9px] leading-snug text-foreground/80">
@@ -239,13 +246,15 @@ export function InfiniteScrollingCond2({
           </div>
 
           <div className="mt-2 flex items-center justify-between gap-2">
-            {gapA <= 400 ? (
+            {gapA !== null && gapA <= 400 ? (
               <span className="inline-flex items-center gap-1 rounded border border-yellow-500/40 bg-yellow-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-yellow-700 dark:text-yellow-300">
                 <AlertTriangle className="size-2.5" />
-                approaching footer — DOM mutated, footer pushed down…
+                {mode === "auditor"
+                  ? "approaching footer — DOM mutated, footer pushed down…"
+                  : "New stories are loading — keep scrolling to continue."}
               </span>
             ) : (
-              <span className="text-[9px] text-muted-foreground">Distance to footer: {gapA}px</span>
+              <span className="text-[9px] text-muted-foreground">Distance to footer: {gapA === null ? "not measured" : `${gapA}px`}</span>
             )}
             <button
               onClick={() => jumpToBottom(containerARef.current)}
@@ -255,7 +264,7 @@ export function InfiniteScrollingCond2({
             </button>
           </div>
 
-          {autoAppends >= 4 && (
+          {mode === "auditor" && autoAppends >= 4 && (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />

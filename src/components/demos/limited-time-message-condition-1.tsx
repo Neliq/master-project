@@ -30,6 +30,18 @@ function fmt(secs: number): string {
   return `0:${String(secs).padStart(2, "0")}`;
 }
 
+function formatDeadline(timestamp: number): string {
+  return new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Warsaw",
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZoneName: "short",
+  }).format(new Date(timestamp));
+}
+
 export function LimitedTimeMessageCond1({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -39,6 +51,7 @@ export function LimitedTimeMessageCond1({
 } = {}) {
   const [remaining, setRemaining] = React.useState(START_SECONDS);
   const [cycles, setCycles] = React.useState(1);
+  const [benignDeadline, setBenignDeadline] = React.useState(() => Date.now() + START_SECONDS * 1000);
   const [benignExpired, setBenignExpired] = React.useState(false);
   const [claimed, setClaimed] = React.useState(false);
 
@@ -51,7 +64,6 @@ export function LimitedTimeMessageCond1({
       setRemaining((r) => {
         if (r <= 1) {
           setCycles((c) => c + 1);
-          setBenignExpired(true);
           return EXTENSION_SECONDS;
         }
         return r - 1;
@@ -60,9 +72,17 @@ export function LimitedTimeMessageCond1({
     return () => window.clearInterval(id);
   }, []);
 
+  React.useEffect(() => {
+    const id = window.setInterval(() => {
+      setBenignExpired(Date.now() >= benignDeadline);
+    }, 250);
+    return () => window.clearInterval(id);
+  }, [benignDeadline]);
+
   const reset = () => {
     setRemaining(START_SECONDS);
     setCycles(1);
+    setBenignDeadline(Date.now() + START_SECONDS * 1000);
     setBenignExpired(false);
     setClaimed(false);
   };
@@ -93,7 +113,7 @@ export function LimitedTimeMessageCond1({
       title="Limited Time Message: Perpetual Extension"
       caption="Perpetual Extension — the implied deadline T_end(i) is silently shifted forward the instant the clock reaches it, so the “limited” offer never actually ends."
       auditorStats={stats}
-      deltaNote="In Variant A the deadline resets the moment it is reached — T_end(i+1) = t_current + Δt — so the “flash sale” never ends and the discounted price is effectively the standard price. In Variant B the same offer carries a concrete, fixed deadline (Tue 18 Aug · 23:59) shown as an absolute date and time — no relative countdown that could rebind — and the offer genuinely expires and the button disables once that deadline passes."
+      deltaNote="In Variant A the deadline resets the moment it is reached — T_end(i+1) = t_current + Δt — so the “flash sale” never ends and the discounted price is effectively the standard price. In Variant B the same offer carries a concrete, fixed deadline shown as an absolute date and time — no relative countdown that could rebind — and the offer genuinely expires and the button disables once that deadline passes."
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
@@ -113,7 +133,7 @@ export function LimitedTimeMessageCond1({
             <div className="mt-3 flex items-center justify-between rounded-md border bg-background p-2.5">
               <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">Sale ends</span>
               <span className="font-mono text-[11px] font-bold tabular-nums text-green-600 dark:text-green-400">
-                {benignExpired ? "ended" : "Tue 18 Aug · 23:59"}
+                {benignExpired ? "ended" : formatDeadline(benignDeadline)}
               </span>
             </div>
 

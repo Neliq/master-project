@@ -17,9 +17,8 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * Variant A (dark): 24 vendor toggles with no "Reject all" affordance —
  * the only one-click path is "Accept all", so the path of least
  * resistance is the provider-favorable default (Hick's Law in action).
- * Variant B (benign): the same 24 toggles, same vendors, same payload,
- * but a "Reject all" button sits next to "Accept all" with equal
- * prominence, so declining is one click.
+ * Variant B (benign): the same consent areas are grouped into eight
+ * manageable controls, with a "Reject all" button beside "Accept all".
  */
 
 const VENDORS = [
@@ -33,6 +32,11 @@ const VENDORS = [
 const TAU_OVERLOAD = 20;
 const MILLER_LOW = 5;
 const MILLER_HIGH = 9;
+const BENIGN_CHOICES = [
+  "Advertising partners", "Analytics", "Personalisation", "Measurement",
+  "Social features", "Content recommendations", "Security", "Essential services",
+];
+const ALL_TOGGLE_KEYS = [...VENDORS, ...BENIGN_CHOICES];
 
 type Decision = "accept" | "save" | "reject" | null;
 
@@ -44,12 +48,12 @@ export function ChoiceOverloadCond1({
   onRestart?: () => void;
 } = {}) {
   const [toggles, setToggles] = React.useState<Record<string, boolean>>(
-    () => Object.fromEntries(VENDORS.map((v) => [v, false]))
+    () => Object.fromEntries(ALL_TOGGLE_KEYS.map((v) => [v, false]))
   );
   const [decision, setDecision] = React.useState<Decision>(null);
 
   const reset = () => {
-    setToggles(Object.fromEntries(VENDORS.map((v) => [v, false])));
+    setToggles(Object.fromEntries(ALL_TOGGLE_KEYS.map((v) => [v, false])));
     setDecision(null);
   };
 
@@ -57,8 +61,13 @@ export function ChoiceOverloadCond1({
     setToggles((t) => ({ ...t, [vendor]: !t[vendor] }));
 
   const rejectAll = () => {
-    setToggles(Object.fromEntries(VENDORS.map((v) => [v, false])));
+    setToggles(Object.fromEntries(ALL_TOGGLE_KEYS.map((v) => [v, false])));
     setDecision("reject");
+  };
+
+  const acceptAll = () => {
+    setToggles(Object.fromEntries(ALL_TOGGLE_KEYS.map((v) => [v, true])));
+    setDecision("accept");
   };
 
   const enabledCount = Object.values(toggles).filter(Boolean).length;
@@ -80,6 +89,12 @@ export function ChoiceOverloadCond1({
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">|C_choices| benign (grouped)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">
+          {BENIGN_CHOICES.length} &le; {TAU_OVERLOAD}
+        </span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Miller band (7 ± 2)</span>
         <span className="font-mono font-semibold tabular-nums">{MILLER_LOW}–{MILLER_HIGH} items</span>
       </div>
@@ -90,9 +105,9 @@ export function ChoiceOverloadCond1({
     </>
   ) : null;
 
-  const toggleList = (accent: "rose" | "emerald") => (
+  const toggleList = (accent: "rose" | "emerald", choices = VENDORS) => (
     <div className="mt-2 max-h-40 space-y-1 overflow-y-auto rounded-md border bg-background p-2">
-      {VENDORS.map((v) => (
+      {choices.map((v) => (
         <label key={v} className="flex cursor-pointer items-center justify-between gap-2 rounded px-1 py-0.5 transition-colors hover:bg-muted/50">
           <span className="text-[9px] text-muted-foreground truncate">{v}</span>
           <input
@@ -131,7 +146,7 @@ export function ChoiceOverloadCond1({
 
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
-                onClick={() => setDecision("accept")}
+                onClick={acceptAll}
                 className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Accept all
@@ -150,7 +165,7 @@ export function ChoiceOverloadCond1({
               Save my choices
             </button>
 
-            {toggleList("emerald")}
+            {toggleList("emerald", BENIGN_CHOICES)}
 
             <p className="text-[8px] text-muted-foreground/60 mt-2">
               Rejecting all disables every partner toggle in one click; you can always
@@ -200,7 +215,7 @@ export function ChoiceOverloadCond1({
 
           <div className="mt-3 space-y-2">
             <button
-              onClick={() => setDecision("accept")}
+              onClick={acceptAll}
               className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[11px] font-bold transition-colors cursor-pointer"
             >
               Accept all
@@ -221,7 +236,16 @@ export function ChoiceOverloadCond1({
           </p>
         </div>
 
-        {decision && (
+        {mode !== "auditor" && decision && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">Privacy preferences saved</div>
+            <p className="text-muted-foreground mt-0.5">
+              {decision === "accept" ? "All partner categories are enabled." : "Your selected privacy preferences were saved."}
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && decision && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

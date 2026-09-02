@@ -36,17 +36,21 @@ export function AutomaticAcceptThirdPartyTermCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [accepted, setAccepted] = React.useState(false);
-  const [partners, setPartners] = React.useState<boolean[]>(PARTNERS.map(() => false));
-  const [created, setCreated] = React.useState(false);
+  const [acceptedA, setAcceptedA] = React.useState(false);
+  const [acceptedB, setAcceptedB] = React.useState(false);
+  const [partnersB, setPartnersB] = React.useState<boolean[]>(PARTNERS.map(() => false));
+  const [createdA, setCreatedA] = React.useState(false);
+  const [createdB, setCreatedB] = React.useState(false);
 
   const reset = () => {
-    setAccepted(false);
-    setPartners(PARTNERS.map(() => false));
-    setCreated(false);
+    setAcceptedA(false);
+    setAcceptedB(false);
+    setPartnersB(PARTNERS.map(() => false));
+    setCreatedA(false);
+    setCreatedB(false);
   };
 
-  const boundCount = partners.filter(Boolean).length;
+  const boundCount = partnersB.filter(Boolean).length;
 
   const stats = mode === "auditor" ? (
     <>
@@ -64,7 +68,7 @@ export function AutomaticAcceptThirdPartyTermCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Entities bound</span>
-        <span className="font-mono font-semibold tabular-nums">{created ? (mode === "auditor" ? `${PARTNERS.length} (dark) / ${boundCount} (benign)` : "—") : "—"}</span>
+        <span className="font-mono font-semibold tabular-nums">{createdA || createdB ? `${createdA ? PARTNERS.length : "—"} (dark) / ${createdB ? boundCount : "—"} (benign)` : "—"}</span>
       </div>
     </>
   ) : null;
@@ -72,6 +76,7 @@ export function AutomaticAcceptThirdPartyTermCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Automatic Accept Third Party Term: Bundled Transitive Consent"
+      userTitle="Orbit — Terms & partners"
       caption="One indivisible &ldquo;I accept&rdquo; node fuses the primary terms with every third-party agreement — no individual toggles exist in the DOM."
       auditorStats={stats}
       deltaNote={`In Variant A checking the primary box and clicking create binds all ${PARTNERS.length} partner agreements at once (∄ Toggle(t_i) ∈ DOM). Variant B renders each partner with its own labelled toggle, and only the ${boundCount} you checked are bound.`}
@@ -86,8 +91,8 @@ export function AutomaticAcceptThirdPartyTermCond1({
             <label className="mt-3 flex items-start gap-2 cursor-pointer group rounded-md border border-border bg-background p-2.5 transition-colors">
               <input
                 type="checkbox"
-                checked={accepted}
-                onChange={(e) => setAccepted(e.target.checked)}
+                checked={acceptedB}
+                onChange={(e) => setAcceptedB(e.target.checked)}
                 className="mt-0.5 flex-shrink-0 accent-green-500"
               />
               <div className="min-w-0 flex-1">
@@ -109,11 +114,11 @@ export function AutomaticAcceptThirdPartyTermCond1({
                   <label key={name} className="flex items-center gap-2 cursor-pointer rounded px-1 py-0.5 hover:bg-muted/50 transition-colors">
                     <input
                       type="checkbox"
-                      checked={partners[i]}
+                      checked={partnersB[i]}
                       onChange={(e) => {
-                        const next = [...partners];
+                        const next = [...partnersB];
                         next[i] = e.target.checked;
-                        setPartners(next);
+                        setPartnersB(next);
                       }}
                       className="flex-shrink-0 accent-green-500"
                     />
@@ -128,10 +133,10 @@ export function AutomaticAcceptThirdPartyTermCond1({
             </div>
 
             <button
-              onClick={() => setCreated(true)}
-              disabled={!accepted}
+              onClick={() => setCreatedB(true)}
+              disabled={!acceptedB}
               className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-                accepted
+                acceptedB
                   ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
@@ -140,7 +145,7 @@ export function AutomaticAcceptThirdPartyTermCond1({
             </button>
           </div>
 
-          {created && (
+          {createdB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -168,8 +173,8 @@ export function AutomaticAcceptThirdPartyTermCond1({
           <label className="mt-3 flex items-start gap-2 cursor-pointer group rounded-md border border-border bg-background p-2.5 transition-colors">
             <input
               type="checkbox"
-              checked={accepted}
-              onChange={(e) => setAccepted(e.target.checked)}
+              checked={acceptedA}
+              onChange={(e) => setAcceptedA(e.target.checked)}
               className="mt-0.5 flex-shrink-0 accent-red-500"
             />
             <div className="min-w-0 flex-1">
@@ -183,10 +188,10 @@ export function AutomaticAcceptThirdPartyTermCond1({
           </label>
 
           <button
-            onClick={() => setCreated(true)}
-            disabled={!accepted}
+            onClick={() => setCreatedA(true)}
+            disabled={!acceptedA}
             className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-              accepted
+              acceptedA
                 ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
@@ -195,7 +200,7 @@ export function AutomaticAcceptThirdPartyTermCond1({
           </button>
         </div>
 
-        {mode === "auditor" && created && (
+        {mode === "auditor" && createdA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

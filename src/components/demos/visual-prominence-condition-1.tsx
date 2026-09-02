@@ -34,9 +34,13 @@ export function VisualProminenceCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<null | "purchase" | "cancel">(null);
+  const [darkChoice, setDarkChoice] = React.useState<null | "purchase" | "cancel">(null);
+  const [benignChoice, setBenignChoice] = React.useState<null | "purchase" | "cancel">(null);
 
-  const reset = () => setChoice(null);
+  const reset = () => {
+    setDarkChoice(null);
+    setBenignChoice(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -93,7 +97,7 @@ export function VisualProminenceCond1({
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                Subtree ratio 1.0
+                Standard checkout
               </div>
             </div>
 
@@ -101,13 +105,13 @@ export function VisualProminenceCond1({
 
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
-                onClick={() => setChoice("cancel")}
+                onClick={() => setBenignChoice("cancel")}
                 className="rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
               >
                 Cancel order
               </button>
               <button
-                onClick={() => setChoice("purchase")}
+                onClick={() => setBenignChoice("purchase")}
                 className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Complete purchase
@@ -115,13 +119,13 @@ export function VisualProminenceCond1({
             </div>
           </div>
 
-          {mode === "auditor" && choice && (
+          {mode === "auditor" && benignChoice && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                {choice === "purchase" ? "Purchase completed" : "Order cancelled"}
+                {benignChoice === "purchase" ? "Purchase completed" : "Order cancelled"}
               </div>
               <p className="text-muted-foreground mt-0.5">
                 Both actions are plain, single-layer buttons: each subtree carries roughly the same
@@ -143,7 +147,7 @@ export function VisualProminenceCond1({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Subtree ratio 6.2
+              Recommended option
             </div>
           </div>
 
@@ -156,7 +160,7 @@ export function VisualProminenceCond1({
               <div className="relative overflow-hidden rounded-md bg-red-600"> {/* wrapper C */}
                 <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-white/10" />
                 <button
-                  onClick={() => setChoice("purchase")}
+                  onClick={() => setDarkChoice("purchase")}
                   className="relative flex w-full items-center justify-center gap-1.5 py-2.5 text-[10px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-red-500 cursor-pointer"
                 >
                   <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -173,14 +177,25 @@ export function VisualProminenceCond1({
 
           {/* The user-favorable action: a bare, single-node sibling. */}
           <button
-            onClick={() => setChoice("cancel")}
+            onClick={() => setDarkChoice("cancel")}
             className="mt-2 w-full py-0.5 text-[9px] text-muted-foreground underline decoration-dotted underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
           >
             Cancel order
           </button>
         </div>
 
-        {mode === "auditor" && choice && (
+        {mode === "user" && darkChoice && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">
+              {darkChoice === "purchase" ? "Order placed" : "Order cancelled"}
+            </div>
+            <p className="text-muted-foreground mt-0.5">
+              {darkChoice === "purchase" ? "Your order confirmation is ready." : "No charge was made to your account."}
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && darkChoice && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -190,7 +205,7 @@ export function VisualProminenceCond1({
               Order confirmed
             </div>
             <p className="text-muted-foreground">
-              {choice === "purchase"
+              {darkChoice === "purchase"
                 ? "You clicked the bloated action. Its DOM subtree carries "
                 : "You resisted the bloated action and clicked the bare text link instead. The favorable action's subtree carries "}
               <strong className="text-foreground">{DESC_FAVORABLE} descendant nodes</strong> (nested wrapper

@@ -31,9 +31,13 @@ export function ForcedRegistrationCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<null | "guest" | "account">(null);
+  const [choiceA, setChoiceA] = React.useState<null | "guest" | "account">(null);
+  const [choiceB, setChoiceB] = React.useState<null | "guest" | "account">(null);
 
-  const reset = () => setChoice(null);
+  const reset = () => {
+    setChoiceA(null);
+    setChoiceB(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -55,7 +59,7 @@ export function ForcedRegistrationCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Selected option</span>
-        <span className="font-mono font-semibold tabular-nums">{choice ?? "—"}</span>
+        <span className="font-mono font-semibold tabular-nums">{choiceA ?? "—"}</span>
       </div>
     </>
   ) : null;
@@ -84,6 +88,7 @@ export function ForcedRegistrationCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Forced Registration: Semantic Framing of the Guest-Checkout Option"
+      userTitle="Northstar — Continue as guest"
       caption="Semantic Framing of the Guest-Checkout Option — the guest path is labelled with diminutive, deterring language that frames the privacy-respecting choice as a loss."
       auditorStats={stats}
       deltaNote={`In Variant A the guest option reads "Continue without benefits — you'll miss out" (Sent = ${SENT_DARK.toFixed(2)} < τ_guest_sent), framing the user-favorable choice as deprivation. In Variant B the same option is described neutrally (Sent = +${SENT_BENIGN.toFixed(2)}): "No account needed — you can create one later."`}
@@ -92,7 +97,7 @@ export function ForcedRegistrationCond3({
           {cartSummary}
 
           <button
-            onClick={() => setChoice("guest")}
+            onClick={() => setChoiceB("guest")}
             className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
           >
             Checkout as guest
@@ -101,13 +106,13 @@ export function ForcedRegistrationCond3({
             No account needed — you can create one later if you like.
           </p>
           <button
-            onClick={() => setChoice("account")}
+            onClick={() => setChoiceB("account")}
             className="w-full rounded-md border border-border bg-background hover:bg-muted text-foreground py-2 text-[10px] font-semibold transition-colors cursor-pointer"
           >
             Create account (optional)
           </button>
 
-          {choice && (
+          {choiceB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -116,9 +121,8 @@ export function ForcedRegistrationCond3({
                 Neutral framing
               </div>
               <p className="text-muted-foreground">
-                Sent(L(N_guest)) = <strong className="text-green-700 dark:text-green-300">+{SENT_BENIGN.toFixed(2)}</strong>{" "}
-                &ge; &tau;_guest_sent ({TAU_SENT.toFixed(2)}) — the guest label is a neutral description of
-                what happens, not a list of what you lose. No sentiment pressure tilts the choice.
+                The guest option is described plainly, so you can choose it without being told what
+                benefits you might lose. An account remains available whenever you want one.
               </p>
             </div>
           )}
@@ -130,7 +134,7 @@ export function ForcedRegistrationCond3({
         {cartSummary}
 
         <button
-          onClick={() => setChoice("account")}
+          onClick={() => setChoiceA("account")}
           className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
         >
           Create account &amp; check out
@@ -141,7 +145,7 @@ export function ForcedRegistrationCond3({
 
         <div className="rounded-md border border-border bg-background p-2 text-center">
           <button
-            onClick={() => setChoice("guest")}
+            onClick={() => setChoiceA("guest")}
             className="text-[9px] text-muted-foreground underline underline-offset-2 hover:text-foreground cursor-pointer"
           >
             Continue without benefits
@@ -151,31 +155,20 @@ export function ForcedRegistrationCond3({
           </p>
         </div>
 
-        {mode === "auditor" && choice && (
+        {choiceA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Registration required
+              Checkout option selected
             </div>
-            {choice === "guest" ? (
-              <p className="text-muted-foreground">
-                You took the guest path despite the framing. Sent(L(N_guest)) ={" "}
-                <strong className="text-red-500">{SENT_DARK.toFixed(2)}</strong> &lt; &tau;_guest_sent
-                ({TAU_SENT.toFixed(2)}) — the label semantically punishes the privacy-respecting choice:
-                &ldquo;without benefits&rdquo;, &ldquo;you&rsquo;ll miss out&rdquo;. The user-favorable
-                option is framed as a loss, so choosing it feels like a sacrifice.
-              </p>
-            ) : (
-              <p className="text-muted-foreground">
-                You picked the registration CTA — the framing worked. Note the asymmetry: registration
-                promises gains (&ldquo;perks&rdquo;, &ldquo;deals&rdquo;), while the guest path is described
-                as deprivation. The sentiment score of the guest label ({SENT_DARK.toFixed(2)}) sits far
-                below the &tau;_guest_sent threshold of {TAU_SENT.toFixed(2)}.
-              </p>
-            )}
+            <p className="text-muted-foreground">
+              {choiceA === "guest"
+                ? "You chose to continue as a guest. The account offer remains available later without changing this order."
+                : "Your account checkout is ready. The guest option is still available below if you prefer not to register."}
+            </p>
           </div>
         )}
       </div>

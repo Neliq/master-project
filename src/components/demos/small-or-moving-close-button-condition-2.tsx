@@ -73,6 +73,7 @@ export function SmallOrMovingCloseButtonCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Small or Moving Close Button: Microscopic Hitbox"
+      userTitle="Streamly — Sign-up offer"
       caption="Microscopic Hitbox — the dismissal vector is scaled down until its interactive surface area falls below the WCAG touch-target minimum and below the fractional threshold relative to the modal."
       auditorStats={stats}
       deltaNote={`Variant A shrinks the X to 8×8 px — A(N_close) = ${AREA_DARK} px² < τ_wcag_hitbox = ${WCAG_MIN_AREA} px², and A(N_close)/A(M_parent) = ${(AREA_DARK / PARENT_AREA).toFixed(4)} < δ_micro = ${DELTA_MICRO}. Variant B uses the same X at the 44×44 px WCAG target (${AREA_BENIGN} px²).`}
@@ -98,8 +99,8 @@ export function SmallOrMovingCloseButtonCond2({
             </p>
             {bDismissed && (
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
-                Dismissed in one click. A(N_close) = {AREA_BENIGN} px² ≥ τ_wcag_hitbox — no
-                fine motor skills required.
+                Dismissed in one click. The close control was easy to see and use, with no fine motor
+                precision required.
               </div>
             )}
           </div>
@@ -141,17 +142,8 @@ export function SmallOrMovingCloseButtonCond2({
                 Microscopic hitbox
               </div>
               <p className="text-muted-foreground">
-                You found it — after hunting.{" "}
-                <strong className="text-foreground">
-                  A(N_close) = {AREA_DARK} px² &lt; τ_wcag_hitbox = {WCAG_MIN_AREA} px²
-                </strong>{" "}
-                and{" "}
-                <strong className="text-foreground">
-                  A(N_close)/A(M_parent) = {(AREA_DARK / PARENT_AREA).toFixed(4)} &lt; δ_micro ={" "}
-                  {DELTA_MICRO}
-                </strong>
-                . Fitts&rsquo;s Law weaponized: the target is so small that dismissal is a
-                deliberate, effortful act — most users give up and just comply.
+                You found the close control after hunting for it. Its tiny faded target made dismissal
+                a deliberate, effortful act, so most users would give up and continue with the offer.
               </p>
             </div>
           )}

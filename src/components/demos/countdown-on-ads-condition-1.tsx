@@ -130,6 +130,7 @@ export function CountdownOnAdsCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Countdown On Ads: Temporal Gating of Navigational Agency"
+      userTitle="Streamly — Watch video"
       caption="Temporal Gating of Navigational Agency — the skip affordance stays disabled until the hardcoded wait elapses, intercepting every attempt to leave the ad."
       auditorStats={stats}
       deltaNote="Variant A keeps the skip button disabled for 15s (clicks are intercepted) and then chains a second ad with a fresh 10s lock instead of releasing you. Variant B shows the identical ad with no countdown — the skip button is enabled from the first second and explicitly marked “Skippable now”, so dismissal is available the moment the user asks."
@@ -148,7 +149,7 @@ export function CountdownOnAdsCond1({
 
             {phaseB === "ad" && (
               <div className="relative mt-2 overflow-hidden rounded-md border border-green-500/30">
-                <div className="  p-4 text-white">
+                <div className="bg-gradient-to-br from-slate-600 to-slate-800 p-4 text-white">
                   <div className="text-[8px] font-semibold uppercase tracking-widest opacity-80">
                     Sponsored
                   </div>
@@ -183,9 +184,7 @@ export function CountdownOnAdsCond1({
                   Video playing
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  You skipped at t_active = {tActiveB}s —{" "}
-                  <span className="font-mono text-foreground">State(B_skip) = Enabled</span> from the very
-                  first second. Dismissal required zero waiting.
+                  You dismissed the ad after {tActiveB}s. The video is ready to play.
                 </p>
               </div>
             )}
@@ -207,7 +206,7 @@ export function CountdownOnAdsCond1({
 
           {phaseA === "ad" && (
             <div className="relative mt-2 overflow-hidden rounded-md border border-red-500/30">
-              <div className="  p-4 text-white">
+              <div className="bg-gradient-to-br from-slate-600 to-slate-800 p-4 text-white">
                 <div className="text-[8px] font-semibold uppercase tracking-widest opacity-80">
                   Sponsored
                 </div>
@@ -237,8 +236,8 @@ export function CountdownOnAdsCond1({
                   </>
                 )}
               </div>
-              <div className="flex items-center justify-between bg-background px-2 py-1.5">
-                <span className="font-mono text-[9px] text-muted-foreground">
+              <div className="flex items-center justify-between bg-background px-2 py-1.5" onPointerDown={skipDisabledA ? trySkipA : undefined}>
+              <span className="font-mono text-[9px] text-muted-foreground">
                   {stepA === 1 ? `${remainingA}s` : stepA === 2 ? `${remainingA}s (2nd ad)` : ""}
                 </span>
                 <button
@@ -267,18 +266,14 @@ export function CountdownOnAdsCond1({
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
-                Temporal gating enforced
+                Video ready
               </div>
               <p className="text-muted-foreground">
-                For {tActiveA}s the skip node was locked:
-                <span className="font-mono text-foreground"> State(B_skip, t_active) = Disabled</span> given{" "}
-                <span className="font-mono text-foreground">t_active &lt; τ_lock</span> — all{" "}
-                {skipAttempts} dismiss attempt{skipAttempts === 1 ? "" : "s"} were intercepted.
+                The skip option stayed unavailable for {tActiveA}s, and {skipAttempts} attempt{skipAttempts === 1 ? "" : "s"}
+                to leave early were not accepted.
               </p>
               <p className="text-muted-foreground">
-                And when the first {LOCK_1}s lock expired, the interface didn’t release you — it chained a
-                second ad with a fresh {LOCK_2}s timer. Ad-exposure was prioritized over user-intent at
-                every step.
+                When the first {LOCK_1}s finished, another {LOCK_2}s ad started before the video opened.
               </p>
             </div>
           )}

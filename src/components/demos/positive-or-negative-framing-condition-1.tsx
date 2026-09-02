@@ -19,9 +19,8 @@ import { DemoShell } from "@/components/demos/demo-shell";
  *
  * Variant A (dark): the gain-framed option is wrapped in a gradient
  * colour-wrapper and decorated with a badge plus two icon nodes; the
- * loss-framed option is a bare text node. The gain pole is also
- * pre-selected at load, and the loss pole discloses no price. The same
- * boolean decision is presented with structurally unequal DOM subtrees.
+ * loss-framed option uses the same information without those embellishments.
+ * The same boolean decision is presented with structurally unequal DOM subtrees.
  * Variant B (benign): both framing poles carry structurally identical
  * subtrees (same wrapper, one icon each, no badge overlays), nothing is
  * pre-selected, and both outcomes are priced.
@@ -40,13 +39,13 @@ export function PositiveOrNegativeFramingCond1({
   onRestart?: () => void;
 } = {}) {
   // Per-panel state so the two variants never contaminate each other.
-  const [aChoice, setAChoice] = React.useState<"gain" | "loss" | null>("gain");
+  const [aChoice, setAChoice] = React.useState<"gain" | "loss" | null>(null);
   const [bChoice, setBChoice] = React.useState<"gain" | "loss" | null>(null);
   const [aSubmitted, setASubmitted] = React.useState(false);
   const [bSubmitted, setBSubmitted] = React.useState(false);
 
   const reset = () => {
-    setAChoice("gain");
+    setAChoice(null);
     setBChoice(null);
     setASubmitted(false);
     setBSubmitted(false);
@@ -68,14 +67,7 @@ export function PositiveOrNegativeFramingCond1({
           {RATIO.toFixed(2)} &gt; {TAU.toFixed(1)}
         </span>
       </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">State(gain, t0) — Variant A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True (pre-selected)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Loss-pole price (Variant A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">not disclosed</span>
-      </div>
+
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Selected option (A / B)</span>
         <span className="font-mono font-semibold tabular-nums">
@@ -88,9 +80,9 @@ export function PositiveOrNegativeFramingCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Positive Or Negative Framing: Structural Asymmetry of Framed Option Subtrees"
-      caption="Structural Asymmetry of Framed Option Subtrees — the gain-framed option is built from a richer DOM subtree (badge, icons, colour wrapper), is pre-selected at load, and is the only pole whose outcome is priced, so the interface's structure itself argues for one pole."
+      caption="Structural Asymmetry of Framed Option Subtrees — the gain-framed option is built from a richer DOM subtree with extra badge and icon elements, so the interface's structure itself gives one pole more visual weight."
       auditorStats={stats}
-      deltaNote="Both variants ask the same binary question with the same informational payload. In Variant A the gain-framed option's DOM subtree carries 4 extra embellishment nodes (badge, icons, colour wrapper) that the loss-framed option lacks, pushing the subtree-difference ratio past tau; the gain radio is pre-checked at t0 (State = True with zero user events), and the loss pole discloses no price — so the framing asymmetry is not cosmetic. In Variant B both poles share structurally identical subtrees, nothing is pre-selected, and both outcomes are priced, so the structure stays neutral."
+      deltaNote="Both variants ask the same binary question with the same informational payload. In Variant A the gain-framed option's DOM subtree carries 4 extra embellishment nodes (badge, icons, colour wrapper) that the loss-framed option lacks, pushing the subtree-difference ratio past tau. Both outcomes are priced and selectable; only the structure changes. In Variant B both poles share structurally identical subtrees, so the structure stays neutral."
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
@@ -228,6 +220,9 @@ export function PositiveOrNegativeFramingCond1({
                 <div className="text-[9px] text-muted-foreground/60 leading-relaxed select-none group-hover:text-foreground transition-colors">
                   Skip the discount and pay full price
                 </div>
+                <p className="text-[8px] text-muted-foreground/60 mt-0.5">
+                  You pay the standard $120 order total.
+                </p>
               </div>
             </label>
           </div>

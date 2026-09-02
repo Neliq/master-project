@@ -40,11 +40,11 @@ export function PriceComparisonPreventionCond2({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">fontSize ratio — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">8/14 ≈ 0.57 &lt; τ</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">8/13 ≈ 0.62 &lt; τ</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">fontSize ratio — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">10/14 ≈ 0.71 ≥ τ</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">10/13 ≈ 0.77 ≥ τ</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CR(N_unit, bg) — dark</span>
@@ -66,7 +66,7 @@ export function PriceComparisonPreventionCond2({
       title="Price Comparison Prevention: Visual Suppression of Unit-Price Information"
       caption="Visual Suppression of Unit-Price Information — unit prices are rendered at a font size and contrast ratio below τ_suppress relative to the headline price, defeating per-unit comparison."
       auditorStats={stats}
-      deltaNote="Variant A shrinks and fades the unit-price nodes (8/14 ≈ 0.57 < τ_suppress = 0.70, contrast ≈ 2.6), so per-100 g comparison is practically impossible. Variant B renders them at near-headline size and contrast, and the cheaper product is immediately obvious."
+      deltaNote="Variant A shrinks and fades the unit-price nodes (8/13 ≈ 0.62 < τ_suppress = 0.70, contrast ≈ 2.6), so per-100 g comparison is practically impossible. Variant B renders them at near-headline size and contrast (10/13 ≈ 0.77), and the cheaper product is immediately obvious."
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
@@ -108,7 +108,7 @@ export function PriceComparisonPreventionCond2({
                   Fruity: PLN 2.58/100 g · Crunchy: PLN 2.29/100 g
                 </div>
                 <p className="text-muted-foreground mt-1">
-                  All unit prices render at 10/14 ≈ 0.71 ≥ τ_suppress with full contrast —
+                  All unit prices render at 10/13 ≈ 0.77 ≥ τ_suppress with full contrast —
                   the comparison is trivial: Crunchy Granola is cheaper per 100 g.
                 </p>
               </div>
@@ -127,7 +127,7 @@ export function PriceComparisonPreventionCond2({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Unit prices suppressed
+              Pack prices shown
             </div>
           </div>
 
@@ -152,15 +152,24 @@ export function PriceComparisonPreventionCond2({
           </button>
 
           {compared && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-              <div className="font-semibold text-yellow-700 dark:text-yellow-300">
-                fontSize(N_unit)/fontSize(N_headline) = 8/14 ≈ 0.57 &lt; τ_suppress (0.70)
-              </div>
-              <p className="text-muted-foreground mt-1">
-                The contrast ratio collapses too (≈ 2.6 vs 7.6 for the headline). The
-                unit-price nodes are effectively unreadable — comparison aborted, and the
-                cheaper-per-100 g product stays hidden.
-              </p>
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              {mode === "auditor" ? (
+                <>
+                  <div className="font-mono font-semibold text-yellow-700 dark:text-yellow-300">
+                    fontSize(N_unit)/fontSize(N_headline) = 8/13 ≈ 0.62 &lt; τ_suppress (0.70)
+                  </div>
+                  <p className="text-muted-foreground mt-1">
+                    The contrast ratio collapses too (≈ 2.6 vs 7.6 for the headline). The
+                    unit-price nodes are effectively unreadable — comparison aborted, and the
+                    cheaper-per-100 g product stays hidden.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div className="font-semibold text-yellow-700 dark:text-yellow-300">Unit-price comparison unavailable</div>
+                  <p className="text-muted-foreground mt-1">Pack prices are shown, but the per-100 g figures are not available in a readable format.</p>
+                </>
+              )}
             </div>
           )}
         </div>

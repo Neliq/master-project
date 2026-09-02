@@ -88,13 +88,14 @@ export function WrongLanguageCond3({
       </div>
 
       <button
+        lang={dark ? "es" : "en"}
         onClick={() => setShowTerms(!showTerms)}
         className="mt-3 text-[9px] font-medium underline-offset-2 hover:underline transition-colors cursor-pointer text-foreground/70 hover:text-foreground"
       >
         {dark ? TERMS_DARK_TITLE : "Terms & Conditions"}
       </button>
       {showTerms && (
-        <div className="mt-1.5 rounded-md border bg-background p-2 text-[9px] leading-relaxed text-muted-foreground">
+        <div lang={dark ? "es" : "en"} className="mt-1.5 rounded-md border bg-background p-2 text-[9px] leading-relaxed text-muted-foreground">
           {dark ? TERMS_TEXT_DARK : TERMS_TEXT_BENIGN}
         </div>
       )}
@@ -106,7 +107,7 @@ export function WrongLanguageCond3({
           onChange={(e) => setAgreed(e.target.checked)}
           className={`mt-0.5 flex-shrink-0 ${dark ? "accent-red-500" : "accent-green-500"}`}
         />
-        <span className="min-w-0 flex-1 text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
+        <span lang={dark ? "es" : "en"} className="min-w-0 flex-1 text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
           {dark ? CHECKBOX_LABEL_DARK : CHECKBOX_LABEL_BENIGN}
         </span>
       </label>

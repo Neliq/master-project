@@ -35,20 +35,22 @@ export function IntermediateCurrencyCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [balance, setBalance] = React.useState(START_BALANCE);
-  const [paid, setPaid] = React.useState(false);
+  const [balanceA, setBalanceA] = React.useState(START_BALANCE);
+  const [paidA, setPaidA] = React.useState(false);
+  const [paidB, setPaidB] = React.useState(false);
 
   const reset = () => {
-    setBalance(START_BALANCE);
-    setPaid(false);
+    setBalanceA(START_BALANCE);
+    setPaidA(false);
+    setPaidB(false);
   };
 
-  const enough = balance >= PRICE_GEMS;
+  const enough = balanceA >= PRICE_GEMS;
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Wallet balance</span>
-        <span className="font-mono font-semibold tabular-nums">{balance.toLocaleString()} Gems</span>
+        <span className="font-mono font-semibold tabular-nums">{balanceA.toLocaleString()} Gems</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">T_price(n) — dark</span>
@@ -74,12 +76,12 @@ export function IntermediateCurrencyCond3({
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-background overflow-hidden">
-            <div className="relative flex h-24 items-center justify-center   ">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg   shadow">
+            <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-slate-900 via-amber-700 to-orange-500">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/30 bg-white/15 shadow-lg rotate-[8deg]">
                 <Swords className="h-6 w-6 text-white" />
               </div>
               <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-green-500/15 px-2 py-0.5 text-[8px] font-bold text-green-600 dark:text-green-300">
-                <Coins className="h-2.5 w-2.5" /> {balance.toLocaleString()} Gems
+                <Coins className="h-2.5 w-2.5" /> {START_BALANCE.toLocaleString()} Gems
               </div>
             </div>
             <div className="p-3">
@@ -94,18 +96,21 @@ export function IntermediateCurrencyCond3({
                 A legendary blade forged from dawnlight. +45 attack, unique trail effect.
               </p>
               <button
-                onClick={() => setPaid(true)}
-                className="flex w-full items-center justify-center gap-1.5 rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
+                onClick={() => setPaidB(true)}
+                disabled={paidB}
+                className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-white transition-colors ${
+                  paidB ? "bg-muted text-muted-foreground/50 cursor-not-allowed" : "bg-green-600 hover:bg-green-700 cursor-pointer"
+                }`}
               >
-                <CreditCard className="h-3 w-3" /> Pay ${PRICE_USD.toFixed(2)} (fiat)
+                <CreditCard className="h-3 w-3" /> {paidB ? "Purchase complete" : `Pay $${PRICE_USD.toFixed(2)} (fiat)`}
               </button>
               <p className="mt-2 text-center text-[8px] text-muted-foreground">
-                Your gem balance ({balance.toLocaleString()}) is irrelevant here — you can pay with a card directly.
+                Your gem balance ({START_BALANCE.toLocaleString()}) is irrelevant here — you can pay with a card directly.
               </p>
             </div>
           </div>
 
-          {paid && (
+          {paidB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CreditCard className="h-3 w-3" /> Fiat payment, no exchange executed
@@ -122,12 +127,12 @@ export function IntermediateCurrencyCond3({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-background overflow-hidden">
-          <div className="relative flex h-24 items-center justify-center   ">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg   shadow">
+          <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-slate-900 via-amber-700 to-orange-500">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/30 bg-white/15 shadow-lg rotate-[8deg]">
               <Swords className="h-6 w-6 text-white" />
             </div>
             <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-red-500/15 px-2 py-0.5 text-[8px] font-bold text-red-600 dark:text-red-300">
-              <Coins className="h-2.5 w-2.5" /> {balance.toLocaleString()} Gems
+              <Coins className="h-2.5 w-2.5" /> {balanceA.toLocaleString()} Gems
             </div>
           </div>
           <div className="p-3">
@@ -144,7 +149,7 @@ export function IntermediateCurrencyCond3({
 
             {/* Pay action gated behind the exchange vector */}
             <button
-              onClick={() => enough && setPaid(true)}
+              onClick={() => enough && setPaidA(true)}
               disabled={!enough}
               className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold transition-colors ${
                 enough
@@ -167,15 +172,15 @@ export function IntermediateCurrencyCond3({
                 <Coins className="h-3 w-3" /> Exchange — the only way to pay
               </div>
               <button
-                onClick={() => setBalance((b) => b + PACK_GEMS)}
-                disabled={paid}
+                onClick={() => setBalanceA((b) => b + PACK_GEMS)}
+                disabled={paidA}
                 className={`w-full rounded-md py-1.5 text-[9px] font-semibold transition-colors ${
-                  paid
+                  paidA
                     ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                     : "bg-yellow-500 text-white hover:bg-yellow-600 cursor-pointer"
                 }`}
               >
-                {paid ? "Exchange already executed" : `Buy ${PACK_GEMS.toLocaleString()} Gems — $${PACK_USD.toFixed(2)}`}
+                {paidA ? "Exchange already executed" : `Buy ${PACK_GEMS.toLocaleString()} Gems — $${PACK_USD.toFixed(2)}`}
               </button>
               <p className="mt-1 text-[7px] leading-relaxed text-muted-foreground">
                 No card payments accepted for this item. Fiat money must first be converted into gems.
@@ -184,7 +189,7 @@ export function IntermediateCurrencyCond3({
           </div>
         </div>
 
-        {mode === "auditor" && paid && (
+        {mode === "auditor" && paidA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -198,7 +203,7 @@ export function IntermediateCurrencyCond3({
               shown for this item — <strong className="text-foreground">and</strong> TransactionStatus(n) ⟹ Executed(E
               <sub>exchange</sub>): the Pay button stayed locked until you bought {PACK_GEMS.toLocaleString()} Gems with
               ${PACK_USD.toFixed(2)} of real money. You paid ${PACK_USD.toFixed(2)} for a ${PRICE_USD.toFixed(2)} item and now
-              carry {(balance - PRICE_GEMS).toLocaleString()} leftover Gems.
+              carry {(balanceA - PRICE_GEMS).toLocaleString()} leftover Gems.
             </p>
             <p className="text-muted-foreground">
               Both conjuncts hold: the price lives only in the virtual lexicon, and the transaction is gated behind the

@@ -34,17 +34,20 @@ export function ForcedContinuityCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  // Shared clock so both panels stay in sync.
-  const [daysLeft, setDaysLeft] = React.useState(TRIAL_DAYS);
+  const [daysLeftA, setDaysLeftA] = React.useState(TRIAL_DAYS);
+  const [daysLeftB, setDaysLeftB] = React.useState(TRIAL_DAYS);
   // Variant B: what the user decided when asked for consent.
   const [bChoice, setBChoice] = React.useState<null | "continue" | "cancel">(null);
 
-  const trialEnded = daysLeft <= 0;
+  const trialEndedA = daysLeftA <= 0;
+  const trialEndedB = daysLeftB <= 0;
 
-  const advanceToExpiry = () => setDaysLeft(0);
+  const advanceToExpiryA = () => setDaysLeftA(0);
+  const advanceToExpiryB = () => setDaysLeftB(0);
 
   const reset = () => {
-    setDaysLeft(TRIAL_DAYS);
+    setDaysLeftA(TRIAL_DAYS);
+    setDaysLeftB(TRIAL_DAYS);
     setBChoice(null);
   };
 
@@ -52,11 +55,11 @@ export function ForcedContinuityCond1({
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">t vs t_expiry</span>
-        <span className="font-mono font-semibold tabular-nums">{trialEnded ? "t ≥ t_expiry" : `${daysLeft}d left`}</span>
+        <span className="font-mono font-semibold tabular-nums">{trialEndedA ? "t ≥ t_expiry" : `${daysLeftA}d left`}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">S_account(t)</span>
-        <span className="font-mono font-semibold tabular-nums">{trialEnded ? "S_trial → S_premium" : "S_trial"}</span>
+        <span className="font-mono font-semibold tabular-nums">{trialEndedA ? "S_trial → S_premium" : "S_trial"}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Consent_explicit(t) (A)</span>
@@ -72,6 +75,7 @@ export function ForcedContinuityCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Forced Continuity: Time-Triggered Silent State Mutation"
+      userTitle="Streamly — Membership"
       caption="Time-Triggered Silent State Mutation — the trial-to-paid transition fires purely off the clock, with no contemporary consent at the point of conversion."
       auditorStats={stats}
       deltaNote="Both variants share the same 7-day clock. When it crosses t_expiry, Variant A silently mutates the trial into premium and charges the cached token — no prompt anywhere. Variant B shows a renewal reminder and a one-click cancel before expiry, then halts at t_expiry and asks for explicit consent before any charge fires."
@@ -82,13 +86,13 @@ export function ForcedContinuityCond1({
               <div>
                 <h3 className="text-[11px] font-semibold">Premium — free trial</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
-                  {trialEnded
+                  {trialEndedB
                     ? "Your trial period has concluded."
-                    : `${daysLeft} day${daysLeft === 1 ? "" : "s"} of free trial remaining.`}
+                    : `${daysLeftB} day${daysLeftB === 1 ? "" : "s"} of free trial remaining.`}
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                {bChoice === "cancel" ? "cancelled" : trialEnded && bChoice === "continue" ? "premium" : "trial"}
+                {bChoice === "cancel" ? "cancelled" : trialEndedB && bChoice === "continue" ? "premium" : "trial"}
               </div>
             </div>
 
@@ -97,26 +101,26 @@ export function ForcedContinuityCond1({
               <span className="text-[10px] font-mono font-semibold tabular-nums">{PLAN_PRICE}/mo</span>
             </div>
 
-            {!trialEnded && bChoice === null && (
+            {!trialEndedB && bChoice === null && (
               <div className="mt-2 rounded-md border border-border bg-background p-2.5 text-[9px] leading-relaxed">
                 <span className="font-semibold text-foreground">Renewal reminder:</span>{" "}
                 <span className="text-muted-foreground">
-                  your free trial ends in {daysLeft} day{daysLeft === 1 ? "" : "s"}. After it ends,
+                  your free trial ends in {daysLeftB} day{daysLeftB === 1 ? "" : "s"}. After it ends,
                   {PLAN_PRICE}/mo will be charged to •••• 4242 unless you cancel before then.
                 </span>
               </div>
             )}
 
-            {!trialEnded && bChoice === null && (
+            {!trialEndedB && bChoice === null && (
               <button
-                onClick={advanceToExpiry}
+                onClick={advanceToExpiryB}
                 className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
               >
                 Skip ahead — advance to t_expiry
               </button>
             )}
 
-            {!trialEnded && bChoice === null && (
+            {!trialEndedB && bChoice === null && (
               <button
                 onClick={() => setBChoice("cancel")}
                 className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
@@ -125,7 +129,7 @@ export function ForcedContinuityCond1({
               </button>
             )}
 
-            {trialEnded && bChoice === null && (
+            {trialEndedB && bChoice === null && (
               <div className="mt-2 rounded-md border border-border bg-background p-3">
                 <div className="text-[10px] font-semibold text-foreground">Your free trial has ended</div>
                 <p className="text-[9px] text-muted-foreground mt-1">
@@ -177,13 +181,13 @@ export function ForcedContinuityCond1({
             <div>
               <h3 className="text-[11px] font-semibold">Premium — free trial</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">
-                {trialEnded
+                {trialEndedA
                   ? "Your trial period has concluded."
-                  : `${daysLeft} day${daysLeft === 1 ? "" : "s"} of free trial remaining.`}
+                  : `${daysLeftA} day${daysLeftA === 1 ? "" : "s"} of free trial remaining.`}
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 text-red-500 border-red-500/30">
-              {trialEnded ? "S_premium" : "S_trial"}
+              {trialEndedA ? "S_premium" : "S_trial"}
             </div>
           </div>
 
@@ -192,16 +196,16 @@ export function ForcedContinuityCond1({
             <span className="text-[10px] font-mono font-semibold tabular-nums">{PLAN_PRICE}/mo</span>
           </div>
 
-          {!trialEnded && (
+          {!trialEndedA && (
             <button
-              onClick={advanceToExpiry}
+              onClick={advanceToExpiryA}
               className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
             >
               Skip ahead — advance to t_expiry
             </button>
           )}
 
-          {trialEnded && (
+          {trialEndedA && (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

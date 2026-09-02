@@ -40,9 +40,21 @@ function PlayerFrame({
   const accent = auto ? "text-red-500" : "text-green-500";
   return (
     <div className="rounded-md border border-border bg-background overflow-hidden">
-      <div className="relative flex aspect-video items-center justify-center bg-slate-900">
-        <svg viewBox="0 0 24 24" className="h-8 w-8 text-white/40" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M4 5v14l13-7L4 5z" fill="currentColor" stroke="none" />
+      <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-slate-900">
+        <svg viewBox="0 0 320 180" className="h-full w-full" role="img" aria-label={`Poster for ${EPISODES[episode].title}`}>
+          <rect width="320" height="180" fill="#312e81" />
+          <rect width="320" height="112" fill="#818cf8" opacity="0.65" />
+          <circle cx="252" cy="42" r="20" fill="#fef3c7" opacity="0.75" />
+          <path d="M0 122L58 66l45 38 47-58 72 69 42-35 56 46v54H0Z" fill="#37345f" />
+          <path d="M0 150l78-32 58 19 54-27 66 34 64-22v58H0Z" fill="#292524" />
+          <path d="M145 180c-2-28 10-45 22-64 14 20 28 37 34 64Z" fill="#e7e5e4" opacity="0.72" />
+          {!playing && !ended && (
+            <circle cx="160" cy="92" r="22" fill="#111827" opacity="0.72" />
+          )}
+          {!playing && !ended && (
+            <path d="M154 80l18 12-18 12Z" fill="#fff" opacity="0.9" />
+          )}
+          <text x="14" y="24" fill="#fff" fontSize="10" fontFamily="sans-serif" opacity="0.9">FIELD NOTES</text>
         </svg>
         {playing && (
           <span className={`absolute left-2 top-2 rounded-full bg-black/60 px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider ${accent}`}>
@@ -165,6 +177,14 @@ export function AutoPlayCond1({
     return () => window.clearInterval(id);
   }, [playingB]);
 
+  const playBenign = () => {
+    if (progressB >= 100) {
+      setEpisodeB((episode) => Math.min(episode + 1, EPISODES.length - 1));
+    }
+    setProgressB(0);
+    setPlayingB(true);
+  };
+
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
@@ -189,6 +209,7 @@ export function AutoPlayCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Auto-Play: Autonomous Media Execution"
+      userTitle="Streamly — Watch next"
       caption="Autonomous Media Execution — playback is forced to active purely because the media is in view, so consumption starts as a side effect of navigation, not of intent."
       auditorStats={stats}
       deltaNote="In Variant A the video starts playing by itself (E_intent = ∅) and chains into the next episode automatically. In Variant B the same player sits idle until you press play, and stops at the end of the episode — momentum never builds without your intent."
@@ -206,7 +227,7 @@ export function AutoPlayCond1({
                 playing={playingB}
                 progress={progressB}
                 episode={episodeB}
-                onPlay={() => { setPlayingB(true); setProgressB((p) => (p >= 100 ? 0 : p)); }}
+                onPlay={playBenign}
                 auto={false}
                 ended={progressB >= 100}
                 atSeriesEnd={progressB >= 100 && episodeB >= EPISODES.length - 1}

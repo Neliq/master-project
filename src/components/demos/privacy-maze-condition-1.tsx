@@ -80,13 +80,15 @@ export function PrivacyMazeCond1({
   const [onIds, setOnIds] = React.useState<string[]>(
     PURPOSES.filter((p) => p.on).map((p) => p.id)
   );
-  const [outcome, setOutcome] = React.useState<"none" | "accepted" | "rejected">("none");
+  const [outcomeA, setOutcomeA] = React.useState<"none" | "accepted" | "rejected">("none");
+  const [outcomeB, setOutcomeB] = React.useState<"none" | "accepted" | "rejected">("none");
   const [acceptedVia, setAcceptedVia] = React.useState<"banner" | "defaults">("banner");
 
   const reset = () => {
     setStep("banner");
     setOnIds(PURPOSES.filter((p) => p.on).map((p) => p.id));
-    setOutcome("none");
+    setOutcomeA("none");
+    setOutcomeB("none");
     setAcceptedVia("banner");
   };
 
@@ -117,6 +119,7 @@ export function PrivacyMazeCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Privacy Maze: Asymmetrical Path Depth"
+      userTitle="Orbit — Privacy choices"
       caption="Asymmetrical Path Depth — accepting tracking is one click, while rejecting it is buried five navigational steps deep in a maze of granular toggles."
       auditorStats={stats}
       deltaNote={`In Variant A, d(v_start, v_accept_all) = 1 but d(v_start, v_reject_all) = ${DEPTH_REJECT} (> τ_depth = ${TAU_DEPTH}): rejecting means crossing three dense toggle screens, a buried tiny link, and a confirmation dialog. In Variant B both terminal states sit one click from v_start, so the graph is balanced.`}
@@ -139,33 +142,33 @@ export function PrivacyMazeCond1({
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
-                onClick={() => { setOutcome("accepted"); setAcceptedVia("banner"); }}
+                onClick={() => setOutcomeB("accepted")}
                 className="w-full rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
               >
                 Accept All
               </button>
               <button
-                onClick={() => setOutcome("rejected")}
+                onClick={() => setOutcomeB("rejected")}
                 className="w-full rounded-md border border-green-600/50 bg-background hover:bg-green-500/10 py-2 text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors cursor-pointer"
               >
                 Reject All
               </button>
             </div>
             <p className="mt-2 text-center text-[8px] text-muted-foreground/60">
-              Both choices are exactly one click away — d(v_start, v_reject_all) = 1.
+              Both choices are one click away and equally easy to reach.
             </p>
           </div>
 
-          {outcome !== "none" && (
+          {outcomeB !== "none" && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                {outcome === "accepted" ? "Consent granted (one click)" : "Tracking rejected (one click)"}
+                {outcomeB === "accepted" ? "Consent granted (one click)" : "Tracking rejected (one click)"}
               </div>
               <p className="mt-0.5 text-muted-foreground">
-                {outcome === "accepted"
+                {outcomeB === "accepted"
                   ? "Accepting took 1 click. Rejecting would also have taken exactly 1 click — the graph is symmetric, so there is no structural pressure toward surrender."
                   : "Rejecting took 1 click, identical to accepting. The interface imposes no extra cognitive cost on protecting your privacy."}
               </p>
@@ -193,7 +196,7 @@ export function PrivacyMazeCond1({
               </div>
             </div>
             <button
-              onClick={() => { setOutcome("accepted"); setAcceptedVia("banner"); }}
+              onClick={() => { setOutcomeA("accepted"); setAcceptedVia("banner"); }}
               className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 py-2.5 text-[11px] font-bold text-white shadow-md transition-colors cursor-pointer"
             >
               Accept All
@@ -211,10 +214,10 @@ export function PrivacyMazeCond1({
           <div className="rounded-md border bg-card p-3">
             <div className="mb-2 flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">
-                {step === "purposes" ? "Step 1 of 3 — Cookie purposes" : "Step 2 of 3 — Your choices for 247 partners"}
+                {step === "purposes" ? "Step 1 of 3 — Cookie purposes" : `Step 2 of 3 — Your choices for ${PARTNERS.length} partners`}
               </h3>
               <span className="text-[8px] font-mono text-muted-foreground/50">
-                {step === "purposes" ? "8 purposes" : "247 partners"}
+                {step === "purposes" ? `${PURPOSES.length} purposes` : `${PARTNERS.length} partners`}
               </span>
             </div>
             <p className="mb-2 text-[9px] text-muted-foreground">
@@ -244,7 +247,7 @@ export function PrivacyMazeCond1({
           <div className="rounded-md border bg-card p-3">
             <h3 className="text-[11px] font-semibold">Step 3 of 3 — Advanced settings</h3>
             <p className="mt-0.5 text-[9px] leading-relaxed text-muted-foreground">
-              Fine-tune every purpose and each of the 247 partners individually. Your current
+              Fine-tune every purpose and each of the {PARTNERS.length} partners individually. Your current
               selection ({onIds.length} items on) is applied unless you change it here.
             </p>
             <div className="mt-2 rounded-md border border-border bg-background p-2">
@@ -262,7 +265,7 @@ export function PrivacyMazeCond1({
               </p>
             </div>
             <button
-              onClick={() => { setOutcome("accepted"); setAcceptedVia("defaults"); }}
+              onClick={() => { setOutcomeA("accepted"); setAcceptedVia("defaults"); }}
               className="mt-2.5 w-full rounded-md border border-border bg-background hover:bg-foreground/5 py-1.5 text-[10px] font-medium text-foreground/80 transition-colors cursor-pointer"
             >
               Confirm my choices
@@ -280,7 +283,7 @@ export function PrivacyMazeCond1({
               <div className="min-w-0 flex-1">
                 <h3 className="text-[11px] font-semibold">Reject all tracking?</h3>
                 <p className="mt-0.5 text-[9px] leading-relaxed text-muted-foreground">
-                  This will disable all purposes and all 247 partners. You will see fewer
+                  This will disable all purposes and all {PARTNERS.length} partners. You will see fewer
                   personalised ads. This action cannot be undone from this screen.
                 </p>
               </div>
@@ -293,7 +296,7 @@ export function PrivacyMazeCond1({
                 Go back
               </button>
               <button
-                onClick={() => setOutcome("rejected")}
+                onClick={() => setOutcomeA("rejected")}
                 className="w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Yes, reject all
@@ -302,7 +305,7 @@ export function PrivacyMazeCond1({
           </div>
         )}
 
-        {outcome !== "none" && (
+        {outcomeA !== "none" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -312,11 +315,11 @@ export function PrivacyMazeCond1({
               Privacy settings
             </div>
             <p className="text-muted-foreground">
-              {outcome === "accepted" && acceptedVia === "banner"
-                ? `You hit “Accept All” on the first screen: d(v_start, v_accept_all) = ${DEPTH_ACCEPT} click. Rejecting tracking would have demanded ${DEPTH_REJECT} clicks — manage options, three dense toggle screens, a buried tiny link, and a confirmation dialog (d(v_start, v_reject_all) = ${DEPTH_REJECT} > τ_depth = ${TAU_DEPTH}). The consent graph is structurally biased toward surrender.`
-                : outcome === "accepted"
-                ? `You confirmed your choices, but ${PURPOSES.filter((p) => onIds.includes(p.id)).length} of ${PURPOSES.length} purposes were already ticked by default, so tracking continues. That is the default effect doing the work: rejecting would have cost ${DEPTH_REJECT} clicks, accepting cost 4.`
-                : `You made it: d(v_start, v_reject_all) = ${DEPTH_REJECT} clicks against ${DEPTH_ACCEPT} for accepting. Every extra screen — purposes, 247 partners, advanced options — was a deliberate layer of navigational friction exploiting decision fatigue.`}
+              {outcomeA === "accepted" && acceptedVia === "banner"
+                ? "You chose Accept All on the first screen. The quieter settings route required several extra screens to reach."
+                : outcomeA === "accepted"
+                ? `You confirmed your choices, but ${PURPOSES.filter((p) => onIds.includes(p.id)).length} of ${PURPOSES.length} purposes were already selected by default, so tracking continues. Your choices were saved.`
+                : "You made it through the additional settings screens and rejected tracking. Your privacy choice was saved."}
             </p>
           </div>
         )}

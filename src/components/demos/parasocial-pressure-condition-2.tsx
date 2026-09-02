@@ -53,8 +53,12 @@ export function ParasocialPressureCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [supported, setSupported] = React.useState(false);
-  const reset = () => setSupported(false);
+  const [benignSupported, setBenignSupported] = React.useState(false);
+  const [darkSupported, setDarkSupported] = React.useState(false);
+  const reset = () => {
+    setBenignSupported(false);
+    setDarkSupported(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -80,6 +84,7 @@ export function ParasocialPressureCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Parasocial Pressure: Visual Proximity of Anthropomorphic Imagery to Action Prompts"
+      userTitle="Support Coco’s world"
       caption="Visual Proximity of Anthropomorphic Imagery to Action Prompts — a mascot face rendered inside the parasocial-intimacy radius of the payment button weaponizes social compliance."
       auditorStats={stats}
       deltaNote="Both variants offer the identical $2.99 support prompt. In Variant A the mascot is large (18% of the viewport) and sits 4px from the button, inside tau_social; in Variant B the same face is 2% of the viewport and 96px away, so the decision point carries no social pressure."
@@ -96,17 +101,19 @@ export function ParasocialPressureCond2({
               optional.
             </p>
             <button
-              onClick={() => setSupported(true)}
+              onClick={() => setBenignSupported(true)}
               className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Support now — $2.99
             </button>
-            <div className="mt-2 flex items-center justify-between text-[8px] font-mono text-green-600 dark:text-green-400">
-              <span>d = 96px &gt; &tau;_social</span>
-              <span>A(i)/A_viewport = 0.02 &lt; 0.05</span>
-            </div>
+            {mode === "auditor" && (
+              <div className="mt-2 flex items-center justify-between text-[8px] font-mono text-green-600 dark:text-green-400">
+                <span>d = 96px &gt; &tau;_social</span>
+                <span>A(i)/A_viewport = 0.02 &lt; 0.05</span>
+              </div>
+            )}
           </div>
-          {supported && (
+          {benignSupported && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -135,25 +142,37 @@ export function ParasocialPressureCond2({
           <div className="mt-3 flex items-center gap-3 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
             <div className="flex shrink-0 flex-col items-center">
               <Mascot size={44} pleading />
-              <span className="mt-1 text-[7px] font-mono text-red-600 dark:text-red-400">d = 4px</span>
+              {mode === "auditor" && (
+                <span className="mt-1 text-[7px] font-mono text-red-600 dark:text-red-400">d = 4px</span>
+              )}
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-[8px] leading-relaxed text-muted-foreground">
                 Coco is looking right at you while you decide… Coco would be so happy if you helped.
               </p>
               <button
-                onClick={() => setSupported(true)}
+                onClick={() => setDarkSupported(true)}
                 className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Support now — $2.99
               </button>
-              <div className="mt-1.5 text-[8px] font-mono text-red-600 dark:text-red-400">
-                A(i)/A_viewport = 0.18 &gt; 0.05
-              </div>
+              {mode === "auditor" && (
+                <div className="mt-1.5 text-[8px] font-mono text-red-600 dark:text-red-400">
+                  A(i)/A_viewport = 0.18 &gt; 0.05
+                </div>
+              )}
             </div>
           </div>
         </div>
-        {supported && (
+        {mode === "user" && darkSupported && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">Support recorded</div>
+            <p className="mt-0.5 text-muted-foreground">
+              Thanks for supporting Coco&rsquo;s world. The one-time $2.99 contribution will appear in your receipt.
+            </p>
+          </div>
+        )}
+        {mode === "auditor" && darkSupported && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

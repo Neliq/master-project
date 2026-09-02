@@ -32,12 +32,14 @@ export function FriendSpamCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [granted, setGranted] = React.useState(false);
+  const [benignGranted, setBenignGranted] = React.useState(false);
+  const [darkGranted, setDarkGranted] = React.useState(false);
   const [darkDone, setDarkDone] = React.useState(false);
   const [benignDone, setBenignDone] = React.useState(false);
 
   const reset = () => {
-    setGranted(false);
+    setBenignGranted(false);
+    setDarkGranted(false);
     setDarkDone(false);
     setBenignDone(false);
   };
@@ -50,7 +52,7 @@ export function FriendSpamCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">E_backend_action(T_access)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">SendMessages()</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{darkDone ? "SendMessages()" : "Not executed"}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|M_dispatched|</span>
@@ -66,6 +68,7 @@ export function FriendSpamCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Friend Spam: Feedforward Intent vs. Payload Execution"
+      userTitle="Find your friends"
       caption="The permission prompt promises read-only matching (&ldquo;find friends&rdquo;), but the backend executes a mass broadcast the moment the access token arrives."
       auditorStats={stats}
       deltaNote={`In Variant A the “find your friends” prompt never discloses what the access is for beyond finding friends, and granting access silently dispatches ${NETWORK_SIZE} promotional invites to the entire contact list. Variant B actually performs the promised read-only matching — ${MATCHED_FRIENDS.length} friends found, zero messages sent.`}
@@ -81,20 +84,20 @@ export function FriendSpamCond1({
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                {granted ? "Connected" : "Read-only"}
+                {benignGranted ? "Connected" : "Read-only"}
               </div>
             </div>
 
             <button
-              onClick={() => { setGranted(true); setBenignDone(true); }}
-              disabled={granted}
+              onClick={() => { setBenignGranted(true); setBenignDone(true); }}
+              disabled={benignGranted}
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-                granted
+                benignGranted
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                   : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
-              {granted ? "Access granted" : "Allow access to contacts"}
+              {benignGranted ? "Access granted" : "Allow access to contacts"}
             </button>
           </div>
 
@@ -129,15 +132,15 @@ export function FriendSpamCond1({
           </div>
 
           <button
-            onClick={() => { setGranted(true); setDarkDone(true); }}
-            disabled={granted}
+            onClick={() => { setDarkGranted(true); setDarkDone(true); }}
+            disabled={darkGranted}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-              granted
+              darkGranted
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                 : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
-            {granted ? "Access granted" : "Allow access to contacts"}
+            {darkGranted ? "Access granted" : "Allow access to contacts"}
           </button>
         </div>
 

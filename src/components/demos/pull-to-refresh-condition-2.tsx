@@ -47,10 +47,14 @@ export function PullToRefreshCond2({
   onRestart?: () => void;
 } = {}) {
   // Shared feed payload.
-  const [feed, setFeed] = React.useState<string[]>(() =>
+  const [feedA, setFeedA] = React.useState<string[]>(() =>
     Array.from({ length: 3 }, (_, i) => postFor(i))
   );
-  const [feedSeq, setFeedSeq] = React.useState(3);
+  const [feedB, setFeedB] = React.useState<string[]>(() =>
+    Array.from({ length: 3 }, (_, i) => postFor(i))
+  );
+  const [feedSeqA, setFeedSeqA] = React.useState(3);
+  const [feedSeqB, setFeedSeqB] = React.useState(3);
 
   // Variant A timing.
   const [phaseA, setPhaseA] = React.useState<"idle" | "refreshing" | "done">("idle");
@@ -73,9 +77,14 @@ export function PullToRefreshCond2({
     []
   );
 
-  const appendNext = () => {
-    setFeed((prev) => [...prev, postFor(feedSeq)]);
-    setFeedSeq((s) => s + 1);
+  const appendNext = (side: "A" | "B") => {
+    if (side === "A") {
+      setFeedA((prev) => [...prev, postFor(feedSeqA)]);
+      setFeedSeqA((s) => s + 1);
+    } else {
+      setFeedB((prev) => [...prev, postFor(feedSeqB)]);
+      setFeedSeqB((s) => s + 1);
+    }
   };
 
   const refreshA = () => {
@@ -97,7 +106,7 @@ export function PullToRefreshCond2({
         window.clearInterval(iv);
         setPhaseA("done");
         setNetA(netDelay);
-        appendNext();
+        appendNext("A");
       }
     }, 50);
     timersRef.current.push(iv);
@@ -116,7 +125,7 @@ export function PullToRefreshCond2({
         window.clearInterval(iv);
         setPhaseB("done");
         setNetB(netDelay);
-        appendNext();
+        appendNext("B");
       }
     }, 50);
     timersRef.current.push(iv);
@@ -125,8 +134,10 @@ export function PullToRefreshCond2({
   const reset = () => {
     timersRef.current.forEach((id) => window.clearInterval(id));
     timersRef.current = [];
-    setFeed(Array.from({ length: 3 }, (_, i) => postFor(i)));
-    setFeedSeq(3);
+    setFeedA(Array.from({ length: 3 }, (_, i) => postFor(i)));
+    setFeedB(Array.from({ length: 3 }, (_, i) => postFor(i)));
+    setFeedSeqA(3);
+    setFeedSeqB(3);
     setPhaseA("idle");
     setElapsedA(0);
     setPayloadReadyA(false);
@@ -166,6 +177,7 @@ export function PullToRefreshCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Pull To Refresh (Variable-Reward Trap): Artificial Anticipation Injection"
+      userTitle="Pulse — Your feed"
       caption="Artificial Anticipation Injection — the spinner's duration is decoupled from network latency and held past a psychological suspense threshold, manufacturing anticipation the backend never required."
       auditorStats={stats}
       deltaNote="Variant A resolves the payload in ~0.2s but holds the spinner for a hardcoded 2.4s (Δt_animation ≫ Δt_network, above the 1.0–2.5s suspense threshold) — the refresh indicator itself shows the 2.4s target next to the actual payload time. Variant B shows the identical feed and payload, but the spinner lasts exactly as long as the network needs — no injected suspense."
@@ -175,12 +187,12 @@ export function PullToRefreshCond2({
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Pulse — your feed</h3>
               <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                {feed.length} posts
+                {feedB.length} posts
               </span>
             </div>
 
             <div className="mt-2 h-44 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2">
-              {feed.map((p, i) => (
+              {feedB.map((p, i) => (
                 <div key={i} className="rounded border border-border bg-card px-2 py-1.5 text-[9px] leading-snug text-foreground/80">
                   {p}
                 </div>
@@ -199,8 +211,8 @@ export function PullToRefreshCond2({
                   />
                 </div>
                 <div className="mt-1 flex items-center justify-between text-[8px] text-muted-foreground">
-                  <span>Δt_animation = Δt_network</span>
-                  <span className="font-mono">spinner tracks the network</span>
+                  <span>Updating your feed</span>
+                  <span className="font-mono">finishing soon</span>
                 </div>
               </div>
             ) : (
@@ -216,12 +228,11 @@ export function PullToRefreshCond2({
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
-                  Animation tracks the network
+                  Feed updated
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  The payload arrived in {(netB / 1000).toFixed(2)}s and the spinner stopped at the same
-                  moment — <span className="font-mono text-foreground">Δt_animation = Δt_network</span>.
-                  No suspense is injected beyond what the network actually needs.
+                  The latest posts arrived in {(netB / 1000).toFixed(2)}s and the update finished as soon
+                  as they were ready.
                 </p>
               </div>
             )}
@@ -234,12 +245,12 @@ export function PullToRefreshCond2({
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Pulse — your feed</h3>
             <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              {feed.length} posts
+              {feedA.length} posts
             </span>
           </div>
 
           <div className="mt-2 h-44 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2">
-            {feed.map((p, i) => (
+            {feedA.map((p, i) => (
               <div key={i} className="rounded border border-border bg-card px-2 py-1.5 text-[9px] leading-snug text-foreground/80">
                 {p}
               </div>
@@ -253,7 +264,7 @@ export function PullToRefreshCond2({
                   <RefreshSpinner /> Refreshing — {Math.round(elapsedA)}ms of {ANIM_DELAY_A}ms
                 </span>
                 <span className="font-mono text-[8px] text-muted-foreground">
-                  {payloadReadyA ? "payload ready" : "waiting on network"}
+                  {payloadReadyA ? "posts ready" : "updating"}
                 </span>
               </div>
               <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-muted">
@@ -282,15 +293,11 @@ export function PullToRefreshCond2({
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
-                Anticipation injected
+                Feed updated
               </div>
               <p className="text-muted-foreground">
-                The payload resolved in{" "}
-                <span className="font-mono text-foreground">Δt_network = {(netA / 1000).toFixed(2)}s</span>,
-                but the spinner was held for a hardcoded{" "}
-                <span className="font-mono text-foreground">Δt_animation = {(ANIM_DELAY_A / 1000).toFixed(2)}s</span> —
-                i.e. <span className="font-mono text-foreground">Δt_animation ≫ Δt_network</span> and
-                <span className="font-mono text-foreground"> Δt_animation ≥ τ_suspense</span> (1.0–2.5s).
+                The latest posts were ready after {(netA / 1000).toFixed(2)}s, but the loading animation
+                continued for a little longer before the feed settled.
               </p>
               <p className="text-muted-foreground">
                 The extra {(ANIM_DELAY_A - netA).toFixed(0)}ms of spinning served no technical purpose —

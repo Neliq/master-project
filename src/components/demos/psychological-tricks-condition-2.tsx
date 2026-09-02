@@ -94,12 +94,14 @@ export function PsychologicalTricksCond2({
 } = {}) {
   const [darkState, setDarkState] = React.useState<string[]>(() => matrixDefaults(DARK_MATRIX));
   const [benignState, setBenignState] = React.useState<string[]>(() => matrixDefaults(BENIGN_MATRIX));
-  const [finished, setFinished] = React.useState(false);
+  const [darkFinished, setDarkFinished] = React.useState(false);
+  const [benignFinished, setBenignFinished] = React.useState(false);
 
   const reset = () => {
     setDarkState(matrixDefaults(DARK_MATRIX));
     setBenignState(matrixDefaults(BENIGN_MATRIX));
-    setFinished(false);
+    setDarkFinished(false);
+    setBenignFinished(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -158,14 +160,21 @@ export function PsychologicalTricksCond2({
             </div>
 
             <button
-              onClick={() => setFinished(true)}
+              onClick={() => setBenignFinished(true)}
               className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Finish setup
             </button>
           </div>
 
-          {finished && (
+          {mode === "user" && benignFinished && (
+            <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+              <div className="font-semibold uppercase tracking-tight">Setup saved</div>
+              <p className="text-muted-foreground mt-0.5">Your account preferences were saved.</p>
+            </div>
+          )}
+
+          {mode === "auditor" && benignFinished && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -225,14 +234,21 @@ export function PsychologicalTricksCond2({
           </div>
 
           <button
-            onClick={() => setFinished(true)}
+            onClick={() => setDarkFinished(true)}
             className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Finish setup
           </button>
         </div>
 
-        {mode === "auditor" && finished && (
+        {mode === "user" && darkFinished && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">Setup saved</div>
+            <p className="text-muted-foreground mt-0.5">Your account preferences were saved.</p>
+          </div>
+        )}
+
+        {mode === "auditor" && darkFinished && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

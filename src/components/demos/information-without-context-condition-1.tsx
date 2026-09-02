@@ -24,7 +24,7 @@ import { AlertTriangle, Bell, CheckCircle2, Mail } from "lucide-react";
  */
 
 const ORPHAN_THRESHOLD = 80; // τ_orphan, px
-const DISTANCE_DARK = 260; // px between badge and its hidden descriptor in A
+const DISTANCE_DARK = 112; // px between the badge and the separate inbox descriptor in A
 
 export function InformationWithoutContextCond1({
   mode = "user", annotations = [], onRestart,
@@ -110,32 +110,27 @@ export function InformationWithoutContextCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between rounded-md bg-background border border-border px-3 py-2.5">
-            <div className="flex items-center gap-2">
-              <div className="relative">
-                <div className="flex h-7 w-7 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-                  <Bell className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
-                </div>
-                {/* N_metric: isolated numerical alert, no descriptor nearby */}
-                <span className="absolute -top-1 -right-1 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-red-500 px-1 text-[8px] font-bold text-white">
-                  1
-                </span>
-              </div>
-              <div className="text-[10px] font-medium">
-                Notifications{" "}
-                <span className="text-muted-foreground font-normal">(what is “1”?)</span>
-              </div>
+            <div className="relative flex h-7 w-7 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
+              <Bell className="h-3.5 w-3.5 text-red-600 dark:text-red-400" aria-hidden="true" />
+              {/* N_metric: the count is visible, but its meaning is not nearby. */}
+              <span className="absolute -top-1 -right-1 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-red-500 px-1 text-[8px] font-bold text-white">
+                1
+              </span>
             </div>
             <button
               onClick={() => setClicked(true)}
               className="rounded-md bg-red-600 hover:bg-red-700 text-white px-2.5 py-1 text-[9px] font-medium transition-colors cursor-pointer"
             >
-              Check
+              Open inbox
             </button>
           </div>
-          {/* The descriptor exists — but ~DISTANCE_DARK px away, outside the cluster */}
-          <div className="mt-2 rounded-md bg-background border border-dashed border-border/60 px-3 py-1.5 text-[8px] text-muted-foreground/60">
-            descriptor “New Messages” rendered {DISTANCE_DARK}px away in the settings page —
-            outside this cluster
+          <div className="mt-3 grid grid-cols-2 gap-2 text-[8px] text-muted-foreground">
+            <div className="rounded-md border border-border bg-background px-2 py-2">Order history</div>
+            <div className="rounded-md border border-border bg-background px-2 py-2">Saved items</div>
+          </div>
+          <div className="mt-6 rounded-md border border-dashed border-border/60 bg-background px-3 py-2 text-[9px] text-muted-foreground">
+            <div className="font-medium text-foreground/80">New messages</div>
+            <div className="mt-0.5">Open the inbox to review your latest account activity.</div>
           </div>
         </div>
 

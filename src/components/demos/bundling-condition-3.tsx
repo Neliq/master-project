@@ -52,9 +52,13 @@ export function BundlingCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [added, setAdded] = React.useState(false);
+  const [addedDark, setAddedDark] = React.useState(false);
+  const [addedBenign, setAddedBenign] = React.useState(false);
 
-  const reset = () => setAdded(false);
+  const reset = () => {
+    setAddedDark(false);
+    setAddedBenign(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -80,6 +84,8 @@ export function BundlingCond3({
   ) : null;
 
   const renderPanel = (dark: boolean) => {
+    const isAdded = dark ? addedDark : addedBenign;
+    const setAdded = dark ? setAddedDark : setAddedBenign;
     const desc = dark ? BUNDLED_DESC : STANDALONE_DESC;
     const specRows = dark ? [] : STANDALONE_SPECS;
     return (
@@ -105,7 +111,7 @@ export function BundlingCond3({
             </p>
             {dark ? (
               <p className="mt-1 text-[8px] italic text-muted-foreground/60">
-                No specification rows listed.
+                Full specifications are available in the standalone lens listing.
               </p>
             ) : (
               <ul className="mt-1.5 grid grid-cols-1 gap-0.5">
@@ -122,13 +128,29 @@ export function BundlingCond3({
           </div>
 
           <button
-            onClick={() => setAdded(true)}
+            onClick={() => (dark ? setAddedDark(true) : setAddedBenign(true))}
             className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
               dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
             }`}
           >
-            {added ? "Added to cart ✓" : "Add bundle to cart"}
+            {isAdded ? "Added to cart ✓" : "Add bundle to cart"}
           </button>
+
+          {isAdded && (
+            <div className="mt-2 rounded-md border border-border bg-muted/30 p-2 text-[9px]">
+              <div className="flex items-center justify-between gap-2">
+                <span className="font-medium">Creator Bundle in cart</span>
+                <span className="font-mono tabular-nums">$1,199.00</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setAdded(false)}
+                className="mt-1.5 text-[8px] text-muted-foreground underline underline-offset-2 hover:text-foreground"
+              >
+                Remove bundle
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="rounded-md border bg-background p-3">
@@ -156,7 +178,7 @@ export function BundlingCond3({
           </div>
         </div>
 
-        {added &&
+        {isAdded &&
           (dark ? (
             <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
@@ -164,13 +186,11 @@ export function BundlingCond3({
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Description entropy suppressed
+                Added to cart
               </div>
               <p className="text-muted-foreground mt-1">
-                Inside the bundle the lens gets a {bundledTokens}-token one-liner with zero spec
-                rows, while the standalone listing carries {standaloneTokens} tokens and{" "}
-                {STANDALONE_SPECS.length} detailed specification rows are available on the standalone listing. The bundle
-                includes a concise summary of the same components.
+                The Creator Bundle was added to your cart. Open the standalone lens listing to review
+                the full technical specifications before checkout.
               </p>
             </div>
           ) : (

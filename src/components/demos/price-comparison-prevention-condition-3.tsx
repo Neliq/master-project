@@ -78,7 +78,7 @@ export function PriceComparisonPreventionCond3({
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                Qualifiers present
+                Price per litre shown
               </div>
             </div>
 
@@ -103,14 +103,25 @@ export function PriceComparisonPreventionCond3({
             </button>
 
             {compared && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-                <div className="font-semibold text-green-700 dark:text-green-300">
-                  Q_standard ∩ Q_rendered = {"{per l, per 100 ml}"} ≠ ∅
-                </div>
-                <p className="text-muted-foreground mt-1">
-                  The 1 L bottle is cheaper per liter: PLN 8.99/l vs PLN 9.98/l for the
-                  500 ml bottle.
-                </p>
+              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+                {mode === "auditor" ? (
+                  <>
+                    <div className="font-mono font-semibold text-green-700 dark:text-green-300">
+                      Q_standard ∩ Q_rendered = {"{per l, per 100 ml}"} ≠ ∅
+                    </div>
+                    <p className="text-muted-foreground mt-1">
+                      The 1 L bottle is cheaper per liter: PLN 8.99/l vs PLN 9.98/l for the
+                      500 ml bottle.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <div className="font-semibold text-green-700 dark:text-green-300">Unit price comparison</div>
+                    <p className="text-muted-foreground mt-1">
+                      The 1 L bottle costs PLN 8.99 per litre; the 500 ml bottle costs PLN 9.98 per litre.
+                    </p>
+                  </>
+                )}
               </div>
             )}
           </div>
@@ -127,7 +138,7 @@ export function PriceComparisonPreventionCond3({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Qualifiers stripped
+              Details unavailable
             </div>
           </div>
 
@@ -147,19 +158,29 @@ export function PriceComparisonPreventionCond3({
             onClick={() => setCompared(true)}
             className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
-            Compare unit prices
+            View product details
           </button>
 
           {compared && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-              <div className="font-semibold text-yellow-700 dark:text-yellow-300">
-                Q_standard ∩ Q_rendered = ∅
-              </div>
-              <p className="text-muted-foreground mt-1">
-                Expected qualifiers {"{per l, per 100 ml, per kg}"} — rendered: none. The
-                vocabulary needed to compare these two bottles does not exist anywhere on
-                this page, so the cheaper-per-liter option stays invisible.
-              </p>
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              {mode === "auditor" ? (
+                <>
+                  <div className="font-mono font-semibold text-yellow-700 dark:text-yellow-300">
+                    Q_standard ∩ Q_rendered = ∅
+                  </div>
+                  <p className="text-muted-foreground mt-1">
+                    No comparison qualifiers are present in the product card. The vocabulary needed to
+                    compare these two bottles is absent, so the cheaper option stays invisible.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div className="font-semibold text-yellow-700 dark:text-yellow-300">Unit-price details unavailable</div>
+                  <p className="text-muted-foreground mt-1">
+                    This listing shows pack prices only. Size is listed, but the store does not provide a price-per-litre figure.
+                  </p>
+                </>
+              )}
             </div>
           )}
         </div>

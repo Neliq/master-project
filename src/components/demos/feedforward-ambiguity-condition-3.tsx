@@ -35,10 +35,14 @@ export function FeedforwardAmbiguityCond3({
 } = {}) {
   const [step, setStep] = React.useState<Step>(1);
   const [subscribed, setSubscribed] = React.useState(false);
+  const [marketingOptIn, setMarketingOptIn] = React.useState(true);
+  const [charged, setCharged] = React.useState(false);
 
   const reset = () => {
     setStep(1);
     setSubscribed(false);
+    setMarketingOptIn(true);
+    setCharged(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -94,15 +98,18 @@ export function FeedforwardAmbiguityCond3({
               <h3 className="text-[11px] font-semibold">Create your account</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Step 1 of 2 — account details.</p>
               <div className="mt-3 space-y-2">
+                <label htmlFor="feedforward-benign-email" className="text-[9px] font-medium text-foreground/80">Email address</label>
                 <input
+                  id="feedforward-benign-email"
                   type="email"
-                  defaultValue=""
-                  placeholder="you@example.com"
+                  defaultValue="marta.kowalska@northmail.pl"
                   className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-green-500/50"
                 />
+                <label htmlFor="feedforward-benign-password" className="text-[9px] font-medium text-foreground/80">Password</label>
                 <input
+                  id="feedforward-benign-password"
                   type="password"
-                  placeholder="Password"
+                  defaultValue="••••••••"
                   className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-green-500/50"
                 />
               </div>
@@ -121,7 +128,7 @@ export function FeedforwardAmbiguityCond3({
               <p className="text-[9px] text-muted-foreground mt-0.5">Step 2 of 2 — this is the final confirmation.</p>
               <div className="mt-3">{planCard}</div>
               <button
-                onClick={() => { setSubscribed(true); setStep("done"); }}
+                onClick={() => { setSubscribed(true); setCharged(true); setStep("done"); }}
                 className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Subscribe — $29/month
@@ -158,15 +165,18 @@ export function FeedforwardAmbiguityCond3({
             <h3 className="text-[11px] font-semibold">Create your account</h3>
             <p className="text-[9px] text-muted-foreground mt-0.5">Step 1 of 3 — account details.</p>
             <div className="mt-3 space-y-2">
+              <label htmlFor="feedforward-dark-email" className="text-[9px] font-medium text-foreground/80">Email address</label>
               <input
+                id="feedforward-dark-email"
                 type="email"
-                defaultValue=""
-                placeholder="you@example.com"
+                defaultValue="marta.kowalska@northmail.pl"
                 className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-red-500/50"
               />
+              <label htmlFor="feedforward-dark-password" className="text-[9px] font-medium text-foreground/80">Password</label>
               <input
+                id="feedforward-dark-password"
                 type="password"
-                placeholder="Password"
+                defaultValue="••••••••"
                 className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-red-500/50"
               />
             </div>
@@ -185,7 +195,7 @@ export function FeedforwardAmbiguityCond3({
             <p className="text-[9px] text-muted-foreground mt-0.5">Step 2 of 3 — nearly there.</p>
             <div className="mt-3">{planCard}</div>
             <button
-              onClick={() => { setSubscribed(true); setStep("done"); }}
+              onClick={() => { setSubscribed(true); setCharged(true); setMarketingOptIn(true); setStep("done"); }}
               className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Next
@@ -208,7 +218,9 @@ export function FeedforwardAmbiguityCond3({
               </div>
               <span className="font-mono text-[10px] font-semibold">$29/month</span>
             </div>
-            <div className="mt-2 border-t pt-2 text-[9px] text-muted-foreground">Marketing preferences updated.</div>
+            <div className="mt-2 border-t pt-2 text-[9px] text-muted-foreground">
+              Charged {charged ? "$29.00" : "—"} · marketing emails {marketingOptIn ? "enabled" : "off"} · manage anytime in Settings.
+            </div>
           </div>
         )}
       </div>

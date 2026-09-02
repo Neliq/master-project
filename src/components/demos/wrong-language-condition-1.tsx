@@ -67,7 +67,7 @@ export function WrongLanguageCond1({
   ) : null;
 
   const confirmPanel = (dark: boolean) => (
-    <div className="rounded-md border bg-card p-3">
+    <div lang={dark ? "de" : "en"} className="rounded-md border bg-card p-3">
       <div className="flex items-start gap-2">
         <div className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md ${
           dark ? "bg-red-100 dark:bg-red-900/30" : "bg-green-100 dark:bg-green-900/30"
@@ -188,7 +188,7 @@ export function WrongLanguageCond1({
         {step === "confirm" && (
           <>
             <div className="rounded-md border border-yellow-500/40 bg-yellow-500/5 px-2.5 py-1.5 text-[9px] leading-relaxed text-yellow-700 dark:text-yellow-300">
-              The interface just switched to <strong>Deutsch</strong> — you are now inside the termination flow.
+              Your language preference could not be applied to this setting.
             </div>
             {confirmPanel(true)}
           </>

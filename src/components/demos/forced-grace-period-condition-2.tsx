@@ -86,8 +86,8 @@ export function ForcedGracePeriodCond2({
     <div className="space-y-1.5">
       <div>
         <div className="flex items-center justify-between text-[8px] text-muted-foreground">
-          <span className="font-mono">S(N_confirm) — “Keep my subscription”</span>
-          <span className="font-mono tabular-nums">{SALIENCE_CONFIRM.toFixed(2)}</span>
+          <span className="font-mono">{mode === "auditor" ? "S(N_confirm) — “Keep my subscription”" : "Keep my subscription"}</span>
+          <span className="font-mono tabular-nums">{mode === "auditor" ? SALIENCE_CONFIRM.toFixed(2) : ""}</span>
         </div>
         <div className="mt-0.5 h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">
           <div className="h-full rounded-full bg-foreground/60" style={{ width: "100%" }} />
@@ -95,9 +95,9 @@ export function ForcedGracePeriodCond2({
       </div>
       <div>
         <div className="flex items-center justify-between text-[8px] text-muted-foreground">
-          <span className="font-mono">S(N_cancel) — “Cancel anyway”</span>
+          <span className="font-mono">{mode === "auditor" ? "S(N_cancel) — “Cancel anyway”" : "Cancel plan"}</span>
           <span className={`font-mono tabular-nums ${accent === "rose" ? "text-red-500" : "text-green-500"}`}>
-            {cancelSalience.toFixed(2)}
+            {mode === "auditor" ? cancelSalience.toFixed(2) : ""}
           </span>
         </div>
         <div className="mt-0.5 h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">
@@ -159,6 +159,7 @@ export function ForcedGracePeriodCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Forced Grace Period: Visual Conspicuity of Cancellation Affordance"
+      userTitle="Harbor — Cancellation details"
       caption="Visual Conspicuity of Cancellation Affordance — during the mandatory waiting window, the cancellation vector is rendered at a conspicuity far below the renewal prompt."
       auditorStats={stats}
       deltaNote="Both dialogs carry the same renewal offer and the same cancellation action. In Variant A the offer is framed as “we've unlocked a one-time offer” and the cancellation affordance renders as an 8px low-contrast link — S(N_cancel) ≈ 0.01 vs S(N_confirm) = 1.00, so the salience ratio collapses below δ_salience = 0.3. In Variant B the same offer is stated plainly with a concrete term and both actions render as equal full-size buttons (ratio 1.0)."

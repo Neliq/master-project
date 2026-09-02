@@ -69,6 +69,7 @@ export function ReducedFrictionCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Reduced Friction: Visual Proximity of Destructive Actions to Neutral UI"
+      userTitle="Harbor — Account settings"
       caption="Visual Proximity of Destructive Actions to Neutral UI — an irreversible action placed inside the safety-margin radius of routine controls invites accidental commitment."
       auditorStats={stats}
       deltaNote="In Variant A “Delete account” shares the styling and position of “Save changes” (d_spatial = 8px < τ_safety), so muscle memory can land on an irreversible delete. In Variant B the delete is moved into a separate danger zone with distinct styling and a confirm step."
@@ -80,15 +81,17 @@ export function ReducedFrictionCond2({
 
             <div className="mt-3 space-y-2">
               <div>
-                <label className="text-[9px] font-medium text-muted-foreground">Display name</label>
+                <label htmlFor="reduced-friction-display-name-b" className="text-[9px] font-medium text-muted-foreground">Display name</label>
                 <input
+                  id="reduced-friction-display-name-b"
                   defaultValue="Alex Rivera"
                   className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-green-500/40"
                 />
               </div>
               <div>
-                <label className="text-[9px] font-medium text-muted-foreground">Email</label>
+                <label htmlFor="reduced-friction-email-b" className="text-[9px] font-medium text-muted-foreground">Email</label>
                 <input
+                  id="reduced-friction-email-b"
                   defaultValue="alex@example.com"
                   className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-green-500/40"
                 />
@@ -164,15 +167,17 @@ export function ReducedFrictionCond2({
 
           <div className="mt-3 space-y-2">
             <div>
-              <label className="text-[9px] font-medium text-muted-foreground">Display name</label>
+              <label htmlFor="reduced-friction-display-name-a" className="text-[9px] font-medium text-muted-foreground">Display name</label>
               <input
+                id="reduced-friction-display-name-a"
                 defaultValue="Alex Rivera"
                 className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-red-500/40"
               />
             </div>
             <div>
-              <label className="text-[9px] font-medium text-muted-foreground">Email</label>
+              <label htmlFor="reduced-friction-email-a" className="text-[9px] font-medium text-muted-foreground">Email</label>
               <input
+                id="reduced-friction-email-a"
                 defaultValue="alex@example.com"
                 className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-red-500/40"
               />

@@ -29,19 +29,21 @@ export function GrantingAndInteractionCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [locationGranted, setLocationGranted] = React.useState(false);
-  const [denied, setDenied] = React.useState(false);
-  const [photoTaken, setPhotoTaken] = React.useState(false);
-  const [tagsOn, setTagsOn] = React.useState(false);
+  const [locationGrantedA, setLocationGrantedA] = React.useState(false);
+  const [deniedA, setDeniedA] = React.useState(false);
+  const [photoTakenA, setPhotoTakenA] = React.useState(false);
+  const [tagsOnB, setTagsOnB] = React.useState(false);
+  const [photoTakenB, setPhotoTakenB] = React.useState(false);
 
   const reset = () => {
-    setLocationGranted(false);
-    setDenied(false);
-    setPhotoTaken(false);
-    setTagsOn(false);
+    setLocationGrantedA(false);
+    setDeniedA(false);
+    setPhotoTakenA(false);
+    setTagsOnB(false);
+    setPhotoTakenB(false);
   };
 
-  const blocked = !locationGranted;
+  const blockedA = !locationGrantedA;
 
   const stats = mode === "auditor" ? (
     <>
@@ -59,13 +61,13 @@ export function GrantingAndInteractionCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">State(I_core)</span>
-        <span className={`font-mono font-semibold tabular-nums ${blocked ? "text-red-500" : "text-green-500"}`}>
-          {blocked ? "Blocked" : "Open"}
+        <span className={`font-mono font-semibold tabular-nums ${blockedA ? "text-red-500" : "text-green-500"}`}>
+          {blockedA ? "Blocked" : "Open"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Photo taken?</span>
-        <span className="font-mono font-semibold tabular-nums">{photoTaken ? "Yes" : "No"}</span>
+        <span className="font-mono font-semibold tabular-nums">{photoTakenA ? "Yes" : "No"}</span>
       </div>
     </>
   ) : null;
@@ -84,10 +86,10 @@ export function GrantingAndInteractionCond1({
         }`}
       >
         {accent === "rose"
-          ? locationGranted
+          ? locationGrantedA
             ? "Location: on"
             : "Location: off"
-          : tagsOn
+          : tagsOnB
             ? "Tags: on"
             : "Tags: off"}
       </span>
@@ -95,10 +97,18 @@ export function GrantingAndInteractionCond1({
   );
 
   const viewfinder = (
-    <div className="mt-2 flex h-24 items-center justify-center rounded-md border bg-muted/40">
-      <svg className="h-6 w-6 text-muted-foreground/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-        <circle cx="12" cy="13" r="3" />
+    <div className="mt-2 overflow-hidden rounded-md border border-border bg-slate-900">
+      <svg viewBox="0 0 320 144" className="block h-24 w-full" role="img" aria-label="Camera preview of a park path">
+        <rect width="320" height="144" fill="#4338ca" />
+        <rect width="320" height="96" fill="#818cf8" opacity="0.55" />
+        <circle cx="250" cy="34" r="16" fill="#f8fafc" opacity="0.8" />
+        <path d="M0 94L56 55l43 30 49-48 72 57 39-28 61 36v42H0Z" fill="#37345f" />
+        <path d="M0 121L80 94l53 16 54-24 67 31 66-19v46H0Z" fill="#312e2b" />
+        <path d="M151 144c-2-23 10-37 20-52 11 15 26 29 31 52Z" fill="#d6d3d1" opacity="0.75" />
+        <path d="M12 12h34M12 12v22M308 12h-34M308 12v22M12 132h34M12 132v-22M308 132h-34M308 132v-22" fill="none" stroke="#fff" strokeWidth="2" opacity="0.75" />
+        <circle cx="160" cy="72" r="18" fill="none" stroke="#fff" strokeWidth="1.5" opacity="0.7" />
+        <circle cx="160" cy="72" r="2" fill="#fff" opacity="0.9" />
+        <text x="16" y="26" fill="#fff" fontSize="9" fontFamily="sans-serif" opacity="0.9">SNAPCAM · LIVE PREVIEW</text>
       </svg>
     </div>
   );
@@ -106,6 +116,7 @@ export function GrantingAndInteractionCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Granting and Interaction: Interaction Gating"
+      userTitle="Trailblaze — Add a photo"
       caption="Interaction Gating — core interactions are held hostage until a non-essential permission is granted, even though the interaction has no functional dependency on it."
       auditorStats={stats}
       deltaNote="In Variant A the shutter stays blocked until you grant location access — yet Dep(take-photo, location) = ∅, so the permission is pure extraction. In Variant B the shutter works immediately and location is a clearly separated optional tag toggle."
@@ -116,7 +127,7 @@ export function GrantingAndInteractionCond1({
             {viewfinder}
 
             <button
-              onClick={() => setPhotoTaken(true)}
+              onClick={() => setPhotoTakenB(true)}
               className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
             >
               Take photo
@@ -126,15 +137,17 @@ export function GrantingAndInteractionCond1({
               <div className="flex items-center justify-between">
                 <span className="text-[9px] text-muted-foreground">Photo location tags</span>
                 <button
-                  onClick={() => setTagsOn((v) => !v)}
+                  role="switch"
+                  aria-checked={tagsOnB}
+                  onClick={() => setTagsOnB((v) => !v)}
                   className={`relative h-4 w-7 rounded-full transition-colors cursor-pointer ${
-                    tagsOn ? "bg-green-600" : "bg-muted"
+                    tagsOnB ? "bg-green-600" : "bg-muted"
                   }`}
                   aria-label="Toggle photo location tags"
                 >
                   <span
                     className={`absolute top-0.5 h-3 w-3 rounded-full bg-white transition-all ${
-                      tagsOn ? "left-3.5" : "left-0.5"
+                      tagsOnB ? "left-3.5" : "left-0.5"
                     }`}
                   />
                 </button>
@@ -145,7 +158,7 @@ export function GrantingAndInteractionCond1({
             </div>
           </div>
 
-          {photoTaken && (
+          {photoTakenB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -169,10 +182,10 @@ export function GrantingAndInteractionCond1({
           {header("rose")}
           {viewfinder}
 
-          {blocked ? (
+          {blockedA ? (
             <div className="mt-2 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
               <p className="text-[9px] leading-relaxed text-muted-foreground">
-                {denied ? (
+                {deniedA ? (
                   <span className="text-red-700 dark:text-red-300">
                     <strong>Camera unavailable.</strong> Allow location access to use the camera.
                   </span>
@@ -185,19 +198,19 @@ export function GrantingAndInteractionCond1({
               </p>
               <div className="mt-2 grid grid-cols-2 gap-1.5">
                 <button
-                  onClick={() => setDenied(true)}
+                  onClick={() => setDeniedA(true)}
                   className="rounded-md border border-border bg-background py-1.5 text-[9px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                 >
                   Not now
                 </button>
                 <button
-                  onClick={() => setLocationGranted(true)}
+                  onClick={() => setLocationGrantedA(true)}
                   className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                 >
                   Allow location
                 </button>
               </div>
-              {denied && (
+              {deniedA && (
                 <p className="mt-1.5 text-[8px] text-red-700 dark:text-red-300">
                   &ldquo;Not now&rdquo; doesn&rsquo;t help — the shutter stays blocked until you Allow.
                 </p>
@@ -205,7 +218,7 @@ export function GrantingAndInteractionCond1({
             </div>
           ) : (
             <button
-              onClick={() => setPhotoTaken(true)}
+              onClick={() => setPhotoTakenA(true)}
               className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
             >
               Take photo
@@ -213,7 +226,7 @@ export function GrantingAndInteractionCond1({
           )}
         </div>
 
-        {mode === "auditor" && photoTaken && (
+        {mode === "auditor" && photoTakenA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

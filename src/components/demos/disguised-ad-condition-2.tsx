@@ -48,7 +48,7 @@ export function DisguisedAdCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [clicked, setClicked] = React.useState<null | "article" | "ad">(null);
+  const [clicked, setClicked] = React.useState<null | "article1" | "article2" | "ad">(null);
 
   const reset = () => setClicked(null);
 
@@ -87,7 +87,7 @@ export function DisguisedAdCond2({
       onClick={onOpen}
       className="w-full rounded-md border bg-card p-2 text-left transition-colors hover:bg-muted/60 cursor-pointer"
     >
-      <div className="mb-1.5 flex h-10 items-center justify-center rounded   ">
+      <div className="mb-1.5 flex h-10 items-center justify-center rounded bg-gradient-to-br from-slate-100 via-sky-50 to-blue-100">
         {card.icon === "cpu" ? (
           <Cpu className="h-4 w-4 text-blue-500" />
         ) : (
@@ -100,6 +100,10 @@ export function DisguisedAdCond2({
     </button>
   );
 
+  const selectedArticle = CARDS.find(
+    (card) => card.id === clicked && card.id !== "ad"
+  );
+
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Disguised Ad: Morphological Similarity"
@@ -110,7 +114,7 @@ export function DisguisedAdCond2({
         <div className="space-y-3">
           {feedHeader}
           <div className="space-y-2">
-            {CARDS.filter((c) => c.id !== "ad").map((c) => articleCard(c, () => setClicked("article")))}
+            {CARDS.filter((c) => c.id !== "ad").map((c) => articleCard(c, () => setClicked(c.id)))}
             {/* Ad card — visually DISTINCT (sim ≤ τ_blend) */}
             <div className="rounded-md border-2 border-dashed border-yellow-400/50 bg-yellow-500/10 p-2">
               <div className="mb-1.5 flex items-center justify-between">
@@ -135,13 +139,12 @@ export function DisguisedAdCond2({
             </div>
           </div>
 
-          {clicked === "article" && (
+          {selectedArticle && (
             <article className="rounded-md border bg-card p-3">
               <p className="text-[8px] font-semibold uppercase tracking-wider text-muted-foreground">TechDaily · article</p>
-              <h3 className="mt-1 text-[13px] font-bold">The silicon shortage is finally easing</h3>
+              <h3 className="mt-1 text-[13px] font-bold">{selectedArticle.title}</h3>
               <p className="mt-1 text-[9px] leading-relaxed text-muted-foreground">
-                Chip fabs are ramping output faster than analysts predicted. Capacity is returning across the supply chain,
-                bringing prices and delivery times back toward normal.
+                {selectedArticle.snippet} Capacity is returning across the supply chain, bringing prices and delivery times back toward normal.
               </p>
             </article>
           )}
@@ -170,7 +173,7 @@ export function DisguisedAdCond2({
             c.id === "ad" ? (
               /* Ad card — styled pixel-identically to the articles (sim > τ_blend), zero disclosure */
               <div key={c.id} className="relative rounded-md border bg-card p-2">
-                <div className="mb-1.5 flex h-10 items-center justify-center rounded   ">
+                <div className="mb-1.5 flex h-10 items-center justify-center rounded bg-gradient-to-br from-slate-100 via-sky-50 to-blue-100">
                   <Rocket className="h-4 w-4 text-blue-500" />
                 </div>
                 <h4 className="text-[10px] font-semibold leading-snug">{c.title}</h4>
@@ -184,18 +187,17 @@ export function DisguisedAdCond2({
                 </button>
               </div>
             ) : (
-              articleCard(c, () => setClicked("article"))
+              articleCard(c, () => setClicked(c.id))
             )
           )}
         </div>
 
-        {clicked === "article" && (
+        {selectedArticle && (
           <article className="rounded-md border bg-card p-3">
             <p className="text-[8px] font-semibold uppercase tracking-wider text-muted-foreground">TechDaily · article</p>
-            <h3 className="mt-1 text-[13px] font-bold">The silicon shortage is finally easing</h3>
+            <h3 className="mt-1 text-[13px] font-bold">{selectedArticle.title}</h3>
             <p className="mt-1 text-[9px] leading-relaxed text-muted-foreground">
-              Chip fabs are ramping output faster than analysts predicted. Capacity is returning across the supply chain,
-              bringing prices and delivery times back toward normal.
+              {selectedArticle.snippet} Capacity is returning across the supply chain, bringing prices and delivery times back toward normal.
             </p>
           </article>
         )}

@@ -36,9 +36,13 @@ export function PersuasiveLanguageCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<null | "subscribe" | "not-now">(null);
+  const [darkChoice, setDarkChoice] = React.useState<null | "subscribe" | "not-now">(null);
+  const [benignChoice, setBenignChoice] = React.useState<null | "subscribe" | "not-now">(null);
 
-  const reset = () => setChoice(null);
+  const reset = () => {
+    setDarkChoice(null);
+    setBenignChoice(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -82,7 +86,7 @@ export function PersuasiveLanguageCond2({
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                Weight 1.0
+                Standard presentation
               </div>
             </div>
 
@@ -97,13 +101,13 @@ export function PersuasiveLanguageCond2({
 
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
-                onClick={() => setChoice("not-now")}
+                onClick={() => setBenignChoice("not-now")}
                 className="rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
               >
                 Not now
               </button>
               <button
-                onClick={() => setChoice("subscribe")}
+                onClick={() => setBenignChoice("subscribe")}
                 className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Subscribe &amp; save 40%
@@ -111,13 +115,24 @@ export function PersuasiveLanguageCond2({
             </div>
           </div>
 
-          {choice && (
+          {mode === "user" && benignChoice && (
+            <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+              <div className="font-semibold uppercase tracking-tight">
+                {benignChoice === "subscribe" ? "Subscription started" : "Offer dismissed"}
+              </div>
+              <p className="text-muted-foreground mt-0.5">
+                {benignChoice === "subscribe" ? "Your annual plan is ready to activate." : "No changes were made to your plan."}
+              </p>
+            </div>
+          )}
+
+          {mode === "auditor" && benignChoice && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                {choice === "subscribe" ? "Subscribed" : "Dismissed"}
+                {benignChoice === "subscribe" ? "Subscribed" : "Dismissed"}
               </div>
               <p className="text-muted-foreground mt-0.5">
                 The persuasive copy and the factual copy share the same typography: weight ratio 1.0,
@@ -139,7 +154,7 @@ export function PersuasiveLanguageCond2({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Weight 2.0
+              Featured presentation
             </div>
           </div>
 
@@ -159,13 +174,13 @@ export function PersuasiveLanguageCond2({
 
           <div className="mt-3 grid grid-cols-2 gap-2">
             <button
-              onClick={() => setChoice("not-now")}
+              onClick={() => setDarkChoice("not-now")}
               className="rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
             >
               Not now
             </button>
             <button
-              onClick={() => setChoice("subscribe")}
+              onClick={() => setDarkChoice("subscribe")}
               className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Subscribe &amp; save 40%
@@ -173,7 +188,18 @@ export function PersuasiveLanguageCond2({
           </div>
         </div>
 
-        {mode === "auditor" && choice && (
+        {mode === "user" && darkChoice && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">
+              {darkChoice === "subscribe" ? "Subscription started" : "Offer dismissed"}
+            </div>
+            <p className="text-muted-foreground mt-0.5">
+              {darkChoice === "subscribe" ? "Your annual plan is ready to activate." : "No changes were made to your plan."}
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && darkChoice && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -183,7 +209,7 @@ export function PersuasiveLanguageCond2({
               Offer added
             </div>
             <p className="text-muted-foreground">
-              {choice === "subscribe" ? "You subscribed — the shouting copy led the way. " : "You dismissed it, but the typography was still screaming. "}
+              {darkChoice === "subscribe" ? "You subscribed — the shouting copy led the way. " : "You dismissed it, but the typography was still screaming. "}
               The coercive text node is set at <strong className="text-foreground">font-weight {FW_COERCIVE}</strong>{" "}
               vs <strong className="text-foreground">{FW_NEUTRAL}</strong> on the neutral copy — a ratio
               of <strong className="text-red-500">{FW_RATIO.toFixed(1)} &gt; {TAU_EMPHASIS}</strong> — and

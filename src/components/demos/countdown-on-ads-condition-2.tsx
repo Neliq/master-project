@@ -105,6 +105,7 @@ export function CountdownOnAdsCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Countdown On Ads: Dynamic Affordance Injection"
+      userTitle="Streamly — Watch video"
       caption="Dynamic Affordance Injection — no exit node exists anywhere in the render tree until the exact moment the countdown expires, so the user cannot even plan their departure."
       auditorStats={stats}
       deltaNote="Variant A omits the 'X' close node (and any other exit indicator) from the DOM for the entire 15s lock — the ad is the only clickable surface, so clicks meant to escape open the ad itself. Variant B renders the identical ad with the 'X' present from the first second, so the user can leave at any moment."
@@ -130,7 +131,7 @@ export function CountdownOnAdsCond2({
                 >
                   <X className="size-3" />
                 </button>
-                <div className="  p-4 text-white">
+                <div className="bg-gradient-to-br from-slate-600 to-slate-800 p-4 text-white">
                   <div className="text-[8px] font-semibold uppercase tracking-widest opacity-80">
                     Sponsored
                   </div>
@@ -197,7 +198,16 @@ export function CountdownOnAdsCond2({
               )}
               <div
                 onClick={clickAdSurfaceA}
-                className={`cursor-pointer   p-4 text-white transition-opacity ${
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    clickAdSurfaceA();
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label="Open sponsored advertisement"
+                className={`cursor-pointer bg-gradient-to-br from-slate-600 to-slate-800 p-4 text-white transition-opacity ${
                   closeVisibleA ? "" : "hover:opacity-95"
                 }`}
               >
@@ -227,7 +237,7 @@ export function CountdownOnAdsCond2({
               {closeVisibleA && (
                 <div className="flex items-center justify-between bg-background px-2 py-1.5">
                   <span className="font-mono text-[9px] text-red-600 dark:text-red-300">
-                    N_close ∈ DOM(τ_lock) — at t = {tActiveA}s
+                    Close available — at {tActiveA}s
                   </span>
                 </div>
               )}
@@ -253,13 +263,11 @@ export function CountdownOnAdsCond2({
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
-                Dynamic affordance injection
+                Close option became available
               </div>
               <p className="text-muted-foreground">
-                For all {TAU_LOCK}s the render tree contained no exit node at all:
-                <span className="font-mono text-foreground"> N_close ∉ DOM(t) ∀ t &lt; τ_lock</span> — no ’X’,
-                no skip, not even a timer to plan against. The ’X’ materialized only at
-                <span className="font-mono text-foreground"> t = τ_lock</span>.
+                For the first {TAU_LOCK}s there was no close control or visible timer. The close option
+                appeared only when the ad finished.
               </p>
               <p className="text-muted-foreground">
                 During the wait, {adClicksA} of your interaction{adClicksA === 1 ? "" : "s"} landed on the

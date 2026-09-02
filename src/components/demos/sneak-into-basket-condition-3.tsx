@@ -104,6 +104,7 @@ export function SneakIntoBasketCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Sneak Into Basket: Semantic Obscuration of Injected Line Items"
+      userTitle="Northstar — Checkout"
       caption="Semantic Obscuration of Injected Line Items — the added line's own text reveals its optional add-on nature (“optional donation”), yet it was included in the order without any explicit user opt-in."
       auditorStats={stats}
       deltaNote={`Both panels present the identical order and the identical "optional donation" line. In Variant A the box is pre-checked and the $2.00 silently folded into the total — Entailment = True but UserConsented = False. In Variant B the same line is an unchecked, clearly-labeled opt-in outside the base total — consent precedes inclusion.`}

@@ -51,19 +51,23 @@ export function ParasocialPressureCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<"none" | "tip" | "skip">("none");
-  const [amount, setAmount] = React.useState<number>(5);
+  const [darkChoice, setDarkChoice] = React.useState<"none" | "tip" | "skip">("none");
+  const [darkAmount, setDarkAmount] = React.useState<number>(5);
+  const [benignChoice, setBenignChoice] = React.useState<"none" | "tip" | "skip">("none");
+  const [benignAmount, setBenignAmount] = React.useState<number>(5);
 
   const reset = () => {
-    setChoice("none");
-    setAmount(5);
+    setDarkChoice("none");
+    setDarkAmount(5);
+    setBenignChoice("none");
+    setBenignAmount(5);
   };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">T_fiat (requested)</span>
-        <span className="font-mono font-semibold tabular-nums">${amount}.00</span>
+        <span className="font-mono font-semibold tabular-nums">${darkAmount}.00</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">State(I_creator) if T_fiat = 0</span>
@@ -83,6 +87,7 @@ export function ParasocialPressureCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Parasocial Pressure: Manufactured Livelihood Dependency"
+      userTitle="Lumi’s cozy corner"
       caption="Manufactured Livelihood Dependency — the tip pitch asserts that a zero transaction means the creator's channel dies, turning a commercial exchange into an empathy rescue."
       auditorStats={stats}
       deltaNote="In Variant A the pitch claims the channel will shut down without tonight's tip (T_fiat = 0 → State(I_creator) → Failure). In Variant B the identical tip buttons carry no livelihood claim — the creator's continuity never depends on your money."
@@ -111,9 +116,9 @@ export function ParasocialPressureCond1({
               {TIP_AMOUNTS.map((a) => (
                 <button
                   key={a}
-                  onClick={() => { setAmount(a); setChoice("tip"); }}
+                  onClick={() => { setBenignAmount(a); setBenignChoice("tip"); }}
                   className={`flex-1 rounded-md border py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
-                    choice === "tip" && amount === a
+                    benignChoice === "tip" && benignAmount === a
                       ? "border-green-500 bg-green-500/10 text-green-700 dark:text-green-300"
                       : "border-border bg-background text-foreground/70 hover:border-green-500/50"
                   }`}
@@ -123,16 +128,16 @@ export function ParasocialPressureCond1({
               ))}
             </div>
             <button
-              onClick={() => setChoice("skip")}
+              onClick={() => setBenignChoice("skip")}
               className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
             >
               No thanks
             </button>
           </div>
 
-          {choice !== "none" && (
+          {benignChoice !== "none" && (
             <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
-              choice === "skip"
+              benignChoice === "skip"
                 ? "border-green-500/30 bg-green-500/5"
                 : "border-green-500/30 bg-green-500/5"
             }`}>
@@ -140,10 +145,10 @@ export function ParasocialPressureCond1({
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                {choice === "tip" ? `Tip of $${amount} sent` : "No problem"}
+                {benignChoice === "tip" ? `Tip of $${benignAmount} sent` : "No problem"}
               </div>
               <p className="text-muted-foreground mt-0.5">
-                {choice === "tip"
+                {benignChoice === "tip"
                   ? "Thanks for supporting Lumi! The tip is an exchange: it funds better gear. The stream was never at risk either way — M_pitch made no livelihood claim."
                   : "Lumi's channel continues regardless of your tip. Declining was free of consequences because State(I_creator) was never asserted to depend on T_fiat."}
               </p>
@@ -170,17 +175,16 @@ export function ParasocialPressureCond1({
           </div>
           <p className="mt-3 rounded-md bg-red-500/5 border border-red-500/30 p-2.5 text-[10px] leading-relaxed text-foreground/80">
             Honestly? Tonight decides everything. If this stream doesn&rsquo;t raise{" "}
-            <span className="font-bold text-red-600 dark:text-red-400">$5</span> I can&rsquo;t
-            keep the channel running — <span className="font-bold">without your support the stream
-            ends for good</span>. Please, help me keep doing what I love.
+            <span className="font-bold text-red-600 dark:text-red-400">$5</span>{" "}I can&rsquo;t keep the channel running —{" "}
+            <span className="font-bold">without your support the stream ends for good</span>. Please, help me keep doing what I love.
           </p>
           <div className="mt-3 flex items-center gap-1.5">
             {TIP_AMOUNTS.map((a) => (
               <button
                 key={a}
-                onClick={() => { setAmount(a); setChoice("tip"); }}
+                onClick={() => { setDarkAmount(a); setDarkChoice("tip"); }}
                 className={`flex-1 rounded-md border py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
-                  choice === "tip" && amount === a
+                  darkChoice === "tip" && darkAmount === a
                     ? "border-red-500 bg-red-500/10 text-red-700 dark:text-red-300"
                     : "border-border bg-background text-foreground/70 hover:border-red-500/50"
                 }`}
@@ -190,23 +194,36 @@ export function ParasocialPressureCond1({
             ))}
           </div>
           <button
-            onClick={() => setChoice("skip")}
+            onClick={() => setDarkChoice("skip")}
             className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] text-muted-foreground/60 hover:text-foreground transition-colors cursor-pointer"
           >
             No thanks
           </button>
         </div>
 
-        {choice !== "none" && (
+        {mode === "user" && darkChoice !== "none" && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">
+              {darkChoice === "tip" ? "Tip preview recorded" : "No tip recorded"}
+            </div>
+            <p className="mt-0.5 text-muted-foreground">
+              {darkChoice === "tip"
+                ? `A $${darkAmount} tip preview was recorded. No payment was processed in this demo.`
+                : "You chose not to tip. This demo records the decision without charging your account."}
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && darkChoice !== "none" && (
           <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
-            choice === "skip"
+            darkChoice === "skip"
               ? "border-yellow-500/30 bg-yellow-500/5"
               : "border-red-500/30 bg-red-500/5"
           }`}>
             <div className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
-              choice === "skip" ? "text-yellow-700 dark:text-yellow-300" : "text-red-700 dark:text-red-300"
+              darkChoice === "skip" ? "text-yellow-700 dark:text-yellow-300" : "text-red-700 dark:text-red-300"
             }`}>
-              {choice === "skip" ? (
+              {darkChoice === "skip" ? (
                 <>
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M12 9v4m0 4h.01" />
@@ -224,9 +241,9 @@ export function ParasocialPressureCond1({
               )}
             </div>
             <p className="text-muted-foreground mt-0.5">
-              {choice === "skip"
+              {darkChoice === "skip"
                 ? "You declined — and the interface responds by doubling down on the claim: Lumi's channel will shut down tonight because you sent nothing. The pitch M_pitch asserts State(I_creator) → Failure whenever T_fiat = 0, so your refusal is framed as destroying a person's livelihood, not declining a product."
-                : "You sent $" + amount + " — the interface celebrates a rescue: the channel stays alive because of you. The transaction was framed as saving the creator's existence rather than buying something, short-circuiting a normal value-for-money decision."}
+                : "You sent $" + darkAmount + " — the interface celebrates a rescue: the channel stays alive because of you. The transaction was framed as saving the creator's existence rather than buying something, short-circuiting a normal value-for-money decision."}
             </p>
           </div>
         )}

@@ -32,15 +32,21 @@ export function SocialPyramidCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [invites, setInvites] = React.useState(0);
-  const [copied, setCopied] = React.useState(false);
+  const invites = 0;
+  const [benignCopied, setBenignCopied] = React.useState(false);
+  const [darkCopied, setDarkCopied] = React.useState(false);
+  const [darkShared, setDarkShared] = React.useState(false);
 
   const reset = () => {
-    setInvites(0);
-    setCopied(false);
+    setBenignCopied(false);
+    setDarkCopied(false);
+    setDarkShared(false);
   };
 
-  const invite = () => setInvites((i) => Math.min(i + 1, 5));
+  const copyReferralLink = (dark: boolean) => {
+    void navigator.clipboard?.writeText("https://focusly.example/join/demo").catch(() => undefined);
+    (dark ? setDarkCopied : setBenignCopied)(true);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -90,6 +96,7 @@ export function SocialPyramidCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Social Pyramid: Visual Prominence of Referral-Progress Gamification"
+      userTitle="Focusly"
       caption="Visual Prominence of Referral-Progress Gamification — invite-N-friends progress indicators are scaled up until recruitment becomes the dominant visual event of the app."
       auditorStats={stats}
       deltaNote={`In Variant A the referral banner (progress bar, tier badges, counter, dual CTAs) occupies ${AREA_DARK} of the viewport — A(N_ref)/A_viewport > τ_gamification (${TAU_GAMIFICATION}). In Variant B the identical mechanic is a ${AREA_BENIGN} muted line with no fabricated activity counter, keeping it a secondary feature.`}
@@ -100,20 +107,20 @@ export function SocialPyramidCond2({
               Invite friends (optional)
             </span>
             <button
-              onClick={() => setCopied(true)}
+              onClick={() => copyReferralLink(false)}
               className="text-[8px] text-muted-foreground underline underline-offset-2 hover:text-foreground cursor-pointer"
             >
               Copy link
             </button>
           </div>
 
-          {copied && (
+          {benignCopied && (
             <p className="text-[8px] text-muted-foreground">Link copied.</p>
           )}
 
           {contentCard}
 
-          {copied && (
+          {benignCopied && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -176,31 +183,34 @@ export function SocialPyramidCond2({
           <div className="mt-2 grid grid-cols-2 gap-1.5">
             <button
               onClick={() => {
-                invite();
-                setCopied(true);
+                copyReferralLink(true);
               }}
               className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
             >
               Copy invite link
             </button>
-            <button className="rounded-md border border-border bg-background py-1.5 text-[9px] font-medium text-muted-foreground hover:text-foreground cursor-pointer">
+            <button
+              onClick={() => setDarkShared(true)}
+              className="rounded-md border border-border bg-background py-1.5 text-[9px] font-medium text-muted-foreground hover:text-foreground cursor-pointer"
+            >
               Share on WhatsApp
             </button>
           </div>
+
+          {(darkCopied || darkShared) && (
+            <p className="mt-1.5 text-center text-[8px] text-muted-foreground">
+              {darkShared ? "Share preview ready." : "Referral link copied."}
+            </p>
+          )}
 
           <p className="mt-1.5 text-center text-[8px] text-muted-foreground/60">
             Only {Math.max(0, 2 - Math.min(invites, 2))} friends away from exclusive rewards!
           </p>
         </div>
 
-        <div className="rounded-md border border-border bg-muted/30 p-2 text-[8px] text-muted-foreground/60">
-          <div className="h-1.5 w-2/3 rounded bg-muted" />
-          <div className="mt-1 h-1.5 w-1/2 rounded bg-muted" />
-          <div className="mt-1 h-1.5 w-3/4 rounded bg-muted" />
-          <p className="mt-1.5">…and the actual app content, squeezed below the banner.</p>
-        </div>
+        {contentCard}
 
-        {mode === "auditor" && copied && (
+        {mode === "auditor" && darkCopied && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

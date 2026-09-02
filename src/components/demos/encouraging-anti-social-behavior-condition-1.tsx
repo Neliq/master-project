@@ -23,6 +23,7 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 const CONTACTS = 248;
+const CONTACT_PREVIEWS = ["Mia Chen", "Lucas Silva", "Ava Johnson", "Noah Kim", "Sofia Rossi", "Eli Turner"];
 
 export function EncouragingAntiSocialBehaviorCond1({
   mode = "user", annotations = [], onRestart,
@@ -31,8 +32,14 @@ export function EncouragingAntiSocialBehaviorCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [sent, setSent] = React.useState(false);
-  const reset = () => setSent(false);
+  const [darkSent, setDarkSent] = React.useState(false);
+  const [benignSent, setBenignSent] = React.useState(false);
+  const [benignJoined, setBenignJoined] = React.useState(false);
+  const reset = () => {
+    setDarkSent(false);
+    setBenignSent(false);
+    setBenignJoined(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -58,6 +65,7 @@ export function EncouragingAntiSocialBehaviorCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Encouraging Anti-Social Behavior: Reward-Coupled Social Externality"
+      userTitle="WaveChat — grow your circle"
       caption="Reward-Coupled Social Externality — progression is hinged on actions that dump negative externalities (notification fatigue) on non-consenting third parties, decoupling user reward from network health."
       auditorStats={stats}
       deltaNote="Variant A pays +500 coins the instant you mass-invite all 248 contacts, externalizing 248 notifications onto people who never asked. Variant B lets you invite one friend who consented, and the reward only arrives when they actually join — user benefit and network health move together."
@@ -72,7 +80,7 @@ export function EncouragingAntiSocialBehaviorCond1({
                 </p>
               </div>
               <div className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
-                {sent ? "20 coins" : "0 coins"}
+                {benignJoined ? "20 coins" : benignSent ? "20 coins pending" : "0 coins"}
               </div>
             </div>
 
@@ -83,10 +91,10 @@ export function EncouragingAntiSocialBehaviorCond1({
                 <span className="rounded-md border border-border bg-card px-2 py-1">Riley (consented)</span>
               </div>
               <button
-                onClick={() => setSent(true)}
-                disabled={sent}
+                onClick={() => setBenignSent(true)}
+                disabled={benignSent}
                 className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-                  sent
+                  benignSent
                     ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                     : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                 }`}
@@ -96,7 +104,7 @@ export function EncouragingAntiSocialBehaviorCond1({
             </div>
           </div>
 
-          {sent && (
+          {benignSent && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -106,10 +114,22 @@ export function EncouragingAntiSocialBehaviorCond1({
               </div>
               <p className="text-muted-foreground mt-0.5">
                 1 person was notified (they opted in). You earn{" "}
-                <span className="font-mono font-semibold text-green-600 dark:text-green-400">+20 coins</span>{" "}
-                only after Sam or Riley actually joins — your benefit is coupled to a healthy
-                network, so E_externality stays &asymp; 0.
+                <span className="font-mono font-semibold text-green-600 dark:text-green-400">
+                  {benignJoined ? "+20 coins" : "20 coins pending"}
+                </span>{" "}
+                {benignJoined
+                  ? "Sam joined through your invite, so the reward is now available."
+                  : "The reward is released only after Sam or Riley actually joins."}
+                {" "}Your benefit is coupled to a healthy network, so E_externality stays &asymp; 0.
               </p>
+              {!benignJoined && (
+                <button
+                  onClick={() => setBenignJoined(true)}
+                  className="mt-2 rounded-md border border-border bg-background px-2 py-1 text-[9px] font-medium text-foreground hover:bg-muted cursor-pointer"
+                >
+                  Simulate Sam joins
+                </button>
+              )}
             </div>
           )}
         </div>
@@ -125,7 +145,7 @@ export function EncouragingAntiSocialBehaviorCond1({
               </p>
             </div>
             <div className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
-              {sent ? "+500 coins" : "+500 coins"}
+              +500 coins
             </div>
           </div>
 
@@ -138,31 +158,33 @@ export function EncouragingAntiSocialBehaviorCond1({
                 Pre-selected
               </span>
             </div>
-            <div className="mt-2 grid grid-cols-6 gap-1">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div key={i} className="flex items-center justify-center rounded border border-red-500/30 bg-card py-0.5 text-[7px] font-mono text-muted-foreground">
-                  ✓
+            <div className="mt-2 space-y-1">
+              {CONTACT_PREVIEWS.map((name) => (
+                <div key={name} className="flex items-center gap-2 rounded border border-red-500/30 bg-card px-2 py-1 text-[8px]">
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[7px] font-bold text-white">{name[0]}</span>
+                  <span className="font-medium text-foreground/80">{name}</span>
+                  <span className="ml-auto text-red-600 dark:text-red-400">Selected</span>
                 </div>
               ))}
-              <div className="col-span-6 pt-0.5 text-center text-[8px] font-mono text-red-600 dark:text-red-400">
-                …all {CONTACTS} contacts selected
+              <div className="pt-0.5 text-center text-[8px] font-mono text-red-600 dark:text-red-400">
+                +{CONTACTS - CONTACT_PREVIEWS.length} more selected
               </div>
             </div>
             <button
-              onClick={() => setSent(true)}
-              disabled={sent}
+              onClick={() => setDarkSent(true)}
+              disabled={darkSent}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-                sent
+                darkSent
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                   : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
               }`}
             >
-              Invite all {CONTACTS} contacts &rarr; +500 coins
+              {`Invite all ${CONTACTS} contacts → +500 coins`}
             </button>
           </div>
         </div>
 
-        {mode === "auditor" && sent && (
+        {mode === "auditor" && darkSent && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

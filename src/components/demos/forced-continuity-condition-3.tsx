@@ -69,12 +69,16 @@ export function ForcedContinuityCond3({
   const [bTab, setBTab] = React.useState<Tab>("signup");
   const [aCancelled, setACancelled] = React.useState(false);
   const [bCancelled, setBCancelled] = React.useState(false);
+  const [aStarted, setAStarted] = React.useState(false);
+  const [bStarted, setBStarted] = React.useState(false);
 
   const reset = () => {
     setATab("signup");
     setBTab("signup");
     setACancelled(false);
     setBCancelled(false);
+    setAStarted(false);
+    setBStarted(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -98,7 +102,9 @@ export function ForcedContinuityCond3({
     </>
   ) : null;
 
-  const signupPanel = (dark: boolean) => (
+  const signupPanel = (dark: boolean) => {
+    const started = dark ? aStarted : bStarted;
+    return (
     <div className="space-y-3">
       <div className="rounded-md border bg-card p-3">
         <h3 className="text-[11px] font-semibold">Premium — {dark ? "free trial" : "30-day free trial"}</h3>
@@ -110,11 +116,17 @@ export function ForcedContinuityCond3({
           </span>
         </div>
         <button
-          onClick={() => {}}
+          onClick={() => (dark ? setAStarted(true) : setBStarted(true))}
+          disabled={started}
           className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
         >
           Start free trial
         </button>
+        {started && (
+          <div className="mt-1.5 rounded-md border border-border bg-background px-2.5 py-2 text-[9px] text-muted-foreground" role="status">
+            Your trial is active. You can switch to the cancellation flow whenever you want.
+          </div>
+        )}
         <p className="text-[8px] text-muted-foreground/60 mt-1.5 text-center">
           {dark
             ? "Simple language, friendly tone — and no mention of renewal or cancellation anywhere on this screen."
@@ -122,11 +134,13 @@ export function ForcedContinuityCond3({
         </p>
       </div>
     </div>
-  );
+    );
+  };
 
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Forced Continuity: Semantic Asymmetry Between Subscription and Cancellation Language"
+      userTitle="Streamly — Subscription settings"
       caption="Semantic Asymmetry — the cancellation flow is written several grade levels above the signup flow and laced with guilt lexemes that the signup never mentions."
       auditorStats={stats}
       deltaNote="Variant A signs you up in grade-5 prose that never mentions the renewal — no “Cancel anytime”, no “$0.00 for 30 days” — and cancels you through a grade-9 guilt wall (“abandon your progress,” “lose your benefits”), so FKGL diff 4.5 > 2 and no renewal feedforward exists anywhere in the flow. Variant B discloses the free-trial terms and cancel-anytime up front, and writes cancellation at the same reading level as signup, with zero guilt lexemes."

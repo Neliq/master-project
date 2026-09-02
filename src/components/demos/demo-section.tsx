@@ -53,7 +53,7 @@ export function DemoSection({
     if (!cd) return null;
     const C = getDemo(cd.demoSlug);
     if (!C) return null;
-    return { Component: C, demoSlug: cd.demoSlug };
+    return { Component: C };
   }, [conditionIndex, conditionDemos]);
 
   const legacyDemo = React.useMemo(() => {
@@ -75,9 +75,9 @@ export function DemoSection({
   // --- Single condition mode (used by grouped layout) ---
   if (conditionIndex !== undefined) {
     if (!singleDemo) return null;
-    const { Component: DemoComp, demoSlug } = singleDemo;
+    const { Component: DemoComp } = singleDemo;
     return (
-      <div className="space-y-2">
+      <div data-dp-category={pattern?.category} className="space-y-2">
         {showControls && (
           <div
             className="flex flex-wrap items-center justify-start gap-3 rounded-md border border-foreground/10 bg-muted/20 px-3 py-2"
@@ -88,7 +88,7 @@ export function DemoSection({
         <DemoComp
           key={restartKey}
           mode={mode}
-          annotations={mode === "auditor" ? AUDITOR_ANNOTATIONS[demoSlug] : []}
+          annotations={mode === "auditor" ? AUDITOR_ANNOTATIONS[slug] : []}
           onRestart={onRestart}
         />
       </div>
@@ -97,7 +97,7 @@ export function DemoSection({
 
   // --- All-conditions mode (default, legacy) ---
   return (
-    <div className="space-y-3">
+    <div data-dp-category={pattern?.category} className="space-y-3">
       <div
         className="flex flex-wrap items-center justify-start gap-3 rounded-md border border-foreground/10 bg-muted/20 px-3 py-2"
       >
@@ -119,7 +119,7 @@ export function DemoSection({
                 <entry.Component
                   key={restartKey}
                   mode={mode}
-                  annotations={mode === "auditor" ? AUDITOR_ANNOTATIONS[entry.demoSlug] : []}
+                  annotations={mode === "auditor" ? AUDITOR_ANNOTATIONS[slug] : []}
                   onRestart={onRestart}
                 />
               ) : null}
@@ -130,7 +130,7 @@ export function DemoSection({
         <legacyDemo.Component
           key={restartKey}
           mode={mode}
-          annotations={mode === "auditor" ? AUDITOR_ANNOTATIONS[legacyDemo.demoSlug] : []}
+          annotations={mode === "auditor" ? AUDITOR_ANNOTATIONS[slug] : []}
           onRestart={onRestart}
         />
       ) : null}

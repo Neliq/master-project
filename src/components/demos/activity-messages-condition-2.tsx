@@ -51,7 +51,8 @@ export function ActivityMessagesCond2({
 } = {}) {
   const [toastsA, setToastsA] = React.useState<string[]>([]);
   const [toastsB, setToastsB] = React.useState<string[]>([]);
-  const [finished, setFinished] = React.useState(false);
+  const [finishedA, setFinishedA] = React.useState(false);
+  const [finishedB, setFinishedB] = React.useState(false);
   const counterA = React.useRef(0);
   const counterB = React.useRef(0);
 
@@ -75,7 +76,8 @@ export function ActivityMessagesCond2({
   const reset = () => {
     setToastsA([]);
     setToastsB([]);
-    setFinished(false);
+    setFinishedA(false);
+    setFinishedB(false);
     counterA.current = 0;
     counterB.current = 0;
   };
@@ -160,16 +162,16 @@ export function ActivityMessagesCond2({
             ))}
           </div>
 
-          {focusMeter("S_focus — cognitive state", focusB, focusB > 60 ? "emerald" : "amber")}
+          {focusMeter(mode === "auditor" ? "S_focus — cognitive state" : "Reading specifications", focusB, focusB > 60 ? "emerald" : "amber")}
 
           <button
-            onClick={() => setFinished(true)}
+            onClick={() => setFinishedB(true)}
             className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
-            {finished ? "Order placed ✓" : "Finish reading & check out"}
+            {finishedB ? "Order placed ✓" : "Finish reading & check out"}
           </button>
 
-          {finished && (
+          {finishedB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -192,7 +194,7 @@ export function ActivityMessagesCond2({
         {/* high-salience overlay stream (Variant A) */}
         <div className="relative space-y-1.5">
           {toastsA.length === 0 && (
-            <p className="text-[9px] text-muted-foreground/60 italic">Waiting for injected activity…</p>
+            <p className="text-[9px] text-muted-foreground/60 italic">No recent activity yet — notifications will appear here.</p>
           )}
           {toastsA.map((t, i) => (
             <div
@@ -207,16 +209,16 @@ export function ActivityMessagesCond2({
           ))}
         </div>
 
-        {focusMeter("S_focus — cognitive state", focusA, focusA > 60 ? "emerald" : focusA > 30 ? "amber" : "rose")}
+        {focusMeter(mode === "auditor" ? "S_focus — cognitive state" : "Reading specifications", focusA, focusA > 60 ? "emerald" : focusA > 30 ? "amber" : "rose")}
 
         <button
-          onClick={() => setFinished(true)}
+          onClick={() => setFinishedA(true)}
           className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
-          {finished ? "Order placed ✓" : "Finish reading & check out"}
+          {finishedA ? "Order placed ✓" : "Finish reading & check out"}
         </button>
 
-        {mode === "auditor" && finished && (
+        {mode === "auditor" && finishedA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -230,6 +232,13 @@ export function ActivityMessagesCond2({
               far above &tau;_cognitive_load = {TAU_LOAD}/min. Salience(N_activity) &rarr; Max and the interruption rate exceed the
               threshold, so S_focus &rarr; Disrupted: rational processing was interrupted to trigger impulsive, herd-following buying.
             </p>
+          </div>
+        )}
+
+        {mode !== "auditor" && finishedA && (
+          <div className="rounded-md border border-red-500/30 bg-red-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold text-red-700 dark:text-red-300">Order placed</div>
+            <p className="mt-1 text-muted-foreground">Aurora Wireless Earbuds Pro · specifications reviewed and order submitted.</p>
           </div>
         )}
       </div>

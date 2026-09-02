@@ -46,12 +46,14 @@ export function PrivacyMazeCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [outcome, setOutcome] = React.useState<"none" | "accepted" | "rejected">("none");
-  const [translated, setTranslated] = React.useState(false);
+  const [outcomeA, setOutcomeA] = React.useState<"none" | "accepted" | "rejected">("none");
+  const [translatedA, setTranslatedA] = React.useState(false);
+  const [outcomeB, setOutcomeB] = React.useState<"none" | "accepted" | "rejected">("none");
 
   const reset = () => {
-    setOutcome("none");
-    setTranslated(false);
+    setOutcomeA("none");
+    setTranslatedA(false);
+    setOutcomeB("none");
   };
 
   const stats = mode === "auditor" ? (
@@ -78,6 +80,7 @@ export function PrivacyMazeCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Privacy Maze: Semantic Obfuscation of Privacy-Related Terminology"
+      userTitle="Orbit — Data preferences"
       caption="Semantic Obfuscation of Privacy-Related Terminology — the consent request is written in vocabulary so dense (FKGL &gt; 14) that informed consent becomes impossible."
       auditorStats={stats}
       deltaNote={`Variant A describes the same data collection in legalistic prose: FKGL ${FKGL_DARK} (> 14) and lexical density ${LEX_DENSITY_DARK.toFixed(2)} (> τ = ${TAU_OBFUSCATION.toFixed(2)}), so the semantic heuristic fires. Variant B carries the identical informational payload in plain language: FKGL ${FKGL_PLAIN}, density ${LEX_DENSITY_PLAIN.toFixed(2)}.`}
@@ -98,24 +101,24 @@ export function PrivacyMazeCond3({
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
-                onClick={() => setOutcome("accepted")}
+                onClick={() => setOutcomeB("accepted")}
                 className="w-full rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
               >
                 Accept All
               </button>
               <button
-                onClick={() => setOutcome("rejected")}
+                onClick={() => setOutcomeB("rejected")}
                 className="w-full rounded-md border border-green-600/50 bg-background hover:bg-green-500/10 py-2 text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors cursor-pointer"
               >
                 Reject All
               </button>
             </div>
             <p className="mt-2 text-center text-[8px] text-muted-foreground/60">
-              Readable in one pass — FKGL {FKGL_PLAIN}, lexical density {LEX_DENSITY_PLAIN.toFixed(2)}
+              Clear, plain-language explanation you can read in one pass.
             </p>
           </div>
 
-          {outcome !== "none" && (
+          {outcomeB !== "none" && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -124,9 +127,8 @@ export function PrivacyMazeCond3({
                 Consent was informed
               </div>
               <p className="mt-0.5 text-muted-foreground">
-                You could actually read what you were agreeing to. FKGL {FKGL_PLAIN} and lexical
-                density {LEX_DENSITY_PLAIN.toFixed(2)} stay far below the {TAU_OBFUSCATION.toFixed(2)} threshold,
-                so nothing about the wording discouraged an informed decision.
+                You could read what you were agreeing to in one pass, so the wording did not get in the
+                way of an informed decision.
               </p>
             </div>
           )}
@@ -145,30 +147,30 @@ export function PrivacyMazeCond3({
             <div className="min-w-0 flex-1">
               <h3 className="text-[11px] font-semibold">Cookie consent</h3>
               <p className="mt-0.5 text-[9px] leading-relaxed text-foreground/75">
-                {translated ? PLAIN_TEXT : DARK_TEXT}
+                {translatedA ? PLAIN_TEXT : DARK_TEXT}
               </p>
             </div>
           </div>
-          {translated && (
+          {translatedA && (
             <div className="mt-1.5 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[8px] text-muted-foreground">
               Plain-language rendering shown above — same facts, FKGL {FKGL_PLAIN}.
             </div>
           )}
           <button
-            onClick={() => setTranslated((t) => !t)}
+            onClick={() => setTranslatedA((t) => !t)}
             className="mt-2 text-[9px] font-medium text-muted-foreground/60 underline underline-offset-2 hover:text-muted-foreground transition-colors cursor-pointer"
           >
-            {translated ? "Show original wording" : "Translate to plain English"}
+            {translatedA ? "Show original wording" : "Translate to plain English"}
           </button>
           <div className="mt-2 grid grid-cols-2 gap-2">
             <button
-              onClick={() => setOutcome("accepted")}
+              onClick={() => setOutcomeA("accepted")}
               className="w-full rounded-md bg-red-600 hover:bg-red-700 py-2 text-[10px] font-bold text-white transition-colors cursor-pointer"
             >
               Accept All
             </button>
             <button
-              onClick={() => setOutcome("rejected")}
+              onClick={() => setOutcomeA("rejected")}
               className="w-full rounded-md border border-border bg-background hover:bg-foreground/5 py-2 text-[10px] font-medium text-muted-foreground transition-colors cursor-pointer"
             >
               Reject All
@@ -176,7 +178,7 @@ export function PrivacyMazeCond3({
           </div>
         </div>
 
-        {outcome !== "none" && (
+        {outcomeA !== "none" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -186,11 +188,9 @@ export function PrivacyMazeCond3({
               Privacy settings saved
             </div>
             <p className="text-muted-foreground">
-              The consent request scored FKGL {FKGL_DARK} (&gt; 14) and a lexical density of{" "}
-              {LEX_DENSITY_DARK.toFixed(2)} (&gt; &tau;_obfuscation = {TAU_OBFUSCATION.toFixed(2)}). Words like
-              “aggregate”, “cross-reference” and “commercialization” bury what is actually
-              happening: {outcome === "accepted" ? "you consented to sharing your data with data brokers." : "you declined — but only after decoding the jargon."}{" "}
-              If the same text is unreadable, the consent it produces is not informed.
+              The consent request used dense legal language that made the data sharing difficult to understand:
+              {outcomeA === "accepted" ? " you consented before the wording was fully clear." : " you declined after working through the jargon."}
+              {" "}If the same text is hard to read, the consent it produces is less informed.
             </p>
           </div>
         )}

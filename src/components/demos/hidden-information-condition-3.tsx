@@ -100,7 +100,7 @@ export function HiddenInformationCond3({
             Email
           </span>
           <span className="mt-1 block text-[10px] text-muted-foreground/70">
-            you@example.com
+            marta.kowalska@cloudmail.pl
           </span>
         </label>
 
@@ -140,10 +140,10 @@ export function HiddenInformationCond3({
         onClick={() => setScanned(true)}
         className="w-full cursor-pointer rounded-md border border-border bg-background py-1.5 text-[9px] font-medium text-muted-foreground transition-colors hover:text-foreground"
       >
-        Scan DOM for adverse terms
+        {mode === "auditor" ? "Scan DOM for adverse terms" : "View subscription details"}
       </button>
 
-      {scanned ? (
+      {scanned ? (mode === "auditor" ? (
         <div className="space-y-1.5 rounded-md border bg-background p-2 font-mono text-[8px] leading-relaxed">
           <div className="font-bold uppercase tracking-wide text-muted-foreground">
             K_adverse = {"{fee, cancellation, auto-renew, liability}"}
@@ -158,25 +158,18 @@ export function HiddenInformationCond3({
             ⟹ trigger: K_adverse ∩ T_DOM ≠ ∅ ∧ IsConcealed = {dark ? "True" : "False"}
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div className="space-y-1 rounded-md border bg-background p-2 text-[8px] leading-relaxed">
+          <div className="font-semibold text-foreground">Subscription details</div>
+          <div className="text-muted-foreground">A $5.00 monthly service fee applies after the {TRIAL_DAYS}-day trial. Your plan renews monthly and can be cancelled in Settings.</div>
+        </div>
+      )) : null}
 
       {started &&
         (dark ? (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
-              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Adverse terms concealed
-            </div>
-            <p className="text-muted-foreground mt-1">
-              The {usd(SERVICE_FEE)}/month service fee and the auto-renewal exist in the DOM (a screen
-              reader or crawler can find them) but only inside a collapsed{" "}
-              <strong className="text-foreground">&lt;details&gt;</strong> element and a hover
-              tooltip on the button — IsConcealed(N_adverse) = True. You started a paid trial without
-              ever seeing the fee.
-            </p>
+          <div className="rounded-md border border-red-500/30 bg-red-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold text-red-700 dark:text-red-300">Trial started</div>
+            <p className="mt-1 text-muted-foreground">Your {TRIAL_DAYS}-day trial is active. Review Subscription details before the first renewal.</p>
           </div>
         ) : (
           <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">

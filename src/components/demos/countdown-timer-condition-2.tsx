@@ -59,7 +59,7 @@ export function CountdownTimerCond2({
   // Variant A: the compressed window auto-confirms the order at zero.
   // Derived from the timer state (no effect needed).
   const confirmedA = secondsA === 0 || confirmedAOverride;
-  const confirmedB = secondsB === 0 || confirmedBOverride;
+  const confirmedB = confirmedBOverride;
 
   const reset = () => {
     setSecondsA(TIMER_A_S);
@@ -142,14 +142,14 @@ export function CountdownTimerCond2({
 
           <button
             onClick={() => setConfirmedBOverride(true)}
-            disabled={confirmedB}
+            disabled={confirmedB || expiredB}
             className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               confirmedB
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                 : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
             }`}
           >
-            {confirmedB ? "Confirmed ✓" : "I have read the terms — confirm purchase"}
+            {confirmedB ? "Confirmed ✓" : expiredB ? "Window closed — no action taken" : "I have read the terms — confirm purchase"}
           </button>
 
           {expiredB && !confirmedB && (

@@ -28,25 +28,42 @@ const Z_INDEX = 1000; // > 100 → structurally an overlay
 type Stage = "open" | "accepted" | "dismissed" | "essential";
 
 const pageBackdrop = (
-  <div className="space-y-2 p-3">
-    <div className="flex items-center gap-2">
-      <div className="h-6 w-6 rounded-md bg-red-500/60" />
-      <div>
-        <div className="h-2 w-24 rounded bg-foreground/30" />
-        <div className="mt-1 h-1.5 w-16 rounded bg-foreground/15" />
+  <div className="space-y-3 p-3">
+    <div className="flex items-center justify-between gap-2">
+      <div className="flex items-center gap-2">
+        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/15 text-primary">
+          <Cookie className="size-3.5" />
+        </div>
+        <div>
+          <div className="text-[10px] font-semibold">CloudPhoto</div>
+          <div className="text-[8px] text-muted-foreground">Your memories, everywhere</div>
+        </div>
+      </div>
+      <div className="rounded-full border border-border px-2 py-0.5 text-[8px] text-muted-foreground">Pro plan</div>
+    </div>
+    <div className="rounded-md border border-border bg-card p-2.5">
+      <div className="flex items-center justify-between">
+        <div>
+          <div className="text-[10px] font-semibold">Recent uploads</div>
+          <div className="mt-0.5 text-[8px] text-muted-foreground">12 new photos this week</div>
+        </div>
+        <span className="text-[8px] font-mono text-muted-foreground">2.4 GB / 100 GB</span>
+      </div>
+      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted">
+        <div className="h-full w-[18%] rounded-full bg-primary/70" />
+      </div>
+      <div className="mt-2 grid grid-cols-3 gap-1.5">
+        {['Lake morning', 'Family lunch', 'Weekend walk'].map((label) => (
+          <div key={label} className="rounded border border-border bg-muted/40 p-2 text-center">
+            <div className="mx-auto h-7 w-7 rounded bg-primary/15" />
+            <div className="mt-1 truncate text-[7px] text-muted-foreground">{label}</div>
+          </div>
+        ))}
       </div>
     </div>
-    <div className="space-y-1.5">
-      <div className="h-2 w-full rounded bg-foreground/20" />
-      <div className="h-2 w-11/12 rounded bg-foreground/20" />
-      <div className="h-2 w-4/5 rounded bg-foreground/15" />
-      <div className="h-2 w-full rounded bg-foreground/15" />
-      <div className="h-2 w-2/3 rounded bg-foreground/10" />
-    </div>
-    <div className="h-2 w-24 rounded bg-foreground/20" />
-    <div className="space-y-1.5">
-      <div className="h-2 w-10/12 rounded bg-foreground/10" />
-      <div className="h-2 w-9/12 rounded bg-foreground/10" />
+    <div className="flex items-center justify-between rounded-md border border-border bg-card px-2.5 py-2 text-[8px]">
+      <span className="text-muted-foreground">Last synced just now</span>
+      <span className="font-medium text-foreground">All devices connected</span>
     </div>
   </div>
 );
@@ -155,6 +172,7 @@ export function DeadEndCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Dead End: Visual Absence of Dismissal Vectors"
+      userTitle="Cinder — Account notice"
       caption="Visual Absence of Dismissal Vectors — a structurally confirmed overlay whose dismissal set is empty, so the only way out of the interruption is compliance."
       auditorStats={stats}
       deltaNote="Both variants show the same cookie overlay with the same copy and the same “Accept all” button. In Variant A the overlay contains zero dismissal objects (C_dismiss = ∅): no close icon, no “Not now”, and the backdrop/Esc lead nowhere. Variant B adds a close icon, a “Not now” link, and an “Essential only” rejection — escaping takes one click, and essential-only consent is always available."

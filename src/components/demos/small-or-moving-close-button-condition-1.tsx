@@ -26,6 +26,11 @@ import { DemoShell } from "@/components/demos/demo-shell";
 
 const TAU_REBIND_MS = 400; // human reaction-time bound
 const REBIND_MS = 120; // measured rebind rate in Variant A
+const EVASION_POSITIONS = [
+  { top: 18, right: 28 },
+  { top: 44, right: 12 },
+  { top: 62, right: 36 },
+];
 
 export function SmallOrMovingCloseButtonCond1({
   mode = "user", annotations = [], onRestart,
@@ -49,11 +54,10 @@ export function SmallOrMovingCloseButtonCond1({
   // Kinetic evasion: the close handler rebinds to a new coordinate on hover.
   const dodge = () => {
     if (aState !== "open") return;
-    setXPos({
-      top: 6 + Math.random() * 55,
-      right: 4 + Math.random() * 30,
+    setEvasions((e) => {
+      setXPos(EVASION_POSITIONS[e % EVASION_POSITIONS.length]);
+      return e + 1;
     });
-    setEvasions((e) => e + 1);
   };
 
   const stats = mode === "auditor" ? (
@@ -80,6 +84,7 @@ export function SmallOrMovingCloseButtonCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Small or Moving Close Button: Structural Event-Listener Commandeering on Dismissal Vectors"
+      userTitle="Streamly — Video player"
       caption="Structural Event-Listener Commandeering on Dismissal Vectors — the close button's event handler is hijacked: it evades the cursor faster than human reaction time, and its clicks are redirected instead of dismissing."
       auditorStats={stats}
       deltaNote="In Variant A the X's handler is commandeered twice over: it rebinds to a new position on hover (Δt_rebind ≈ 120 ms < τ_rebind = 400 ms) and a parent capture-phase listener intercepts the click, redirecting you to the offer page instead of closing. In Variant B the same X is stationary, sized at the WCAG 44×44 px touch-target minimum, and its click dismisses the modal."
@@ -103,7 +108,7 @@ export function SmallOrMovingCloseButtonCond1({
             </p>
             {bState === "dismissed" && (
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
-                Dismissed cleanly — the onclick on N_close fired and closed the modal.
+                Dismissed cleanly — the close control closed the modal immediately.
               </div>
             )}
           </div>
@@ -111,12 +116,22 @@ export function SmallOrMovingCloseButtonCond1({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="relative rounded-md border-2 border-red-500/50 bg-card p-3">
+        <div
+          className="relative rounded-md border-2 border-red-500/50 bg-card p-3"
+          onClickCapture={(event) => {
+            const target = event.target;
+            if (target instanceof Element && target.closest("[data-close-vector]")) {
+              event.preventDefault();
+              setAState("intercepted");
+            }
+          }}
+        >
           {aState === "open" && (
             <button
-              onClick={() => setAState("intercepted")}
               onMouseEnter={dodge}
+              onFocus={dodge}
               aria-label="Close dialog"
+              data-close-vector
               className="absolute z-10 flex h-6 w-6 items-center justify-center rounded-full border border-red-500/40 bg-red-500/10 text-red-600 dark:text-red-400 transition-all duration-100 cursor-pointer"
               style={{ top: `${xPos.top}%`, right: `${xPos.right}%` }}
             >
@@ -145,14 +160,15 @@ export function SmallOrMovingCloseButtonCond1({
                 Click intercepted
               </div>
               <p className="text-muted-foreground">
-                Your click on <span className="font-mono">N_close</span> was caught by a
-                parent-level capture-phase listener. Instead of dismissing, the event was
-                redirected — you were taken to the offer page. The modal is still here.
+                Your click returned to the offer state instead of closing the modal. The dialog remains open,
+                so you can try another option.
               </p>
-              <p className="text-muted-foreground">
-                <strong className="text-foreground">IsIntercepted(N_close) = True</strong> — the
-                dismissal vector is structurally commandeered.
-              </p>
+              {mode === "auditor" && (
+                <p className="text-muted-foreground">
+                  <strong className="text-foreground">IsIntercepted(N_close) = True</strong> — the
+                  dismissal vector is structurally commandeered by the parent capture handler.
+                </p>
+              )}
               <button
                 onClick={() => setAState("dismissed")}
                 className="w-full rounded-md border border-border bg-background hover:bg-muted py-1 text-[9px] font-medium transition-colors cursor-pointer"

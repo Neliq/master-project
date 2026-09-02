@@ -89,6 +89,7 @@ export function ForcedGracePeriodCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Forced Grace Period: Temporal Discrepancy Extraction"
+      userTitle="Harbor — Close account"
       caption="Temporal Discrepancy Extraction — a termination request that could execute instantly is deferred by an artificial 30-day window extracted from the confirmation copy."
       auditorStats={stats}
       deltaNote="Both variants process the identical deletion request and display the same confirmation information. Variant A parks the account in a mandatory 30-day pending state — Δt = 720 h ≥ Δt_min (24 h), so the heuristic fires — while Variant B executes the request immediately (Δt = 0 h). The only difference is the programmatic delay."
@@ -163,27 +164,27 @@ export function ForcedGracePeriodCond1({
                   </mark>
                   .
                 </p>
-                <p className="mt-1 text-[7px] text-muted-foreground/50">
-                  NER: E_time = {`{“30 days”}`} → T_execute = {T_EXECUTE}
+                <p className="text-[7px] text-muted-foreground/50">
+                  Estimated completion: Sep 14, 2026
                 </p>
               </div>
 
               <div className="mt-2 space-y-1 font-mono text-[8px] text-muted-foreground">
                 <div className="flex items-center justify-between">
                   <span className="flex items-center gap-1">
-                    <Clock className="size-2.5" /> T_request
+                    <Clock className="size-2.5" /> Request submitted
                   </span>
-                  <span>{T_REQUEST}</span>
+                  <span>Aug 15, 2026</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="flex items-center gap-1">
-                    <CalendarClock className="size-2.5" /> T_execute
+                    <CalendarClock className="size-2.5" /> Scheduled deletion
                   </span>
-                  <span>{T_EXECUTE}</span>
+                  <span>Sep 14, 2026</span>
                 </div>
-                <div className="flex items-center justify-between text-red-500">
-                  <span>Δt = T_execute − T_request</span>
-                  <span>{WAIT_HOURS} h ≥ Δt_min ({DT_MIN_HOURS} h)</span>
+                <div className="flex items-center justify-between">
+                  <span>Waiting period</span>
+                  <span>{DAYS_WAIT} days</span>
                 </div>
               </div>
 
@@ -205,7 +206,7 @@ export function ForcedGracePeriodCond1({
                   onClick={() => setHoursA(WAIT_HOURS)}
                   className="flex-1 rounded-md border border-red-500/40 bg-red-500/5 py-1.5 text-[9px] font-semibold text-red-600 transition-colors hover:bg-red-500/10 cursor-pointer dark:text-red-300"
                 >
-                  Fast-forward 30 days
+                  View scheduled completion
                 </button>
               </div>
             </div>

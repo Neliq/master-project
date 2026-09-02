@@ -33,31 +33,39 @@ export function PayToAvoidCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [plan, setPlan] = React.useState<"free" | "paid">("free");
-  const [downloading, setDownloading] = React.useState(false);
-  const [progress, setProgress] = React.useState(0);
+  const [planA, setPlanA] = React.useState<"free" | "paid">("free");
+  const [planB, setPlanB] = React.useState<"free" | "paid">("free");
+  const [downloadingA, setDownloadingA] = React.useState(false);
+  const [downloadingB, setDownloadingB] = React.useState(false);
+  const [progressA, setProgressA] = React.useState(0);
+  const [progressB, setProgressB] = React.useState(0);
 
   const reset = () => {
-    setPlan("free");
-    setDownloading(false);
-    setProgress(0);
+    setPlanA("free");
+    setPlanB("free");
+    setDownloadingA(false);
+    setDownloadingB(false);
+    setProgressA(0);
+    setProgressB(0);
   };
 
   // Shared crawl: dark+free throttled, paid/benign fast. The interval is
   // variant-agnostic; the increment encodes the injected friction.
   React.useEffect(() => {
-    if (!downloading) return;
+    if (!downloadingA && !downloadingB) return;
     const id = window.setInterval(() => {
-      setProgress((p) => {
-        const step = plan === "free" ? 0.8 : 8;
-        return Math.min(100, p + step);
-      });
+      if (downloadingA) {
+        setProgressA((p) => Math.min(100, p + (planA === "free" ? 0.8 : 8)));
+      }
+      if (downloadingB) {
+        setProgressB((p) => Math.min(100, p + (planB === "free" ? 0.8 : 8)));
+      }
     }, 300);
     return () => window.clearInterval(id);
-  }, [downloading, plan]);
+  }, [downloadingA, downloadingB, planA, planB]);
 
-  const darkDegraded = plan === "free";
-  const ratio = plan === "free" ? 0.002 : 1.0;
+  const darkDegraded = planA === "free";
+  const ratio = planA === "free" ? 0.002 : 1.0;
 
   const stats = mode === "auditor" ? (
     <>
@@ -88,7 +96,13 @@ export function PayToAvoidCond1({
 
   const renderDownloadPanel = (accent: "rose" | "emerald") => {
     const isDark = accent === "rose";
-    const degraded = isDark && darkDegraded;
+    const plan = isDark ? planA : planB;
+    const downloading = isDark ? downloadingA : downloadingB;
+    const progress = isDark ? progressA : progressB;
+    const setPlan = isDark ? setPlanA : setPlanB;
+    const setDownloading = isDark ? setDownloadingA : setDownloadingB;
+    const setProgress = isDark ? setProgressA : setProgressB;
+    const degraded = isDark && plan === "free";
     return (
       <div className="rounded-md border bg-card p-3">
         <div className="flex items-start justify-between gap-2">
@@ -111,7 +125,13 @@ export function PayToAvoidCond1({
 
         {/* Preview with (dark-only) watermark */}
         <div className="relative mt-3 overflow-hidden rounded-md border border-border bg-muted aspect-video flex items-center justify-center">
-          <div className="text-[9px] text-muted-foreground font-mono">city-map-project · preview.png</div>
+        <svg viewBox="0 0 320 130" className="h-full w-full" role="img" aria-label="City map preview">
+          <path d="M0 28h320M0 76h320M62 0v130M190 0v130" className="stroke-slate-300 dark:stroke-slate-600" strokeWidth="10" />
+          <path d="M12 112C62 86 76 42 132 55s61 54 112 24 42-40 64-57" className="fill-none stroke-primary" strokeWidth="4" />
+          <circle cx="132" cy="55" r="7" className="fill-primary" />
+          <circle cx="245" cy="79" r="7" className="fill-emerald-500" />
+        </svg>
+        <div className="absolute bottom-2 left-2 rounded bg-background/85 px-1.5 py-0.5 text-[8px] font-semibold text-foreground">Downtown route · 12 stops</div>
           {degraded && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="text-[16px] font-black uppercase tracking-widest text-red-500/40 -rotate-12 select-none">
@@ -129,7 +149,7 @@ export function PayToAvoidCond1({
         {/* Download controls */}
         <div className="mt-3 space-y-1.5">
           <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
-            <span>{downloading ? (degraded ? "↓ 40 KB/s (artificially capped)" : "↓ 18 MB/s") : "idle"}</span>
+            <span>{downloading ? (degraded ? "↓ 40 KB/s" : "↓ 18 MB/s") : "idle"}</span>
             <span className={degraded ? "text-red-500" : "text-green-500"}>{Math.floor(progress)}%</span>
           </div>
           <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
@@ -151,13 +171,15 @@ export function PayToAvoidCond1({
             >
               {downloading ? "Pause" : "Download (free plan)"}
             </button>
-            <button
-              onClick={() => setProgress((p) => Math.min(100, p + 20))}
-              disabled={!downloading || progress >= 100}
-              className="rounded-md bg-muted hover:bg-muted/70 text-foreground/70 px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer disabled:opacity-50"
-            >
-              Fast-forward +20%
-            </button>
+            {mode === "auditor" && (
+              <button
+                onClick={() => setProgress((p) => Math.min(100, p + 20))}
+                disabled={!downloading || progress >= 100}
+                className="rounded-md bg-muted hover:bg-muted/70 text-foreground/70 px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer disabled:opacity-50"
+              >
+                Fast-forward +20%
+              </button>
+            )}
           </div>
           {degraded && (
             <div className="text-[8px] text-red-500/90 leading-relaxed">
@@ -166,8 +188,7 @@ export function PayToAvoidCond1({
           )}
           {!isDark && !degraded && (
             <div className="text-[8px] text-green-600 dark:text-green-400 leading-relaxed">
-              No degradation injected: U_default = U_system = {U_SYSTEM}. The download crawls only if you
-              pause it yourself.
+              The free download runs at the full available speed. It only stops when you pause it yourself.
             </div>
           )}
         </div>
@@ -179,7 +200,7 @@ export function PayToAvoidCond1({
           </div>
           <p className="text-[8px] text-muted-foreground mt-0.5 leading-relaxed">
             {isDark
-              ? "Restore full 18 MB/s speed, remove watermarks, and stop injected ads. You are paying for the cessation of algorithmic hostility."
+              ? "Restore full 18 MB/s speed, remove watermarks, and stop the interstitial ad."
               : "2 TB cloud storage, auto-sync, and priority support. The free plan is not throttled or watermarked — nothing is taken away to sell you."}
           </p>
           <button
@@ -209,8 +230,8 @@ export function PayToAvoidCond1({
             </div>
             <p className="text-muted-foreground mt-0.5">
               {isDark
-                ? "U_default = U_system − D_artificial → U_default = U_system once D_artificial = ∅. The download now runs at full 18 MB/s with no watermark — the plan bought back what the software was always capable of."
-                : "The free tier never lost anything: U_default = U_system = 18 MB/s from the start. The payment now buys net-new capability, not the removal of injected hostility."}
+                ? "The download now runs at full 18 MB/s with no watermark. The upgrade restores the experience shown in the preview."
+                : "The free tier already ran at full speed. The upgrade adds cloud storage, auto-sync, and priority support."}
             </p>
           </div>
         )}
@@ -221,6 +242,7 @@ export function PayToAvoidCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Pay To Avoid: Artificial State Degradation"
+      userTitle="SwiftDrop — Download"
       caption="Artificial State Degradation — the software is throttled and watermarked below its own capacity, and payment only restores the baseline."
       auditorStats={stats}
       deltaNote="Both variants offer the same $3.99/mo plan for the same app. Variant A first artificially degrades the free tier (40 KB/s throttle, watermark, queued ad) and sells the upgrade as removing that degradation — paying for the cessation of hostility. Variant B never degrades anything: the free tier runs at full capacity and the upgrade adds genuinely new features."

@@ -31,71 +31,99 @@ export function AutomatingTheUserAwayCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [videoIdx, setVideoIdx] = React.useState(0);
-  const [phase, setPhase] = React.useState<"ready" | "playing" | "ended">("ready");
-  const [progress, setProgress] = React.useState(0);
-  const [variant, setVariant] = React.useState<"dark" | "benign">("dark");
-  const [autoCountdown, setAutoCountdown] = React.useState(TAU_SYSTEM);
-  const [autoStarted, setAutoStarted] = React.useState(false);
-  const [log, setLog] = React.useState<string[]>([
+  const [videoIdxA, setVideoIdxA] = React.useState(0);
+  const [videoIdxB, setVideoIdxB] = React.useState(0);
+  const [phaseA, setPhaseA] = React.useState<"ready" | "playing" | "ended">("ready");
+  const [phaseB, setPhaseB] = React.useState<"ready" | "playing" | "ended">("ready");
+  const [progressA, setProgressA] = React.useState(0);
+  const [progressB, setProgressB] = React.useState(0);
+  const [autoCountdownA, setAutoCountdownA] = React.useState(TAU_SYSTEM);
+  const [autoStartedA, setAutoStartedA] = React.useState(false);
+  const [logA, setLogA] = React.useState<string[]>([
+    "Queue loaded.",
+  ]);
+  const [logB, setLogB] = React.useState<string[]>([
     "Queue loaded.",
   ]);
 
   const reset = () => {
-    setVideoIdx(0);
-    setPhase("ready");
-    setProgress(0);
-    setVariant("dark");
-    setAutoCountdown(TAU_SYSTEM);
-    setAutoStarted(false);
-    setLog(["Queue loaded."]);
+    setVideoIdxA(0);
+    setVideoIdxB(0);
+    setPhaseA("ready");
+    setPhaseB("ready");
+    setProgressA(0);
+    setProgressB(0);
+    setAutoCountdownA(TAU_SYSTEM);
+    setAutoStartedA(false);
+    setLogA(["Queue loaded."]);
+    setLogB(["Queue loaded."]);
   };
 
-  const pushLog = (entry: string) => setLog((l) => [entry, ...l].slice(0, 4));
+  const pushLog = (
+    setLog: React.Dispatch<React.SetStateAction<string[]>>,
+    entry: string,
+  ) => setLog((l) => [entry, ...l].slice(0, 4));
 
-  // Episode playback (simulated).
+  // Episode playback (simulated), isolated per variant.
   React.useEffect(() => {
-    if (phase !== "playing") return;
+    if (phaseA !== "playing") return;
     const id = window.setInterval(() => {
-      setProgress((p) => {
+      setProgressA((p) => {
         const next = Math.min(100, p + 25); // 4 ticks × 1s
-        if (next >= 100) setPhase("ended");
+        if (next >= 100) setPhaseA("ended");
         return next;
       });
     }, 1000);
     return () => window.clearInterval(id);
-  }, [phase, videoIdx]);
+  }, [phaseA, videoIdxA]);
+
+  React.useEffect(() => {
+    if (phaseB !== "playing") return;
+    const id = window.setInterval(() => {
+      setProgressB((p) => {
+        const next = Math.min(100, p + 25); // 4 ticks × 1s
+        if (next >= 100) setPhaseB("ended");
+        return next;
+      });
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [phaseB, videoIdxB]);
 
   // Dark variant: autonomous execution after τ_system once the episode ends.
   React.useEffect(() => {
-    if (phase !== "ended" || variant !== "dark" || videoIdx >= EPISODES.length - 1) return;
+    if (phaseA !== "ended" || videoIdxA >= EPISODES.length - 1) return;
     let first = true;
     const id = window.setInterval(() => {
       if (first) {
-        setAutoCountdown(TAU_SYSTEM);
+        setAutoCountdownA(TAU_SYSTEM);
         first = false;
       }
-      setAutoCountdown((s) => {
+      setAutoCountdownA((s) => {
         if (s <= 1) {
           window.clearInterval(id);
-          setAutoStarted(true);
-          setVideoIdx((i) => i + 1);
-          setProgress(0);
-          setPhase("playing");
-          pushLog("Now playing: Episode 2 — The Return.");
+          setAutoStartedA(true);
+          setVideoIdxA((i) => i + 1);
+          setProgressA(0);
+          setPhaseA("playing");
+          pushLog(setLogA, "Now playing: Episode 2 — The Return.");
           return 0;
         }
         return s - 1;
       });
     }, 1000);
     return () => window.clearInterval(id);
-  }, [phase, variant, videoIdx]);
+  }, [phaseA, videoIdxA]);
 
   const startPlayback = (v: "dark" | "benign") => {
-    setVariant(v);
-    setProgress(0);
-    setPhase("playing");
-    pushLog(`User clicked Play on ${EPISODES[videoIdx]}.`);
+    if (v === "dark") {
+      setProgressA(0);
+      setPhaseA("playing");
+      pushLog(setLogA, `User clicked Play on ${EPISODES[videoIdxA]}.`);
+      return;
+    }
+    setProgressB(0);
+    setPhaseB("playing");
+    pushLog(setLogB, `User clicked Play on ${EPISODES[videoIdxB]}.`);
   };
 
   const stats = mode === "auditor" ? (
@@ -106,24 +134,33 @@ export function AutomatingTheUserAwayCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">E_user (explicit interaction)</span>
-        <span className={`font-mono font-semibold tabular-nums ${variant === "dark" && autoStarted ? "text-red-500" : "text-green-500"}`}>
-          {variant === "dark" && autoStarted ? "∅ (none)" : "required"}
+        <span className={`font-mono font-semibold tabular-nums ${autoStartedA ? "text-red-500" : "text-green-500"}`}>
+          {autoStartedA ? "∅ (none)" : "required"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">τ_system (internal threshold)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_SYSTEM}.0s {variant === "dark" ? "(dark)" : "(none, benign)"}</span>
+        <span className="font-mono font-semibold tabular-nums">{TAU_SYSTEM}.0s (dark)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Auto-advance</span>
-        <span className={`font-mono font-semibold tabular-nums ${variant === "dark" ? "text-red-500" : "text-green-500"}`}>
-          {variant === "dark" ? "system-controlled" : "manual only"}
+        <span className="font-mono font-semibold tabular-nums text-red-500">
+          system-controlled
         </span>
       </div>
     </>
   ) : null;
 
-  const renderPlayer = (isDark: boolean) => (
+  const renderPlayer = (isDark: boolean) => {
+    const videoIdx = isDark ? videoIdxA : videoIdxB;
+    const phase = isDark ? phaseA : phaseB;
+    const progress = isDark ? progressA : progressB;
+    const autoCountdown = isDark ? autoCountdownA : TAU_SYSTEM;
+    const autoStarted = isDark && autoStartedA;
+    const log = isDark ? logA : logB;
+    const variant = isDark ? "dark" : "benign";
+
+    return (
     <div className="rounded-md border border-border bg-card p-3">
       <div className="flex items-start justify-between gap-2">
         <div>
@@ -242,11 +279,13 @@ export function AutomatingTheUserAwayCond1({
         </div>
       )}
     </div>
-  );
+    );
+  };
 
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Automating The User Away: Autonomous Action Execution"
+      userTitle="Streamly — Up next"
       caption="Autonomous Action Execution — the next video starts on a system timer, with no user input and no interruption affordance on screen."
       auditorStats={stats}
       deltaNote="Both variants play the same two episodes. Variant A frames Episode 2 as simply “up next” and auto-starts it two seconds after Episode 1 ends — no user interaction, no on-screen toggle, and no disclosure that the queue runs itself. Variant B stops at the end of Episode 1 and waits for an explicit Play click."

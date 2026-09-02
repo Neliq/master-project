@@ -54,11 +54,13 @@ export function AddictiveDesignCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [page, setPage] = React.useState(1);
+  const [pageA, setPageA] = React.useState(1);
+  const [pageB, setPageB] = React.useState(1);
   const [session, setSession] = React.useState(0);
 
   const reset = () => {
-    setPage(1);
+    setPageA(1);
+    setPageB(1);
     setSession(0);
   };
 
@@ -83,7 +85,9 @@ export function AddictiveDesignCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">&forall;e &isin; E_stop : Visible(e, t)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">False — all suppressed</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">
+          {overThreshold ? "False — all suppressed" : "Pending session threshold"}
+        </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">CR(e, L_bg) (dark)</span>
@@ -99,6 +103,7 @@ export function AddictiveDesignCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Addictive Design: Eradication of Natural Stopping Cues"
+      userTitle="The Market Reader"
       caption="Eradication of Natural Stopping Cues — pagination, end markers, dividers and scroll indicators are removed or rendered imperceptible, so the user can never perceive that the content is finished."
       auditorStats={stats}
       deltaNote="Both panels show the same 3 pages of content. Variant A hides every completion cue — no page indicator, no dividers, no session clock, low-contrast text. Variant B restores them: 'Page 2 of 3', section dividers, an end-of-results marker and a visible reading-time clock, so closure is always perceptible."
@@ -108,7 +113,7 @@ export function AddictiveDesignCond2({
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">The Market Reader</h3>
               <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
-                Page {page} of 3
+                Page {pageB} of 3
               </span>
             </div>
 
@@ -116,33 +121,33 @@ export function AddictiveDesignCond2({
             <div className="mt-2 h-1 w-full rounded-full bg-foreground/10">
               <div
                 className="h-1 rounded-full bg-green-500 transition-all duration-300"
-                style={{ width: `${(page / 3) * 100}%` }}
+                style={{ width: `${(pageB / 3) * 100}%` }}
               />
             </div>
 
             <div className="mt-2">
-              {page > 1 && (
+              {pageB > 1 && (
                 <div className="mb-2 flex items-center gap-2 text-[8px] font-mono uppercase tracking-wider text-green-700 dark:text-green-300">
                   <span className="h-px flex-1 bg-green-500/30" />
-                  New for you — page {page}
+                  New for you — page {pageB}
                   <span className="h-px flex-1 bg-green-500/30" />
                 </div>
               )}
-              <PageContent page={page} />
+              <PageContent page={pageB} />
             </div>
 
             <div className="mt-2 flex items-center justify-between gap-2">
-              {page > 1 ? (
+              {pageB > 1 ? (
                 <button
-                  onClick={() => setPage((p) => p - 1)}
+                  onClick={() => setPageB((p) => p - 1)}
                   className="rounded-md border border-border bg-background px-2 py-1 text-[9px] text-foreground/70 hover:text-foreground transition-colors cursor-pointer"
                 >
                   &larr; Prev
                 </button>
               ) : <span />}
-              {page < 3 ? (
+              {pageB < 3 ? (
                 <button
-                  onClick={() => setPage((p) => p + 1)}
+                  onClick={() => setPageB((p) => p + 1)}
                   className="rounded-md bg-green-600 hover:bg-green-700 px-3 py-1 text-[9px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Next page &rarr;
@@ -166,29 +171,30 @@ export function AddictiveDesignCond2({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">The Market Reader</h3>
-            {/* No page indicator — suppressed */}
-            <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
-              {page}/3 &bull; hidden
-            </span>
+
           </div>
 
           <div className="mt-2">
-            <PageContent page={page} />
+            <PageContent page={pageA} />
           </div>
 
           <div className="mt-2 flex items-center justify-between gap-2">
             {/* Pagination suppressed: the only affordances are ambiguous chevrons */}
             <button
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              onClick={() => setPageA((p) => Math.max(1, p - 1))}
+              aria-label="Previous page"
+              disabled={pageA <= 1}
               className="rounded-md border border-foreground/15 bg-background px-2 py-1 text-[9px] text-foreground/50 hover:text-foreground transition-colors cursor-pointer"
             >
               &lsaquo;
             </button>
             <span className="text-[7px] text-foreground/25">
-              {page === 3 ? "more stories loading…" : ""}
+              {pageA === 3 ? "more stories loading…" : ""}
             </span>
             <button
-              onClick={() => setPage((p) => Math.min(3, p + 1))}
+              onClick={() => setPageA((p) => Math.min(3, p + 1))}
+              aria-label="Next page"
+              disabled={pageA >= 3}
               className="rounded-md border border-foreground/15 bg-background px-2 py-1 text-[9px] text-foreground/50 hover:text-foreground transition-colors cursor-pointer"
             >
               &rsaquo;

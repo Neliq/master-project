@@ -39,10 +39,12 @@ export function BundlingCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [added, setAdded] = React.useState(false);
+  const [addedDark, setAddedDark] = React.useState(false);
+  const [addedBenign, setAddedBenign] = React.useState(false);
 
   const reset = () => {
-    setAdded(false);
+    setAddedDark(false);
+    setAddedBenign(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -68,7 +70,10 @@ export function BundlingCond2({
     </>
   ) : null;
 
-  const renderPanel = (dark: boolean) => (
+  const renderPanel = (dark: boolean) => {
+    const isAdded = dark ? addedDark : addedBenign;
+    const setAdded = dark ? setAddedDark : setAddedBenign;
+    return (
     <div className="space-y-3">
       <div className="rounded-md border bg-card p-3">
         <div className="flex items-center gap-3">
@@ -148,16 +153,32 @@ export function BundlingCond2({
         </div>
 
         <button
-          onClick={() => setAdded(true)}
+          onClick={() => (dark ? setAddedDark(true) : setAddedBenign(true))}
           className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
             dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
           }`}
         >
-          {added ? "Added to cart ✓" : "Add bundle to cart"}
+          {isAdded ? "Added to cart ✓" : "Add bundle to cart"}
         </button>
+
+        {isAdded && (
+          <div className="mt-2 rounded-md border border-border bg-muted/30 p-2 text-[9px]">
+            <div className="flex items-center justify-between gap-2">
+              <span className="font-medium">Creator Bundle in cart</span>
+              <span className="font-mono tabular-nums">{usd(BUNDLE_PRICE)}</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setAdded(false)}
+              className="mt-1.5 text-[8px] text-muted-foreground underline underline-offset-2 hover:text-foreground"
+            >
+              Remove bundle
+            </button>
+          </div>
+        )}
       </div>
 
-      {mode === "auditor" && added && (dark ? (
+      {mode === "auditor" && isAdded && (dark ? (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -190,7 +211,8 @@ export function BundlingCond2({
           </div>
         ))}
     </div>
-  );
+    );
+  };
 
   return (
     <DemoShell

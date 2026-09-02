@@ -45,13 +45,18 @@ export function GrindingCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [actions, setActions] = React.useState(0);
+  const [actionsA, setActionsA] = React.useState(0);
+  const [actionsB, setActionsB] = React.useState(0);
 
-  const reset = () => setActions(0);
+  const reset = () => {
+    setActionsA(0);
+    setActionsB(0);
+  };
 
-  const dark = stageProgress(actions, needDark);
-  const benign = stageProgress(actions, needBenign);
-  const revealed = actions >= 15;
+  const dark = stageProgress(actionsA, needDark);
+  const benign = stageProgress(actionsB, needBenign);
+  const revealedA = actionsA >= 15;
+  const revealedB = actionsB >= 15;
 
   const stats = mode === "auditor" ? (
     <>
@@ -77,6 +82,7 @@ export function GrindingCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Grinding: Exponential Effort Scaling"
+      userTitle="Forge Master"
       caption="Exponential Effort Scaling — every level demands exponentially more forges (c^i) while the reward stays a flat +10 gold, building a mathematical wall that exhausts the player."
       auditorStats={stats}
       deltaNote="Both variants run the same forge with the same action counter and the same +10 gold reward. Variant A needs 2^i forges per level (exponential), Variant B only i+1 (linear) — so after the same number of clicks, A's next level is far more expensive while the reward is identical."
@@ -99,7 +105,14 @@ export function GrindingCond1({
               <span className="text-muted-foreground">Level {benign.stage + 1}</span>
               <span className="font-mono tabular-nums">{benign.progress}/{benign.required} forges · +{GOLD_PER_LEVEL} gold</span>
             </div>
-            <div className="mt-1 bg-foreground/10 h-2.5 rounded-full overflow-hidden">
+            <div
+              role="progressbar"
+              aria-label="Forge progress"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={Math.round((benign.progress / benign.required) * 100)}
+              className="mt-1 bg-foreground/10 h-2.5 rounded-full overflow-hidden"
+            >
               <div className="bg-green-500 h-full transition-all" style={{ width: `${Math.min(100, (benign.progress / benign.required) * 100)}%` }} />
             </div>
             <p className="text-[9px] text-muted-foreground mt-1.5">
@@ -108,13 +121,13 @@ export function GrindingCond1({
 
             <div className="mt-2 flex gap-2">
               <button
-                onClick={() => setActions((a) => a + 1)}
+                onClick={() => setActionsB((a) => a + 1)}
                 className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Forge a sword (+1)
               </button>
               <button
-                onClick={() => setActions((a) => a + 5)}
+                onClick={() => setActionsB((a) => a + 5)}
                 className="flex-1 rounded-md border border-green-500/40 text-green-700 dark:text-green-300 hover:bg-green-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Forge ×5
@@ -122,7 +135,7 @@ export function GrindingCond1({
             </div>
           </div>
 
-          {revealed && (
+          {revealedB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -131,7 +144,7 @@ export function GrindingCond1({
                 Effort matches value
               </div>
               <p className="text-muted-foreground mt-0.5">
-                After {actions} forges you are on level {benign.stage + 1}, needing just{" "}
+                After {actionsB} forges you are on level {benign.stage + 1}, needing just{" "}
                 <span className="font-mono tabular-nums">{benign.required}</span> forges (E = i + 1, linear)
                 for the same +{GOLD_PER_LEVEL} gold. Repetition exists, but it never becomes a
                 mathematically enforced wall.
@@ -159,7 +172,14 @@ export function GrindingCond1({
             <span className="text-muted-foreground">Level {dark.stage + 1}</span>
             <span className="font-mono tabular-nums">{dark.progress}/{dark.required} forges · +{GOLD_PER_LEVEL} gold</span>
           </div>
-          <div className="mt-1 bg-foreground/10 h-2.5 rounded-full overflow-hidden">
+          <div
+            role="progressbar"
+            aria-label="Forge progress"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={Math.round((dark.progress / dark.required) * 100)}
+            className="mt-1 bg-foreground/10 h-2.5 rounded-full overflow-hidden"
+          >
             <div className="bg-red-500 h-full transition-all" style={{ width: `${Math.min(100, (dark.progress / dark.required) * 100)}%` }} />
           </div>
           <p className="text-[9px] text-muted-foreground mt-1.5">
@@ -171,13 +191,13 @@ export function GrindingCond1({
 
           <div className="mt-2 flex gap-2">
             <button
-              onClick={() => setActions((a) => a + 1)}
+              onClick={() => setActionsA((a) => a + 1)}
               className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Forge a sword (+1)
             </button>
             <button
-              onClick={() => setActions((a) => a + 5)}
+              onClick={() => setActionsA((a) => a + 5)}
               className="flex-1 rounded-md border border-red-500/40 text-red-700 dark:text-red-300 hover:bg-red-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Forge ×5
@@ -185,7 +205,7 @@ export function GrindingCond1({
           </div>
         </div>
 
-        {mode === "auditor" && revealed && (
+        {mode === "auditor" && revealedA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -195,7 +215,7 @@ export function GrindingCond1({
               Continue playing
             </div>
             <p className="text-muted-foreground">
-              After {actions} forges you are on level {dark.stage + 1} — and the next level needs{" "}
+              After {actionsA} forges you are on level {dark.stage + 1} — and the next level needs{" "}
               <strong className="text-red-500">{needDark(dark.stage)} forges</strong> ({"E(L_i → L_{i+1})"} ∝ c^i,
               c = 2) for the same <strong className="text-foreground">+{GOLD_PER_LEVEL} gold</strong>{" "}
               ({"V(L_{i+1})"} ≈ V(L_i) + k, linear). The effort curve doubles every level while the reward

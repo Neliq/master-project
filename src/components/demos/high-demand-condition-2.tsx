@@ -32,22 +32,24 @@ export function HighDemandCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [phase, setPhase] = React.useState<"idle" | "revealed">("idle");
+  const [phaseA, setPhaseA] = React.useState<"idle" | "revealed">("idle");
+  const [phaseB, setPhaseB] = React.useState<"idle" | "revealed">("idle");
   const [count, setCount] = React.useState(24); // the animated badge counter (Variant A)
 
   const reset = () => {
-    setPhase("idle");
+    setPhaseA("idle");
+    setPhaseB("idle");
     setCount(24);
   };
 
   // Variant A: rapid numeric incrementation — 450 ms (< τ_animate = 1000 ms).
   React.useEffect(() => {
-    if (phase !== "idle") return;
+    if (phaseA !== "idle") return;
     const id = window.setInterval(() => {
       setCount((c) => c + 1 + Math.floor(Math.random() * 2));
     }, 450);
     return () => window.clearInterval(id);
-  }, [phase]);
+  }, [phaseA]);
 
   const stats = mode === "auditor" ? (
     <>
@@ -126,19 +128,19 @@ export function HighDemandCond2({
             </div>
 
             <button
-              onClick={() => setPhase("revealed")}
-              disabled={phase === "revealed"}
+              onClick={() => setPhaseB("revealed")}
+              disabled={phaseB === "revealed"}
               className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-                phase === "revealed"
+                phaseB === "revealed"
                   ? "bg-muted text-muted-foreground/60 cursor-default"
                   : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               <ShoppingCart className="size-3" />
-              {phase === "revealed" ? "Order placed" : "Buy now"}
+              {phaseB === "revealed" ? "Order placed" : "Buy now"}
             </button>
 
-            {phase === "revealed" && (
+            {phaseB === "revealed" && (
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -192,19 +194,19 @@ export function HighDemandCond2({
           </div>
 
           <button
-            onClick={() => setPhase("revealed")}
-            disabled={phase === "revealed"}
+            onClick={() => setPhaseA("revealed")}
+            disabled={phaseA === "revealed"}
             className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-              phase === "revealed"
+              phaseA === "revealed"
                 ? "bg-muted text-muted-foreground/60 cursor-default"
                 : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
             <ShoppingCart className="size-3" />
-            {phase === "revealed" ? "Order placed" : "Buy now"}
+            {phaseA === "revealed" ? "Order placed" : "Buy now"}
           </button>
 
-          {phase === "revealed" && (
+          {phaseA === "revealed" && (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

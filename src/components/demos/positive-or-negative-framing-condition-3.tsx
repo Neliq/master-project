@@ -34,12 +34,16 @@ export function PositiveOrNegativeFramingCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<"opt_in" | "opt_out" | null>(null);
-  const [submitted, setSubmitted] = React.useState(false);
+  const [darkChoice, setDarkChoice] = React.useState<"opt_in" | "opt_out" | null>(null);
+  const [benignChoice, setBenignChoice] = React.useState<"opt_in" | "opt_out" | null>(null);
+  const [darkSubmitted, setDarkSubmitted] = React.useState(false);
+  const [benignSubmitted, setBenignSubmitted] = React.useState(false);
 
   const reset = () => {
-    setChoice(null);
-    setSubmitted(false);
+    setDarkChoice(null);
+    setBenignChoice(null);
+    setDarkSubmitted(false);
+    setBenignSubmitted(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -59,7 +63,7 @@ export function PositiveOrNegativeFramingCond3({
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Selected vector</span>
         <span className="font-mono font-semibold tabular-nums">
-          {choice ? (choice === "opt_in" ? "B_opt_in" : "B_opt_out") : "—"}
+          {darkChoice ? (darkChoice === "opt_in" ? "B_opt_in" : "B_opt_out") : "—"}
         </span>
       </div>
     </>
@@ -92,8 +96,8 @@ export function PositiveOrNegativeFramingCond3({
                 <input
                   type="radio"
                   name="trial-choice-benign"
-                  checked={choice === "opt_in"}
-                  onChange={() => setChoice("opt_in")}
+                  checked={benignChoice === "opt_in"}
+                  onChange={() => setBenignChoice("opt_in")}
                   className="mt-0.5 flex-shrink-0 accent-green-500"
                 />
                 <div className="min-w-0 flex-1">
@@ -110,8 +114,8 @@ export function PositiveOrNegativeFramingCond3({
                 <input
                   type="radio"
                   name="trial-choice-benign"
-                  checked={choice === "opt_out"}
-                  onChange={() => setChoice("opt_out")}
+                  checked={benignChoice === "opt_out"}
+                  onChange={() => setBenignChoice("opt_out")}
                   className="mt-0.5 flex-shrink-0 accent-green-500"
                 />
                 <div className="min-w-0 flex-1">
@@ -126,10 +130,10 @@ export function PositiveOrNegativeFramingCond3({
             </div>
 
             <button
-              onClick={() => setSubmitted(true)}
-              disabled={!choice}
+              onClick={() => setBenignSubmitted(true)}
+              disabled={!benignChoice}
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-                choice
+                benignChoice
                   ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
@@ -138,7 +142,16 @@ export function PositiveOrNegativeFramingCond3({
             </button>
           </div>
 
-          {submitted && (
+          {mode === "user" && benignSubmitted && (
+            <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+              <div className="font-semibold uppercase tracking-tight">Preference saved</div>
+              <p className="text-muted-foreground mt-0.5">
+                {benignChoice === "opt_in" ? "Your Pro trial is ready to start." : "Your free plan remains active."}
+              </p>
+            </div>
+          )}
+
+          {mode === "auditor" && benignSubmitted && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -148,7 +161,7 @@ export function PositiveOrNegativeFramingCond3({
               </div>
               <p className="text-muted-foreground mt-0.5">
                 The two vectors are mutually exclusive (A(B_opt_in) ≡ ¬A(B_opt_out)) and both
-                {choice === "opt_in" ? "Starting the trial" : "Staying on the free plan"} is available from this page.
+                {benignChoice === "opt_in" ? "Starting the trial" : "Staying on the free plan"} is available from this page.
               </p>
             </div>
           )}
@@ -175,8 +188,8 @@ export function PositiveOrNegativeFramingCond3({
               <input
                 type="radio"
                 name="trial-choice-dark"
-                checked={choice === "opt_in"}
-                onChange={() => setChoice("opt_in")}
+                checked={darkChoice === "opt_in"}
+                onChange={() => setDarkChoice("opt_in")}
                 className="mt-0.5 flex-shrink-0 accent-red-500"
               />
               <div className="min-w-0 flex-1">
@@ -198,8 +211,8 @@ export function PositiveOrNegativeFramingCond3({
               <input
                 type="radio"
                 name="trial-choice-dark"
-                checked={choice === "opt_out"}
-                onChange={() => setChoice("opt_out")}
+                checked={darkChoice === "opt_out"}
+                onChange={() => setDarkChoice("opt_out")}
                 className="mt-0.5 flex-shrink-0 accent-red-500"
               />
               <div className="min-w-0 flex-1">
@@ -215,10 +228,10 @@ export function PositiveOrNegativeFramingCond3({
           </div>
 
           <button
-            onClick={() => setSubmitted(true)}
-            disabled={!choice}
+            onClick={() => setDarkSubmitted(true)}
+            disabled={!darkChoice}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-              choice
+              darkChoice
                 ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
@@ -227,7 +240,16 @@ export function PositiveOrNegativeFramingCond3({
           </button>
         </div>
 
-        {submitted && (
+        {mode === "user" && darkSubmitted && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">Preference saved</div>
+            <p className="text-muted-foreground mt-0.5">
+              {darkChoice === "opt_in" ? "Your Pro trial is ready to start." : "Your free plan remains active."}
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && darkSubmitted && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

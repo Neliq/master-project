@@ -35,12 +35,16 @@ export function PositiveOrNegativeFramingCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [decision, setDecision] = React.useState<"keep" | "cancel" | null>(null);
-  const [submitted, setSubmitted] = React.useState(false);
+  const [darkDecision, setDarkDecision] = React.useState<"keep" | "cancel" | null>(null);
+  const [benignDecision, setBenignDecision] = React.useState<"keep" | "cancel" | null>(null);
+  const [darkSubmitted, setDarkSubmitted] = React.useState(false);
+  const [benignSubmitted, setBenignSubmitted] = React.useState(false);
 
   const reset = () => {
-    setDecision(null);
-    setSubmitted(false);
+    setDarkDecision(null);
+    setBenignDecision(null);
+    setDarkSubmitted(false);
+    setBenignSubmitted(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -59,10 +63,10 @@ export function PositiveOrNegativeFramingCond2({
           {RATIO.toFixed(1)}× &gt; {TAU.toFixed(1)}
         </span>
       </div>
-      <div className="flex items-center justify-between text-xs">
+          <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Your decision</span>
         <span className="font-mono font-semibold tabular-nums">
-          {decision ? (decision === "keep" ? "Keep (gain pole)" : "Cancel (loss pole)") : "—"}
+          {darkDecision ? (darkDecision === "keep" ? "Keep (gain pole)" : "Cancel (loss pole)") : "—"}
         </span>
       </div>
     </>
@@ -86,9 +90,9 @@ export function PositiveOrNegativeFramingCond2({
 
             <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
               <button
-                onClick={() => setDecision("keep")}
+                onClick={() => setBenignDecision("keep")}
                 className={`rounded-md py-2 text-[10px] font-medium transition-colors cursor-pointer ${
-                  decision === "keep"
+                  benignDecision === "keep"
                     ? "bg-green-600 text-white"
                     : "bg-green-600/10 text-green-700 dark:text-green-300 hover:bg-green-600/20 border border-green-500/40"
                 }`}
@@ -96,9 +100,9 @@ export function PositiveOrNegativeFramingCond2({
                 Renew at $29/mo (save 40%)
               </button>
               <button
-                onClick={() => setDecision("cancel")}
+                onClick={() => setBenignDecision("cancel")}
                 className={`rounded-md py-2 text-[10px] font-medium transition-colors cursor-pointer ${
-                  decision === "cancel"
+                  benignDecision === "cancel"
                     ? "bg-green-600 text-white"
                     : "bg-green-600/10 text-green-700 dark:text-green-300 hover:bg-green-600/20 border border-green-500/40"
                 }`}
@@ -113,10 +117,10 @@ export function PositiveOrNegativeFramingCond2({
             </p>
 
             <button
-              onClick={() => setSubmitted(true)}
-              disabled={!decision}
+              onClick={() => setBenignSubmitted(true)}
+              disabled={!benignDecision}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-                decision
+                benignDecision
                   ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
@@ -125,7 +129,16 @@ export function PositiveOrNegativeFramingCond2({
             </button>
           </div>
 
-          {submitted && (
+          {mode === "user" && benignSubmitted && (
+            <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+              <div className="font-semibold uppercase tracking-tight">Renewal preference saved</div>
+              <p className="text-muted-foreground mt-0.5">
+                {benignDecision === "keep" ? "Your plan will renew at $29/month." : "Your cancellation preference was saved."}
+              </p>
+            </div>
+          )}
+
+          {mode === "auditor" && benignSubmitted && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -154,9 +167,9 @@ export function PositiveOrNegativeFramingCond2({
 
           {/* Gain pole — large bounding box, high contrast */}
           <button
-            onClick={() => setDecision("keep")}
+            onClick={() => setDarkDecision("keep")}
             className={`mt-3 w-full rounded-md py-3.5 text-[12px] font-bold tracking-wide transition-colors cursor-pointer shadow-lg ${
-              decision === "keep"
+              darkDecision === "keep"
                 ? "bg-red-600 text-white"
                 : "bg-red-600 text-white hover:bg-red-700"
             }`}
@@ -167,9 +180,9 @@ export function PositiveOrNegativeFramingCond2({
           {/* Loss pole — tiny bounding box, low contrast */}
           <div className="mt-4 text-center">
             <button
-              onClick={() => setDecision("cancel")}
+              onClick={() => setDarkDecision("cancel")}
               className={`text-[8px] transition-colors cursor-pointer ${
-                decision === "cancel"
+                darkDecision === "cancel"
                   ? "text-red-500 font-semibold"
                   : "text-muted-foreground/40 hover:text-muted-foreground underline"
               }`}
@@ -182,10 +195,10 @@ export function PositiveOrNegativeFramingCond2({
           </div>
 
           <button
-            onClick={() => setSubmitted(true)}
-            disabled={!decision}
+            onClick={() => setDarkSubmitted(true)}
+            disabled={!darkDecision}
             className={`mt-4 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-              decision
+              darkDecision
                 ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
@@ -194,7 +207,16 @@ export function PositiveOrNegativeFramingCond2({
           </button>
         </div>
 
-        {mode === "auditor" && submitted && (
+        {mode === "user" && darkSubmitted && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">Renewal preference saved</div>
+            <p className="text-muted-foreground mt-0.5">
+              {darkDecision === "keep" ? "Your plan will renew at $29/month." : "Your cancellation preference was saved."}
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && darkSubmitted && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

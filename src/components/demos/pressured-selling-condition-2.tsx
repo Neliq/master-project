@@ -32,26 +32,26 @@ export function PressuredSellingCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [offerOpen, setOfferOpen] = React.useState(true);
-  const [decision, setDecision] = React.useState<null | "accepted" | "declined">(null);
+  const [darkDecision, setDarkDecision] = React.useState<null | "accepted" | "declined">(null);
+  const [benignDecision, setBenignDecision] = React.useState<null | "accepted" | "declined">(null);
   const [secondsLeft, setSecondsLeft] = React.useState(PANIC_SECONDS);
 
   const reset = () => {
-    setOfferOpen(true);
-    setDecision(null);
+    setDarkDecision(null);
+    setBenignDecision(null);
     setSecondsLeft(PANIC_SECONDS);
   };
 
   // The synthetic countdown only ticks while the modal is open and undecided.
   React.useEffect(() => {
-    if (!offerOpen || decision !== null) return;
+    if (darkDecision !== null) return;
     const id = window.setInterval(() => {
       setSecondsLeft((s) => (s > 0 ? s - 1 : 0));
     }, 1000);
     return () => window.clearInterval(id);
-  }, [offerOpen, decision]);
+  }, [darkDecision]);
 
-  const expired = secondsLeft === 0 && decision === null;
+  const expired = secondsLeft === 0 && darkDecision === null;
 
   const stats = mode === "auditor" ? (
     <>
@@ -103,16 +103,16 @@ export function PressuredSellingCond2({
               back later — the offer will still be here.
             </div>
 
-            {decision === null ? (
+            {benignDecision === null ? (
               <div className="mt-2.5 grid grid-cols-2 gap-2">
                 <button
-                  onClick={() => setDecision("accepted")}
+                  onClick={() => setBenignDecision("accepted")}
                   className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Add for $19.99
                 </button>
                 <button
-                  onClick={() => setDecision("declined")}
+                  onClick={() => setBenignDecision("declined")}
                   className="rounded-md border border-border bg-background hover:bg-muted py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   No thanks
@@ -120,7 +120,7 @@ export function PressuredSellingCond2({
               </div>
             ) : (
               <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
-                {decision === "accepted"
+                {benignDecision === "accepted"
                   ? "Protection plan added to your order — calmly, at your own pace."
                   : "Offer declined. No urgency, no deadline — the choice was easy."}
               </div>
@@ -170,13 +170,13 @@ export function PressuredSellingCond2({
               </div>
               <div className="mt-2.5 grid grid-cols-2 gap-2">
                 <button
-                  onClick={() => setDecision("accepted")}
+                  onClick={() => setDarkDecision("accepted")}
                   className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Add for $19.99
                 </button>
                 <button
-                  onClick={() => setDecision("declined")}
+                  onClick={() => setDarkDecision("declined")}
                   className="rounded-md border border-border bg-background hover:bg-muted py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   No thanks
@@ -189,7 +189,18 @@ export function PressuredSellingCond2({
           )}
         </div>
 
-        {decision !== null && (
+        {mode === "user" && darkDecision !== null && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">
+              {darkDecision === "accepted" ? "Protection plan added" : "Protection plan declined"}
+            </div>
+            <p className="text-muted-foreground mt-0.5">
+              {darkDecision === "accepted" ? "The $19.99 plan will appear on your order." : "The protection plan was not added."}
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && darkDecision !== null && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

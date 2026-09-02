@@ -32,11 +32,13 @@ export function VisualProminenceCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<null | "accept" | "decline" | "manage">(null);
+  const [darkChoice, setDarkChoice] = React.useState<null | "accept" | "decline" | "manage">(null);
+  const [benignChoice, setBenignChoice] = React.useState<null | "accept" | "decline" | "manage">(null);
   const [showBoxes, setShowBoxes] = React.useState(false);
 
   const reset = () => {
-    setChoice(null);
+    setDarkChoice(null);
+    setBenignChoice(null);
     setShowBoxes(false);
   };
 
@@ -90,41 +92,41 @@ export function VisualProminenceCond2({
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                Ratio 1.0
+                Equal-size choices
               </div>
             </div>
 
             <div className="mt-3 grid grid-cols-3 gap-2">
               <button
-                onClick={() => setChoice("decline")}
+                onClick={() => setBenignChoice("decline")}
                 className="rounded-md border border-border bg-background py-2 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
               >
                 Decline
               </button>
               <button
-                onClick={() => setChoice("manage")}
+                onClick={() => setBenignChoice("manage")}
                 className="rounded-md border border-border bg-background py-2 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
               >
                 Preferences
               </button>
               <button
-                onClick={() => setChoice("accept")}
+                onClick={() => setBenignChoice("accept")}
                 className="rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Accept all
               </button>
             </div>
 
-            <div className="mt-2">{boxToggle}</div>
+            {mode === "auditor" && <div className="mt-2">{boxToggle}</div>}
           </div>
 
-          {mode === "auditor" && choice && (
+          {mode === "auditor" && benignChoice && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                {choice === "accept" ? "All cookies accepted" : choice === "decline" ? "Cookies declined" : "Preferences opened"}
+                {benignChoice === "accept" ? "All cookies accepted" : benignChoice === "decline" ? "Cookies declined" : "Preferences opened"}
               </div>
               <p className="text-muted-foreground mt-0.5">
                 Every option occupies the same interactive surface area. The ratio{" "}
@@ -147,7 +149,7 @@ export function VisualProminenceCond2({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Ratio 5.5
+              Recommended option
             </div>
           </div>
 
@@ -157,7 +159,7 @@ export function VisualProminenceCond2({
               className={showBoxes ? "relative rounded-md border-2 border-dashed border-red-500/80 p-1" : ""}
             >
               <button
-                onClick={() => setChoice("accept")}
+                onClick={() => setDarkChoice("accept")}
                 className="w-full rounded-md   py-5 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-lg shadow-red-500/30 transition-transform hover:scale-[1.02] cursor-pointer"
               >
                 Accept all cookies
@@ -173,7 +175,7 @@ export function VisualProminenceCond2({
             <div className="mt-2 flex items-center justify-center gap-4">
               <div className={showBoxes ? "relative rounded border-2 border-dashed border-green-500/80 px-1 py-0.5" : ""}>
                 <button
-                  onClick={() => setChoice("manage")}
+                  onClick={() => setDarkChoice("manage")}
                   className="text-[9px] text-muted-foreground underline decoration-dotted underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
                 >
                   Manage preferences
@@ -186,7 +188,7 @@ export function VisualProminenceCond2({
               </div>
               <div className={showBoxes ? "relative rounded border-2 border-dashed border-green-500/80 px-1 py-0.5" : ""}>
                 <button
-                  onClick={() => setChoice("decline")}
+                  onClick={() => setDarkChoice("decline")}
                   className="text-[9px] text-muted-foreground underline decoration-dotted underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
                 >
                   Decline
@@ -194,11 +196,22 @@ export function VisualProminenceCond2({
               </div>
             </div>
 
-            <div className="mt-2">{boxToggle}</div>
+            {mode === "auditor" && <div className="mt-2">{boxToggle}</div>}
           </div>
         </div>
 
-        {mode === "auditor" && choice && (
+        {mode === "user" && darkChoice && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">
+              {darkChoice === "accept" ? "Cookies accepted" : darkChoice === "decline" ? "Cookies declined" : "Preferences opened"}
+            </div>
+            <p className="text-muted-foreground mt-0.5">
+              Your cookie preference was saved for this visit.
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && darkChoice && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -208,7 +221,7 @@ export function VisualProminenceCond2({
               Selection saved
             </div>
             <p className="text-muted-foreground">
-              {choice === "accept"
+              {darkChoice === "accept"
                 ? "You clicked the giant surface — as most users do."
                 : "You hunted for the tiny link and clicked it. Most users never find it."}{" "}
               The dominant action measures <strong className="text-foreground">{AREA_FAVORABLE.toLocaleString()} px&sup2;</strong>{" "}

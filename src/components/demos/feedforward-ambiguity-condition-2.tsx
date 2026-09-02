@@ -158,7 +158,7 @@ export function FeedforwardAmbiguityCond2({
         <div className="rounded-md border bg-card p-3">
           <h3 className="text-[11px] font-semibold">Security settings</h3>
           <p className="text-[9px] text-muted-foreground mt-0.5">
-            No labels. No tooltips. No hints. Guess.
+            Manage your account security and sharing preferences.
           </p>
 
           <div className="mt-3 space-y-2">
@@ -167,8 +167,6 @@ export function FeedforwardAmbiguityCond2({
               <button
                 onClick={() => setPressed("2fa")}
                 className="flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-red-500/50 hover:text-red-500 cursor-pointer"
-                aria-hidden
-                tabIndex={-1}
               >
                 {shieldIcon}
               </button>
@@ -178,8 +176,6 @@ export function FeedforwardAmbiguityCond2({
               <button
                 onClick={() => setPressed("push")}
                 className="flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-red-500/50 hover:text-red-500 cursor-pointer"
-                aria-hidden
-                tabIndex={-1}
               >
                 {bellIcon}
               </button>
@@ -193,8 +189,6 @@ export function FeedforwardAmbiguityCond2({
                     ? "border-red-500/50 text-red-500"
                     : "border-border text-muted-foreground hover:border-red-500/50 hover:text-red-500"
                 }`}
-                aria-hidden
-                tabIndex={-1}
               >
                 {networkIcon}
               </button>

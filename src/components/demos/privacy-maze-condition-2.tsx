@@ -31,9 +31,13 @@ export function PrivacyMazeCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [outcome, setOutcome] = React.useState<"none" | "accepted" | "rejected">("none");
+  const [outcomeA, setOutcomeA] = React.useState<"none" | "accepted" | "rejected">("none");
+  const [outcomeB, setOutcomeB] = React.useState<"none" | "accepted" | "rejected">("none");
 
-  const reset = () => setOutcome("none");
+  const reset = () => {
+    setOutcomeA("none");
+    setOutcomeB("none");
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -59,6 +63,7 @@ export function PrivacyMazeCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Privacy Maze: Visual Prominence Disparity"
+      userTitle="Orbit — Privacy controls"
       caption="Visual Prominence Disparity — the accept vector is rendered with massively more visual weight than the nearly invisible opt-out route."
       auditorStats={stats}
       deltaNote={`In Variant A, P(B_accept)/P(B_manage) = ${PROMINENCE_RATIO.toFixed(1)} (> δ_contrast = ${DELTA_CONTRAST.toFixed(1)}): the privacy-preserving route is a tiny, low-contrast text link drowned out by a large filled button. In Variant B both choices are rendered with identical size, weight and contrast, so the ratio is 1.0.`}
@@ -82,13 +87,13 @@ export function PrivacyMazeCond2({
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
-                onClick={() => setOutcome("accepted")}
+                onClick={() => setOutcomeB("accepted")}
                 className="w-full rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
               >
                 Accept All
               </button>
               <button
-                onClick={() => setOutcome("rejected")}
+                onClick={() => setOutcomeB("rejected")}
                 className="w-full rounded-md border border-green-600/50 bg-background hover:bg-green-500/10 py-2 text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors cursor-pointer"
               >
                 Reject All
@@ -99,7 +104,7 @@ export function PrivacyMazeCond2({
             </p>
           </div>
 
-          {outcome !== "none" && (
+          {outcomeB !== "none" && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -108,8 +113,7 @@ export function PrivacyMazeCond2({
                 Visual hierarchy is neutral
               </div>
               <p className="mt-0.5 text-muted-foreground">
-                Both vectors were rendered with equal prominence, so your eye was not steered
-                toward surrender. P(B_accept)/P(B_manage) = 1.0, well below &delta;_contrast.
+                Both options were equally visible, so the layout did not steer you toward one choice.
               </p>
             </div>
           )}
@@ -136,7 +140,7 @@ export function PrivacyMazeCond2({
           </div>
 
           <button
-            onClick={() => setOutcome("accepted")}
+            onClick={() => setOutcomeA("accepted")}
             className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 py-3 text-[12px] font-bold text-white shadow-lg transition-all hover:shadow-xl cursor-pointer"
           >
             Accept All
@@ -144,7 +148,7 @@ export function PrivacyMazeCond2({
 
           <div className="mt-2 space-y-1 text-center">
             <button
-              onClick={() => setOutcome("rejected")}
+              onClick={() => setOutcomeA("rejected")}
               className="text-[9px] text-muted-foreground/40 underline underline-offset-2 hover:text-muted-foreground/70 transition-colors cursor-pointer"
             >
               Manage options
@@ -154,15 +158,12 @@ export function PrivacyMazeCond2({
             </div>
           </div>
 
-          <div className="mt-2 flex items-center justify-between rounded-md border border-border bg-muted/40 px-2 py-1.5">
-            <span className="text-[8px] text-muted-foreground/50">Visual weight meter</span>
-            <span className="font-mono text-[8px] tabular-nums text-muted-foreground/60">
-              accept ██████████████&nbsp;manage █
-            </span>
+          <div className="mt-2 rounded-md border border-border bg-muted/40 px-2 py-1.5 text-[8px] text-muted-foreground/60">
+            Accept All is the prominent action; Manage options is a quieter link below.
           </div>
         </div>
 
-        {outcome !== "none" && (
+        {outcomeA !== "none" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -172,9 +173,9 @@ export function PrivacyMazeCond2({
               Privacy settings saved
             </div>
             <p className="text-muted-foreground">
-              {outcome === "accepted"
-                ? `“Accept All” was the only element that looked like a button: a large filled block (P(B_accept) = ${P_ACCEPT.toFixed(2)}) against a tiny gray link (P(B_manage) = ${P_MANAGE.toFixed(2)}). The ratio ${PROMINENCE_RATIO.toFixed(1)} far exceeds δ_contrast = ${DELTA_CONTRAST.toFixed(1)} — your gaze was structurally steered into consent.`
-                : `You found it — but only because you were looking for it. The opt-out route is a 9px gray link at ${P_MANAGE.toFixed(2)} prominence while “Accept All” occupies ${P_ACCEPT.toFixed(2)}. P(B_accept)/P(B_manage) = ${PROMINENCE_RATIO.toFixed(1)} > δ_contrast = ${DELTA_CONTRAST.toFixed(1)}, so the privacy-preserving vector is effectively invisible against the baseline design.`}
+              {outcomeA === "accepted"
+                ? "Accept All drew attention first because it was the large filled action, while the settings link was quieter."
+                : "You found the quieter settings link, but it was visually subordinate to Accept All."}
             </p>
           </div>
         )}

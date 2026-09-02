@@ -21,6 +21,7 @@ import { DemoShell } from "@/components/demos/demo-shell";
 
 const TOTAL = "$89.00";
 const TAU_FEEDFORWARD = 0.6;
+const ORDER_ID = "DF-20481";
 
 type Step = "review" | "placed";
 
@@ -32,8 +33,12 @@ export function FeedforwardAmbiguityCond1({
   onRestart?: () => void;
 } = {}) {
   const [step, setStep] = React.useState<Step>("review");
+  const [charged, setCharged] = React.useState(false);
 
-  const reset = () => setStep("review");
+  const reset = () => {
+    setStep("review");
+    setCharged(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -130,13 +135,13 @@ export function FeedforwardAmbiguityCond1({
               <p className="text-[9px] text-muted-foreground mt-0.5">Step 2 of 3 — one more step after this one.</p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Expect ≠ Resolve
+              {mode === "auditor" ? "Expect ≠ Resolve" : "Order summary"}
             </div>
           </div>
           {orderSummary(false)}
           {step === "review" && (
             <button
-              onClick={() => setStep("placed")}
+              onClick={() => { setCharged(true); setStep("placed"); }}
               className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Continue
@@ -149,11 +154,11 @@ export function FeedforwardAmbiguityCond1({
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-[11px] font-semibold">Order confirmed</div>
-                <div className="text-[9px] text-muted-foreground">Studio headphones · 1 item</div>
+                <div className="text-[9px] text-muted-foreground">Studio headphones · 1 item · Order {ORDER_ID}</div>
               </div>
               <span className="font-mono text-[10px] font-semibold">{TOTAL}</span>
             </div>
-            <div className="mt-2 border-t pt-2 text-[9px] text-muted-foreground">Receipt sent to your account.</div>
+            <div className="mt-2 border-t pt-2 text-[9px] text-muted-foreground">Charged {charged ? TOTAL : "—"} · receipt sent to your account.</div>
           </div>
         )}
       </div>

@@ -66,6 +66,7 @@ export function AutomaticAcceptThirdPartyTermCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Automatic Accept Third Party Term: Opaque Entity Resolution"
+      userTitle="Orbit — Partner terms"
       caption="Vague consent language like &ldquo;trusted partners&rdquo; masks the true scale of legal binding — the named entities are a vanishing fraction of the entities actually granted consent."
       auditorStats={stats}
       deltaNote={`Variant A names zero entities ("trusted partners") yet binds ${DARK_ACTUAL_TOTAL} on continue. Variant B names exactly ${BENIGN_DECLARED.length} companies and binds exactly those — E_declared = E_actual.`}
@@ -89,7 +90,7 @@ export function AutomaticAcceptThirdPartyTermCond2({
               ))}
             </ul>
             <p className="mt-2 text-[8px] text-muted-foreground/60">
-              That&rsquo;s the complete list — no unnamed recipients. E_declared = E_actual.
+              That&rsquo;s the complete list — no unnamed recipients are added when you continue.
             </p>
             <button
               onClick={() => setBenignDone(true)}
@@ -108,9 +109,8 @@ export function AutomaticAcceptThirdPartyTermCond2({
                 Preferences saved
               </div>
               <p className="text-muted-foreground mt-0.5">
-                Your consent binds exactly the <strong className="text-foreground">{BENIGN_DECLARED.length}
-                </strong> named companies — |E_actual| = |E_declared| = {BENIGN_DECLARED.length}. No
-                linguistic umbrella, no hidden partners.
+                Your consent applies to exactly the <strong className="text-foreground">{BENIGN_DECLARED.length}
+                </strong> companies listed above. No hidden partners are added.
               </p>
             </div>
           )}

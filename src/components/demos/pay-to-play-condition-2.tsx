@@ -28,15 +28,20 @@ export function PayToPlayCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [purchased, setPurchased] = React.useState(false);
-  const [dismissed, setDismissed] = React.useState(false);
+  const [benignPurchased, setBenignPurchased] = React.useState(false);
+  const [darkPurchased, setDarkPurchased] = React.useState(false);
+  const [benignDismissed, setBenignDismissed] = React.useState(false);
+  const [darkDismissed, setDarkDismissed] = React.useState(false);
 
   const reset = () => {
-    setPurchased(false);
-    setDismissed(false);
+    setBenignPurchased(false);
+    setDarkPurchased(false);
+    setBenignDismissed(false);
+    setDarkDismissed(false);
   };
 
-  const revealed = purchased || dismissed;
+  const benignRevealed = benignPurchased || benignDismissed;
+  const darkRevealed = darkPurchased || darkDismissed;
 
   const stats = mode === "auditor" ? (
     <>
@@ -54,7 +59,7 @@ export function PayToPlayCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Paywall dismissed?</span>
-        <span className="font-mono font-semibold tabular-nums">{dismissed ? "Yes" : "No"}</span>
+        <span className="font-mono font-semibold tabular-nums">{darkDismissed ? "Yes" : "No"}</span>
       </div>
     </>
   ) : null;
@@ -62,6 +67,7 @@ export function PayToPlayCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Pay-To-Play: Visual Dominance of Payment-Unlock Overlays"
+      userTitle="Episode 4: The Heist"
       caption="Visual Dominance of Payment-Unlock Overlays — the paywall covers nearly the whole viewport and its dismiss control is a 16×16 px sliver, far below the 44×44 px WCAG minimum."
       auditorStats={stats}
       deltaNote="Both variants gate the same episode behind the same $3.99. Variant A renders the payment prompt as a full-bleed overlay with a 16×16 px dismiss '×' (occlusion ≈ 0.95 > τ_occlusion; A(N_dismiss) < 44×44). Variant B shrinks the prompt to a compact inline row with a 44×44 px dismiss target, so the content — not the paywall — dominates the interface."
@@ -75,12 +81,12 @@ export function PayToPlayCond2({
               <div className="min-w-0 flex-1">
                 <h3 className="text-[11px] font-semibold">{EPISODE_TITLE}</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
-                  {purchased
+                  {benignPurchased
                     ? "Now playing — enjoy your rental."
                     : "Locked. A heist goes wrong when the crew's getaway driver has a change of heart."}
                 </p>
               </div>
-              {purchased ? (
+              {benignPurchased ? (
                 <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
                   Playing
                 </div>
@@ -91,19 +97,19 @@ export function PayToPlayCond2({
               )}
             </div>
 
-            {!purchased && !dismissed && (
+            {!benignPurchased && !benignDismissed && (
               <div className="mt-3 flex flex-wrap items-center gap-2 rounded-md border border-green-500/30 bg-green-500/5 p-2">
                 <span className="text-[9px] text-muted-foreground flex-1 min-w-[120px]">
                   Rent this episode — <span className="font-mono font-semibold text-green-600 dark:text-green-400">$3.99</span> one-time.
                 </span>
                 <button
-                  onClick={() => setPurchased(true)}
+                  onClick={() => setBenignPurchased(true)}
                   className="rounded-md bg-green-600 hover:bg-green-700 text-white px-3 py-2.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Rent $3.99
                 </button>
                 <button
-                  onClick={() => setDismissed(true)}
+                  onClick={() => setBenignDismissed(true)}
                   aria-label="Dismiss payment prompt"
                   className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md border border-border text-muted-foreground hover:text-foreground text-[10px] transition-colors cursor-pointer"
                 >
@@ -111,20 +117,20 @@ export function PayToPlayCond2({
                 </button>
               </div>
             )}
-            {!purchased && dismissed && (
+            {!benignPurchased && benignDismissed && (
               <p className="mt-3 text-[9px] text-muted-foreground">
                 Payment prompt dismissed — the episode stays locked, but you can keep browsing.
               </p>
             )}
           </div>
 
-          {revealed && (
+          {benignRevealed && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                {purchased ? "Transaction completed" : "Prompt dismissed"}
+                {benignPurchased ? "Transaction completed" : "Prompt dismissed"}
               </div>
               <p className="text-muted-foreground mt-0.5">
                 The overlay covers only about a quarter of the panel (A(O_unlock)/A_viewport ≈ 0.28,
@@ -139,7 +145,7 @@ export function PayToPlayCond2({
       <div className="space-y-3">
         <div className="relative overflow-hidden rounded-md border bg-card">
           {/* Locked content, buried under the overlay */}
-          <div className="p-3 blur-[1.5px] select-none" aria-hidden={!purchased}>
+          <div className="p-3 blur-[1.5px] select-none" aria-hidden={!darkPurchased && !darkDismissed}>
             <div className="flex items-start gap-3">
               <div className="flex h-10 w-7 shrink-0 items-center justify-center rounded bg-foreground/10 text-[8px] font-semibold text-muted-foreground">
                 A4
@@ -153,7 +159,7 @@ export function PayToPlayCond2({
             </div>
           </div>
 
-          {!purchased && !dismissed && (
+          {!darkPurchased && !darkDismissed && (
             <div className="absolute inset-0 z-10 flex items-center justify-center bg-background/95 p-3">
               <div className="w-full rounded-md border border-red-500/40 bg-card p-4 text-center">
                 <svg className="mx-auto h-6 w-6 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -166,14 +172,14 @@ export function PayToPlayCond2({
                   episode — unlock the full season for $9.99!
                 </p>
                 <button
-                  onClick={() => setPurchased(true)}
+                  onClick={() => setDarkPurchased(true)}
                   className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
                 >
                   Unlock now — $3.99
                 </button>
                 {/* Dismiss affordance: 16×16 px, far below the 44×44 WCAG minimum */}
                 <button
-                  onClick={() => setDismissed(true)}
+                  onClick={() => setDarkDismissed(true)}
                   aria-label="Dismiss paywall (tiny target)"
                   className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded text-muted-foreground/60 hover:text-foreground transition-colors cursor-pointer"
                   style={{ width: 16, height: 16 }}
@@ -186,7 +192,7 @@ export function PayToPlayCond2({
             </div>
           )}
 
-          {purchased && (
+          {darkPurchased && (
             <div className="border-t border-border p-2.5 text-[9px] text-green-700 dark:text-green-300 flex items-center gap-1.5">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
@@ -196,7 +202,7 @@ export function PayToPlayCond2({
           )}
         </div>
 
-        {mode === "auditor" && revealed && (
+        {mode === "auditor" && darkRevealed && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -206,11 +212,11 @@ export function PayToPlayCond2({
               Episode unlocked
             </div>
             <p className="text-muted-foreground">
-              {dismissed ? (
+              {darkDismissed ? (
                 <>
                   You dismissed the overlay — but only after hunting for a{" "}
                   <strong className="text-red-500">16 × 16 px</strong> target (A(N_dismiss) &lt; 44 × 44,
-                  a WCAG violation). {purchased ? "You also paid $3.99 to unlock the episode." : "The paywall visually dominated the panel until then."}
+                  a WCAG violation). {darkPurchased ? "You also paid $3.99 to unlock the episode." : "The paywall visually dominated the panel until then."}
                 </>
               ) : (
                 <>
@@ -221,7 +227,7 @@ export function PayToPlayCond2({
                 </>
               )}
             </p>
-            {purchased && (
+            {darkPurchased && (
               <p className="text-muted-foreground">
                 A $3.99 transaction was completed. The interface monetized the episode by making the
                 paywall impossible to ignore.

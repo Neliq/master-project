@@ -69,16 +69,23 @@ export function LabyrinthineNavigationCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [path, setPath] = React.useState<string[]>([]);
-  const [confirming, setConfirming] = React.useState(false);
-  const [outcome, setOutcome] = React.useState<"none" | "deleted" | "gave-up">("none");
-  const [note, setNote] = React.useState<string | null>(null);
+  const [pathA, setPathA] = React.useState<string[]>([]);
+
+  const [confirmingA, setConfirmingA] = React.useState(false);
+  const [confirmingB, setConfirmingB] = React.useState(false);
+  const [outcomeA, setOutcomeA] = React.useState<"none" | "deleted" | "gave-up">("none");
+  const [outcomeB, setOutcomeB] = React.useState<"none" | "deleted" | "gave-up">("none");
+  const [noteA, setNoteA] = React.useState<string | null>(null);
+  const [settingsMessage, setSettingsMessage] = React.useState<string | null>(null);
 
   const reset = () => {
-    setPath([]);
-    setConfirming(false);
-    setOutcome("none");
-    setNote(null);
+    setPathA([]);
+    setConfirmingA(false);
+    setConfirmingB(false);
+    setOutcomeA("none");
+    setOutcomeB("none");
+    setNoteA(null);
+    setSettingsMessage(null);
   };
 
   const stats = mode === "auditor" ? (
@@ -105,6 +112,7 @@ export function LabyrinthineNavigationCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Labyrinthine Navigation: Excessive Navigational Depth"
+      userTitle="Harbor — Account settings"
       caption="Excessive Navigational Depth — the critical user action sits 6 navigational levels deep in the settings graph, far beyond the &tau;_depth = 4 heuristic threshold."
       auditorStats={stats}
       deltaNote={`In Variant A, d(v_home, v_target) = ${DARK_DEPTH}: deleting the account is buried under Settings → Account & Security → Membership plan → Manage membership → Account deletion → Request, with unrelated leaf pages en route. In Variant B the same action is d = ${BENIGN_DEPTH} (Settings → Delete account), inside the threshold.`}
@@ -114,29 +122,30 @@ export function LabyrinthineNavigationCond1({
             <div className="mb-2 flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">Settings</h3>
               <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
-                depth 1 / 2
+                Settings
               </span>
             </div>
             <div className="space-y-1.5">
-              <button className="w-full rounded-md border border-border bg-background p-2 text-left text-[10px] text-foreground/80 transition-colors hover:bg-foreground/5 cursor-pointer">
+              <button onClick={() => setSettingsMessage("Appearance settings are available here.")} className="w-full rounded-md border border-border bg-background p-2 text-left text-[10px] text-foreground/80 transition-colors hover:bg-foreground/5 cursor-pointer">
                 Appearance
               </button>
-              <button className="w-full rounded-md border border-border bg-background p-2 text-left text-[10px] text-foreground/80 transition-colors hover:bg-foreground/5 cursor-pointer">
+              <button onClick={() => setSettingsMessage("Notification preferences are available here.")} className="w-full rounded-md border border-border bg-background p-2 text-left text-[10px] text-foreground/80 transition-colors hover:bg-foreground/5 cursor-pointer">
                 Notifications
               </button>
               <button
-                onClick={() => setConfirming(true)}
+                onClick={() => setConfirmingB(true)}
                 className="w-full rounded-md border border-green-600/50 bg-green-500/10 p-2 text-left text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors hover:bg-green-500/20 cursor-pointer"
               >
                 Delete account
               </button>
             </div>
+            {settingsMessage && <p className="mt-2 rounded-md border border-border bg-muted/40 p-2 text-[8px] text-muted-foreground">{settingsMessage}</p>}
             <p className="mt-2 text-[8px] text-muted-foreground/60">
-              The account-destruction action is one click inside Settings — d = 2.
+              Account deletion is available directly from Settings.
             </p>
           </div>
 
-          {confirming && (
+          {confirmingB && (
             <div className="rounded-md border bg-card p-3">
               <h3 className="text-[11px] font-semibold">Delete your account?</h3>
               <p className="mt-0.5 text-[9px] text-muted-foreground">
@@ -144,13 +153,13 @@ export function LabyrinthineNavigationCond1({
               </p>
               <div className="mt-2 grid grid-cols-2 gap-2">
                 <button
-                  onClick={() => setConfirming(false)}
+                  onClick={() => setConfirmingB(false)}
                   className="w-full rounded-md border border-border bg-background hover:bg-foreground/5 py-1.5 text-[10px] font-medium text-foreground/80 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
-                  onClick={() => { setConfirming(false); setOutcome("deleted"); }}
+                  onClick={() => { setConfirmingB(false); setOutcomeB("deleted"); }}
                   className="w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Confirm deletion
@@ -159,7 +168,7 @@ export function LabyrinthineNavigationCond1({
             </div>
           )}
 
-          {outcome === "deleted" && (
+          {outcomeB === "deleted" && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -168,8 +177,7 @@ export function LabyrinthineNavigationCond1({
                 Account deleted
               </div>
               <p className="mt-0.5 text-muted-foreground">
-                Done in {BENIGN_DEPTH} clicks. d(v_home, v_target) = {BENIGN_DEPTH} &le; &tau;_depth = {TAU_DEPTH},
-                so the exit was exactly where a user would look for it.
+                The account was removed from the Settings menu in the expected place.
               </p>
             </div>
           )}
@@ -177,7 +185,7 @@ export function LabyrinthineNavigationCond1({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        {confirming ? (
+        {confirmingA ? (
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-2">
               <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-yellow-600 dark:text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -195,13 +203,13 @@ export function LabyrinthineNavigationCond1({
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
-                onClick={() => setConfirming(false)}
+                onClick={() => setConfirmingA(false)}
                 className="w-full rounded-md border border-border bg-background hover:bg-foreground/5 py-1.5 text-[10px] font-medium text-foreground/80 transition-colors cursor-pointer"
               >
                 Go back
               </button>
               <button
-                onClick={() => { setConfirming(false); setOutcome("deleted"); }}
+                onClick={() => { setConfirmingA(false); setOutcomeA("deleted"); }}
                 className="w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Submit request
@@ -211,25 +219,25 @@ export function LabyrinthineNavigationCond1({
         ) : (
           <div className="rounded-md border bg-card p-3">
             <div className="mb-2 flex items-center justify-between">
-              <h3 className="text-[11px] font-semibold">{path.length === 0 ? "Dashboard" : resolveNode(DARK_MENU, path).label}</h3>
+              <h3 className="text-[11px] font-semibold">{pathA.length === 0 ? "Dashboard" : resolveNode(DARK_MENU, pathA).label}</h3>
               <span className="font-mono text-[8px] tabular-nums text-muted-foreground/50">
-                depth {path.length} / {DARK_DEPTH}
+                {mode === "auditor" ? `depth ${pathA.length} / ${DARK_DEPTH}` : "Settings"}
               </span>
             </div>
-            {path.length > 0 && (
+            {pathA.length > 0 && (
               <div className="mb-2 flex flex-wrap items-center gap-1 text-[8px] text-muted-foreground/60">
                 <button
-                  onClick={() => { setPath([]); setNote(null); }}
+                  onClick={() => { setPathA([]); setNoteA(null); }}
                   className="hover:text-foreground transition-colors cursor-pointer"
                 >
                   Dashboard
                 </button>
-                {path.map((p, i) => (
+                {pathA.map((p, i) => (
                   <span key={i} className="flex items-center gap-1">
                     <span>/</span>
                     <button
-                      onClick={() => { setPath(path.slice(0, i + 1)); setNote(null); }}
-                      className={`hover:text-foreground transition-colors cursor-pointer ${i === path.length - 1 ? "text-foreground/80" : ""}`}
+                      onClick={() => { setPathA(pathA.slice(0, i + 1)); setNoteA(null); }}
+                      className={`hover:text-foreground transition-colors cursor-pointer ${i === pathA.length - 1 ? "text-foreground/80" : ""}`}
                     >
                       {p}
                     </button>
@@ -238,17 +246,17 @@ export function LabyrinthineNavigationCond1({
               </div>
             )}
             <div className="space-y-1.5">
-              {resolveNode(DARK_MENU, path).children?.map((child) => (
+              {resolveNode(DARK_MENU, pathA).children?.map((child) => (
                 <button
                   key={child.label}
                   onClick={() => {
-                    setNote(null);
+                    setNoteA(null);
                     if (child.children) {
-                      setPath([...path, child.label]);
+                      setPathA([...pathA, child.label]);
                     } else if (child.label === "Request account deletion") {
-                      setConfirming(true);
+                      setConfirmingA(true);
                     } else {
-                      setNote(`“${child.label}” — nothing here about deleting your account.`);
+                      setNoteA(`“${child.label}” — nothing here about deleting your account.`);
                     }
                   }}
                   className="w-full rounded-md border border-border bg-background p-2 text-left text-[10px] text-foreground/80 transition-colors hover:bg-foreground/5 cursor-pointer"
@@ -264,23 +272,23 @@ export function LabyrinthineNavigationCond1({
                 </button>
               ))}
             </div>
-            {path.length > 0 && (
+            {pathA.length > 0 && (
               <button
-                onClick={() => { setPath(path.slice(0, -1)); setNote(null); }}
+                onClick={() => { setPathA(pathA.slice(0, -1)); setNoteA(null); }}
                 className="mt-2 text-[9px] font-medium text-muted-foreground/60 underline underline-offset-2 hover:text-muted-foreground transition-colors cursor-pointer"
               >
                 ← Back
               </button>
             )}
-            {note && (
+            {noteA && (
               <div className="mt-2 rounded-md border border-border bg-muted/40 p-2 text-[9px] text-muted-foreground">
-                {note}
+                {noteA}
               </div>
             )}
           </div>
         )}
 
-        {outcome === "deleted" && (
+        {outcomeA === "deleted" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -290,11 +298,8 @@ export function LabyrinthineNavigationCond1({
               Account settings
             </div>
             <p className="text-muted-foreground">
-              d(v_home, v_target) = {DARK_DEPTH} &gt; &tau;_depth = {TAU_DEPTH}. To delete your account you
-              had to walk Settings → Account &amp; Security → Membership plan → Manage membership →
-              Account deletion → Request account deletion, past pages about plans, payments and
-              upgrades that had nothing to do with leaving. The information scent was destroyed
-              on purpose: most users give up somewhere around “Manage membership”.
+              To delete your account you had to pass through unrelated plan, payment, and membership
+              pages before reaching the account-removal request. The setting was difficult to locate.
             </p>
           </div>
         )}

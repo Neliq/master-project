@@ -63,9 +63,13 @@ export function FearOfMissingOutFomoCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [scanned, setScanned] = React.useState(false);
+  const [scannedA, setScannedA] = React.useState(false);
+  const [scannedB, setScannedB] = React.useState(false);
 
-  const reset = () => setScanned(false);
+  const reset = () => {
+    setScannedA(false);
+    setScannedB(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -93,6 +97,7 @@ export function FearOfMissingOutFomoCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Fear Of Missing Out (FOMO): Semantic Density of Scarcity and Urgency Lexemes"
+      userTitle="AeroGlide X — Offer"
       caption="Semantic Density of Scarcity and Urgency Lexemes — the page’s visible text weaponizes linguistic scarcity, exceeding the per-100-word manipulation threshold."
       auditorStats={stats}
       deltaNote="Variant A packs 8 urgency lexemes into 27 words (≈29.6 per 100 words > τ_fomo): “LIMITED TIME,” “only 3 left,” “selling fast,” “flash deal,” “ends soon,” “last chance,” “don’t miss out,” “one-time.” Variant B conveys the same offer — $119, in stock, in neutral wording — with 0 lexemes (0.0 < τ_fomo)."
@@ -120,24 +125,24 @@ export function FearOfMissingOutFomoCond3({
             </div>
 
             <button
-              onClick={() => setScanned(true)}
+              onClick={() => setScannedB(true)}
               className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md border border-green-500/30 bg-green-500/5 py-1.5 text-[10px] font-medium text-green-700 dark:text-green-300 hover:bg-green-500/10 transition-colors cursor-pointer"
             >
               <ScanSearch className="size-3" />
-              Scan copy for urgency lexemes
+              Review offer wording
             </button>
 
-            {scanned && (
+            {scannedB && (
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
-                  Lexeme scan: clean
+                  Offer wording reviewed
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  {countLexemes(BENIGN_COPY)} urgency lexemes across {wordCount(BENIGN_COPY)} words — density{" "}
-                  {density(BENIGN_COPY)} per 100 words &lt; τ_fomo. Same product, same price, no manufactured panic.
+                  The price, stock, shipping, and returns are all visible in plain language. Same product,
+                  same price, no manufactured panic.
                 </p>
               </div>
             )}
@@ -183,14 +188,14 @@ export function FearOfMissingOutFomoCond3({
           </div>
 
           <button
-            onClick={() => setScanned(true)}
+            onClick={() => setScannedA(true)}
             className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md border border-red-500/30 bg-red-500/5 py-1.5 text-[10px] font-medium text-red-700 dark:text-red-300 hover:bg-red-500/10 transition-colors cursor-pointer"
           >
             <ScanSearch className="size-3" />
-            Scan copy for urgency lexemes
+            Review offer wording
           </button>
 
-          {scanned && (
+          {scannedA && (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -201,9 +206,8 @@ export function FearOfMissingOutFomoCond3({
               </div>
               <p className="text-muted-foreground">
                 This offer is available while supplies last.
-                Density = ({countLexemes(DARK_COPY)} / {wordCount(DARK_COPY)}) × 100 ={" "}
-                <strong className="text-red-500">{density(DARK_COPY)} per 100 words &gt; τ_fomo</strong> — the page
-                weaponizes linguistic scarcity to override rational deliberation.
+                The headline emphasizes stock and timing much more strongly than the product details,
+                making the ordinary offer feel harder to postpone.
               </p>
               <p className="text-muted-foreground">
                 The offer itself is ordinary — the wording is what does the work.

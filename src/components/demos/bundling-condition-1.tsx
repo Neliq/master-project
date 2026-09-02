@@ -33,11 +33,13 @@ export function BundlingCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [added, setAdded] = React.useState(false);
+  const [addedDark, setAddedDark] = React.useState(false);
+  const [addedBenign, setAddedBenign] = React.useState(false);
   const [warrantyChecked, setWarrantyChecked] = React.useState(false);
 
   const reset = () => {
-    setAdded(false);
+    setAddedDark(false);
+    setAddedBenign(false);
     setWarrantyChecked(false);
   };
 
@@ -67,8 +69,9 @@ export function BundlingCond1({
   ) : null;
 
   const renderPanel = (dark: boolean) => {
-    const darkCart = added ? [CAMERA, WARRANTY] : [];
-    const benignCart = added
+    const isAdded = dark ? addedDark : addedBenign;
+    const darkCart = addedDark ? [CAMERA, WARRANTY] : [];
+    const benignCart = addedBenign
       ? warrantyChecked
         ? [CAMERA, WARRANTY]
         : [CAMERA]
@@ -134,20 +137,20 @@ export function BundlingCond1({
             </label>
 
             <button
-              onClick={() => setAdded(true)}
+              onClick={() => (dark ? setAddedDark(true) : setAddedBenign(true))}
               className={`w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
                 dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
               }`}
             >
-              {added ? "Added to cart ✓" : "Add to cart"}
+              {isAdded ? "Added to cart ✓" : "Add to cart"}
             </button>
           </div>
         </div>
 
-        {added ? (
+        {isAdded ? (
           <div className="rounded-md border bg-background p-2.5">
             <div className="text-[8px] font-bold uppercase tracking-wider text-muted-foreground">
-              Cart (C_state)
+              Cart
             </div>
             <div className="mt-1.5 space-y-1">
               {cart.map((i) => (
@@ -169,7 +172,7 @@ export function BundlingCond1({
           </div>
         ) : null}
 
-        {mode === "auditor" && added && (dark ? (
+        {mode === "auditor" && isAdded && (dark ? (
             <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

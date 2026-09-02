@@ -32,20 +32,26 @@ export function ForcedContinuityCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  // Shared countdown so both panels stay in sync.
-  const [daysLeft, setDaysLeft] = React.useState(7);
+  const [daysLeftA, setDaysLeftA] = React.useState(7);
+  const [daysLeftB, setDaysLeftB] = React.useState(7);
+  const [manageOpened, setManageOpened] = React.useState(false);
 
-  const inNoticeWindow = daysLeft <= NOTICE_DAYS && daysLeft > 0;
+  const inNoticeWindowB = daysLeftB <= NOTICE_DAYS && daysLeftB > 0;
 
-  const nextDay = () => setDaysLeft((d) => Math.max(0, d - 1));
+  const nextDayA = () => setDaysLeftA((d) => Math.max(0, d - 1));
+  const nextDayB = () => setDaysLeftB((d) => Math.max(0, d - 1));
 
-  const reset = () => setDaysLeft(7);
+  const reset = () => {
+    setDaysLeftA(7);
+    setDaysLeftB(7);
+    setManageOpened(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Days to renewal</span>
-        <span className="font-mono font-semibold tabular-nums">{daysLeft}d (τ_fair_notice: 3–7d)</span>
+        <span className="font-mono font-semibold tabular-nums">{daysLeftA}d (τ_fair_notice: 3–7d)</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Visible(w, t) in window (A)</span>
@@ -65,31 +71,37 @@ export function ForcedContinuityCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Forced Continuity: Absence of Temporal Feedforward"
+      userTitle="Streamly — Trial details"
       caption="Absence of Temporal Feedforward — no visible renewal warning appears inside the fair-notice window; the only notice is rendered below legibility thresholds."
       auditorStats={stats}
       deltaNote="Both panels show the same plan and the same countdown. In Variant A the renewal notice exists but is 7px at 1.8:1 contrast — below τ_min_visible and CR < 3.0, so Visible(w, t) = False across the whole fair-notice window. In Variant B a high-contrast banner appears the moment the window opens."
       benign={
         <div className="space-y-3">
           {/* Prominent renewal banner — Visible(w, t) = True */}
-          {inNoticeWindow && (
+          {inNoticeWindowB && (
             <div className="rounded-md border border-yellow-500/40 bg-yellow-500/15 p-3">
               <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-yellow-700 dark:text-yellow-300">
                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
                   <path d="M12 9v4m0 4h.01" />
                 </svg>
-                Renewal warning (w ∈ W_renewal)
+                Renewal reminder
               </div>
               <p className="text-[10px] font-medium text-foreground mt-1">
-                Your Premium plan renews in <strong>{daysLeft} day{daysLeft === 1 ? "" : "s"}</strong> — {PLAN_PRICE}{" "}
+                Your Premium plan renews in <strong>{daysLeftB} day{daysLeftB === 1 ? "" : "s"}</strong> — {PLAN_PRICE}{" "}
                 will be charged to •••• 4242.
               </p>
               <button
-                onClick={() => {}}
+                onClick={() => setManageOpened(true)}
                 className="mt-2 rounded-md border border-yellow-500/50 bg-background px-3 py-1 text-[10px] font-medium text-yellow-700 dark:text-yellow-300 hover:bg-yellow-500/10 transition-colors cursor-pointer"
               >
                 Manage subscription
               </button>
+              {manageOpened && (
+                <div className="mt-2 rounded-md border border-border bg-background p-2 text-[9px] text-muted-foreground">
+                  Subscription settings are open. You can review the renewal date or update your plan before the charge.
+                </div>
+              )}
             </div>
           )}
 
@@ -98,9 +110,9 @@ export function ForcedContinuityCond2({
               <div>
                 <h3 className="text-[11px] font-semibold">Premium plan</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
-                  {daysLeft === 0
+                  {daysLeftB === 0
                     ? "Your plan renewed today."
-                    : `Renews in ${daysLeft} day${daysLeft === 1 ? "" : "s"}.`}
+                    : `Renews in ${daysLeftB} day${daysLeftB === 1 ? "" : "s"}.`}
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
@@ -114,13 +126,13 @@ export function ForcedContinuityCond2({
           </div>
 
           <button
-            onClick={nextDay}
+            onClick={nextDayB}
             className="w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
           >
-            Advance one day (t → t+1)
+            Preview the next day
           </button>
 
-          {daysLeft === 0 && (
+          {daysLeftB === 0 && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -143,9 +155,9 @@ export function ForcedContinuityCond2({
             <div>
               <h3 className="text-[11px] font-semibold">Premium plan</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">
-                {daysLeft === 0
+                {daysLeftA === 0
                   ? "Your plan renewed today."
-                  : `Renews in ${daysLeft} day${daysLeft === 1 ? "" : "s"}.`}
+                  : `Renews in ${daysLeftA} day${daysLeftA === 1 ? "" : "s"}.`}
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
@@ -156,7 +168,7 @@ export function ForcedContinuityCond2({
           {/* The only renewal notice: micro-text, low contrast, tiny area */}
           <div className="mt-2 rounded-md border border-border bg-background px-3 py-2">
             <span className="text-[7px] text-muted-foreground/40 leading-none">
-              Renews in {daysLeft} days · {PLAN_PRICE}/month · •••• 4242
+              Renews in {daysLeftA} days · {PLAN_PRICE}/month · •••• 4242
             </span>
           </div>
 
@@ -167,13 +179,13 @@ export function ForcedContinuityCond2({
         </div>
 
         <button
-          onClick={nextDay}
+          onClick={nextDayA}
           className="w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
         >
           Advance one day (t → t+1)
         </button>
 
-        {daysLeft === 0 && (
+        {daysLeftA === 0 && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

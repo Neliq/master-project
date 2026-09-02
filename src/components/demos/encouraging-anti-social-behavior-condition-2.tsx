@@ -29,24 +29,21 @@ export function EncouragingAntiSocialBehaviorCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  // Shared progress: in A it fills YOUR bar against Alex's fixed score;
-  // in B it fills the shared team bar toward the goal.
-  const [progress, setProgress] = React.useState(0);
-  const [done, setDone] = React.useState(false);
+  const [darkProgress, setDarkProgress] = React.useState(0);
+  const [benignProgress, setBenignProgress] = React.useState(0);
+  const darkDone = darkProgress >= 100;
+  const benignDone = benignProgress >= 100;
 
   const ALEX_SCORE = 70;
 
   const reset = () => {
-    setProgress(0);
-    setDone(false);
+    setDarkProgress(0);
+    setBenignProgress(0);
   };
 
-  const answer = () => {
-    setProgress((p) => {
-      const next = Math.min(100, p + 9 + Math.floor(Math.random() * 6));
-      if (next >= 100) setDone(true);
-      return next;
-    });
+  const answer = (dark: boolean) => {
+    const setProgress = dark ? setDarkProgress : setBenignProgress;
+    setProgress((p) => Math.min(100, p + 10));
   };
 
   const stats = mode === "auditor" ? (
@@ -73,6 +70,7 @@ export function EncouragingAntiSocialBehaviorCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Encouraging Anti-Social Behavior: Visual Framing of Competitive Antagonism"
+      userTitle="MathRush — study group"
       caption="Visual Framing of Competitive Antagonism — a binary 50/50 'You vs. Them' split frames interaction as a zero-sum fight, conditioning users to see peers as opponents to defeat."
       auditorStats={stats}
       deltaNote="Both panels run the same quiz in the same shared practice session. Variant A splits the screen 50/50 into 'You vs. Alex' with your bar in confrontational red — even though the task is cooperative, the layout frames your study partner as a rival and rewards beating them. Variant B replaces the opposition with a single shared goal bar — you and Alex progress together, so success never requires defeating someone."
@@ -91,14 +89,25 @@ export function EncouragingAntiSocialBehaviorCond2({
             </div>
 
             <div className="mt-3 rounded-md bg-background border border-border p-2.5">
+              <div className="rounded-md border border-border bg-card p-2 text-[9px] leading-relaxed">
+                <span className="font-medium">Practice question:</span> What is 7 × 8?{" "}
+                <span className="text-muted-foreground">Answer: 56</span>
+              </div>
               <div className="flex items-center justify-between text-[9px]">
                 <span className="font-medium text-green-700 dark:text-green-300">Team progress</span>
-                <span className="font-mono tabular-nums text-muted-foreground">{progress}%</span>
+                <span className="font-mono tabular-nums text-muted-foreground">{benignProgress}%</span>
               </div>
-              <div className="mt-1.5 h-2.5 w-full rounded-full bg-foreground/10">
+              <div
+                role="progressbar"
+                aria-label="Team practice progress"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={benignProgress}
+                className="mt-1.5 h-2.5 w-full rounded-full bg-foreground/10"
+              >
                 <div
                   className="h-2.5 rounded-full bg-green-500 transition-all duration-500"
-                  style={{ width: `${progress}%` }}
+                  style={{ width: `${benignProgress}%` }}
                 />
               </div>
               <p className="mt-1.5 text-[8px] text-muted-foreground">
@@ -107,10 +116,10 @@ export function EncouragingAntiSocialBehaviorCond2({
             </div>
 
             <button
-              onClick={answer}
-              disabled={done}
+              onClick={() => answer(false)}
+              disabled={benignDone}
               className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-                done
+                benignDone
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                   : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
@@ -119,7 +128,7 @@ export function EncouragingAntiSocialBehaviorCond2({
             </button>
           </div>
 
-          {done && (
+          {benignDone && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -159,10 +168,17 @@ export function EncouragingAntiSocialBehaviorCond2({
             <div className="rounded-md border border-red-500/40 bg-red-500/5 p-2">
               <div className="text-[8px] font-mono uppercase tracking-wider text-red-600 dark:text-red-400">You</div>
               <div className="mt-1 font-mono text-[11px] font-bold tabular-nums text-red-700 dark:text-red-300">
-                {progress}
+                {darkProgress}
               </div>
-              <div className="mt-1 h-1.5 w-full rounded-full bg-foreground/10">
-                <div className="h-1.5 rounded-full bg-red-500 transition-all duration-500" style={{ width: `${progress}%` }} />
+              <div
+                role="progressbar"
+                aria-label="Your competitive practice progress"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={darkProgress}
+                className="mt-1 h-1.5 w-full rounded-full bg-foreground/10"
+              >
+                <div className="h-1.5 rounded-full bg-red-500 transition-all duration-500" style={{ width: `${darkProgress}%` }} />
               </div>
             </div>
             <div className="rounded-md border border-blue-500/40 bg-blue-500/5 p-2">
@@ -170,7 +186,14 @@ export function EncouragingAntiSocialBehaviorCond2({
               <div className="mt-1 font-mono text-[11px] font-bold tabular-nums text-blue-700 dark:text-blue-300">
                 {ALEX_SCORE}
               </div>
-              <div className="mt-1 h-1.5 w-full rounded-full bg-foreground/10">
+              <div
+                role="progressbar"
+                aria-label="Alex competitive practice progress"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={ALEX_SCORE}
+                className="mt-1 h-1.5 w-full rounded-full bg-foreground/10"
+              >
                 <div className="h-1.5 rounded-full bg-blue-500" style={{ width: `${ALEX_SCORE}%` }} />
               </div>
             </div>
@@ -182,11 +205,16 @@ export function EncouragingAntiSocialBehaviorCond2({
             The loser gets demoted a league.
           </p>
 
+          <div className="mt-3 rounded-md border border-border bg-background p-2.5 text-[9px] leading-relaxed">
+            <span className="font-medium">Practice question:</span> What is 7 × 8?{" "}
+            <span className="text-muted-foreground">Answer: 56</span>
+          </div>
+
           <button
-            onClick={answer}
-            disabled={done}
+            onClick={() => answer(true)}
+            disabled={darkDone}
             className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-              done
+              darkDone
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                 : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
@@ -195,7 +223,7 @@ export function EncouragingAntiSocialBehaviorCond2({
           </button>
         </div>
 
-        {mode === "auditor" && done && (
+        {mode === "auditor" && darkDone && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -210,8 +238,7 @@ export function EncouragingAntiSocialBehaviorCond2({
               with <span className="font-mono">SplitRatio &asymp; 0.5</span>: your score sits in
               confrontational red, directly opposed to Alex&rsquo;s, and the reward is framed as
               beating them. Competition is injected where the activity never required it,
-              conditioning you to see a study partner as a rival to defeat — that split is the
-              Choose the answer that fits you best.
+              conditioning you to see a study partner as a rival to defeat.
             </p>
           </div>
         )}

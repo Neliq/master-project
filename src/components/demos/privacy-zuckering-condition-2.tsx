@@ -66,11 +66,13 @@ export function PrivacyZuckeringCond2({
   const toggle = (
     on: boolean,
     setOn: (v: boolean) => void,
-    accent: "emerald" | "rose"
+    accent: "emerald" | "rose",
+    label: string
   ) => (
     <button
       role="switch"
       aria-checked={on}
+      aria-label={label}
       onClick={() => setOn(!on)}
       className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors cursor-pointer ${
         on ? (accent === "rose" ? "bg-red-500" : "bg-green-500") : "bg-muted"
@@ -87,6 +89,7 @@ export function PrivacyZuckeringCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Privacy Zuckering: Visual Asymmetry Between Privacy-Invasive and Privacy-Preserving Options"
+      userTitle="Orbit — Privacy settings"
       caption="Visual Asymmetry — the data-sharing option is rendered far larger, brighter, and more saturated than the privacy-preserving one, and pre-set to ON."
       auditorStats={stats}
       deltaNote="In Variant A the invasive toggle is big, saturated, and starts ON while the preserving toggle is tiny and dim (visual-weight ratio 3.6 > τ_privacy_skew). In Variant B both toggles are pixel-identical in weight, and the privacy-preserving state is the default."
@@ -106,7 +109,7 @@ export function PrivacyZuckeringCond2({
                     Optional — used to show you personalized ads. Off by default.
                   </div>
                 </div>
-                {toggle(bShare, setBShare, "emerald")}
+                {toggle(bShare, setBShare, "emerald", "Share data with advertising partners")}
               </div>
 
               <div className="flex items-center justify-between gap-3 rounded-md border border-border bg-background px-3 py-2.5">
@@ -116,7 +119,7 @@ export function PrivacyZuckeringCond2({
                     Restricts processing to essential purposes only. On by default.
                   </div>
                 </div>
-                {toggle(bLimit, setBLimit, "emerald")}
+                {toggle(bLimit, setBLimit, "emerald", "Limit data use to required purposes")}
               </div>
             </div>
 
@@ -144,7 +147,7 @@ export function PrivacyZuckeringCond2({
                   Helps us show you better, more relevant ads.
                 </div>
               </div>
-              {toggle(aShare, setAShare, "rose")}
+              {toggle(aShare, setAShare, "rose", "Share data with advertising partners")}
             </div>
 
             {/* Preserving: tiny, dim, low contrast, pre-set OFF */}
@@ -156,7 +159,7 @@ export function PrivacyZuckeringCond2({
                 </div>
               </div>
               <div className="scale-75 origin-right">
-                {toggle(aLimit, setALimit, "emerald")}
+                {toggle(aLimit, setALimit, "emerald", "Limit data use to required purposes")}
               </div>
             </div>
           </div>

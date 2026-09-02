@@ -45,25 +45,25 @@ const BENIGN_TESTIMONIALS: BenignReview[] = [
     stars: 4,
     quote: "The meal-plan add-on made the difference for me. Lost 9 kg over three months — slow, but steady.",
     name: "Julia Nowak", initials: "JN", color: "bg-green-500", date: "12 May 2026",
-    handle: "@julia.nowak", followers: 214, joined: "2021", url: "https://profile.example.com/julia-nowak",
+    handle: "@julia.nowak", followers: 214, joined: "2021", url: "https://shopline.co/profiles/julia-nowak",
   },
   {
     stars: 5,
     quote: "Energy levels are noticeably steadier after two weeks. Not magic, but I'll keep taking it.",
     name: "Tomasz Rybak", initials: "TR", color: "bg-blue-500", date: "3 May 2026",
-    handle: "@tomasz.r", followers: 89, joined: "2023", url: "https://profile.example.com/tomasz-rybak",
+    handle: "@tomasz.r", followers: 89, joined: "2023", url: "https://shopline.co/profiles/tomasz-rybak",
   },
   {
     stars: 3,
     quote: "Joints feel a little better, though I'm also swimming twice a week, so hard to isolate the cause.",
     name: "Alicja Pawlak", initials: "AP", color: "bg-yellow-500", date: "28 Apr 2026",
-    handle: "@alicja.p", followers: 402, joined: "2020", url: "https://profile.example.com/alicja-pawlak",
+    handle: "@alicja.p", followers: 402, joined: "2020", url: "https://shopline.co/profiles/alicja-pawlak",
   },
   {
     stars: 5,
     quote: "Fair price, no side effects, and the shipping was fast. Would order again.",
     name: "Marek Kowal", initials: "MK", color: "bg-red-500", date: "17 Apr 2026",
-    handle: "@marek.k", followers: 56, joined: "2024", url: "https://profile.example.com/marek-kowal",
+    handle: "@marek.k", followers: 56, joined: "2024", url: "https://shopline.co/profiles/marek-kowal",
   },
 ];
 

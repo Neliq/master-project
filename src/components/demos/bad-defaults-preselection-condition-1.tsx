@@ -142,7 +142,7 @@ export function BadDefaultsPreselectionCond1({
           <div className="flex items-start justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Create your account</h3>
             <div className="shrink-0 rounded-full border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">
-              Pre-checked at t₀
+              {mode === "auditor" ? "Pre-checked at t₀" : "Included by default"}
             </div>
           </div>
           <p className="text-[9px] text-muted-foreground mt-0.5">
@@ -161,7 +161,7 @@ export function BadDefaultsPreselectionCond1({
                   Send me exclusive offers and promotions
                 </div>
                 <div className="text-[8px] text-muted-foreground/60 mt-0.5">
-                  State(marketing, t₀) = True
+                  {mode === "auditor" ? "State(marketing, t₀) = True" : "Optional marketing preference"}
                 </div>
               </div>
             </label>
@@ -177,7 +177,7 @@ export function BadDefaultsPreselectionCond1({
                   Share my data with selected partners
                 </div>
                 <div className="text-[8px] text-muted-foreground/60 mt-0.5">
-                  State(dataSharing, t₀) = True
+                  {mode === "auditor" ? "State(dataSharing, t₀) = True" : "Optional data-sharing preference"}
                 </div>
               </div>
             </label>
@@ -197,16 +197,28 @@ export function BadDefaultsPreselectionCond1({
                 </svg>
                 Defaults decided for you
               </div>
-              <p className="text-muted-foreground">
-                At t₀, <span className="font-mono">UserEvents(c, t₀) = {aTouched ? "≠ ∅" : "∅"}</span>{" "}
-                and <strong className="text-foreground">∃ c ∈ C : State(c, t₀) = True</strong> for
-                both consent nodes. Submitting with{" "}
-                <strong className="text-foreground">
-                  {aMarketing ? "marketing" : ""}{aMarketing && aData ? " + " : ""}{aData ? "data sharing" : aConsents ? "" : "no consents"}
-                </strong>{" "}
-                {aConsents ? "consents by default — you never chose it." : "— you opted out explicitly."}{" "}
-                The interface shifted the burden of action onto you: opt-out instead of opt-in.
-              </p>
+              {mode === "auditor" ? (
+                <p className="text-muted-foreground">
+                  At t₀, <span className="font-mono">UserEvents(c, t₀) = {aTouched ? "≠ ∅" : "∅"}</span>{" "}
+                  and <strong className="text-foreground">∃ c ∈ C : State(c, t₀) = True</strong> for
+                  both consent nodes. Submitting with{" "}
+                  <strong className="text-foreground">
+                    {aMarketing ? "marketing" : ""}{aMarketing && aData ? " + " : ""}{aData ? "data sharing" : aConsents ? "" : "no consents"}
+                  </strong>{" "}
+                  {aConsents ? "consents by default — you never chose it." : "— you opted out explicitly."}{" "}
+                  The interface shifted the burden of action onto you: opt-out instead of opt-in.
+                </p>
+              ) : (
+                <p className="text-muted-foreground">
+                  Your account was created with{" "}
+                  <strong className="text-foreground">
+                    {aMarketing ? "marketing" : "no marketing"}
+                    {aMarketing && aData ? " and " : ""}
+                    {aData ? "data sharing" : "no data sharing"}
+                  </strong>{" "}
+                  selected in advance. You can change these preferences at any time.
+                </p>
+              )}
             </div>
           )}
         </div>

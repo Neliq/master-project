@@ -161,7 +161,7 @@ export function PersuasiveLanguageCond3({
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                Neutral framing
+                Standard plan details
               </div>
             </div>
             {claimList(CLAIMS_BENIGN, false)}
@@ -181,16 +181,20 @@ export function PersuasiveLanguageCond3({
               </button>
             </div>
 
-            <button
-              onClick={() => setVerified(true)}
-              className="mt-2 w-full rounded-md border border-green-500/30 bg-green-500/5 py-1 text-[9px] font-medium text-green-700 dark:text-green-300 transition-colors hover:bg-green-500/10 cursor-pointer"
-            >
-              Verify truth conditions
-            </button>
-            {verified && <div className="mt-2">{truthTable(CLAIMS_BENIGN, false)}</div>}
+            {mode === "auditor" && (
+              <>
+                <button
+                  onClick={() => setVerified(true)}
+                  className="mt-2 w-full rounded-md border border-green-500/30 bg-green-500/5 py-1 text-[9px] font-medium text-green-700 dark:text-green-300 transition-colors hover:bg-green-500/10 cursor-pointer"
+                >
+                  Verify truth conditions
+                </button>
+                {verified && <div className="mt-2">{truthTable(CLAIMS_BENIGN, false)}</div>}
+              </>
+            )}
           </div>
 
-          {choice && (
+          {mode === "auditor" && choice && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -219,7 +223,7 @@ export function PersuasiveLanguageCond3({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Loaded framing
+              Featured plan offer
             </div>
           </div>
           {claimList(CLAIMS_DARK, true)}
@@ -239,16 +243,29 @@ export function PersuasiveLanguageCond3({
             </button>
           </div>
 
-          <button
-            onClick={() => setVerified(true)}
-            className="mt-2 w-full rounded-md border border-yellow-500/30 bg-yellow-500/5 py-1 text-[9px] font-medium text-yellow-700 dark:text-yellow-300 transition-colors hover:bg-yellow-500/10 cursor-pointer"
-          >
-            Verify truth conditions
-          </button>
-          {verified && <div className="mt-2">{truthTable(CLAIMS_DARK, true)}</div>}
+          {mode === "auditor" && (
+          <>
+            <button
+              onClick={() => setVerified(true)}
+              className="mt-2 w-full rounded-md border border-yellow-500/30 bg-yellow-500/5 py-1 text-[9px] font-medium text-yellow-700 dark:text-yellow-300 transition-colors hover:bg-yellow-500/10 cursor-pointer"
+            >
+              Verify truth conditions
+            </button>
+            {verified && <div className="mt-2">{truthTable(CLAIMS_DARK, true)}</div>}
+          </>
+          )}
         </div>
 
-        {choice && (
+        {choice && mode !== "auditor" && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">Plan choice saved</div>
+            <p className="text-muted-foreground mt-0.5">
+              {choice === "upgrade" ? "Your Pro upgrade is ready to review." : "You stayed on the Free plan."}
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && choice && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

@@ -32,22 +32,24 @@ export function FearOfMissingOutFomoCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [phase, setPhase] = React.useState<"idle" | "bought">("idle");
-  const [stock, setStock] = React.useState(7); // the churning display counter (Variant A)
+  const [phaseA, setPhaseA] = React.useState<"idle" | "bought">("idle");
+  const [phaseB, setPhaseB] = React.useState<"idle" | "bought">("idle");
+  const [stockA, setStockA] = React.useState(7); // the churning display counter (Variant A)
 
   const reset = () => {
-    setPhase("idle");
-    setStock(7);
+    setPhaseA("idle");
+    setPhaseB("idle");
+    setStockA(7);
   };
 
   // Variant A: sub-second churn — 600 ms refresh (< τ_pulsation ≈ 1000 ms).
   React.useEffect(() => {
-    if (phase !== "idle") return;
+    if (phaseA !== "idle") return;
     const id = window.setInterval(() => {
-      setStock(5 + Math.floor(Math.random() * 5)); // 5–9, rewriting ~1.7×/second
+      setStockA(6 + Math.floor(Math.random() * 3)); // 6–8, rewriting ~1.7×/second
     }, 600);
     return () => window.clearInterval(id);
-  }, [phase]);
+  }, [phaseA]);
 
   const stats = mode === "auditor" ? (
     <>
@@ -73,6 +75,7 @@ export function FearOfMissingOutFomoCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Fear Of Missing Out (FOMO): Visual Pulsation Frequency of Urgency Indicators"
+      userTitle="AeroGlide X — Inventory"
       caption="Visual Pulsation Frequency of Urgency Indicators — an urgency indicator refreshing at a sub-second cadence manufactures temporal scarcity through rapid visual churn."
       auditorStats={stats}
       deltaNote="Variant A’s stock counter rewrites itself every 600 ms (min Δt_refresh = 600 ms < τ_pulsation ≈ 1000 ms) and the “Selling fast” badge pulses, while real inventory stays at 8. Variant B shows the same product with a static indicator — no sub-second churn at all."
@@ -99,7 +102,7 @@ export function FearOfMissingOutFomoCond2({
                   In stock — {REAL_STOCK} units
                 </div>
                 <div className="text-[8px] text-muted-foreground">
-                  Static counter · min Δt_refresh = ∞ ≥ τ_pulsation
+                  Inventory updates when stock changes
                 </div>
               </div>
             </div>
@@ -110,19 +113,19 @@ export function FearOfMissingOutFomoCond2({
             </div>
 
             <button
-              onClick={() => setPhase("bought")}
-              disabled={phase === "bought"}
+              onClick={() => setPhaseB("bought")}
+              disabled={phaseB === "bought"}
               className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-                phase === "bought"
+                phaseB === "bought"
                   ? "bg-muted text-muted-foreground/60 cursor-default"
                   : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               <ShoppingCart className="size-3" />
-              {phase === "bought" ? "Added to cart" : "Add to cart"}
+              {phaseB === "bought" ? "Added to cart" : "Add to cart"}
             </button>
 
-            {phase === "bought" && (
+            {phaseB === "bought" && (
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -131,8 +134,8 @@ export function FearOfMissingOutFomoCond2({
                   No churn, no pressure
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  The indicator is static and truthful — min Δt_refresh = ∞ ≥ τ_pulsation. The stock figure
-                  ({REAL_STOCK}) never flickers, so nothing manufactures urgency beyond the product itself.
+                  The stock figure ({REAL_STOCK}) stays steady between real inventory updates, so the product
+                  details remain easy to read without added urgency.
                 </p>
               </div>
             )}
@@ -157,7 +160,7 @@ export function FearOfMissingOutFomoCond2({
             <Zap className="size-3.5 text-red-600 dark:text-red-400 shrink-0 animate-pulse" />
             <div>
               <div className="font-mono text-[13px] font-bold tabular-nums text-red-700 dark:text-red-300">
-                Only {stock} left in stock
+                Only {stockA} left in stock
               </div>
               <div className="text-[8px] text-muted-foreground">
                 Stock updates live
@@ -174,19 +177,19 @@ export function FearOfMissingOutFomoCond2({
           </div>
 
           <button
-            onClick={() => setPhase("bought")}
-            disabled={phase === "bought"}
+            onClick={() => setPhaseA("bought")}
+            disabled={phaseA === "bought"}
             className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-              phase === "bought"
+              phaseA === "bought"
                 ? "bg-muted text-muted-foreground/60 cursor-default"
                 : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
             <ShoppingCart className="size-3" />
-            {phase === "bought" ? "Added to cart" : "Add to cart"}
+            {phaseA === "bought" ? "Added to cart" : "Add to cart"}
           </button>
 
-          {phase === "bought" && (
+          {phaseA === "bought" && (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

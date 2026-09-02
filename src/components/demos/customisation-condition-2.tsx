@@ -54,24 +54,32 @@ export function CustomisationCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [onIds, setOnIds] = React.useState<string[]>(
+  const [onIdsA, setOnIdsA] = React.useState<string[]>(
     DARK_TOGGLES.filter((t) => t.on).map((t) => t.id)
   );
-  const [openGroups, setOpenGroups] = React.useState<Record<string, boolean>>({
+  const [onIdsB, setOnIdsB] = React.useState<string[]>(
+    DARK_TOGGLES.filter((t) => t.on).map((t) => t.id)
+  );
+  const [openGroupsA, setOpenGroupsA] = React.useState<Record<string, boolean>>({
     "Personalised advertising": true,
     "Data sharing": false,
     "Measurement": false,
   });
-  const [saved, setSaved] = React.useState(false);
+  const [savedA, setSavedA] = React.useState(false);
+  const [savedB, setSavedB] = React.useState(false);
 
   const reset = () => {
-    setOnIds(DARK_TOGGLES.filter((t) => t.on).map((t) => t.id));
-    setOpenGroups({ "Personalised advertising": true, "Data sharing": false, "Measurement": false });
-    setSaved(false);
+    setOnIdsA(DARK_TOGGLES.filter((t) => t.on).map((t) => t.id));
+    setOnIdsB(DARK_TOGGLES.filter((t) => t.on).map((t) => t.id));
+    setOpenGroupsA({ "Personalised advertising": true, "Data sharing": false, "Measurement": false });
+    setSavedA(false);
+    setSavedB(false);
   };
 
-  const toggle = (id: string) =>
-    setOnIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+  const toggle = (
+    id: string,
+    setOnIds: React.Dispatch<React.SetStateAction<string[]>>,
+  ) => setOnIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
 
   const stats = mode === "auditor" ? (
     <>
@@ -94,7 +102,13 @@ export function CustomisationCond2({
     </>
   ) : null;
 
-  const renderToggle = (t: ToggleDef, accent: "rose" | "emerald", offsetPx: number) => (
+  const renderToggle = (
+    t: ToggleDef,
+    accent: "rose" | "emerald",
+    offsetPx: number,
+    onIds: string[],
+    setOnIds: React.Dispatch<React.SetStateAction<string[]>>,
+  ) => (
     <label
       key={t.id}
       className={`flex cursor-pointer items-start gap-2 rounded-md border p-1.5 transition-colors ${
@@ -107,13 +121,13 @@ export function CustomisationCond2({
       <input
         type="checkbox"
         checked={onIds.includes(t.id)}
-        onChange={() => toggle(t.id)}
+        onChange={() => toggle(t.id, setOnIds)}
         className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${accent === "rose" ? "accent-red-500" : "accent-green-500"}`}
       />
       <span className="min-w-0 flex-1">
         <span className="block text-[10px] leading-relaxed text-foreground/80">{t.label}</span>
         <span className="mt-0.5 block font-mono text-[8px] tabular-nums text-muted-foreground/50">
-          offsetX = {offsetPx}px
+          {mode === "auditor" ? `offsetX = ${offsetPx}px` : offsetPx > 0 ? "Nested setting" : "Available in this section"}
         </span>
       </span>
     </label>
@@ -123,7 +137,11 @@ export function CustomisationCond2({
     name: string,
     toggles: ToggleDef[],
     accent: "rose" | "emerald",
-    groupDepth: number
+    groupDepth: number,
+    openGroups: Record<string, boolean>,
+    setOpenGroups: React.Dispatch<React.SetStateAction<Record<string, boolean>>>,
+    onIds: string[],
+    setOnIds: React.Dispatch<React.SetStateAction<string[]>>,
   ) => {
     const isOpen = openGroups[name];
     return (
@@ -143,7 +161,7 @@ export function CustomisationCond2({
         </button>
         {isOpen && (
           <div className="mt-1.5 space-y-1.5">
-            {toggles.map((t) => renderToggle(t, accent, (t.depth - groupDepth) * INDENT_STEP))}
+            {toggles.map((t) => renderToggle(t, accent, (t.depth - groupDepth) * INDENT_STEP, onIds, setOnIds))}
           </div>
         )}
       </div>
@@ -161,6 +179,7 @@ export function CustomisationCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Customisation (Interface Nesting): Visual Indentation Depth of Privacy Controls"
+      userTitle="Orbit — Advanced controls"
       caption="Visual Indentation Depth of Privacy Controls — privacy toggles are pushed deeper and deeper into nested groups until their mean horizontal offset exceeds the &tau;_indent threshold."
       auditorStats={stats}
       deltaNote={`In Variant A the privacy controls are buried in nested groups with a mean offsetX of ${meanOffsetDark.toFixed(1)}px (> τ_indent = ${TAU_INDENT}px) and a maximum of ${maxOffsetDark}px. Variant B renders the identical toggles flat at the root container — mean offsetX = 0px.`}
@@ -174,20 +193,20 @@ export function CustomisationCond2({
               </span>
             </div>
             <div className="space-y-1.5">
-              {DARK_TOGGLES.map((t) => renderToggle({ ...t, depth: 0 }, "emerald", 0))}
+              {DARK_TOGGLES.map((t) => renderToggle({ ...t, depth: 0 }, "emerald", 0, onIdsB, setOnIdsB))}
             </div>
             <button
-              onClick={() => setSaved(true)}
+              onClick={() => setSavedB(true)}
               className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Save preferences
             </button>
             <p className="mt-2 text-[8px] text-muted-foreground/60">
-              All toggles at offsetX = 0px — mean indentation {0}px.
+              All toggles are available directly from this settings list.
             </p>
           </div>
 
-          {saved && (
+          {savedB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -196,8 +215,7 @@ export function CustomisationCond2({
                 Preferences saved
               </div>
               <p className="mt-0.5 text-muted-foreground">
-                Every control sat on the root settings container. Mean offsetX = 0px &le;
-                &tau;_indent = {TAU_INDENT}px — nothing was visually obfuscated by nesting.
+                Every control was visible in the same settings list, without extra groups to open.
               </p>
             </div>
           )}
@@ -213,17 +231,17 @@ export function CustomisationCond2({
             </span>
           </div>
           <div className="space-y-1.5">
-            {groups.map((g) => renderGroup(g.name, g.toggles, "rose", g.depth))}
+            {groups.map((g) => renderGroup(g.name, g.toggles, "rose", g.depth, openGroupsA, setOpenGroupsA, onIdsA, setOnIdsA))}
           </div>
           <button
-            onClick={() => setSaved(true)}
+            onClick={() => setSavedA(true)}
             className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
           >
             Save preferences
           </button>
         </div>
 
-        {mode === "auditor" && saved && (
+        {mode === "auditor" && savedA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

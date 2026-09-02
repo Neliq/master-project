@@ -64,6 +64,7 @@ export function ReducedFrictionCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Reduced Friction: Semantic Absence of Confirmation Language"
+      userTitle="Harbor — Confirm changes"
       caption="Semantic Absence of Confirmation Language — a high-commitment action fires with no confirmation-seeking or reversibility-assuring text node anywhere on the path."
       auditorStats={stats}
       deltaNote="In Variant A the button is a promotional node (“Start my plan”) and the path contains no confirmation language at all (Match = False). In Variant B the very same commitment is preceded by “This cannot be undone” and the button itself reads “Confirm purchase” — a confirmation node exists on the path."
@@ -104,11 +105,10 @@ export function ReducedFrictionCond3({
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
-                  Match(T(n), Pattern_confirm) = True
+                  Purchase confirmed
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  The path from offer to charge contained a confirmation node: the warning line and the
-                  “Confirm purchase” button itself. The commitment was explicit, not momentum-driven.
+                  The warning and the confirmation button made the recurring charge clear before you committed.
                 </p>
               </div>
             )}
@@ -140,6 +140,7 @@ export function ReducedFrictionCond3({
 
           <button
             onClick={() => setACommitted(true)}
+            disabled={aCommitted}
             className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Start my plan — {PLAN_PRICE}/month
@@ -152,13 +153,11 @@ export function ReducedFrictionCond3({
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Charged — no confirmation language
+                Plan started
               </div>
               <p className="text-muted-foreground mt-0.5">
-                {PLAN_PRICE} was charged to •••• 4242. Scanning the path from offer to commit: no “Are you sure?”,
-                no “This cannot be undone”, no “Confirm purchase” —{" "}
-                <strong className="text-foreground">¬∃ n ∈ Path(v_pre, v_commit) : Match(T(n), Pattern_confirm) = True</strong>.
-                The only text around the button was promotional.
+                {PLAN_PRICE} was charged to •••• 4242. The plan started immediately from the offer page,
+                where the surrounding copy focused on the benefits rather than confirming the recurring charge.
               </p>
             </div>
           )}

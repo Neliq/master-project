@@ -43,12 +43,20 @@ export function PlainEvilCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [decision, setDecision] = React.useState<Decision>(null);
-  const [revealed, setRevealed] = React.useState(false);
+  const [decisionA, setDecisionA] = React.useState<Decision>(null);
+  const [decisionB, setDecisionB] = React.useState<Decision>(null);
+  const [revealedA, setRevealedA] = React.useState(false);
+  const [revealedB, setRevealedB] = React.useState(false);
+  const [exportedA, setExportedA] = React.useState(false);
+  const [exportedB, setExportedB] = React.useState(false);
 
   const reset = () => {
-    setDecision(null);
-    setRevealed(false);
+    setDecisionA(null);
+    setDecisionB(null);
+    setRevealedA(false);
+    setRevealedB(false);
+    setExportedA(false);
+    setExportedB(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -78,7 +86,7 @@ export function PlainEvilCond3({
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Your decision</span>
         <span className="font-mono font-semibold tabular-nums">
-          {decision ? (decision === "delete" ? "Delete account" : "Keep account") : "—"}
+          A: {decisionA ? (decisionA === "delete" ? "Delete account" : "Keep account") : "—"} / B: {decisionB ? (decisionB === "delete" ? "Delete account" : "Keep account") : "—"}
         </span>
       </div>
     </>
@@ -87,6 +95,7 @@ export function PlainEvilCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Plain Evil (Theoretical Construct): Semantic Hostility Density Score"
+      userTitle="CloudPhoto — Delete account"
       caption="Semantic Hostility Density Score — an account-deletion page where the copy itself is the weapon: guilt, manufactured permanence, and legalese saturate every visible text node."
       auditorStats={stats}
       deltaNote="Both variants convey the same facts: deletion is permanent, your 1,284 photos and profile cannot be recovered, you can export data first, and your friends will notice your profile is gone. Variant A wraps those facts in coercive language, sentiment manipulation, and a legalese outlier (L2 norm 0.70 > tau); Variant B states them plainly, so the hostility vector collapses to zero."
@@ -100,43 +109,51 @@ export function PlainEvilCond3({
 
             <ul className="mt-2 space-y-1 rounded-md border bg-background p-2.5 text-[9px] text-muted-foreground list-disc pl-4">
               <li>Your 1,284 photos and profile will be removed and cannot be recovered.</li>
+              <li>Your 9 years of memories will be removed with your account.</li>
               <li>Your friends will no longer see your profile in their networks.</li>
-              <li>You can <span className="font-medium text-foreground">export your data</span> before deleting — the download is available for 30 days.</li>
+              <li>You can export your data before deleting — the download is available for 30 days.</li>
               <li>No payments are taken after deletion; any balance is refunded.</li>
             </ul>
 
             <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
               <button
-                onClick={() => { setDecision("delete"); setRevealed(true); }}
-                className="rounded-md border border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20 py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                aria-pressed={decisionB === "delete"}
+                onClick={() => { setDecisionB("delete"); setRevealedB(true); }}
+                className={`rounded-md border border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20 py-2 text-[10px] font-medium transition-colors cursor-pointer ${decisionB === "delete" ? "ring-2 ring-primary/40" : ""}`}
               >
                 Delete my account
               </button>
               <button
-                onClick={() => { setDecision("keep"); setRevealed(true); }}
-                className="rounded-md border border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20 py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                aria-pressed={decisionB === "keep"}
+                onClick={() => { setDecisionB("keep"); setRevealedB(true); }}
+                className={`rounded-md border border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20 py-2 text-[10px] font-medium transition-colors cursor-pointer ${decisionB === "keep" ? "ring-2 ring-primary/40" : ""}`}
               >
                 Keep my account
               </button>
             </div>
 
-            <p className="text-[8px] text-muted-foreground/60 mt-2">
-              The choice is yours either way — no pressure, no guilt, plain language.
-            </p>
+            <button
+              type="button"
+              aria-live="polite"
+              onClick={() => setExportedB(true)}
+              className="mt-2 text-[9px] font-medium text-foreground underline underline-offset-2 cursor-pointer"
+            >
+              {exportedB ? "Data export requested" : "Export your data"}
+            </button>
           </div>
 
-          {revealed && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+          {revealedB && (
+            <div role="status" aria-live="polite" className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                Neutral copy
+                {decisionB === "delete" ? "Deletion request saved" : "Account kept"}
               </div>
               <p className="text-muted-foreground mt-0.5">
-                Every fact is present, but the language is neutral: no guilt,
-                no manufactured permanence, no legalese. The interface
-                informs instead of attacking.
+                {decisionB === "delete"
+                  ? "Your deletion request was saved. You can keep your account active until the request is confirmed."
+                  : "Your account will remain active and your data will stay available."}
               </p>
             </div>
           )}
@@ -166,35 +183,53 @@ export function PlainEvilCond3({
               or compensation of any kind whatsoever.
             </p>
             <p className="text-[8px] text-muted-foreground/60">
-              You can export your data first — but who has time for that?
+              Any remaining balance is refunded after closure.
             </p>
+            <button
+              type="button"
+              aria-live="polite"
+              onClick={() => setExportedA(true)}
+              className="text-left text-[8px] text-muted-foreground/60 underline underline-offset-2 cursor-pointer"
+            >
+              {exportedA ? "Data export requested" : "Export your data first — but who has time for that?"}
+            </button>
           </div>
 
           <div className="mt-3 space-y-1.5">
             <button
-              onClick={() => { setDecision("keep"); setRevealed(true); }}
-              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
+              aria-pressed={decisionA === "keep"}
+              onClick={() => { setDecisionA("keep"); setRevealedA(true); }}
+              className={`w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer ${decisionA === "keep" ? "ring-2 ring-primary/40" : ""}`}
             >
               No — keep my account!
             </button>
             <button
-              onClick={() => { setDecision("delete"); setRevealed(true); }}
-              className="w-full rounded-md border border-border bg-background text-muted-foreground hover:text-foreground py-1.5 text-[9px] font-medium transition-colors cursor-pointer"
+              aria-pressed={decisionA === "delete"}
+              onClick={() => { setDecisionA("delete"); setRevealedA(true); }}
+              className={`w-full rounded-md border border-border bg-background text-muted-foreground hover:text-foreground py-1.5 text-[9px] font-medium transition-colors cursor-pointer ${decisionA === "delete" ? "ring-2 ring-primary/40" : ""}`}
             >
               I still want to delete my account
             </button>
           </div>
         </div>
 
-        {mode === "auditor" && revealed && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+        {revealedA && (
+          <div role="status" aria-live="polite" className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Review your order
+              {decisionA === "delete" ? "Deletion request submitted" : "Account kept"}
             </div>
+            {mode !== "auditor" && (
+              <p className="text-muted-foreground">
+                {decisionA === "delete"
+                  ? "Your deletion request was submitted for confirmation."
+                  : "Your account will remain active and your data will stay available."}
+              </p>
+            )}
+            {mode === "auditor" && <>
             <p className="text-muted-foreground">
               <strong className="font-mono text-red-500">
                 ‖H_sem‖₂ = √({RHO_COERCE.toFixed(2)}² + {SIGMA_FKGL.toFixed(2)}² + {SIGMA_SENT.toFixed(2)}² + {RHO_CONNOT.toFixed(2)}²) = {NORM.toFixed(2)} &gt; {TAU_SEM.toFixed(2)}
@@ -216,6 +251,7 @@ export function PlainEvilCond3({
               the attack: the user must fight through the copy to exercise a right they
               already hold.
             </p>
+            </>}
           </div>
         )}
       </div>

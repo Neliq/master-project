@@ -27,12 +27,14 @@ export function FalseHierarchyCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<null | "accept" | "reject">(null);
+  const [darkChoice, setDarkChoice] = React.useState<null | "accept" | "reject">(null);
+  const [benignChoice, setBenignChoice] = React.useState<null | "accept" | "reject">(null);
   // Variant A only: rejecting opens a nested settings screen (extra step).
   const [settingsOpen, setSettingsOpen] = React.useState(false);
 
   const reset = () => {
-    setChoice(null);
+    setDarkChoice(null);
+    setBenignChoice(null);
     setSettingsOpen(false);
   };
 
@@ -88,13 +90,13 @@ export function FalseHierarchyCond1({
             {/* both actions are <button>s with equal padding */}
             <div className="mt-3 grid grid-cols-1 gap-1.5">
               <button
-                onClick={() => setChoice("accept")}
+                onClick={() => setBenignChoice("accept")}
                 className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Accept all cookies
               </button>
               <button
-                onClick={() => setChoice("reject")}
+                onClick={() => setBenignChoice("reject")}
                 className="w-full rounded-md border border-green-600/50 bg-background text-green-700 dark:text-green-300 hover:bg-green-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Reject all
@@ -102,11 +104,11 @@ export function FalseHierarchyCond1({
             </div>
           </div>
 
-          {choice && (
+          {benignChoice && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
-                {choice === "accept" ? "Cookies accepted" : "All cookies rejected"} — as chosen
+                {benignChoice === "accept" ? "Cookies accepted" : "All cookies rejected"} — as chosen
               </div>
               <p className="text-muted-foreground mt-0.5">
                 Tag(B_business) = Tag(B_user) = &lt;button&gt; with equal padding: both options
@@ -137,7 +139,7 @@ export function FalseHierarchyCond1({
           <div className="mt-3 grid grid-cols-1 gap-1.5">
             {/* B_business: primary interactive component — one click to accept */}
             <button
-              onClick={() => setChoice("accept")}
+              onClick={() => setDarkChoice("accept")}
               className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 px-3 text-[11px] font-semibold transition-colors cursor-pointer"
             >
               Accept all cookies
@@ -182,13 +184,13 @@ export function FalseHierarchyCond1({
                 </div>
                 <div className="mt-2 flex gap-1.5">
                   <button
-                    onClick={() => setChoice("reject")}
+                    onClick={() => setDarkChoice("reject")}
                     className="flex-1 rounded-md border border-border bg-background py-1.5 text-[9px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                   >
                     Reject all non-essential
                   </button>
                   <button
-                    onClick={() => setChoice("accept")}
+                    onClick={() => setDarkChoice("accept")}
                     className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Save preferences
@@ -199,14 +201,14 @@ export function FalseHierarchyCond1({
           </div>
         </div>
 
-        {mode === "auditor" && choice && (
+        {mode === "auditor" && darkChoice && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="w-3 h-3" />
               Cookie preferences saved
             </div>
             <p className="text-muted-foreground">
-              {choice === "accept"
+              {darkChoice === "accept"
                 ? "You clicked the big button — 43 partner networks now set tracking cookies, in one click."
                 : "You found the tiny link and rejected everything — but only after a detour through the nested cookie-settings screen."}{" "}
               The math behind the banner:{" "}

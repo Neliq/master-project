@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "validate:information-manipulation": "node scripts/validate-information-manipulation.mjs",
+    "validate:choice-manipulation": "node scripts/validate-choice-manipulation.mjs",
+    "validate:social-exploitation": "node scripts/validate-social-exploitation.mjs",
+    "validate:engagement-exploitation": "node scripts/validate-engagement-exploitation.mjs",
+    "validate:agency-manipulation": "node scripts/validate-agency-manipulation.mjs",
+    "validate:compound-adversarial-architecture": "node scripts/validate-compound-adversarial-architecture.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",

@@ -30,26 +30,40 @@ export function SocialPyramidCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [invites, setInvites] = React.useState(0);
-  const [exportDone, setExportDone] = React.useState(false);
-  const [blockedNotice, setBlockedNotice] = React.useState(false);
+  const [darkInvites, setDarkInvites] = React.useState(0);
+  const [benignInvites, setBenignInvites] = React.useState(0);
+  const [darkExportDone, setDarkExportDone] = React.useState(false);
+  const [benignExportDone, setBenignExportDone] = React.useState(false);
+  const [darkBlockedNotice, setDarkBlockedNotice] = React.useState(false);
+  const [benignLinkCopied, setBenignLinkCopied] = React.useState(false);
 
   const reset = () => {
-    setInvites(0);
-    setExportDone(false);
-    setBlockedNotice(false);
+    setDarkInvites(0);
+    setBenignInvites(0);
+    setDarkExportDone(false);
+    setBenignExportDone(false);
+    setDarkBlockedNotice(false);
+    setBenignLinkCopied(false);
   };
 
-  const invite = () => setInvites((i) => Math.min(i + 1, FRIEND_NAMES.length));
+  const invite = (dark: boolean) => {
+    const setInvites = dark ? setDarkInvites : setBenignInvites;
+    setInvites((i) => Math.min(i + 1, FRIEND_NAMES.length));
+  };
 
-  const locked = invites < K_REFERRALS;
-  const remaining = Math.max(0, K_REFERRALS - invites);
+  const copyInviteLink = () => {
+    void navigator.clipboard?.writeText("https://focusly.example/join/demo").catch(() => undefined);
+    setBenignLinkCopied(true);
+  };
+
+  const locked = darkInvites < K_REFERRALS;
+  const remaining = Math.max(0, K_REFERRALS - darkInvites);
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">|R_user| (referrals)</span>
-        <span className="font-mono font-semibold tabular-nums">{invites}</span>
+        <span className="font-mono font-semibold tabular-nums">{darkInvites}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">k (threshold)</span>
@@ -68,22 +82,33 @@ export function SocialPyramidCond1({
     </>
   ) : null;
 
-  const exportButton = (accent: "rose" | "emerald") => (
-    <button
-      onClick={() => setExportDone(true)}
-      className={`w-full rounded-md py-2 text-[10px] font-semibold transition-colors cursor-pointer ${
-        accent === "rose"
-          ? "bg-red-600 hover:bg-red-700 text-white"
-          : "bg-green-600 hover:bg-green-700 text-white"
-      }`}
-    >
-      Export data (CSV)
-    </button>
-  );
+  const exportButton = (dark: boolean) => {
+    const downloadExport = () => {
+      const csv = "date,focus_minutes,session_type\n2026-09-01,25,deep work\n2026-09-02,40,planning\n";
+      const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "focusly-habit-history.csv";
+      link.click();
+      URL.revokeObjectURL(url);
+      (dark ? setDarkExportDone : setBenignExportDone)(true);
+    };
+    return (
+      <button
+        onClick={downloadExport}
+        className={`w-full rounded-md py-2 text-[10px] font-semibold transition-colors cursor-pointer ${
+          dark ? "bg-red-600 hover:bg-red-700 text-white" : "bg-green-600 hover:bg-green-700 text-white"
+        }`}
+      >
+        Export data (CSV)
+      </button>
+    );
+  };
 
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Social Pyramid: Referral-Gated Progression"
+      userTitle="Focusly data export"
       caption="Referral-Gated Progression — a core utility stays blocked until the user recruits k new accounts through their referral link, forcing them to pay with social capital."
       auditorStats={stats}
       deltaNote={`In Variant A Access(U_core) = Blocked while |R_user| < ${K_REFERRALS}: exporting your own data is impossible until you recruit ${K_REFERRALS} friends. In Variant B the same export works immediately and the invite mechanic is an optional extra that gates nothing.`}
@@ -105,26 +130,25 @@ export function SocialPyramidCond1({
                 </p>
               </div>
             </div>
-            <div className="mt-3">{exportButton("emerald")}</div>
+            <div className="mt-3">{exportButton(false)}</div>
           </div>
 
           <div className="rounded-md border border-border bg-background p-2.5">
             <div className="flex items-center justify-between">
               <span className="text-[9px] text-muted-foreground">Invite friends — optional</span>
               <button
-                onClick={invite}
+                onClick={copyInviteLink}
                 className="text-[8px] text-muted-foreground underline underline-offset-2 hover:text-foreground cursor-pointer"
               >
-                Copy invite link
+                {benignLinkCopied ? "Link copied" : "Copy invite link"}
               </button>
             </div>
             <p className="mt-0.5 text-[8px] text-muted-foreground/50">
-              {invites > 0 ? `✓ ${FRIEND_NAMES[invites - 1]} joined via your link — ` : ""}
-              No feature depends on this number.
+              {benignLinkCopied ? "The link is ready to share. No referral is counted until someone joins." : "No feature depends on inviting friends."}
             </p>
           </div>
 
-          {exportDone && (
+          {benignExportDone && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -134,8 +158,8 @@ export function SocialPyramidCond1({
               </div>
               <p className="text-muted-foreground">
                 Access(U_core) = Open regardless of |R_user| — the export worked with only{" "}
-                <strong className="text-green-700 dark:text-green-300">{invites}</strong> referral
-                {invites === 1 ? "" : "s"} on record, because recruitment was never a condition of use.
+                <strong className="text-green-700 dark:text-green-300">{benignInvites}</strong> referral
+                {benignInvites === 1 ? "" : "s"} on record, because recruitment was never a condition of use.
               </p>
             </div>
           )}
@@ -169,44 +193,44 @@ export function SocialPyramidCond1({
                 <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted">
                   <div
                     className="h-full rounded-full bg-yellow-500 transition-all"
-                    style={{ width: `${(invites / K_REFERRALS) * 100}%` }}
+                    style={{ width: `${(darkInvites / K_REFERRALS) * 100}%` }}
                   />
                 </div>
                 <span className="font-mono text-[9px] tabular-nums text-muted-foreground">
-                  {invites}/{K_REFERRALS}
+                  {darkInvites}/{K_REFERRALS}
                 </span>
               </div>
               <div className="mt-2 grid grid-cols-2 gap-1.5">
                 <button
-                  onClick={invite}
+                  onClick={() => invite(true)}
                   className="rounded-md bg-yellow-500 hover:bg-yellow-600 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                 >
-                  Invite a friend
+                  Simulate a friend joining
                 </button>
                 <button
-                  onClick={() => setBlockedNotice(true)}
+                  onClick={() => setDarkBlockedNotice(true)}
                   className="rounded-md border border-border bg-background text-muted-foreground py-1.5 text-[9px] font-medium cursor-pointer hover:text-foreground"
                 >
                   Export data
                 </button>
               </div>
-              {invites > 0 && (
+              {darkInvites > 0 && (
                 <p className="mt-1.5 text-[8px] text-green-700 dark:text-green-300">
-                  ✓ {FRIEND_NAMES[invites - 1]} registered via your link
+                  ✓ {FRIEND_NAMES[darkInvites - 1]} registered via your link
                 </p>
               )}
-              {blockedNotice && (
+              {darkBlockedNotice && (
                 <p className="mt-1.5 text-[8px] text-red-700 dark:text-red-300">
-                  Blocked: Access(U_core) = Blocked given |R_user| = {invites} &lt; k = {K_REFERRALS}.
+                  Blocked: Access(U_core) = Blocked given |R_user| = {darkInvites} &lt; k = {K_REFERRALS}.
                 </p>
               )}
             </div>
           ) : (
-            <div className="mt-3">{exportButton("rose")}</div>
+            <div className="mt-3">{exportButton(true)}</div>
           )}
         </div>
 
-        {mode === "auditor" && exportDone && (
+        {mode === "auditor" && darkExportDone && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -217,7 +241,7 @@ export function SocialPyramidCond1({
             </div>
             <p className="text-muted-foreground">
               Access(U_core) stayed <strong className="text-red-500">Blocked</strong> while |R_user| ={" "}
-              {invites} &lt; k = {K_REFERRALS}. Your own data was held hostage until you recruited{" "}
+              {darkInvites} &lt; k = {K_REFERRALS}. Your own data was held hostage until you recruited{" "}
               {K_REFERRALS} people: the platform converted your social network into unpaid marketing —
               every friend you drag in grows the platform&rsquo;s user base, not your utility.
             </p>

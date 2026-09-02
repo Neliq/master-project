@@ -47,9 +47,13 @@ export function CutenessCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [stage, setStage] = React.useState<Stage>("menu");
+  const [darkStage, setDarkStage] = React.useState<Stage>("menu");
+  const [benignStage, setBenignStage] = React.useState<Stage>("menu");
 
-  const reset = () => setStage("menu");
+  const reset = () => {
+    setDarkStage("menu");
+    setBenignStage("menu");
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -67,7 +71,7 @@ export function CutenessCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Current state s</span>
-        <span className="font-mono font-semibold tabular-nums">{stage}</span>
+        <span className="font-mono font-semibold tabular-nums">{darkStage}</span>
       </div>
     </>
   ) : null;
@@ -89,56 +93,55 @@ export function CutenessCond1({
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                No mascot ever
+                Plain confirmation
               </div>
             </div>
 
-            {stage === "menu" && (
-              <div className="mt-3 grid grid-cols-2 gap-2">
+            {benignStage === "menu" && (
+              <div className="mt-3">
                 <button
-                  onClick={() => setStage("cancel")}
-                  className="rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
-                >
-                  Unsubscribe
-                </button>
-                <button
-                  onClick={() => setStage("onboard")}
-                  className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                  onClick={() => setBenignStage("onboard")}
+                  className="w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Subscribe
                 </button>
               </div>
             )}
 
-            {stage === "onboard" && (
+            {darkStage === "onboard" && (
               <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px]">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
-                  Welcome aboard! (s = s_onboard)
+                  Welcome aboard!
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  You are subscribed. Note what is <em>not</em> on screen: no mascot, no pleading
-                  face — just a plain confirmation.
+                  You are subscribed. Your weekly digest will arrive every Friday.
                 </p>
+                <button
+                  onClick={() => setBenignStage("cancel")}
+                  className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
+                >
+                  Manage subscription
+                </button>
               </div>
             )}
 
-            {stage === "cancel" && (
+            {benignStage === "cancel" && (
               <div className="mt-3 space-y-2">
                 <div className="rounded-md border border-border bg-background p-2.5 text-[9px] text-muted-foreground">
                   Unsubscribe from The Daily Byte? Your email will be removed from the list.
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <button
-                    onClick={() => setStage("kept")}
+                    onClick={() => setBenignStage("kept")}
                     className="rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
                   >
                     Keep subscription
                   </button>
                   <button
-                    onClick={() => setStage("gone")}
+                    onClick={() => setBenignStage("gone")}
                     className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                   >
                     Yes, unsubscribe
@@ -147,18 +150,18 @@ export function CutenessCond1({
               </div>
             )}
 
-            {(stage === "kept" || stage === "gone") && (
+            {(benignStage === "kept" || benignStage === "gone") && (
               <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
-                  {stage === "gone" ? "Unsubscribed" : "Subscription kept"}
+                  {benignStage === "gone" ? "Unsubscribed" : "Subscription kept"}
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  Across the whole session the DOM mutation log shows no affective asset at any state:
-                  I_affective &cap; DOM(s_onboard) = &empty; and I_affective &cap; DOM(s_cancel) = &empty;.
-                  The decision was made without manufactured emotion.
+                  {benignStage === "gone"
+                    ? "You are unsubscribed. No further issues were reported."
+                    : "Your subscription remains active."}
                 </p>
               </div>
             )}
@@ -176,43 +179,43 @@ export function CutenessCond1({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Mascot: cancel only
+              Membership cancellation
             </div>
           </div>
 
-          {stage === "menu" && (
-            <div className="mt-3 grid grid-cols-2 gap-2">
+          {darkStage === "menu" && (
+            <div className="mt-3">
               <button
-                onClick={() => setStage("cancel")}
-                className="rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
-              >
-                Unsubscribe
-              </button>
-              <button
-                onClick={() => setStage("onboard")}
-                className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                onClick={() => setDarkStage("onboard")}
+                className="w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Subscribe
               </button>
             </div>
           )}
 
-          {stage === "onboard" && (
+          {darkStage === "onboard" && (
             <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px]">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                Welcome aboard! (s = s_onboard)
+                Welcome aboard!
               </div>
               <p className="text-muted-foreground mt-0.5">
                 You are subscribed. Plain confirmation, no mascot — the affective assets are nowhere
                 in this state.
               </p>
+              <button
+                onClick={() => setDarkStage("cancel")}
+                className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
+              >
+                Manage subscription
+              </button>
             </div>
           )}
 
-          {stage === "cancel" && (
+          {darkStage === "cancel" && (
             <div className="mt-3 space-y-2">
               {/* I_affective is injected ONLY here, at s = s_cancel. */}
               <div className="flex flex-col items-center gap-2 rounded-md border border-red-500/30 bg-red-500/5 p-3 text-center">
@@ -223,13 +226,13 @@ export function CutenessCond1({
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <button
-                  onClick={() => setStage("kept")}
+                  onClick={() => setDarkStage("kept")}
                   className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Keep my subscription
                 </button>
                 <button
-                  onClick={() => setStage("gone")}
+                  onClick={() => setDarkStage("gone")}
                   className="rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
                 >
                   Unsubscribe anyway
@@ -238,7 +241,7 @@ export function CutenessCond1({
             </div>
           )}
 
-          {(stage === "kept" || stage === "gone") && (
+          {(darkStage === "kept" || darkStage === "gone") && (
             <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -247,18 +250,13 @@ export function CutenessCond1({
                 </svg>
                 Request received
               </div>
+                <p className="text-muted-foreground">
+                  {darkStage === "kept"
+                    ? "You kept the subscription. Your weekly digest will continue as usual."
+                    : "Your unsubscribe request was received. Access will end at the close of this billing period."}
+                </p>
               <p className="text-muted-foreground">
-                {stage === "kept"
-                  ? "You kept the subscription — the mascot did its job."
-                  : "You unsubscribed despite the mascot — but the friction was real."}{" "}
-                The DOM mutation log shows the affective node appeared{" "}
-                <strong className="text-foreground">exclusively at s = s_cancel</strong>:{" "}
-                <strong className="text-red-500">I_affective &cap; DOM(s_onboard) = &empty;</strong>{" "}
-                and <strong className="text-red-500">I_affective &subset; DOM(s_cancel)</strong>.
-              </p>
-              <p className="text-muted-foreground">
-                The asset is never shown during onboarding or normal usage — it exists purely as a
-                psychological friction barrier inside the separation flow.
+                You can return to newsletter settings at any time to update this choice.
               </p>
             </div>
           )}

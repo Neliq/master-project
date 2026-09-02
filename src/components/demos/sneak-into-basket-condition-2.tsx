@@ -40,15 +40,17 @@ export function SneakIntoBasketCond2({
   onRestart?: () => void;
 } = {}) {
   // Variant B: user declines the suggested add-on
-  const [declined, setDeclined] = React.useState(false);
-  const [checkedOut, setCheckedOut] = React.useState(false);
+  const [declinedB, setDeclinedB] = React.useState(false);
+  const [checkedOutA, setCheckedOutA] = React.useState(false);
+  const [checkedOutB, setCheckedOutB] = React.useState(false);
 
   const reset = () => {
-    setDeclined(false);
-    setCheckedOut(false);
+    setDeclinedB(false);
+    setCheckedOutA(false);
+    setCheckedOutB(false);
   };
 
-  const totalB = HEADPHONES.price + (declined ? 0 : WARRANTY.price);
+  const totalB = HEADPHONES.price + (declinedB ? 0 : WARRANTY.price);
 
   const stats = mode === "auditor" ? (
     <>
@@ -86,6 +88,7 @@ export function SneakIntoBasketCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Sneak Into Basket: Visual Indistinguishability of Surcharged Items"
+      userTitle="Northstar — Cart review"
       caption="Visual Indistinguishability of Surcharged Items — the injected line item is rendered with the same chromatic and typographic properties as your own items, so it falls inside the camouflage radius and escapes notice."
       auditorStats={stats}
       deltaNote={`Both carts contain the same two lines: ${HEADPHONES.name} and ${WARRANTY.name}. In Variant A the warranty reuses the identical card styling (Δ_color = ${DELTA_DARK} < τ_camouflage = ${TAU_CAMOUFLAGE}), so it reads as part of your purchase. In Variant B the same line sits in a tinted, dashed, clearly-badged "suggested add-on" section (Δ_color = ${DELTA_BENIGN}), so nothing can be overlooked.`}
@@ -111,9 +114,9 @@ export function SneakIntoBasketCond2({
                 <span className="text-[10px] font-medium">{WARRANTY.name}</span>
                 <span className="font-mono text-[10px] font-semibold tabular-nums">{fmt(WARRANTY.price)}</span>
               </div>
-              {!declined ? (
+              {!declinedB ? (
                 <button
-                  onClick={() => setDeclined(true)}
+                  onClick={() => setDeclinedB(true)}
                   className="mt-1.5 w-full rounded border border-yellow-400/60 py-1 text-[8px] font-semibold text-yellow-700 dark:text-yellow-300 transition-colors hover:bg-yellow-500/10 cursor-pointer"
                 >
                   Decline — remove from order
@@ -126,18 +129,18 @@ export function SneakIntoBasketCond2({
             </div>
 
             <div className="mt-2 flex items-center justify-between border-t pt-2">
-              <span className="text-[9px] font-medium">Total {declined && <span className="text-muted-foreground">(warranty declined)</span>}</span>
+              <span className="text-[9px] font-medium">Total {declinedB && <span className="text-muted-foreground">(warranty declined)</span>}</span>
               <span className="font-mono text-[11px] font-bold tabular-nums text-green-600 dark:text-green-400">{fmt(totalB)}</span>
             </div>
             <button
-              onClick={() => setCheckedOut(true)}
+              onClick={() => setCheckedOutB(true)}
               className="mt-2 w-full rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
             >
               Pay {fmt(totalB)}
             </button>
           </div>
 
-          {mode === "auditor" && checkedOut && (
+          {mode === "auditor" && checkedOutB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <Eye className="h-3 w-3" /> Nothing camouflaged
@@ -145,7 +148,7 @@ export function SneakIntoBasketCond2({
               <p className="text-muted-foreground">
                 min ||v<sub>injected</sub> − v<sub>u</sub>||₂ = {DELTA_BENIGN} &gt; τ<sub>camouflage</sub> ({TAU_CAMOUFLAGE}):
                 the tinted background, dashed border, badge, and separate section keep the add-on visually apart from your
-                items. You paid {declined ? fmt(totalB) : fmt(HEADPHONES.price + WARRANTY.price)} — every dollar of it
+                items. You paid {declinedB ? fmt(totalB) : fmt(HEADPHONES.price + WARRANTY.price)} — every dollar of it
                 deliberate.
               </p>
             </div>
@@ -178,14 +181,14 @@ export function SneakIntoBasketCond2({
             <span className="font-mono text-[11px] font-bold tabular-nums text-red-600 dark:text-red-400">{fmt(HEADPHONES.price + WARRANTY.price)}</span>
           </div>
           <button
-            onClick={() => setCheckedOut(true)}
+            onClick={() => setCheckedOutA(true)}
             className="mt-2 w-full rounded-md bg-red-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
           >
             Pay {fmt(HEADPHONES.price + WARRANTY.price)}
           </button>
         </div>
 
-        {mode === "auditor" && checkedOut && (
+        {mode === "auditor" && checkedOutA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

@@ -30,9 +30,13 @@ export function PlayingByAppointmentCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [claimed, setClaimed] = React.useState(false);
+  const [claimedA, setClaimedA] = React.useState(false);
+  const [claimedB, setClaimedB] = React.useState(false);
 
-  const reset = () => setClaimed(false);
+  const reset = () => {
+    setClaimedA(false);
+    setClaimedB(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -58,6 +62,7 @@ export function PlayingByAppointmentCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Playing By Appointment: Visual Prominence of Temporal-Gating Indicators"
+      userTitle="Harvest Moon Festival"
       caption="Visual Prominence of Temporal-Gating Indicators — a pulsing, high-saturation countdown ballooned to viewport-dominant scale turns an artificial deadline into the central visual event."
       auditorStats={stats}
       deltaNote="Both variants show the identical event with the identical 02:59:41 remaining. Variant A renders the countdown as a giant pulsing, high-saturation block covering ~75% of the panel (A(N_temporal)/A_viewport > τ_appointment; Saturation > 0.8). Variant B shrinks the same timer to a small muted corner chip — the reward content leads, and the deadline merely informs."
@@ -97,19 +102,19 @@ export function PlayingByAppointmentCond2({
             </p>
 
             <button
-              onClick={() => setClaimed(true)}
-              disabled={claimed}
+              onClick={() => setClaimedB(true)}
+              disabled={claimedB}
               className={`mt-2 w-full rounded-md py-2 text-[10px] font-medium transition-all ${
-                claimed
+                claimedB
                   ? "bg-muted text-muted-foreground/50 cursor-default"
                   : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
-              {claimed ? "Reward claimed ✓" : "Claim event reward"}
+              {claimedB ? "Reward claimed ✓" : "Claim event reward"}
             </button>
           </div>
 
-          {claimed && (
+          {claimedB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -128,7 +133,7 @@ export function PlayingByAppointmentCond2({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="overflow-hidden rounded-md border bg-card">
-          <div className="animate-pulse    p-4 text-center">
+          <div className="animate-pulse bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 p-4 text-center">
             <p className="text-[9px] font-bold uppercase tracking-widest text-red-100">
               ⏰ Limited-time event ends soon!
             </p>
@@ -152,20 +157,20 @@ export function PlayingByAppointmentCond2({
             </p>
 
             <button
-              onClick={() => setClaimed(true)}
-              disabled={claimed}
+              onClick={() => setClaimedA(true)}
+              disabled={claimedA}
               className={`mt-2 w-full rounded-md py-2 text-[10px] font-bold transition-all ${
-                claimed
+                claimedA
                   ? "bg-muted text-muted-foreground/50 cursor-default"
                   : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
               }`}
             >
-              {claimed ? "Reward claimed ✓" : "Claim reward — before time runs out!"}
+              {claimedA ? "Reward claimed ✓" : "Claim reward — before time runs out!"}
             </button>
           </div>
         </div>
 
-        {mode === "auditor" && claimed && (
+        {mode === "auditor" && claimedA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

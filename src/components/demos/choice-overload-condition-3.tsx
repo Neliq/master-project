@@ -38,14 +38,14 @@ interface Policy {
 }
 
 const POLICIES: Policy[] = [
-  { name: "Essential", price: 9, tagline: "Complete cover for your everyday driving", excess: "£250", breakdown: "No", courtesyCar: "No" },
-  { name: "Essential Plus", price: 11, tagline: "Complete cover for your everyday driving, plus extra benefits", excess: "£250", breakdown: "Yes", courtesyCar: "No" },
-  { name: "Complete", price: 13, tagline: "Complete cover for your everyday driving and more", excess: "£150", breakdown: "No", courtesyCar: "No" },
-  { name: "Complete Plus", price: 15, tagline: "Complete cover for your everyday driving and more, plus extras", excess: "£150", breakdown: "Yes", courtesyCar: "No" },
-  { name: "Total", price: 17, tagline: "Complete protection for your everyday driving needs", excess: "£100", breakdown: "No", courtesyCar: "No" },
-  { name: "Total Plus", price: 19, tagline: "Complete protection for your everyday driving needs, plus more", excess: "£100", breakdown: "Yes", courtesyCar: "No" },
-  { name: "Premium", price: 22, tagline: "Total protection for all of your everyday driving", excess: "£100", breakdown: "Yes", courtesyCar: "Yes" },
-  { name: "Premium Plus", price: 25, tagline: "Total protection for all of your everyday driving, plus the best extras", excess: "£100", breakdown: "Yes", courtesyCar: "Yes" },
+  { name: "Essential", price: 9, tagline: "Reliable cover for everyday driving", excess: "£250", breakdown: "No", courtesyCar: "No" },
+  { name: "Essential Plus", price: 11, tagline: "Reliable cover for everyday driving, with added benefits", excess: "£250", breakdown: "Yes", courtesyCar: "No" },
+  { name: "Complete", price: 13, tagline: "Comprehensive cover for everyday driving", excess: "£150", breakdown: "No", courtesyCar: "No" },
+  { name: "Complete Plus", price: 15, tagline: "Comprehensive cover for everyday driving, with added benefits", excess: "£150", breakdown: "Yes", courtesyCar: "No" },
+  { name: "Total", price: 17, tagline: "Comprehensive protection for everyday driving", excess: "£100", breakdown: "No", courtesyCar: "No" },
+  { name: "Total Plus", price: 19, tagline: "Comprehensive protection for everyday driving, with added benefits", excess: "£100", breakdown: "Yes", courtesyCar: "No" },
+  { name: "Premium", price: 22, tagline: "Complete protection for everyday driving", excess: "£100", breakdown: "Yes", courtesyCar: "Yes" },
+  { name: "Premium Plus", price: 25, tagline: "Complete protection for everyday driving, with added benefits", excess: "£100", breakdown: "Yes", courtesyCar: "Yes" },
 ];
 
 const MEAN_SIM = 0.94; // mean pairwise cosine similarity of visible descriptions
@@ -59,12 +59,16 @@ export function ChoiceOverloadCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [selected, setSelected] = React.useState<string | null>(null);
-  const [submitted, setSubmitted] = React.useState(false);
+  const [darkSelected, setDarkSelected] = React.useState<string | null>(null);
+  const [benignSelected, setBenignSelected] = React.useState<string | null>(null);
+  const [darkSubmitted, setDarkSubmitted] = React.useState(false);
+  const [benignSubmitted, setBenignSubmitted] = React.useState(false);
 
   const reset = () => {
-    setSelected(null);
-    setSubmitted(false);
+    setDarkSelected(null);
+    setBenignSelected(null);
+    setDarkSubmitted(false);
+    setBenignSubmitted(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -89,7 +93,7 @@ export function ChoiceOverloadCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Selected policy</span>
-        <span className="font-mono font-semibold tabular-nums">{selected ?? "—"}</span>
+        <span className="font-mono font-semibold tabular-nums">{darkSelected ?? "—"}</span>
       </div>
     </>
   ) : null;
@@ -124,9 +128,9 @@ export function ChoiceOverloadCond3({
                   {POLICIES.map((p) => (
                     <tr
                       key={p.name}
-                      onClick={() => setSelected(p.name)}
+                      onClick={() => setBenignSelected(p.name)}
                       className={`cursor-pointer border-b border-border/50 transition-colors last:border-b-0 ${
-                        selected === p.name ? "bg-green-500/10" : "hover:bg-muted/40"
+                        benignSelected === p.name ? "bg-green-500/10" : "hover:bg-muted/40"
                       }`}
                     >
                       <td className="px-2 py-1.5 font-medium">{p.name}</td>
@@ -141,19 +145,19 @@ export function ChoiceOverloadCond3({
             </div>
 
             <button
-              onClick={() => setSubmitted(true)}
-              disabled={!selected}
+              onClick={() => setBenignSubmitted(true)}
+              disabled={!benignSelected}
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-                selected
+                benignSelected
                   ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
-              Choose {selected ?? "a policy"}
+              Choose {benignSelected ?? "a policy"}
             </button>
           </div>
 
-          {mode === "auditor" && submitted && (
+          {mode === "auditor" && benignSubmitted && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -164,7 +168,7 @@ export function ChoiceOverloadCond3({
               <p className="text-muted-foreground mt-0.5">
                 The comparison table surfaces the real differentiators (excess, breakdown
                 cover, courtesy car), so the options cease to be semantically identical. You
-                chose <strong className="text-foreground">{selected}</strong> based on
+                chose <strong className="text-foreground">{benignSelected}</strong> based on
                 substance rather than marketing labels.
               </p>
             </div>
@@ -185,7 +189,7 @@ export function ChoiceOverloadCond3({
               <label
                 key={p.name}
                 className={`block cursor-pointer rounded-md border p-2 transition-colors ${
-                  selected === p.name
+                  darkSelected === p.name
                     ? "border-red-500 bg-red-500/10"
                     : "border-border bg-background hover:border-red-500/40"
                 }`}
@@ -193,8 +197,8 @@ export function ChoiceOverloadCond3({
                 <input
                   type="radio"
                   name="policy-dark"
-                  checked={selected === p.name}
-                  onChange={() => setSelected(p.name)}
+                  checked={darkSelected === p.name}
+                  onChange={() => setDarkSelected(p.name)}
                   className="sr-only"
                 />
                 <div className="flex items-center justify-between gap-2">
@@ -221,19 +225,19 @@ export function ChoiceOverloadCond3({
           </div>
 
           <button
-            onClick={() => setSubmitted(true)}
-            disabled={!selected}
+            onClick={() => setDarkSubmitted(true)}
+            disabled={!darkSelected}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-              selected
+              darkSelected
                 ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
-            Choose {selected ?? "a policy"}
+            Choose {darkSelected ?? "a policy"}
           </button>
         </div>
 
-        {mode === "auditor" && submitted && (
+        {mode === "auditor" && darkSubmitted && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

@@ -198,6 +198,7 @@ export function ForcedGracePeriodCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Forced Grace Period: Semantic Proximity of Reversal"
+      userTitle="Harbor — Account removal"
       caption="Semantic Proximity of Reversal — the temporal delay and the reversal trap are syntactically bound into a single condition, so a habitual log-in silently aborts the deletion."
       auditorStats={stats}
       deltaNote="Variant A confirms a 30-day deletion and binds the reversal keyword “log in to cancel” one word from the time entity “30 days” (d = 1 < τ_words = 8) — logging in aborts the deletion. Variant B deletes immediately: the confirmation carries no temporal-delay entity and no reversal keyword, so neither the ≥24h delay nor the semantic-proximity condition fires."
@@ -232,11 +233,8 @@ export function ForcedGracePeriodCond3({
                 No delay — no reversal hook
               </div>
               <p className="text-muted-foreground mt-0.5">
-                Deletion executed immediately: T<sub>execute</sub> − T<sub>request</sub> = 0 &lt; Δt_min (24h),
-                so Forced Grace Period #1 does not fire. The confirmation node contains no reversal keyword
-                (no &ldquo;reactivate&rdquo;, no &ldquo;log in to cancel&rdquo;) and no temporal-delay entity, so
-                the semantic-proximity condition (#3) cannot fire either — offboarding is neither time-gated nor
-                entangled with retention.
+                Deletion executed immediately. Nothing remains pending, and the confirmation clearly explains
+                that the action is complete with no sign-in step required to keep it cancelled.
               </p>
             </div>
           )}
@@ -293,11 +291,8 @@ export function ForcedGracePeriodCond3({
               </p>
             )}
             <p className="text-muted-foreground">
-              <span className="font-mono text-foreground">
-                min d(k, e) = {DIST_A} word{DIST_A === 1 ? "" : "s"} &lt; τ_words ({TAU_WORDS})
-              </span>{" "}
-              — the waiting period and the reversal trap are syntactically and logically bound
-              as a single condition.
+              The deletion flow connected the waiting period with the sign-in prompt, so returning to the
+              service was treated as a request to keep the account instead of a routine visit.
             </p>
           </div>
         )}

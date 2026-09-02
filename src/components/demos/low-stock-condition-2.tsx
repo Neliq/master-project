@@ -71,6 +71,7 @@ export function LowStockCond2({
 
   const badgeDark = (
     <span
+      data-dp-color-signal
       className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-white animate-pulse"
       style={{ backgroundColor: `hsl(${HUE_DARK}, 85%, 45%)` }}
     >
@@ -84,6 +85,7 @@ export function LowStockCond2({
 
   const badgeBenign = (
     <span
+      data-dp-color-signal
       className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-white"
       style={{ backgroundColor: `hsl(${HUE_BENIGN}, 45%, 45%)` }}
     >

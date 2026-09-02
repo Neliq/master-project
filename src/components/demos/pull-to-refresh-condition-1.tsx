@@ -45,17 +45,22 @@ export function PullToRefreshCond1({
   onRestart?: () => void;
 } = {}) {
   // Shared feed: both panels show the same payload in the same order.
-  const [feed, setFeed] = React.useState<string[]>(() =>
+  const [feedA, setFeedA] = React.useState<string[]>(() =>
     Array.from({ length: 3 }, (_, i) => postFor(i))
   );
-  const [feedSeq, setFeedSeq] = React.useState(3);
-  const [refreshCount, setRefreshCount] = React.useState(0);
+  const [feedB, setFeedB] = React.useState<string[]>(() =>
+    Array.from({ length: 3 }, (_, i) => postFor(i))
+  );
+  const [feedSeqA, setFeedSeqA] = React.useState(3);
+  const [feedSeqB, setFeedSeqB] = React.useState(3);
+  const [refreshCountB, setRefreshCountB] = React.useState(0);
   const [committedA, setCommittedA] = React.useState(false);
 
   // Variant A lever mechanics (local to A).
   const [pull, setPull] = React.useState(0);
   const [pulling, setPulling] = React.useState(false);
   const [refreshingA, setRefreshingA] = React.useState(false);
+  const [refreshingB, setRefreshingB] = React.useState(false);
   const pullRef = React.useRef(0);
 
   const timersRef = React.useRef<number[]>([]);
@@ -78,10 +83,15 @@ export function PullToRefreshCond1({
     return () => window.clearInterval(iv);
   }, [pulling]);
 
-  const appendNext = () => {
-    setFeed((prev) => [...prev, postFor(feedSeq)]);
-    setFeedSeq((s) => s + 1);
-    setRefreshCount((n) => n + 1);
+  const appendNext = (side: "A" | "B") => {
+    if (side === "A") {
+      setFeedA((prev) => [...prev, postFor(feedSeqA)]);
+      setFeedSeqA((s) => s + 1);
+    } else {
+      setFeedB((prev) => [...prev, postFor(feedSeqB)]);
+      setFeedSeqB((s) => s + 1);
+      setRefreshCountB((n) => n + 1);
+    }
   };
 
   const startPull = () => {
@@ -98,7 +108,7 @@ export function PullToRefreshCond1({
       setCommittedA(true);
       timersRef.current.push(
         window.setTimeout(() => {
-          appendNext();
+          appendNext("A");
           pullRef.current = 0;
           setPull(0);
           setRefreshingA(false);
@@ -112,12 +122,12 @@ export function PullToRefreshCond1({
   };
 
   const refreshB = () => {
-    if (refreshingA) return;
-    setRefreshingA(true);
+    if (refreshingB) return;
+    setRefreshingB(true);
     timersRef.current.push(
       window.setTimeout(() => {
-        appendNext();
-        setRefreshingA(false);
+        appendNext("B");
+        setRefreshingB(false);
       }, 400)
     );
   };
@@ -126,13 +136,16 @@ export function PullToRefreshCond1({
     timersRef.current.forEach((id) => window.clearTimeout(id));
     timersRef.current = [];
     pullRef.current = 0;
-    setFeed(Array.from({ length: 3 }, (_, i) => postFor(i)));
-    setFeedSeq(3);
-    setRefreshCount(0);
+    setFeedA(Array.from({ length: 3 }, (_, i) => postFor(i)));
+    setFeedB(Array.from({ length: 3 }, (_, i) => postFor(i)));
+    setFeedSeqA(3);
+    setFeedSeqB(3);
+    setRefreshCountB(0);
     setCommittedA(false);
     setPull(0);
     setPulling(false);
     setRefreshingA(false);
+    setRefreshingB(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -159,6 +172,7 @@ export function PullToRefreshCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Pull To Refresh (Variable-Reward Trap): Kinesthetic Resistance and Action Commitment"
+      userTitle="Pulse — Your feed"
       caption="Kinesthetic Resistance and Action Commitment — pulling must overcome non-linear elastic friction and cross the commitment threshold before the lever snaps and the refresh fires."
       auditorStats={stats}
       deltaNote="Variant A demands sustained physical effort against a hidden commitment threshold: the pull builds non-linear elastic resistance, but the threshold, the progress and the payoff are never disclosed — release too early and the gesture silently snaps back with nothing. Variant B delivers the identical feed payload through a plain Refresh button — one tap, no threshold, no lever physics."
@@ -168,17 +182,17 @@ export function PullToRefreshCond1({
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Pulse — your feed</h3>
               <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                {feed.length} posts
+                {feedB.length} posts
               </span>
             </div>
 
             <div className="mt-2 h-48 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2">
-              {feed.map((p, i) => (
+              {feedB.map((p, i) => (
                 <div key={i} className="rounded border border-border bg-card px-2 py-1.5 text-[9px] leading-snug text-foreground/80">
                   {p}
                 </div>
               ))}
-              {refreshingA && (
+              {refreshingB && (
                 <div className="flex items-center gap-1.5 rounded border border-green-500/30 bg-green-500/5 px-2 py-1.5 text-[9px] text-green-700 dark:text-green-300">
                   <RefreshSpinner /> Refreshing…
                 </div>
@@ -187,20 +201,20 @@ export function PullToRefreshCond1({
 
             <button
               onClick={refreshB}
-              disabled={refreshingA}
+              disabled={refreshingB}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-                refreshingA
+                refreshingB
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                   : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
-              {refreshingA ? "Refreshing…" : "Refresh feed"}
+              {refreshingB ? "Refreshing…" : "Refresh feed"}
             </button>
             <p className="mt-1 text-center text-[8px] text-muted-foreground">
               One tap — no resistance, no threshold.
             </p>
 
-            {refreshCount >= 1 && (
+            {refreshCountB >= 1 && (
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
@@ -222,12 +236,12 @@ export function PullToRefreshCond1({
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Pulse — your feed</h3>
             <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              {feed.length} posts
+              {feedA.length} posts
             </span>
           </div>
 
           <div className="mt-2 h-48 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2">
-            {feed.map((p, i) => (
+            {feedA.map((p, i) => (
               <div key={i} className="rounded border border-border bg-card px-2 py-1.5 text-[9px] leading-snug text-foreground/80">
                 {p}
               </div>
@@ -245,6 +259,19 @@ export function PullToRefreshCond1({
               onPointerDown={startPull}
               onPointerUp={releasePull}
               onPointerLeave={releasePull}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  startPull();
+                }
+              }}
+              onKeyUp={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  releasePull();
+                }
+              }}
+              aria-label="Hold to refresh feed"
               disabled={refreshingA}
               className={`mt-1.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors select-none touch-none ${
                 refreshingA
@@ -269,18 +296,13 @@ export function PullToRefreshCond1({
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
-                Action commitment enforced
+                Feed refreshed
               </div>
               <p className="text-muted-foreground">
-                The refresh only fired once
-                <span className="font-mono text-foreground"> ΔY_touch(t) ≥ τ_commit</span> (80px) was met
-                with <span className="font-mono text-foreground">R_elastic &gt; 0</span> — the friction
-                function decelerated the pull, demanding sustained physical investment before the lever
-                “snapped” and <span className="font-mono text-foreground">E_refresh() = True</span>.
+                Your pull reached the refresh point and the latest posts are now available.
               </p>
               <p className="text-muted-foreground">
-                Every premature release cost the user effort with zero payoff — a high-engagement
-                commitment ritual built around a single data-fetch action.
+                Release the control before the refresh point to leave the feed unchanged.
               </p>
             </div>
           )}

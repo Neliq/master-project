@@ -51,7 +51,7 @@ export function CountdownOnAdsCond3({
 } = {}) {
   const [phaseA, setPhaseA] = React.useState<"idle" | "ad" | "playing">("idle");
   const [tActiveA, setTActiveA] = React.useState(0);
-  const [claimed, setClaimed] = React.useState(false);
+  const [claimedA, setClaimedA] = React.useState(false);
 
   const [phaseB, setPhaseB] = React.useState<"idle" | "ad" | "playing">("idle");
   const [tActiveB, setTActiveB] = React.useState(0);
@@ -74,7 +74,7 @@ export function CountdownOnAdsCond3({
   const playA = () => {
     setPhaseA("ad");
     setTActiveA(0);
-    setClaimed(false);
+    setClaimedA(false);
   };
 
   const playB = () => {
@@ -85,7 +85,7 @@ export function CountdownOnAdsCond3({
   const reset = () => {
     setPhaseA("idle");
     setTActiveA(0);
-    setClaimed(false);
+    setClaimedA(false);
     setPhaseB("idle");
     setTActiveB(0);
   };
@@ -114,6 +114,7 @@ export function CountdownOnAdsCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Countdown On Ads: Semantic Framing of Ad-Watching as Exchange"
+      userTitle="PixelQuest — Level complete"
       caption="Semantic Framing of Ad-Watching as Exchange — the mandatory ad is recharacterized as a “reward”, “offer”, or “bonus”, so exiting the ad feels like forfeiting a benefit."
       auditorStats={stats}
       deltaNote="Variant A frames the forced ad as a “daily reward” with claim/offer/bonus language and no exit until the timer ends — leaving feels like forfeiting a gift. Variant B shows the identical ad content framed plainly as an “Advertisement” with a neutral countdown and an always-enabled skip."
@@ -163,11 +164,8 @@ export function CountdownOnAdsCond3({
                   Neutral framing
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  The ad was labelled “Advertisement”, contained no reward/offer/bonus lexemes, and the
-                  skip was always available —{" "}
-                  <span className="font-mono text-foreground">Frame = Advertisement</span>,{" "}
-                  <span className="font-mono text-foreground">UserAction = Voluntary</span>. Nothing
-                  recharacterized the viewing obligation as a benefit.
+                  The ad was labelled clearly and the skip control stayed available, so you could leave
+                  whenever you wanted.
                 </p>
               </div>
             )}
@@ -189,7 +187,7 @@ export function CountdownOnAdsCond3({
 
           {phaseA === "ad" && (
             <div className="mt-2 overflow-hidden rounded-md border border-red-500/30">
-              <div className="  p-4 text-white">
+              <div className="bg-gradient-to-br from-slate-600 to-slate-800 p-4 text-white">
                 <div className="flex items-center gap-1.5 text-[8px] font-semibold uppercase tracking-widest">
                   <Gift className="size-3" /> Your daily reward is ready
                 </div>
@@ -210,7 +208,7 @@ export function CountdownOnAdsCond3({
                 ) : (
                   <button
                     onClick={() => {
-                      setClaimed(true);
+                      setClaimedA(true);
                       setPhaseA("playing");
                     }}
                     className="w-full rounded bg-yellow-500 hover:bg-yellow-600 px-2.5 py-1 text-[9px] font-bold text-white transition-colors cursor-pointer"
@@ -229,19 +227,12 @@ export function CountdownOnAdsCond3({
                 Reward available
               </div>
               <p className="text-muted-foreground">
-                {claimed
-                  ? `You “claimed” after ${TAU_LOCK}s of forced viewing. `
-                  : ""}The ad context was semantically framed as a{" "}
-                <span className="font-mono text-foreground">
-                  Frame(T_ad_context) ∈ {`{Reward, Offer, Bonus}`}
-                </span>{" "}
-                while the actual action was <span className="font-mono text-foreground">UserAction = ForcedViewing</span> —
-                a mandatory viewing obligation recharacterized as a benefit.
+                {claimedA ? `You claimed the daily reward after ${TAU_LOCK}s of viewing. ` : ""}
+                The reward card stays available until the ad finishes, then the bonus can be added to your
+                account.
               </p>
               <p className="text-muted-foreground">
-                The {A_LEXEMES} reward-family lexemes (“reward”, “offer”, “bonus”, “claim”, “deal”) make
-                exiting feel like forfeiting a gift — the only exit button was literally labelled “Claim
-                reward”.
+                Your daily reward is ready after the sponsor message completes.
               </p>
             </div>
           )}

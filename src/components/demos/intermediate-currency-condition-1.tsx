@@ -62,8 +62,8 @@ export function IntermediateCurrencyCond1({
 
   const productCard = (onBuy: () => void, accent: "rose" | "emerald", showFiat: boolean) => (
     <div className="rounded-md border bg-background overflow-hidden">
-      <div className={`relative flex h-24 items-center justify-center ${accent === "rose" ? "  " : "  "}`}>
-        <div className={`flex h-12 w-12 items-center justify-center rounded-lg shadow ${accent === "rose" ? " " : " "}`}>
+      <div className={`relative flex h-24 items-center justify-center ${accent === "rose" ? "bg-gradient-to-br from-rose-500 via-fuchsia-500 to-indigo-600" : "bg-gradient-to-br from-emerald-500 via-cyan-500 to-blue-600"}`}>
+        <div className={`flex h-12 w-12 items-center justify-center rounded-lg border border-white/30 bg-white/15 shadow-lg ${accent === "rose" ? "rotate-[-8deg]" : "rotate-[8deg]"}`}>
           <Star className="h-6 w-6 text-white" />
         </div>
         <div className="absolute top-2 right-2 rounded-full bg-yellow-500 px-2 py-0.5 text-[8px] font-bold text-white">
@@ -193,7 +193,7 @@ export function IntermediateCurrencyCond1({
                 </div>
                 <div>
                   <h3 className="text-[11px] font-semibold">Top up your wallet</h3>
-                  <p className="text-[9px] text-muted-foreground">V_exchange — add coins to complete your purchase</p>
+                  <p className="text-[9px] text-muted-foreground">Add coins to your wallet to complete this purchase</p>
                 </div>
               </div>
               <div className="mb-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px] leading-relaxed">

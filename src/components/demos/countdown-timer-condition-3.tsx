@@ -191,7 +191,9 @@ export function CountdownTimerCond3({
               {fmt(seconds)}
             </span>
           </div>
-          <p className="mt-1.5 text-[9px] leading-relaxed text-foreground/85">{highlightLexemes(COPY_DARK)}</p>
+          <p className="mt-1.5 text-[9px] leading-relaxed text-foreground/85">
+            {mode === "auditor" ? highlightLexemes(COPY_DARK) : COPY_DARK}
+          </p>
         </div>
 
         <button

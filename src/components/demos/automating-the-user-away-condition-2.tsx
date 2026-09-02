@@ -246,6 +246,7 @@ export function AutomatingTheUserAwayCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Automating The User Away: Omission of the Interrupt Vector"
+      userTitle="Streamly — Membership renewal"
       caption="Omission of the Interrupt Vector — the renewal countdown is faster than human reaction time and there is no cancel button to intercept it."
       auditorStats={stats}
       deltaNote="Both variants present the same renewal notice for the same €9.99/mo plan. Variant A gives a 1.5-second countdown — below the ~2.0s human reaction baseline — and no cancel button anywhere on the screen (B_cancel ∉ DOM). Variant B offers a 5-second window and a prominent Cancel button."

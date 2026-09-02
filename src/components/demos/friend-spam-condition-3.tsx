@@ -30,9 +30,13 @@ export function FriendSpamCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [sent, setSent] = React.useState(false);
+  const [darkSent, setDarkSent] = React.useState(false);
+  const [benignSent, setBenignSent] = React.useState(false);
 
-  const reset = () => setSent(false);
+  const reset = () => {
+    setDarkSent(false);
+    setBenignSent(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -50,7 +54,7 @@ export function FriendSpamCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Identity spoofed?</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{sent ? "Yes" : "—"}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{darkSent ? "Yes" : "—"}</span>
       </div>
     </>
   ) : null;
@@ -58,6 +62,7 @@ export function FriendSpamCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Friend Spam: Sender Identity Spoofing"
+      userTitle="Invite your friends"
       caption="The corporate marketing payload is sent under the user's own name and avatar, so recipients trust it as a personal message."
       auditorStats={stats}
       deltaNote={`In Variant A the dispatch carries the same promotional copy but with the user's identity as the sender alias (SenderAlias = I_user, Author = I_corp) — recipients believe the user wrote it. Variant B attributes the same offer to PopSocial itself.`}
@@ -70,19 +75,19 @@ export function FriendSpamCond3({
               clearly branded as coming from PopSocial.
             </p>
             <button
-              onClick={() => setSent(true)}
-              disabled={sent}
+              onClick={() => setBenignSent(true)}
+              disabled={benignSent}
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-                sent
+                benignSent
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                   : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
-              {sent ? "Message sent" : "Send welcome offer"}
+              {benignSent ? "Message sent" : "Send welcome offer"}
             </button>
           </div>
 
-          {sent && (
+          {benignSent && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed space-y-2">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -119,20 +124,32 @@ export function FriendSpamCond3({
             We&rsquo;ll send a welcome offer to the 3 contacts you selected. Sent as your
             personal invite.
           </p>
+          <div className="mt-2 rounded-md border border-border bg-background p-2 text-[8px] text-muted-foreground">
+            <span className="font-semibold text-foreground/80">Recipients:</span> Mia Chen, Lucas Silva, Ava Johnson
+          </div>
           <button
-            onClick={() => setSent(true)}
-            disabled={sent}
+            onClick={() => setDarkSent(true)}
+            disabled={darkSent}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-              sent
+              darkSent
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                 : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
-            {sent ? "Message sent" : "Send welcome offer"}
+            {darkSent ? "Message sent" : "Send welcome offer"}
           </button>
         </div>
 
-        {sent && (
+        {mode === "user" && darkSent && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">Welcome offer sent</div>
+            <p className="mt-0.5 text-muted-foreground">
+              The offer was sent to Mia Chen, Lucas Silva, and Ava Johnson from your PopSocial profile.
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && darkSent && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-2">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

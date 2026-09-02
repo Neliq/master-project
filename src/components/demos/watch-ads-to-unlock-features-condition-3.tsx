@@ -33,32 +33,53 @@ export function WatchAdsToUnlockFeaturesCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [adState, setAdState] = React.useState<"idle" | "watching" | "done">("idle");
-  const [adLeft, setAdLeft] = React.useState(AD_SECONDS);
-  const [crateOpened, setCrateOpened] = React.useState(false);
+  const [adStateA, setAdStateA] = React.useState<"idle" | "watching" | "done">("idle");
+  const [adStateB, setAdStateB] = React.useState<"idle" | "watching" | "done">("idle");
+  const [adLeftA, setAdLeftA] = React.useState(AD_SECONDS);
+  const [adLeftB, setAdLeftB] = React.useState(AD_SECONDS);
+  const [crateOpenedA, setCrateOpenedA] = React.useState(false);
+  const [crateOpenedB, setCrateOpenedB] = React.useState(false);
 
   const reset = () => {
-    setAdState("idle");
-    setAdLeft(AD_SECONDS);
-    setCrateOpened(false);
+    setAdStateA("idle");
+    setAdStateB("idle");
+    setAdLeftA(AD_SECONDS);
+    setAdLeftB(AD_SECONDS);
+    setCrateOpenedA(false);
+    setCrateOpenedB(false);
   };
 
-  const watching = adState === "watching";
+  const watchingA = adStateA === "watching";
+  const watchingB = adStateB === "watching";
 
   React.useEffect(() => {
-    if (!watching) return;
+    if (!watchingA) return;
     const id = window.setInterval(() => {
-      setAdLeft((s) => (s > 0 ? s - 1 : 0));
+      setAdLeftA((s) => (s > 0 ? s - 1 : 0));
     }, 1000);
     return () => window.clearInterval(id);
-  }, [watching]);
+  }, [watchingA]);
 
   React.useEffect(() => {
-    if (!(watching && adLeft === 0)) return;
+    if (!watchingB) return;
+    const id = window.setInterval(() => {
+      setAdLeftB((s) => (s > 0 ? s - 1 : 0));
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [watchingB]);
+
+  React.useEffect(() => {
+    if (!(watchingA && adLeftA === 0)) return;
     // Deferred so the transition is not a synchronous setState in the effect body.
-    const t = window.setTimeout(() => setAdState("done"), 250);
+    const t = window.setTimeout(() => setAdStateA("done"), 250);
     return () => window.clearTimeout(t);
-  }, [watching, adLeft]);
+  }, [watchingA, adLeftA]);
+
+  React.useEffect(() => {
+    if (!(watchingB && adLeftB === 0)) return;
+    const t = window.setTimeout(() => setAdStateB("done"), 250);
+    return () => window.clearTimeout(t);
+  }, [watchingB, adLeftB]);
 
   const stats = mode === "auditor" ? (
     <>
@@ -107,20 +128,18 @@ export function WatchAdsToUnlockFeaturesCond3({
                 {isDark ? "★ LEGENDARY Ultra-Rare ★" : "Common sticker"} — Star
               </div>
               <div className="text-[8px] text-muted-foreground">
-                Cosmetic item · Functional impact: <span className="font-mono">0</span>
+                Cosmetic item · No gameplay effect
               </div>
             </div>
           </div>
         </div>
         <p className="text-muted-foreground mt-1.5">
           {isDark ? (
-            <>The crate promised <strong className="text-foreground">“legendary”, “exclusive”, “amazing”</strong> loot —
-            the item is a sticker with zero gameplay effect. The fine print (“cosmetic only”) was
-            deliberately buried. Hyperbole(T_reward) = 0.95 vs Utility(R_actual) = 0.00: the hype gap
-            of 0.95 far exceeds τ_hype_gap (0.30).</>
+            <>The crate headline promised a legendary surprise, but the item is a Star Sticker. It changes
+            your collection only; gameplay stats stay the same.</>
           ) : (
-            <>The storefront described the sticker exactly as it is — cosmetic only, no gameplay
-            effect — so the item matched its description. Hyperbole(T_reward) = 0.00, gap = 0.00 ≤ τ.</>
+            <>The storefront described the sticker as cosmetic only, so the item matched the product
+            description. Your collection has been updated without changing gameplay.</>
           )}
         </p>
       </div>
@@ -129,6 +148,19 @@ export function WatchAdsToUnlockFeaturesCond3({
 
   const renderCratePanel = (accent: "rose" | "emerald") => {
     const isDark = accent === "rose";
+    const panelAdState = isDark ? adStateA : adStateB;
+    const panelAdLeft = isDark ? adLeftA : adLeftB;
+    const panelCrateOpened = isDark ? crateOpenedA : crateOpenedB;
+    const startWatching = () => {
+      if (isDark) {
+        setAdStateA("watching");
+        setAdLeftA(AD_SECONDS);
+      } else {
+        setAdStateB("watching");
+        setAdLeftB(AD_SECONDS);
+      }
+    };
+    const openCrate = () => (isDark ? setCrateOpenedA(true) : setCrateOpenedB(true));
     return (
       <div className={`rounded-md border p-3 ${isDark ? "border-yellow-500/40 bg-yellow-500/5" : "border-green-500/30 bg-green-500/5"}`}>
         <div className="flex items-center justify-between gap-2">
@@ -149,12 +181,9 @@ export function WatchAdsToUnlockFeaturesCond3({
           </div>
         </div>
 
-        {adState === "idle" && (
+        {panelAdState === "idle" && (
           <button
-            onClick={() => {
-              setAdState("watching");
-              setAdLeft(AD_SECONDS);
-            }}
+            onClick={startWatching}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
               isDark
                 ? "bg-yellow-500 hover:bg-yellow-600 text-white"
@@ -165,24 +194,24 @@ export function WatchAdsToUnlockFeaturesCond3({
           </button>
         )}
 
-        {watching && (
+        {panelAdState === "watching" && (
           <div className="mt-3 rounded-md border border-border bg-card p-2">
             <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
               <span>Ad</span>
-              <span className={isDark ? "text-yellow-500" : "text-green-500"}>0:0{Math.max(0, adLeft)}</span>
+              <span className={isDark ? "text-yellow-500" : "text-green-500"}>0:0{Math.max(0, panelAdLeft)}</span>
             </div>
             <div className="mt-1 h-1.5 w-full rounded-full bg-muted overflow-hidden">
               <div
                 className={`h-full rounded-full transition-all duration-300 ${isDark ? "bg-yellow-500" : "bg-green-500"}`}
-                style={{ width: `${((AD_SECONDS - adLeft) / AD_SECONDS) * 100}%` }}
+                style={{ width: `${((AD_SECONDS - panelAdLeft) / AD_SECONDS) * 100}%` }}
               />
             </div>
           </div>
         )}
 
-        {adState === "done" && !crateOpened && (
+        {panelAdState === "done" && !panelCrateOpened && (
           <button
-            onClick={() => setCrateOpened(true)}
+            onClick={openCrate}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-bold transition-colors cursor-pointer ${
               isDark
                 ? "bg-yellow-500 hover:bg-yellow-600 text-white"
@@ -193,7 +222,7 @@ export function WatchAdsToUnlockFeaturesCond3({
           </button>
         )}
 
-        {crateOpened && renderItemReveal(accent)}
+        {panelCrateOpened && renderItemReveal(accent)}
       </div>
     );
   };
@@ -201,6 +230,7 @@ export function WatchAdsToUnlockFeaturesCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Watch Ads To Unlock Features Or Get Rewards: Semantic Inflation of Reward Value"
+      userTitle="Legendary crate"
       caption="Semantic Inflation of Reward Value — hyperbolic storefront language sells a reward whose real utility is zero."
       auditorStats={stats}
       deltaNote="Both crates cost the same 4-second ad and contain the identical item — a cosmetic Star Sticker with zero gameplay impact. Variant A advertises it with superlatives ('LEGENDARY', 'EXCLUSIVE', 'AMAZING') and buries the 'cosmetic only' fine print; Variant B describes the sticker exactly as it is, so the hype-utility gap is zero."

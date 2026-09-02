@@ -66,6 +66,7 @@ export function SmallOrMovingCloseButtonCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Small or Moving Close Button: Semantic Obfuscation of Dismissal Labels"
+      userTitle="Streamly — Newsletter prompt"
       caption="Semantic Obfuscation of Dismissal Labels — the dismissal control's accessible name says “Continue reading”, so its semantic intent is progression, not dismissal."
       auditorStats={stats}
       deltaNote="Both variants dismiss the modal with one click. In Variant A the only dismissal vector is a button labeled 'Continue' (accessible name 'Continue reading') with no disclosure that it closes the dialog — AccessibleName(N_close) maps to Intent = Proceed ≠ Dismissal — so users and screen readers are told they are progressing when the control actually closes the dialog. In Variant B the X is named 'Close dialog' and Intent = Dismissal."
@@ -94,10 +95,8 @@ export function SmallOrMovingCloseButtonCond3({
             </div>
             {bDismissed && (
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
-                Dismissed. The control&rsquo;s accessible name is{" "}
-                <span className="font-mono">“Close dialog”</span> —{" "}
-                <strong>Intent(AccessibleName) = Dismissal</strong>. Screen readers and users
-                both know exactly what it does.
+                Dismissed. The close control clearly said what it would do, so both screen readers and
+                sighted users could identify it immediately.
               </div>
             )}
           </div>
@@ -133,14 +132,9 @@ export function SmallOrMovingCloseButtonCond3({
                 Close
               </div>
               <p className="text-muted-foreground">
-                Clicking <strong className="text-foreground">“Continue”</strong> dismissed the
-                modal — it was the only dismissal vector. Its accessible name is{" "}
-                <span className="font-mono">“Continue reading”</span>, so{" "}
-                <strong className="text-foreground">
-                  Intent(AccessibleName(N_close)) = Proceed ≠ Dismissal
-                </strong>
-                . Users who clicked expecting to advance were silently closed out of the
-                dialog instead.
+                Clicking <strong className="text-foreground">“Continue”</strong> dismissed the modal,
+                even though the control looked like a way to keep reading. Users expecting to advance
+                were silently closed out of the dialog instead.
               </p>
             </div>
           )}

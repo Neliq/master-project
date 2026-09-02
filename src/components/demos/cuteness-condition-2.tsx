@@ -52,9 +52,13 @@ export function CutenessCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [stage, setStage] = React.useState<"overview" | "cancel" | "kept" | "gone">("overview");
+  const [darkStage, setDarkStage] = React.useState<"overview" | "cancel" | "kept" | "gone">("overview");
+  const [benignStage, setBenignStage] = React.useState<"overview" | "cancel" | "kept" | "gone">("overview");
 
-  const reset = () => setStage("overview");
+  const reset = () => {
+    setDarkStage("overview");
+    setBenignStage("overview");
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -98,17 +102,17 @@ export function CutenessCond2({
               </div>
             </div>
 
-            {stage === "overview" && (
+            {benignStage === "overview" && (
               <div className="mt-3 space-y-2">
                 <div className="flex items-center gap-2 rounded-md border border-border bg-background p-2.5 text-[9px] text-muted-foreground">
                   <svg className="h-4 w-4 shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="3" y="3" width="18" height="18" rx="3" />
                     <path d="M8 12l3 3 5-6" />
                   </svg>
-                  Standard plan icon — the only graphic you have ever seen in this product.
+                  Account overview and billing details.
                 </div>
                 <button
-                  onClick={() => setStage("cancel")}
+                  onClick={() => setBenignStage("cancel")}
                   className="w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
                 >
                   Cancel plan
@@ -116,20 +120,20 @@ export function CutenessCond2({
               </div>
             )}
 
-            {stage === "cancel" && (
+            {benignStage === "cancel" && (
               <div className="mt-3 space-y-2">
                 <div className="rounded-md border border-border bg-background p-2.5 text-[9px] text-muted-foreground">
                   Cancel Premium? Your access ends at the end of the current billing period.
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <button
-                    onClick={() => setStage("kept")}
+                    onClick={() => setBenignStage("kept")}
                     className="rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
                   >
                     Keep my plan
                   </button>
                   <button
-                    onClick={() => setStage("gone")}
+                    onClick={() => setBenignStage("gone")}
                     className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                   >
                     Yes, cancel
@@ -138,17 +142,18 @@ export function CutenessCond2({
               </div>
             )}
 
-            {(stage === "kept" || stage === "gone") && (
+            {(benignStage === "kept" || benignStage === "gone") && (
               <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
-                  {stage === "gone" ? "Plan cancelled" : "Plan kept"}
+                  {benignStage === "gone" ? "Plan cancelled" : "Plan kept"}
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  No affective image was injected at any state: I(s_onboard) and I(s_cancel) contain
-                  only the plain plan icon. The cancellation decision faced zero manufactured emotion.
+                  {benignStage === "gone"
+                    ? "Your plan is cancelled. Access remains available until the end of the billing period."
+                    : "Your plan remains active with no changes to your billing."}
                 </p>
               </div>
             )}
@@ -166,21 +171,21 @@ export function CutenessCond2({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Mascot: s_cancel only
+              Cancellation step
             </div>
           </div>
 
-          {stage === "overview" && (
+          {darkStage === "overview" && (
             <div className="mt-3 space-y-2">
               <div className="flex items-center gap-2 rounded-md border border-border bg-background p-2.5 text-[9px] text-muted-foreground">
                 <svg className="h-4 w-4 shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect x="3" y="3" width="18" height="18" rx="3" />
                   <path d="M8 12l3 3 5-6" />
                 </svg>
-                Standard plan icon — the only graphic you have ever seen in this product.
+                Account overview and billing details.
               </div>
               <button
-                onClick={() => setStage("cancel")}
+                onClick={() => setDarkStage("cancel")}
                 className="w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
               >
                 Cancel plan
@@ -188,7 +193,7 @@ export function CutenessCond2({
             </div>
           )}
 
-          {stage === "cancel" && (
+          {darkStage === "cancel" && (
             <div className="mt-3 space-y-2">
               {/* Injected at s_cancel only: viewport-dominant scale + high contrast. */}
               <div className="flex flex-col items-center gap-2 rounded-md   p-4 shadow-lg shadow-red-500/30">
@@ -202,13 +207,13 @@ export function CutenessCond2({
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <button
-                  onClick={() => setStage("kept")}
+                  onClick={() => setDarkStage("kept")}
                   className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Keep my plan
                 </button>
                 <button
-                  onClick={() => setStage("gone")}
+                  onClick={() => setDarkStage("gone")}
                   className="rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
                 >
                   Yes, cancel
@@ -217,7 +222,7 @@ export function CutenessCond2({
             </div>
           )}
 
-          {(stage === "kept" || stage === "gone") && (
+          {(darkStage === "kept" || darkStage === "gone") && (
             <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -226,21 +231,14 @@ export function CutenessCond2({
                 </svg>
                 Your request has been received
               </div>
-              <p className="text-muted-foreground">
-                {stage === "kept"
-                  ? "You kept the plan — the giant pleading face made canceling feel cruel."
-                  : "You cancelled anyway, but the image was engineered to stop you."}{" "}
-                The mascot is <strong className="text-red-500">I_affective &notin; I(s_onboard)</strong>{" "}
-                and <strong className="text-red-500">I_affective &isin; I(s_cancel)</strong> — withheld
-                during normal use, injected into termination.
-              </p>
-              <p className="text-muted-foreground">
-                Its visual properties maximize impact: bounding box covers{" "}
-                <strong className="text-foreground">{Math.round(AREA_RATIO * 100)}% of the viewport</strong>{" "}
-                ({AREA_RATIO.toFixed(2)} &gt; {TAU_PROMINENCE}) and it is rendered at{" "}
-                <strong className="text-foreground">{CONTRAST}:1 contrast</strong> against its backdrop
-                ({CONTRAST_THRESHOLD}:1 threshold) — impossible to ignore, hard to refuse.
-              </p>
+                <p className="text-muted-foreground">
+                  {darkStage === "kept"
+                    ? "Your plan remains active. You can review your membership settings at any time."
+                    : "Your cancellation request was received. Access remains available until the end of the billing period."}
+                </p>
+                <p className="text-muted-foreground">
+                  You can return to Membership settings whenever you want to change this decision.
+                </p>
             </div>
           )}
         </div>

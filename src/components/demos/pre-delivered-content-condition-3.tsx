@@ -35,9 +35,13 @@ export function PreDeliveredContentCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [clicked, setClicked] = React.useState<number | null>(null);
+  const [clickedA, setClickedA] = React.useState<number | null>(null);
+  const [clickedB, setClickedB] = React.useState<number | null>(null);
 
-  const reset = () => setClicked(null);
+  const reset = () => {
+    setClickedA(null);
+    setClickedB(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -63,6 +67,7 @@ export function PreDeliveredContentCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Pre-Delivered Content: Semantic Framing of Local Assets as Purchase Opportunities"
+      userTitle="PixelQuest — Game library"
       caption="Semantic Framing of Local Assets as Purchase Opportunities — already-downloaded content is semantically reframed as downloadable or unlockable, turning a consumed storage cost into a purchase opportunity."
       auditorStats={stats}
       deltaNote="Variant A labels on-disk assets “Download” / “Unlock premium” — Frame(T_asset) = Purchaseable while IsLocal(A_asset) = True. Variant B labels the identical assets “Installed — Ready to play”, so the completed download is presented as completed."
@@ -83,7 +88,7 @@ export function PreDeliveredContentCond3({
               {ASSETS.map((a, i) => (
                 <button
                   key={a.name}
-                  onClick={() => setClicked(i)}
+                  onClick={() => setClickedB(i)}
                   className="w-full rounded-md border border-green-500/20 bg-green-500/5 p-2 text-left transition-colors hover:border-green-500/40 cursor-pointer"
                 >
                   <div className="flex items-center justify-between gap-2">
@@ -105,14 +110,14 @@ export function PreDeliveredContentCond3({
               ))}
             </div>
 
-            {clicked !== null && (
+            {clickedB !== null && (
               <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   Already local
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  “{ASSETS[clicked].name}” ({ASSETS[clicked].size}) is at {ASSETS[clicked].path} — IsLocal(A_asset) = True and
+                  “{ASSETS[clickedB].name}” ({ASSETS[clickedB].size}) is at {ASSETS[clickedB].path} — IsLocal(A_asset) = True and
                   Frame(T_asset) = “Installed”. Nothing to download, nothing to buy.
                 </p>
               </div>
@@ -137,7 +142,7 @@ export function PreDeliveredContentCond3({
             {ASSETS.map((a, i) => (
               <button
                 key={a.name}
-                onClick={() => setClicked(i)}
+                onClick={() => setClickedA(i)}
                 className="w-full rounded-md border border-border bg-background p-2 text-left transition-colors hover:border-red-500/40 cursor-pointer"
               >
                 <div className="flex items-center justify-between gap-2">
@@ -163,7 +168,7 @@ export function PreDeliveredContentCond3({
             Tap any row to see what the client is really asking for.
           </p>
 
-          {clicked !== null && (
+          {clickedA !== null && (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -173,8 +178,8 @@ export function PreDeliveredContentCond3({
                 Reframed download
               </div>
               <p className="text-muted-foreground">
-                The button says <strong className="text-red-500">“Download”</strong> but &ldquo;{ASSETS[clicked].name}&rdquo; ({ASSETS[clicked].size})
-                is already sitting at <span className="font-mono">{ASSETS[clicked].path}</span>. IsLocal(A_asset) = True, yet
+                The button says <strong className="text-red-500">“Download”</strong> but &ldquo;{ASSETS[clickedA].name}&rdquo; ({ASSETS[clickedA].size})
+                is already sitting at <span className="font-mono">{ASSETS[clickedA].path}</span>. IsLocal(A_asset) = True, yet
                 Frame(T_asset) = “Purchaseable” — the transfer already happened during install; the label merely
                 reframes an already-consumed storage cost as a purchase opportunity.
               </p>

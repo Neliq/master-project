@@ -34,39 +34,43 @@ export function SneakIntoBasketCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [stage, setStage] = React.useState<"product" | "cart" | "review">("product");
-  const [added, setAdded] = React.useState(false); // headphones explicitly added
-  const [injected, setInjected] = React.useState({ warranty: false, shipping: false }); // Variant A: system-injected
-  const [optedIn, setOptedIn] = React.useState({ warranty: false, shipping: false }); // Variant B: user-clicked
+  const [stageA, setStageA] = React.useState<"product" | "cart" | "review">("product");
+  const [stageB, setStageB] = React.useState<"product" | "cart" | "review">("product");
+  const [addedA, setAddedA] = React.useState(false); // headphones explicitly added
+  const [addedB, setAddedB] = React.useState(false);
+  const [injectedA, setInjectedA] = React.useState({ warranty: false, shipping: false }); // Variant A: system-injected
+  const [optedInB, setOptedInB] = React.useState({ warranty: false, shipping: false }); // Variant B: user-clicked
 
   const reset = () => {
-    setStage("product");
-    setAdded(false);
-    setInjected({ warranty: false, shipping: false });
-    setOptedIn({ warranty: false, shipping: false });
+    setStageA("product");
+    setStageB("product");
+    setAddedA(false);
+    setAddedB(false);
+    setInjectedA({ warranty: false, shipping: false });
+    setOptedInB({ warranty: false, shipping: false });
   };
 
-  const injectedItems = [
-    ...(injected.warranty ? [WARRANTY] : []),
-    ...(injected.shipping ? [SHIPPING] : []),
+  const injectedItemsA = [
+    ...(injectedA.warranty ? [WARRANTY] : []),
+    ...(injectedA.shipping ? [SHIPPING] : []),
   ];
-  const optedItems = [
-    ...(optedIn.warranty ? [WARRANTY] : []),
-    ...(optedIn.shipping ? [SHIPPING] : []),
+  const optedItemsB = [
+    ...(optedInB.warranty ? [WARRANTY] : []),
+    ...(optedInB.shipping ? [SHIPPING] : []),
   ];
-  const totalA = HEADPHONES.price + injectedItems.reduce((s, i) => s + i.price, 0);
-  const totalB = HEADPHONES.price + optedItems.reduce((s, i) => s + i.price, 0);
+  const totalA = HEADPHONES.price + injectedItemsA.reduce((s, i) => s + i.price, 0);
+  const totalB = HEADPHONES.price + optedItemsB.reduce((s, i) => s + i.price, 0);
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">I_explicit (your Add events)</span>
-        <span className="font-mono font-semibold tabular-nums">{added ? "{" + HEADPHONES.name + "}" : "∅"}</span>
+        <span className="font-mono font-semibold tabular-nums">{addedA ? "{" + HEADPHONES.name + "}" : "∅"}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">I_cart \ I_explicit — dark</span>
         <span className="font-mono font-semibold tabular-nums text-red-500">
-          {injectedItems.length > 0 ? "{" + injectedItems.map((i) => i.name.split(" ")[0]).join(", ") + "}" : "∅"}
+          {injectedItemsA.length > 0 ? "{" + injectedItemsA.map((i) => i.name.split(" ")[0]).join(", ") + "}" : "∅"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
@@ -75,7 +79,7 @@ export function SneakIntoBasketCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Trigger — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{injectedItems.length > 0 ? "True" : "False"}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{injectedItemsA.length > 0 ? "True" : "False"}</span>
       </div>
     </>
   ) : null;
@@ -116,53 +120,55 @@ export function SneakIntoBasketCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Sneak Into Basket: Unprompted State Mutation"
+      userTitle="Northstar — Your cart"
       caption="Unprompted State Mutation — items land in your cart that you never added: the actual cart set differs from the set of items you explicitly requested."
       auditorStats={stats}
       deltaNote={`Both panels show the same product and the same Add to Cart button. In Variant A, clicking it silently injects a ${WARRANTY.name} (${fmt(WARRANTY.price)}) and ${SHIPPING.name} (${fmt(SHIPPING.price)}) — I_cart \\ I_explicit ≠ ∅ with no corresponding user event. In Variant B the cart holds exactly what you clicked; the same extras are offered as opt-in buttons you must click yourself.`}
       benign={
         <div className="space-y-3">
-          {stage === "product" &&
+          {stageB === "product" &&
             productPage(() => {
-              setAdded(true);
-              setInjected({ warranty: false, shipping: false });
-              setStage("cart");
+              setAddedB(true);
+              setStageB("cart");
             }, "emerald")}
 
-          {stage === "cart" && (
+          {stageB === "cart" && (
             <div className="rounded-md border bg-background p-2.5">
               <div className="mb-2 flex items-center justify-between">
                 <h3 className="text-[11px] font-semibold">Your cart</h3>
                 <span className="rounded-full bg-green-500/15 px-2 py-0.5 text-[8px] font-bold text-green-600 dark:text-green-400">
-                  {added ? 1 + optedItems.length : 0} item{added && optedItems.length === 0 ? "" : "s"}
+                  {addedB ? 1 + optedItemsB.length : 0} item{addedB && optedItemsB.length === 0 ? "" : "s"}
                 </span>
               </div>
               <div className="space-y-1.5">
-                {added && lineItem(HEADPHONES.name, HEADPHONES.price, (
+                {addedB && lineItem(HEADPHONES.name, HEADPHONES.price, (
                   <div className="text-[8px] text-muted-foreground">selected in your cart</div>
                 ))}
-                {optedItems.map((item) =>
-                  lineItem(item.name, item.price, (
-                    <div className="text-[8px] text-muted-foreground">selected in your cart</div>
-                  ))
-                )}
+                {optedItemsB.map((item) => (
+                  <React.Fragment key={item.name}>
+                    {lineItem(item.name, item.price, (
+                      <div className="text-[8px] text-muted-foreground">selected in your cart</div>
+                    ))}
+                  </React.Fragment>
+                ))}
               </div>
 
               {/* Extras offered as explicit opt-ins — never pre-injected */}
-              {added && (
+              {addedB && (
                 <div className="mt-2 space-y-1.5 border-t pt-2">
                   <div className="text-[8px] font-semibold uppercase tracking-wide text-muted-foreground">Optional extras — your choice</div>
-                  {!optedIn.warranty && (
+                  {!optedInB.warranty && (
                     <button
-                      onClick={() => setOptedIn((o) => ({ ...o, warranty: true }))}
+                      onClick={() => setOptedInB((o) => ({ ...o, warranty: true }))}
                       className="flex w-full items-center justify-between rounded-md border border-green-500/40 bg-green-500/5 px-2.5 py-1.5 text-left transition-colors hover:bg-green-500/10 cursor-pointer"
                     >
                       <span className="text-[9px] font-medium">+ Add {WARRANTY.name} — {fmt(WARRANTY.price)}</span>
                       <span className="text-[8px] font-semibold text-green-600 dark:text-green-400">opt in</span>
                     </button>
                   )}
-                  {!optedIn.shipping && (
+                  {!optedInB.shipping && (
                     <button
-                      onClick={() => setOptedIn((o) => ({ ...o, shipping: true }))}
+                      onClick={() => setOptedInB((o) => ({ ...o, shipping: true }))}
                       className="flex w-full items-center justify-between rounded-md border border-green-500/40 bg-green-500/5 px-2.5 py-1.5 text-left transition-colors hover:bg-green-500/10 cursor-pointer"
                     >
                       <span className="text-[9px] font-medium">+ Add {SHIPPING.name} — {fmt(SHIPPING.price)}</span>
@@ -177,7 +183,7 @@ export function SneakIntoBasketCond1({
                 <span className="font-mono text-[11px] font-bold tabular-nums text-green-600 dark:text-green-400">{fmt(totalB)}</span>
               </div>
               <button
-                onClick={() => setStage("review")}
+                onClick={() => setStageB("review")}
                 className="mt-2 w-full rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
               >
                 Proceed to checkout
@@ -185,7 +191,7 @@ export function SneakIntoBasketCond1({
             </div>
           )}
 
-          {stage === "review" && (
+          {stageB === "review" && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -195,8 +201,8 @@ export function SneakIntoBasketCond1({
               </div>
               <p className="text-muted-foreground">
                 Every line item in this cart maps to an explicit Add event you triggered (E<sub>user</sub>).{" "}
-                {optedItems.length > 0
-                  ? `The ${optedItems.map((i) => i.name).join(" and ")} you see were added by your own click.`
+                {optedItemsB.length > 0
+                  ? `The ${optedItemsB.map((i) => i.name).join(" and ")} you see were added by your own click.`
                   : "The extras were offered as opt-in buttons and left in the shelf when you didn't click them."}{" "}
                 I<sub>cart</sub> \ I<sub>explicit</sub> = ∅, so the trigger condition never fires.
               </p>
@@ -206,37 +212,37 @@ export function SneakIntoBasketCond1({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        {stage === "product" &&
+        {stageA === "product" &&
           productPage(() => {
-            setAdded(true);
-            setInjected({ warranty: true, shipping: true });
-            setStage("cart");
+            setAddedA(true);
+            setInjectedA({ warranty: true, shipping: true });
+            setStageA("cart");
           }, "rose")}
 
-        {stage === "cart" && (
+        {stageA === "cart" && (
           <div className="rounded-md border bg-background p-2.5">
             <div className="mb-2 flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">Your cart</h3>
               <span className="rounded-full bg-red-500/15 px-2 py-0.5 text-[8px] font-bold text-red-600 dark:text-red-400">
-                {added ? 1 + injectedItems.length : 0} item{added && injectedItems.length === 0 ? "" : "s"}
+                {addedA ? 1 + injectedItemsA.length : 0} item{addedA && injectedItemsA.length === 0 ? "" : "s"}
               </span>
             </div>
             <div className="space-y-1.5">
-              {added && lineItem(HEADPHONES.name, HEADPHONES.price)}
+              {addedA && lineItem(HEADPHONES.name, HEADPHONES.price)}
               {/* Injected items rendered as ordinary cart lines — no indication they were added by the system */}
-              {injected.warranty &&
+              {injectedA.warranty &&
                 lineItem(WARRANTY.name, WARRANTY.price, (
                   <button
-                    onClick={() => setInjected((i) => ({ ...i, warranty: false }))}
+                    onClick={() => setInjectedA((i) => ({ ...i, warranty: false }))}
                     className="mt-0.5 flex items-center gap-0.5 text-[8px] text-muted-foreground underline underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
                   >
                     <X className="h-2.5 w-2.5" /> Remove
                   </button>
                 ))}
-              {injected.shipping &&
+              {injectedA.shipping &&
                 lineItem(SHIPPING.name, SHIPPING.price, (
                   <button
-                    onClick={() => setInjected((i) => ({ ...i, shipping: false }))}
+                    onClick={() => setInjectedA((i) => ({ ...i, shipping: false }))}
                     className="mt-0.5 flex items-center gap-0.5 text-[8px] text-muted-foreground underline underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
                   >
                     <X className="h-2.5 w-2.5" /> Remove
@@ -248,7 +254,7 @@ export function SneakIntoBasketCond1({
               <span className="font-mono text-[11px] font-bold tabular-nums text-red-600 dark:text-red-400">{fmt(totalA)}</span>
             </div>
             <button
-              onClick={() => setStage("review")}
+              onClick={() => setStageA("review")}
               className="mt-2 w-full rounded-md bg-red-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
             >
               Proceed to checkout
@@ -257,7 +263,7 @@ export function SneakIntoBasketCond1({
           </div>
         )}
 
-        {stage === "review" && (
+        {stageA === "review" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -269,14 +275,14 @@ export function SneakIntoBasketCond1({
             <p className="text-muted-foreground">
               I<sub>cart</sub> \ I<sub>explicit</sub> ={" "}
               <strong className="text-red-500">
-                {injectedItems.length > 0
-                  ? `{${injectedItems.map((i) => i.name).join(", ")}} ≠ ∅`
+                {injectedItemsA.length > 0
+                  ? `{${injectedItemsA.map((i) => i.name).join(", ")}} ≠ ∅`
                   : "∅ (you removed them)"}
               </strong>{" "}
               — and for every injected item y there is <strong className="text-foreground">no event e ∈ E</strong>
               <sub>user</sub> with Add(y). The system mutated your cart without your input, relying on status-quo bias
               and checkout-time fatigue to keep the unwanted lines in the total.{" "}
-              {injectedItems.length === 0 && "You removed them yourself — the burden of vigilance was on you."}
+              {injectedItemsA.length === 0 && "You removed them yourself — the burden of vigilance was on you."}
             </p>
           </div>
         )}

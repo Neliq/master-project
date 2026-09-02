@@ -95,6 +95,7 @@ export function WrongLanguageCond2({
           {ACCEPT_ALL}
         </button>
         <button
+          lang={dark ? "fr" : "en"}
           onClick={() => setChoice("essential")}
           className={`w-full rounded-md border py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
             dark

@@ -41,14 +41,19 @@ export function GrindingCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [clicks, setClicks] = React.useState(0);
+  const [clicksA, setClicksA] = React.useState(0);
+  const [clicksB, setClicksB] = React.useState(0);
 
-  const reset = () => setClicks(0);
+  const reset = () => {
+    setClicksA(0);
+    setClicksB(0);
+  };
 
-  const revealed = clicks >= 12;
-  const pA = Math.min(100, darkProgress(clicks));
-  const lastDeltaA = clicks === 0 ? 0 : darkDelta(clicks - 1);
-  const pB = Math.min(100, clicks * BENIGN_DELTA);
+  const revealedA = clicksA >= 12;
+  const revealedB = clicksB >= 12;
+  const pA = Math.min(100, darkProgress(clicksA));
+  const lastDeltaA = clicksA === 0 ? 0 : darkDelta(clicksA - 1);
+  const pB = Math.min(100, clicksB * BENIGN_DELTA);
   const eggUnlocked = pB >= 100;
 
   const stats = mode === "auditor" ? (
@@ -58,12 +63,12 @@ export function GrindingCond2({
         <span className="font-mono font-semibold tabular-nums text-red-500">+{DARK_DELTA_0.toFixed(1)}%</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">ΔP_k (action {Math.max(1, clicks)})</span>
+        <span className="text-muted-foreground">ΔP_k (action {Math.max(1, clicksA)})</span>
         <span className="font-mono font-semibold tabular-nums text-red-500">+{lastDeltaA.toFixed(2)}%</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">ΔP_k / ΔP_1</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{clicks === 0 ? "—" : (lastDeltaA / DARK_DELTA_0).toFixed(4)}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{clicksA === 0 ? "—" : (lastDeltaA / DARK_DELTA_0).toFixed(4)}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d²P/di² (dark)</span>
@@ -75,6 +80,7 @@ export function GrindingCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Grinding: Visual Diminishing-Returns Feedback Loop"
+      userTitle="Sunny Hen Farm"
       caption="Visual Diminishing-Returns Feedback Loop — the reward bar's per-action progress decays exponentially, so the bar creeps ever more slowly and the reward recedes."
       auditorStats={stats}
       deltaNote="Both variants collect the same number of eggs toward the same Golden Egg. Variant A's bar fills +20%, then +10%, +5%, +2.5%… per collection (ΔP_i ≈ ΔP_0·e^(−λi), so d²P/di² < 0) — the feedback attenuates to compel more grinding. Variant B fills a constant +10% per collection and the egg unlocks after exactly 10 actions."
@@ -97,7 +103,14 @@ export function GrindingCond2({
               <span className="text-muted-foreground">Golden Egg progress</span>
               <span className="font-mono tabular-nums">{pB.toFixed(0)}% · last action +{BENIGN_DELTA}%</span>
             </div>
-            <div className="mt-1 bg-foreground/10 h-3 rounded-full overflow-hidden">
+            <div
+              role="progressbar"
+              aria-label="Golden Egg progress"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={Math.round(pB)}
+              className="mt-1 bg-foreground/10 h-3 rounded-full overflow-hidden"
+            >
               <div className="bg-green-500 h-full transition-all" style={{ width: `${pB}%` }} />
             </div>
             {eggUnlocked && (
@@ -111,13 +124,13 @@ export function GrindingCond2({
 
             <div className="mt-2 flex gap-2">
               <button
-                onClick={() => setClicks((c) => c + 1)}
+                onClick={() => setClicksB((c) => c + 1)}
                 className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Collect an egg (+1)
               </button>
               <button
-                onClick={() => setClicks((c) => c + 5)}
+                onClick={() => setClicksB((c) => c + 5)}
                 className="flex-1 rounded-md border border-green-500/40 text-green-700 dark:text-green-300 hover:bg-green-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Collect ×5
@@ -125,7 +138,7 @@ export function GrindingCond2({
             </div>
           </div>
 
-          {revealed && (
+          {revealedB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -134,9 +147,9 @@ export function GrindingCond2({
                 Constant feedback loop
               </div>
               <p className="text-muted-foreground mt-0.5">
-                Every collection filled exactly <span className="font-mono tabular-nums">+{BENIGN_DELTA}%</span> —{" "}
-                ΔP_k/ΔP_1 = 1, so the bar moves predictably and the Golden Egg arrives after{" "}
-                <span className="font-mono tabular-nums">10</span> actions. No feedback is withheld.
+                Every collection adds exactly <span className="font-mono tabular-nums">+{BENIGN_DELTA}%</span>,
+                so the Golden Egg arrives after <span className="font-mono tabular-nums">10</span> actions.
+                The reward moves predictably and no feedback is withheld.
               </p>
             </div>
           )}
@@ -161,12 +174,19 @@ export function GrindingCond2({
             <span className="text-muted-foreground">Golden Egg progress</span>
             <span className="font-mono tabular-nums">{pA.toFixed(1)}% · last action +{lastDeltaA.toFixed(2)}%</span>
           </div>
-          <div className="mt-1 bg-foreground/10 h-3 rounded-full overflow-hidden">
+          <div
+            role="progressbar"
+            aria-label="Golden Egg progress"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={Math.round(pA)}
+            className="mt-1 bg-foreground/10 h-3 rounded-full overflow-hidden"
+          >
             <div className="bg-red-500 h-full transition-all" style={{ width: `${pA}%` }} />
           </div>
-          {clicks > 0 && clicks % 6 === 0 && (
+          {clicksA > 0 && clicksA % 6 === 0 && (
             <p className="mt-1.5 text-[8px] italic text-muted-foreground/50">
-              The bar crept only {pA.toFixed(1)}% after {clicks} collections. Almost there…?
+              The bar crept only {pA.toFixed(1)}% after {clicksA} collections. Almost there…?
             </p>
           )}
           <p className="text-[9px] text-muted-foreground mt-1.5">
@@ -176,13 +196,13 @@ export function GrindingCond2({
 
           <div className="mt-2 flex gap-2">
             <button
-              onClick={() => setClicks((c) => c + 1)}
+              onClick={() => setClicksA((c) => c + 1)}
               className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Collect an egg (+1)
             </button>
             <button
-              onClick={() => setClicks((c) => c + 5)}
+              onClick={() => setClicksA((c) => c + 5)}
               className="flex-1 rounded-md border border-red-500/40 text-red-700 dark:text-red-300 hover:bg-red-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Collect ×5
@@ -190,7 +210,7 @@ export function GrindingCond2({
           </div>
         </div>
 
-        {mode === "auditor" && revealed && (
+        {mode === "auditor" && revealedA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -200,11 +220,11 @@ export function GrindingCond2({
               Progress updated
             </div>
             <p className="text-muted-foreground">
-              After {clicks} collections the bar sits at <strong className="text-red-500">{pA.toFixed(1)}%</strong>.
+              After {clicksA} collections the bar sits at <strong className="text-red-500">{pA.toFixed(1)}%</strong>.
               The first action filled <strong className="text-foreground">+{DARK_DELTA_0}%</strong>; action{" "}
-              {Math.max(1, clicks)} filled just <strong className="text-foreground">+{lastDeltaA.toFixed(2)}%</strong>{" "}
+              {Math.max(1, clicksA)} filled just <strong className="text-foreground">+{lastDeltaA.toFixed(2)}%</strong>{" "}
               — Each collection adds a small amount to the reward bar.{" "}
-              <span className="font-mono tabular-nums">{clicks === 0 ? "—" : (lastDeltaA / DARK_DELTA_0).toFixed(4)}</span>{" "}
+              <span className="font-mono tabular-nums">{clicksA === 0 ? "—" : (lastDeltaA / DARK_DELTA_0).toFixed(4)}</span>{" "}
               and d²P/di² &lt; 0. The interface deliberately attenuates positive feedback, so the reward
               recedes just out of reach — compelling extended repetitive engagement.
             </p>

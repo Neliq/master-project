@@ -125,8 +125,9 @@ export function CountdownTimerCond1({
               <div className="min-w-0 flex-1">
                 <h3 className="text-[11px] font-semibold">{ITEM_NAME}</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
-                  <span className="font-bold text-foreground">{PRICE_NOW}</span>{" "}
-                  <span className="line-through opacity-60">{PRICE_AFTER}</span> — price reverts when the server-validated deadline passes.
+                  <span className="font-bold text-foreground">{expiredB ? PRICE_AFTER : PRICE_NOW}</span>{" "}
+                  {!expiredB && <span className="line-through opacity-60">{PRICE_AFTER}</span>}{" "}
+                  — price reverts when the server-validated deadline passes.
                 </p>
               </div>
             </div>

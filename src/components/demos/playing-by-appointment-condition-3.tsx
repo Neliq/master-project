@@ -41,9 +41,13 @@ export function PlayingByAppointmentCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [analyzed, setAnalyzed] = React.useState(false);
+  const [analyzedA, setAnalyzedA] = React.useState(false);
+  const [analyzedB, setAnalyzedB] = React.useState(false);
 
-  const reset = () => setAnalyzed(false);
+  const reset = () => {
+    setAnalyzedA(false);
+    setAnalyzedB(false);
+  };
 
   const scarcityTotalDark = MESSAGES_DARK.reduce((s, m) => s + m.scarcity.length, 0);
   const scarcityTotalBenign = MESSAGES_BENIGN.reduce((s, m) => s + m.scarcity.length, 0);
@@ -72,6 +76,7 @@ export function PlayingByAppointmentCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Playing By Appointment: Semantic Urgency Encoding in Temporal-Gating Messages"
+      userTitle="Mystic Garden"
       caption="Semantic Urgency Encoding in Temporal-Gating Messages — schedule messages carry urgency scores above threshold while embedding scarcity language, compounding the pressure to return on time."
       auditorStats={stats}
       deltaNote="Both variants announce the identical schedule — a 3 PM window, content in 2 hours, a streak reset at midnight. Variant A wraps each fact in urgent, scarcity-laced copy (Urgency 0.81–0.92 > τ; 4 scarcity tokens). Variant B states the same facts neutrally (Urgency ≤ 0.18; zero scarcity tokens), so no compound semantic pressure is applied."
@@ -98,7 +103,7 @@ export function PlayingByAppointmentCond3({
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="text-[10px] leading-relaxed text-foreground/80">{m.text}</p>
-                    {analyzed && (
+                    {mode === "auditor" && analyzedB && (
                       <p className="mt-0.5 text-[8px] text-green-600/80 dark:text-green-400/80 font-mono tabular-nums">
                         urgency {m.urgency.toFixed(2)} · scarcity tokens: {m.scarcity.length}
                       </p>
@@ -109,14 +114,14 @@ export function PlayingByAppointmentCond3({
             </div>
 
             <button
-              onClick={() => setAnalyzed(true)}
+              onClick={() => setAnalyzedB(true)}
               className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
-              {analyzed ? "Analysis complete" : "Check availability"}
+              {analyzedB ? "Availability checked" : "Check availability"}
             </button>
           </div>
 
-          {analyzed && (
+          {analyzedB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -125,9 +130,8 @@ export function PlayingByAppointmentCond3({
                 No compound pressure
               </div>
               <p className="text-muted-foreground mt-0.5">
-                Max urgency is <span className="font-mono tabular-nums">0.18</span> — well below
-                τ_appointment_urgency (0.7) — and zero scarcity tokens are present. The schedule
-                informs; it does not pressure.
+                The schedule is stated plainly and the available times are easy to compare. The reminder
+                informs you without pushing you to return before you are ready.
               </p>
             </div>
           )}
@@ -156,7 +160,7 @@ export function PlayingByAppointmentCond3({
                 </span>
                 <div className="min-w-0 flex-1">
                   <p className="text-[10px] leading-relaxed font-medium text-foreground/90">⏰ {m.text}</p>
-                  {analyzed && (
+                  {mode === "auditor" && analyzedA && (
                     <p className="mt-0.5 text-[8px] text-red-600/80 dark:text-red-400/80 font-mono tabular-nums">
                       urgency {m.urgency.toFixed(2)} · scarcity: {m.scarcity.join(", ") || "—"}
                     </p>
@@ -167,14 +171,14 @@ export function PlayingByAppointmentCond3({
           </div>
 
           <button
-            onClick={() => setAnalyzed(true)}
+            onClick={() => setAnalyzedA(true)}
             className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
           >
-            {analyzed ? "Analysis complete" : "Check availability"}
+            {analyzedA ? "Availability checked" : "Check availability"}
           </button>
         </div>
 
-        {mode === "auditor" && analyzed && (
+        {mode === "auditor" && analyzedA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

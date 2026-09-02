@@ -25,9 +25,13 @@ export function ConfirmshamingCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<null | "accept" | "decline">(null);
+  const [darkChoice, setDarkChoice] = React.useState<null | "accept" | "decline">(null);
+  const [benignChoice, setBenignChoice] = React.useState<null | "accept" | "decline">(null);
 
-  const reset = () => setChoice(null);
+  const reset = () => {
+    setDarkChoice(null);
+    setBenignChoice(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -69,20 +73,20 @@ export function ConfirmshamingCond3({
               <div className="min-w-0 flex-1">
                 <h3 className="text-[11px] font-semibold">Help us plant a tree</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
-                  Add a $2 donation to your order and we&rsquo;ll plant one tree per purchase.
+                  Add a $2 donation to support reforestation projects.
                 </p>
               </div>
             </div>
 
             <div className="mt-3 space-y-2">
               <button
-                onClick={() => setChoice("accept")}
+                onClick={() => setBenignChoice("accept")}
                 className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
               >
                 Yes, add a $2 donation
               </button>
               <button
-                onClick={() => setChoice("decline")}
+                onClick={() => setBenignChoice("decline")}
                 className="w-full rounded-md border border-border bg-background hover:bg-muted py-2 text-[11px] font-medium text-foreground transition-colors cursor-pointer"
               >
                 No, thanks
@@ -90,13 +94,13 @@ export function ConfirmshamingCond3({
             </div>
           </div>
 
-          {choice && (
+          {mode === "auditor" && benignChoice && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                {choice === "accept" ? "Donation added" : "Declined neutrally"}
+                {benignChoice === "accept" ? "Donation added" : "Declined neutrally"}
               </div>
               <p className="text-muted-foreground mt-0.5">
                 S_sentiment(N_accept) ≈ +0.31 and S_sentiment(N_decline) ≈ -0.12 — declining
@@ -119,28 +123,29 @@ export function ConfirmshamingCond3({
             <div className="min-w-0 flex-1">
               <h3 className="text-[11px] font-semibold">Help us plant a tree</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">
-                Add a $2 donation to your order and we&rsquo;ll plant one tree per purchase.
+                Add a $2 donation to support reforestation projects.
               </p>
             </div>
           </div>
 
           <div className="mt-3 space-y-2">
             <button
-              onClick={() => setChoice("accept")}
+              onClick={() => setDarkChoice("accept")}
               className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
             >
               Yes, I care about the planet — add the donation
             </button>
-            <span
-              onClick={() => setChoice("decline")}
-              className="block w-full cursor-pointer py-1.5 text-center text-[10px] text-muted-foreground underline decoration-dotted hover:text-foreground transition-colors select-none"
+            <button
+              type="button"
+              onClick={() => setDarkChoice("decline")}
+              className="block w-full cursor-pointer border-0 bg-transparent py-1.5 text-center text-[10px] text-muted-foreground underline decoration-dotted hover:text-foreground transition-colors select-none"
             >
               No, I don&rsquo;t care about the environment
-            </span>
+            </button>
           </div>
         </div>
 
-        {mode === "auditor" && choice && (
+        {mode === "auditor" && darkChoice && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -156,7 +161,7 @@ export function ConfirmshamingCond3({
               The alternative is available if you would rather not contribute.
             </p>
             <p className="text-muted-foreground">
-              {choice === "decline"
+              {darkChoice === "decline"
                 ? "You clicked through the shame anyway — most users cave and take the accept path to avoid the identity cost."
                 : "You accepted — the emotional tax on declining made the $2 donation the cheaper option psychologically."}
             </p>

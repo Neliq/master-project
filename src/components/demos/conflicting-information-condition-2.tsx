@@ -71,7 +71,7 @@ export function ConflictingInformationCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Conflicting Information: Semantic-Visual Mismatch"
-      caption="Semantic-Visual Mismatch — the destructive “Cancel my membership” path is painted in the confirm affordance color (green) and, in Variant A, is demoted to a bare text link behind an extra confirmation step while the card’s “cancel anytime” claim is contradicted by a minimum-term fee clause."
+      caption="Semantic-Visual Mismatch — the destructive “Cancel my membership” path is painted in the confirm affordance color (green) and placed behind an extra confirmation step while the card’s “cancel anytime” claim is contradicted by a minimum-term fee clause."
       auditorStats={stats}
       deltaNote="In Variant A Intent(L(B)) = cancel (destructive) ∩ Affordance(C(B)) = green (confirm) = ∅, so the button that ends your membership is dressed in the color your brain reads as safe/confirm. Variant A also obstructs the exit: the card claims “cancel anytime” yet the fine print imposes a 12-month minimum term with a $49 early-cancellation fee, and cancellation is demoted to a small text link that demands a second confirmation step (N(x_delete) = 2 &gt; N(x_create) = 1). In Variant B the affordances are honest: the destructive action is red, the safe one is green, Intent ∩ Affordance is non-empty for both, and cancelling takes a single prominent click with no conflicting terms."
       benign={
@@ -96,6 +96,7 @@ export function ConflictingInformationCond2({
 
             <div className="mt-2 space-y-1.5">
               <button
+                data-dp-color-signal
                 onClick={() => setChoice("cancel")}
                 className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
@@ -153,19 +154,16 @@ export function ConflictingInformationCond2({
             >
               Keep my membership
             </button>
-            {/* User-favorable action: demoted to a bare text link */}
+            {/* User-favorable action: confirmation-colored despite its destructive intent. */}
             {!confirming ? (
-              <a
-                href="#cancel"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setConfirming(true);
-                }}
-                className="mx-auto block text-center text-[9px] text-muted-foreground/60 hover:text-muted-foreground underline underline-offset-2 transition-colors cursor-pointer py-0 px-0"
-                style={{ padding: 0 }}
+              <button
+                data-dp-color-signal
+                type="button"
+                onClick={() => setConfirming(true)}
+                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 px-3 text-[10px] font-semibold transition-colors cursor-pointer"
               >
                 Cancel my membership
-              </a>
+              </button>
             ) : (
               <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5">
                 <div className="text-[9px] font-semibold text-foreground">Confirm cancellation</div>

@@ -44,9 +44,13 @@ export function FalseHierarchyCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<null | "accept" | "reject">(null);
+  const [darkChoice, setDarkChoice] = React.useState<null | "accept" | "reject">(null);
+  const [benignChoice, setBenignChoice] = React.useState<null | "accept" | "reject">(null);
 
-  const reset = () => setChoice(null);
+  const reset = () => {
+    setDarkChoice(null);
+    setBenignChoice(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -95,13 +99,13 @@ export function FalseHierarchyCond2({
             {/* equal composite visual weight: same size, same contrast, same font weight */}
             <div className="mt-3 grid grid-cols-1 gap-1.5">
               <button
-                onClick={() => setChoice("accept")}
+                onClick={() => setBenignChoice("accept")}
                 className="w-full rounded-md border border-green-600/50 bg-background text-green-700 dark:text-green-300 hover:bg-green-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Accept all cookies
               </button>
               <button
-                onClick={() => setChoice("reject")}
+                onClick={() => setBenignChoice("reject")}
                 className="w-full rounded-md border border-green-600/50 bg-background text-green-700 dark:text-green-300 hover:bg-green-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Reject all
@@ -109,11 +113,11 @@ export function FalseHierarchyCond2({
             </div>
           </div>
 
-          {choice && (
+          {mode === "auditor" && benignChoice && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
-                {choice === "accept" ? "Cookies accepted" : "All cookies rejected"} — fair choice
+                {benignChoice === "accept" ? "Cookies accepted" : "All cookies rejected"} — fair choice
               </div>
               <p className="text-muted-foreground mt-0.5">
                 A, C and F are identical across both options, so W(B_business) / W(B_user) ≈ 1.0
@@ -143,14 +147,14 @@ export function FalseHierarchyCond2({
           <div className="mt-3 grid grid-cols-1 gap-2">
             {/* B_business: large area, saturated bg, bold type */}
             <button
-              onClick={() => setChoice("accept")}
+              onClick={() => setDarkChoice("accept")}
               className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 px-4 text-[12px] font-bold tracking-wide transition-colors cursor-pointer"
             >
               Accept all cookies
             </button>
             {/* B_user: minimal area, near-zero contrast, thin type */}
             <button
-              onClick={() => setChoice("reject")}
+              onClick={() => setDarkChoice("reject")}
               className="w-full rounded-md bg-background text-muted-foreground/40 hover:text-muted-foreground/70 py-0.5 px-1 text-[8px] font-normal transition-colors cursor-pointer"
             >
               Reject all
@@ -158,27 +162,35 @@ export function FalseHierarchyCond2({
           </div>
         </div>
 
-        {choice && (
+        {darkChoice && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <AlertTriangle className="w-3 h-3" />
               Preferences saved
             </div>
-            <p className="text-muted-foreground">
-              {choice === "accept"
-                ? "You hit the dominant button — 43 partners set tracking cookies."
-                : "You fought the layout to reach the pale reject option."}{" "}
-              <strong className="text-red-500">
-                W(B_business) = {W_BUSINESS.toFixed(1)} vs W(B_user) = {W_USER.toFixed(1)} →
-                ratio {RATIO_DARK} &gt; τ_hierarchy ({TAU_HIERARCHY})
-              </strong>
-              .
-            </p>
-            <p className="text-muted-foreground">
-              Every term of W(x) = α·A(x) + β·C(x) + γ·F(x) is stacked in the business
-              option&rsquo;s favour — bounding box, background contrast, font weight — so the
-              rejection path is relationally suppressed before you even read the labels.
-            </p>
+            {mode === "auditor" ? (
+              <>
+                <p className="text-muted-foreground">
+                  {darkChoice === "accept"
+                    ? "You hit the dominant button — 43 partners set tracking cookies."
+                    : "You fought the layout to reach the pale reject option."}{" "}
+                  <strong className="text-red-500">
+                    W(B_business) = {W_BUSINESS.toFixed(1)} vs W(B_user) = {W_USER.toFixed(1)} →
+                    ratio {RATIO_DARK} &gt; τ_hierarchy ({TAU_HIERARCHY})
+                  </strong>
+                  .
+                </p>
+                <p className="text-muted-foreground">
+                  Every term of W(x) = α·A(x) + β·C(x) + γ·F(x) is stacked in the business
+                  option&rsquo;s favour — bounding box, background contrast, font weight — so the
+                  rejection path is relationally suppressed before you even read the labels.
+                </p>
+              </>
+            ) : (
+              <p className="text-muted-foreground">
+                Your cookie preference was saved. You can update it later from Privacy settings.
+              </p>
+            )}
           </div>
         )}
       </div>

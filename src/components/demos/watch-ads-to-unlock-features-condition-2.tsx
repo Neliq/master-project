@@ -32,27 +32,31 @@ export function WatchAdsToUnlockFeaturesCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [adsWatched, setAdsWatched] = React.useState(0);
-  const [claimAttempted, setClaimAttempted] = React.useState(false);
-  const [claimed, setClaimed] = React.useState(false);
+  const [benignAdsWatched, setBenignAdsWatched] = React.useState(0);
+  const [darkAdsWatched, setDarkAdsWatched] = React.useState(0);
+  const [darkClaimAttempted, setDarkClaimAttempted] = React.useState(false);
+  const [benignClaimed, setBenignClaimed] = React.useState(false);
+  const [darkClaimed, setDarkClaimed] = React.useState(false);
 
   const reset = () => {
-    setAdsWatched(0);
-    setClaimAttempted(false);
-    setClaimed(false);
+    setBenignAdsWatched(0);
+    setDarkAdsWatched(0);
+    setDarkClaimAttempted(false);
+    setBenignClaimed(false);
+    setDarkClaimed(false);
   };
 
   // Dark variant: visual progress runs at 2× the actual progress.
-  const visualCountDark = Math.min(ADS_REQUIRED, adsWatched * 2);
+  const visualCountDark = Math.min(ADS_REQUIRED, darkAdsWatched * 2);
   const pVisualDark = visualCountDark / ADS_REQUIRED;
-  const pActual = adsWatched / ADS_REQUIRED;
-  const mismatch = pVisualDark - pActual;
+  const pActualDark = darkAdsWatched / ADS_REQUIRED;
+  const mismatch = pVisualDark - pActualDark;
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_actual (ads watched / required)</span>
-        <span className="font-mono font-semibold tabular-nums">{adsWatched}/{ADS_REQUIRED}</span>
+        <span className="font-mono font-semibold tabular-nums">{darkAdsWatched}/{ADS_REQUIRED}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P_visual (rendered bar)</span>
@@ -73,8 +77,10 @@ export function WatchAdsToUnlockFeaturesCond2({
 
   const renderProgress = (accent: "rose" | "emerald") => {
     const isDark = accent === "rose";
-    const pct = Math.round((isDark ? pVisualDark : pActual) * 100);
-    const label = isDark ? visualCountDark : adsWatched;
+    const actualCount = isDark ? darkAdsWatched : benignAdsWatched;
+    const actualProgress = actualCount / ADS_REQUIRED;
+    const pct = Math.round((isDark ? pVisualDark : actualProgress) * 100);
+    const label = isDark ? visualCountDark : actualCount;
     return (
       <div className="mt-3 space-y-1">
         <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
@@ -83,24 +89,31 @@ export function WatchAdsToUnlockFeaturesCond2({
             {label} / {ADS_REQUIRED} ads
           </span>
         </div>
-        <div className="h-2 w-full rounded-full bg-muted overflow-hidden relative">
+        <div
+          role="progressbar"
+          aria-label="HD export reward progress"
+          aria-valuemin={0}
+          aria-valuemax={ADS_REQUIRED}
+          aria-valuenow={label}
+          className="h-2 w-full rounded-full bg-muted overflow-hidden relative"
+        >
           <div
             className={`h-full rounded-full transition-all duration-300 ${
               isDark ? "bg-red-500" : "bg-green-500"
             }`}
             style={{ width: `${pct}%` }}
           />
-          {isDark && (
+          {mode === "auditor" && isDark && (
             <div
               className="absolute top-0 bottom-0 w-0.5 bg-foreground/60"
-              style={{ left: `${Math.round(pActual * 100)}%` }}
+              style={{ left: `${Math.round(actualProgress * 100)}%` }}
               title="actual progress"
             />
           )}
         </div>
-        {isDark && (
+        {mode === "auditor" && isDark && (
           <div className="flex items-center justify-between text-[8px] text-muted-foreground">
-            <span className="text-foreground/70">▮ = actual ({Math.round(pActual * 100)}%)</span>
+            <span className="text-foreground/70">▮ = actual ({Math.round(actualProgress * 100)}%)</span>
             <span className="text-red-500">bar overstates by {(mismatch * 100).toFixed(0)}%</span>
           </div>
         )}
@@ -111,6 +124,7 @@ export function WatchAdsToUnlockFeaturesCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Watch Ads To Unlock Features Or Get Rewards: Visual Mismatch Between Reward Progress Display and Actual Progress"
+      userTitle="Explorer Pro — HD export"
       caption="Visual Mismatch Between Reward Progress Display and Actual Progress — the progress bar claims near-completion while the real ad count lags far behind."
       auditorStats={stats}
       deltaNote="Both variants require the same 10 completed ads for the same HD-export reward and count the same button clicks. Variant A renders the bar at double speed (each ad fills 20%, counter reads 2×) so it announces 'reward ready' at 5 real ads — then rejects the claim (P_visual − P_actual = 0.50 > τ_mislead). Variant B's bar advances exactly 10% per ad and the claim succeeds only at 10."
@@ -126,32 +140,31 @@ export function WatchAdsToUnlockFeaturesCond2({
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                {adsWatched}/{ADS_REQUIRED}
+                {benignAdsWatched}/{ADS_REQUIRED}
               </div>
             </div>
 
             {renderProgress("emerald")}
 
             <button
-              onClick={() => setAdsWatched((a) => Math.min(ADS_REQUIRED, a + 1))}
-              disabled={adsWatched >= ADS_REQUIRED}
+              onClick={() => setBenignAdsWatched((a) => Math.min(ADS_REQUIRED, a + 1))}
+              disabled={benignAdsWatched >= ADS_REQUIRED}
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-                adsWatched >= ADS_REQUIRED
+                benignAdsWatched >= ADS_REQUIRED
                   ? "bg-muted text-muted-foreground/50 cursor-default"
                   : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
-              {adsWatched >= ADS_REQUIRED ? "All ads watched" : `Watch ad (+1 completed)`}
+              {benignAdsWatched >= ADS_REQUIRED ? "All ads watched" : `Watch ad (+1 completed)`}
             </button>
 
             <button
               onClick={() => {
-                setClaimAttempted(true);
-                if (adsWatched >= ADS_REQUIRED) setClaimed(true);
+                if (benignAdsWatched >= ADS_REQUIRED) setBenignClaimed(true);
               }}
-              disabled={adsWatched < ADS_REQUIRED}
+              disabled={benignAdsWatched < ADS_REQUIRED}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-                adsWatched < ADS_REQUIRED
+                benignAdsWatched < ADS_REQUIRED
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                   : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
@@ -159,7 +172,7 @@ export function WatchAdsToUnlockFeaturesCond2({
               Claim HD export
             </button>
 
-            {claimed && (
+            {benignClaimed && (
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -168,8 +181,8 @@ export function WatchAdsToUnlockFeaturesCond2({
                   HD export unlocked
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  The bar told the truth at every step: P_visual = P_actual. The reward became
-                  claimable exactly when {ADS_REQUIRED} ads were really completed.
+                  The progress bar matched the completed ads at every step. The reward became claimable
+                  after all {ADS_REQUIRED} ads were finished.
                 </p>
               </div>
             )}
@@ -194,18 +207,18 @@ export function WatchAdsToUnlockFeaturesCond2({
           {renderProgress("rose")}
 
           <button
-            onClick={() => setAdsWatched((a) => Math.min(ADS_REQUIRED, a + 1))}
-            disabled={adsWatched >= ADS_REQUIRED}
+            onClick={() => setDarkAdsWatched((a) => Math.min(ADS_REQUIRED, a + 1))}
+            disabled={darkAdsWatched >= ADS_REQUIRED}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-              adsWatched >= ADS_REQUIRED
+              darkAdsWatched >= ADS_REQUIRED
                 ? "bg-muted text-muted-foreground/50 cursor-default"
                 : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
-            {adsWatched >= ADS_REQUIRED ? "All ads watched" : `Watch ad (+1 completed)`}
+            {darkAdsWatched >= ADS_REQUIRED ? "All ads watched" : `Watch ad (+1 completed)`}
           </button>
 
-          {visualCountDark >= ADS_REQUIRED && !claimed && (
+          {visualCountDark >= ADS_REQUIRED && !darkClaimed && (
             <div className="mt-2 flex items-center gap-1.5 rounded-md border border-yellow-500/30 bg-yellow-500/5 px-2 py-1.5 text-[9px] font-semibold text-yellow-700 dark:text-yellow-300">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
@@ -216,8 +229,8 @@ export function WatchAdsToUnlockFeaturesCond2({
 
           <button
             onClick={() => {
-              setClaimAttempted(true);
-              if (adsWatched >= ADS_REQUIRED) setClaimed(true);
+              setDarkClaimAttempted(true);
+              if (darkAdsWatched >= ADS_REQUIRED) setDarkClaimed(true);
             }}
             disabled={visualCountDark < ADS_REQUIRED}
             className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
@@ -229,7 +242,7 @@ export function WatchAdsToUnlockFeaturesCond2({
             Claim HD export
           </button>
 
-          {claimAttempted && !claimed && (
+          {darkClaimAttempted && !darkClaimed && (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -241,15 +254,14 @@ export function WatchAdsToUnlockFeaturesCond2({
               <p className="text-muted-foreground">
                 The bar showed <strong className="text-foreground">{visualCountDark}/{ADS_REQUIRED}</strong> and
                 announced the reward was ready, but only{" "}
-                <strong className="text-red-500">{adsWatched}/{ADS_REQUIRED}</strong> ads were actually
-                completed. P_visual − P_actual = {(mismatch).toFixed(2)} &gt; τ_mislead (0.10) — the
-                false sense of near-completion exists purely to keep you in the ad loop. The true
-                requirement was never {visualCountDark} ads; it was always {ADS_REQUIRED}.
+                <strong className="text-red-500">{darkAdsWatched}/{ADS_REQUIRED}</strong> ads were actually
+                completed. The progress bar reached the ready state early, so the reward still needs
+                the full {ADS_REQUIRED} completed ads.
               </p>
             </div>
           )}
 
-          {claimed && (
+          {darkClaimed && (
             <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -258,7 +270,7 @@ export function WatchAdsToUnlockFeaturesCond2({
                 HD export unlocked
               </div>
               <p className="text-muted-foreground mt-0.5">
-                This time the real counter finally caught up: {adsWatched} completed ads ≥ {ADS_REQUIRED}.
+                The full {ADS_REQUIRED}-ad requirement is now complete and HD export is unlocked.
               </p>
             </div>
           )}

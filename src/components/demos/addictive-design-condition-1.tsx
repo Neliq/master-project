@@ -37,11 +37,13 @@ const TITLES = [
 ];
 
 const PALETTES = [
-  " ",
-  " ",
-  " ",
-  " ",
+  "bg-primary/20",
+  "bg-primary/30",
+  "bg-primary/15",
+  "bg-primary/25",
 ];
+const CREATORS = ["Mara Chen", "Owen Bell", "Priya Shah", "Noah Ellis"];
+const DURATIONS = ["0:42", "1:08", "0:36", "1:24"];
 
 function ReelItem({ index }: { index: number }) {
   const title = TITLES[index % TITLES.length];
@@ -54,7 +56,7 @@ function ReelItem({ index }: { index: number }) {
           #{index + 1} — {title}
         </div>
         <div className="mt-0.5 text-[8px] font-mono text-muted-foreground/60">
-          y = {(index + 1) * 44}px &bull; reel {index + 1}
+          by {CREATORS[index % CREATORS.length]}{" "}&bull;{" "}{DURATIONS[index % DURATIONS.length]}{" "}&bull;{" "}Short
         </div>
       </div>
     </div>
@@ -111,6 +113,7 @@ export function AddictiveDesignCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Addictive Design: Infinite Frictionless Continuation"
+      userTitle="Reelz — Feed"
       caption="Infinite Frictionless Continuation — content is appended in the background before the user perceives the bottom, so the document never reaches a terminal state."
       auditorStats={stats}
       deltaNote="Scroll Variant A to the bottom: new reels appear automatically (E_append = True), so the document height keeps growing. Variant B stops at a fixed height, shows an 'End of results' marker, and only continues when you explicitly press 'Load more'."
@@ -123,7 +126,7 @@ export function AddictiveDesignCond1({
                 {countB} reels
               </span>
             </div>
-            <div ref={refB} className="mt-2 max-h-40 space-y-1.5 overflow-y-auto pr-1">
+            <div ref={refB} role="region" aria-label="Reel feed" tabIndex={0} className="mt-2 max-h-40 space-y-1.5 overflow-y-auto pr-1">
               {Array.from({ length: countB }).map((_, i) => (
                 <ReelItem key={i} index={i} />
               ))}
@@ -149,12 +152,15 @@ export function AddictiveDesignCond1({
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Reelz — feed</h3>
             <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
-              {countA} reels &hellip; keep going
+              {countA}{" "}reels &hellip; keep going
             </span>
           </div>
           <div
             ref={refA}
             onScroll={handleScrollA}
+            role="region"
+            aria-label="Reel feed"
+            tabIndex={0}
             className="mt-2 max-h-40 space-y-1.5 overflow-y-auto pr-1"
           >
             {Array.from({ length: countA }).map((_, i) => (

@@ -30,9 +30,13 @@ export function PayToPlayCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [purchased, setPurchased] = React.useState(false);
+  const [benignPurchased, setBenignPurchased] = React.useState(false);
+  const [darkPurchased, setDarkPurchased] = React.useState(false);
 
-  const reset = () => setPurchased(false);
+  const reset = () => {
+    setBenignPurchased(false);
+    setDarkPurchased(false);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -50,7 +54,7 @@ export function PayToPlayCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Purchased?</span>
-        <span className="font-mono font-semibold tabular-nums">{purchased ? "Yes" : "No"}</span>
+        <span className="font-mono font-semibold tabular-nums">{benignPurchased ? "Yes" : "No"}</span>
       </div>
     </>
   ) : null;
@@ -58,6 +62,7 @@ export function PayToPlayCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Pay-To-Play: Semantic Framing of Payment as Unlock"
+      userTitle="Ember Temple — Ancient Chest"
       caption="Semantic Framing of Payment as Unlock — a required payment is dressed up as an 'unlock' instead of a purchase, dissociating the money from the action."
       auditorStats={stats}
       deltaNote="Both variants sell the identical Ancient Chest for $4.99. Variant A frames the payment as 'Unlock the Ancient Chest' (Frame ∈ {Unlock, Discover, Enhance}) with the price in fine print. Variant B frames the identical offer as a transaction — 'Buy the Ancient Chest' — with the price on the button, so spending inhibition stays intact."
@@ -82,7 +87,7 @@ export function PayToPlayCond3({
               </div>
             </div>
 
-            {!purchased ? (
+            {!benignPurchased ? (
               <>
                 <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5">
                   <div className="flex items-center justify-between text-[10px]">
@@ -94,7 +99,7 @@ export function PayToPlayCond3({
                   </p>
                 </div>
                 <button
-                  onClick={() => setPurchased(true)}
+                  onClick={() => setBenignPurchased(true)}
                   className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Purchase — {PRICE}
@@ -110,7 +115,7 @@ export function PayToPlayCond3({
             )}
           </div>
 
-          {purchased && (
+          {benignPurchased && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -148,11 +153,11 @@ export function PayToPlayCond3({
             </div>
           </div>
 
-          {!purchased ? (
+          {!darkPurchased ? (
             <>
               <button
-                onClick={() => setPurchased(true)}
-                className="mt-3 w-full rounded-md     text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
+                onClick={() => setDarkPurchased(true)}
+                className="mt-3 w-full rounded-md bg-primary hover:bg-primary/90 text-primary-foreground py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
               >
                 ✨ Unlock the Ancient Chest
               </button>
@@ -174,7 +179,7 @@ export function PayToPlayCond3({
           )}
         </div>
 
-        {mode === "auditor" && purchased && (
+        {mode === "auditor" && darkPurchased && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

@@ -186,6 +186,7 @@ export function ImmortalAccountsCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Immortal Accounts: Visual Accessibility of Offboarding Vectors"
+      userTitle="Harbor — Create account"
       caption="Visual Accessibility of Offboarding Vectors — the account-deletion affordance is rendered with visual prominence far below its onboarding counterpart, so the exit is present yet engineered to be missed."
       auditorStats={stats}
       deltaNote="Both variants ship the same “Delete account” affordance at the same position with the same label. In Variant A it renders as an 8px low-contrast text link (A(N_delete) = 1056 px² — 9% of the 12320 px² “Sign up” CTA), pushing the ratio to 0.086, below the fairness threshold τ_exit_visibility = 0.25. In Variant B the affordance is a full-size button with equal area, so the ratio is 1.0."

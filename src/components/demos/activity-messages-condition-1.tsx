@@ -21,10 +21,10 @@ import { DemoShell } from "@/components/demos/demo-shell";
 
 const BUYERS = [
   { name: "Sarah", city: "New York", item: "Aurora Wireless Earbuds Pro" },
-  { name: "Mike", city: "Berlin", item: "CloudNine Smart Lamp" },
-  { name: "Anna", city: "Toronto", item: "TrailBlazer Backpack 45L" },
+  { name: "Mike", city: "Berlin", item: "Aurora Wireless Earbuds Pro" },
+  { name: "Anna", city: "Toronto", item: "Aurora Wireless Earbuds Pro" },
   { name: "Liam", city: "Dublin", item: "Aurora Wireless Earbuds Pro" },
-  { name: "Priya", city: "Mumbai", item: "CloudNine Smart Lamp" },
+  { name: "Priya", city: "Mumbai", item: "Aurora Wireless Earbuds Pro" },
 ];
 
 type Event = {
@@ -36,6 +36,14 @@ type Event = {
   ts: string;
 };
 
+const REAL_EVENTS: Event[] = [
+  { id: 1, order: "TX-74201", name: "Sarah", city: "New York", item: "Aurora Wireless Earbuds Pro", ts: "12:58" },
+  { id: 2, order: "TX-74202", name: "Mike", city: "Berlin", item: "Aurora Wireless Earbuds Pro", ts: "12:51" },
+  { id: 3, order: "TX-74203", name: "Anna", city: "Toronto", item: "Aurora Wireless Earbuds Pro", ts: "12:44" },
+  { id: 4, order: "TX-74204", name: "Liam", city: "Dublin", item: "Aurora Wireless Earbuds Pro", ts: "12:37" },
+  { id: 5, order: "TX-74205", name: "Priya", city: "Mumbai", item: "Aurora Wireless Earbuds Pro", ts: "12:31" },
+];
+
 export function ActivityMessagesCond1({
   mode = "user", annotations = [], onRestart,
 }: {
@@ -44,7 +52,8 @@ export function ActivityMessagesCond1({
   onRestart?: () => void;
 } = {}) {
   const [events, setEvents] = React.useState<Event[]>([]);
-  const [verified, setVerified] = React.useState(false);
+  const [verifiedA, setVerifiedA] = React.useState(false);
+  const [verifiedB, setVerifiedB] = React.useState(false);
   const counter = React.useRef(0);
 
   // Shared event stream: every 2.8s one new "purchase" arrives.
@@ -67,7 +76,8 @@ export function ActivityMessagesCond1({
 
   const reset = () => {
     setEvents([]);
-    setVerified(false);
+    setVerifiedA(false);
+    setVerifiedB(false);
     counter.current = 0;
   };
 
@@ -143,7 +153,7 @@ export function ActivityMessagesCond1({
                 Waiting for the next real transaction…
               </p>
             )}
-            {events.map((ev) => toastRow(ev, false))}
+            {REAL_EVENTS.slice(0, events.length).map((ev) => toastRow(ev, false))}
           </div>
 
           <div className="rounded-md border border-border bg-background p-2.5">
@@ -152,7 +162,7 @@ export function ActivityMessagesCond1({
               <span className="font-mono font-semibold tabular-nums text-green-500">{events.length} entr{events.length === 1 ? "y" : "ies"}</span>
             </div>
             <ul className="mt-1.5 space-y-1">
-              {events.map((ev) => (
+              {REAL_EVENTS.slice(0, events.length).map((ev) => (
                 <li key={ev.id} className="flex items-center justify-between font-mono text-[8px] text-muted-foreground">
                   <span className="truncate">{ev.order} · {ev.name}</span>
                   <span className="tabular-nums">{ev.ts}</span>
@@ -163,13 +173,13 @@ export function ActivityMessagesCond1({
           </div>
 
           <button
-            onClick={() => setVerified(true)}
+            onClick={() => setVerifiedB(true)}
             className="w-full rounded-md border border-green-500/40 bg-green-500/10 py-1.5 text-[10px] font-medium text-green-700 dark:text-green-300 hover:bg-green-500/20 transition-colors cursor-pointer"
           >
-            Verify against backend
+            {mode === "auditor" ? "Verify against backend" : "Check recent purchases"}
           </button>
 
-          {mode === "auditor" && verified && (
+          {mode === "auditor" && verifiedB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -214,13 +224,13 @@ export function ActivityMessagesCond1({
         </div>
 
         <button
-          onClick={() => setVerified(true)}
+          onClick={() => setVerifiedA(true)}
           className="w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
         >
-          Verify against backend
+          {mode === "auditor" ? "Verify against backend" : "Check recent purchases"}
         </button>
 
-        {mode === "auditor" && verified && (
+        {mode === "auditor" && verifiedA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

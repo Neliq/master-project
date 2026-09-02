@@ -44,15 +44,20 @@ export function GrindingCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [clicks, setClicks] = React.useState(0);
+  const [clicksA, setClicksA] = React.useState(0);
+  const [clicksB, setClicksB] = React.useState(0);
 
-  const reset = () => setClicks(0);
+  const reset = () => {
+    setClicksA(0);
+    setClicksB(0);
+  };
 
-  const revealed = clicks >= 25;
-  const crossedA = crossedMilestones(MILESTONES_DARK, clicks);
+  const revealedA = clicksA >= 25;
+  const revealedB = clicksB >= 25;
+  const crossedA = crossedMilestones(MILESTONES_DARK, clicksA);
   const crossedB = crossedMilestones(
     Array.from({ length: 10 }, (_, i) => (i + 1) * PRAISE_EVERY),
-    clicks
+    clicksB
   );
   const praiseA = crossedA.length > 0 ? PRAISE_LINES[Math.min(crossedA.length - 1, PRAISE_LINES.length - 1)] : null;
   const praiseB = crossedB.length > 0 ? `Great job! Milestone #${crossedB[crossedB.length - 1]} — steady progress.` : null;
@@ -83,6 +88,7 @@ export function GrindingCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Grinding: Semantic Attenuation of Progress-Milestone Language"
+      userTitle="Kelp Farm"
       caption="Semantic Attenuation of Progress-Milestone Language — 'Great job!' appears at exponentially widening intervals, so praise fades precisely as the grind grows."
       auditorStats={stats}
       deltaNote="Both variants run the same kelp grind with the same action counter. Variant A celebrates milestones at action #3, #8, #20, #50… (gaps 5, 12, 30 — dΔa/di > 0): praise hooks you early, then starves you as the work doubles. Variant B celebrates every 5 actions (gaps constant), so reinforcement tracks the effort honestly."
@@ -103,7 +109,7 @@ export function GrindingCond3({
 
             <div className="mt-3 flex items-center justify-between text-[10px]">
               <span className="text-muted-foreground">Kelp harvested</span>
-              <span className="font-mono tabular-nums">{clicks} bundles</span>
+              <span className="font-mono tabular-nums">{clicksB} bundles</span>
             </div>
 
             {praiseB && (
@@ -122,13 +128,13 @@ export function GrindingCond3({
 
             <div className="mt-2 flex gap-2">
               <button
-                onClick={() => setClicks((c) => c + 1)}
+                onClick={() => setClicksB((c) => c + 1)}
                 className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Harvest kelp (+1)
               </button>
               <button
-                onClick={() => setClicks((c) => c + 5)}
+                onClick={() => setClicksB((c) => c + 5)}
                 className="flex-1 rounded-md border border-green-500/40 text-green-700 dark:text-green-300 hover:bg-green-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Harvest ×5
@@ -136,7 +142,7 @@ export function GrindingCond3({
             </div>
           </div>
 
-          {revealed && (
+          {revealedB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -145,7 +151,7 @@ export function GrindingCond3({
                 Reinforcement matches effort
               </div>
               <p className="text-muted-foreground mt-0.5">
-                After {clicks} actions you received <strong className="text-foreground">{crossedB.length} praises</strong>,
+                After {clicksB} actions you received <strong className="text-foreground">{crossedB.length} praises</strong>,
                 one every {PRAISE_EVERY} actions — Δa_i is constant, so dΔa/di = 0. Encouragement never
                 deserts you mid-grind.
               </p>
@@ -170,7 +176,7 @@ export function GrindingCond3({
 
           <div className="mt-3 flex items-center justify-between text-[10px]">
             <span className="text-muted-foreground">Kelp harvested</span>
-            <span className="font-mono tabular-nums">{clicks} bundles</span>
+            <span className="font-mono tabular-nums">{clicksA} bundles</span>
           </div>
 
           {praiseA && (
@@ -185,19 +191,19 @@ export function GrindingCond3({
           <p className="text-[9px] text-muted-foreground mt-1.5">
             Praise milestones so far: <span className="font-mono tabular-nums">#{crossedA.join(", #") || "—"}</span>{" "}
             {crossedA.length >= 2 && (
-              <>— gaps widening: <span className="font-mono tabular-nums">{gapsA.join(", ")}</span></>
+              <>— the next encouragement arrives after more harvesting.</>
             )}
           </p>
 
           <div className="mt-2 flex gap-2">
             <button
-              onClick={() => setClicks((c) => c + 1)}
+              onClick={() => setClicksA((c) => c + 1)}
               className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Harvest kelp (+1)
             </button>
             <button
-              onClick={() => setClicks((c) => c + 5)}
+              onClick={() => setClicksA((c) => c + 5)}
               className="flex-1 rounded-md border border-red-500/40 text-red-700 dark:text-red-300 hover:bg-red-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Harvest ×5
@@ -205,7 +211,7 @@ export function GrindingCond3({
           </div>
         </div>
 
-        {mode === "auditor" && revealed && (
+        {mode === "auditor" && revealedA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -215,7 +221,7 @@ export function GrindingCond3({
               Progress updated
             </div>
             <p className="text-muted-foreground">
-              After {clicks} actions you received only <strong className="text-red-500">{crossedA.length} praises</strong>,
+              After {clicksA} actions you received only <strong className="text-red-500">{crossedA.length} praises</strong>,
               at actions <span className="font-mono tabular-nums">#{crossedA.join(", #")}</span>. The gaps grow{" "}
               <span className="font-mono tabular-nums">({gapsA.join(", ")}{gapsA.length >= 2 ? ", …" : ""})</span> —
               Δa_i = Pos(Milestone_i) − Pos(Milestone_{"{i−1}"}) with dΔa/di &gt; 0. The praise hooks you early

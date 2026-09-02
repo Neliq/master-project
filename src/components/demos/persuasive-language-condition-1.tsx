@@ -21,13 +21,15 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * Variant A (dark): the scare-copy headline itself is a clickable, hoverable
  * trap with 6 registered listeners; hovering it fires events, clicking it
  * adds the item to the cart.
- * Variant B (benign): the same headline is static text with 0 listeners —
- * only the real button acts.
+ * Variant B (benign): the same headline is static text with 0 listeners;
+ * only the real button contributes one neutral listener.
  */
 
 const E_COERCIVE = 6; // registered listeners on the coercive text node (dark)
-const E_NEUTRAL = 0; // registered listeners on neutral text nodes
+const E_NEUTRAL = 1; // the real Add to cart control is the neutral action node
 const TAU_LISTENER = 3.0;
+const LISTENER_SKEW = (E_COERCIVE / E_NEUTRAL).toFixed(1);
+const BENIGN_SKEW = (0 / E_NEUTRAL).toFixed(1);
 
 export function PersuasiveLanguageCond1({
   mode = "user", annotations = [], onRestart,
@@ -36,12 +38,14 @@ export function PersuasiveLanguageCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [cart, setCart] = React.useState<null | "added">(null);
+  const [darkCart, setDarkCart] = React.useState<null | "added">(null);
+  const [benignCart, setBenignCart] = React.useState<null | "added">(null);
   const [hoverFires, setHoverFires] = React.useState(0);
   const [coerciveHovered, setCoerciveHovered] = React.useState(false);
 
   const reset = () => {
-    setCart(null);
+    setDarkCart(null);
+    setBenignCart(null);
     setHoverFires(0);
     setCoerciveHovered(false);
   };
@@ -58,7 +62,11 @@ export function PersuasiveLanguageCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Listener skew (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{E_COERCIVE}/{E_NEUTRAL} &gt; {TAU_LISTENER}</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{LISTENER_SKEW} &gt; {TAU_LISTENER}</span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">Listener skew (benign)</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{BENIGN_SKEW} &le; {TAU_LISTENER}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Hover events fired</span>
@@ -72,7 +80,7 @@ export function PersuasiveLanguageCond1({
       title="Persuasive Language: Structural Density of Event Listeners on Coercive Text Nodes"
       caption="Structural Density of Event Listeners on Coercive Text Nodes — emotionally loaded text is wired up as an interactive conversion trap, not just displayed."
       auditorStats={stats}
-      deltaNote="In Variant A the coercive headline node registers 6 event listeners (onclick, onmouseenter, onmouseleave, onfocus, ontouchstart, delegated keydown) while neutral text nodes register 0 — a skew far above tau_listener_skew = 3.0. Hover it and watch events fire; click it and it adds the item to your cart. In Variant B the same headline is static text with zero listeners."
+      deltaNote="In Variant A the coercive headline node registers 6 event listeners (onclick, onmouseenter, onmouseleave, onfocus, ontouchstart, delegated keydown) while the real Add to cart control supplies 1 neutral listener — a 6.0 skew above tau_listener_skew = 3.0. Hover it and watch events fire; click it and it adds the item to your cart. In Variant B the same headline is static text with zero listeners, so the corresponding skew is 0.0/1.0 and the predicate stays false."
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
@@ -84,7 +92,7 @@ export function PersuasiveLanguageCond1({
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                {E_NEUTRAL} listeners
+                Standard listing
               </div>
             </div>
 
@@ -97,14 +105,14 @@ export function PersuasiveLanguageCond1({
             </p>
 
             <button
-              onClick={() => setCart("added")}
+              onClick={() => setBenignCart("added")}
               className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Add to cart
             </button>
           </div>
 
-          {mode === "auditor" && cart && (
+          {mode === "auditor" && benignCart && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -113,7 +121,7 @@ export function PersuasiveLanguageCond1({
                 Added to cart
               </div>
               <p className="text-muted-foreground mt-0.5">
-                The persuasive headline is plain text: |E(N_coercive)| = {E_NEUTRAL} listeners. Hovering
+                The persuasive headline is plain text: |E(N_coercive)| = 0 listeners. Hovering
                 or reading it fires nothing, and clicking it does nothing — only the actual button
                 performs the action. The wording may still persuade, but it is not structurally
                 weaponized as a click target.
@@ -133,7 +141,7 @@ export function PersuasiveLanguageCond1({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              {E_COERCIVE} listeners
+              Featured listing
             </div>
           </div>
 
@@ -141,7 +149,7 @@ export function PersuasiveLanguageCond1({
           <div
             role="button"
             tabIndex={0}
-            onClick={() => setCart("added")}
+            onClick={() => setDarkCart("added")}
             onMouseEnter={() => { setHoverFires((n) => n + 1); setCoerciveHovered(true); }}
             onMouseLeave={() => setCoerciveHovered(false)}
             onFocus={() => setHoverFires((n) => n + 1)}
@@ -167,7 +175,7 @@ export function PersuasiveLanguageCond1({
           </p>
 
           <button
-            onClick={() => setCart("added")}
+            onClick={() => setDarkCart("added")}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium text-white transition-all cursor-pointer ${
               coerciveHovered
                 ? "bg-red-500 ring-2 ring-red-300 scale-[1.02]"
@@ -178,7 +186,7 @@ export function PersuasiveLanguageCond1({
           </button>
         </div>
 
-        {mode === "auditor" && cart && (
+        {mode === "auditor" && darkCart && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -194,7 +202,7 @@ export function PersuasiveLanguageCond1({
               The coercive text node registers <strong className="text-foreground">{E_COERCIVE} event listeners</strong>{" "}
               (onclick, onmouseenter, onmouseleave, onfocus, ontouchstart, delegated keydown) while
               neutral text nodes register <strong className="text-foreground">{E_NEUTRAL}</strong> — a
-              skew of {E_COERCIVE}/{E_NEUTRAL}, far above tau_listener_skew = {TAU_LISTENER}.
+              skew of {E_COERCIVE}/{E_NEUTRAL} = {LISTENER_SKEW}, far above tau_listener_skew = {TAU_LISTENER}.
             </p>
             <p className="text-muted-foreground">
               The persuasive language is structurally weaponized: the headline itself is a conversion

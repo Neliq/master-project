@@ -66,35 +66,38 @@ export function AddictiveDesignCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [spins, setSpins] = React.useState(0);
+  const [spinsA, setSpinsA] = React.useState(0);
+  const [spinsB, setSpinsB] = React.useState(0);
   const [coinsA, setCoinsA] = React.useState(0);
   const [coinsB, setCoinsB] = React.useState(0);
   const [lastA, setLastA] = React.useState<number | null>(null);
   const [lastB, setLastB] = React.useState<number | null>(null);
-  const [jackpot, setJackpot] = React.useState(false);
+  const [jackpotA, setJackpotA] = React.useState(false);
 
   const reset = () => {
-    setSpins(0);
+    setSpinsA(0);
+    setSpinsB(0);
     setCoinsA(0);
     setCoinsB(0);
     setLastA(null);
     setLastB(null);
-    setJackpot(false);
+    setJackpotA(false);
   };
 
-  // Shared spin counter: each panel draws from its own schedule.
-  const spin = () => {
-    setSpins((s) => s + 1);
-    // Variant A: variable-ratio reinforcement — unpredictable 0…50 coins.
-    const roll = Math.random();
-    const rewardA = roll < 0.35 ? 0 : roll < 0.65 ? 5 : roll < 0.9 ? 12 : 50;
-    setLastA(rewardA);
-    setCoinsA((c) => c + rewardA);
-    setJackpot(rewardA === 50);
-    // Variant B: consistent, predictable small reward (3–6 coins).
-    const rewardB = 3 + Math.floor(Math.random() * 4);
-    setLastB(rewardB);
-    setCoinsB((c) => c + rewardB);
+  const spin = (dark: boolean) => {
+    if (dark) {
+      setSpinsA((s) => s + 1);
+      const roll = Math.random();
+      const rewardA = roll < 0.35 ? 0 : roll < 0.65 ? 5 : roll < 0.9 ? 12 : 50;
+      setLastA(rewardA);
+      setCoinsA((c) => c + rewardA);
+      setJackpotA(rewardA === 50);
+      return;
+    }
+
+    setSpinsB((s) => s + 1);
+    setLastB(4);
+    setCoinsB((c) => c + 4);
   };
 
   const stats = mode === "auditor" ? (
@@ -121,6 +124,7 @@ export function AddictiveDesignCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Addictive Design: Semantic Reinforcement-Trigger Lexicon Density"
+      userTitle="LuckyPins"
       caption="Semantic Reinforcement-Trigger Lexicon Density — the interface is saturated with operant-conditioning lexemes (streak, claim reward, daily bonus, spin again) that linguistically structure variable-reward loops."
       auditorStats={stats}
       deltaNote="Variant A's copy contains 14 reinforcement lexemes (density 4.2/viewport, above tau_addiction) and pays out on a variable-ratio schedule — sometimes nothing, sometimes a 50-coin jackpot. Variant B delivers the same feature with 2 neutral lexemes and a flat, predictable 3–6 coin reward."
@@ -148,10 +152,10 @@ export function AddictiveDesignCond3({
               </div>
             )}
             <div className="mt-2">
-              <SpinButton onClick={spin} disabled={false} dark={false} />
+              <SpinButton onClick={() => spin(false)} disabled={false} dark={false} />
             </div>
             <p className="mt-1.5 text-[8px] text-muted-foreground">
-              {spins} plays &bull; predictable 3&ndash;6 coins each — no slot-machine suspense
+              {spinsB}{" "}plays{" "}&bull;{" "}4 coins each — predictable rewards
             </p>
           </div>
         </div>
@@ -169,7 +173,7 @@ export function AddictiveDesignCond3({
             {DARK_COPY}
           </p>
           <div className="mt-2 flex items-center justify-center py-2">
-            <svg viewBox="0 0 72 72" className={`h-14 w-14 transition-transform duration-150 ${spins > 0 ? "" : ""}`} aria-hidden="true">
+            <svg viewBox="0 0 72 72" className={`h-14 w-14 transition-transform duration-150 ${spinsA > 0 ? "" : ""}`} aria-hidden="true">
               <circle cx="36" cy="36" r="32" className="fill-red-500/15 stroke-red-500/50" strokeWidth="3" />
               <path d="M36 14 L41 31 L58 36 L41 41 L36 58 L31 41 L14 36 L31 31 Z" className="fill-red-500/40" />
             </svg>
@@ -186,26 +190,23 @@ export function AddictiveDesignCond3({
             </div>
           )}
           <div className="mt-2">
-            <SpinButton onClick={spin} disabled={false} dark={true} />
+            <SpinButton onClick={() => spin(true)} disabled={false} dark={true} />
           </div>
           <p className="mt-1.5 text-[8px] text-muted-foreground">
-            {spins} spins &bull; 35% nothing, 10% jackpot — variable ratio, dopamine on a schedule
+            {spinsA}{" "}spins{" "}&bull;{" "}rewards are added to your balance after each play
           </p>
         </div>
-        {jackpot && (
+        {jackpotA && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Variable-ratio reinforcement loop
+              Bonus awarded
             </div>
             <p className="text-muted-foreground mt-0.5">
-              The unpredictable jackpot is exactly what the lexicon sells: &ldquo;claim reward,&rdquo;
-              &ldquo;daily bonus,&rdquo; &ldquo;spin again,&rdquo; &ldquo;don&rsquo;t lose your streak.&rdquo; The interface
-              linguistically structures a slot machine — <span className="font-mono">|L_reinforcement| / A_viewport &gt; &tau;_addiction</span> — to
-              maximize compulsive re-engagement.
+              A larger bonus was added to your balance. Your next spin is ready whenever you want to play.
             </p>
           </div>
         )}

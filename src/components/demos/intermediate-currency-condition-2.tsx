@@ -71,8 +71,8 @@ export function IntermediateCurrencyCond2({
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-background overflow-hidden">
-            <div className="relative flex h-24 items-center justify-center   ">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg   shadow">
+            <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-slate-800 via-violet-700 to-fuchsia-600">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/30 bg-white/15 shadow-lg rotate-[-8deg]">
                 <Gem className="h-6 w-6 text-white" />
               </div>
               <div className="absolute top-2 right-2 rounded-full bg-yellow-500 px-2 py-0.5 text-[8px] font-bold text-white">
@@ -120,8 +120,8 @@ export function IntermediateCurrencyCond2({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-background overflow-hidden">
-          <div className="relative flex h-24 items-center justify-center   ">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg   shadow">
+          <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-slate-800 via-violet-700 to-fuchsia-600">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/30 bg-white/15 shadow-lg rotate-[-8deg]">
               <Gem className="h-6 w-6 text-white" />
             </div>
             <div className="absolute top-2 right-2 rounded-full bg-yellow-500 px-2 py-0.5 text-[8px] font-bold text-white">
@@ -148,34 +148,39 @@ export function IntermediateCurrencyCond2({
             </p>
             <button
               onClick={() => setBought(true)}
-              className="flex w-full items-center justify-center gap-1.5 rounded-md bg-red-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
+              disabled={bought}
+              className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-white transition-colors ${
+                bought ? "bg-muted text-muted-foreground/50 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 cursor-pointer"
+              }`}
             >
               <ShoppingCart className="h-3 w-3" />
-              Buy for {GEM_PRICE.toLocaleString()} Gems
+              {bought ? "Added to collection" : `Buy for ${GEM_PRICE.toLocaleString()} Gems`}
             </button>
           </div>
         </div>
 
         {bought && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
-              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Real cost visually obscured
-            </div>
-            <p className="text-muted-foreground">
-              N<sub>real</sub> = {REAL_PRICE} was <strong className="text-foreground">not absent</strong> — it was printed at{" "}
-              {TINY_SIZE_PX}px against a {BASE_SIZE_PX}px base body text: fontSize(N<sub>real</sub>)/S<sub>base</sub> ={" "}
-              <strong className="text-red-500">{RATIO_DARK} &lt; 0.5</strong>. The dollar figure exists in the viewport, so it
-              survives an automated scan, but a human eye registers only &ldquo;{GEM_PRICE.toLocaleString()} Gems&rdquo;. You
-              bought in gems; the ${REAL_PRICE.slice(1)} never registered.
-            </p>
-            <p className="text-muted-foreground">
-              There is no magnifier and no settings toggle anywhere on this screen — the interface
-              gives you no way to read the real price at a legible size.
-            </p>
+            {mode === "auditor" ? (
+              <>
+                <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+                  <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M12 9v4m0 4h.01" />
+                    <circle cx="12" cy="12" r="10" />
+                  </svg>
+                  Real cost visually obscured
+                </div>
+                <p className="text-muted-foreground">
+                  N<sub>real</sub> = {REAL_PRICE} was printed at {TINY_SIZE_PX}px against a {BASE_SIZE_PX}px base: fontSize(N<sub>real</sub>)/S<sub>base</sub> ={" "}
+                  <strong className="text-red-500">{RATIO_DARK} &lt; 0.5</strong>.
+                </p>
+              </>
+            ) : (
+              <>
+                <div className="mb-0.5 font-semibold text-yellow-700 dark:text-yellow-300">Added to your collection</div>
+                <p className="text-muted-foreground">Your cosmetic item is ready to use. The purchase was recorded in your collection.</p>
+              </>
+            )}
           </div>
         )}
       </div>

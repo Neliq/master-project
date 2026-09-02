@@ -29,19 +29,26 @@ export function ImmortalAccountsCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [tab, setTab] = React.useState<"profile" | "privacy" | "data">("privacy");
-  const [query, setQuery] = React.useState("");
-  const [scanned, setScanned] = React.useState(false);
+  const [tabA, setTabA] = React.useState<"profile" | "privacy" | "data">("privacy");
+  const [queryA, setQueryA] = React.useState("");
+  const [scannedA, setScannedA] = React.useState(false);
+  const [tabB, setTabB] = React.useState<"profile" | "privacy" | "data">("privacy");
+  const [queryB, setQueryB] = React.useState("");
+  const [scannedB, setScannedB] = React.useState(false);
 
   const reset = () => {
-    setTab("privacy");
-    setQuery("");
-    setScanned(false);
+    setTabA("privacy");
+    setQueryA("");
+    setScannedA(false);
+    setTabB("privacy");
+    setQueryB("");
+    setScannedB(false);
   };
 
   // Variant A has no termination text anywhere; Variant B renders one "Delete account" node.
-  const hitsBenign = query.trim().length > 0 && KEYWORDS.some((k) => k.includes(query.trim().toLowerCase())) ? 1 : 0;
-  const queryNoResults = query.trim().length > 0;
+  const hitsBenign = queryB.trim().length > 0 && KEYWORDS.some((k) => k.includes(queryB.trim().toLowerCase())) ? 1 : 0;
+  const queryNoResultsA = queryA.trim().length > 0;
+  const queryNoResultsB = queryB.trim().length > 0;
 
   const stats = mode === "auditor" ? (
     <>
@@ -64,14 +71,14 @@ export function ImmortalAccountsCond3({
     </>
   ) : null;
 
-  const tabs = (
+  const tabs = (selectedTab: "profile" | "privacy" | "data", setSelectedTab: (tab: "profile" | "privacy" | "data") => void) => (
     <div className="flex gap-1 rounded-md border border-border bg-muted/40 p-1">
       {(["profile", "privacy", "data"] as const).map((t) => (
         <button
           key={t}
-          onClick={() => setTab(t)}
+          onClick={() => setSelectedTab(t)}
           className={`flex-1 rounded px-2 py-1 text-[9px] font-medium capitalize transition-colors cursor-pointer ${
-            tab === t ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
+            selectedTab === t ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"
           }`}
         >
           {t === "data" ? "Data & storage" : t}
@@ -135,6 +142,7 @@ export function ImmortalAccountsCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Immortal Accounts: Absolute Absence of Deletion Vectors"
+      userTitle="Harbor — Privacy settings"
       caption="Absolute Absence of Deletion Vectors — the settings sub-pages contain no termination keywords at all (K_del ∩ T_DOM = ∅), so the interface offers no structural exit affordance."
       auditorStats={stats}
       deltaNote={`In Variant A none of K_del = {${KEYWORDS.join(", ")}} appears anywhere in the visible settings DOM — even the search box returns "no results" — so K_del ∩ T_DOM = ∅ and the feature triggers. In Variant B the same settings page renders a plainly labelled "Delete account" node, making the intersection non-empty.`}
@@ -156,13 +164,13 @@ export function ImmortalAccountsCond3({
                 <path d="M21 21l-4.35-4.35" />
               </svg>
               <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                value={queryB}
+                onChange={(e) => setQueryB(e.target.value)}
                 placeholder="Search settings…"
                 className="w-full rounded-md border border-border bg-background py-1.5 pl-7 pr-2 text-[10px] placeholder:text-muted-foreground/50"
               />
             </div>
-            {queryNoResults ? (
+            {queryNoResultsB ? (
               <div className={`mt-2 rounded-md border p-2 text-[9px] ${
                 hitsBenign > 0
                   ? "border-green-500/30 bg-green-500/5"
@@ -170,24 +178,24 @@ export function ImmortalAccountsCond3({
               }`}>
                 {hitsBenign > 0 ? (
                   <>
-                    <span className="font-semibold text-green-700 dark:text-green-300">{hitsBenign} result for &ldquo;{query}&rdquo;</span>
+                    <span className="font-semibold text-green-700 dark:text-green-300">{hitsBenign} result for &ldquo;{queryB}&rdquo;</span>
                     <span className="text-muted-foreground"> — Delete account (Account &gt; Privacy).</span>
                   </>
                 ) : (
-                  <span className="text-muted-foreground">No results for &ldquo;{query}&rdquo; — nothing matched in Settings, Privacy or Data.</span>
+                  <span className="text-muted-foreground">No results for &ldquo;{queryB}&rdquo; — nothing matched in Settings, Privacy or Data.</span>
                 )}
               </div>
             ) : null}
-            <div className="mt-3">{tabs}</div>
+            <div className="mt-3">{tabs(tabB, setTabB)}</div>
             <div className="mt-3">{privacyBenign}</div>
           </div>
           <button
-            onClick={() => setScanned(true)}
+            onClick={() => setScannedB(true)}
             className="w-full rounded-md border border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Scan settings DOM for exit keywords
           </button>
-          {scanned ? (
+          {scannedB ? (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -221,28 +229,28 @@ export function ImmortalAccountsCond3({
               <path d="M21 21l-4.35-4.35" />
             </svg>
             <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              value={queryA}
+              onChange={(e) => setQueryA(e.target.value)}
               placeholder="Search settings…"
               className="w-full rounded-md border border-border bg-background py-1.5 pl-7 pr-2 text-[10px] placeholder:text-muted-foreground/50"
             />
           </div>
-          {queryNoResults ? (
+          {queryNoResultsA ? (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px]">
-              <span className="font-semibold text-yellow-700 dark:text-yellow-300">No results for &ldquo;{query}&rdquo;</span>
+              <span className="font-semibold text-yellow-700 dark:text-yellow-300">No results for &ldquo;{queryA}&rdquo;</span>
               <span className="text-muted-foreground"> — nothing matched in Settings, Privacy or Data.</span>
             </div>
           ) : null}
-          <div className="mt-3">{tabs}</div>
+          <div className="mt-3">{tabs(tabA, setTabA)}</div>
           <div className="mt-3">{privacyDark}</div>
         </div>
         <button
-          onClick={() => setScanned(true)}
+          onClick={() => setScannedA(true)}
           className="w-full rounded-md border border-red-500/40 bg-red-500/5 text-red-700 dark:text-red-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
           Scan settings DOM for exit keywords
         </button>
-        {scanned ? (
+        {scannedA ? (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

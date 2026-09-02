@@ -34,39 +34,46 @@ export function FearOfMissingOutFomoCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [secondsLeft, setSecondsLeft] = React.useState(DELTA_T);
-  const [sessions, setSessions] = React.useState(0);
+  const [secondsA, setSecondsA] = React.useState(DELTA_T);
+  const [secondsB, setSecondsB] = React.useState(DELTA_T);
+  const [sessionsA, setSessionsA] = React.useState(0);
+  const [sessionsB, setSessionsB] = React.useState(0);
   const [resets, setResets] = React.useState(0);
   const [darkRevealed, setDarkRevealed] = React.useState(false);
   const [benignRevealed, setBenignRevealed] = React.useState(false);
-  const [bought, setBought] = React.useState(false);
+  const [boughtA, setBoughtA] = React.useState(false);
+  const [boughtB, setBoughtB] = React.useState(false);
 
   const reset = () => {
-    setSecondsLeft(DELTA_T);
-    setSessions(0);
+    setSecondsA(DELTA_T);
+    setSecondsB(DELTA_T);
+    setSessionsA(0);
+    setSessionsB(0);
     setResets(0);
     setDarkRevealed(false);
     setBenignRevealed(false);
-    setBought(false);
+    setBoughtA(false);
+    setBoughtB(false);
   };
 
   // One shared, genuinely-decrementing deadline (the "server-side" clock).
   React.useEffect(() => {
     const id = window.setInterval(() => {
-      setSecondsLeft((s) => (s > 0 ? s - 1 : 0));
+      setSecondsA((s) => (s > 0 ? s - 1 : 0));
+      setSecondsB((s) => (s > 0 ? s - 1 : 0));
     }, 1000);
     return () => window.clearInterval(id);
   }, []);
 
   const startDarkSession = () => {
-    setSessions((c) => c + 1);
+    setSessionsA((c) => c + 1);
     setResets((c) => c + 1);
-    setSecondsLeft(DELTA_T); // T(s₁) ≈ Δt — deterministic reset
+    setSecondsA(DELTA_T); // T(s₁) ≈ Δt — deterministic reset
     setDarkRevealed(true);
   };
 
   const startBenignSession = () => {
-    setSessions((c) => c + 1);
+    setSessionsB((c) => c + 1);
     setBenignRevealed(true); // timer untouched: T(s₁) = T(s₀) − elapsed
   };
 
@@ -86,7 +93,7 @@ export function FearOfMissingOutFomoCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Sessions simulated</span>
-        <span className="font-mono font-semibold tabular-nums">{sessions}</span>
+        <span className="font-mono font-semibold tabular-nums">A: {sessionsA} / B: {sessionsB}</span>
       </div>
     </>
   ) : null;
@@ -94,6 +101,7 @@ export function FearOfMissingOutFomoCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Fear Of Missing Out (FOMO): Artificial Temporal Scarcity"
+      userTitle="AeroGlide X — Flash sale"
       caption="Artificial Temporal Scarcity — a countdown that deterministically resets its full duration on every new session instead of reflecting a genuine, universal deadline."
       auditorStats={stats}
       deltaNote="Variant A’s “new session” button resets the shared countdown to a full 14:59 (T(s₁) ≈ Δt — fabricated urgency). Variant B’s identical button leaves the countdown untouched, so it continues from its current value like a real server-side deadline."
@@ -112,12 +120,12 @@ export function FearOfMissingOutFomoCond1({
               <div className="flex-1">
                 <div className="text-[8px] uppercase tracking-wider text-muted-foreground">Shared global deadline</div>
                 <div className="font-mono text-[16px] font-bold tabular-nums text-green-700 dark:text-green-300">
-                  {fmt(secondsLeft)}
+                  {fmt(secondsB)}
                 </div>
               </div>
               <div className="text-right text-[8px] text-muted-foreground">
-                <div>Session #{sessions}</div>
-                <div className="font-mono">T(s) = {fmt(secondsLeft)}</div>
+                <div>Session #{sessionsB}</div>
+                <div className="font-mono">Deadline: {fmt(secondsB)}</div>
               </div>
             </div>
 
@@ -127,16 +135,16 @@ export function FearOfMissingOutFomoCond1({
             </div>
 
             <button
-              onClick={() => setBought(true)}
-              disabled={bought}
+              onClick={() => setBoughtB(true)}
+              disabled={boughtB}
               className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-                bought
+                boughtB
                   ? "bg-muted text-muted-foreground/60 cursor-default"
                   : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
               }`}
             >
               <ShoppingCart className="size-3" />
-              {bought ? "Order confirmed" : "Buy now — $119"}
+              {boughtB ? "Order confirmed" : "Buy now — $119"}
             </button>
 
             <button
@@ -156,8 +164,8 @@ export function FearOfMissingOutFomoCond1({
                   Global deadline preserved
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  T(s₁) = T(s₀) − elapsed: the countdown continued from its current value because it reflects a
-                  server-side, universal deadline. New sessions cannot restart it.
+                  The countdown continued from its current value because the deadline is shared across
+                  sessions. Starting over did not add time to the offer.
                 </p>
               </div>
             )}
@@ -179,12 +187,12 @@ export function FearOfMissingOutFomoCond1({
             <div className="flex-1">
               <div className="text-[8px] uppercase tracking-wider text-muted-foreground">Deal ends in</div>
               <div className="font-mono text-[16px] font-bold tabular-nums text-red-700 dark:text-red-300">
-                {fmt(secondsLeft)}
+                {fmt(secondsA)}
               </div>
             </div>
             <div className="text-right text-[8px] text-muted-foreground">
-              <div>Session #{sessions}</div>
-              <div className="font-mono">T(s) = {fmt(secondsLeft)}</div>
+              <div>Session #{sessionsA}</div>
+              <div className="font-mono">Deadline: {fmt(secondsA)}</div>
             </div>
           </div>
 
@@ -195,16 +203,16 @@ export function FearOfMissingOutFomoCond1({
           </div>
 
           <button
-            onClick={() => setBought(true)}
-            disabled={bought}
+            onClick={() => setBoughtA(true)}
+            disabled={boughtA}
             className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-              bought
+              boughtA
                 ? "bg-muted text-muted-foreground/60 cursor-default"
                 : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             }`}
           >
             <ShoppingCart className="size-3" />
-            {bought ? "Order confirmed" : "Buy now — $119"}
+            {boughtA ? "Order confirmed" : "Buy now — $119"}
           </button>
 
           <button
@@ -225,10 +233,8 @@ export function FearOfMissingOutFomoCond1({
                 Limited-time offer
               </div>
               <p className="text-muted-foreground">
-                <strong className="text-foreground">T(s₀) ≈ Δ t</strong> and <strong className="text-foreground">T(s₁) ≈ Δ t</strong> — after
-                “clearing cookies” the countdown is back at a full {fmt(DELTA_T)}. A genuine deadline is global:
-                every session must show the same remaining time. Here the timer has no server-side state and
-                resets deterministically per session ({resets} reset{resets === 1 ? "" : "s"} so far).
+                After “starting a new session” the countdown returned to a full {fmt(DELTA_T)}. The offer
+                timer is ready for another look, and this session has been restarted {resets} time{resets === 1 ? "" : "s"}.
               </p>
             </div>
           )}

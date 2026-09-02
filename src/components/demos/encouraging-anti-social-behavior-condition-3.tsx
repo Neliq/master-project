@@ -29,11 +29,12 @@ const TONES: { id: Tone; label: string; polarity: number }[] = [
   { id: "hostile", label: "Hostile", polarity: 0.9 },
 ];
 
+const DARK_REACH: Record<Tone, number> = { civil: 1400, heated: 4200, hostile: 6300 };
+const BENIGN_REACH = 840;
+
 // Predicted reach for a composed post under each distribution policy.
 function reachFor(tone: Tone, dark: boolean): number {
-  if (!dark) return 820 + Math.floor(Math.random() * 60); // neutral distribution
-  const polarity = TONES.find((t) => t.id === tone)?.polarity ?? 0.2;
-  return Math.round(120 * Math.pow(polarity * 10, 2.2)); // reach ~ polarity
+  return dark ? DARK_REACH[tone] : BENIGN_REACH;
 }
 
 function Post({
@@ -46,17 +47,12 @@ function Post({
   boosted: boolean;
   dark: boolean;
 }) {
-  const toneColor =
-    tone === "civil"
-      ? "text-green-600 dark:text-green-400"
-      : tone === "heated"
-        ? "text-yellow-600 dark:text-yellow-400"
-        : "text-red-600 dark:text-red-400";
+  const toneColor = "text-muted-foreground";
   return (
     <div className="rounded-md border border-border bg-background p-2.5">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-1.5">
-          <div className={`flex h-4 w-4 items-center justify-center rounded-full text-[8px] font-bold text-white ${dark ? "bg-red-500" : "bg-green-500"}`}>
+          <div className="flex h-4 w-4 items-center justify-center rounded-full bg-violet-600 text-[8px] font-bold text-white">
             {author[0]}
           </div>
           <span className="text-[9px] font-medium text-foreground/80">{author}</span>
@@ -66,7 +62,7 @@ function Post({
       <p className="mt-1.5 text-[9px] leading-relaxed text-foreground/80">{text}</p>
       <div className="mt-1.5 flex items-center justify-between text-[8px] font-mono text-muted-foreground">
         <span>{views.toLocaleString()} views</span>
-        <span className={boosted && dark ? "font-bold text-red-600 dark:text-red-400" : ""}>
+        <span className={boosted && dark ? "font-bold text-violet-700 dark:text-violet-300" : ""}>
           {dark ? (boosted ? "▲ Boosted" : "Not boosted") : "Standard reach"}
         </span>
       </div>
@@ -103,11 +99,11 @@ export function EncouragingAntiSocialBehaviorCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">V_visibility (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">12,400 vs 48 &mdash; &prop; polarity</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{DARK_REACH.hostile.toLocaleString()} vs {DARK_REACH.civil.toLocaleString()} &mdash; &prop; polarity</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">V_visibility (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">860 vs 840 &mdash; independent</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{BENIGN_REACH} vs {BENIGN_REACH} &mdash; independent</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Systemic incentive</span>
@@ -119,14 +115,15 @@ export function EncouragingAntiSocialBehaviorCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Encouraging Anti-Social Behavior: Algorithmic Amplification of Outrage"
+      userTitle="Chirp — compose"
       caption="Algorithmic Amplification of Outrage — the distribution algorithm assigns higher visibility to highly polarized content, so hostility is the rational strategy for reaching an audience."
       auditorStats={stats}
-      deltaNote="Variant A defaults the composer to the 'Heated' tone (P=0.6 pre-selected at s0) and labels feed posts 'Boosted'/'Not boosted', implying the algorithm amplifies polarized content — reach scales with polarity (hostile ≈ 9,800 views, civil ≈ 140). Variant B starts on the neutral 'Civil' tone with no pre-selection, shows every post at 'Standard reach' (no boost markers), and distributes reach flatly (~820 views) regardless of tone — there is no incentive to escalate."
+      deltaNote={`Variant A defaults the composer to the 'Heated' tone and labels feed posts 'Boosted'/'Not boosted', implying the algorithm amplifies polarized content — reach scales with polarity (${DARK_REACH.hostile.toLocaleString()} hostile views vs ${DARK_REACH.civil.toLocaleString()} civil). Variant B starts on the neutral 'Civil' tone, shows every post at the same reach (${BENIGN_REACH} views), and removes boost markers — there is no incentive to escalate.`}
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <h3 className="text-[11px] font-semibold">Chirp — compose</h3>
-            <div className="mt-2 flex items-center gap-1.5">
+            <div role="group" aria-label="Choose a post tone" className="mt-2 flex items-center gap-1.5">
               {TONES.map((t) => (
                 <button
                   key={t.id}
@@ -137,7 +134,7 @@ export function EncouragingAntiSocialBehaviorCond3({
                       : "border-border bg-background text-foreground/60 hover:text-foreground"
                   }`}
                 >
-                  {t.label} <span className="font-mono">P={t.polarity}</span>
+                  {t.label}{mode === "auditor" && <span className="font-mono"> P={t.polarity}</span>}
                 </button>
               ))}
             </div>
@@ -150,13 +147,16 @@ export function EncouragingAntiSocialBehaviorCond3({
             </p>
             <button
               onClick={() => setBenignPosted(true)}
-              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+            disabled={benignPosted}
+            className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${benignPosted ? "bg-muted text-muted-foreground/40 cursor-not-allowed" : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"}`}
             >
-              Post
+            {benignPosted ? "Post published" : "Post"}
             </button>
             {benignPosted && benignReach !== null && (
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 px-2 py-1.5 text-[8px] font-mono text-green-700 dark:text-green-300">
-                Predicted reach: ~{benignReach.toLocaleString()} views — polarity does not affect distribution
+                {mode === "auditor"
+                  ? `Predicted reach: ~${benignReach.toLocaleString()} views — polarity does not affect distribution`
+                  : `Your post is live and will reach people through the usual feed ranking — estimated reach ${benignReach.toLocaleString()} views.`}
               </div>
             )}
           </div>
@@ -164,9 +164,10 @@ export function EncouragingAntiSocialBehaviorCond3({
           <div className="rounded-md border bg-card p-3">
             <h3 className="text-[11px] font-semibold">Your feed</h3>
             <div className="mt-2 space-y-2">
-              <Post author="Maya K." tone="heated" text="They raised the fees again without telling anyone first. Pretty frustrating." views={860} boosted={false} dark={false} />
-              <Post author="Dev R." tone="hostile" text="This update is garbage and everyone who shipped it should be embarrassed." views={840} boosted={false} dark={false} />
-              <Post author="Lena P." tone="civil" text="A small fix: the settings page now explains each option clearly. Nice." views={870} boosted={false} dark={false} />
+              {benignPosted && <Post author="You" tone={benignTone} text="The new bus timetable is a mess and someone should explain the cuts." views={benignReach ?? BENIGN_REACH} boosted={false} dark={false} />}
+              <Post author="Maya K." tone="heated" text="They raised the fees again without telling anyone first. Pretty frustrating." views={BENIGN_REACH} boosted={false} dark={false} />
+              <Post author="Dev R." tone="hostile" text="This update is garbage and everyone who shipped it should be embarrassed." views={BENIGN_REACH} boosted={false} dark={false} />
+              <Post author="Lena P." tone="civil" text="A small fix: the settings page now explains each option clearly. Nice." views={BENIGN_REACH} boosted={false} dark={false} />
             </div>
           </div>
         </div>
@@ -175,7 +176,7 @@ export function EncouragingAntiSocialBehaviorCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <h3 className="text-[11px] font-semibold">Chirp — compose</h3>
-          <div className="mt-2 flex items-center gap-1.5">
+          <div role="group" aria-label="Choose a post tone" className="mt-2 flex items-center gap-1.5">
             {TONES.map((t) => (
               <button
                 key={t.id}
@@ -186,7 +187,7 @@ export function EncouragingAntiSocialBehaviorCond3({
                     : "border-border bg-background text-foreground/60 hover:text-foreground"
                 }`}
               >
-                {t.label} <span className="font-mono">P={t.polarity}</span>
+                {t.label}{mode === "auditor" && <span className="font-mono"> P={t.polarity}</span>}
               </button>
             ))}
           </div>
@@ -199,9 +200,10 @@ export function EncouragingAntiSocialBehaviorCond3({
           </p>
           <button
             onClick={() => setPosted(true)}
-            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+            disabled={posted}
+            className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${posted ? "bg-muted text-muted-foreground/40 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"}`}
           >
-            Post
+            {posted ? "Post published" : "Post"}
           </button>
           {posted && darkReach !== null && (
             <div className={`mt-2 rounded-md border px-2 py-1.5 text-[8px] font-mono ${
@@ -217,9 +219,10 @@ export function EncouragingAntiSocialBehaviorCond3({
         <div className="rounded-md border bg-card p-3">
           <h3 className="text-[11px] font-semibold">Your feed</h3>
           <div className="mt-2 space-y-2">
-            <Post author="Maya K." tone="heated" text="They raised the fees again without telling anyone first. Pretty frustrating." views={3200} boosted={false} dark={true} />
-            <Post author="Dev R." tone="hostile" text="This update is garbage and everyone who shipped it should be embarrassed." views={12400} boosted={true} dark={true} />
-            <Post author="Lena P." tone="civil" text="A small fix: the settings page now explains each option clearly. Nice." views={48} boosted={false} dark={true} />
+            {posted && <Post author="You" tone={tone} text="This new bus timetable is a mess and someone should explain the cuts." views={darkReach ?? DARK_REACH[tone]} boosted={tone !== "civil"} dark={true} />}
+            <Post author="Maya K." tone="heated" text="They raised the fees again without telling anyone first. Pretty frustrating." views={DARK_REACH.heated} boosted={false} dark={true} />
+            <Post author="Dev R." tone="hostile" text="This update is garbage and everyone who shipped it should be embarrassed." views={DARK_REACH.hostile} boosted={true} dark={true} />
+            <Post author="Lena P." tone="civil" text="A small fix: the settings page now explains each option clearly. Nice." views={DARK_REACH.civil} boosted={false} dark={true} />
           </div>
         </div>
       </div>

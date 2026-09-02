@@ -33,9 +33,13 @@ export function VisualProminenceCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<null | "apply" | "full-price">(null);
+  const [darkChoice, setDarkChoice] = React.useState<null | "apply" | "full-price">(null);
+  const [benignChoice, setBenignChoice] = React.useState<null | "apply" | "full-price">(null);
 
-  const reset = () => setChoice(null);
+  const reset = () => {
+    setDarkChoice(null);
+    setBenignChoice(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -76,19 +80,19 @@ export function VisualProminenceCond3({
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                Sent +0.12
+                Standard offer
               </div>
             </div>
 
             <div className="mt-3 grid grid-cols-1 gap-2">
               <button
-                onClick={() => setChoice("full-price")}
+                onClick={() => setBenignChoice("full-price")}
                 className="rounded-md border border-border bg-background py-2 text-[10px] font-medium text-foreground transition-colors hover:bg-muted cursor-pointer"
               >
                 Continue without discount
               </button>
               <button
-                onClick={() => setChoice("apply")}
+                onClick={() => setBenignChoice("apply")}
                 className="rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Apply $50 discount
@@ -96,13 +100,13 @@ export function VisualProminenceCond3({
             </div>
           </div>
 
-          {mode === "auditor" && choice && (
+          {mode === "auditor" && benignChoice && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                {choice === "apply" ? "Discount applied" : "Full price kept"}
+                {benignChoice === "apply" ? "Discount applied" : "Full price kept"}
               </div>
               <p className="text-muted-foreground mt-0.5">
                 The dominant label is semantically neutral: Sent(L) = +{SENT_BENIGN.toFixed(2)} (within
@@ -125,19 +129,19 @@ export function VisualProminenceCond3({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Sent +0.86
+              Featured offer
             </div>
           </div>
 
           <div className="mt-3 space-y-2">
             <button
-              onClick={() => setChoice("apply")}
+              onClick={() => setDarkChoice("apply")}
               className="w-full rounded-md   py-3.5 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-lg shadow-red-500/30 transition-transform hover:scale-[1.02] cursor-pointer"
             >
               YES! Unlock my $50 savings — don&rsquo;t miss out!
             </button>
             <button
-              onClick={() => setChoice("full-price")}
+              onClick={() => setDarkChoice("full-price")}
               className="w-full py-0.5 text-[9px] text-muted-foreground underline decoration-dotted underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
             >
               No thanks, I&rsquo;ll pay the full price
@@ -145,7 +149,18 @@ export function VisualProminenceCond3({
           </div>
         </div>
 
-        {mode === "auditor" && choice && (
+        {mode === "user" && darkChoice && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">
+              {darkChoice === "apply" ? "Discount applied" : "Full price selected"}
+            </div>
+            <p className="text-muted-foreground mt-0.5">
+              Your pricing preference was saved for checkout.
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && darkChoice && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -155,7 +170,7 @@ export function VisualProminenceCond3({
               Non-neutral dominant label
             </div>
             <p className="text-muted-foreground">
-              {choice === "apply"
+              {darkChoice === "apply"
                 ? "You clicked the screaming button — the wording did part of the selling."
                 : "You can choose either option below."}{" "}
               The dominant action&rsquo;s label has <strong className="text-foreground">Sent(L) = +{SENT_DARK.toFixed(2)}</strong>,{" "}

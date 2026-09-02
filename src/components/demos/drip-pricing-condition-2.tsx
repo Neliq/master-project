@@ -34,12 +34,16 @@ export function DripPricingCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [paid, setPaid] = React.useState(false);
-  const [highlighted, setHighlighted] = React.useState(false);
+  const [paidA, setPaidA] = React.useState(false);
+  const [paidB, setPaidB] = React.useState(false);
+  const [highlightedA, setHighlightedA] = React.useState(false);
+  const [highlightedB, setHighlightedB] = React.useState(false);
 
   const reset = () => {
-    setPaid(false);
-    setHighlighted(false);
+    setPaidA(false);
+    setPaidB(false);
+    setHighlightedA(false);
+    setHighlightedB(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -67,7 +71,13 @@ export function DripPricingCond2({
     </>
   ) : null;
 
-  const renderPanel = (dark: boolean) => (
+  const renderPanel = (dark: boolean) => {
+    const paid = dark ? paidA : paidB;
+    const setPaid = dark ? setPaidA : setPaidB;
+    const highlighted = dark ? highlightedA : highlightedB;
+    const setHighlighted = dark ? setHighlightedA : setHighlightedB;
+
+    return (
     <div className="space-y-3">
       <div className="rounded-md border bg-card p-3">
         <div className="flex items-center gap-3">
@@ -148,11 +158,12 @@ export function DripPricingCond2({
 
         <button
           onClick={() => setPaid(true)}
-          className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-            dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+          disabled={paid}
+          className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
+            paid ? "bg-muted text-muted-foreground/50 cursor-not-allowed" : dark ? "bg-red-600 hover:bg-red-700 cursor-pointer" : "bg-green-600 hover:bg-green-700 cursor-pointer"
           }`}
         >
-          {dark ? "Book ticket" : `Book ticket — ${usd(TOTAL_PRICE)} total`}
+          {paid ? "Ticket booked" : dark ? "Book ticket" : `Book ticket — ${usd(TOTAL_PRICE)} total`}
         </button>
       </div>
 
@@ -193,8 +204,15 @@ export function DripPricingCond2({
             </p>
           </div>
         ))}
+      {mode !== "auditor" && paid && (
+        <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+          <div className="font-semibold text-green-700 dark:text-green-300">Booking confirmed</div>
+          <p className="mt-1 text-muted-foreground">Jazz Night at the Blue Room · 1 e-ticket · charged {usd(TOTAL_PRICE)}.</p>
+        </div>
+      )}
     </div>
   );
+  };
 
   return (
     <DemoShell

@@ -127,7 +127,12 @@ export function PriceComparisonPreventionCond1({
 
           <div className="mt-2.5 rounded-md border bg-background p-2.5">
             <div className="flex items-baseline gap-1.5 select-none">
-              <span className="text-[15px] font-bold tabular-nums">2,990 Coins</span>
+              <span
+                className="text-[15px] font-bold tabular-nums select-text"
+                onCopy={(event) => { event.preventDefault(); setCopyAttempts((attempts) => attempts + 1); }}
+              >
+                2,990 Coins
+              </span>
               <span className="text-[9px] text-muted-foreground">/ year</span>
             </div>
             <div className="text-[9px] text-muted-foreground mt-0.5">
@@ -144,12 +149,21 @@ export function PriceComparisonPreventionCond1({
           </button>
 
           {darkConvert === "failed" && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-              <div className="font-semibold text-yellow-700 dark:text-yellow-300">F_convert(2,990 Coins) = ∅</div>
-              <p className="text-muted-foreground mt-1">
-                No fiat mapping exists in the DOM. 2,990 Coins cannot be expressed in PLN,
-                USD, EUR or any standard currency — cross-market comparison is blocked.
-              </p>
+            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+              {mode === "auditor" ? (
+                <>
+                  <div className="font-mono font-semibold text-yellow-700 dark:text-yellow-300">F_convert(2,990 Coins) = ∅</div>
+                  <p className="text-muted-foreground mt-1">
+                    No fiat mapping exists in the DOM. 2,990 Coins cannot be expressed in PLN,
+                    USD, EUR or any standard currency — cross-market comparison is blocked.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div className="font-semibold text-yellow-700 dark:text-yellow-300">Currency conversion unavailable</div>
+                  <p className="text-muted-foreground mt-1">This plan is sold in Coins, and no PLN or EUR equivalent is provided.</p>
+                </>
+              )}
             </div>
           )}
 

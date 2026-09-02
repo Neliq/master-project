@@ -71,6 +71,7 @@ export function AutomaticAcceptThirdPartyTermCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Automatic Accept Third Party Term: Semantic Concealment of Third-Party Agreement Language"
+      userTitle="Orbit — Data preferences"
       caption="Third-party agreement language sits in a pre-checked box — legally present, structurally pre-consented, with no affirmative user interaction ever recorded."
       auditorStats={stats}
       deltaNote={`In Variant A the third-party agreement checkbox is pre-checked (Checked = True, UserToggled = False) — your consent is recorded without you ever touching it. In Variant B the same sentence starts unchecked and consent is only recorded when you actively tick the box.`}
@@ -124,9 +125,8 @@ export function AutomaticAcceptThirdPartyTermCond3({
                 Affirmative consent
               </div>
               <p className="text-muted-foreground mt-0.5">
-                The event log shows <strong className="text-foreground">UserToggled(N_legal) =
-                True</strong>: you actively checked the box before the account was created. The
-                third-party agreement language was visible and your interaction was on record.
+                You actively checked the agreement before creating the account. The third-party sharing
+                language was visible, and your choice was recorded with the rest of your preferences.
               </p>
             </div>
           )}
@@ -185,14 +185,12 @@ export function AutomaticAcceptThirdPartyTermCond3({
               Pre-consented clause
             </div>
             <p className="text-muted-foreground mt-0.5">
-              The clause contains classic agreement language (&ldquo;agree to,&rdquo; &ldquo;terms,&rdquo;{" "}
-              &ldquo;third-party&rdquo;) — <strong className="text-red-500">T(N_legal) &cap;
-              K_agreement &ne; &empty;</strong> — but it was already checked when the page loaded.
-              {darkToggled
-                ? " You toggled it after the fact, so for most of the flow Checked(N_legal) = True while UserToggled(N_legal) = False."
-                : " You never touched it: Checked(N_legal) = True ∧ UserToggled(N_legal) = False."}{" "}
-              Your consent to third-party data sharing was recorded with zero affirmative
-              interaction in the event log.
+              The agreement included third-party data sharing, but its checkbox was already selected when
+              the page loaded. {darkToggled
+                ? "You changed it after the initial selection."
+                : "You could create the account without ever actively selecting it."}
+              {" "}The sharing preference was therefore bundled into account creation instead of being an
+              explicit choice at the moment you signed up.
             </p>
           </div>
         )}

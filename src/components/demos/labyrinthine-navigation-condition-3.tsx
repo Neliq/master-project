@@ -16,7 +16,7 @@ import { DemoShell } from "@/components/demos/demo-shell";
  *   exists e_i in P : Sim(L(e_i), Topic(v_target)) < tau_semantic
  *
  * Variant A (dark): the road to "delete my account" runs through labels
- * like "Storage management" and "Usage & diagnostics" that say nothing
+ * like "Storage management" and "Usage & activity" that say nothing
  * about deletion, so the user must guess the pathway.
  * Variant B (benign): every label on the path is semantically on-topic.
  */
@@ -31,7 +31,7 @@ interface Edge {
 
 const DARK_PATH: Edge[] = [
   { label: "More options", sim: 0.23 },
-  { label: "Usage & diagnostics", sim: 0.18 },
+  { label: "Usage & activity", sim: 0.18 },
   { label: "System resources", sim: 0.14 },
   { label: "Legal & compliance", sim: 0.31 },
   { label: "Storage management", sim: 0.12 },
@@ -54,14 +54,18 @@ export function LabyrinthineNavigationCond3({
 } = {}) {
   const [darkStep, setDarkStep] = React.useState(0);
   const [benignStep, setBenignStep] = React.useState(0);
-  const [confirming, setConfirming] = React.useState(false);
-  const [outcome, setOutcome] = React.useState<"none" | "deleted">("none");
+  const [confirmingA, setConfirmingA] = React.useState(false);
+  const [confirmingB, setConfirmingB] = React.useState(false);
+  const [outcomeA, setOutcomeA] = React.useState<"none" | "deleted">("none");
+  const [outcomeB, setOutcomeB] = React.useState<"none" | "deleted">("none");
 
   const reset = () => {
     setDarkStep(0);
     setBenignStep(0);
-    setConfirming(false);
-    setOutcome("none");
+    setConfirmingA(false);
+    setConfirmingB(false);
+    setOutcomeA("none");
+    setOutcomeB("none");
   };
 
   const minDarkSim = Math.min(...DARK_PATH.filter((e) => !e.target).map((e) => e.sim));
@@ -90,6 +94,7 @@ export function LabyrinthineNavigationCond3({
 
   const renderPath = (path: Edge[], step: number, accent: "rose" | "emerald") => {
     const current = path[Math.min(step, path.length - 1)];
+    const setConfirming = accent === "rose" ? setConfirmingA : setConfirmingB;
     return (
       <div className="rounded-md border bg-card p-3">
         <div className="mb-2 flex items-center justify-between">
@@ -138,7 +143,7 @@ export function LabyrinthineNavigationCond3({
                   <span className={`shrink-0 font-mono text-[8px] tabular-nums ${
                     e.sim < TAU_SEMANTIC ? "text-red-500" : "text-green-600 dark:text-green-400"
                   }`}>
-                    Sim {e.sim.toFixed(2)}
+                    {mode === "auditor" ? `Sim ${e.sim.toFixed(2)}` : e.target ? "Destination" : "Next"}
                   </span>
                 </span>
               </button>
@@ -152,6 +157,7 @@ export function LabyrinthineNavigationCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Labyrinthine Navigation: Semantic Obfuscation"
+      userTitle="Harbor — Account help"
       caption="Semantic Obfuscation — the labels along the exit path share almost no semantic overlap with the goal, so information scent collapses and the user must guess the way."
       auditorStats={stats}
       deltaNote={`In Variant A every intermediate label fails the scent test — the minimum similarity to Topic(v_target) is ${minDarkSim.toFixed(2)} < τ_semantic = ${TAU_SEMANTIC.toFixed(2)} (“Storage management” says nothing about deletion). In Variant B the same path is labelled plainly, with a minimum similarity of ${minBenignSim.toFixed(2)}.`}
@@ -162,7 +168,7 @@ export function LabyrinthineNavigationCond3({
             the menu.
           </div>
           {renderPath(BENIGN_PATH, benignStep, "emerald")}
-          {confirming && (
+          {confirmingB && (
             <div className="rounded-md border bg-card p-3">
               <h3 className="text-[11px] font-semibold">Delete your account?</h3>
               <p className="mt-0.5 text-[9px] text-muted-foreground">
@@ -170,13 +176,13 @@ export function LabyrinthineNavigationCond3({
               </p>
               <div className="mt-2 grid grid-cols-2 gap-2">
                 <button
-                  onClick={() => setConfirming(false)}
+                  onClick={() => setConfirmingB(false)}
                   className="w-full rounded-md border border-border bg-background hover:bg-foreground/5 py-1.5 text-[10px] font-medium text-foreground/80 transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
-                  onClick={() => { setConfirming(false); setOutcome("deleted"); }}
+                  onClick={() => { setConfirmingB(false); setOutcomeB("deleted"); }}
                   className="w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
                 >
                   Confirm deletion
@@ -184,7 +190,7 @@ export function LabyrinthineNavigationCond3({
               </div>
             </div>
           )}
-          {outcome === "deleted" && (
+          {outcomeB === "deleted" && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -193,9 +199,8 @@ export function LabyrinthineNavigationCond3({
                 Account deleted
               </div>
               <p className="mt-0.5 text-muted-foreground">
-                Every label on the path (Settings, Account, Delete account) was semantically
-                on-topic — min Sim = {minBenignSim.toFixed(2)} &ge; &tau;_semantic = {TAU_SEMANTIC.toFixed(2)}.
-                No guessing required.
+                Every label on the path pointed toward account settings and deletion, so you could
+                reach the destination without guessing.
               </p>
             </div>
           )}
@@ -208,7 +213,7 @@ export function LabyrinthineNavigationCond3({
           way through the menu.
         </div>
         {renderPath(DARK_PATH, darkStep, "rose")}
-        {confirming && (
+        {confirmingA && (
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-2">
               <svg className="mt-0.5 h-3.5 w-3.5 shrink-0 text-yellow-600 dark:text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -224,13 +229,13 @@ export function LabyrinthineNavigationCond3({
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
-                onClick={() => setConfirming(false)}
+                onClick={() => setConfirmingA(false)}
                 className="w-full rounded-md border border-border bg-background hover:bg-foreground/5 py-1.5 text-[10px] font-medium text-foreground/80 transition-colors cursor-pointer"
               >
                 Go back
               </button>
               <button
-                onClick={() => { setConfirming(false); setOutcome("deleted"); }}
+                onClick={() => { setConfirmingA(false); setOutcomeA("deleted"); }}
                 className="w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Confirm
@@ -238,7 +243,7 @@ export function LabyrinthineNavigationCond3({
             </div>
           </div>
         )}
-        {outcome === "deleted" && (
+        {outcomeA === "deleted" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -248,12 +253,9 @@ export function LabyrinthineNavigationCond3({
               Account settings
             </div>
             <p className="text-muted-foreground">
-              Every intermediate label undercut the information scent: “Usage &amp; diagnostics”
-              Sim {DARK_PATH[1].sim.toFixed(2)}, “System resources” Sim {DARK_PATH[2].sim.toFixed(2)}, “Storage
-              management” Sim {DARK_PATH[4].sim.toFixed(2)} — all below &tau;_semantic = {TAU_SEMANTIC.toFixed(2)}.
-              None of them whisper “account deletion”, so you were forced to guess the pathway,
-              exactly as the pattern intends. Only the final edge (“Terminate account”, Sim{" "}
-              {DARK_PATH[6].sim.toFixed(2)}) is on-topic — too late to help.
+              The route passed through labels such as “Usage &amp; activity,” “System resources,” and
+              “Storage management” before reaching account deletion. None of those labels made the
+              destination obvious, so you had to guess the pathway.
             </p>
           </div>
         )}

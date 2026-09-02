@@ -31,9 +31,13 @@ export function AddressBookLeechingCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [invited, setInvited] = React.useState<"none" | "all" | "skipped">("none");
+  const [darkInvited, setDarkInvited] = React.useState<"none" | "all" | "skipped">("none");
+  const [benignInvited, setBenignInvited] = React.useState<"none" | "all" | "skipped">("none");
 
-  const reset = () => setInvited("none");
+  const reset = () => {
+    setDarkInvited("none");
+    setBenignInvited("none");
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -51,7 +55,7 @@ export function AddressBookLeechingCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Outcome</span>
-        <span className="font-mono font-semibold tabular-nums">{invited}</span>
+        <span className="font-mono font-semibold tabular-nums">{darkInvited}</span>
       </div>
     </>
   ) : null;
@@ -59,6 +63,7 @@ export function AddressBookLeechingCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Address Book Leeching: Visual Prominence of the Invite-All Affordance"
+      userTitle="SnapGrid — welcome"
       caption="The collective &ldquo;invite all&rdquo; affordance visually dominates the skip affordance, pressuring users toward indiscriminate contact sharing."
       auditorStats={stats}
       deltaNote={`In Variant A the invite-all button dwarfs the skip link (area ratio ${DOMINANCE_DARK} > τ = ${TAU}). In Variant B both affordances are visually balanced (ratio ${DOMINANCE_BENIGN}) so skipping is as easy as inviting.`}
@@ -73,33 +78,35 @@ export function AddressBookLeechingCond2({
 
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
-                onClick={() => setInvited("all")}
+                onClick={() => setBenignInvited("all")}
                 className="rounded-md border border-green-500/40 bg-green-500/10 px-2 py-2.5 text-[10px] font-semibold text-green-700 dark:text-green-300 hover:bg-green-500/20 transition-colors cursor-pointer"
               >
                 Invite all {NETWORK_SIZE} contacts
               </button>
               <button
-                onClick={() => setInvited("skipped")}
+                onClick={() => setBenignInvited("skipped")}
                 className="rounded-md border border-border bg-background px-2 py-2.5 text-[10px] font-semibold text-foreground hover:bg-muted transition-colors cursor-pointer"
               >
                 Skip for now
               </button>
             </div>
-            <p className="mt-2 text-[8px] text-muted-foreground/60">
-              Both options are the same size. A(N_invite_all) / A(N_skip) = {DOMINANCE_BENIGN}.
-            </p>
+            {mode === "auditor" && (
+              <p className="mt-2 text-[8px] text-muted-foreground/60">
+                Both options are the same size. A(N_invite_all) / A(N_skip) = {DOMINANCE_BENIGN}.
+              </p>
+            )}
           </div>
 
-          {invited !== "none" && (
+          {benignInvited !== "none" && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                {invited === "all" ? "Invites sent" : "Skipped"}
+                {benignInvited === "all" ? "Invites sent" : "Skipped"}
               </div>
               <p className="text-muted-foreground mt-0.5">
-                {invited === "all"
+                {benignInvited === "all"
                   ? `You chose the collective invite deliberately — ${NETWORK_SIZE} invites went out.`
                   : "Nothing was shared. The skip affordance was as easy to reach as the invite button, so your choice was unpressured."}
               </p>
@@ -116,34 +123,49 @@ export function AddressBookLeechingCond2({
           </p>
 
           <button
-            onClick={() => setInvited("all")}
+            onClick={() => setDarkInvited("all")}
             className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white px-4 py-4 text-[11px] font-bold shadow-lg shadow-red-600/20 transition-colors cursor-pointer"
           >
             Invite all {NETWORK_SIZE} contacts
           </button>
           <button
-            onClick={() => setInvited("skipped")}
-            className="mt-1.5 w-full text-center text-[8px] text-muted-foreground/50 underline decoration-dotted underline-offset-2 hover:text-muted-foreground transition-colors cursor-pointer"
+            onClick={() => setDarkInvited("skipped")}
+            className="mt-1.5 min-h-10 w-full rounded-md border border-border bg-background px-2 py-2 text-center text-[9px] text-muted-foreground/70 underline underline-offset-2 hover:text-foreground transition-colors cursor-pointer"
           >
             skip
           </button>
-          <p className="mt-2 text-[8px] text-muted-foreground/60">
-            A(N_invite_all) / A(N_skip) = {DOMINANCE_DARK} &gt; &tau; = {TAU} — the collective
-            affordance owns the viewport.
-          </p>
+          {mode === "auditor" && (
+            <p className="mt-2 text-[8px] text-muted-foreground/60">
+              A(N_invite_all) / A(N_skip) = {DOMINANCE_DARK} &gt; &tau; = {TAU} — the collective
+              affordance owns the viewport.
+            </p>
+          )}
         </div>
 
-        {invited !== "none" && (
+        {mode === "user" && darkInvited !== "none" && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">
+              {darkInvited === "all" ? "Invitations sent" : "Skipped for now"}
+            </div>
+            <p className="mt-0.5 text-muted-foreground">
+              {darkInvited === "all"
+                ? `The invitation was sent to all ${NETWORK_SIZE} contacts.`
+                : "No contacts were invited. You can revisit this step from your account settings."}
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && darkInvited !== "none" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              {invited === "all" ? "Indiscriminate sharing" : "Tiny escape hatch"}
+              {darkInvited === "all" ? "Indiscriminate sharing" : "Tiny escape hatch"}
             </div>
             <p className="text-muted-foreground mt-0.5">
-              {invited === "all"
+              {darkInvited === "all"
                 ? `The larger button makes it easy to invite everyone at once. You can also skip this step below.`
                 : `You found the skip link — but at ${DOMINANCE_DARK}× the size difference, it existed as a mere formality. The interface steered every other user toward the collective invite.`}
             </p>

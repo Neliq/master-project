@@ -51,15 +51,24 @@ export function PreDeliveredContentCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [clicked, setClicked] = React.useState<string | null>(null);
-  const [clicks, setClicks] = React.useState(0);
+  const [clickedA, setClickedA] = React.useState<string | null>(null);
+  const [clickedB, setClickedB] = React.useState<string | null>(null);
+  const [clicksA, setClicksA] = React.useState(0);
+  const [clicksB, setClicksB] = React.useState(0);
 
   const reset = () => {
-    setClicked(null);
-    setClicks(0);
+    setClickedA(null);
+    setClickedB(null);
+    setClicksA(0);
+    setClicksB(0);
   };
 
-  const handleClick = (name: string, locked: boolean) => {
+  const handleClick = (
+    name: string,
+    locked: boolean,
+    setClicked: React.Dispatch<React.SetStateAction<string | null>>,
+    setClicks: React.Dispatch<React.SetStateAction<number>>,
+  ) => {
     setClicked(name);
     if (locked) setClicks((c) => c + 1);
   };
@@ -80,7 +89,7 @@ export function PreDeliveredContentCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Locked tiles clicked</span>
-        <span className="font-mono font-semibold tabular-nums">{clicks}</span>
+        <span className="font-mono font-semibold tabular-nums">{clicksA} dark / {clicksB} benign</span>
       </div>
     </>
   ) : null;
@@ -88,6 +97,7 @@ export function PreDeliveredContentCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Pre-Delivered Content: Visual Density of Locked-Content Badges"
+      userTitle="PixelQuest — Expansion pack"
       caption="Visual Density of Locked-Content Badges — locked-versus-accessible node density makes the interface visually dominated by assets the user already hosts but cannot access."
       auditorStats={stats}
       deltaNote="Variant A locks 12 of 14 tiles — padlocks on content already delivered to disk (ratio 6.0 > τ). Variant B leaves the same 14 tiles unlocked; only 2 are non-accessible, and those are genuinely absent from the device and downloadable (ratio 0.17 < τ)."
@@ -110,7 +120,7 @@ export function PreDeliveredContentCond2({
                 return (
                   <button
                     key={name}
-                    onClick={() => handleClick(name, isLocked)}
+                    onClick={() => handleClick(name, isLocked, setClickedB, setClicksB)}
                     className={`flex flex-col items-start gap-1 rounded-md border p-1.5 text-left transition-colors cursor-pointer ${
                       isLocked
                         ? "border-border bg-background hover:border-green-500/40"
@@ -131,18 +141,18 @@ export function PreDeliveredContentCond2({
               })}
             </div>
 
-            {clicked && (
+            {clickedB && (
               <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
-                  {BENIGN_LOCKED.has(HUB_ITEMS.indexOf(clicked)) ? "Genuinely not installed" : "Ready to play"}
+                  {BENIGN_LOCKED.has(HUB_ITEMS.indexOf(clickedB)) ? "Genuinely not installed" : "Ready to play"}
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  {BENIGN_LOCKED.has(HUB_ITEMS.indexOf(clicked))
-                    ? `“${clicked}” is the only legitimate case for a lock: the data is truly absent from your device (IsLocal = False), so it is downloadable — not paywalled.`
-                    : `“${clicked}” is installed and accessible — IsLocked(n) = False. No padlock decorates content you already own.`}
+                  {BENIGN_LOCKED.has(HUB_ITEMS.indexOf(clickedB))
+                    ? `“${clickedB}” is the only legitimate case for a lock: the data is truly absent from your device (IsLocal = False), so it is downloadable — not paywalled.`
+                    : `“${clickedB}” is installed and accessible — IsLocked(n) = False. No padlock decorates content you already own.`}
                 </p>
               </div>
             )}
@@ -168,7 +178,7 @@ export function PreDeliveredContentCond2({
               return (
                 <button
                   key={name}
-                  onClick={() => handleClick(name, isLocked)}
+                  onClick={() => handleClick(name, isLocked, setClickedA, setClicksA)}
                   className={`flex flex-col items-start gap-1 rounded-md border p-1.5 text-left transition-colors cursor-pointer ${
                     isLocked
                       ? "border-red-500/25 bg-background hover:border-red-500/50"
@@ -189,19 +199,19 @@ export function PreDeliveredContentCond2({
             })}
           </div>
 
-          {clicked && (
+          {clickedA && (
             <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                {DARK_LOCKED.has(HUB_ITEMS.indexOf(clicked)) ? "Padlock over hosted data" : "Accessible node"}
+                {DARK_LOCKED.has(HUB_ITEMS.indexOf(clickedA)) ? "Padlock over hosted data" : "Accessible node"}
               </div>
               <p className="text-muted-foreground">
-                {DARK_LOCKED.has(HUB_ITEMS.indexOf(clicked))
-                  ? `“${clicked}” is already in your install directory (IsLocal = True) — the padlock is a paywall over data you host. IsLocked(n) = True on 12 of 14 nodes, so the hub is visually dominated by locked content: 12/2 = 6.0 > τ_locked_ratio.`
-                  : `“${clicked}” is one of only 2 accessible nodes — the lone islands of usable content in a sea of padlocks.`}
+                {DARK_LOCKED.has(HUB_ITEMS.indexOf(clickedA))
+                  ? `“${clickedA}” is already in your install directory (IsLocal = True) — the padlock is a paywall over data you host. IsLocked(n) = True on 12 of 14 nodes, so the hub is visually dominated by locked content: 12/2 = 6.0 > τ_locked_ratio.`
+                  : `“${clickedA}” is one of only 2 accessible nodes — the lone islands of usable content in a sea of padlocks.`}
               </p>
             </div>
           )}

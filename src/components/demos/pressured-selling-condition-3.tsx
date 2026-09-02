@@ -65,9 +65,13 @@ export function PressuredSellingCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [decision, setDecision] = React.useState<null | "accepted" | "declined">(null);
+  const [darkDecision, setDarkDecision] = React.useState<null | "accepted" | "declined">(null);
+  const [benignDecision, setBenignDecision] = React.useState<null | "accepted" | "declined">(null);
 
-  const reset = () => setDecision(null);
+  const reset = () => {
+    setDarkDecision(null);
+    setBenignDecision(null);
+  };
 
   const stats = mode === "auditor" ? (
     <>
@@ -115,16 +119,16 @@ export function PressuredSellingCond3({
               </div>
             </div>
 
-            {decision === null ? (
+            {benignDecision === null ? (
               <div className="mt-2.5 grid grid-cols-2 gap-2">
                 <button
-                  onClick={() => setDecision("accepted")}
+                  onClick={() => setBenignDecision("accepted")}
                   className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Add for $19.99
                 </button>
                 <button
-                  onClick={() => setDecision("declined")}
+                  onClick={() => setBenignDecision("declined")}
                   className="rounded-md border border-border bg-background hover:bg-muted py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   No thanks
@@ -132,17 +136,19 @@ export function PressuredSellingCond3({
               </div>
             ) : (
               <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
-                {decision === "accepted"
-                  ? "Warranty added. The copy stated the facts — no manufactured panic."
-                  : "Declined. The copy presented the option neutrally; declining was easy."}
+                {benignDecision === "accepted"
+                  ? "Warranty added. Coverage will be included with this order."
+                  : "Declined. The warranty was not added to this order."}
               </div>
             )}
           </div>
-          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[8px] text-muted-foreground">
-            Density check: {benignTokens} pressure tokens / {benignWords} words ={" "}
-            <span className="font-mono tabular-nums">{benignDensity.toFixed(3)}</span> — below{" "}
-            τ_arousal = {TAU_AROUSAL}.
-          </div>
+          {mode === "auditor" && (
+            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[8px] text-muted-foreground">
+              Density check: {benignTokens} pressure tokens / {benignWords} words ={" "}
+              <span className="font-mono tabular-nums">{benignDensity.toFixed(3)}</span> — below{" "}
+              τ_arousal = {TAU_AROUSAL}.
+            </div>
+          )}
         </div>
       }>
       {/* ── Variant A: dark pattern ── */}
@@ -151,27 +157,27 @@ export function PressuredSellingCond3({
           <div className="flex items-start justify-between gap-2">
             <div>
               <h3 className="text-[11px] font-semibold">
-                <span className="text-red-600 dark:text-red-400">WAIT!</span> Don&rsquo;t miss out!
+                <span className="text-red-600 dark:text-red-400">WAIT!</span>{" "}Don&rsquo;t miss out!
               </h3>
               <p className="text-[9px] text-muted-foreground mt-0.5 leading-relaxed">
                 {DARK_COPY}
               </p>
             </div>
             <div className="shrink-0 rounded-full border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">
-              {darkTokens} pressure tokens
+              Limited-time offer
             </div>
           </div>
 
-          {decision === null ? (
+          {darkDecision === null ? (
             <div className="mt-2.5 grid grid-cols-2 gap-2">
               <button
-                onClick={() => setDecision("accepted")}
+                onClick={() => setDarkDecision("accepted")}
                 className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Add for $19.99
               </button>
               <button
-                onClick={() => setDecision("declined")}
+                onClick={() => setDarkDecision("declined")}
                 className="rounded-md border border-border bg-background hover:bg-muted py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 No thanks
@@ -179,14 +185,14 @@ export function PressuredSellingCond3({
             </div>
           ) : (
             <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
-              {decision === "accepted"
-                ? "Warranty added — but was it a considered choice or a reflex under pressure?"
-                : "Declined — but note the copy was engineered to make declining feel risky."}
+              {darkDecision === "accepted"
+                ? "Warranty added. It will appear in your order summary."
+                : "Declined. The warranty was not added to this order."}
             </div>
           )}
         </div>
 
-        {decision !== null && (
+        {mode === "auditor" && darkDecision !== null && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

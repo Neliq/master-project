@@ -39,14 +39,20 @@ export function DripPricingCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [page, setPage] = React.useState(0); // 0 = initial pricing page, 1 = final checkout
-  const [scanned, setScanned] = React.useState(false);
-  const [paid, setPaid] = React.useState(false);
+  const [pageA, setPageA] = React.useState(0);
+  const [pageB, setPageB] = React.useState(0);
+  const [scannedA, setScannedA] = React.useState(false);
+  const [scannedB, setScannedB] = React.useState(false);
+  const [paidA, setPaidA] = React.useState(false);
+  const [paidB, setPaidB] = React.useState(false);
 
   const reset = () => {
-    setPage(0);
-    setScanned(false);
-    setPaid(false);
+    setPageA(0);
+    setPageB(0);
+    setScannedA(false);
+    setScannedB(false);
+    setPaidA(false);
+    setPaidB(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -87,7 +93,7 @@ export function DripPricingCond3({
     </div>
   );
 
-  const scanResult = (
+  const scanResult = mode === "auditor" ? (
     <div className="space-y-1 rounded-md border bg-background p-2 font-mono text-[8px] leading-relaxed">
       <div className="font-bold uppercase tracking-wide text-muted-foreground">
         Semantic scan — K_fees = {"{service fee, booking fee, convenience charge}"}
@@ -98,9 +104,26 @@ export function DripPricingCond3({
       </div>
       <div className="text-red-500">⟹ trigger: T_initial ∩ K_fees = ∅ ∧ T_final ∩ K_fees ≠ ∅</div>
     </div>
+  ) : (
+    <div className="space-y-1 rounded-md border bg-background p-2 text-[8px] leading-relaxed">
+      <div className="font-semibold text-foreground">Full price breakdown</div>
+      <div className="text-muted-foreground">The final total includes the room rate, reservation service fee, booking fee, and convenience charge.</div>
+      <div className="flex items-center justify-between border-t border-border pt-1 font-medium">
+        <span>Total for {NIGHTS} nights</span>
+        <span className="font-mono">{usd(GRAND_TOTAL)}</span>
+      </div>
+    </div>
   );
 
-  const renderFlow = (dark: boolean) => (
+  const renderFlow = (dark: boolean) => {
+    const page = dark ? pageA : pageB;
+    const setPage = dark ? setPageA : setPageB;
+    const scanned = dark ? scannedA : scannedB;
+    const setScanned = dark ? setScannedA : setScannedB;
+    const paid = dark ? paidA : paidB;
+    const setPaid = dark ? setPaidA : setPaidB;
+
+    return (
     <div className="space-y-3">
       {page === 0 ? (
         <div className="rounded-md border bg-card p-3">
@@ -185,7 +208,7 @@ export function DripPricingCond3({
           onClick={() => setScanned(true)}
           className="w-full cursor-pointer rounded-md border border-border bg-background py-1.5 text-[9px] font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
-          Run semantic fee scan
+          {mode === "auditor" ? "Run semantic fee scan" : "View full price breakdown"}
         </button>
       ) : null}
 
@@ -223,8 +246,15 @@ export function DripPricingCond3({
             </p>
           </div>
         ))}
+      {mode !== "auditor" && paid && (
+        <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+          <div className="font-semibold text-green-700 dark:text-green-300">Booking confirmed</div>
+          <p className="mt-1 text-muted-foreground">Harborview Suites · {NIGHTS} nights · charged {usd(GRAND_TOTAL)}.</p>
+        </div>
+      )}
     </div>
   );
+  };
 
   return (
     <DemoShell

@@ -269,130 +269,208 @@
 
 /* Product UI stays mostly neutral. Saturated colors remain available for
    semantic text/icons and for the auditor chrome outside data-dp-content. */
-[data-dp-content] [class*="bg-red-"],
-[data-dp-content] [class*="bg-rose-"],
-[data-dp-content] [class*="bg-orange-"],
-[data-dp-content] [class*="bg-amber-"],
-[data-dp-content] [class*="bg-yellow-"],
-[data-dp-content] [class*="bg-lime-"],
-[data-dp-content] [class*="bg-green-"],
-[data-dp-content] [class*="bg-emerald-"],
-[data-dp-content] [class*="bg-teal-"],
-[data-dp-content] [class*="bg-cyan-"],
-[data-dp-content] [class*="bg-sky-"],
-[data-dp-content] [class*="bg-blue-"],
-[data-dp-content] [class*="bg-indigo-"],
-[data-dp-content] [class*="bg-violet-"],
-[data-dp-content] [class*="bg-purple-"],
-[data-dp-content] [class*="bg-pink-"] {
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-red-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-rose-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-orange-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-amber-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-yellow-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-lime-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-green-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-emerald-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-teal-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-cyan-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-sky-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-blue-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-indigo-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-violet-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-purple-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="bg-pink-"] {
   background-color: rgb(115 115 115 / 12%) !important;
 }
 
-[data-dp-content] [class*="border-red-"],
-[data-dp-content] [class*="border-rose-"],
-[data-dp-content] [class*="border-orange-"],
-[data-dp-content] [class*="border-amber-"],
-[data-dp-content] [class*="border-yellow-"],
-[data-dp-content] [class*="border-lime-"],
-[data-dp-content] [class*="border-green-"],
-[data-dp-content] [class*="border-emerald-"],
-[data-dp-content] [class*="border-teal-"],
-[data-dp-content] [class*="border-cyan-"],
-[data-dp-content] [class*="border-sky-"],
-[data-dp-content] [class*="border-blue-"],
-[data-dp-content] [class*="border-indigo-"],
-[data-dp-content] [class*="border-violet-"],
-[data-dp-content] [class*="border-purple-"],
-[data-dp-content] [class*="border-pink-"],
-[data-dp-content] [class*="ring-red-"],
-[data-dp-content] [class*="ring-rose-"],
-[data-dp-content] [class*="ring-orange-"],
-[data-dp-content] [class*="ring-amber-"],
-[data-dp-content] [class*="ring-yellow-"],
-[data-dp-content] [class*="ring-green-"],
-[data-dp-content] [class*="ring-blue-"] {
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-red-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-rose-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-orange-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-amber-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-yellow-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-lime-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-green-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-emerald-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-teal-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-cyan-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-sky-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-blue-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-indigo-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-violet-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-purple-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-pink-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="ring-red-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="ring-rose-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="ring-orange-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="ring-amber-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="ring-yellow-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="ring-green-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="ring-blue-"] {
   border-color: rgb(115 115 115 / 35%) !important;
   --tw-ring-color: rgb(115 115 115 / 35%) !important;
 }
 
-[data-dp-content] [class*="hover:bg-red-"]:hover,
-[data-dp-content] [class*="hover:bg-green-"]:hover,
-[data-dp-content] [class*="hover:bg-yellow-"]:hover,
-[data-dp-content] [class*="hover:bg-blue-"]:hover,
-[data-dp-content] [class*="hover:bg-rose-"]:hover,
-[data-dp-content] [class*="hover:bg-amber-"]:hover,
-[data-dp-content] [class*="hover:bg-orange-"]:hover,
-[data-dp-content] [class*="hover:bg-purple-"]:hover,
-[data-dp-content] [class*="hover:bg-pink-"]:hover {
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="hover:bg-red-"]:hover,
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="hover:bg-green-"]:hover,
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="hover:bg-yellow-"]:hover,
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="hover:bg-blue-"]:hover,
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="hover:bg-rose-"]:hover,
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="hover:bg-amber-"]:hover,
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="hover:bg-orange-"]:hover,
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="hover:bg-purple-"]:hover,
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="hover:bg-pink-"]:hover {
   background-color: rgb(115 115 115 / 22%) !important;
 }
 
 /* Filled actions stay visually actionable without reintroducing semantic
    color. Disabled buttons are intentionally left to the browser opacity. */
-[data-dp-content] button:not(:disabled)[class*="bg-red-"],
-[data-dp-content] button:not(:disabled)[class*="bg-rose-"],
-[data-dp-content] button:not(:disabled)[class*="bg-orange-"],
-[data-dp-content] button:not(:disabled)[class*="bg-amber-"],
-[data-dp-content] button:not(:disabled)[class*="bg-yellow-"],
-[data-dp-content] button:not(:disabled)[class*="bg-green-"],
-[data-dp-content] button:not(:disabled)[class*="bg-emerald-"],
-[data-dp-content] button:not(:disabled)[class*="bg-blue-"],
-[data-dp-content] button:not(:disabled)[class*="bg-indigo-"],
-[data-dp-content] button:not(:disabled)[class*="bg-violet-"],
-[data-dp-content] button:not(:disabled)[class*="bg-purple-"],
-[data-dp-content] button:not(:disabled)[class*="bg-pink-"] {
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-red-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-rose-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-orange-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-amber-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-yellow-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-green-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-emerald-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-blue-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-indigo-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-violet-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-purple-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="bg-pink-"] {
   background-color: rgb(38 38 38) !important;
   border-color: rgb(38 38 38) !important;
   color: rgb(255 255 255) !important;
 }
 
-[data-dp-content] button:not(:disabled)[class*="hover:bg-"]:hover {
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] button:not(:disabled)[class*="hover:bg-"]:hover {
   background-color: rgb(0 0 0) !important;
   border-color: rgb(0 0 0) !important;
 }
 
 /* Native selection controls are product affordances, not status indicators. */
-[data-dp-content] input[type="checkbox"],
-[data-dp-content] input[type="radio"],
-[data-dp-content] input[type="range"],
-[data-dp-content] progress {
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] input[type="checkbox"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] input[type="radio"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] input[type="range"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] progress {
   accent-color: rgb(38 38 38) !important;
 }
 
 /* A/B is a controlled comparison: color must not reveal the answer. */
-[data-dp-content] [class*="text-red-"],
-[data-dp-content] [class*="text-rose-"],
-[data-dp-content] [class*="text-orange-"],
-[data-dp-content] [class*="text-amber-"],
-[data-dp-content] [class*="text-yellow-"],
-[data-dp-content] [class*="text-lime-"],
-[data-dp-content] [class*="text-green-"],
-[data-dp-content] [class*="text-emerald-"],
-[data-dp-content] [class*="text-teal-"],
-[data-dp-content] [class*="text-cyan-"],
-[data-dp-content] [class*="text-sky-"],
-[data-dp-content] [class*="text-blue-"],
-[data-dp-content] [class*="text-indigo-"],
-[data-dp-content] [class*="text-violet-"],
-[data-dp-content] [class*="text-purple-"],
-[data-dp-content] [class*="text-pink-"] {
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-red-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-rose-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-orange-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-amber-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-yellow-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-lime-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-green-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-emerald-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-teal-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-cyan-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-sky-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-blue-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-indigo-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-violet-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-purple-"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="text-pink-"] {
   color: rgb(64 64 64) !important;
 }
 
 /* Interaction outcomes belong in the product UI, not in a post-action
    explainer card that gives away the dark-pattern mechanism. */
-[data-dp-content] [class*="border-yellow-500/30"][class*="bg-yellow-500/5"][class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"],
-[data-dp-content] [class*="border-green-500/30"][class*="bg-green-500/5"][class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"],
-[data-dp-content] [class*="border-red-500/30"][class*="bg-red-500/5"][class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"] {
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-yellow-500/30"][class*="bg-yellow-500/5"][class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-green-500/30"][class*="bg-green-500/5"][class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"],
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="border-red-500/30"][class*="bg-red-500/5"][class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"] {
   display: none !important;
 }
 
-[data-dp-content] [class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"]:not([data-dp-result]) {
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content][data-dp-neutralize] [class*="p-2.5"][class*="text-[9px]"][class*="leading-relaxed"]:not([data-dp-result]) {
   display: none !important;
 }
 
 [data-dp-result] {
   display: block !important;
+}
+
+/* Keep ordinary product UI chromatically neutral across A/B. A color signal
+   may opt out when the assigned formula explicitly measures its hue. */
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :where(
+  [class*="bg-red-"], [class*="bg-rose-"], [class*="bg-orange-"], [class*="bg-amber-"],
+  [class*="bg-yellow-"], [class*="bg-lime-"], [class*="bg-green-"], [class*="bg-emerald-"],
+  [class*="bg-teal-"], [class*="bg-cyan-"], [class*="bg-sky-"], [class*="bg-blue-"],
+  [class*="bg-indigo-"], [class*="bg-violet-"], [class*="bg-purple-"], [class*="bg-pink-"]
+):not([data-dp-color-signal]):not([data-dp-color-signal] *) {
+  background-color: rgb(124 58 237 / 12%) !important;
+}
+
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *) :where(svg),
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *) {
+  --tw-ring-color: rgb(124 58 237 / 40%) !important;
+}
+
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *) :where(
+  [class*="bg-red-"], [class*="bg-rose-"], [class*="bg-orange-"], [class*="bg-amber-"],
+  [class*="bg-yellow-"], [class*="bg-lime-"], [class*="bg-green-"], [class*="bg-emerald-"],
+  [class*="bg-teal-"], [class*="bg-cyan-"], [class*="bg-sky-"], [class*="bg-blue-"],
+  [class*="bg-indigo-"], [class*="bg-violet-"], [class*="bg-purple-"], [class*="bg-pink-"]
+),
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *) {
+  background-color: rgb(124 58 237) !important;
+  border-color: rgb(124 58 237) !important;
+  color: white !important;
+}
+
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :where(
+  [class*="text-red-"], [class*="text-rose-"], [class*="text-orange-"], [class*="text-amber-"],
+  [class*="text-yellow-"], [class*="text-lime-"], [class*="text-green-"], [class*="text-emerald-"],
+  [class*="text-teal-"], [class*="text-cyan-"], [class*="text-sky-"], [class*="text-blue-"],
+  [class*="text-indigo-"], [class*="text-violet-"], [class*="text-purple-"], [class*="text-pink-"]
+):not([data-dp-color-signal]):not([data-dp-color-signal] *) {
+  color: rgb(91 33 182) !important;
+}
+
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :where(
+  [class*="border-red-"], [class*="border-rose-"], [class*="border-orange-"], [class*="border-amber-"],
+  [class*="border-yellow-"], [class*="border-lime-"], [class*="border-green-"], [class*="border-emerald-"],
+  [class*="border-teal-"], [class*="border-cyan-"], [class*="border-sky-"], [class*="border-blue-"],
+  [class*="border-indigo-"], [class*="border-violet-"], [class*="border-purple-"], [class*="border-pink-"],
+  [class*="ring-red-"], [class*="ring-rose-"], [class*="ring-orange-"], [class*="ring-amber-"],
+  [class*="ring-yellow-"], [class*="ring-green-"], [class*="ring-blue-"]
+):not([data-dp-color-signal]):not([data-dp-color-signal] *) {
+  border-color: rgb(124 58 237 / 35%) !important;
+  --tw-ring-color: rgb(124 58 237 / 35%) !important;
+}
+
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :where(
+  [class*="from-red-"], [class*="from-rose-"], [class*="from-orange-"], [class*="from-amber-"],
+  [class*="from-yellow-"], [class*="from-lime-"], [class*="from-green-"], [class*="from-emerald-"],
+  [class*="from-teal-"], [class*="from-cyan-"], [class*="from-sky-"], [class*="from-blue-"],
+  [class*="from-indigo-"], [class*="from-violet-"], [class*="from-purple-"], [class*="from-pink-"]
+):not([data-dp-color-signal]):not([data-dp-color-signal] *) { --tw-gradient-from: rgb(124 58 237) !important; }
+
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :where(
+  [class*="via-red-"], [class*="via-rose-"], [class*="via-orange-"], [class*="via-amber-"],
+  [class*="via-yellow-"], [class*="via-lime-"], [class*="via-green-"], [class*="via-emerald-"],
+  [class*="via-teal-"], [class*="via-cyan-"], [class*="via-sky-"], [class*="via-blue-"],
+  [class*="via-indigo-"], [class*="via-violet-"], [class*="via-purple-"], [class*="via-pink-"]
+):not([data-dp-color-signal]):not([data-dp-color-signal] *) { --tw-gradient-via: rgb(124 58 237) !important; }
+
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :where(
+  [class*="to-red-"], [class*="to-rose-"], [class*="to-orange-"], [class*="to-amber-"],
+  [class*="to-yellow-"], [class*="to-lime-"], [class*="to-green-"], [class*="to-emerald-"],
+  [class*="to-teal-"], [class*="to-cyan-"], [class*="to-sky-"], [class*="to-blue-"],
+  [class*="to-indigo-"], [class*="to-violet-"], [class*="to-purple-"], [class*="to-pink-"]
+):not([data-dp-color-signal]):not([data-dp-color-signal] *) { --tw-gradient-to: rgb(124 58 237) !important; }
+
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :where([class*="bg-gradient-"]):not([data-dp-color-signal]):not([data-dp-color-signal] *) {
+  background-image: linear-gradient(135deg, rgb(76 29 149), rgb(167 139 250)) !important;
+}
+
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :where(input[type="checkbox"], input[type="radio"], input[type="range"], progress, [role="progressbar"], [role="switch"]):not([data-dp-color-signal]):not([data-dp-color-signal] *) {
+  accent-color: rgb(124 58 237) !important;
 }
 
 /* Never override KaTeX's own font metrics; changing them distorts formulas. */

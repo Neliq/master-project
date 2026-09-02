@@ -61,7 +61,7 @@ export function DeadEndCond1({
 
   const backdropNote = (
     <div className="text-[8px] text-muted-foreground/50 italic">
-      Tried to leave {escapeAttempts} time{escapeAttempts === 1 ? "" : "s"} — backdrop and Esc have no edge in E_out.
+      Tried to leave {escapeAttempts} time{escapeAttempts === 1 ? "" : "s"} — the notice stays open until you choose an option.
     </div>
   );
 
@@ -184,6 +184,7 @@ export function DeadEndCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Dead End: Topological Sink in the Navigational Graph"
+      userTitle="Cinder — Choose a plan"
       caption="Topological Sink in the Navigational Graph — every outgoing edge of the cookie banner leads to a compliance state, with no edge back to a neutral exit, so the user is trapped in a navigational sink."
       auditorStats={stats}
       deltaNote="In Variant A all three buttons (Accept all, Essential only, and a mislabelled Reject all) map into V_forced, and backdrop/Esc clicks have no edge — No Escape Path. In Variant B a real rejection edge and a close vector return to v_prev, the neutral pre-banner state."
@@ -192,9 +193,9 @@ export function DeadEndCond1({
           <div className="rounded-md border border-green-500/30 bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500">
-                Overlay &middot; z-index: 120
+                Cookie settings
               </div>
-              <div className="text-[8px] font-mono text-muted-foreground/60">E_out = {outcomeB ? "∅" : "3 edges"}</div>
+              <div className="text-[8px] font-mono text-muted-foreground/60">{outcomeB ? "Closed" : "3 choices"}</div>
             </div>
             {!outcomeB ? (
               <div className="mt-2">{bannerBody("emerald")}</div>
@@ -218,9 +219,9 @@ export function DeadEndCond1({
         >
           <div className="flex items-center justify-between gap-2">
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500">
-              Overlay &middot; z-index: 120
+              Cookie settings
             </div>
-            <div className="text-[8px] font-mono text-muted-foreground/60">E_out = {outcomeA ? "∅" : "3 edges → V_forced"}</div>
+            <div className="text-[8px] font-mono text-muted-foreground/60">{outcomeA ? "Closed" : "3 choices"}</div>
           </div>
           {!outcomeA ? (
             <div className="mt-2">{bannerBody("rose")}</div>
@@ -230,7 +231,7 @@ export function DeadEndCond1({
             </div>
           )}
           <div className="mt-2 rounded-md border border-dashed border-border bg-muted/40 p-2 text-[8px] text-muted-foreground/70 leading-relaxed">
-            Esc pressed? Backdrop clicked? Nothing happens — those edges simply don&rsquo;t exist in E_out(v_current).
+            Pressing Esc or clicking outside does not close this notice.
           </div>
         </div>
         {outcomeCard(outcomeA, "A")}

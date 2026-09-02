@@ -66,6 +66,7 @@ export function ReducedFrictionCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Reduced Friction: Absence of Confirmation Interstitial"
+      userTitle="Harbor — Close account"
       caption="Absence of Confirmation Interstitial — a single click executes an irreversible financial commitment with no confirmation node on the path."
       auditorStats={stats}
       deltaNote="In Variant A one click on “Buy now” jumps straight from S_intent to S_commit (payment processed) — S_confirm never appears in the path, and the screen carries no confirmation or reversibility language of any kind, so the charge happens with zero feedforward. In Variant B the same purchase stops at a review interstitial and only commits after an explicit “Confirm purchase” click."
@@ -105,7 +106,7 @@ export function ReducedFrictionCond1({
             {bStep === "confirm" && (
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-3">
                 <div className="text-[10px] font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
-                  Review your purchase (S_confirm)
+                  Review your purchase
                 </div>
                 <div className="mt-1.5 space-y-1 text-[9px] text-muted-foreground">
                   <div className="flex justify-between">
@@ -146,8 +147,8 @@ export function ReducedFrictionCond1({
                   Payment processed — {LICENSE_PRICE}
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  The path ran S_intent → <strong className="text-green-600 dark:text-green-400">S_confirm</strong> → S_commit:
-                  you reviewed the order and explicitly confirmed before anything was charged.
+                  Your purchase was reviewed before the charge. The total and recurring terms were clear
+                  before you committed.
                 </p>
               </div>
             )}
@@ -180,6 +181,7 @@ export function ReducedFrictionCond1({
 
           <button
             onClick={() => setAStep("committed")}
+            disabled={aStep === "committed"}
             className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Buy now — {LICENSE_PRICE}
@@ -192,13 +194,11 @@ export function ReducedFrictionCond1({
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Charged instantly — S_confirm bypassed
+                Payment processed
               </div>
               <p className="text-muted-foreground mt-0.5">
-                One click executed <strong className="text-foreground">E_click(S_intent) ⇒ S_commit</strong> —{" "}
-                {LICENSE_PRICE} was charged to •••• 4242 with no confirmation interstitial in the path.{" "}
-                <strong className="text-foreground">S_confirm ∉ Path(S_intent → S_commit)</strong>, so an accidental or
-                impulsive click translates instantly into an irreversible charge.
+                {LICENSE_PRICE} was charged to •••• 4242. The plan started immediately from the offer page,
+                without a separate review step for the total or recurring terms.
               </p>
             </div>
           )}

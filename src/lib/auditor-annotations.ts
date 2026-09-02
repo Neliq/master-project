@@ -270,9 +270,9 @@ export const AUDITOR_ANNOTATIONS: Record<string, AnnotationItem[]> = {
   ],
   "plain-evil": [
     {
-      label: "Centered single action",
+      label: "Compound interaction surface",
       description:
-        "Only one button is rendered on the page; the user has no way to dismiss, exit, or take a competing action.",
+        "Multiple controls and framed messages are combined in one product flow; use the condition-specific evidence and live statistics to inspect the mechanism.",
     },
   ],
   "endorsement-and-testimonials": [

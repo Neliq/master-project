@@ -165,11 +165,11 @@ export function BadDefaultsPreselectionCond3({
           <div className="flex items-start justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Checkout</h3>
             <div className="shrink-0 rounded-full border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">
-              Provider-favorable
+              Recommended extras
             </div>
           </div>
           <p className="text-[9px] text-muted-foreground mt-0.5">
-            Everything below was pre-selected for you. Leave it as is, and the provider wins.
+            A few optional extras are selected for your review. Change anything you do not need.
           </p>
           <div className="mt-2.5 space-y-2">
             <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-red-500/30 bg-red-500/5 p-2.5 transition-colors">
@@ -185,7 +185,7 @@ export function BadDefaultsPreselectionCond3({
                   auto-renews
                 </div>
                 <div className="text-[8px] text-muted-foreground/60 mt-0.5">
-                  Intent(L(c)) → D_financial_cost
+                  {mode === "auditor" ? "Intent(L(c)) → D_financial_cost" : "Optional protection plan"}
                 </div>
               </div>
             </label>
@@ -201,7 +201,7 @@ export function BadDefaultsPreselectionCond3({
                   Send me offers from our partners
                 </div>
                 <div className="text-[8px] text-muted-foreground/60 mt-0.5">
-                  Intent(L(c)) → D_marketing_opt_in
+                  {mode === "auditor" ? "Intent(L(c)) → D_marketing_opt_in" : "Partner offers preference"}
                 </div>
               </div>
             </label>
@@ -217,7 +217,7 @@ export function BadDefaultsPreselectionCond3({
                   Share my purchase data with third parties
                 </div>
                 <div className="text-[8px] text-muted-foreground/60 mt-0.5">
-                  Intent(L(c)) → D_privacy_loss
+                  {mode === "auditor" ? "Intent(L(c)) → D_privacy_loss" : "Data-sharing preference"}
                 </div>
               </div>
             </label>
@@ -235,19 +235,25 @@ export function BadDefaultsPreselectionCond3({
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
                 </svg>
-                Intent classification: provider domains
+                {mode === "auditor" ? "Intent classification: provider domains" : "Order preferences saved"}
               </div>
-              <p className="text-muted-foreground">
-                <strong className="text-foreground">
-                  Intent(L(c)) ∈ {"{D_financial_cost, D_marketing_opt_in, D_privacy_loss}"}
-                </strong>{" "}
-                — NLP mapped each pre-selected label to a provider-favorable consequence
-                domain:
-                {aDomains.length
-                  ? " " + aDomains.map((d) => <span key={d} className="font-mono text-red-500">{d}</span>).reduce<React.ReactNode[]>((acc, el, i) => (i === 0 ? [el] : [...acc, <span key={`sep-${i}`}>, </span>, el]), [])
-                  : " none (you unchecked them all)"}
-                . Passive compliance = the user pays, subscribes, and shares by default.
-              </p>
+              {mode === "auditor" ? (
+                <p className="text-muted-foreground">
+                  <strong className="text-foreground">
+                    Intent(L(c)) ∈ {"{D_financial_cost, D_marketing_opt_in, D_privacy_loss}"}
+                  </strong>{" "}
+                  — NLP mapped each pre-selected label to a provider-favorable consequence
+                  domain:
+                  {aDomains.length
+                    ? " " + aDomains.map((d) => <span key={d} className="font-mono text-red-500">{d}</span>).reduce<React.ReactNode[]>((acc, el, i) => (i === 0 ? [el] : [...acc, <span key={`sep-${i}`}>, </span>, el]), [])
+                    : " none (you unchecked them all)"}
+                  . Passive compliance = the user pays, subscribes, and shares by default.
+                </p>
+              ) : (
+                <p className="text-muted-foreground">
+                  The order preferences selected on this page are now attached to your account. Review them in Settings whenever you need to make a change.
+                </p>
+              )}
             </div>
           )}
         </div>

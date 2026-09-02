@@ -49,14 +49,18 @@ export function InfiniteScrollingCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [items, setItems] = React.useState<string[]>(() =>
+  const [itemsA, setItemsA] = React.useState<string[]>(() =>
     Array.from({ length: 8 }, (_, i) => headlineFor(i))
   );
-  const [distA, setDistA] = React.useState(0);
+  const [itemsB, setItemsB] = React.useState<string[]>(() =>
+    Array.from({ length: 8 }, (_, i) => headlineFor(i))
+  );
+  const [distA, setDistA] = React.useState<number | null>(null);
   const [distB, setDistB] = React.useState(0);
   const [autoFetches, setAutoFetches] = React.useState(0);
   const [manualLoads, setManualLoads] = React.useState(0);
-  const [loading, setLoading] = React.useState(false);
+  const [loadingA, setLoadingA] = React.useState(false);
+  const [loadingB, setLoadingB] = React.useState(false);
 
   const fetchingRef = React.useRef(false);
   const containerARef = React.useRef<HTMLDivElement>(null);
@@ -70,8 +74,12 @@ export function InfiniteScrollingCond1({
     []
   );
 
-  const appendBatch = () => {
-    setItems((prev) => [...prev, headlineFor(prev.length), headlineFor(prev.length + 1)]);
+  const appendBatch = (side: "A" | "B") => {
+    if (side === "A") {
+      setItemsA((prev) => [...prev, headlineFor(prev.length), headlineFor(prev.length + 1)]);
+    } else {
+      setItemsB((prev) => [...prev, headlineFor(prev.length), headlineFor(prev.length + 1)]);
+    }
   };
 
   const jumpToBottom = (el: HTMLDivElement | null) => {
@@ -85,12 +93,12 @@ export function InfiniteScrollingCond1({
     setDistA(dist);
     if (dist <= TAU_TRIGGER && !fetchingRef.current) {
       fetchingRef.current = true;
-      setLoading(true);
+      setLoadingA(true);
       timersRef.current.push(
         window.setTimeout(() => {
-          appendBatch();
+          appendBatch("A");
           setAutoFetches((n) => n + 1);
-          setLoading(false);
+          setLoadingA(false);
           fetchingRef.current = false;
         }, 450)
       );
@@ -104,13 +112,13 @@ export function InfiniteScrollingCond1({
   };
 
   const handleLoadMore = () => {
-    if (loading) return;
-    setLoading(true);
+    if (loadingB) return;
+    setLoadingB(true);
     timersRef.current.push(
       window.setTimeout(() => {
-        appendBatch();
+        appendBatch("B");
         setManualLoads((n) => n + 1);
-        setLoading(false);
+        setLoadingB(false);
       }, 450)
     );
   };
@@ -119,12 +127,14 @@ export function InfiniteScrollingCond1({
     timersRef.current.forEach((id) => window.clearTimeout(id));
     timersRef.current = [];
     fetchingRef.current = false;
-    setItems(Array.from({ length: 8 }, (_, i) => headlineFor(i)));
-    setDistA(0);
+    setItemsA(Array.from({ length: 8 }, (_, i) => headlineFor(i)));
+    setItemsB(Array.from({ length: 8 }, (_, i) => headlineFor(i)));
+    setDistA(null);
     setDistB(0);
     setAutoFetches(0);
     setManualLoads(0);
-    setLoading(false);
+    setLoadingA(false);
+    setLoadingB(false);
     if (containerARef.current) containerARef.current.scrollTop = 0;
     if (containerBRef.current) containerBRef.current.scrollTop = 0;
   };
@@ -137,7 +147,7 @@ export function InfiniteScrollingCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Y_end − Y_viewport (live, A)</span>
-        <span className="font-mono font-semibold tabular-nums">{distA}px</span>
+        <span className="font-mono font-semibold tabular-nums">{distA === null ? "not measured" : `${distA}px`}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">E_fetch() in A</span>
@@ -153,6 +163,7 @@ export function InfiniteScrollingCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Infinite Scrolling: Autonomous Content Injection"
+      userTitle="NewsPulse — Live feed"
       caption="Autonomous Content Injection — the feed fetches the next batch by itself as soon as the viewport crosses the spatial threshold, with no “Load More” button ever offered."
       auditorStats={stats}
       deltaNote="Variant A appends items automatically the instant the viewport crosses the 800px spatial threshold — E_fetch() fires with no affirmative user action. Variant B keeps the identical feed and payload but gates every batch behind an explicit “Load More” button, so the user decides when content continues."
@@ -167,21 +178,24 @@ export function InfiniteScrollingCond1({
                 </p>
               </div>
               <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                {items.length} items
+                {itemsB.length} items
               </span>
             </div>
 
             <div
               ref={containerBRef}
               onScroll={handleScrollB}
+              role="region"
+              aria-label="News feed"
+              tabIndex={0}
               className="mt-2 h-56 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2"
             >
-              {items.map((h, i) => (
+              {itemsB.map((h, i) => (
                 <div key={i} className="rounded border border-border bg-card px-2 py-1.5 text-[9px] leading-snug text-foreground/80">
                   {h}
                 </div>
               ))}
-              {loading && (
+              {loadingB && (
                 <div className="flex items-center gap-1.5 rounded border border-border bg-card px-2 py-1.5 text-[9px] text-muted-foreground">
                   <RefreshSpinner /> Loading next batch…
                 </div>
@@ -191,14 +205,14 @@ export function InfiniteScrollingCond1({
             {distB <= TAU_TRIGGER ? (
               <button
                 onClick={handleLoadMore}
-                disabled={loading}
+                disabled={loadingB}
                 className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
-                  loading
+                  loadingB
                     ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
                     : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                 }`}
               >
-                {loading ? "Loading…" : "Load more stories"}
+                {loadingB ? "Loading…" : "Load more stories"}
               </button>
             ) : (
               <div className="mt-2 flex items-center justify-between text-[9px] text-muted-foreground">
@@ -240,21 +254,24 @@ export function InfiniteScrollingCond1({
               </p>
             </div>
             <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              {items.length} items
+              {itemsA.length} items
             </span>
           </div>
 
           <div
             ref={containerARef}
             onScroll={handleScrollA}
-            className="mt-2 h-56 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2"
+            role="region"
+              aria-label="News feed"
+              tabIndex={0}
+              className="mt-2 h-56 space-y-1.5 overflow-y-auto rounded-md border bg-background p-2"
           >
-            {items.map((h, i) => (
+            {itemsA.map((h, i) => (
               <div key={i} className="rounded border border-border bg-card px-2 py-1.5 text-[9px] leading-snug text-foreground/80">
                 {h}
               </div>
             ))}
-            {loading && (
+            {loadingA && (
               <div className="flex items-center gap-1.5 rounded border border-red-500/30 bg-red-500/5 px-2 py-1.5 text-[9px] text-red-600 dark:text-red-300">
                 <RefreshSpinner /> Injecting next batch…
               </div>
@@ -263,14 +280,14 @@ export function InfiniteScrollingCond1({
 
           <div className="mt-2 flex items-center justify-between gap-2">
             <div className="min-w-0 flex-1">
-              {distA <= TAU_TRIGGER ? (
+              {distA !== null && distA <= TAU_TRIGGER ? (
                 <span className="inline-flex items-center gap-1 rounded border border-yellow-500/40 bg-yellow-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-yellow-700 dark:text-yellow-300">
                   <AlertTriangle className="size-2.5" />
                   Loading more posts…
                 </span>
               ) : (
                 <span className="text-[9px] text-muted-foreground">
-                  Distance to end: {distA}px
+                  Distance to end: {distA === null ? "not measured" : `${distA}px`}
                 </span>
               )}
             </div>

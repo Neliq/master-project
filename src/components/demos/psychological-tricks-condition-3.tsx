@@ -17,8 +17,8 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * price, advertised as a 50% discount.
  * Variant B (benign): the same lamp at $149 with no fabricated anchor.
  *
- * The WTP slider is shared between both panels so you can watch how the
- * anchor shifts your own valuation reference point.
+ * Each WTP slider is independent so the two variants can be compared without
+ * one panel changing the other's valuation.
  */
 
 const PRICE = 149;
@@ -42,12 +42,16 @@ export function PsychologicalTricksCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [wtp, setWtp] = React.useState(PRICE);
-  const [bought, setBought] = React.useState(false);
+  const [wtpBenign, setWtpBenign] = React.useState(PRICE);
+  const [wtpDark, setWtpDark] = React.useState(PRICE);
+  const [boughtDark, setBoughtDark] = React.useState(false);
+  const [boughtBenign, setBoughtBenign] = React.useState(false);
 
   const reset = () => {
-    setWtp(PRICE);
-    setBought(false);
+    setWtpBenign(PRICE);
+    setWtpDark(PRICE);
+    setBoughtDark(false);
+    setBoughtBenign(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -66,7 +70,7 @@ export function PsychologicalTricksCond3({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Your WTP (live)</span>
-        <span className="font-mono font-semibold tabular-nums">${wtp}</span>
+        <span className="font-mono font-semibold tabular-nums">${wtpDark}</span>
       </div>
     </>
   ) : null;
@@ -105,15 +109,15 @@ export function PsychologicalTricksCond3({
                 <span className="text-[9px] font-medium text-muted-foreground">
                   What would you pay for this lamp?
                 </span>
-                <span className="font-mono text-[10px] font-bold tabular-nums">${wtp}</span>
+                <span className="font-mono text-[10px] font-bold tabular-nums">${wtpBenign}</span>
               </div>
               <input
                 type="range"
                 min={50}
                 max={300}
                 step={5}
-                value={wtp}
-                onChange={(e) => setWtp(Number(e.target.value))}
+                value={wtpBenign}
+                onChange={(e) => setWtpBenign(Number(e.target.value))}
                 className="mt-1.5 w-full accent-green-500 cursor-pointer"
                 aria-label="What would you pay for this lamp"
               />
@@ -124,14 +128,14 @@ export function PsychologicalTricksCond3({
             </div>
 
             <button
-              onClick={() => setBought(true)}
+              onClick={() => setBoughtBenign(true)}
               className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Buy now
             </button>
           </div>
 
-          {bought && (
+          {boughtBenign && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -140,7 +144,7 @@ export function PsychologicalTricksCond3({
                 No anchor — clean reference point
               </div>
               <p className="text-muted-foreground mt-0.5">
-                You set your WTP at <strong className="text-foreground">${wtp}</strong> against the
+                You set your WTP at <strong className="text-foreground">${wtpBenign}</strong> against the
                 actual price of $149 with no fabricated anchor — WTP(U_baseline) formed on the
                 product&rsquo;s real market value.
               </p>
@@ -188,15 +192,15 @@ export function PsychologicalTricksCond3({
               <span className="text-[9px] font-medium text-muted-foreground">
                 What would you pay for this lamp?
               </span>
-              <span className="font-mono text-[10px] font-bold tabular-nums">${wtp}</span>
+              <span className="font-mono text-[10px] font-bold tabular-nums">${wtpDark}</span>
             </div>
             <input
               type="range"
               min={50}
               max={300}
               step={5}
-              value={wtp}
-              onChange={(e) => setWtp(Number(e.target.value))}
+              value={wtpDark}
+              onChange={(e) => setWtpDark(Number(e.target.value))}
               className="mt-1.5 w-full accent-red-500 cursor-pointer"
               aria-label="What would you pay for this lamp"
             />
@@ -207,14 +211,21 @@ export function PsychologicalTricksCond3({
           </div>
 
           <button
-            onClick={() => setBought(true)}
+            onClick={() => setBoughtDark(true)}
             className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Buy now
           </button>
         </div>
 
-        {bought && (
+        {boughtDark && mode !== "auditor" && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">Added to cart</div>
+            <p className="text-muted-foreground mt-0.5">Nordic Desk Lamp — $149. Your cart is ready for checkout.</p>
+          </div>
+        )}
+
+        {boughtDark && mode === "auditor" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -228,7 +239,7 @@ export function PsychologicalTricksCond3({
             <PriceRow label="Anchor ratio P_anchor / P_actual" value="2.01" tone="rose" />
             <p className="text-muted-foreground mt-0.5">
               The original price is shown for comparison with today&rsquo;s price of $149.
-              The lamp is currently available for <strong className="text-foreground">${wtp}</strong>.
+              The lamp is currently available for <strong className="text-foreground">${wtpDark}</strong>.
             </p>
           </div>
         )}

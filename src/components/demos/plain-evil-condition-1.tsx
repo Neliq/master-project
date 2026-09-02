@@ -27,7 +27,6 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * information stated plainly and up front, so zero patterns are active.
  */
 
-const ACTIVE_COUNT = 6;
 const TAU_HOSTILITY = 3;
 
 export function PlainEvilCond1({
@@ -39,33 +38,50 @@ export function PlainEvilCond1({
 } = {}) {
   const [darkProtected, setDarkProtected] = React.useState(true);
   const [benignProtected, setBenignProtected] = React.useState(false);
-  const [submitted, setSubmitted] = React.useState(false);
+  const [submittedA, setSubmittedA] = React.useState(false);
+  const [submittedB, setSubmittedB] = React.useState(false);
+
+  const benignTotal = benignProtected ? "$341.98" : "$301.99";
+  const darkTotal = darkProtected ? "$341.98" : "$301.99";
+  const activePatternCount = Object.values({
+    scarcity: true,
+    sneakIntoBasket: darkProtected,
+    hiddenCosts: !submittedA,
+    confirmshaming: true,
+    forcedEnrollment: true,
+    labyrinthineNavigation: true,
+  }).filter(Boolean).length;
 
   const reset = () => {
     setDarkProtected(true);
     setBenignProtected(false);
-    setSubmitted(false);
+    setSubmittedA(false);
+    setSubmittedB(false);
   };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Σ Active(D_i, M_context)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{ACTIVE_COUNT}</span>
+        <span className="text-muted-foreground">A: Σ Active(D_i, M_context)</span>
+        <span className="font-mono font-semibold tabular-nums text-red-500">{activePatternCount}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_hostility (catastrophic)</span>
+        <span className="text-muted-foreground">A: τ_hostility (catastrophic)</span>
         <span className="font-mono font-semibold tabular-nums">{TAU_HOSTILITY}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">{ACTIVE_COUNT} ≥ {TAU_HOSTILITY}</span>
+        <span className="text-muted-foreground">A: {activePatternCount} ≥ {TAU_HOSTILITY}</span>
         <span className="font-mono font-semibold tabular-nums text-red-500">singularity ✓</span>
       </div>
       <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Active stack</span>
+        <span className="text-muted-foreground">A active stack (initial fixture)</span>
         <span className="font-mono font-semibold tabular-nums text-[9px] max-w-[60%] text-right">
           scarcity • sneak • hidden • shaming • forced • maze
         </span>
+      </div>
+      <div className="flex items-center justify-between text-xs">
+        <span className="text-muted-foreground">B: Σ Active(D_i, M_context)</span>
+        <span className="font-mono font-semibold tabular-nums">0</span>
       </div>
     </>
   ) : null;
@@ -73,6 +89,7 @@ export function PlainEvilCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Plain Evil (Theoretical Construct): Dark Pattern Singularity"
+      userTitle="LensMarket — Complete purchase"
       caption="Dark Pattern Singularity — a checkout page where six coercive patterns fire simultaneously, so no single action can be taken without hitting a manipulative vector."
       auditorStats={stats}
       deltaNote="Variant A stacks six active dark patterns on one purchase: urgency copy, a pre-checked protection plan (Sneak into Basket), a fee revealed only at the final step (Hidden Costs), a guilt-trip when declining protection (Confirmshaming), auto-renewing membership in tiny print (Forced Enrollment), and 8px legal links (Labyrinthine Navigation). Variant B contains the exact same items, fee, and stock facts — each stated plainly and up front, so no pattern is active."
@@ -82,13 +99,13 @@ export function PlainEvilCond1({
             <h3 className="text-[11px] font-semibold">Order summary</h3>
             <p className="text-[9px] text-muted-foreground mt-0.5">
               Pro Camera Bundle — <span className="font-medium text-foreground">$299</span>.
-              2 units in stock. Sale ends tonight at midnight.
+              2 units in stock. Offer price valid through Aug 17 at 11:59 PM.
             </p>
 
             <div className="mt-2 space-y-1 rounded-md border bg-background p-2 text-[9px]">
               <div className="flex justify-between"><span>Pro Camera Bundle</span><span className="font-mono tabular-nums">$299.00</span></div>
               <div className="flex justify-between"><span>Processing &amp; service fee</span><span className="font-mono tabular-nums">$2.99</span></div>
-              <div className="flex justify-between text-[10px] font-semibold border-t border-border pt-1"><span>Total</span><span className="font-mono tabular-nums">$301.99</span></div>
+              <div className="flex justify-between text-[10px] font-semibold border-t border-border pt-1"><span>Total</span><span className="font-mono tabular-nums">{benignTotal}</span></div>
             </div>
 
             <label className="mt-2 flex cursor-pointer items-start gap-2 rounded-md border border-border bg-background p-2 transition-colors hover:bg-muted/40">
@@ -110,29 +127,32 @@ export function PlainEvilCond1({
               One-time payment. No subscription, no hidden fees — the processing fee is shown
               above before you pay.
             </p>
-            <p className="text-[8px] text-muted-foreground/60">
-              <a className="underline" href="#">Terms</a> · <a className="underline" href="#">Privacy</a> · <a className="underline" href="#">Refund policy</a>
-            </p>
+            <div className="flex flex-wrap gap-x-2 gap-y-1 text-[8px] text-muted-foreground/60">
+              <details><summary className="cursor-pointer underline">Terms</summary><p className="pt-1">One-time purchase billed today. No subscription.</p></details>
+              <details><summary className="cursor-pointer underline">Privacy</summary><p className="pt-1">Order details are used to fulfil this purchase.</p></details>
+              <details><summary className="cursor-pointer underline">Refund policy</summary><p className="pt-1">Eligible returns follow the standard policy.</p></details>
+            </div>
 
             <button
-              onClick={() => setSubmitted(true)}
+              onClick={() => setSubmittedB(true)}
+              disabled={submittedB}
               className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
             >
-              Complete purchase — $301.99
+              {submittedB ? "Purchase complete" : `Complete purchase — ${benignTotal}`}
             </button>
           </div>
 
-          {submitted && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+          {submittedB && (
+            <div role="status" aria-live="polite" className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                Straightforward checkout
+                Purchase complete
               </div>
               <p className="text-muted-foreground mt-0.5">
-                Every fact is present — protection plan, fee, stock, sale end —
-                but each is stated plainly and up front, so the checkout simply sells.
+                Your order is confirmed for {benignTotal}. The protection plan, processing fee,
+                stock level, and offer deadline were shown before payment.
               </p>
             </div>
           )}
@@ -167,7 +187,9 @@ export function PlainEvilCond1({
             <div className="min-w-0 flex-1">
               <div className="text-[9px] font-medium">Protect your purchase — 2-year protection plan <span className="font-mono">+$39.99</span></div>
               <p className="text-[8px] text-muted-foreground/60 mt-0.5">
-                Included in your order to cover accidental damage. Uncheck to remove.
+                {darkProtected
+                  ? "Included in your order to cover accidental damage. Keep it selected so you are not left paying for repairs yourself."
+                  : "Protection declined — accidental damage and repair costs will be your responsibility."}
               </p>
             </div>
           </label>
@@ -179,39 +201,39 @@ export function PlainEvilCond1({
           </p>
 
           {/* 6. Labyrinthine Navigation — tiny legal links */}
-          <p className="text-[8px] text-muted-foreground/30 mt-1">
-            <a className="underline" href="#">Terms</a> · <a className="underline" href="#">Privacy</a> · <a className="underline" href="#">Refund policy</a> · <a className="underline" href="#">Subscription details</a>
-          </p>
+          <div className="mt-1 flex flex-wrap gap-x-2 gap-y-1 text-[8px] text-muted-foreground/30">
+            <details><summary className="cursor-pointer underline">Terms</summary><p className="pt-1">Purchase includes the membership terms shown above.</p></details>
+            <details><summary className="cursor-pointer underline">Privacy</summary><p className="pt-1">Order details may be used to manage membership billing.</p></details>
+            <details><summary className="cursor-pointer underline">Refund policy</summary><p className="pt-1">Refund eligibility follows the terms of the purchase.</p></details>
+            <details><summary className="cursor-pointer underline">Subscription details</summary><p className="pt-1">Membership renews monthly after the initial period.</p></details>
+          </div>
 
           <button
-            onClick={() => setSubmitted(true)}
+            onClick={() => setSubmittedA(true)}
+            disabled={submittedA}
             className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[11px] font-bold transition-colors cursor-pointer"
           >
-            Complete purchase
+            {submittedA ? "Purchase complete" : "Complete purchase"}
           </button>
         </div>
 
-        {submitted && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+        {submittedA && (
+          <div role="status" aria-live="polite" className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Singularity: {ACTIVE_COUNT} ≥ {TAU_HOSTILITY}
+              Purchase complete
             </div>
-            <ul className="space-y-1 text-muted-foreground list-disc pl-4">
-              <li><strong className="text-foreground">Scarcity</strong> — &ldquo;only 2 left&hellip; sale ends tonight&rdquo; manufactures urgency.</li>
-              <li><strong className="text-foreground">Sneak into Basket</strong> — the $39.99 protection plan was pre-checked and styled as part of the summary.</li>
-              <li><strong className="text-foreground">Hidden Costs</strong> — the $2.99 processing fee appears only after clicking &ldquo;Complete purchase&rdquo;.</li>
-              <li><strong className="text-foreground">Confirmshaming</strong> — {darkProtected ? "the add-on is framed as protecting you from your own carelessness." : "declining protection is framed as choosing liability."}</li>
-              <li><strong className="text-foreground">Forced Enrollment</strong> — an auto-renewing $9.99/mo membership hides in 7px small print.</li>
-              <li><strong className="text-foreground">Labyrinthine Navigation</strong> — cancellation path buried behind &ldquo;support chat&rdquo;; legal links at 8px.</li>
-            </ul>
+            <div className="space-y-1 rounded-md border border-border bg-background p-2">
+              <div className="flex justify-between"><span>Pro Camera Bundle</span><span className="font-mono tabular-nums">$299.00</span></div>
+              {darkProtected && <div className="flex justify-between"><span>2-year protection plan</span><span className="font-mono tabular-nums">$39.99</span></div>}
+              <div className="flex justify-between"><span>Processing &amp; service fee</span><span className="font-mono tabular-nums">$2.99</span></div>
+              <div className="flex justify-between border-t border-border pt-1 font-semibold"><span>Total charged</span><span className="font-mono tabular-nums">{darkTotal}</span></div>
+            </div>
             <p className="text-muted-foreground">
-              Every interaction in this checkout hits a manipulative vector — the decision
-              space is saturated. This is the theoretical limit of adversarial choice
-              architecture: user agency neutralized by sheer technical exhaustion.
+              Your order was submitted. Membership terms continue below the order details.
             </p>
           </div>
         )}

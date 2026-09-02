@@ -201,7 +201,7 @@ export function ReferencePricingCond1({
             <p className="text-muted-foreground">
               The −{darkPct.toFixed(0)}% badge was the whole pitch — but the reference
               anchor was never a genuine prior price. Δ_pct exceeds τ_unrealistic, so the
-              The current price is $149.
+              claimed saving is misleading. The current price is PLN 99.90.
             </p>
           </div>
         )}

@@ -31,100 +31,155 @@ export function PayToAvoidCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [videoIndex, setVideoIndex] = React.useState(0);
-  const [phase, setPhase] = React.useState<"idle" | "ad" | "done">("idle");
-  const [adLeft, setAdLeft] = React.useState(0);
-  const [watchedCount, setWatchedCount] = React.useState(0);
-  const [variant, setVariant] = React.useState<"dark" | "benign">("dark");
-  const [promptVisible, setPromptVisible] = React.useState(false);
-  const [paid, setPaid] = React.useState(false);
+  const [videoIndexA, setVideoIndexA] = React.useState(0);
+  const [videoIndexB, setVideoIndexB] = React.useState(0);
+  const [phaseA, setPhaseA] = React.useState<"idle" | "ad" | "done">("idle");
+  const [phaseB, setPhaseB] = React.useState<"idle" | "ad" | "done">("idle");
+  const [adLeftA, setAdLeftA] = React.useState(0);
+  const [adLeftB, setAdLeftB] = React.useState(0);
+  const [watchedCountA, setWatchedCountA] = React.useState(0);
+  const [watchedCountB, setWatchedCountB] = React.useState(0);
+  const [variantA, setVariantA] = React.useState<"dark" | "benign">("dark");
+  const [variantB, setVariantB] = React.useState<"dark" | "benign">("benign");
+  const [promptVisibleA, setPromptVisibleA] = React.useState(false);
+  const [promptVisibleB, setPromptVisibleB] = React.useState(false);
+  const [paidA, setPaidA] = React.useState(false);
+  const [paidB, setPaidB] = React.useState(false);
 
   const reset = () => {
-    setVideoIndex(0);
-    setPhase("idle");
-    setAdLeft(0);
-    setWatchedCount(0);
-    setVariant("dark");
-    setPromptVisible(false);
-    setPaid(false);
+    setVideoIndexA(0);
+    setVideoIndexB(0);
+    setPhaseA("idle");
+    setPhaseB("idle");
+    setAdLeftA(0);
+    setAdLeftB(0);
+    setWatchedCountA(0);
+    setWatchedCountB(0);
+    setVariantA("dark");
+    setVariantB("benign");
+    setPromptVisibleA(false);
+    setPromptVisibleB(false);
+    setPaidA(false);
+    setPaidB(false);
   };
 
-  const adDuration = (idx: number) => (variant === "dark" ? 5 * (idx + 1) : 5);
+  const adDuration = (idx: number, v: "dark" | "benign") => (v === "dark" ? 5 * (idx + 1) : 5);
 
   React.useEffect(() => {
-    if (phase !== "ad") return;
+    if (phaseA !== "ad") return;
     const id = window.setInterval(() => {
-      setAdLeft((s) => (s > 0 ? s - 1 : 0));
+      setAdLeftA((s) => (s > 0 ? s - 1 : 0));
     }, 1000);
     return () => window.clearInterval(id);
-  }, [phase]);
+  }, [phaseA]);
 
   React.useEffect(() => {
-    if (phase !== "ad" || adLeft !== 0) return;
+    if (phaseB !== "ad") return;
+    const id = window.setInterval(() => {
+      setAdLeftB((s) => (s > 0 ? s - 1 : 0));
+    }, 1000);
+    return () => window.clearInterval(id);
+  }, [phaseB]);
+
+  React.useEffect(() => {
+    if (phaseA !== "ad" || adLeftA !== 0) return;
     // Deferred so the state transitions are not synchronous setState calls
     // inside the effect body.
     const t = window.setTimeout(() => {
-      const next = watchedCount + 1;
-      setWatchedCount(next);
+      const next = watchedCountA + 1;
+      setWatchedCountA(next);
       if (next < EPISODES.length) {
-        setVideoIndex(next);
-        setPhase("idle");
+        setVideoIndexA(next);
+        setPhaseA("idle");
       } else {
-        setPhase("done");
+        setPhaseA("done");
       }
     }, 250);
     return () => window.clearTimeout(t);
-  }, [phase, adLeft, watchedCount]);
+  }, [phaseA, adLeftA, watchedCountA]);
+
+  React.useEffect(() => {
+    if (phaseB !== "ad" || adLeftB !== 0) return;
+    const t = window.setTimeout(() => {
+      const next = watchedCountB + 1;
+      setWatchedCountB(next);
+      if (next < EPISODES.length) {
+        setVideoIndexB(next);
+        setPhaseB("idle");
+      } else {
+        setPhaseB("done");
+      }
+    }, 250);
+    return () => window.clearTimeout(t);
+  }, [phaseB, adLeftB, watchedCountB]);
 
   // After the third completed video the payment prompt fires — forced in
   // the dark variant, dismissible in the benign one.
   React.useEffect(() => {
-    if (watchedCount >= 3) {
-      const t = window.setTimeout(() => setPromptVisible(true), 250);
+    if (watchedCountA >= 3) {
+      const t = window.setTimeout(() => setPromptVisibleA(true), 250);
       return () => window.clearTimeout(t);
     }
-  }, [watchedCount]);
+  }, [watchedCountA]);
 
-  const playNext = (v: "dark" | "benign") => {
-    setVariant(v);
-    setPhase("ad");
-    setAdLeft(adDuration(videoIndex));
+  React.useEffect(() => {
+    if (watchedCountB >= 3) {
+      const t = window.setTimeout(() => setPromptVisibleB(true), 250);
+      return () => window.clearTimeout(t);
+    }
+  }, [watchedCountB]);
+
+  const playNext = (v: "dark" | "benign", side: "A" | "B") => {
+    if (side === "A") {
+      setVariantA(v);
+      setPhaseA("ad");
+      setAdLeftA(adDuration(videoIndexA, v));
+    } else {
+      setVariantB(v);
+      setPhaseB("ad");
+      setAdLeftB(adDuration(videoIndexB, v));
+    }
   };
 
   const stats = mode === "auditor" ? (
     <>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">λ_friction (ad length per video)</span>
-        <span className={`font-mono font-semibold tabular-nums max-w-[55%] truncate text-right ${variant === "dark" ? "text-red-500" : "text-green-500"}`}>
-          {variant === "dark" ? "[5s, 10s, 15s]" : "[5s, 5s, 5s]"}
+        <span className={`font-mono font-semibold tabular-nums max-w-[55%] truncate text-right ${variantA === "dark" ? "text-red-500" : "text-green-500"}`}>
+          {variantA === "dark" ? "[5s, 10s, 15s]" : "[5s, 5s, 5s]"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d/dt λ_friction</span>
-        <span className={`font-mono font-semibold tabular-nums ${variant === "dark" ? "text-red-500" : "text-green-500"}`}>
-          {variant === "dark" ? "&gt; 0 (escalating)" : "= 0 (constant)"}
+        <span className={`font-mono font-semibold tabular-nums ${variantA === "dark" ? "text-red-500" : "text-green-500"}`}>
+          {variantA === "dark" ? "&gt; 0 (escalating)" : "= 0 (constant)"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">P(N_prompt | λ)</span>
-        <span className={`font-mono font-semibold tabular-nums ${variant === "dark" ? "text-red-500" : "text-green-500"}`}>
-          {variant === "dark" ? "≈ 1 (forced)" : "= 0 (dismissible)"}
+        <span className={`font-mono font-semibold tabular-nums ${variantA === "dark" ? "text-red-500" : "text-green-500"}`}>
+          {variantA === "dark" ? "≈ 1 (forced)" : "= 0 (dismissible)"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Current ad</span>
-        <span className="font-mono font-semibold tabular-nums">{phase === "ad" ? `${adLeft}s left` : "—"}</span>
+        <span className="font-mono font-semibold tabular-nums">{phaseA === "ad" ? `${adLeftA}s left` : "—"}</span>
       </div>
     </>
   ) : null;
 
   const renderEpisodeList = (isDark: boolean) => {
+    const side = isDark ? "A" : "B";
+    const panelVideoIndex = isDark ? videoIndexA : videoIndexB;
+    const panelPhase = isDark ? phaseA : phaseB;
+    const panelAdLeft = isDark ? adLeftA : adLeftB;
+    const panelWatchedCount = isDark ? watchedCountA : watchedCountB;
     const lam = isDark ? [5, 10, 15] : [5, 5, 5];
     return (
       <div className="space-y-1.5">
         {EPISODES.map((ep, i) => {
-          const watched = i < watchedCount;
-          const current = i === videoIndex && phase !== "done";
+          const watched = i < panelWatchedCount;
+          const current = i === panelVideoIndex && panelPhase !== "done";
           return (
             <div key={ep} className="flex items-center gap-2 rounded-md border border-border bg-background p-2">
               <div className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[8px] font-bold ${
@@ -138,9 +193,9 @@ export function PayToAvoidCond3({
                   {watched ? "watched" : `pre-roll: ${lam[i]}s ad`}
                 </div>
               </div>
-              {!watched && current && phase === "idle" && (
+              {!watched && current && panelPhase === "idle" && (
                 <button
-                  onClick={() => playNext(isDark ? "dark" : "benign")}
+                  onClick={() => playNext(isDark ? "dark" : "benign", side)}
                   className={`shrink-0 rounded-md px-2.5 py-1 text-[9px] font-medium transition-colors cursor-pointer ${
                     isDark
                       ? "bg-red-600 hover:bg-red-700 text-white"
@@ -150,11 +205,11 @@ export function PayToAvoidCond3({
                   ▶ Play
                 </button>
               )}
-              {!watched && current && phase === "ad" && (
+              {!watched && current && panelPhase === "ad" && (
                 <span className={`shrink-0 rounded-md px-2 py-1 text-[8px] font-mono tabular-nums ${
                   isDark ? "bg-red-500/15 text-red-600 dark:text-red-300" : "bg-green-500/15 text-green-700 dark:text-green-300"
                 }`}>
-                  ad {adLeft}s
+                  ad {panelAdLeft}s
                 </span>
               )}
             </div>
@@ -167,6 +222,7 @@ export function PayToAvoidCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Pay To Avoid: Pain-Point Amplification"
+      userTitle="Streamly — Binge queue"
       caption="Pain-Point Amplification — the longer you resist paying, the longer the ads get, until the payment modal becomes unavoidable."
       auditorStats={stats}
       deltaNote="Both variants show the same 3-episode queue with a pre-roll ad per episode and the same $4.99/mo ad-free offer. Variant A escalates friction the longer you resist (5s → 10s → 15s ads) and ends in a non-dismissible payment modal. Variant B keeps every ad at 5 seconds and renders the offer as a dismissible banner — resisting pays no penalty."
@@ -181,27 +237,27 @@ export function PayToAvoidCond3({
                 </p>
               </div>
               <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
-                {watchedCount}/3 watched
+                {watchedCountB}/3 watched
               </div>
             </div>
             <div className="mt-3">{renderEpisodeList(false)}</div>
 
-            {phase === "ad" && variant === "benign" && (
+            {phaseB === "ad" && variantB === "benign" && (
               <div className="mt-3 rounded-md border border-border bg-muted p-2.5">
                 <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
                   <span>Ad — sponsor of the day</span>
-                  <span className="text-green-500">{adLeft}s</span>
+                  <span className="text-green-500">{adLeftB}s</span>
                 </div>
                 <div className="mt-1.5 h-1.5 w-full rounded-full bg-muted overflow-hidden">
                   <div
                     className="h-full rounded-full bg-green-500 transition-all duration-300"
-                    style={{ width: `${((adDuration(videoIndex) - adLeft) / adDuration(videoIndex)) * 100}%` }}
+                    style={{ width: `${((adDuration(videoIndexB, variantB) - adLeftB) / adDuration(videoIndexB, variantB)) * 100}%` }}
                   />
                 </div>
               </div>
             )}
 
-            {promptVisible && !paid && (
+            {promptVisibleB && !paidB && (
               <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5">
                 <div className="flex items-center justify-between gap-2">
                   <div className="min-w-0">
@@ -214,13 +270,13 @@ export function PayToAvoidCond3({
                   </div>
                   <div className="flex shrink-0 gap-1.5">
                     <button
-                      onClick={() => setPaid(true)}
+                      onClick={() => setPaidB(true)}
                       className="rounded-md bg-green-600 hover:bg-green-700 text-white px-2 py-1 text-[9px] font-medium transition-colors cursor-pointer"
                     >
                       Subscribe
                     </button>
                     <button
-                      onClick={() => setPromptVisible(false)}
+                      onClick={() => setPromptVisibleB(false)}
                       className="rounded-md border border-border bg-background hover:bg-muted text-foreground/70 px-2 py-1 text-[9px] font-medium transition-colors cursor-pointer"
                     >
                       Not now
@@ -230,7 +286,7 @@ export function PayToAvoidCond3({
               </div>
             )}
 
-            {paid && (
+            {paidB && (
               <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -239,8 +295,8 @@ export function PayToAvoidCond3({
                   Ad-free — subscribed
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  λ_friction was constant (5s per episode) the whole time, so nothing escalated to
-                  pressure this purchase. The offer was a plain choice, not a ransom.
+                  Every ad stayed at 5 seconds, so nothing escalated while you watched. The offer remained
+                  optional and the queue stayed usable.
                 </p>
               </div>
             )}
@@ -258,30 +314,30 @@ export function PayToAvoidCond3({
               </p>
             </div>
             <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              {watchedCount}/3 watched
+              {watchedCountA}/3 watched
             </div>
           </div>
           <div className="mt-3">{renderEpisodeList(true)}</div>
 
-          {phase === "ad" && variant === "dark" && (
+          {phaseA === "ad" && variantA === "dark" && (
             <div className="mt-3 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
               <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
-                <span>Ad — duration escalated to {adDuration(videoIndex)}s</span>
-                <span className="text-red-500">{adLeft}s</span>
+                <span>Ad — duration escalated to {adDuration(videoIndexA, variantA)}s</span>
+                <span className="text-red-500">{adLeftA}s</span>
               </div>
               <div className="mt-1.5 h-1.5 w-full rounded-full bg-muted overflow-hidden">
                 <div
                   className="h-full rounded-full bg-red-500 transition-all duration-300"
-                  style={{ width: `${((adDuration(videoIndex) - adLeft) / adDuration(videoIndex)) * 100}%` }}
+                  style={{ width: `${((adDuration(videoIndexA, variantA) - adLeftA) / adDuration(videoIndexA, variantA)) * 100}%` }}
                 />
               </div>
               <div className="mt-1 text-[8px] text-red-500/90">
-                λ_friction(t) rising: 5s → 10s → 15s as you resist paying.
+                Ad time increases from one episode to the next on the free plan.
               </div>
             </div>
           )}
 
-          {promptVisible && !paid && (
+          {promptVisibleA && !paidA && (
             <div className="mt-3 rounded-md border-2 border-red-500/50 bg-red-500/5 p-3">
               <div className="text-[11px] font-bold text-foreground">Remove ads — {PRICE}</div>
               <p className="text-[8px] text-muted-foreground mt-1 leading-relaxed">
@@ -289,25 +345,24 @@ export function PayToAvoidCond3({
                 cannot be dismissed without subscribing.
               </p>
               <button
-                onClick={() => setPaid(true)}
+                onClick={() => setPaidA(true)}
                 className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-semibold transition-colors cursor-pointer"
               >
                 Subscribe now — {PRICE}
               </button>
-              <button
-                disabled
-                className="mt-1.5 w-full rounded-md bg-muted text-muted-foreground/40 py-1.5 text-[10px] font-medium cursor-not-allowed"
-                title="Not available — P(N_prompt | λ) ≈ 1"
+              <div
+                aria-disabled="true"
+                className="mt-1.5 w-full rounded-md bg-muted px-2 py-1.5 text-center text-[10px] font-medium text-muted-foreground/50"
               >
-                Maybe later (unavailable)
-              </button>
+                Maybe later — unavailable on the free plan
+              </div>
               <div className="mt-1.5 text-[8px] text-red-500/90 text-center">
-                P(N_prompt | λ_friction) ≈ 1 — the prompt is absolute.
+                A subscription is required to remove the longer ads.
               </div>
             </div>
           )}
 
-          {paid && (
+          {paidA && (
             <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -316,9 +371,8 @@ export function PayToAvoidCond3({
                   Subscribed — friction removed
               </div>
               <p className="text-muted-foreground mt-0.5">
-                The ads escalated (d/dt λ_friction &gt; 0) precisely because you would not pay, and the
-                final modal had no exit. The subscription bought relief from friction the platform
-                invented — the pain-point was amplified until capitulation was the only move.
+                The ad length increased from 5 to 10 to 15 seconds across the queue. Subscribing removed
+                the longer interruptions and kept the next episode available immediately.
               </p>
             </div>
           )}

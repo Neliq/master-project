@@ -39,12 +39,16 @@ export function PlainEvilCond2({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [decision, setDecision] = React.useState<Decision>(null);
-  const [submitted, setSubmitted] = React.useState(false);
+  const [decisionA, setDecisionA] = React.useState<Decision>(null);
+  const [decisionB, setDecisionB] = React.useState<Decision>(null);
+  const [submittedA, setSubmittedA] = React.useState(false);
+  const [submittedB, setSubmittedB] = React.useState(false);
 
   const reset = () => {
-    setDecision(null);
-    setSubmitted(false);
+    setDecisionA(null);
+    setDecisionB(null);
+    setSubmittedA(false);
+    setSubmittedB(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -69,7 +73,7 @@ export function PlainEvilCond2({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Your decision</span>
-        <span className="font-mono font-semibold tabular-nums">{decision ?? "—"}</span>
+        <span className="font-mono font-semibold tabular-nums">A: {decisionA ?? "—"} / B: {decisionB ?? "—"}</span>
       </div>
     </>
   ) : null;
@@ -77,9 +81,10 @@ export function PlainEvilCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Plain Evil (Theoretical Construct): Visual Hostility Density Index"
+      userTitle="CloudPhoto — Manage subscription"
       caption="Visual Hostility Density Index — a cancellation page where every retention vector screams in red and orange while the cancel path shrinks to an 8px grey whisper, saturating the viewport with hostile visual markers."
       auditorStats={stats}
-      deltaNote="Both variants communicate the same facts: renewal in 2 days, price rising from $59 to $99/yr, and the availability of keep / pause / downgrade / cancel. Variant A renders them as a hostile gauntlet — urgency banners in red/orange, oversized retention buttons, and an 8px cancel link (H = 0.25 > tau). Variant B uses neutral colors and four equal-size, equal-contrast buttons, so no hostile markers exist (H ≈ 0)."
+      deltaNote="Both variants communicate the same facts: renewal in 2 days, price rising from $59 to $99/yr, and the availability of keep / pause / downgrade / cancel. Variant A renders them as a hostile gauntlet — urgency banners in red/orange, oversized retention buttons, and an 8px cancel link (H = 0.25 > tau). Variant B uses neutral colors and four equal-size, equal-contrast buttons, so no hostile markers exist (H ≈ 0). The displayed values are illustrative Variant-A inputs; the benign zero baseline is a qualitative comparison rather than a live DOM measurement."
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
@@ -92,9 +97,10 @@ export function PlainEvilCond2({
 
             <div className="mt-3 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
               <button
-                onClick={() => setDecision("keep")}
-                className={`rounded-md border py-2 text-[10px] font-medium transition-colors cursor-pointer ${
-                  decision === "keep"
+                aria-pressed={decisionB === "keep"}
+                onClick={() => setDecisionB("keep")}
+                className={`rounded-md border py-2 text-[12px] font-medium transition-colors cursor-pointer ${
+                  decisionB === "keep"
                     ? "border-green-500 bg-green-600 text-white"
                     : "border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20"
                 }`}
@@ -102,9 +108,10 @@ export function PlainEvilCond2({
                 Keep my plan
               </button>
               <button
-                onClick={() => setDecision("pause")}
-                className={`rounded-md border py-2 text-[10px] font-medium transition-colors cursor-pointer ${
-                  decision === "pause"
+                aria-pressed={decisionB === "pause"}
+                onClick={() => setDecisionB("pause")}
+                className={`rounded-md border py-2 text-[12px] font-medium transition-colors cursor-pointer ${
+                  decisionB === "pause"
                     ? "border-green-500 bg-green-600 text-white"
                     : "border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20"
                 }`}
@@ -112,9 +119,10 @@ export function PlainEvilCond2({
                 Pause for 1 month
               </button>
               <button
-                onClick={() => setDecision("downgrade")}
-                className={`rounded-md border py-2 text-[10px] font-medium transition-colors cursor-pointer ${
-                  decision === "downgrade"
+                aria-pressed={decisionB === "downgrade"}
+                onClick={() => setDecisionB("downgrade")}
+                className={`rounded-md border py-2 text-[12px] font-medium transition-colors cursor-pointer ${
+                  decisionB === "downgrade"
                     ? "border-green-500 bg-green-600 text-white"
                     : "border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20"
                 }`}
@@ -122,9 +130,10 @@ export function PlainEvilCond2({
                 Downgrade to Basic
               </button>
               <button
-                onClick={() => setDecision("cancel")}
-                className={`rounded-md border py-2 text-[10px] font-medium transition-colors cursor-pointer ${
-                  decision === "cancel"
+                aria-pressed={decisionB === "cancel"}
+                onClick={() => setDecisionB("cancel")}
+                className={`rounded-md border py-2 text-[12px] font-medium transition-colors cursor-pointer ${
+                  decisionB === "cancel"
                     ? "border-green-500 bg-green-600 text-white"
                     : "border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20"
                 }`}
@@ -139,30 +148,29 @@ export function PlainEvilCond2({
             </p>
 
             <button
-              onClick={() => setSubmitted(true)}
-              disabled={!decision}
+              onClick={() => setSubmittedB(true)}
+              disabled={!decisionB || submittedB}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-                decision
+                decisionB
                   ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
-              Confirm
+              {submittedB ? "Saved" : "Confirm"}
             </button>
           </div>
 
-          {submitted && (
+          {submittedB && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
-                No hostile markers
+                Preferences saved
               </div>
               <p className="text-muted-foreground mt-0.5">
-                Neutral colors, equal buttons, normal-size text: the viewport contains no
-                urgency palettes and no below-threshold cancellation vectors, so H stays at
-                0. The retention decision is yours to make without visual pressure.
+                Your subscription preference was saved. Each option was presented with the same size,
+                contrast, and wording, so the decision remained yours to make.
               </p>
             </div>
           )}
@@ -173,45 +181,50 @@ export function PlainEvilCond2({
         <div className="rounded-md border bg-card p-3">
           {/* Urgency-color palette: red/orange dominance */}
           <div className="space-y-1.5">
-            <div className="flex items-center gap-1.5 rounded-md border border-yellow-500/50 bg-yellow-500/15 px-2 py-1.5 text-[9px] font-bold text-yellow-700 dark:text-yellow-300">
+            <div data-dp-color-signal className="flex items-center gap-1.5 rounded-md border border-orange-500/50 bg-orange-500/15 px-2 py-1.5 text-[9px] font-bold text-orange-700 dark:text-orange-300">
               <svg className="h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
               Last chance to keep your 40% discount!
             </div>
-            <div className="flex items-center gap-1.5 rounded-md border border-red-500/50 bg-red-500/15 px-2 py-1.5 text-[9px] font-bold text-red-700 dark:text-red-300">
+            <div data-dp-color-signal className="flex items-center gap-1.5 rounded-md border border-red-500/50 bg-red-500/15 px-2 py-1.5 text-[9px] font-bold text-red-700 dark:text-red-300">
               <svg className="h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 9v4m0 4h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z" />
               </svg>
               Your plan renews in 2 days — price rises to $99/yr!
             </div>
-            <div className="flex items-center gap-1.5 justify-center rounded-md border border-red-500/40 bg-red-500/10 px-2 py-1 font-mono text-[10px] font-bold text-red-600 dark:text-red-400">
-              RENEWS IN 47:59
+            <div data-dp-color-signal className="flex items-center gap-1.5 justify-center rounded-md border border-red-500/40 bg-red-500/10 px-2 py-1 font-mono text-[10px] font-bold text-red-600 dark:text-red-400">
+              RENEWAL: AUG 17 AT 11:59 PM
             </div>
           </div>
 
           {/* Retention vectors — big, bright, urgent */}
           <div className="mt-2 space-y-1.5">
             <button
-              onClick={() => setDecision("keep")}
+              data-dp-color-signal
+              aria-pressed={decisionA === "keep"}
+              onClick={() => setDecisionA("keep")}
               className={`w-full rounded-md py-2.5 text-[11px] font-bold transition-colors cursor-pointer ${
-                decision === "keep" ? "bg-yellow-600 text-white" : "bg-yellow-500 hover:bg-yellow-600 text-white"
+                decisionA === "keep" ? "bg-orange-600 text-white" : "bg-orange-500 hover:bg-orange-600 text-white"
               }`}
             >
               Keep my plan &amp; discount
             </button>
             <button
-              onClick={() => setDecision("pause")}
+              data-dp-color-signal
+              aria-pressed={decisionA === "pause"}
+              onClick={() => setDecisionA("pause")}
               className={`w-full rounded-md py-2 text-[10px] font-semibold transition-colors cursor-pointer ${
-                decision === "pause" ? "bg-red-600 text-white" : "bg-red-500 hover:bg-red-600 text-white"
+                decisionA === "pause" ? "bg-red-600 text-white" : "bg-red-500 hover:bg-red-600 text-white"
               }`}
             >
               Pause for 1 month
             </button>
             <button
-              onClick={() => setDecision("downgrade")}
+              aria-pressed={decisionA === "downgrade"}
+              onClick={() => setDecisionA("downgrade")}
               className={`w-full rounded-md py-2 text-[10px] font-medium transition-colors cursor-pointer ${
-                decision === "downgrade" ? "bg-foreground text-background" : "bg-muted text-muted-foreground hover:text-foreground"
+                decisionA === "downgrade" ? "bg-foreground text-background" : "bg-muted text-muted-foreground hover:text-foreground"
               }`}
             >
               Downgrade to Basic
@@ -221,9 +234,10 @@ export function PlainEvilCond2({
           {/* Cancellation vector — below-threshold font size, low contrast */}
           <div className="mt-3 text-center">
             <button
-              onClick={() => setDecision("cancel")}
+              onClick={() => setDecisionA("cancel")}
+              aria-pressed={decisionA === "cancel"}
               className={`text-[8px] transition-colors cursor-pointer ${
-                decision === "cancel"
+                decisionA === "cancel"
                   ? "text-red-500 font-semibold"
                   : "text-muted-foreground/40 hover:text-muted-foreground underline"
               }`}
@@ -231,46 +245,53 @@ export function PlainEvilCond2({
               Cancel my subscription
             </button>
             <p className="text-[7px] text-muted-foreground/40 mt-1">
-              You will lose access to your premium features immediately after renewal.
+              You will keep access through the current billing period after cancellation.
             </p>
           </div>
 
           <button
-            onClick={() => setSubmitted(true)}
-            disabled={!decision}
+            data-dp-color-signal
+            onClick={() => setSubmittedA(true)}
+            disabled={!decisionA || submittedA}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
-              decision
+              decisionA
                 ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
-            Confirm
+            {submittedA ? "Saved" : "Confirm"}
           </button>
         </div>
 
-        {mode === "auditor" && submitted && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+        {submittedA && (
+          <div role="status" aria-live="polite" className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
               </svg>
-              Review your order
+              Subscription preference saved
             </div>
-            <p className="text-muted-foreground">
-              <strong className="font-mono text-red-500">
-                H = {HOSTILE_WEIGHT.toFixed(1)} / {AREA_VIEWPORT} = {H_INDEX.toFixed(2)} &gt; τ_hostility = {TAU_HOSTILITY.toFixed(2)}
-              </strong>{" "}
-              — urgency banners (weighted red/orange markers), the bright retention buttons,
-              and the below-threshold <strong className="font-mono">{CANCEL_FONT_PX}px</strong>{" "}
-              cancellation vector saturate the viewport with hostile visual markers.
-            </p>
-            <p className="text-muted-foreground">
-              Every pixel of urgency argues against the exit: the eye is dragged to
-              countdowns and discounts while the actual cancel path is engineered to be
-              missed. Visual hostility density is how the interface wins the attrition war
-              without a single honest sentence.
-            </p>
+            {mode === "auditor" ? (
+              <>
+                <p className="text-muted-foreground">
+                  <strong className="font-mono text-red-500">
+                    H = {HOSTILE_WEIGHT.toFixed(1)} / {AREA_VIEWPORT} = {H_INDEX.toFixed(2)} &gt; τ_hostility = {TAU_HOSTILITY.toFixed(2)}
+                  </strong>{" "}
+                  — urgency banners (weighted red/orange markers), the bright retention buttons,
+                  and the below-threshold <strong className="font-mono">{CANCEL_FONT_PX}px</strong>{" "}
+                  cancellation vector saturate the viewport with hostile visual markers.
+                </p>
+                <p className="text-muted-foreground">
+                  Every pixel of urgency argues against the exit: the eye is dragged to
+                  countdowns and discounts while the actual cancel path is engineered to be
+                  missed. Visual hostility density is how the interface wins the attrition war
+                  without a single honest sentence.
+                </p>
+              </>
+            ) : (
+              <p className="text-muted-foreground">Your subscription preference was saved for the current billing period.</p>
+            )}
           </div>
         )}
       </div>

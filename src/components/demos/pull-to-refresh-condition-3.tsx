@@ -34,10 +34,14 @@ const MUNDANE = [
 ];
 
 const HIGH_VALENCE = [
-  { title: "You're the 1,000,000th visitor! ", body: "Tap to claim your surprise badge.", valence: 1 },
-  { title: "New message from Maya ", body: "She replied to your story from this morning.", valence: 1 },
-  { title: "Your post hit 1,000 likes ", body: "It's trending in your network right now.", valence: 1 },
-  { title: "Unlocked: 7-day streak! ⚡", body: "Keep going — your reward streak grows.", valence: 1 },
+  { title: "Maya replied to your story", body: "She shared a note about this morning's walk.", valence: 1 },
+  { title: "Your photo was featured", body: "People in your network are reacting to it now.", valence: 1 },
+  { title: "Seven-day streak complete", body: "Your week of check-ins is now in your activity history.", valence: 1 },
+];
+
+const A_OUTCOMES = [
+  MUNDANE[0], MUNDANE[1], HIGH_VALENCE[0], MUNDANE[2],
+  MUNDANE[3], HIGH_VALENCE[1], MUNDANE[0], HIGH_VALENCE[2],
 ];
 
 function variance(nums: number[]): number {
@@ -70,14 +74,12 @@ export function PullToRefreshCond3({
     []
   );
 
-  // Variable-ratio draw: ~25% high-valence novelty, ~75% mundane.
   const refreshA = () => {
     if (refreshingA) return;
     setRefreshingA(true);
     timersRef.current.push(
       window.setTimeout(() => {
-        const pool = Math.random() < 0.25 ? HIGH_VALENCE : MUNDANE;
-        const pick = pool[Math.floor(Math.random() * pool.length)];
+        const pick = A_OUTCOMES[historyA.length % A_OUTCOMES.length];
         setOutcomeA(pick);
         setHistoryA((prev) => [...prev, pick.valence].slice(-K));
         setRefreshesA((n) => n + 1);
@@ -125,7 +127,7 @@ export function PullToRefreshCond3({
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">σ²_novelty [A]</span>
         <span className="font-mono font-semibold tabular-nums text-red-500">
-          {varA.toFixed(3)} {historyA.length >= 2 ? `> ${TAU_SLOT_MACHINE}` : "(pending)"}
+          {varA.toFixed(3)} {historyA.length === K ? (varA > TAU_SLOT_MACHINE ? `> ${TAU_SLOT_MACHINE}` : `≤ ${TAU_SLOT_MACHINE}`) : "(pending)"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
@@ -144,6 +146,7 @@ export function PullToRefreshCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Pull To Refresh (Variable-Reward Trap): Semantic Variability of Refresh-Outcome Messaging"
+      userTitle="Nest — Your network"
       caption="Semantic Variability of Refresh-Outcome Messaging — refresh feedback follows a variable-ratio schedule, with novel high-valence surprises arriving on an unpredictable subset of pulls."
       auditorStats={stats}
       deltaNote="Variant A draws each outcome from a variable-ratio schedule: mostly mundane messages with high-valence surprises on an unpredictable ~25% of refreshes, keeping the novelty variance above τ_slot_machine. Variant B returns the identical feed with a deterministic outcome every time, so the variance collapses to zero and no reward loop forms."
@@ -211,7 +214,7 @@ export function PullToRefreshCond3({
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Nest — your network</h3>
             <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
-              Variable-ratio
+              Surprise drops
             </span>
           </div>
 
@@ -250,7 +253,7 @@ export function PullToRefreshCond3({
             Refresh #{historyA.length} — will this be the one that pays off?
           </p>
 
-          {refreshesA >= 6 && (
+          {mode === "auditor" && refreshesA >= 6 && (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <AlertTriangle className="size-3" />

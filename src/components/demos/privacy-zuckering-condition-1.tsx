@@ -71,6 +71,7 @@ export function PrivacyZuckeringCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Privacy Zuckering: Bundled Consent and Granularity Violation"
+      userTitle="Orbit — Create account"
       caption="Bundled Consent and Granularity Violation — essential service access and monetization tracking are fused into one indivisible consent toggle, so no alternative grants one without the other."
       auditorStats={stats}
       deltaNote="In Variant A a single checkbox fuses Access(D_essential) with Access(D_monetization): you cannot create an account without accepting profiling/brokerage — ¬∃ t_alt. In Variant B the two data classes get separate toggles, so essential access exists without monetization (t_alt exists)."
@@ -94,7 +95,7 @@ export function PrivacyZuckeringCond1({
                 <label className="text-[9px] font-medium text-muted-foreground">Password</label>
                 <input
                   type="password"
-                  defaultValue="hunter2"
+                  defaultValue="[REDACTED]"
                   className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-green-500/40"
                 />
               </div>
@@ -185,7 +186,7 @@ export function PrivacyZuckeringCond1({
               <label className="text-[9px] font-medium text-muted-foreground">Password</label>
               <input
                 type="password"
-                defaultValue="hunter2"
+                defaultValue="[REDACTED]"
                 className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-red-500/40"
               />
             </div>

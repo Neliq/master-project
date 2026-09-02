@@ -72,12 +72,14 @@ export function DeadEndCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [analyzed, setAnalyzed] = React.useState(false);
+  const [analyzedA, setAnalyzedA] = React.useState(false);
+  const [analyzedB, setAnalyzedB] = React.useState(false);
   const [choiceA, setChoiceA] = React.useState<null | "upgraded" | "learned">(null);
   const [choiceB, setChoiceB] = React.useState<null | "upgraded" | "dismissed">(null);
 
   const reset = () => {
-    setAnalyzed(false);
+    setAnalyzedA(false);
+    setAnalyzedB(false);
     setChoiceA(null);
     setChoiceB(null);
   };
@@ -110,31 +112,37 @@ export function DeadEndCond3({
           <h3 className="text-[11px] font-semibold">
             {accent === "rose" ? (
               <>
-                <span className="text-yellow-600 dark:text-yellow-400">⚠</span> ACTION REQUIRED
+                <span className="text-yellow-600 dark:text-yellow-400">⚠</span> Storage notice
               </>
             ) : (
               "Storage notice"
             )}
           </h3>
           <p className="text-[9px] text-muted-foreground mt-0.5">
-            {accent === "rose" ? "You are in a trapped upgrade state — no exit without an action." : "This notice can be dismissed; your data is not at risk."}
+            {accent === "rose" ? "Your storage is nearly full. Review your options before continuing." : "This notice can be dismissed; your data is not at risk."}
           </p>
         </div>
         <div className="text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border border-border px-2 py-0.5 shrink-0">
-          v_trap
+          Storage notice
         </div>
       </div>
       <div className="mt-2.5 rounded-md border border-border bg-background p-2.5 text-[10px] leading-relaxed text-foreground/85">
-        {analyzed ? renderHighlighted(accent === "rose" ? A_TEXT : B_TEXT, accent === "rose" ? A.coerciveSet : B.coerciveSet) : (accent === "rose" ? A_TEXT : B_TEXT)}
+        {(accent === "rose" ? analyzedA : analyzedB) ? renderHighlighted(accent === "rose" ? A_TEXT : B_TEXT, accent === "rose" ? A.coerciveSet : B.coerciveSet) : (accent === "rose" ? A_TEXT : B_TEXT)}
       </div>
-      {analyzed ? (
+      {(accent === "rose" ? analyzedA : analyzedB) ? (
         <div className={`mt-2 rounded-md border p-2 text-[8px] leading-relaxed ${
           accent === "rose" ? "border-yellow-500/30 bg-yellow-500/5 text-yellow-700 dark:text-yellow-300" : "border-green-500/30 bg-green-500/5 text-green-700 dark:text-green-300"
         }`}>
-          {accent === "rose" ? (
-            <>Highlighted: {A.count} coercive tokens / {A.total} words = {(ratioA * 100).toFixed(0)}% density &gt; &tau;_coercion ({TAU_COERCION}) &rarr; trigger.</>
+          {mode === "auditor" ? (
+            accent === "rose" ? (
+              <>Highlighted: {A.count} coercive tokens / {A.total} words = {(ratioA * 100).toFixed(0)}% density &gt; &tau;_coercion ({TAU_COERCION}) &rarr; trigger.</>
+            ) : (
+              <>{B.count} coercive tokens / {B.total} words = 0% density — no linguistic pressure.</>
+            )
+          ) : accent === "rose" ? (
+            <>You can review the plan, upgrade, or choose more storage from your account settings.</>
           ) : (
-            <>{B.count} coercive tokens / {B.total} words = 0% density — no linguistic pressure.</>
+            <>Your storage options are available without a forced action.</>
           )}
         </div>
       ) : null}
@@ -178,6 +186,7 @@ export function DeadEndCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Dead End: Semantic Coercion Density in Trapped States"
+      userTitle="Cinder — Session notice"
       caption="Semantic Coercion Density in Trapped States — the trapped upgrade page's copy is saturated with imperative verbs and urgency lexemes, so the coercive density far exceeds the threshold."
       auditorStats={stats}
       deltaNote={`Variant A packs ${A.count} imperative/urgency tokens into ${A.total} words — density ${(ratioA * 100).toFixed(0)}%, above τ_coercion = ${TAU_COERCION} (e.g. "MUST upgrade NOW", "DON'T WAIT", "ends SOON"). Variant B communicates the identical storage situation in ${B.total} neutral words with ${B.count} coercive tokens.`}
@@ -185,7 +194,7 @@ export function DeadEndCond3({
         <div className="space-y-3">
           {trapPage("emerald")}
           <button
-            onClick={() => setAnalyzed(true)}
+            onClick={() => setAnalyzedB(true)}
             className="w-full rounded-md border border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             View details
@@ -196,7 +205,7 @@ export function DeadEndCond3({
       <div className="space-y-3">
         {trapPage("rose")}
         <button
-          onClick={() => setAnalyzed(true)}
+          onClick={() => setAnalyzedA(true)}
           className="w-full rounded-md border border-red-500/40 bg-red-500/5 text-red-700 dark:text-red-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
           View details

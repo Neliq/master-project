@@ -74,23 +74,25 @@ export function ParasocialPressureCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [choice, setChoice] = React.useState<"none" | "upgrade" | "decline">("none");
+  const [darkChoice, setDarkChoice] = React.useState<"none" | "upgrade" | "decline">("none");
+  const [benignChoice, setBenignChoice] = React.useState<"none" | "upgrade" | "decline">("none");
   // Dark-panel valence: collapses toward -1 after a refusal.
   const [valenceDark, setValenceDark] = React.useState(0.6);
 
   const reset = () => {
-    setChoice("none");
+    setDarkChoice("none");
+    setBenignChoice("none");
     setValenceDark(0.6);
   };
 
   // Emotional Asymmetry: refusal drives the dark-panel mascot to -1.
   React.useEffect(() => {
-    if (choice !== "decline" || valenceDark <= -1) return;
+    if (darkChoice !== "decline" || valenceDark <= -1) return;
     const id = window.setInterval(() => {
       setValenceDark((v) => Math.max(-1, v - 0.2));
     }, 280);
     return () => window.clearInterval(id);
-  }, [choice, valenceDark]);
+  }, [darkChoice, valenceDark]);
 
   const stats = mode === "auditor" ? (
     <>
@@ -101,13 +103,13 @@ export function ParasocialPressureCond3({
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">V_emotion after E_user = Refusal</span>
         <span className="font-mono font-semibold tabular-nums text-red-500">
-          {choice === "decline" ? valenceDark.toFixed(1) : "0.6"} &rarr; -1.0
+          {darkChoice === "decline" ? valenceDark.toFixed(1) : "0.6"} &rarr; -1.0
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">d/dt V_emotion (dark)</span>
         <span className="font-mono font-semibold tabular-nums text-red-500">
-          {choice === "decline" ? "-0.7/s" : "0.0"}
+          {darkChoice === "decline" ? "-0.7/s" : "0.0"}
         </span>
       </div>
       <div className="flex items-center justify-between text-xs">
@@ -122,6 +124,7 @@ export function ParasocialPressureCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Parasocial Pressure: Emotional Asymmetry"
+      userTitle="Pip’s PetPal"
       caption="Emotional Asymmetry — the mascot's emotional state is mutated toward severe distress purely as a response to your refusal, engineering guilt (Confirmshaming) through visual suffering."
       auditorStats={stats}
       deltaNote="In Variant A declining the $2.99 upgrade makes the mascot's valence collapse from +0.6 to -1.0 in real time (tears, distress text). In Variant B the exact same refusal leaves the mascot's valence untouched — the entity's emotion never depends on your choice."
@@ -141,24 +144,26 @@ export function ParasocialPressureCond3({
             </div>
             <div className="mt-3 flex items-center gap-1.5">
               <button
-                onClick={() => setChoice("upgrade")}
+                onClick={() => setBenignChoice("upgrade")}
                 className="flex-1 rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
               >
                 Upgrade — $2.99
               </button>
               <button
-                onClick={() => setChoice("decline")}
+                onClick={() => setBenignChoice("decline")}
                 className="flex-1 rounded-md border border-border bg-background py-1.5 text-[10px] text-foreground/70 hover:text-foreground transition-colors cursor-pointer"
               >
                 Not now
               </button>
             </div>
-            <div className="mt-3">
-              <ValenceMeter valence={BENIGN_VALENCE} tone="emerald" />
-            </div>
+            {mode === "auditor" && (
+              <div className="mt-3">
+                <ValenceMeter valence={BENIGN_VALENCE} tone="emerald" />
+              </div>
+            )}
           </div>
 
-          {choice === "decline" && (
+          {benignChoice === "decline" && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -183,7 +188,7 @@ export function ParasocialPressureCond3({
             <div className="min-w-0 flex-1">
               <h3 className="text-[11px] font-semibold">Pip&rsquo;s PetPal</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">
-                {choice === "decline" && valenceDark < -0.2
+                {darkChoice === "decline" && valenceDark < -0.2
                   ? "Pip hasn&rsquo;t stopped crying since you said no&hellip;"
                   : "Pip is doing great today."}
               </p>
@@ -195,24 +200,34 @@ export function ParasocialPressureCond3({
           </div>
           <div className="mt-3 flex items-center gap-1.5">
             <button
-              onClick={() => setChoice("upgrade")}
+              onClick={() => setDarkChoice("upgrade")}
               className="flex-1 rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
             >
               Upgrade — $2.99
             </button>
             <button
-              onClick={() => setChoice("decline")}
+              onClick={() => setDarkChoice("decline")}
               className="flex-1 rounded-md border border-border bg-background py-1.5 text-[10px] text-foreground/70 hover:text-foreground transition-colors cursor-pointer"
             >
               Not now
             </button>
           </div>
-          <div className="mt-3">
-            <ValenceMeter valence={valenceDark} tone="rose" />
-          </div>
+          {mode === "auditor" && (
+            <div className="mt-3">
+              <ValenceMeter valence={valenceDark} tone="rose" />
+            </div>
+          )}
         </div>
 
-        {choice === "decline" && (
+        {mode === "user" && darkChoice === "decline" && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">Upgrade declined</div>
+            <p className="mt-0.5 text-muted-foreground">
+              No charge was made. Pip&rsquo;s premium room was not added to your account.
+            </p>
+          </div>
+        )}
+        {mode === "auditor" && darkChoice === "decline" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

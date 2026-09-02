@@ -132,7 +132,7 @@ export function LabyrinthineNavigationCond2({
             </span>
           </button>
           <span className="shrink-0 font-mono text-[8px] tabular-nums text-muted-foreground/40">
-            {px}px
+            {mode === "auditor" ? `${px}px` : hasChildren ? "Open section" : "Setting"}
           </span>
         </div>
         {hasChildren && isOpen && node.children!.map((c) => renderTree(c, depth + 1))}
@@ -164,6 +164,7 @@ export function LabyrinthineNavigationCond2({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Labyrinthine Navigation: Visual Nesting Depth of Navigation Elements"
+      userTitle="Harbor — Settings"
       caption="Visual Nesting Depth of Navigation Elements — the account-privacy entry is rendered 72px deep inside a six-level visual hierarchy, far beyond the &tau;_nesting = 48px cognitive-overload threshold."
       auditorStats={stats}
       deltaNote={`In Variant A the privacy-relevant entry is nested six levels down with a cumulative ${DARK_MAX_INDENT}px of indentation (max D_render > τ_nesting = ${TAU_NESTING}px), so the user must traverse an unreasonable visual hierarchy to find it. Variant B renders the identical entries flat at 0px indentation.`}
@@ -189,13 +190,13 @@ export function LabyrinthineNavigationCond2({
                 >
                   <span className="flex items-center justify-between gap-2">
                     <span>{label}</span>
-                    <span className="font-mono text-[8px] tabular-nums text-muted-foreground/40">{i * 0}px</span>
+                    <span className="font-mono text-[8px] tabular-nums text-muted-foreground/40">{mode === "auditor" ? `${i * 0}px` : "Available here"}</span>
                   </span>
                 </button>
               ))}
             </div>
             <p className="mt-2 text-[8px] text-muted-foreground/60">
-              Every entry at the same indentation level — max D_render = 0px.
+              Every privacy control is available directly from this settings list.
             </p>
           </div>
 
@@ -208,8 +209,8 @@ export function LabyrinthineNavigationCond2({
                 Found immediately
               </div>
               <p className="mt-0.5 text-muted-foreground">
-                “Data &amp; cookies” was one visible row in a flat menu. max D_render = 0px &le;
-                &tau;_nesting = {TAU_NESTING}px — no buried visual hierarchy to decode.
+                “Data &amp; cookies” was one visible row in a flat menu, so there were no extra groups
+                to open or decode.
               </p>
             </div>
           )}
@@ -221,7 +222,7 @@ export function LabyrinthineNavigationCond2({
           <div className="mb-2 flex items-center justify-between">
             <h3 className="text-[11px] font-semibold">Settings</h3>
             <span className="font-mono text-[8px] tabular-nums text-muted-foreground/50">
-              nesting up to {DARK_MAX_DEPTH} levels
+              {mode === "auditor" ? `nesting up to ${DARK_MAX_DEPTH} levels` : "Settings"}
             </span>
           </div>
           {renderTree(DARK_TREE, 0)}

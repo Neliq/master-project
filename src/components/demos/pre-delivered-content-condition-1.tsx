@@ -32,25 +32,33 @@ export function PreDeliveredContentCond1({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  const [phase, setPhase] = React.useState<"idle" | "installing" | "done">("idle");
-  const [consent, setConsent] = React.useState(false);
-  const [unlocked, setUnlocked] = React.useState(false);
+  const [phaseA, setPhaseA] = React.useState<"idle" | "installing" | "done">("idle");
+  const [phaseB, setPhaseB] = React.useState<"idle" | "installing" | "done">("idle");
+  const [consentB, setConsentB] = React.useState(false);
+  const [unlockedA, setUnlockedA] = React.useState(false);
 
   const reset = () => {
-    setPhase("idle");
-    setConsent(false);
-    setUnlocked(false);
+    setPhaseA("idle");
+    setPhaseB("idle");
+    setConsentB(false);
+    setUnlockedA(false);
   };
 
   React.useEffect(() => {
-    if (phase !== "installing") return;
-    const id = window.setTimeout(() => setPhase("done"), 1400);
+    if (phaseA !== "installing") return;
+    const id = window.setTimeout(() => setPhaseA("done"), 1400);
     return () => window.clearTimeout(id);
-  }, [phase]);
+  }, [phaseA]);
+
+  React.useEffect(() => {
+    if (phaseB !== "installing") return;
+    const id = window.setTimeout(() => setPhaseB("done"), 1400);
+    return () => window.clearTimeout(id);
+  }, [phaseB]);
 
   // Variant A always absorbs the premium payload; Variant B only if consented.
   const darkFreeAfter = FREE_BEFORE_GB - BASE_GAME_GB - PREMIUM_GB;
-  const benignFreeAfter = FREE_BEFORE_GB - BASE_GAME_GB - (consent ? PREMIUM_GB : 0);
+  const benignFreeAfter = FREE_BEFORE_GB - BASE_GAME_GB - (consentB ? PREMIUM_GB : 0);
 
   const stats = mode === "auditor" ? (
     <>
@@ -64,7 +72,7 @@ export function PreDeliveredContentCond1({
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">E_consent (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{consent ? "explicit ✓" : "∅ (checkbox off)"}</span>
+        <span className="font-mono font-semibold tabular-nums text-green-500">{consentB ? "explicit ✓" : "∅ (checkbox off)"}</span>
       </div>
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Free space after install (A)</span>
@@ -76,6 +84,7 @@ export function PreDeliveredContentCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Pre-Delivered Content: Unconsented Local Storage Consumption"
+      userTitle="PixelQuest — Game install"
       caption="Unconsented Local Storage Consumption — premium assets are forced onto the user's disk without any explicit consent request, permanently consuming capacity."
       auditorStats={stats}
       deltaNote="In Variant A the installer writes 5.0 GB of premium, locked content to the disk with E_consent = ∅, then paywalls it. In Variant B the same payload is only pre-loaded after an explicit, unchecked-by-default consent checkbox, so the user's favorable action (hosting nothing extra) is easy and fair."
@@ -96,8 +105,8 @@ export function PreDeliveredContentCond1({
             <label className="mt-3 flex items-start gap-2 cursor-pointer group rounded-md border border-border bg-background p-2.5 transition-colors">
               <input
                 type="checkbox"
-                checked={consent}
-                onChange={(e) => setConsent(e.target.checked)}
+                checked={consentB}
+                onChange={(e) => setConsentB(e.target.checked)}
                 className="mt-0.5 flex-shrink-0 accent-green-500"
               />
               <div className="min-w-0 flex-1">
@@ -126,20 +135,20 @@ export function PreDeliveredContentCond1({
               />
             </div>
 
-            {phase === "idle" && (
+            {phaseB === "idle" && (
               <button
-                onClick={() => setPhase("installing")}
+                onClick={() => setPhaseB("installing")}
                 className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Install game ({BASE_GAME_GB} GB)
               </button>
             )}
-            {phase === "installing" && (
+            {phaseB === "installing" && (
               <div className="mt-3 w-full rounded-md bg-muted py-1.5 text-center text-[10px] font-medium text-muted-foreground">
                 <span className="inline-block animate-pulse">Writing files…</span>
               </div>
             )}
-            {phase === "done" && (
+            {phaseB === "done" && (
               <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -148,8 +157,8 @@ export function PreDeliveredContentCond1({
                   Install complete
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  {consent
-                    ? `Base game + premium add-ons installed (${(BASE_GAME_GB + PREMIUM_GB).toFixed(1)} GB). The 5.0 GB of premium content was written only because you checked the box — E_consent = {explicit}.`
+                  {consentB
+                    ? `Base game + premium add-ons installed (${(BASE_GAME_GB + PREMIUM_GB).toFixed(1)} GB). The 5.0 GB of premium content was written only because you checked the box — E_consent = explicit.`
                     : `Base game installed (${BASE_GAME_GB} GB). No locked premium data exists on your disk — E_consent = ∅ and Size(C_premium) = 0.`}
                 </p>
               </div>
@@ -197,20 +206,20 @@ export function PreDeliveredContentCond1({
             />
           </div>
 
-          {phase === "idle" && (
+          {phaseA === "idle" && (
             <button
-              onClick={() => setPhase("installing")}
+              onClick={() => setPhaseA("installing")}
               className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Install game ({BASE_GAME_GB} GB)
             </button>
           )}
-          {phase === "installing" && (
+          {phaseA === "installing" && (
             <div className="mt-3 w-full rounded-md bg-muted py-1.5 text-center text-[10px] font-medium text-muted-foreground">
               <span className="inline-block animate-pulse">Writing files…</span>
             </div>
           )}
-          {phase === "done" && (
+          {phaseA === "done" && (
             <>
               <div className="mt-3 space-y-1.5">
                 <div className="flex items-center justify-between rounded-md border border-border bg-background px-2.5 py-1.5">
@@ -231,7 +240,7 @@ export function PreDeliveredContentCond1({
                 </div>
               </div>
               <button
-                onClick={() => setUnlocked(true)}
+                onClick={() => setUnlockedA(true)}
                 className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Unlock premium content — $9.99
@@ -240,7 +249,7 @@ export function PreDeliveredContentCond1({
           )}
         </div>
 
-        {phase === "done" && (
+        {phaseA === "done" && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -255,7 +264,7 @@ export function PreDeliveredContentCond1({
               Size(C_premium) = 5.0 GB ≫ 0: your storage was consumed as a hidden cost.
             </p>
             <p className="text-muted-foreground">
-              {unlocked
+              {unlockedA
                 ? "You just paid $9.99 to unlock data that is already on your machine — the storage cost was extracted first, the payment second."
                 : "Those gigabytes are now paywalled: the interface asks you to pay for access to data you were forced to host yourself."}
             </p>

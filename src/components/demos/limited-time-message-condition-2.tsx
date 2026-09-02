@@ -64,7 +64,7 @@ export function LimitedTimeMessageCond2({
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
-            <div className="rounded-md border border-blue-200 bg-blue-100 px-3 py-2.5">
+            <div data-dp-color-signal className="rounded-md border border-blue-200 bg-blue-100 px-3 py-2.5">
               <div className="flex items-center justify-between gap-2">
                 <div className="text-[10px] font-bold uppercase tracking-wider text-blue-900">Flash sale — 50% off</div>
                 <div className="rounded-full bg-blue-200 px-2 py-0.5 text-[8px] font-mono font-semibold text-blue-900">hue ≈ 210°</div>
@@ -117,7 +117,7 @@ export function LimitedTimeMessageCond2({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
-          <div className="rounded-md   px-3 py-2.5 text-white">
+          <div data-dp-color-signal className="rounded-md bg-orange-600 px-3 py-2.5 text-white" style={{ backgroundColor: "hsl(15 85% 45%)" }}>
             <div className="flex items-center justify-between gap-2">
               <div className="text-[10px] font-bold uppercase tracking-wider">Flash sale — 50% off</div>
               <div className="rounded-full bg-white/25 px-2 py-0.5 text-[8px] font-mono font-semibold">hue ≈ 15°</div>

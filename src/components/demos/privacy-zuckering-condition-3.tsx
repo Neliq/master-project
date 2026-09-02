@@ -45,13 +45,16 @@ export function PrivacyZuckeringCond3({
   annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
   onRestart?: () => void;
 } = {}) {
-  // Shared consent state so both panels stay in sync.
-  const [accepted, setAccepted] = React.useState(false);
-  const [created, setCreated] = React.useState(false);
+  const [acceptedA, setAcceptedA] = React.useState(false);
+  const [createdA, setCreatedA] = React.useState(false);
+  const [acceptedB, setAcceptedB] = React.useState(false);
+  const [createdB, setCreatedB] = React.useState(false);
 
   const reset = () => {
-    setAccepted(false);
-    setCreated(false);
+    setAcceptedA(false);
+    setCreatedA(false);
+    setAcceptedB(false);
+    setCreatedB(false);
   };
 
   const stats = mode === "auditor" ? (
@@ -78,6 +81,7 @@ export function PrivacyZuckeringCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Privacy Zuckering: Semantic Ambiguity of Third-Party Entities"
+      userTitle="Orbit — Connected services"
       caption="Semantic Ambiguity of Third-Party Entities — a disclosure built on “partners” and “affiliates” masks a distribution to dozens of named companies."
       auditorStats={stats}
       deltaNote="Both variants grant the same consent and create the same account. In Variant A the disclosure says “trusted partners and affiliates” (Specificity 0.12 < τ_vague) while 47 named entities actually receive the data. In Variant B the same payload is disclosed by naming the actual companies (Specificity 0.93)."
@@ -97,15 +101,15 @@ export function PrivacyZuckeringCond3({
                 {DISCLOSURE_SPECIFIC}
               </p>
               <p className="text-[8px] text-green-600 dark:text-green-400 mt-1 font-medium">
-                Specificity ≈ 0.93 — the actual entities are named.
+                The complete recipient list is shown above.
               </p>
             </div>
 
             <label className="mt-3 flex items-start gap-2 cursor-pointer group rounded-md border border-border bg-background p-2.5 transition-colors">
               <input
                 type="checkbox"
-                checked={accepted}
-                onChange={(e) => setAccepted(e.target.checked)}
+                checked={acceptedB}
+                onChange={(e) => setAcceptedB(e.target.checked)}
                 className="mt-0.5 flex-shrink-0 accent-green-500"
               />
               <div className="min-w-0 flex-1">
@@ -116,10 +120,10 @@ export function PrivacyZuckeringCond3({
             </label>
 
             <button
-              onClick={() => setCreated(true)}
-              disabled={!accepted}
+              onClick={() => setCreatedB(true)}
+              disabled={!acceptedB}
               className={`mt-2 w-full rounded-md py-2 text-[10px] font-medium transition-all ${
-                accepted
+                acceptedB
                   ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
@@ -127,7 +131,7 @@ export function PrivacyZuckeringCond3({
               Create account
             </button>
 
-            {created && (
+            {createdB && (
               <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
                 <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -136,8 +140,8 @@ export function PrivacyZuckeringCond3({
                   Entities disclosed by name
                 </div>
                 <p className="text-muted-foreground mt-0.5">
-                  |E_actual| = {ENTITY_COUNT}, but <strong className="text-green-600 dark:text-green-400">Specificity(N_disclosure) = 0.93</strong> — you
-                  were told exactly who gets the payload. The scale of distribution is visible, not masked.
+                  Every listed recipient is named, so you can see exactly who receives the data before
+                  creating your account.
                 </p>
               </div>
             )}
@@ -160,15 +164,15 @@ export function PrivacyZuckeringCond3({
               {DISCLOSURE_VAGUE}
             </p>
             <p className="text-[8px] text-muted-foreground/50 mt-1">
-              Specificity ≈ 0.12 — “partners,” “affiliates,” “business purposes.”
+              Shared with trusted partners and affiliates for service and advertising purposes.
             </p>
           </div>
 
           <label className="mt-3 flex items-start gap-2 cursor-pointer group rounded-md border border-border bg-background p-2.5 transition-colors">
             <input
               type="checkbox"
-              checked={accepted}
-              onChange={(e) => setAccepted(e.target.checked)}
+              checked={acceptedA}
+              onChange={(e) => setAcceptedA(e.target.checked)}
               className="mt-0.5 flex-shrink-0 accent-red-500"
             />
             <div className="min-w-0 flex-1">
@@ -179,10 +183,10 @@ export function PrivacyZuckeringCond3({
           </label>
 
           <button
-            onClick={() => setCreated(true)}
-            disabled={!accepted}
+            onClick={() => setCreatedA(true)}
+            disabled={!acceptedA}
             className={`mt-2 w-full rounded-md py-2 text-[10px] font-medium transition-all ${
-              accepted
+              acceptedA
                 ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
@@ -190,7 +194,7 @@ export function PrivacyZuckeringCond3({
             Create account
           </button>
 
-          {mode === "auditor" && created && (
+          {mode === "auditor" && createdA && (
             <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

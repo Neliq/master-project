@@ -94,6 +94,7 @@ export function ImmortalAccountsCond1({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Immortal Accounts: Asymmetrical Navigational Depth"
+      userTitle="Harbor — Account settings"
       caption="Asymmetrical Navigational Depth — account creation takes 2 clicks, but offboarding is a 7-click modal maze ending in an email-support handoff, so the ratio N(x_delete)/N(x_create) blows past the tolerance delta."
       auditorStats={stats}
       deltaNote={`Variant A buries deletion under ${N_DELETE_DARK} discrete interactions (modals, mandatory reason, password re-entry, support email) while creation takes ${N_CREATE}; the ratio ${ratioDark.toFixed(1)} exceeds δ = ${DELTA} and ${N_DELETE_DARK} exceeds τ = ${TAU}. Variant B deletes the account in ${N_DELETE_BENIGN} clicks — the same effort as creating it — so the ratio is ${ratioBenign.toFixed(1)} and nothing triggers.`}

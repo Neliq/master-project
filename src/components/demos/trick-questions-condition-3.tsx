@@ -160,7 +160,16 @@ export function TrickQuestionsCond3({
             {submitted ? "Confirmed ✓" : "Confirm & activate Premium Gold Access"}
           </button>
 
-          {mode === "auditor" && submitted && (
+          {mode === "user" && submitted && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">Marketing preferences saved</div>
+            <p className="text-muted-foreground mt-0.5">
+              Premium Gold Access is active. You can update marketing preferences from Settings.
+            </p>
+          </div>
+        )}
+
+        {mode === "auditor" && submitted && (
             <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
               <strong>Consent recorded transparently.</strong> You read a one-sentence, zero-negation
               label and confirmed your opt-in. No syntactic acrobatics required.
@@ -243,16 +252,17 @@ export function TrickQuestionsCond3({
             </div>
             <p className={checked ? "text-green-600/80 dark:text-green-400/80" : "text-yellow-600/80 dark:text-yellow-400/80"}>
               {checked
-                ? `Despite ${NEGATION_COUNT} negation modifiers stacked on the primary verbs, checking the box means exactly what it looks like: YES, I agree. The negations exist to make you believe you're declining when you're actually accepting.`
+                ? "Marketing preferences are enabled for this account. You can change this choice from Settings at any time."
                 : "Leave the box unchecked if you do not want to activate Premium Gold Access."}
             </p>
           </div>
         )}
 
-        <details className="group text-[9px]">
-          <summary className="cursor-pointer font-medium text-muted-foreground transition-colors hover:text-foreground">
-            Show skeleton key — what the sentence actually says
-          </summary>
+        {mode === "auditor" && (
+          <details className="group text-[9px]">
+            <summary className="cursor-pointer font-medium text-muted-foreground transition-colors hover:text-foreground">
+              Show skeleton key — what the sentence actually says
+            </summary>
           <div className="mt-1 rounded-md border bg-card p-2">
             <p className="mb-1 text-muted-foreground">
               The sentence above contains <strong className="text-red-500">{NEGATION_COUNT} negation words</strong>{" "}
@@ -269,6 +279,7 @@ export function TrickQuestionsCond3({
             </p>
           </div>
         </details>
+        )}
 
         <button
           onClick={handleSubmit}
@@ -281,6 +292,15 @@ export function TrickQuestionsCond3({
         >
           {submitted ? "Confirmed ✓" : "Confirm & activate Premium Gold Access"}
         </button>
+
+        {mode === "user" && submitted && (
+          <div className="rounded-md border border-border bg-muted/30 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold uppercase tracking-tight">Marketing preferences saved</div>
+            <p className="text-muted-foreground mt-0.5">
+              Premium Gold Access is active. You can update marketing preferences from Settings.
+            </p>
+          </div>
+        )}
 
         {mode === "auditor" && submitted && (
           <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px] text-yellow-700 dark:text-yellow-300">

@@ -275,6 +275,7 @@ export function AutomatingTheUserAwayCond3({
   return (
     <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
       title="Automating The User Away: Semantic Speed of Consent-Timing Language"
+      userTitle="Streamly — Account signup"
       caption="Semantic Speed of Consent-Timing Language — a timed consent prompt whose countdown is faster than human reaction time registers consent by default."
       auditorStats={stats}
       deltaNote="Both dialogs share the same location-sharing decision and a visible countdown. Variant A says 'Consent will be registered in 2 seconds' and counts down in half-second ticks — a 1.0s total window under the 2.0s reaction baseline — with a pre-checked, disabled box, and registers consent automatically when the timer ends. Variant B counts down from 5 at normal speed but states plainly that nothing is shared unless you tick the box and click I agree; the timer never registers consent."
