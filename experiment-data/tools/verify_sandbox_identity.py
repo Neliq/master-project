@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 """Verify corpus <-> sandbox identity and full coverage.
-Compares the freshly captured+transformed fragments (verify-capture) against
-the stored run-4 corpus (opaque ids, via instances.json). Match classes:
+Compares freshly captured+transformed fragments against the stored corpus
+(opaque ids, via instances.json). Match classes:
   exact        - identical after whitespace normalization
   timer-diff   - identical after digit-run normalization (countdown ticks)
-  MISMATCH     - content differs (must be investigated)
+  MISMATCH     - content differs (verification failure)
 Also audits coverage: 62 slugs x 3 conditions x 2 variants both sides.
 """
 import json
+import os
 import pathlib
 import re
 
-EXP = pathlib.Path("/home/neliq/Coding/master-project/experiment-data")
-CAP = pathlib.Path("/tmp/verify-capture")
+EXP = pathlib.Path(os.environ.get("EXPERIMENT_DIR", pathlib.Path(__file__).resolve().parents[1]))
+CAP = pathlib.Path(os.environ.get("CAPTURE_DIR", "/tmp/verify-capture"))
 CORPUS = EXP / "corpus"
 instances = json.loads((EXP / "instances.json").read_text())
 
@@ -40,11 +41,7 @@ for cname, iid in sorted(name2iid.items()):
     else:
         mismatch += 1
         mismatch_list.append((cname, iid))
-print(f"EXACT: {exact} | TIMER-DIFF (digits only): {timer} | VALUE/REMNANT-DIFF: {mismatch} | MISSING: {missing}")
-print("NOTE: the VALUE/REMNANT-DIFF files are the same interface; they differ only in")
-print("runtime-random values (slot-machine winnings, feed post count) or in which")
-print("garbage analysis-remnant sentence survived the hardening surgery. Verified")
-print("by inspection of the state text (heads identical, only values/remnants differ).")
+print(f"EXACT: {exact} | TIMER-DIFF (digits only): {timer} | MISMATCH: {mismatch} | MISSING: {missing}")
 
 for cname, iid in mismatch_list[:12]:
     a = norm((CAP / cname).read_text())
@@ -67,3 +64,5 @@ bad = {k: v for k, v in conds.items() if v != {"A", "B"}}
 print(f"(slug, cond) pairs: {len(conds)}, each with A+B: {len(bad) == 0}")
 if bad:
     print("incomplete pairs:", list(bad.items())[:5])
+if missing or mismatch or bad or len(slugs) != 62 or len(conds) != 62 * 3:
+    raise SystemExit(1)

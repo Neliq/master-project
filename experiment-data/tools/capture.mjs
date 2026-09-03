@@ -1,24 +1,30 @@
 import puppeteer from "puppeteer-core";
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const BASE = "http://localhost:3000";
-const EXP = "/home/neliq/Coding/master-project/experiment-data";
+const BASE = process.env.SANDBOX_BASE_URL || "http://localhost:3000";
+const EXP = path.resolve(process.env.EXPERIMENT_DIR || path.join(path.dirname(fileURLToPath(import.meta.url)), ".."));
 const CORPUS = process.env.CAPTURE_DIR || path.join(EXP, "corpus");
 const LOG = "/tmp/mstate.log";
-const MAX_STATES = 4;
+const MAX_STATES = Number(process.env.MAX_STATES || 4);
+const CHROMIUM = process.env.CHROMIUM_PATH || "/usr/bin/chromium";
 
 const manifest = JSON.parse(fs.readFileSync(path.join(EXP, "manifest.json"), "utf8"));
-const slugs = [...new Set(manifest.map((m) => m.slug))].sort();
+const slugFilter = new Set((process.env.SLUG_FILTER || "")
+  .split(",")
+  .map((slug) => slug.trim())
+  .filter(Boolean));
+const slugs = [...new Set(manifest.map((m) => m.slug))]
+  .filter((slug) => !slugFilter.size || slugFilter.has(slug))
+  .sort();
 
 fs.writeFileSync(LOG, "");
 const log = (msg) => fs.appendFileSync(LOG, msg + "\n");
-
-const norm = (s) => s.replace(/\s+/g, " ").trim();
-const STOP = new Set(["restart demo", "restart", "reset", "back to store", "back", "go back", "undo", "home", "close", "dismiss", "×"]);
+fs.mkdirSync(CORPUS, { recursive: true });
 
 const browser = await puppeteer.launch({
-  executablePath: "/usr/bin/chromium",
+  executablePath: CHROMIUM,
   headless: "new",
   args: ["--no-sandbox"],
 });
@@ -44,12 +50,17 @@ for (const slug of slugs) {
         const norm = (s) => s.replace(/\s+/g, " ").trim();
         const STOP = new Set(["restart demo", "restart", "reset", "back to store", "back", "go back", "undo", "home", "close", "dismiss", "×"]);
 
+        const desiredMode = variant === "A" ? "User view" : "Auditor view";
+        const modeButtons = [...document.querySelectorAll("button[aria-pressed]")]
+          .filter((b) => norm(b.textContent || "") === desiredMode);
+        if (modeButtons.length !== 3) {
+          throw new Error(`expected 3 ${desiredMode} buttons, found ${modeButtons.length}`);
+        }
+        modeButtons.forEach((b) => b.click());
+        await new Promise((r) => setTimeout(r, 100));
+
         const perShell = async (shell) => {
-          const isHeader = (t) => new RegExp(`^Variant ${variant} — (Dark|Non-dark) pattern$`).test(t);
-          const headers = [...shell.querySelectorAll("div")].filter((d) => isHeader(norm(d.textContent || "")));
-          if (!headers.length) return null;
-          const h = headers[0];
-          const panel = h.nextElementSibling;
+          const panel = shell.querySelector("[data-dp-content]") || shell;
           if (!panel) return null;
 
           const states = [];
@@ -105,7 +116,10 @@ for (const slug of slugs) {
   }
 }
 
-// refresh manifest sizes
-fs.writeFileSync(path.join(EXP, "manifest.json"), JSON.stringify(manifest, null, 1));
+// Refresh manifest sizes only when capturing directly into the canonical corpus.
+if (path.resolve(CORPUS) === path.resolve(path.join(EXP, "corpus"))) {
+  fs.writeFileSync(path.join(EXP, "manifest.json"), JSON.stringify(manifest, null, 1) + "\n");
+}
 console.log(`DONE: ${written} instances written, ${errors} errors`);
 await browser.close();
+if (errors) process.exitCode = 1;

@@ -1,0 +1,3350 @@
+[
+ {
+  "instance_id": "activity-messages-cond1-A",
+  "slug": "activity-messages",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/activity-messages-cond1-A.html",
+  "size_bytes": 1010
+ },
+ {
+  "instance_id": "activity-messages-cond1-B",
+  "slug": "activity-messages",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/activity-messages-cond1-B.html",
+  "size_bytes": 1086
+ },
+ {
+  "instance_id": "activity-messages-cond2-A",
+  "slug": "activity-messages",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/activity-messages-cond2-A.html",
+  "size_bytes": 9289
+ },
+ {
+  "instance_id": "activity-messages-cond2-B",
+  "slug": "activity-messages",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/activity-messages-cond2-B.html",
+  "size_bytes": 4767
+ },
+ {
+  "instance_id": "activity-messages-cond3-A",
+  "slug": "activity-messages",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/activity-messages-cond3-A.html",
+  "size_bytes": 7430
+ },
+ {
+  "instance_id": "activity-messages-cond3-B",
+  "slug": "activity-messages",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/activity-messages-cond3-B.html",
+  "size_bytes": 7900
+ },
+ {
+  "instance_id": "addictive-design-cond1-A",
+  "slug": "addictive-design",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/addictive-design-cond1-A.html",
+  "size_bytes": 3259
+ },
+ {
+  "instance_id": "addictive-design-cond1-B",
+  "slug": "addictive-design",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/addictive-design-cond1-B.html",
+  "size_bytes": 23882
+ },
+ {
+  "instance_id": "addictive-design-cond2-A",
+  "slug": "addictive-design",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/addictive-design-cond2-A.html",
+  "size_bytes": 1486
+ },
+ {
+  "instance_id": "addictive-design-cond2-B",
+  "slug": "addictive-design",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/addictive-design-cond2-B.html",
+  "size_bytes": 6805
+ },
+ {
+  "instance_id": "addictive-design-cond3-A",
+  "slug": "addictive-design",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/addictive-design-cond3-A.html",
+  "size_bytes": 6775
+ },
+ {
+  "instance_id": "addictive-design-cond3-B",
+  "slug": "addictive-design",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/addictive-design-cond3-B.html",
+  "size_bytes": 5573
+ },
+ {
+  "instance_id": "address-book-leeching-cond1-A",
+  "slug": "address-book-leeching",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/address-book-leeching-cond1-A.html",
+  "size_bytes": 3224
+ },
+ {
+  "instance_id": "address-book-leeching-cond1-B",
+  "slug": "address-book-leeching",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/address-book-leeching-cond1-B.html",
+  "size_bytes": 5749
+ },
+ {
+  "instance_id": "address-book-leeching-cond2-A",
+  "slug": "address-book-leeching",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/address-book-leeching-cond2-A.html",
+  "size_bytes": 2364
+ },
+ {
+  "instance_id": "address-book-leeching-cond2-B",
+  "slug": "address-book-leeching",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/address-book-leeching-cond2-B.html",
+  "size_bytes": 2292
+ },
+ {
+  "instance_id": "address-book-leeching-cond3-A",
+  "slug": "address-book-leeching",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/address-book-leeching-cond3-A.html",
+  "size_bytes": 3065
+ },
+ {
+  "instance_id": "address-book-leeching-cond3-B",
+  "slug": "address-book-leeching",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/address-book-leeching-cond3-B.html",
+  "size_bytes": 3260
+ },
+ {
+  "instance_id": "auto-play-cond1-A",
+  "slug": "auto-play",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/auto-play-cond1-A.html",
+  "size_bytes": 1629
+ },
+ {
+  "instance_id": "auto-play-cond1-B",
+  "slug": "auto-play",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/auto-play-cond1-B.html",
+  "size_bytes": 2899
+ },
+ {
+  "instance_id": "auto-play-cond2-A",
+  "slug": "auto-play",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/auto-play-cond2-A.html",
+  "size_bytes": 925
+ },
+ {
+  "instance_id": "auto-play-cond2-B",
+  "slug": "auto-play",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/auto-play-cond2-B.html",
+  "size_bytes": 2363
+ },
+ {
+  "instance_id": "auto-play-cond3-A",
+  "slug": "auto-play",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/auto-play-cond3-A.html",
+  "size_bytes": 1113
+ },
+ {
+  "instance_id": "auto-play-cond3-B",
+  "slug": "auto-play",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/auto-play-cond3-B.html",
+  "size_bytes": 1375
+ },
+ {
+  "instance_id": "automatic-accept-third-party-term-cond1-A",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/automatic-accept-third-party-term-cond1-A.html",
+  "size_bytes": 950
+ },
+ {
+  "instance_id": "automatic-accept-third-party-term-cond1-B",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/automatic-accept-third-party-term-cond1-B.html",
+  "size_bytes": 3315
+ },
+ {
+  "instance_id": "automatic-accept-third-party-term-cond2-A",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/automatic-accept-third-party-term-cond2-A.html",
+  "size_bytes": 1969
+ },
+ {
+  "instance_id": "automatic-accept-third-party-term-cond2-B",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/automatic-accept-third-party-term-cond2-B.html",
+  "size_bytes": 4367
+ },
+ {
+  "instance_id": "automatic-accept-third-party-term-cond3-A",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/automatic-accept-third-party-term-cond3-A.html",
+  "size_bytes": 2816
+ },
+ {
+  "instance_id": "automatic-accept-third-party-term-cond3-B",
+  "slug": "automatic-accept-third-party-term",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/automatic-accept-third-party-term-cond3-B.html",
+  "size_bytes": 1030
+ },
+ {
+  "instance_id": "automating-the-user-away-cond1-A",
+  "slug": "automating-the-user-away",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/automating-the-user-away-cond1-A.html",
+  "size_bytes": 2619
+ },
+ {
+  "instance_id": "automating-the-user-away-cond1-B",
+  "slug": "automating-the-user-away",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/automating-the-user-away-cond1-B.html",
+  "size_bytes": 2695
+ },
+ {
+  "instance_id": "automating-the-user-away-cond2-A",
+  "slug": "automating-the-user-away",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/automating-the-user-away-cond2-A.html",
+  "size_bytes": 5102
+ },
+ {
+  "instance_id": "automating-the-user-away-cond2-B",
+  "slug": "automating-the-user-away",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/automating-the-user-away-cond2-B.html",
+  "size_bytes": 5079
+ },
+ {
+  "instance_id": "automating-the-user-away-cond3-A",
+  "slug": "automating-the-user-away",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/automating-the-user-away-cond3-A.html",
+  "size_bytes": 4177
+ },
+ {
+  "instance_id": "automating-the-user-away-cond3-B",
+  "slug": "automating-the-user-away",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/automating-the-user-away-cond3-B.html",
+  "size_bytes": 3838
+ },
+ {
+  "instance_id": "bad-defaults-preselection-cond1-A",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/bad-defaults-preselection-cond1-A.html",
+  "size_bytes": 4384
+ },
+ {
+  "instance_id": "bad-defaults-preselection-cond1-B",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/bad-defaults-preselection-cond1-B.html",
+  "size_bytes": 2990
+ },
+ {
+  "instance_id": "bad-defaults-preselection-cond2-A",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/bad-defaults-preselection-cond2-A.html",
+  "size_bytes": 3522
+ },
+ {
+  "instance_id": "bad-defaults-preselection-cond2-B",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/bad-defaults-preselection-cond2-B.html",
+  "size_bytes": 2649
+ },
+ {
+  "instance_id": "bad-defaults-preselection-cond3-A",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/bad-defaults-preselection-cond3-A.html",
+  "size_bytes": 5486
+ },
+ {
+  "instance_id": "bad-defaults-preselection-cond3-B",
+  "slug": "bad-defaults-preselection",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/bad-defaults-preselection-cond3-B.html",
+  "size_bytes": 4289
+ },
+ {
+  "instance_id": "bundling-cond1-A",
+  "slug": "bundling",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/bundling-cond1-A.html",
+  "size_bytes": 4976
+ },
+ {
+  "instance_id": "bundling-cond1-B",
+  "slug": "bundling",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/bundling-cond1-B.html",
+  "size_bytes": 4555
+ },
+ {
+  "instance_id": "bundling-cond2-A",
+  "slug": "bundling",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/bundling-cond2-A.html",
+  "size_bytes": 3562
+ },
+ {
+  "instance_id": "bundling-cond2-B",
+  "slug": "bundling",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/bundling-cond2-B.html",
+  "size_bytes": 5230
+ },
+ {
+  "instance_id": "bundling-cond3-A",
+  "slug": "bundling",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/bundling-cond3-A.html",
+  "size_bytes": 7444
+ },
+ {
+  "instance_id": "bundling-cond3-B",
+  "slug": "bundling",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/bundling-cond3-B.html",
+  "size_bytes": 10646
+ },
+ {
+  "instance_id": "choice-overload-cond1-A",
+  "slug": "choice-overload",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/choice-overload-cond1-A.html",
+  "size_bytes": 16734
+ },
+ {
+  "instance_id": "choice-overload-cond1-B",
+  "slug": "choice-overload",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/choice-overload-cond1-B.html",
+  "size_bytes": 16886
+ },
+ {
+  "instance_id": "choice-overload-cond2-A",
+  "slug": "choice-overload",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/choice-overload-cond2-A.html",
+  "size_bytes": 28255
+ },
+ {
+  "instance_id": "choice-overload-cond2-B",
+  "slug": "choice-overload",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/choice-overload-cond2-B.html",
+  "size_bytes": 34135
+ },
+ {
+  "instance_id": "choice-overload-cond3-A",
+  "slug": "choice-overload",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/choice-overload-cond3-A.html",
+  "size_bytes": 5939
+ },
+ {
+  "instance_id": "choice-overload-cond3-B",
+  "slug": "choice-overload",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/choice-overload-cond3-B.html",
+  "size_bytes": 3539
+ },
+ {
+  "instance_id": "complex-language-cond1-A",
+  "slug": "complex-language",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/complex-language-cond1-A.html",
+  "size_bytes": 2531
+ },
+ {
+  "instance_id": "complex-language-cond1-B",
+  "slug": "complex-language",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/complex-language-cond1-B.html",
+  "size_bytes": 1709
+ },
+ {
+  "instance_id": "complex-language-cond2-A",
+  "slug": "complex-language",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/complex-language-cond2-A.html",
+  "size_bytes": 5024
+ },
+ {
+  "instance_id": "complex-language-cond2-B",
+  "slug": "complex-language",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/complex-language-cond2-B.html",
+  "size_bytes": 3276
+ },
+ {
+  "instance_id": "complex-language-cond3-A",
+  "slug": "complex-language",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/complex-language-cond3-A.html",
+  "size_bytes": 2189
+ },
+ {
+  "instance_id": "complex-language-cond3-B",
+  "slug": "complex-language",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/complex-language-cond3-B.html",
+  "size_bytes": 1591
+ },
+ {
+  "instance_id": "confirmshaming-cond1-A",
+  "slug": "confirmshaming",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/confirmshaming-cond1-A.html",
+  "size_bytes": 2581
+ },
+ {
+  "instance_id": "confirmshaming-cond1-B",
+  "slug": "confirmshaming",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/confirmshaming-cond1-B.html",
+  "size_bytes": 2039
+ },
+ {
+  "instance_id": "confirmshaming-cond2-A",
+  "slug": "confirmshaming",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/confirmshaming-cond2-A.html",
+  "size_bytes": 2760
+ },
+ {
+  "instance_id": "confirmshaming-cond2-B",
+  "slug": "confirmshaming",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/confirmshaming-cond2-B.html",
+  "size_bytes": 2294
+ },
+ {
+  "instance_id": "confirmshaming-cond3-A",
+  "slug": "confirmshaming",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/confirmshaming-cond3-A.html",
+  "size_bytes": 3366
+ },
+ {
+  "instance_id": "confirmshaming-cond3-B",
+  "slug": "confirmshaming",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/confirmshaming-cond3-B.html",
+  "size_bytes": 2872
+ },
+ {
+  "instance_id": "conflicting-information-cond1-A",
+  "slug": "conflicting-information",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/conflicting-information-cond1-A.html",
+  "size_bytes": 3941
+ },
+ {
+  "instance_id": "conflicting-information-cond1-B",
+  "slug": "conflicting-information",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/conflicting-information-cond1-B.html",
+  "size_bytes": 3493
+ },
+ {
+  "instance_id": "conflicting-information-cond2-A",
+  "slug": "conflicting-information",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/conflicting-information-cond2-A.html",
+  "size_bytes": 4447
+ },
+ {
+  "instance_id": "conflicting-information-cond2-B",
+  "slug": "conflicting-information",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/conflicting-information-cond2-B.html",
+  "size_bytes": 3478
+ },
+ {
+  "instance_id": "conflicting-information-cond3-A",
+  "slug": "conflicting-information",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/conflicting-information-cond3-A.html",
+  "size_bytes": 6541
+ },
+ {
+  "instance_id": "conflicting-information-cond3-B",
+  "slug": "conflicting-information",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/conflicting-information-cond3-B.html",
+  "size_bytes": 6094
+ },
+ {
+  "instance_id": "countdown-on-ads-cond1-A",
+  "slug": "countdown-on-ads",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/countdown-on-ads-cond1-A.html",
+  "size_bytes": 1717
+ },
+ {
+  "instance_id": "countdown-on-ads-cond1-B",
+  "slug": "countdown-on-ads",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/countdown-on-ads-cond1-B.html",
+  "size_bytes": 2656
+ },
+ {
+  "instance_id": "countdown-on-ads-cond2-A",
+  "slug": "countdown-on-ads",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/countdown-on-ads-cond2-A.html",
+  "size_bytes": 1706
+ },
+ {
+  "instance_id": "countdown-on-ads-cond2-B",
+  "slug": "countdown-on-ads",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/countdown-on-ads-cond2-B.html",
+  "size_bytes": 2150
+ },
+ {
+  "instance_id": "countdown-on-ads-cond3-A",
+  "slug": "countdown-on-ads",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/countdown-on-ads-cond3-A.html",
+  "size_bytes": 1796
+ },
+ {
+  "instance_id": "countdown-on-ads-cond3-B",
+  "slug": "countdown-on-ads",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/countdown-on-ads-cond3-B.html",
+  "size_bytes": 2904
+ },
+ {
+  "instance_id": "countdown-timer-cond1-A",
+  "slug": "countdown-timer",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/countdown-timer-cond1-A.html",
+  "size_bytes": 2966
+ },
+ {
+  "instance_id": "countdown-timer-cond1-B",
+  "slug": "countdown-timer",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/countdown-timer-cond1-B.html",
+  "size_bytes": 2589
+ },
+ {
+  "instance_id": "countdown-timer-cond2-A",
+  "slug": "countdown-timer",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/countdown-timer-cond2-A.html",
+  "size_bytes": 3997
+ },
+ {
+  "instance_id": "countdown-timer-cond2-B",
+  "slug": "countdown-timer",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/countdown-timer-cond2-B.html",
+  "size_bytes": 3658
+ },
+ {
+  "instance_id": "countdown-timer-cond3-A",
+  "slug": "countdown-timer",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/countdown-timer-cond3-A.html",
+  "size_bytes": 7326
+ },
+ {
+  "instance_id": "countdown-timer-cond3-B",
+  "slug": "countdown-timer",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/countdown-timer-cond3-B.html",
+  "size_bytes": 4334
+ },
+ {
+  "instance_id": "customisation-cond1-A",
+  "slug": "customisation",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/customisation-cond1-A.html",
+  "size_bytes": 3017
+ },
+ {
+  "instance_id": "customisation-cond1-B",
+  "slug": "customisation",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/customisation-cond1-B.html",
+  "size_bytes": 3304
+ },
+ {
+  "instance_id": "customisation-cond2-A",
+  "slug": "customisation",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/customisation-cond2-A.html",
+  "size_bytes": 14189
+ },
+ {
+  "instance_id": "customisation-cond2-B",
+  "slug": "customisation",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/customisation-cond2-B.html",
+  "size_bytes": 10492
+ },
+ {
+  "instance_id": "customisation-cond3-A",
+  "slug": "customisation",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/customisation-cond3-A.html",
+  "size_bytes": 7173
+ },
+ {
+  "instance_id": "customisation-cond3-B",
+  "slug": "customisation",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/customisation-cond3-B.html",
+  "size_bytes": 6732
+ },
+ {
+  "instance_id": "cuteness-cond1-A",
+  "slug": "cuteness",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/cuteness-cond1-A.html",
+  "size_bytes": 4518
+ },
+ {
+  "instance_id": "cuteness-cond1-B",
+  "slug": "cuteness",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/cuteness-cond1-B.html",
+  "size_bytes": 3085
+ },
+ {
+  "instance_id": "cuteness-cond2-A",
+  "slug": "cuteness",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/cuteness-cond2-A.html",
+  "size_bytes": 5090
+ },
+ {
+  "instance_id": "cuteness-cond2-B",
+  "slug": "cuteness",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/cuteness-cond2-B.html",
+  "size_bytes": 3208
+ },
+ {
+  "instance_id": "cuteness-cond3-A",
+  "slug": "cuteness",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/cuteness-cond3-A.html",
+  "size_bytes": 5643
+ },
+ {
+  "instance_id": "cuteness-cond3-B",
+  "slug": "cuteness",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/cuteness-cond3-B.html",
+  "size_bytes": 2859
+ },
+ {
+  "instance_id": "dead-end-cond1-A",
+  "slug": "dead-end",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/dead-end-cond1-A.html",
+  "size_bytes": 3027
+ },
+ {
+  "instance_id": "dead-end-cond1-B",
+  "slug": "dead-end",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/dead-end-cond1-B.html",
+  "size_bytes": 3069
+ },
+ {
+  "instance_id": "dead-end-cond2-A",
+  "slug": "dead-end",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/dead-end-cond2-A.html",
+  "size_bytes": 4083
+ },
+ {
+  "instance_id": "dead-end-cond2-B",
+  "slug": "dead-end",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/dead-end-cond2-B.html",
+  "size_bytes": 3949
+ },
+ {
+  "instance_id": "dead-end-cond3-A",
+  "slug": "dead-end",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/dead-end-cond3-A.html",
+  "size_bytes": 3235
+ },
+ {
+  "instance_id": "dead-end-cond3-B",
+  "slug": "dead-end",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/dead-end-cond3-B.html",
+  "size_bytes": 2980
+ },
+ {
+  "instance_id": "disguised-ad-cond1-A",
+  "slug": "disguised-ad",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/disguised-ad-cond1-A.html",
+  "size_bytes": 6280
+ },
+ {
+  "instance_id": "disguised-ad-cond1-B",
+  "slug": "disguised-ad",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/disguised-ad-cond1-B.html",
+  "size_bytes": 4652
+ },
+ {
+  "instance_id": "disguised-ad-cond2-A",
+  "slug": "disguised-ad",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/disguised-ad-cond2-A.html",
+  "size_bytes": 9487
+ },
+ {
+  "instance_id": "disguised-ad-cond2-B",
+  "slug": "disguised-ad",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/disguised-ad-cond2-B.html",
+  "size_bytes": 10865
+ },
+ {
+  "instance_id": "disguised-ad-cond3-A",
+  "slug": "disguised-ad",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/disguised-ad-cond3-A.html",
+  "size_bytes": 7031
+ },
+ {
+  "instance_id": "disguised-ad-cond3-B",
+  "slug": "disguised-ad",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/disguised-ad-cond3-B.html",
+  "size_bytes": 7838
+ },
+ {
+  "instance_id": "drip-pricing-cond1-A",
+  "slug": "drip-pricing",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/drip-pricing-cond1-A.html",
+  "size_bytes": 9771
+ },
+ {
+  "instance_id": "drip-pricing-cond1-B",
+  "slug": "drip-pricing",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/drip-pricing-cond1-B.html",
+  "size_bytes": 10634
+ },
+ {
+  "instance_id": "drip-pricing-cond2-A",
+  "slug": "drip-pricing",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/drip-pricing-cond2-A.html",
+  "size_bytes": 2671
+ },
+ {
+  "instance_id": "drip-pricing-cond2-B",
+  "slug": "drip-pricing",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/drip-pricing-cond2-B.html",
+  "size_bytes": 4129
+ },
+ {
+  "instance_id": "drip-pricing-cond3-A",
+  "slug": "drip-pricing",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/drip-pricing-cond3-A.html",
+  "size_bytes": 5189
+ },
+ {
+  "instance_id": "drip-pricing-cond3-B",
+  "slug": "drip-pricing",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/drip-pricing-cond3-B.html",
+  "size_bytes": 5375
+ },
+ {
+  "instance_id": "encouraging-anti-social-behavior-cond1-A",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/encouraging-anti-social-behavior-cond1-A.html",
+  "size_bytes": 6875
+ },
+ {
+  "instance_id": "encouraging-anti-social-behavior-cond1-B",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/encouraging-anti-social-behavior-cond1-B.html",
+  "size_bytes": 2814
+ },
+ {
+  "instance_id": "encouraging-anti-social-behavior-cond2-A",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/encouraging-anti-social-behavior-cond2-A.html",
+  "size_bytes": 8349
+ },
+ {
+  "instance_id": "encouraging-anti-social-behavior-cond2-B",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/encouraging-anti-social-behavior-cond2-B.html",
+  "size_bytes": 5489
+ },
+ {
+  "instance_id": "encouraging-anti-social-behavior-cond3-A",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/encouraging-anti-social-behavior-cond3-A.html",
+  "size_bytes": 7356
+ },
+ {
+  "instance_id": "encouraging-anti-social-behavior-cond3-B",
+  "slug": "encouraging-anti-social-behavior",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/encouraging-anti-social-behavior-cond3-B.html",
+  "size_bytes": 3670
+ },
+ {
+  "instance_id": "endorsement-and-testimonials-cond1-A",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/endorsement-and-testimonials-cond1-A.html",
+  "size_bytes": 5351
+ },
+ {
+  "instance_id": "endorsement-and-testimonials-cond1-B",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/endorsement-and-testimonials-cond1-B.html",
+  "size_bytes": 5362
+ },
+ {
+  "instance_id": "endorsement-and-testimonials-cond2-A",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/endorsement-and-testimonials-cond2-A.html",
+  "size_bytes": 17334
+ },
+ {
+  "instance_id": "endorsement-and-testimonials-cond2-B",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/endorsement-and-testimonials-cond2-B.html",
+  "size_bytes": 8915
+ },
+ {
+  "instance_id": "endorsement-and-testimonials-cond3-A",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/endorsement-and-testimonials-cond3-A.html",
+  "size_bytes": 7850
+ },
+ {
+  "instance_id": "endorsement-and-testimonials-cond3-B",
+  "slug": "endorsement-and-testimonials",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/endorsement-and-testimonials-cond3-B.html",
+  "size_bytes": 6996
+ },
+ {
+  "instance_id": "false-hierarchy-cond1-A",
+  "slug": "false-hierarchy",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/false-hierarchy-cond1-A.html",
+  "size_bytes": 4348
+ },
+ {
+  "instance_id": "false-hierarchy-cond1-B",
+  "slug": "false-hierarchy",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/false-hierarchy-cond1-B.html",
+  "size_bytes": 3747
+ },
+ {
+  "instance_id": "false-hierarchy-cond2-A",
+  "slug": "false-hierarchy",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/false-hierarchy-cond2-A.html",
+  "size_bytes": 3993
+ },
+ {
+  "instance_id": "false-hierarchy-cond2-B",
+  "slug": "false-hierarchy",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/false-hierarchy-cond2-B.html",
+  "size_bytes": 3819
+ },
+ {
+  "instance_id": "false-hierarchy-cond3-A",
+  "slug": "false-hierarchy",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/false-hierarchy-cond3-A.html",
+  "size_bytes": 4130
+ },
+ {
+  "instance_id": "false-hierarchy-cond3-B",
+  "slug": "false-hierarchy",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/false-hierarchy-cond3-B.html",
+  "size_bytes": 3657
+ },
+ {
+  "instance_id": "fear-of-missing-out-fomo-cond1-A",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/fear-of-missing-out-fomo-cond1-A.html",
+  "size_bytes": 13208
+ },
+ {
+  "instance_id": "fear-of-missing-out-fomo-cond1-B",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/fear-of-missing-out-fomo-cond1-B.html",
+  "size_bytes": 12443
+ },
+ {
+  "instance_id": "fear-of-missing-out-fomo-cond2-A",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/fear-of-missing-out-fomo-cond2-A.html",
+  "size_bytes": 5302
+ },
+ {
+  "instance_id": "fear-of-missing-out-fomo-cond2-B",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/fear-of-missing-out-fomo-cond2-B.html",
+  "size_bytes": 4291
+ },
+ {
+  "instance_id": "fear-of-missing-out-fomo-cond3-A",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/fear-of-missing-out-fomo-cond3-A.html",
+  "size_bytes": 6027
+ },
+ {
+  "instance_id": "fear-of-missing-out-fomo-cond3-B",
+  "slug": "fear-of-missing-out-fomo",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/fear-of-missing-out-fomo-cond3-B.html",
+  "size_bytes": 3987
+ },
+ {
+  "instance_id": "feedforward-ambiguity-cond1-A",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/feedforward-ambiguity-cond1-A.html",
+  "size_bytes": 3613
+ },
+ {
+  "instance_id": "feedforward-ambiguity-cond1-B",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/feedforward-ambiguity-cond1-B.html",
+  "size_bytes": 3132
+ },
+ {
+  "instance_id": "feedforward-ambiguity-cond2-A",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/feedforward-ambiguity-cond2-A.html",
+  "size_bytes": 2202
+ },
+ {
+  "instance_id": "feedforward-ambiguity-cond2-B",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/feedforward-ambiguity-cond2-B.html",
+  "size_bytes": 8707
+ },
+ {
+  "instance_id": "feedforward-ambiguity-cond3-A",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/feedforward-ambiguity-cond3-A.html",
+  "size_bytes": 3258
+ },
+ {
+  "instance_id": "feedforward-ambiguity-cond3-B",
+  "slug": "feedforward-ambiguity",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/feedforward-ambiguity-cond3-B.html",
+  "size_bytes": 2630
+ },
+ {
+  "instance_id": "forced-continuity-cond1-A",
+  "slug": "forced-continuity",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/forced-continuity-cond1-A.html",
+  "size_bytes": 2648
+ },
+ {
+  "instance_id": "forced-continuity-cond1-B",
+  "slug": "forced-continuity",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/forced-continuity-cond1-B.html",
+  "size_bytes": 4238
+ },
+ {
+  "instance_id": "forced-continuity-cond2-A",
+  "slug": "forced-continuity",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/forced-continuity-cond2-A.html",
+  "size_bytes": 4767
+ },
+ {
+  "instance_id": "forced-continuity-cond2-B",
+  "slug": "forced-continuity",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/forced-continuity-cond2-B.html",
+  "size_bytes": 1816
+ },
+ {
+  "instance_id": "forced-continuity-cond3-A",
+  "slug": "forced-continuity",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/forced-continuity-cond3-A.html",
+  "size_bytes": 2901
+ },
+ {
+  "instance_id": "forced-continuity-cond3-B",
+  "slug": "forced-continuity",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/forced-continuity-cond3-B.html",
+  "size_bytes": 1295
+ },
+ {
+  "instance_id": "forced-grace-period-cond1-A",
+  "slug": "forced-grace-period",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/forced-grace-period-cond1-A.html",
+  "size_bytes": 8251
+ },
+ {
+  "instance_id": "forced-grace-period-cond1-B",
+  "slug": "forced-grace-period",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/forced-grace-period-cond1-B.html",
+  "size_bytes": 1826
+ },
+ {
+  "instance_id": "forced-grace-period-cond2-A",
+  "slug": "forced-grace-period",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/forced-grace-period-cond2-A.html",
+  "size_bytes": 5845
+ },
+ {
+  "instance_id": "forced-grace-period-cond2-B",
+  "slug": "forced-grace-period",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/forced-grace-period-cond2-B.html",
+  "size_bytes": 5350
+ },
+ {
+  "instance_id": "forced-grace-period-cond3-A",
+  "slug": "forced-grace-period",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/forced-grace-period-cond3-A.html",
+  "size_bytes": 3673
+ },
+ {
+  "instance_id": "forced-grace-period-cond3-B",
+  "slug": "forced-grace-period",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/forced-grace-period-cond3-B.html",
+  "size_bytes": 2964
+ },
+ {
+  "instance_id": "forced-registration-cond1-A",
+  "slug": "forced-registration",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/forced-registration-cond1-A.html",
+  "size_bytes": 6360
+ },
+ {
+  "instance_id": "forced-registration-cond1-B",
+  "slug": "forced-registration",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/forced-registration-cond1-B.html",
+  "size_bytes": 3802
+ },
+ {
+  "instance_id": "forced-registration-cond2-A",
+  "slug": "forced-registration",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/forced-registration-cond2-A.html",
+  "size_bytes": 3368
+ },
+ {
+  "instance_id": "forced-registration-cond2-B",
+  "slug": "forced-registration",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/forced-registration-cond2-B.html",
+  "size_bytes": 3251
+ },
+ {
+  "instance_id": "forced-registration-cond3-A",
+  "slug": "forced-registration",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/forced-registration-cond3-A.html",
+  "size_bytes": 3846
+ },
+ {
+  "instance_id": "forced-registration-cond3-B",
+  "slug": "forced-registration",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/forced-registration-cond3-B.html",
+  "size_bytes": 3381
+ },
+ {
+  "instance_id": "friend-spam-cond1-A",
+  "slug": "friend-spam",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/friend-spam-cond1-A.html",
+  "size_bytes": 2623
+ },
+ {
+  "instance_id": "friend-spam-cond1-B",
+  "slug": "friend-spam",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/friend-spam-cond1-B.html",
+  "size_bytes": 2176
+ },
+ {
+  "instance_id": "friend-spam-cond2-A",
+  "slug": "friend-spam",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/friend-spam-cond2-A.html",
+  "size_bytes": 5981
+ },
+ {
+  "instance_id": "friend-spam-cond2-B",
+  "slug": "friend-spam",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/friend-spam-cond2-B.html",
+  "size_bytes": 2581
+ },
+ {
+  "instance_id": "friend-spam-cond3-A",
+  "slug": "friend-spam",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/friend-spam-cond3-A.html",
+  "size_bytes": 2316
+ },
+ {
+  "instance_id": "friend-spam-cond3-B",
+  "slug": "friend-spam",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/friend-spam-cond3-B.html",
+  "size_bytes": 2201
+ },
+ {
+  "instance_id": "granting-and-interaction-cond1-A",
+  "slug": "granting-and-interaction",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/granting-and-interaction-cond1-A.html",
+  "size_bytes": 3061
+ },
+ {
+  "instance_id": "granting-and-interaction-cond1-B",
+  "slug": "granting-and-interaction",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/granting-and-interaction-cond1-B.html",
+  "size_bytes": 3726
+ },
+ {
+  "instance_id": "granting-and-interaction-cond2-A",
+  "slug": "granting-and-interaction",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/granting-and-interaction-cond2-A.html",
+  "size_bytes": 4791
+ },
+ {
+  "instance_id": "granting-and-interaction-cond2-B",
+  "slug": "granting-and-interaction",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/granting-and-interaction-cond2-B.html",
+  "size_bytes": 2433
+ },
+ {
+  "instance_id": "granting-and-interaction-cond3-A",
+  "slug": "granting-and-interaction",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/granting-and-interaction-cond3-A.html",
+  "size_bytes": 5423
+ },
+ {
+  "instance_id": "granting-and-interaction-cond3-B",
+  "slug": "granting-and-interaction",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/granting-and-interaction-cond3-B.html",
+  "size_bytes": 4095
+ },
+ {
+  "instance_id": "grinding-cond1-A",
+  "slug": "grinding",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/grinding-cond1-A.html",
+  "size_bytes": 5591
+ },
+ {
+  "instance_id": "grinding-cond1-B",
+  "slug": "grinding",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/grinding-cond1-B.html",
+  "size_bytes": 5871
+ },
+ {
+  "instance_id": "grinding-cond2-A",
+  "slug": "grinding",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/grinding-cond2-A.html",
+  "size_bytes": 5923
+ },
+ {
+  "instance_id": "grinding-cond2-B",
+  "slug": "grinding",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/grinding-cond2-B.html",
+  "size_bytes": 5115
+ },
+ {
+  "instance_id": "grinding-cond3-A",
+  "slug": "grinding",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/grinding-cond3-A.html",
+  "size_bytes": 5085
+ },
+ {
+  "instance_id": "grinding-cond3-B",
+  "slug": "grinding",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/grinding-cond3-B.html",
+  "size_bytes": 5111
+ },
+ {
+  "instance_id": "hidden-information-cond1-A",
+  "slug": "hidden-information",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/hidden-information-cond1-A.html",
+  "size_bytes": 8269
+ },
+ {
+  "instance_id": "hidden-information-cond1-B",
+  "slug": "hidden-information",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/hidden-information-cond1-B.html",
+  "size_bytes": 9214
+ },
+ {
+  "instance_id": "hidden-information-cond2-A",
+  "slug": "hidden-information",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/hidden-information-cond2-A.html",
+  "size_bytes": 3092
+ },
+ {
+  "instance_id": "hidden-information-cond2-B",
+  "slug": "hidden-information",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/hidden-information-cond2-B.html",
+  "size_bytes": 2979
+ },
+ {
+  "instance_id": "hidden-information-cond3-A",
+  "slug": "hidden-information",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/hidden-information-cond3-A.html",
+  "size_bytes": 4284
+ },
+ {
+  "instance_id": "hidden-information-cond3-B",
+  "slug": "hidden-information",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/hidden-information-cond3-B.html",
+  "size_bytes": 4066
+ },
+ {
+  "instance_id": "high-demand-cond1-A",
+  "slug": "high-demand",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/high-demand-cond1-A.html",
+  "size_bytes": 13348
+ },
+ {
+  "instance_id": "high-demand-cond1-B",
+  "slug": "high-demand",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/high-demand-cond1-B.html",
+  "size_bytes": 9108
+ },
+ {
+  "instance_id": "high-demand-cond2-A",
+  "slug": "high-demand",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/high-demand-cond2-A.html",
+  "size_bytes": 5155
+ },
+ {
+  "instance_id": "high-demand-cond2-B",
+  "slug": "high-demand",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/high-demand-cond2-B.html",
+  "size_bytes": 6847
+ },
+ {
+  "instance_id": "high-demand-cond3-A",
+  "slug": "high-demand",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/high-demand-cond3-A.html",
+  "size_bytes": 5515
+ },
+ {
+  "instance_id": "high-demand-cond3-B",
+  "slug": "high-demand",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/high-demand-cond3-B.html",
+  "size_bytes": 5187
+ },
+ {
+  "instance_id": "immortal-accounts-cond1-A",
+  "slug": "immortal-accounts",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/immortal-accounts-cond1-A.html",
+  "size_bytes": 7181
+ },
+ {
+  "instance_id": "immortal-accounts-cond1-B",
+  "slug": "immortal-accounts",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/immortal-accounts-cond1-B.html",
+  "size_bytes": 6305
+ },
+ {
+  "instance_id": "immortal-accounts-cond2-A",
+  "slug": "immortal-accounts",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/immortal-accounts-cond2-A.html",
+  "size_bytes": 4648
+ },
+ {
+  "instance_id": "immortal-accounts-cond2-B",
+  "slug": "immortal-accounts",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/immortal-accounts-cond2-B.html",
+  "size_bytes": 5386
+ },
+ {
+  "instance_id": "immortal-accounts-cond3-A",
+  "slug": "immortal-accounts",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/immortal-accounts-cond3-A.html",
+  "size_bytes": 5579
+ },
+ {
+  "instance_id": "immortal-accounts-cond3-B",
+  "slug": "immortal-accounts",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/immortal-accounts-cond3-B.html",
+  "size_bytes": 5715
+ },
+ {
+  "instance_id": "infinite-scrolling-cond1-A",
+  "slug": "infinite-scrolling",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/infinite-scrolling-cond1-A.html",
+  "size_bytes": 13132
+ },
+ {
+  "instance_id": "infinite-scrolling-cond1-B",
+  "slug": "infinite-scrolling",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/infinite-scrolling-cond1-B.html",
+  "size_bytes": 4453
+ },
+ {
+  "instance_id": "infinite-scrolling-cond2-A",
+  "slug": "infinite-scrolling",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/infinite-scrolling-cond2-A.html",
+  "size_bytes": 2842
+ },
+ {
+  "instance_id": "infinite-scrolling-cond2-B",
+  "slug": "infinite-scrolling",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/infinite-scrolling-cond2-B.html",
+  "size_bytes": 6224
+ },
+ {
+  "instance_id": "infinite-scrolling-cond3-A",
+  "slug": "infinite-scrolling",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/infinite-scrolling-cond3-A.html",
+  "size_bytes": 13863
+ },
+ {
+  "instance_id": "infinite-scrolling-cond3-B",
+  "slug": "infinite-scrolling",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/infinite-scrolling-cond3-B.html",
+  "size_bytes": 15339
+ },
+ {
+  "instance_id": "information-without-context-cond1-A",
+  "slug": "information-without-context",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/information-without-context-cond1-A.html",
+  "size_bytes": 4205
+ },
+ {
+  "instance_id": "information-without-context-cond1-B",
+  "slug": "information-without-context",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/information-without-context-cond1-B.html",
+  "size_bytes": 3213
+ },
+ {
+  "instance_id": "information-without-context-cond2-A",
+  "slug": "information-without-context",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/information-without-context-cond2-A.html",
+  "size_bytes": 4345
+ },
+ {
+  "instance_id": "information-without-context-cond2-B",
+  "slug": "information-without-context",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/information-without-context-cond2-B.html",
+  "size_bytes": 3765
+ },
+ {
+  "instance_id": "information-without-context-cond3-A",
+  "slug": "information-without-context",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/information-without-context-cond3-A.html",
+  "size_bytes": 3774
+ },
+ {
+  "instance_id": "information-without-context-cond3-B",
+  "slug": "information-without-context",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/information-without-context-cond3-B.html",
+  "size_bytes": 3391
+ },
+ {
+  "instance_id": "intermediate-currency-cond1-A",
+  "slug": "intermediate-currency",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/intermediate-currency-cond1-A.html",
+  "size_bytes": 6096
+ },
+ {
+  "instance_id": "intermediate-currency-cond1-B",
+  "slug": "intermediate-currency",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/intermediate-currency-cond1-B.html",
+  "size_bytes": 6071
+ },
+ {
+  "instance_id": "intermediate-currency-cond2-A",
+  "slug": "intermediate-currency",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/intermediate-currency-cond2-A.html",
+  "size_bytes": 5505
+ },
+ {
+  "instance_id": "intermediate-currency-cond2-B",
+  "slug": "intermediate-currency",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/intermediate-currency-cond2-B.html",
+  "size_bytes": 5412
+ },
+ {
+  "instance_id": "intermediate-currency-cond3-A",
+  "slug": "intermediate-currency",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/intermediate-currency-cond3-A.html",
+  "size_bytes": 10997
+ },
+ {
+  "instance_id": "intermediate-currency-cond3-B",
+  "slug": "intermediate-currency",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/intermediate-currency-cond3-B.html",
+  "size_bytes": 6512
+ },
+ {
+  "instance_id": "labyrinthine-navigation-cond1-A",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/labyrinthine-navigation-cond1-A.html",
+  "size_bytes": 2178
+ },
+ {
+  "instance_id": "labyrinthine-navigation-cond1-B",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/labyrinthine-navigation-cond1-B.html",
+  "size_bytes": 1137
+ },
+ {
+  "instance_id": "labyrinthine-navigation-cond2-A",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/labyrinthine-navigation-cond2-A.html",
+  "size_bytes": 7577
+ },
+ {
+  "instance_id": "labyrinthine-navigation-cond2-B",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/labyrinthine-navigation-cond2-B.html",
+  "size_bytes": 3097
+ },
+ {
+  "instance_id": "labyrinthine-navigation-cond3-A",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/labyrinthine-navigation-cond3-A.html",
+  "size_bytes": 12405
+ },
+ {
+  "instance_id": "labyrinthine-navigation-cond3-B",
+  "slug": "labyrinthine-navigation",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/labyrinthine-navigation-cond3-B.html",
+  "size_bytes": 4798
+ },
+ {
+  "instance_id": "limited-time-message-cond1-A",
+  "slug": "limited-time-message",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/limited-time-message-cond1-A.html",
+  "size_bytes": 4856
+ },
+ {
+  "instance_id": "limited-time-message-cond1-B",
+  "slug": "limited-time-message",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/limited-time-message-cond1-B.html",
+  "size_bytes": 2875
+ },
+ {
+  "instance_id": "limited-time-message-cond2-A",
+  "slug": "limited-time-message",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/limited-time-message-cond2-A.html",
+  "size_bytes": 2464
+ },
+ {
+  "instance_id": "limited-time-message-cond2-B",
+  "slug": "limited-time-message",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/limited-time-message-cond2-B.html",
+  "size_bytes": 2511
+ },
+ {
+  "instance_id": "limited-time-message-cond3-A",
+  "slug": "limited-time-message",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/limited-time-message-cond3-A.html",
+  "size_bytes": 4166
+ },
+ {
+  "instance_id": "limited-time-message-cond3-B",
+  "slug": "limited-time-message",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/limited-time-message-cond3-B.html",
+  "size_bytes": 2463
+ },
+ {
+  "instance_id": "low-stock-cond1-A",
+  "slug": "low-stock",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/low-stock-cond1-A.html",
+  "size_bytes": 3535
+ },
+ {
+  "instance_id": "low-stock-cond1-B",
+  "slug": "low-stock",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/low-stock-cond1-B.html",
+  "size_bytes": 3273
+ },
+ {
+  "instance_id": "low-stock-cond2-A",
+  "slug": "low-stock",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/low-stock-cond2-A.html",
+  "size_bytes": 5278
+ },
+ {
+  "instance_id": "low-stock-cond2-B",
+  "slug": "low-stock",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/low-stock-cond2-B.html",
+  "size_bytes": 4289
+ },
+ {
+  "instance_id": "low-stock-cond3-A",
+  "slug": "low-stock",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/low-stock-cond3-A.html",
+  "size_bytes": 10874
+ },
+ {
+  "instance_id": "low-stock-cond3-B",
+  "slug": "low-stock",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/low-stock-cond3-B.html",
+  "size_bytes": 12047
+ },
+ {
+  "instance_id": "parasocial-pressure-cond1-A",
+  "slug": "parasocial-pressure",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/parasocial-pressure-cond1-A.html",
+  "size_bytes": 5508
+ },
+ {
+  "instance_id": "parasocial-pressure-cond1-B",
+  "slug": "parasocial-pressure",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/parasocial-pressure-cond1-B.html",
+  "size_bytes": 4690
+ },
+ {
+  "instance_id": "parasocial-pressure-cond2-A",
+  "slug": "parasocial-pressure",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/parasocial-pressure-cond2-A.html",
+  "size_bytes": 4275
+ },
+ {
+  "instance_id": "parasocial-pressure-cond2-B",
+  "slug": "parasocial-pressure",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/parasocial-pressure-cond2-B.html",
+  "size_bytes": 3029
+ },
+ {
+  "instance_id": "parasocial-pressure-cond3-A",
+  "slug": "parasocial-pressure",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/parasocial-pressure-cond3-A.html",
+  "size_bytes": 1768
+ },
+ {
+  "instance_id": "parasocial-pressure-cond3-B",
+  "slug": "parasocial-pressure",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/parasocial-pressure-cond3-B.html",
+  "size_bytes": 1752
+ },
+ {
+  "instance_id": "pay-to-avoid-cond1-A",
+  "slug": "pay-to-avoid",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pay-to-avoid-cond1-A.html",
+  "size_bytes": 10427
+ },
+ {
+  "instance_id": "pay-to-avoid-cond1-B",
+  "slug": "pay-to-avoid",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pay-to-avoid-cond1-B.html",
+  "size_bytes": 9127
+ },
+ {
+  "instance_id": "pay-to-avoid-cond2-A",
+  "slug": "pay-to-avoid",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pay-to-avoid-cond2-A.html",
+  "size_bytes": 5236
+ },
+ {
+  "instance_id": "pay-to-avoid-cond2-B",
+  "slug": "pay-to-avoid",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pay-to-avoid-cond2-B.html",
+  "size_bytes": 4598
+ },
+ {
+  "instance_id": "pay-to-avoid-cond3-A",
+  "slug": "pay-to-avoid",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pay-to-avoid-cond3-A.html",
+  "size_bytes": 4358
+ },
+ {
+  "instance_id": "pay-to-avoid-cond3-B",
+  "slug": "pay-to-avoid",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pay-to-avoid-cond3-B.html",
+  "size_bytes": 4372
+ },
+ {
+  "instance_id": "pay-to-play-cond1-A",
+  "slug": "pay-to-play",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pay-to-play-cond1-A.html",
+  "size_bytes": 4577
+ },
+ {
+  "instance_id": "pay-to-play-cond1-B",
+  "slug": "pay-to-play",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pay-to-play-cond1-B.html",
+  "size_bytes": 4279
+ },
+ {
+  "instance_id": "pay-to-play-cond2-A",
+  "slug": "pay-to-play",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pay-to-play-cond2-A.html",
+  "size_bytes": 3576
+ },
+ {
+  "instance_id": "pay-to-play-cond2-B",
+  "slug": "pay-to-play",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pay-to-play-cond2-B.html",
+  "size_bytes": 2632
+ },
+ {
+  "instance_id": "pay-to-play-cond3-A",
+  "slug": "pay-to-play",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pay-to-play-cond3-A.html",
+  "size_bytes": 3494
+ },
+ {
+  "instance_id": "pay-to-play-cond3-B",
+  "slug": "pay-to-play",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pay-to-play-cond3-B.html",
+  "size_bytes": 3340
+ },
+ {
+  "instance_id": "persuasive-language-cond1-A",
+  "slug": "persuasive-language",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/persuasive-language-cond1-A.html",
+  "size_bytes": 3164
+ },
+ {
+  "instance_id": "persuasive-language-cond1-B",
+  "slug": "persuasive-language",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/persuasive-language-cond1-B.html",
+  "size_bytes": 2496
+ },
+ {
+  "instance_id": "persuasive-language-cond2-A",
+  "slug": "persuasive-language",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/persuasive-language-cond2-A.html",
+  "size_bytes": 3848
+ },
+ {
+  "instance_id": "persuasive-language-cond2-B",
+  "slug": "persuasive-language",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/persuasive-language-cond2-B.html",
+  "size_bytes": 2871
+ },
+ {
+  "instance_id": "persuasive-language-cond3-A",
+  "slug": "persuasive-language",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/persuasive-language-cond3-A.html",
+  "size_bytes": 6022
+ },
+ {
+  "instance_id": "persuasive-language-cond3-B",
+  "slug": "persuasive-language",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/persuasive-language-cond3-B.html",
+  "size_bytes": 4558
+ },
+ {
+  "instance_id": "plain-evil-cond1-A",
+  "slug": "plain-evil",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/plain-evil-cond1-A.html",
+  "size_bytes": 5632
+ },
+ {
+  "instance_id": "plain-evil-cond1-B",
+  "slug": "plain-evil",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/plain-evil-cond1-B.html",
+  "size_bytes": 4264
+ },
+ {
+  "instance_id": "plain-evil-cond2-A",
+  "slug": "plain-evil",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/plain-evil-cond2-A.html",
+  "size_bytes": 4234
+ },
+ {
+  "instance_id": "plain-evil-cond2-B",
+  "slug": "plain-evil",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/plain-evil-cond2-B.html",
+  "size_bytes": 3276
+ },
+ {
+  "instance_id": "plain-evil-cond3-A",
+  "slug": "plain-evil",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/plain-evil-cond3-A.html",
+  "size_bytes": 4613
+ },
+ {
+  "instance_id": "plain-evil-cond3-B",
+  "slug": "plain-evil",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/plain-evil-cond3-B.html",
+  "size_bytes": 3290
+ },
+ {
+  "instance_id": "playing-by-appointment-cond1-A",
+  "slug": "playing-by-appointment",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/playing-by-appointment-cond1-A.html",
+  "size_bytes": 5593
+ },
+ {
+  "instance_id": "playing-by-appointment-cond1-B",
+  "slug": "playing-by-appointment",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/playing-by-appointment-cond1-B.html",
+  "size_bytes": 5751
+ },
+ {
+  "instance_id": "playing-by-appointment-cond2-A",
+  "slug": "playing-by-appointment",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/playing-by-appointment-cond2-A.html",
+  "size_bytes": 3147
+ },
+ {
+  "instance_id": "playing-by-appointment-cond2-B",
+  "slug": "playing-by-appointment",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/playing-by-appointment-cond2-B.html",
+  "size_bytes": 3459
+ },
+ {
+  "instance_id": "playing-by-appointment-cond3-A",
+  "slug": "playing-by-appointment",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/playing-by-appointment-cond3-A.html",
+  "size_bytes": 5062
+ },
+ {
+  "instance_id": "playing-by-appointment-cond3-B",
+  "slug": "playing-by-appointment",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/playing-by-appointment-cond3-B.html",
+  "size_bytes": 4906
+ },
+ {
+  "instance_id": "positive-or-negative-framing-cond1-A",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/positive-or-negative-framing-cond1-A.html",
+  "size_bytes": 5685
+ },
+ {
+  "instance_id": "positive-or-negative-framing-cond1-B",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/positive-or-negative-framing-cond1-B.html",
+  "size_bytes": 2083
+ },
+ {
+  "instance_id": "positive-or-negative-framing-cond2-A",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/positive-or-negative-framing-cond2-A.html",
+  "size_bytes": 2142
+ },
+ {
+  "instance_id": "positive-or-negative-framing-cond2-B",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/positive-or-negative-framing-cond2-B.html",
+  "size_bytes": 2420
+ },
+ {
+  "instance_id": "positive-or-negative-framing-cond3-A",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/positive-or-negative-framing-cond3-A.html",
+  "size_bytes": 2117
+ },
+ {
+  "instance_id": "positive-or-negative-framing-cond3-B",
+  "slug": "positive-or-negative-framing",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/positive-or-negative-framing-cond3-B.html",
+  "size_bytes": 1832
+ },
+ {
+  "instance_id": "pre-delivered-content-cond1-A",
+  "slug": "pre-delivered-content",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pre-delivered-content-cond1-A.html",
+  "size_bytes": 4748
+ },
+ {
+  "instance_id": "pre-delivered-content-cond1-B",
+  "slug": "pre-delivered-content",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pre-delivered-content-cond1-B.html",
+  "size_bytes": 5024
+ },
+ {
+  "instance_id": "pre-delivered-content-cond2-A",
+  "slug": "pre-delivered-content",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pre-delivered-content-cond2-A.html",
+  "size_bytes": 21926
+ },
+ {
+  "instance_id": "pre-delivered-content-cond2-B",
+  "slug": "pre-delivered-content",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pre-delivered-content-cond2-B.html",
+  "size_bytes": 22671
+ },
+ {
+  "instance_id": "pre-delivered-content-cond3-A",
+  "slug": "pre-delivered-content",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pre-delivered-content-cond3-A.html",
+  "size_bytes": 11489
+ },
+ {
+  "instance_id": "pre-delivered-content-cond3-B",
+  "slug": "pre-delivered-content",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pre-delivered-content-cond3-B.html",
+  "size_bytes": 11013
+ },
+ {
+  "instance_id": "pressured-selling-cond1-A",
+  "slug": "pressured-selling",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pressured-selling-cond1-A.html",
+  "size_bytes": 3159
+ },
+ {
+  "instance_id": "pressured-selling-cond1-B",
+  "slug": "pressured-selling",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pressured-selling-cond1-B.html",
+  "size_bytes": 2752
+ },
+ {
+  "instance_id": "pressured-selling-cond2-A",
+  "slug": "pressured-selling",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pressured-selling-cond2-A.html",
+  "size_bytes": 4856
+ },
+ {
+  "instance_id": "pressured-selling-cond2-B",
+  "slug": "pressured-selling",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pressured-selling-cond2-B.html",
+  "size_bytes": 2280
+ },
+ {
+  "instance_id": "pressured-selling-cond3-A",
+  "slug": "pressured-selling",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pressured-selling-cond3-A.html",
+  "size_bytes": 2855
+ },
+ {
+  "instance_id": "pressured-selling-cond3-B",
+  "slug": "pressured-selling",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pressured-selling-cond3-B.html",
+  "size_bytes": 2291
+ },
+ {
+  "instance_id": "price-comparison-prevention-cond1-A",
+  "slug": "price-comparison-prevention",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/price-comparison-prevention-cond1-A.html",
+  "size_bytes": 2997
+ },
+ {
+  "instance_id": "price-comparison-prevention-cond1-B",
+  "slug": "price-comparison-prevention",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/price-comparison-prevention-cond1-B.html",
+  "size_bytes": 2588
+ },
+ {
+  "instance_id": "price-comparison-prevention-cond2-A",
+  "slug": "price-comparison-prevention",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/price-comparison-prevention-cond2-A.html",
+  "size_bytes": 3339
+ },
+ {
+  "instance_id": "price-comparison-prevention-cond2-B",
+  "slug": "price-comparison-prevention",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/price-comparison-prevention-cond2-B.html",
+  "size_bytes": 3422
+ },
+ {
+  "instance_id": "price-comparison-prevention-cond3-A",
+  "slug": "price-comparison-prevention",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/price-comparison-prevention-cond3-A.html",
+  "size_bytes": 3057
+ },
+ {
+  "instance_id": "price-comparison-prevention-cond3-B",
+  "slug": "price-comparison-prevention",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/price-comparison-prevention-cond3-B.html",
+  "size_bytes": 3366
+ },
+ {
+  "instance_id": "privacy-maze-cond1-A",
+  "slug": "privacy-maze",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/privacy-maze-cond1-A.html",
+  "size_bytes": 3074
+ },
+ {
+  "instance_id": "privacy-maze-cond1-B",
+  "slug": "privacy-maze",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/privacy-maze-cond1-B.html",
+  "size_bytes": 3223
+ },
+ {
+  "instance_id": "privacy-maze-cond2-A",
+  "slug": "privacy-maze",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/privacy-maze-cond2-A.html",
+  "size_bytes": 3921
+ },
+ {
+  "instance_id": "privacy-maze-cond2-B",
+  "slug": "privacy-maze",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/privacy-maze-cond2-B.html",
+  "size_bytes": 3297
+ },
+ {
+  "instance_id": "privacy-maze-cond3-A",
+  "slug": "privacy-maze",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/privacy-maze-cond3-A.html",
+  "size_bytes": 6531
+ },
+ {
+  "instance_id": "privacy-maze-cond3-B",
+  "slug": "privacy-maze",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/privacy-maze-cond3-B.html",
+  "size_bytes": 3400
+ },
+ {
+  "instance_id": "privacy-zuckering-cond1-A",
+  "slug": "privacy-zuckering",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/privacy-zuckering-cond1-A.html",
+  "size_bytes": 1600
+ },
+ {
+  "instance_id": "privacy-zuckering-cond1-B",
+  "slug": "privacy-zuckering",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/privacy-zuckering-cond1-B.html",
+  "size_bytes": 2134
+ },
+ {
+  "instance_id": "privacy-zuckering-cond2-A",
+  "slug": "privacy-zuckering",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/privacy-zuckering-cond2-A.html",
+  "size_bytes": 2426
+ },
+ {
+  "instance_id": "privacy-zuckering-cond2-B",
+  "slug": "privacy-zuckering",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/privacy-zuckering-cond2-B.html",
+  "size_bytes": 2008
+ },
+ {
+  "instance_id": "privacy-zuckering-cond3-A",
+  "slug": "privacy-zuckering",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/privacy-zuckering-cond3-A.html",
+  "size_bytes": 1426
+ },
+ {
+  "instance_id": "privacy-zuckering-cond3-B",
+  "slug": "privacy-zuckering",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/privacy-zuckering-cond3-B.html",
+  "size_bytes": 1507
+ },
+ {
+  "instance_id": "psychological-tricks-cond1-A",
+  "slug": "psychological-tricks",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/psychological-tricks-cond1-A.html",
+  "size_bytes": 5233
+ },
+ {
+  "instance_id": "psychological-tricks-cond1-B",
+  "slug": "psychological-tricks",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/psychological-tricks-cond1-B.html",
+  "size_bytes": 3368
+ },
+ {
+  "instance_id": "psychological-tricks-cond2-A",
+  "slug": "psychological-tricks",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/psychological-tricks-cond2-A.html",
+  "size_bytes": 11473
+ },
+ {
+  "instance_id": "psychological-tricks-cond2-B",
+  "slug": "psychological-tricks",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/psychological-tricks-cond2-B.html",
+  "size_bytes": 4043
+ },
+ {
+  "instance_id": "psychological-tricks-cond3-A",
+  "slug": "psychological-tricks",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/psychological-tricks-cond3-A.html",
+  "size_bytes": 5361
+ },
+ {
+  "instance_id": "psychological-tricks-cond3-B",
+  "slug": "psychological-tricks",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/psychological-tricks-cond3-B.html",
+  "size_bytes": 3762
+ },
+ {
+  "instance_id": "pull-to-refresh-cond1-A",
+  "slug": "pull-to-refresh",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pull-to-refresh-cond1-A.html",
+  "size_bytes": 1275
+ },
+ {
+  "instance_id": "pull-to-refresh-cond1-B",
+  "slug": "pull-to-refresh",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pull-to-refresh-cond1-B.html",
+  "size_bytes": 8177
+ },
+ {
+  "instance_id": "pull-to-refresh-cond2-A",
+  "slug": "pull-to-refresh",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pull-to-refresh-cond2-A.html",
+  "size_bytes": 2765
+ },
+ {
+  "instance_id": "pull-to-refresh-cond2-B",
+  "slug": "pull-to-refresh",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pull-to-refresh-cond2-B.html",
+  "size_bytes": 7367
+ },
+ {
+  "instance_id": "pull-to-refresh-cond3-A",
+  "slug": "pull-to-refresh",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/pull-to-refresh-cond3-A.html",
+  "size_bytes": 1796
+ },
+ {
+  "instance_id": "pull-to-refresh-cond3-B",
+  "slug": "pull-to-refresh",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/pull-to-refresh-cond3-B.html",
+  "size_bytes": 1804
+ },
+ {
+  "instance_id": "reduced-friction-cond1-A",
+  "slug": "reduced-friction",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/reduced-friction-cond1-A.html",
+  "size_bytes": 3226
+ },
+ {
+  "instance_id": "reduced-friction-cond1-B",
+  "slug": "reduced-friction",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/reduced-friction-cond1-B.html",
+  "size_bytes": 5013
+ },
+ {
+  "instance_id": "reduced-friction-cond2-A",
+  "slug": "reduced-friction",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/reduced-friction-cond2-A.html",
+  "size_bytes": 2652
+ },
+ {
+  "instance_id": "reduced-friction-cond2-B",
+  "slug": "reduced-friction",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/reduced-friction-cond2-B.html",
+  "size_bytes": 3161
+ },
+ {
+  "instance_id": "reduced-friction-cond3-A",
+  "slug": "reduced-friction",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/reduced-friction-cond3-A.html",
+  "size_bytes": 3226
+ },
+ {
+  "instance_id": "reduced-friction-cond3-B",
+  "slug": "reduced-friction",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/reduced-friction-cond3-B.html",
+  "size_bytes": 3201
+ },
+ {
+  "instance_id": "reference-pricing-cond1-A",
+  "slug": "reference-pricing",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/reference-pricing-cond1-A.html",
+  "size_bytes": 2985
+ },
+ {
+  "instance_id": "reference-pricing-cond1-B",
+  "slug": "reference-pricing",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/reference-pricing-cond1-B.html",
+  "size_bytes": 2885
+ },
+ {
+  "instance_id": "reference-pricing-cond2-A",
+  "slug": "reference-pricing",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/reference-pricing-cond2-A.html",
+  "size_bytes": 2643
+ },
+ {
+  "instance_id": "reference-pricing-cond2-B",
+  "slug": "reference-pricing",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/reference-pricing-cond2-B.html",
+  "size_bytes": 2566
+ },
+ {
+  "instance_id": "reference-pricing-cond3-A",
+  "slug": "reference-pricing",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/reference-pricing-cond3-A.html",
+  "size_bytes": 3173
+ },
+ {
+  "instance_id": "reference-pricing-cond3-B",
+  "slug": "reference-pricing",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/reference-pricing-cond3-B.html",
+  "size_bytes": 2598
+ },
+ {
+  "instance_id": "small-or-moving-close-button-cond1-A",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/small-or-moving-close-button-cond1-A.html",
+  "size_bytes": 757
+ },
+ {
+  "instance_id": "small-or-moving-close-button-cond1-B",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/small-or-moving-close-button-cond1-B.html",
+  "size_bytes": 796
+ },
+ {
+  "instance_id": "small-or-moving-close-button-cond2-A",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/small-or-moving-close-button-cond2-A.html",
+  "size_bytes": 899
+ },
+ {
+  "instance_id": "small-or-moving-close-button-cond2-B",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/small-or-moving-close-button-cond2-B.html",
+  "size_bytes": 805
+ },
+ {
+  "instance_id": "small-or-moving-close-button-cond3-A",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/small-or-moving-close-button-cond3-A.html",
+  "size_bytes": 1821
+ },
+ {
+  "instance_id": "small-or-moving-close-button-cond3-B",
+  "slug": "small-or-moving-close-button",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/small-or-moving-close-button-cond3-B.html",
+  "size_bytes": 793
+ },
+ {
+  "instance_id": "sneak-into-basket-cond1-A",
+  "slug": "sneak-into-basket",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/sneak-into-basket-cond1-A.html",
+  "size_bytes": 7285
+ },
+ {
+  "instance_id": "sneak-into-basket-cond1-B",
+  "slug": "sneak-into-basket",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/sneak-into-basket-cond1-B.html",
+  "size_bytes": 7812
+ },
+ {
+  "instance_id": "sneak-into-basket-cond2-A",
+  "slug": "sneak-into-basket",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/sneak-into-basket-cond2-A.html",
+  "size_bytes": 7335
+ },
+ {
+  "instance_id": "sneak-into-basket-cond2-B",
+  "slug": "sneak-into-basket",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/sneak-into-basket-cond2-B.html",
+  "size_bytes": 9367
+ },
+ {
+  "instance_id": "sneak-into-basket-cond3-A",
+  "slug": "sneak-into-basket",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/sneak-into-basket-cond3-A.html",
+  "size_bytes": 6701
+ },
+ {
+  "instance_id": "sneak-into-basket-cond3-B",
+  "slug": "sneak-into-basket",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/sneak-into-basket-cond3-B.html",
+  "size_bytes": 6617
+ },
+ {
+  "instance_id": "social-pyramid-cond1-A",
+  "slug": "social-pyramid",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/social-pyramid-cond1-A.html",
+  "size_bytes": 5787
+ },
+ {
+  "instance_id": "social-pyramid-cond1-B",
+  "slug": "social-pyramid",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/social-pyramid-cond1-B.html",
+  "size_bytes": 3331
+ },
+ {
+  "instance_id": "social-pyramid-cond2-A",
+  "slug": "social-pyramid",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/social-pyramid-cond2-A.html",
+  "size_bytes": 12124
+ },
+ {
+  "instance_id": "social-pyramid-cond2-B",
+  "slug": "social-pyramid",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/social-pyramid-cond2-B.html",
+  "size_bytes": 2725
+ },
+ {
+  "instance_id": "social-pyramid-cond3-A",
+  "slug": "social-pyramid",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/social-pyramid-cond3-A.html",
+  "size_bytes": 5312
+ },
+ {
+  "instance_id": "social-pyramid-cond3-B",
+  "slug": "social-pyramid",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/social-pyramid-cond3-B.html",
+  "size_bytes": 4650
+ },
+ {
+  "instance_id": "trick-questions-cond1-A",
+  "slug": "trick-questions",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/trick-questions-cond1-A.html",
+  "size_bytes": 3516
+ },
+ {
+  "instance_id": "trick-questions-cond1-B",
+  "slug": "trick-questions",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/trick-questions-cond1-B.html",
+  "size_bytes": 3061
+ },
+ {
+  "instance_id": "trick-questions-cond2-A",
+  "slug": "trick-questions",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/trick-questions-cond2-A.html",
+  "size_bytes": 3732
+ },
+ {
+  "instance_id": "trick-questions-cond2-B",
+  "slug": "trick-questions",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/trick-questions-cond2-B.html",
+  "size_bytes": 1458
+ },
+ {
+  "instance_id": "trick-questions-cond3-A",
+  "slug": "trick-questions",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/trick-questions-cond3-A.html",
+  "size_bytes": 3256
+ },
+ {
+  "instance_id": "trick-questions-cond3-B",
+  "slug": "trick-questions",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/trick-questions-cond3-B.html",
+  "size_bytes": 1826
+ },
+ {
+  "instance_id": "visual-prominence-cond1-A",
+  "slug": "visual-prominence",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/visual-prominence-cond1-A.html",
+  "size_bytes": 5353
+ },
+ {
+  "instance_id": "visual-prominence-cond1-B",
+  "slug": "visual-prominence",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/visual-prominence-cond1-B.html",
+  "size_bytes": 3464
+ },
+ {
+  "instance_id": "visual-prominence-cond2-A",
+  "slug": "visual-prominence",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/visual-prominence-cond2-A.html",
+  "size_bytes": 3938
+ },
+ {
+  "instance_id": "visual-prominence-cond2-B",
+  "slug": "visual-prominence",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/visual-prominence-cond2-B.html",
+  "size_bytes": 3187
+ },
+ {
+  "instance_id": "visual-prominence-cond3-A",
+  "slug": "visual-prominence",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/visual-prominence-cond3-A.html",
+  "size_bytes": 3233
+ },
+ {
+  "instance_id": "visual-prominence-cond3-B",
+  "slug": "visual-prominence",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/visual-prominence-cond3-B.html",
+  "size_bytes": 2545
+ },
+ {
+  "instance_id": "watch-ads-to-unlock-features-cond1-A",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/watch-ads-to-unlock-features-cond1-A.html",
+  "size_bytes": 6665
+ },
+ {
+  "instance_id": "watch-ads-to-unlock-features-cond1-B",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/watch-ads-to-unlock-features-cond1-B.html",
+  "size_bytes": 2512
+ },
+ {
+  "instance_id": "watch-ads-to-unlock-features-cond2-A",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/watch-ads-to-unlock-features-cond2-A.html",
+  "size_bytes": 6511
+ },
+ {
+  "instance_id": "watch-ads-to-unlock-features-cond2-B",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/watch-ads-to-unlock-features-cond2-B.html",
+  "size_bytes": 5320
+ },
+ {
+  "instance_id": "watch-ads-to-unlock-features-cond3-A",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/watch-ads-to-unlock-features-cond3-A.html",
+  "size_bytes": 1881
+ },
+ {
+  "instance_id": "watch-ads-to-unlock-features-cond3-B",
+  "slug": "watch-ads-to-unlock-features",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/watch-ads-to-unlock-features-cond3-B.html",
+  "size_bytes": 1745
+ },
+ {
+  "instance_id": "wrong-language-cond1-A",
+  "slug": "wrong-language",
+  "condition_index": 1,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/wrong-language-cond1-A.html",
+  "size_bytes": 4127
+ },
+ {
+  "instance_id": "wrong-language-cond1-B",
+  "slug": "wrong-language",
+  "condition_index": 1,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/wrong-language-cond1-B.html",
+  "size_bytes": 3386
+ },
+ {
+  "instance_id": "wrong-language-cond2-A",
+  "slug": "wrong-language",
+  "condition_index": 2,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/wrong-language-cond2-A.html",
+  "size_bytes": 3939
+ },
+ {
+  "instance_id": "wrong-language-cond2-B",
+  "slug": "wrong-language",
+  "condition_index": 2,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/wrong-language-cond2-B.html",
+  "size_bytes": 3521
+ },
+ {
+  "instance_id": "wrong-language-cond3-A",
+  "slug": "wrong-language",
+  "condition_index": 3,
+  "variant": "A",
+  "deceptive": true,
+  "file": "corpus/wrong-language-cond3-A.html",
+  "size_bytes": 7723
+ },
+ {
+  "instance_id": "wrong-language-cond3-B",
+  "slug": "wrong-language",
+  "condition_index": 3,
+  "variant": "B",
+  "deceptive": false,
+  "file": "corpus/wrong-language-cond3-B.html",
+  "size_bytes": 7621
+ }
+]

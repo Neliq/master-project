@@ -6,7 +6,7 @@ import pathlib
 import os
 import re
 
-EXP = pathlib.Path("/home/neliq/Coding/master-project/experiment-data")
+EXP = pathlib.Path(os.environ.get("EXPERIMENT_DIR", pathlib.Path(__file__).resolve().parents[1]))
 CORPUS = pathlib.Path(os.environ.get("CORPUS_DIR", EXP / "corpus"))
 
 MAP = {

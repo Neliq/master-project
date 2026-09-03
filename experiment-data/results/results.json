@@ -1,91 +1,1950 @@
 {
+ "run_id": "run5-updated-sandbox-20260903",
+ "n_instances": 372,
+ "n_raw_rows": 744,
  "condition_0": {
   "tp": 159,
-  "fp": 10,
-  "tn": 176,
+  "fp": 161,
+  "tn": 25,
   "fn": 27,
-  "precision": 0.9408284023668639,
+  "precision": 0.496875,
   "recall": 0.8548387096774194,
-  "f1": 0.895774647887324,
-  "accuracy": 0.9005376344086021,
-  "kappa": 0.8010752688172043
+  "f1": 0.6284584980237153,
+  "accuracy": 0.4946236559139785,
+  "kappa": -0.010752688172043001,
+  "bootstrap_ci_95": {
+   "precision": {
+    "lower": 0.4430769230769231,
+    "upper": 0.5537986854917234
+   },
+   "recall": {
+    "lower": 0.8021390374331551,
+    "upper": 0.9034142250821467
+   },
+   "f1": {
+    "lower": 0.5774037009877927,
+    "upper": 0.678030303030303
+   },
+   "accuracy": {
+    "lower": 0.4435483870967742,
+    "upper": 0.5456989247311828
+   },
+   "kappa": {
+    "lower": -0.0802948889924793,
+    "upper": 0.05862984585188364
+   }
+  }
  },
  "condition_1": {
-  "tp": 167,
-  "fp": 8,
-  "tn": 178,
-  "fn": 19,
-  "precision": 0.9542857142857143,
-  "recall": 0.8978494623655914,
-  "f1": 0.925207756232687,
-  "accuracy": 0.9274193548387096,
-  "kappa": 0.8548387096774193
+  "tp": 155,
+  "fp": 158,
+  "tn": 28,
+  "fn": 31,
+  "precision": 0.4952076677316294,
+  "recall": 0.8333333333333334,
+  "f1": 0.6212424849699398,
+  "accuracy": 0.49193548387096775,
+  "kappa": -0.016129032258064502,
+  "bootstrap_ci_95": {
+   "precision": {
+    "lower": 0.43894208386355876,
+    "upper": 0.549520766773163
+   },
+   "recall": {
+    "lower": 0.7777777777777778,
+    "upper": 0.8839837161965687
+   },
+   "f1": {
+    "lower": 0.5690721649484536,
+    "upper": 0.6692456479690522
+   },
+   "accuracy": {
+    "lower": 0.44086021505376344,
+    "upper": 0.543010752688172
+   },
+   "kappa": {
+    "lower": -0.0894568690095846,
+    "upper": 0.05480575904946473
+   }
+  }
  },
  "mcnemar": {
-  "b": 11,
-  "c": 1,
-  "n": 12,
-  "chi2": 8.333333333333334,
-  "p_exact_binomial": 0.00634765625
+  "b": 12,
+  "c": 13,
+  "n": 25,
+  "chi2": 0.04,
+  "p_exact_binomial": 1.0
+ },
+ "paired_bootstrap_ci_95": {
+  "accuracy_delta": {
+   "lower": -0.029569892473118253,
+   "upper": 0.024193548387096753
+  },
+  "f1_delta": {
+   "lower": -0.02843521822297784,
+   "upper": 0.012696218186362867
+  }
  },
  "layers": {
   "c0": {
-   "3": {
-    "tp": 53,
-    "fp": 0,
-    "tn": 62,
-    "fn": 9,
-    "precision": 1.0,
-    "recall": 0.8548387096774194,
-    "f1": 0.9217391304347826
-   },
    "1": {
-    "tp": 53,
-    "fp": 5,
-    "tn": 57,
-    "fn": 9,
-    "precision": 0.9137931034482759,
-    "recall": 0.8548387096774194,
-    "f1": 0.8833333333333333
+    "tp": 55,
+    "fp": 52,
+    "tn": 10,
+    "fn": 7,
+    "precision": 0.514018691588785,
+    "recall": 0.8870967741935484,
+    "f1": 0.6508875739644969,
+    "accuracy": 0.5241935483870968,
+    "kappa": 0.048387096774193505
    },
    "2": {
+    "tp": 51,
+    "fp": 53,
+    "tn": 9,
+    "fn": 11,
+    "precision": 0.49038461538461536,
+    "recall": 0.8225806451612904,
+    "f1": 0.6144578313253012,
+    "accuracy": 0.4838709677419355,
+    "kappa": -0.032258064516129004
+   },
+   "3": {
     "tp": 53,
-    "fp": 5,
-    "tn": 57,
+    "fp": 56,
+    "tn": 6,
     "fn": 9,
-    "precision": 0.9137931034482759,
+    "precision": 0.48623853211009177,
     "recall": 0.8548387096774194,
-    "f1": 0.8833333333333333
+    "f1": 0.6198830409356725,
+    "accuracy": 0.47580645161290325,
+    "kappa": -0.048387096774193505
    }
   },
   "c1": {
-   "3": {
-    "tp": 54,
-    "fp": 1,
-    "tn": 61,
-    "fn": 8,
-    "precision": 0.9818181818181818,
-    "recall": 0.8709677419354839,
-    "f1": 0.923076923076923
-   },
    "1": {
-    "tp": 57,
-    "fp": 3,
-    "tn": 59,
-    "fn": 5,
-    "precision": 0.95,
-    "recall": 0.9193548387096774,
-    "f1": 0.9344262295081968
+    "tp": 54,
+    "fp": 53,
+    "tn": 9,
+    "fn": 8,
+    "precision": 0.5046728971962616,
+    "recall": 0.8709677419354839,
+    "f1": 0.6390532544378698,
+    "accuracy": 0.5080645161290323,
+    "kappa": 0.016129032258064502
    },
    "2": {
-    "tp": 56,
-    "fp": 4,
-    "tn": 58,
-    "fn": 6,
-    "precision": 0.9333333333333333,
-    "recall": 0.9032258064516129,
-    "f1": 0.9180327868852459
+    "tp": 48,
+    "fp": 52,
+    "tn": 10,
+    "fn": 14,
+    "precision": 0.48,
+    "recall": 0.7741935483870968,
+    "f1": 0.5925925925925926,
+    "accuracy": 0.46774193548387094,
+    "kappa": -0.06451612903225812
+   },
+   "3": {
+    "tp": 53,
+    "fp": 53,
+    "tn": 9,
+    "fn": 9,
+    "precision": 0.5,
+    "recall": 0.8548387096774194,
+    "f1": 0.6309523809523809,
+    "accuracy": 0.5,
+    "kappa": 0.0
    }
   }
+ },
+ "per_pattern": {
+  "c0": {
+   "activity-messages": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "addictive-design": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "address-book-leeching": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "auto-play": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "automatic-accept-third-party-term": {
+    "tp": 3,
+    "fp": 1,
+    "tn": 2,
+    "fn": 0,
+    "precision": 0.75,
+    "recall": 1.0,
+    "f1": 0.8571428571428571,
+    "accuracy": 0.8333333333333334,
+    "kappa": 0.6666666666666667
+   },
+   "automating-the-user-away": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "bad-defaults-preselection": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "bundling": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "choice-overload": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "complex-language": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "confirmshaming": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "conflicting-information": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "countdown-on-ads": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "countdown-timer": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "customisation": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "cuteness": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "dead-end": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "disguised-ad": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "drip-pricing": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "encouraging-anti-social-behavior": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "endorsement-and-testimonials": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "false-hierarchy": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "fear-of-missing-out-fomo": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "feedforward-ambiguity": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "forced-continuity": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "forced-grace-period": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "forced-registration": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "friend-spam": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "granting-and-interaction": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "grinding": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "hidden-information": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "high-demand": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "immortal-accounts": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "infinite-scrolling": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "information-without-context": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "intermediate-currency": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "labyrinthine-navigation": {
+    "tp": 0,
+    "fp": 3,
+    "tn": 0,
+    "fn": 3,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "accuracy": 0.0,
+    "kappa": -1.0
+   },
+   "limited-time-message": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "low-stock": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "parasocial-pressure": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "pay-to-avoid": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "pay-to-play": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "persuasive-language": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "plain-evil": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "playing-by-appointment": {
+    "tp": 1,
+    "fp": 2,
+    "tn": 1,
+    "fn": 2,
+    "precision": 0.3333333333333333,
+    "recall": 0.3333333333333333,
+    "f1": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "positive-or-negative-framing": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "pre-delivered-content": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "pressured-selling": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "price-comparison-prevention": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "privacy-maze": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "privacy-zuckering": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "psychological-tricks": {
+    "tp": 1,
+    "fp": 2,
+    "tn": 1,
+    "fn": 2,
+    "precision": 0.3333333333333333,
+    "recall": 0.3333333333333333,
+    "f1": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "pull-to-refresh": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "reduced-friction": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "reference-pricing": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "small-or-moving-close-button": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "sneak-into-basket": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "social-pyramid": {
+    "tp": 1,
+    "fp": 1,
+    "tn": 2,
+    "fn": 2,
+    "precision": 0.5,
+    "recall": 0.3333333333333333,
+    "f1": 0.4,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "trick-questions": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "visual-prominence": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "watch-ads-to-unlock-features": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "wrong-language": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   }
+  },
+  "c1": {
+   "activity-messages": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "addictive-design": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "address-book-leeching": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "auto-play": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "automatic-accept-third-party-term": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "automating-the-user-away": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "bad-defaults-preselection": {
+    "tp": 2,
+    "fp": 1,
+    "tn": 2,
+    "fn": 1,
+    "precision": 0.6666666666666666,
+    "recall": 0.6666666666666666,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "bundling": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "choice-overload": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "complex-language": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "confirmshaming": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "conflicting-information": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "countdown-on-ads": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "countdown-timer": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "customisation": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "cuteness": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "dead-end": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "disguised-ad": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "drip-pricing": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "encouraging-anti-social-behavior": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "endorsement-and-testimonials": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "false-hierarchy": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "fear-of-missing-out-fomo": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "feedforward-ambiguity": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "forced-continuity": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "forced-grace-period": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "forced-registration": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "friend-spam": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "granting-and-interaction": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "grinding": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "hidden-information": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "high-demand": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "immortal-accounts": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "infinite-scrolling": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "information-without-context": {
+    "tp": 2,
+    "fp": 1,
+    "tn": 2,
+    "fn": 1,
+    "precision": 0.6666666666666666,
+    "recall": 0.6666666666666666,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "intermediate-currency": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "labyrinthine-navigation": {
+    "tp": 0,
+    "fp": 2,
+    "tn": 1,
+    "fn": 3,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "accuracy": 0.16666666666666666,
+    "kappa": -0.6666666666666667
+   },
+   "limited-time-message": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "low-stock": {
+    "tp": 2,
+    "fp": 1,
+    "tn": 2,
+    "fn": 1,
+    "precision": 0.6666666666666666,
+    "recall": 0.6666666666666666,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "parasocial-pressure": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "pay-to-avoid": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "pay-to-play": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "persuasive-language": {
+    "tp": 3,
+    "fp": 2,
+    "tn": 1,
+    "fn": 0,
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "accuracy": 0.6666666666666666,
+    "kappa": 0.33333333333333326
+   },
+   "plain-evil": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "playing-by-appointment": {
+    "tp": 1,
+    "fp": 2,
+    "tn": 1,
+    "fn": 2,
+    "precision": 0.3333333333333333,
+    "recall": 0.3333333333333333,
+    "f1": 0.3333333333333333,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "positive-or-negative-framing": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "pre-delivered-content": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "pressured-selling": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "price-comparison-prevention": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "privacy-maze": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "privacy-zuckering": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "psychological-tricks": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "pull-to-refresh": {
+    "tp": 1,
+    "fp": 1,
+    "tn": 2,
+    "fn": 2,
+    "precision": 0.5,
+    "recall": 0.3333333333333333,
+    "f1": 0.4,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "reduced-friction": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "reference-pricing": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "small-or-moving-close-button": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "sneak-into-basket": {
+    "tp": 2,
+    "fp": 3,
+    "tn": 0,
+    "fn": 1,
+    "precision": 0.4,
+    "recall": 0.6666666666666666,
+    "f1": 0.5,
+    "accuracy": 0.3333333333333333,
+    "kappa": -0.33333333333333337
+   },
+   "social-pyramid": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "trick-questions": {
+    "tp": 2,
+    "fp": 2,
+    "tn": 1,
+    "fn": 1,
+    "precision": 0.5,
+    "recall": 0.6666666666666666,
+    "f1": 0.5714285714285715,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "visual-prominence": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "watch-ads-to-unlock-features": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   },
+   "wrong-language": {
+    "tp": 3,
+    "fp": 3,
+    "tn": 0,
+    "fn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6666666666666666,
+    "accuracy": 0.5,
+    "kappa": 0.0
+   }
+  }
+ },
+ "per_agent": [
+  {
+   "agent": "agent-01",
+   "arm": "c0",
+   "n": 38,
+   "tp": 16,
+   "fp": 18,
+   "tn": 1,
+   "fn": 3,
+   "precision": 0.47058823529411764,
+   "recall": 0.8421052631578947,
+   "f1": 0.6037735849056604,
+   "accuracy": 0.4473684210526316,
+   "kappa": -0.10526315789473684
+  },
+  {
+   "agent": "agent-01",
+   "arm": "c1",
+   "n": 38,
+   "tp": 14,
+   "fp": 16,
+   "tn": 3,
+   "fn": 5,
+   "precision": 0.4666666666666667,
+   "recall": 0.7368421052631579,
+   "f1": 0.5714285714285714,
+   "accuracy": 0.4473684210526316,
+   "kappa": -0.10526315789473684
+  },
+  {
+   "agent": "agent-02",
+   "arm": "c0",
+   "n": 37,
+   "tp": 18,
+   "fp": 15,
+   "tn": 3,
+   "fn": 1,
+   "precision": 0.5454545454545454,
+   "recall": 0.9473684210526315,
+   "f1": 0.6923076923076923,
+   "accuracy": 0.5675675675675675,
+   "kappa": 0.11641791044776122
+  },
+  {
+   "agent": "agent-02",
+   "arm": "c1",
+   "n": 37,
+   "tp": 17,
+   "fp": 14,
+   "tn": 4,
+   "fn": 2,
+   "precision": 0.5483870967741935,
+   "recall": 0.8947368421052632,
+   "f1": 0.6799999999999999,
+   "accuracy": 0.5675675675675675,
+   "kappa": 0.11904761904761897
+  },
+  {
+   "agent": "agent-03",
+   "arm": "c0",
+   "n": 37,
+   "tp": 15,
+   "fp": 15,
+   "tn": 3,
+   "fn": 4,
+   "precision": 0.5,
+   "recall": 0.7894736842105263,
+   "f1": 0.6122448979591837,
+   "accuracy": 0.4864864864864865,
+   "kappa": -0.044576523031203595
+  },
+  {
+   "agent": "agent-03",
+   "arm": "c1",
+   "n": 37,
+   "tp": 15,
+   "fp": 15,
+   "tn": 3,
+   "fn": 4,
+   "precision": 0.5,
+   "recall": 0.7894736842105263,
+   "f1": 0.6122448979591837,
+   "accuracy": 0.4864864864864865,
+   "kappa": -0.044576523031203595
+  },
+  {
+   "agent": "agent-04",
+   "arm": "c0",
+   "n": 37,
+   "tp": 12,
+   "fp": 16,
+   "tn": 2,
+   "fn": 7,
+   "precision": 0.42857142857142855,
+   "recall": 0.631578947368421,
+   "f1": 0.5106382978723404,
+   "accuracy": 0.3783783783783784,
+   "kappa": -0.26074074074074066
+  },
+  {
+   "agent": "agent-04",
+   "arm": "c1",
+   "n": 37,
+   "tp": 14,
+   "fp": 15,
+   "tn": 3,
+   "fn": 5,
+   "precision": 0.4827586206896552,
+   "recall": 0.7368421052631579,
+   "f1": 0.5833333333333334,
+   "accuracy": 0.4594594594594595,
+   "kappa": -0.09792284866468827
+  },
+  {
+   "agent": "agent-05",
+   "arm": "c0",
+   "n": 37,
+   "tp": 17,
+   "fp": 14,
+   "tn": 4,
+   "fn": 2,
+   "precision": 0.5483870967741935,
+   "recall": 0.8947368421052632,
+   "f1": 0.6799999999999999,
+   "accuracy": 0.5675675675675675,
+   "kappa": 0.11904761904761897
+  },
+  {
+   "agent": "agent-05",
+   "arm": "c1",
+   "n": 37,
+   "tp": 16,
+   "fp": 15,
+   "tn": 3,
+   "fn": 3,
+   "precision": 0.5161290322580645,
+   "recall": 0.8421052631578947,
+   "f1": 0.6399999999999999,
+   "accuracy": 0.5135135135135135,
+   "kappa": 0.008928571428571343
+  },
+  {
+   "agent": "agent-06",
+   "arm": "c0",
+   "n": 38,
+   "tp": 19,
+   "fp": 17,
+   "tn": 2,
+   "fn": 0,
+   "precision": 0.5277777777777778,
+   "recall": 1.0,
+   "f1": 0.6909090909090909,
+   "accuracy": 0.5526315789473685,
+   "kappa": 0.10526315789473695
+  },
+  {
+   "agent": "agent-06",
+   "arm": "c1",
+   "n": 38,
+   "tp": 18,
+   "fp": 15,
+   "tn": 4,
+   "fn": 1,
+   "precision": 0.5454545454545454,
+   "recall": 0.9473684210526315,
+   "f1": 0.6923076923076923,
+   "accuracy": 0.5789473684210527,
+   "kappa": 0.1578947368421053
+  },
+  {
+   "agent": "agent-07",
+   "arm": "c0",
+   "n": 37,
+   "tp": 16,
+   "fp": 17,
+   "tn": 2,
+   "fn": 2,
+   "precision": 0.48484848484848486,
+   "recall": 0.8888888888888888,
+   "f1": 0.6274509803921569,
+   "accuracy": 0.4864864864864865,
+   "kappa": -0.0057224606580828855
+  },
+  {
+   "agent": "agent-07",
+   "arm": "c1",
+   "n": 37,
+   "tp": 16,
+   "fp": 17,
+   "tn": 2,
+   "fn": 2,
+   "precision": 0.48484848484848486,
+   "recall": 0.8888888888888888,
+   "f1": 0.6274509803921569,
+   "accuracy": 0.4864864864864865,
+   "kappa": -0.0057224606580828855
+  },
+  {
+   "agent": "agent-08",
+   "arm": "c0",
+   "n": 37,
+   "tp": 15,
+   "fp": 17,
+   "tn": 2,
+   "fn": 3,
+   "precision": 0.46875,
+   "recall": 0.8333333333333334,
+   "f1": 0.6,
+   "accuracy": 0.4594594594594595,
+   "kappa": -0.06017191977077361
+  },
+  {
+   "agent": "agent-08",
+   "arm": "c1",
+   "n": 37,
+   "tp": 13,
+   "fp": 18,
+   "tn": 1,
+   "fn": 5,
+   "precision": 0.41935483870967744,
+   "recall": 0.7222222222222222,
+   "f1": 0.5306122448979592,
+   "accuracy": 0.3783783783783784,
+   "kappa": -0.22094691535150637
+  },
+  {
+   "agent": "agent-09",
+   "arm": "c0",
+   "n": 37,
+   "tp": 17,
+   "fp": 14,
+   "tn": 5,
+   "fn": 1,
+   "precision": 0.5483870967741935,
+   "recall": 0.9444444444444444,
+   "f1": 0.6938775510204082,
+   "accuracy": 0.5945945945945946,
+   "kappa": 0.2037302725968437
+  },
+  {
+   "agent": "agent-09",
+   "arm": "c1",
+   "n": 37,
+   "tp": 16,
+   "fp": 15,
+   "tn": 4,
+   "fn": 2,
+   "precision": 0.5161290322580645,
+   "recall": 0.8888888888888888,
+   "f1": 0.6530612244897959,
+   "accuracy": 0.5405405405405406,
+   "kappa": 0.09756097560975618
+  },
+  {
+   "agent": "agent-10",
+   "arm": "c0",
+   "n": 37,
+   "tp": 14,
+   "fp": 18,
+   "tn": 1,
+   "fn": 4,
+   "precision": 0.4375,
+   "recall": 0.7777777777777778,
+   "f1": 0.56,
+   "accuracy": 0.40540540540540543,
+   "kappa": -0.16618911174785098
+  },
+  {
+   "agent": "agent-10",
+   "arm": "c1",
+   "n": 37,
+   "tp": 16,
+   "fp": 18,
+   "tn": 1,
+   "fn": 2,
+   "precision": 0.47058823529411764,
+   "recall": 0.8888888888888888,
+   "f1": 0.6153846153846153,
+   "accuracy": 0.4594594594594595,
+   "kappa": -0.05714285714285711
+  }
+ ],
+ "cluster_sensitivity": {
+  "pattern": {
+   "clusters": 62,
+   "positive_delta_clusters": 7,
+   "negative_delta_clusters": 8,
+   "unchanged_clusters": 47,
+   "mean_cluster_accuracy_delta": -0.0026881720430107533,
+   "bootstrap_ci_95": {
+    "lower": -0.024193548387096774,
+    "upper": 0.018817204301075266
+   }
+  },
+  "auditor_run": {
+   "clusters": 10,
+   "positive_delta_clusters": 3,
+   "negative_delta_clusters": 3,
+   "unchanged_clusters": 4,
+   "mean_cluster_accuracy_delta": -0.0027738264580369847,
+   "bootstrap_ci_95": {
+    "lower": -0.032432432432432434,
+    "upper": 0.026955903271692748
+   }
+  }
+ },
+ "run_metadata": {
+  "run_id": "run5-updated-sandbox-20260903",
+  "started_at": "2026-09-03T09:54:22+02:00",
+  "sandbox_repository": {
+   "path": "/home/neliq/Coding/master-project",
+   "commit": "f022958ecd083782f4fab53002c538afec0eac11"
+  },
+  "thesis_repository": {
+   "path": "/home/neliq/Coding/Master-Thesis",
+   "commit_at_run_start": "798f3140c833d99603c2cecfeb14d01b700754bc"
+  },
+  "model": {
+   "provider": "openai-codex",
+   "model": "gpt-5.6-luna-900k",
+   "note": "The previously documented DeepSeek evaluator was unavailable; this rerun is not a same-model replication."
+  },
+  "environment": {
+   "bun": "1.4.0",
+   "node": "22.23.2",
+   "python": "3.11.15",
+   "chromium": "152.0.7977.75"
+  },
+  "corpus": {
+   "instances": 372,
+   "patterns": 62,
+   "condition_layers": 3,
+   "variants": 2,
+   "captured_states": 831,
+   "state_distribution": {
+    "1": 66,
+    "2": 215,
+    "3": 29,
+    "4": 62
+   },
+   "leak_policy": "experiment-data/tools/leak_policy.py",
+   "leak_markers_after_hardening": 0
+  },
+  "capture": {
+   "sandbox_base_url": "http://127.0.0.1:3000",
+   "chromium_path": "/usr/bin/chromium",
+   "max_states": 4,
+   "path_policy": "first eligible non-stop button per condition shell"
+  },
+  "prompts": "experiment-data/auditor-prompts-run5.md",
+  "assignment": "agent-lists-run4/agent-01.txt through agent-10.txt",
+  "raw_output": "results/raw/agent-01.jsonl through agent-10.jsonl",
+  "raw_rows": 744,
+  "paired_comparison": {
+   "b": 12,
+   "c": 13,
+   "n": 25,
+   "chi2": 0.04,
+   "p_exact_binomial": 1.0
+  },
+  "condition_metrics": {
+   "0": {
+    "tp": 159,
+    "fp": 161,
+    "tn": 25,
+    "fn": 27,
+    "precision": 0.496875,
+    "recall": 0.8548387096774194,
+    "f1": 0.6284584980237153,
+    "accuracy": 0.4946236559139785,
+    "kappa": -0.010752688172043001
+   },
+   "1": {
+    "tp": 155,
+    "fp": 158,
+    "tn": 28,
+    "fn": 31,
+    "precision": 0.4952076677316294,
+    "recall": 0.8333333333333334,
+    "f1": 0.6212424849699398,
+    "accuracy": 0.49193548387096775,
+    "kappa": -0.016129032258064502
+   }
+  },
+  "paired_bootstrap_ci_95": {
+   "accuracy_delta": {
+    "lower": -0.029569892473118253,
+    "upper": 0.024193548387096753
+   },
+   "f1_delta": {
+    "lower": -0.02843521822297784,
+    "upper": 0.012696218186362867
+   }
+  },
+  "cluster_sensitivity": {
+   "pattern": {
+    "clusters": 62,
+    "positive_delta_clusters": 7,
+    "negative_delta_clusters": 8,
+    "unchanged_clusters": 47,
+    "mean_cluster_accuracy_delta": -0.0026881720430107533,
+    "bootstrap_ci_95": {
+     "lower": -0.024193548387096774,
+     "upper": 0.018817204301075266
+    }
+   },
+   "auditor_run": {
+    "clusters": 10,
+    "positive_delta_clusters": 3,
+    "negative_delta_clusters": 3,
+    "unchanged_clusters": 4,
+    "mean_cluster_accuracy_delta": -0.0027738264580369847,
+    "bootstrap_ci_95": {
+     "lower": -0.032432432432432434,
+     "upper": 0.026955903271692748
+    }
+   }
+  },
+  "sha256_inventory": "results/run5-hashes.json"
  }
 }

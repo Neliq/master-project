@@ -16,9 +16,11 @@ Neutralizes ALL tailwind colour utilities to a single `accent` token
 import pathlib
 import os
 import re
+import json
 from html.parser import HTMLParser
+from leak_policy import scrub_attrs, TEXT_MARKERS
 
-EXP = pathlib.Path("/home/neliq/Coding/master-project/experiment-data")
+EXP = pathlib.Path(os.environ.get("EXPERIMENT_DIR", pathlib.Path(__file__).resolve().parents[1]))
 CORPUS = pathlib.Path(os.environ.get("CORPUS_DIR", EXP / "corpus"))
 
 STRONG_MARKERS = [
@@ -57,6 +59,7 @@ STRONG_MARKERS = [
     "pre-selected", "within the plausible band", "the plausible band",
     "the anchor reflects", "optinall", "the sim,",
 ]
+STRONG_MARKERS.extend(TEXT_MARKERS)
 
 BUTTON_STOP = ["restart demo", "restart", "scan copy", "scan", "fast-forward",
                "simulate", "simulator", "advance to", "skip ahead"]
@@ -165,6 +168,10 @@ def harden_node(node, parent_list):
     txt_pre = full_text(node)
     low_pre = txt_pre.lower()
     matched_pre = [m for m in STRONG_MARKERS if m in low_pre]
+    if matched_pre and node.tag in ("p", "span", "small", "strong", "em", "label"):
+        return []
+    if matched_pre and node.tag == "div" and len(txt_pre.strip()) < 400:
+        return []
     out = []
     for child in node.children:
         out.extend(harden_node(child, node.children))
@@ -197,12 +204,7 @@ def harden_node(node, parent_list):
                 scrub_text_nodes(node, matched)
                 if not full_text(node).strip():
                     return []
-    if node.tag == "input":
-        attrs = dict(node.attrs)
-        for k in ("name", "id", "aria-label", "title"):
-            if k in attrs:
-                attrs[k] = re.sub(r"(?i)(benign|deceptive)", "control", attrs[k])
-        node.attrs = list(attrs.items())
+    node.attrs = scrub_attrs(node.attrs)
     return [node]
 
 
@@ -235,6 +237,11 @@ def process_file(path):
     for st in states:
         if not st.strip():
             continue
+        # Remove hidden and malformed diagnostic paragraphs before parsing.
+        # Some captured JSX contains a literal '<' in explanatory math, which
+        # HTMLParser interprets as a tag and therefore cannot scrub reliably.
+        st = re.sub(r"(?is)<p\b[^>]*\bhidden(?:\s*=\s*(?:\"[^\"]*\"|'[^']*'|[^\s>]+))?[^>]*>.*?</p>", "", st)
+        st = re.sub(r"(?is)<p\b[^>]*>(?:(?!</p>).)*(?:threshold|specificity\s*\(|subtree\s+ratio|actual\s+backend|run\s+semantic\s+analysis).*?</p>", "", st)
         root = build_tree(st)
         children = []
         for c in root.children:
@@ -267,3 +274,14 @@ for f in files:
     else:
         n_ok += 1
 print(f"processed {n_ok}, emptied {n_empty}")
+
+if CORPUS.resolve() == (EXP / "corpus").resolve():
+    manifest_path = EXP / "manifest.json"
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text())
+        for entry in manifest:
+            fragment = CORPUS / pathlib.Path(entry["file"]).name
+            if fragment.exists():
+                entry["size_bytes"] = fragment.stat().st_size
+        manifest_path.write_text(json.dumps(manifest, indent=1) + "\n")
+        print("manifest sizes refreshed")

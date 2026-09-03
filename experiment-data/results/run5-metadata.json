@@ -1,0 +1,114 @@
+{
+  "run_id": "run5-updated-sandbox-20260903",
+  "started_at": "2026-09-03T09:54:22+02:00",
+  "sandbox_repository": {
+    "path": "/home/neliq/Coding/master-project",
+    "commit": "f022958ecd083782f4fab53002c538afec0eac11"
+  },
+  "thesis_repository": {
+    "path": "/home/neliq/Coding/Master-Thesis",
+    "commit_at_run_start": "798f3140c833d99603c2cecfeb14d01b700754bc"
+  },
+  "model": {
+    "provider": "openai-codex",
+    "model": "gpt-5.6-luna-900k",
+    "note": "The previously documented DeepSeek evaluator was unavailable; this rerun is not a same-model replication."
+  },
+  "environment": {
+    "bun": "1.4.0",
+    "node": "22.23.2",
+    "python": "3.11.15",
+    "chromium": "152.0.7977.75"
+  },
+  "corpus": {
+    "instances": 372,
+    "patterns": 62,
+    "condition_layers": 3,
+    "variants": 2,
+    "captured_states": 831,
+    "state_distribution": {
+      "1": 66,
+      "2": 215,
+      "3": 29,
+      "4": 62
+    },
+    "leak_policy": "experiment-data/tools/leak_policy.py",
+    "leak_markers_after_hardening": 0
+  },
+  "capture": {
+    "sandbox_base_url": "http://127.0.0.1:3000",
+    "chromium_path": "/usr/bin/chromium",
+    "max_states": 4,
+    "path_policy": "first eligible non-stop button per condition shell"
+  },
+  "prompts": "experiment-data/auditor-prompts-run5.md",
+  "assignment": "agent-lists-run4/agent-01.txt through agent-10.txt",
+  "raw_output": "results/raw/agent-01.jsonl through agent-10.jsonl",
+  "raw_rows": 744,
+  "paired_comparison": {
+    "b": 12,
+    "c": 13,
+    "n": 25,
+    "chi2": 0.04,
+    "p_exact_binomial": 1.0
+  },
+  "condition_metrics": {
+    "0": {
+      "tp": 159,
+      "fp": 161,
+      "tn": 25,
+      "fn": 27,
+      "precision": 0.496875,
+      "recall": 0.8548387096774194,
+      "f1": 0.6284584980237153,
+      "accuracy": 0.4946236559139785,
+      "kappa": -0.010752688172043001
+    },
+    "1": {
+      "tp": 155,
+      "fp": 158,
+      "tn": 28,
+      "fn": 31,
+      "precision": 0.4952076677316294,
+      "recall": 0.8333333333333334,
+      "f1": 0.6212424849699398,
+      "accuracy": 0.49193548387096775,
+      "kappa": -0.016129032258064502
+    }
+  },
+  "paired_bootstrap_ci_95": {
+    "accuracy_delta": {
+      "lower": -0.029569892473118253,
+      "upper": 0.024193548387096753
+    },
+    "f1_delta": {
+      "lower": -0.02843521822297784,
+      "upper": 0.012696218186362867
+    }
+  },
+  "cluster_sensitivity": {
+    "pattern": {
+      "clusters": 62,
+      "positive_delta_clusters": 7,
+      "negative_delta_clusters": 8,
+      "unchanged_clusters": 47,
+      "mean_cluster_accuracy_delta": -0.0026881720430107533,
+      "bootstrap_ci_95": {
+        "lower": -0.024193548387096774,
+        "upper": 0.018817204301075266
+      }
+    },
+    "auditor_run": {
+      "clusters": 10,
+      "positive_delta_clusters": 3,
+      "negative_delta_clusters": 3,
+      "unchanged_clusters": 4,
+      "mean_cluster_accuracy_delta": -0.0027738264580369847,
+      "bootstrap_ci_95": {
+        "lower": -0.032432432432432434,
+        "upper": 0.026955903271692748
+      }
+    }
+  },
+  "sha256_inventory": "results/run5-hashes.json"
+}

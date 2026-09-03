@@ -6,7 +6,7 @@
   "deceptive": true,
   "pair": "activity-messages-cond1",
   "file": "corpus/inst-0332.html",
-  "size_bytes": 1010
+  "size_bytes": 935
  },
  "inst-0284": {
   "slug": "activity-messages",
@@ -15,7 +15,7 @@
   "deceptive": false,
   "pair": "activity-messages-cond1",
   "file": "corpus/inst-0284.html",
-  "size_bytes": 1086
+  "size_bytes": 925
  },
  "inst-0158": {
   "slug": "activity-messages",
@@ -24,7 +24,7 @@
   "deceptive": true,
   "pair": "activity-messages-cond2",
   "file": "corpus/inst-0158.html",
-  "size_bytes": 9289
+  "size_bytes": 5104
  },
  "inst-0350": {
   "slug": "activity-messages",
@@ -33,7 +33,7 @@
   "deceptive": false,
   "pair": "activity-messages-cond2",
   "file": "corpus/inst-0350.html",
-  "size_bytes": 4767
+  "size_bytes": 6584
  },
  "inst-0001": {
   "slug": "activity-messages",
@@ -42,7 +42,7 @@
   "deceptive": true,
   "pair": "activity-messages-cond3",
   "file": "corpus/inst-0001.html",
-  "size_bytes": 7430
+  "size_bytes": 6582
  },
  "inst-0359": {
   "slug": "activity-messages",
@@ -51,7 +51,7 @@
   "deceptive": false,
   "pair": "activity-messages-cond3",
   "file": "corpus/inst-0359.html",
-  "size_bytes": 7900
+  "size_bytes": 6582
  },
  "inst-0187": {
   "slug": "addictive-design",
@@ -60,7 +60,7 @@
   "deceptive": true,
   "pair": "addictive-design-cond1",
   "file": "corpus/inst-0187.html",
-  "size_bytes": 3259
+  "size_bytes": 2856
  },
  "inst-0290": {
   "slug": "addictive-design",
@@ -69,7 +69,7 @@
   "deceptive": false,
   "pair": "addictive-design-cond1",
   "file": "corpus/inst-0290.html",
-  "size_bytes": 23882
+  "size_bytes": 2881
  },
  "inst-0144": {
   "slug": "addictive-design",
@@ -78,7 +78,7 @@
   "deceptive": true,
   "pair": "addictive-design-cond2",
   "file": "corpus/inst-0144.html",
-  "size_bytes": 1486
+  "size_bytes": 5105
  },
  "inst-0286": {
   "slug": "addictive-design",
@@ -87,7 +87,7 @@
   "deceptive": false,
   "pair": "addictive-design-cond2",
   "file": "corpus/inst-0286.html",
-  "size_bytes": 6805
+  "size_bytes": 5105
  },
  "inst-0266": {
   "slug": "addictive-design",
@@ -96,7 +96,7 @@
   "deceptive": true,
   "pair": "addictive-design-cond3",
   "file": "corpus/inst-0266.html",
-  "size_bytes": 5937
+  "size_bytes": 5812
  },
  "inst-0317": {
   "slug": "addictive-design",
@@ -105,7 +105,7 @@
   "deceptive": false,
   "pair": "addictive-design-cond3",
   "file": "corpus/inst-0317.html",
-  "size_bytes": 5573
+  "size_bytes": 5291
  },
  "inst-0244": {
   "slug": "address-book-leeching",
@@ -114,7 +114,7 @@
   "deceptive": true,
   "pair": "address-book-leeching-cond1",
   "file": "corpus/inst-0244.html",
-  "size_bytes": 3224
+  "size_bytes": 3066
  },
  "inst-0337": {
   "slug": "address-book-leeching",
@@ -123,7 +123,7 @@
   "deceptive": false,
   "pair": "address-book-leeching-cond1",
   "file": "corpus/inst-0337.html",
-  "size_bytes": 5749
+  "size_bytes": 3066
  },
  "inst-0220": {
   "slug": "address-book-leeching",
@@ -132,7 +132,7 @@
   "deceptive": true,
   "pair": "address-book-leeching-cond2",
   "file": "corpus/inst-0220.html",
-  "size_bytes": 2364
+  "size_bytes": 1581
  },
  "inst-0047": {
   "slug": "address-book-leeching",
@@ -141,7 +141,7 @@
   "deceptive": false,
   "pair": "address-book-leeching-cond2",
   "file": "corpus/inst-0047.html",
-  "size_bytes": 2292
+  "size_bytes": 1843
  },
  "inst-0255": {
   "slug": "address-book-leeching",
@@ -150,7 +150,7 @@
   "deceptive": true,
   "pair": "address-book-leeching-cond3",
   "file": "corpus/inst-0255.html",
-  "size_bytes": 3065
+  "size_bytes": 995
  },
  "inst-0296": {
   "slug": "address-book-leeching",
@@ -159,7 +159,7 @@
   "deceptive": false,
   "pair": "address-book-leeching-cond3",
   "file": "corpus/inst-0296.html",
-  "size_bytes": 3260
+  "size_bytes": 2895
  },
  "inst-0367": {
   "slug": "auto-play",
@@ -168,7 +168,7 @@
   "deceptive": true,
   "pair": "auto-play-cond1",
   "file": "corpus/inst-0367.html",
-  "size_bytes": 1629
+  "size_bytes": 1878
  },
  "inst-0308": {
   "slug": "auto-play",
@@ -177,7 +177,7 @@
   "deceptive": false,
   "pair": "auto-play-cond1",
   "file": "corpus/inst-0308.html",
-  "size_bytes": 2899
+  "size_bytes": 1879
  },
  "inst-0261": {
   "slug": "auto-play",
@@ -186,7 +186,7 @@
   "deceptive": true,
   "pair": "auto-play-cond2",
   "file": "corpus/inst-0261.html",
-  "size_bytes": 925
+  "size_bytes": 918
  },
  "inst-0304": {
   "slug": "auto-play",
@@ -195,7 +195,7 @@
   "deceptive": false,
   "pair": "auto-play-cond2",
   "file": "corpus/inst-0304.html",
-  "size_bytes": 2363
+  "size_bytes": 918
  },
  "inst-0265": {
   "slug": "auto-play",
@@ -204,7 +204,7 @@
   "deceptive": true,
   "pair": "auto-play-cond3",
   "file": "corpus/inst-0265.html",
-  "size_bytes": 1113
+  "size_bytes": 986
  },
  "inst-0356": {
   "slug": "auto-play",
@@ -213,7 +213,7 @@
   "deceptive": false,
   "pair": "auto-play-cond3",
   "file": "corpus/inst-0356.html",
-  "size_bytes": 1375
+  "size_bytes": 986
  },
  "inst-0163": {
   "slug": "automatic-accept-third-party-term",
@@ -222,7 +222,7 @@
   "deceptive": true,
   "pair": "automatic-accept-third-party-term-cond1",
   "file": "corpus/inst-0163.html",
-  "size_bytes": 950
+  "size_bytes": 885
  },
  "inst-0325": {
   "slug": "automatic-accept-third-party-term",
@@ -231,7 +231,7 @@
   "deceptive": false,
   "pair": "automatic-accept-third-party-term-cond1",
   "file": "corpus/inst-0325.html",
-  "size_bytes": 3315
+  "size_bytes": 885
  },
  "inst-0188": {
   "slug": "automatic-accept-third-party-term",
@@ -240,7 +240,7 @@
   "deceptive": true,
   "pair": "automatic-accept-third-party-term-cond2",
   "file": "corpus/inst-0188.html",
-  "size_bytes": 1969
+  "size_bytes": 512
  },
  "inst-0322": {
   "slug": "automatic-accept-third-party-term",
@@ -249,7 +249,7 @@
   "deceptive": false,
   "pair": "automatic-accept-third-party-term-cond2",
   "file": "corpus/inst-0322.html",
-  "size_bytes": 4367
+  "size_bytes": 1874
  },
  "inst-0327": {
   "slug": "automatic-accept-third-party-term",
@@ -258,7 +258,7 @@
   "deceptive": true,
   "pair": "automatic-accept-third-party-term-cond3",
   "file": "corpus/inst-0327.html",
-  "size_bytes": 2816
+  "size_bytes": 2542
  },
  "inst-0173": {
   "slug": "automatic-accept-third-party-term",
@@ -267,7 +267,7 @@
   "deceptive": false,
   "pair": "automatic-accept-third-party-term-cond3",
   "file": "corpus/inst-0173.html",
-  "size_bytes": 1030
+  "size_bytes": 2542
  },
  "inst-0341": {
   "slug": "automating-the-user-away",
@@ -276,7 +276,7 @@
   "deceptive": true,
   "pair": "automating-the-user-away-cond1",
   "file": "corpus/inst-0341.html",
-  "size_bytes": 2619
+  "size_bytes": 2428
  },
  "inst-0092": {
   "slug": "automating-the-user-away",
@@ -285,7 +285,7 @@
   "deceptive": false,
   "pair": "automating-the-user-away-cond1",
   "file": "corpus/inst-0092.html",
-  "size_bytes": 2695
+  "size_bytes": 2428
  },
  "inst-0137": {
   "slug": "automating-the-user-away",
@@ -294,7 +294,7 @@
   "deceptive": true,
   "pair": "automating-the-user-away-cond2",
   "file": "corpus/inst-0137.html",
-  "size_bytes": 5102
+  "size_bytes": 4372
  },
  "inst-0019": {
   "slug": "automating-the-user-away",
@@ -303,7 +303,7 @@
   "deceptive": false,
   "pair": "automating-the-user-away-cond2",
   "file": "corpus/inst-0019.html",
-  "size_bytes": 5079
+  "size_bytes": 4378
  },
  "inst-0324": {
   "slug": "automating-the-user-away",
@@ -312,7 +312,7 @@
   "deceptive": true,
   "pair": "automating-the-user-away-cond3",
   "file": "corpus/inst-0324.html",
-  "size_bytes": 4177
+  "size_bytes": 2958
  },
  "inst-0214": {
   "slug": "automating-the-user-away",
@@ -321,7 +321,7 @@
   "deceptive": false,
   "pair": "automating-the-user-away-cond3",
   "file": "corpus/inst-0214.html",
-  "size_bytes": 3838
+  "size_bytes": 3426
  },
  "inst-0166": {
   "slug": "bad-defaults-preselection",
@@ -330,7 +330,7 @@
   "deceptive": true,
   "pair": "bad-defaults-preselection-cond1",
   "file": "corpus/inst-0166.html",
-  "size_bytes": 4384
+  "size_bytes": 3508
  },
  "inst-0007": {
   "slug": "bad-defaults-preselection",
@@ -339,7 +339,7 @@
   "deceptive": false,
   "pair": "bad-defaults-preselection-cond1",
   "file": "corpus/inst-0007.html",
-  "size_bytes": 2990
+  "size_bytes": 655
  },
  "inst-0118": {
   "slug": "bad-defaults-preselection",
@@ -348,7 +348,7 @@
   "deceptive": true,
   "pair": "bad-defaults-preselection-cond2",
   "file": "corpus/inst-0118.html",
-  "size_bytes": 3522
+  "size_bytes": 891
  },
  "inst-0126": {
   "slug": "bad-defaults-preselection",
@@ -357,7 +357,7 @@
   "deceptive": false,
   "pair": "bad-defaults-preselection-cond2",
   "file": "corpus/inst-0126.html",
-  "size_bytes": 2649
+  "size_bytes": 891
  },
  "inst-0203": {
   "slug": "bad-defaults-preselection",
@@ -366,7 +366,7 @@
   "deceptive": true,
   "pair": "bad-defaults-preselection-cond3",
   "file": "corpus/inst-0203.html",
-  "size_bytes": 5486
+  "size_bytes": 4655
  },
  "inst-0051": {
   "slug": "bad-defaults-preselection",
@@ -375,7 +375,7 @@
   "deceptive": false,
   "pair": "bad-defaults-preselection-cond3",
   "file": "corpus/inst-0051.html",
-  "size_bytes": 4289
+  "size_bytes": 1722
  },
  "inst-0104": {
   "slug": "bundling",
@@ -384,7 +384,7 @@
   "deceptive": true,
   "pair": "bundling-cond1",
   "file": "corpus/inst-0104.html",
-  "size_bytes": 4976
+  "size_bytes": 3947
  },
  "inst-0100": {
   "slug": "bundling",
@@ -393,7 +393,7 @@
   "deceptive": false,
   "pair": "bundling-cond1",
   "file": "corpus/inst-0100.html",
-  "size_bytes": 4555
+  "size_bytes": 4653
  },
  "inst-0133": {
   "slug": "bundling",
@@ -402,7 +402,7 @@
   "deceptive": true,
   "pair": "bundling-cond2",
   "file": "corpus/inst-0133.html",
-  "size_bytes": 3562
+  "size_bytes": 2857
  },
  "inst-0303": {
   "slug": "bundling",
@@ -411,7 +411,7 @@
   "deceptive": false,
   "pair": "bundling-cond2",
   "file": "corpus/inst-0303.html",
-  "size_bytes": 5230
+  "size_bytes": 3247
  },
  "inst-0012": {
   "slug": "bundling",
@@ -420,7 +420,7 @@
   "deceptive": true,
   "pair": "bundling-cond3",
   "file": "corpus/inst-0012.html",
-  "size_bytes": 7444
+  "size_bytes": 7089
  },
  "inst-0269": {
   "slug": "bundling",
@@ -429,7 +429,7 @@
   "deceptive": false,
   "pair": "bundling-cond3",
   "file": "corpus/inst-0269.html",
-  "size_bytes": 10646
+  "size_bytes": 7089
  },
  "inst-0083": {
   "slug": "choice-overload",
@@ -438,7 +438,7 @@
   "deceptive": true,
   "pair": "choice-overload-cond1",
   "file": "corpus/inst-0083.html",
-  "size_bytes": 16734
+  "size_bytes": 14421
  },
  "inst-0152": {
   "slug": "choice-overload",
@@ -447,7 +447,7 @@
   "deceptive": false,
   "pair": "choice-overload-cond1",
   "file": "corpus/inst-0152.html",
-  "size_bytes": 16886
+  "size_bytes": 14672
  },
  "inst-0211": {
   "slug": "choice-overload",
@@ -456,7 +456,7 @@
   "deceptive": true,
   "pair": "choice-overload-cond2",
   "file": "corpus/inst-0211.html",
-  "size_bytes": 28255
+  "size_bytes": 24417
  },
  "inst-0246": {
   "slug": "choice-overload",
@@ -465,7 +465,7 @@
   "deceptive": false,
   "pair": "choice-overload-cond2",
   "file": "corpus/inst-0246.html",
-  "size_bytes": 34135
+  "size_bytes": 24417
  },
  "inst-0363": {
   "slug": "choice-overload",
@@ -474,7 +474,7 @@
   "deceptive": true,
   "pair": "choice-overload-cond3",
   "file": "corpus/inst-0363.html",
-  "size_bytes": 5939
+  "size_bytes": 5394
  },
  "inst-0036": {
   "slug": "choice-overload",
@@ -483,7 +483,7 @@
   "deceptive": false,
   "pair": "choice-overload-cond3",
   "file": "corpus/inst-0036.html",
-  "size_bytes": 3539
+  "size_bytes": 5394
  },
  "inst-0260": {
   "slug": "complex-language",
@@ -492,7 +492,7 @@
   "deceptive": true,
   "pair": "complex-language-cond1",
   "file": "corpus/inst-0260.html",
-  "size_bytes": 2531
+  "size_bytes": 2217
  },
  "inst-0273": {
   "slug": "complex-language",
@@ -501,7 +501,7 @@
   "deceptive": false,
   "pair": "complex-language-cond1",
   "file": "corpus/inst-0273.html",
-  "size_bytes": 1709
+  "size_bytes": 2323
  },
  "inst-0146": {
   "slug": "complex-language",
@@ -510,7 +510,7 @@
   "deceptive": true,
   "pair": "complex-language-cond2",
   "file": "corpus/inst-0146.html",
-  "size_bytes": 5024
+  "size_bytes": 1611
  },
  "inst-0348": {
   "slug": "complex-language",
@@ -519,7 +519,7 @@
   "deceptive": false,
   "pair": "complex-language-cond2",
   "file": "corpus/inst-0348.html",
-  "size_bytes": 3276
+  "size_bytes": 3680
  },
  "inst-0196": {
   "slug": "complex-language",
@@ -528,7 +528,7 @@
   "deceptive": true,
   "pair": "complex-language-cond3",
   "file": "corpus/inst-0196.html",
-  "size_bytes": 2189
+  "size_bytes": 2043
  },
  "inst-0059": {
   "slug": "complex-language",
@@ -537,7 +537,7 @@
   "deceptive": false,
   "pair": "complex-language-cond3",
   "file": "corpus/inst-0059.html",
-  "size_bytes": 1591
+  "size_bytes": 1798
  },
  "inst-0216": {
   "slug": "confirmshaming",
@@ -546,7 +546,7 @@
   "deceptive": true,
   "pair": "confirmshaming-cond1",
   "file": "corpus/inst-0216.html",
-  "size_bytes": 2581
+  "size_bytes": 770
  },
  "inst-0010": {
   "slug": "confirmshaming",
@@ -555,7 +555,7 @@
   "deceptive": false,
   "pair": "confirmshaming-cond1",
   "file": "corpus/inst-0010.html",
-  "size_bytes": 2039
+  "size_bytes": 2391
  },
  "inst-0107": {
   "slug": "confirmshaming",
@@ -564,7 +564,7 @@
   "deceptive": true,
   "pair": "confirmshaming-cond2",
   "file": "corpus/inst-0107.html",
-  "size_bytes": 2760
+  "size_bytes": 2005
  },
  "inst-0272": {
   "slug": "confirmshaming",
@@ -573,7 +573,7 @@
   "deceptive": false,
   "pair": "confirmshaming-cond2",
   "file": "corpus/inst-0272.html",
-  "size_bytes": 2294
+  "size_bytes": 2283
  },
  "inst-0119": {
   "slug": "confirmshaming",
@@ -582,7 +582,7 @@
   "deceptive": true,
   "pair": "confirmshaming-cond3",
   "file": "corpus/inst-0119.html",
-  "size_bytes": 3366
+  "size_bytes": 1155
  },
  "inst-0025": {
   "slug": "confirmshaming",
@@ -591,7 +591,7 @@
   "deceptive": false,
   "pair": "confirmshaming-cond3",
   "file": "corpus/inst-0025.html",
-  "size_bytes": 2872
+  "size_bytes": 2820
  },
  "inst-0031": {
   "slug": "conflicting-information",
@@ -600,7 +600,7 @@
   "deceptive": true,
   "pair": "conflicting-information-cond1",
   "file": "corpus/inst-0031.html",
-  "size_bytes": 3941
+  "size_bytes": 1252
  },
  "inst-0334": {
   "slug": "conflicting-information",
@@ -609,7 +609,7 @@
   "deceptive": false,
   "pair": "conflicting-information-cond1",
   "file": "corpus/inst-0334.html",
-  "size_bytes": 3493
+  "size_bytes": 3511
  },
  "inst-0088": {
   "slug": "conflicting-information",
@@ -618,7 +618,7 @@
   "deceptive": true,
   "pair": "conflicting-information-cond2",
   "file": "corpus/inst-0088.html",
-  "size_bytes": 4447
+  "size_bytes": 1381
  },
  "inst-0159": {
   "slug": "conflicting-information",
@@ -627,7 +627,7 @@
   "deceptive": false,
   "pair": "conflicting-information-cond2",
   "file": "corpus/inst-0159.html",
-  "size_bytes": 3478
+  "size_bytes": 3541
  },
  "inst-0061": {
   "slug": "conflicting-information",
@@ -636,7 +636,7 @@
   "deceptive": true,
   "pair": "conflicting-information-cond3",
   "file": "corpus/inst-0061.html",
-  "size_bytes": 6541
+  "size_bytes": 2518
  },
  "inst-0353": {
   "slug": "conflicting-information",
@@ -645,7 +645,7 @@
   "deceptive": false,
   "pair": "conflicting-information-cond3",
   "file": "corpus/inst-0353.html",
-  "size_bytes": 6094
+  "size_bytes": 6210
  },
  "inst-0328": {
   "slug": "countdown-on-ads",
@@ -654,7 +654,7 @@
   "deceptive": true,
   "pair": "countdown-on-ads-cond1",
   "file": "corpus/inst-0328.html",
-  "size_bytes": 1717
+  "size_bytes": 1682
  },
  "inst-0165": {
   "slug": "countdown-on-ads",
@@ -663,7 +663,7 @@
   "deceptive": false,
   "pair": "countdown-on-ads-cond1",
   "file": "corpus/inst-0165.html",
-  "size_bytes": 2656
+  "size_bytes": 1682
  },
  "inst-0063": {
   "slug": "countdown-on-ads",
@@ -672,7 +672,7 @@
   "deceptive": true,
   "pair": "countdown-on-ads-cond2",
   "file": "corpus/inst-0063.html",
-  "size_bytes": 1706
+  "size_bytes": 1745
  },
  "inst-0232": {
   "slug": "countdown-on-ads",
@@ -681,7 +681,7 @@
   "deceptive": false,
   "pair": "countdown-on-ads-cond2",
   "file": "corpus/inst-0232.html",
-  "size_bytes": 2150
+  "size_bytes": 1745
  },
  "inst-0229": {
   "slug": "countdown-on-ads",
@@ -690,7 +690,7 @@
   "deceptive": true,
   "pair": "countdown-on-ads-cond3",
   "file": "corpus/inst-0229.html",
-  "size_bytes": 1796
+  "size_bytes": 1761
  },
  "inst-0315": {
   "slug": "countdown-on-ads",
@@ -699,7 +699,7 @@
   "deceptive": false,
   "pair": "countdown-on-ads-cond3",
   "file": "corpus/inst-0315.html",
-  "size_bytes": 2904
+  "size_bytes": 1761
  },
  "inst-0135": {
   "slug": "countdown-timer",
@@ -708,7 +708,7 @@
   "deceptive": true,
   "pair": "countdown-timer-cond1",
   "file": "corpus/inst-0135.html",
-  "size_bytes": 2966
+  "size_bytes": 2304
  },
  "inst-0307": {
   "slug": "countdown-timer",
@@ -717,7 +717,7 @@
   "deceptive": false,
   "pair": "countdown-timer-cond1",
   "file": "corpus/inst-0307.html",
-  "size_bytes": 2589
+  "size_bytes": 2304
  },
  "inst-0251": {
   "slug": "countdown-timer",
@@ -726,7 +726,7 @@
   "deceptive": true,
   "pair": "countdown-timer-cond2",
   "file": "corpus/inst-0251.html",
-  "size_bytes": 3997
+  "size_bytes": 2951
  },
  "inst-0245": {
   "slug": "countdown-timer",
@@ -735,7 +735,7 @@
   "deceptive": false,
   "pair": "countdown-timer-cond2",
   "file": "corpus/inst-0245.html",
-  "size_bytes": 3658
+  "size_bytes": 3332
  },
  "inst-0062": {
   "slug": "countdown-timer",
@@ -744,7 +744,7 @@
   "deceptive": true,
   "pair": "countdown-timer-cond3",
   "file": "corpus/inst-0062.html",
-  "size_bytes": 7326
+  "size_bytes": 2939
  },
  "inst-0011": {
   "slug": "countdown-timer",
@@ -753,7 +753,7 @@
   "deceptive": false,
   "pair": "countdown-timer-cond3",
   "file": "corpus/inst-0011.html",
-  "size_bytes": 4334
+  "size_bytes": 5707
  },
  "inst-0209": {
   "slug": "customisation",
@@ -762,7 +762,7 @@
   "deceptive": true,
   "pair": "customisation-cond1",
   "file": "corpus/inst-0209.html",
-  "size_bytes": 3017
+  "size_bytes": 2585
  },
  "inst-0221": {
   "slug": "customisation",
@@ -771,7 +771,7 @@
   "deceptive": false,
   "pair": "customisation-cond1",
   "file": "corpus/inst-0221.html",
-  "size_bytes": 3304
+  "size_bytes": 2585
  },
  "inst-0219": {
   "slug": "customisation",
@@ -780,7 +780,7 @@
   "deceptive": true,
   "pair": "customisation-cond2",
   "file": "corpus/inst-0219.html",
-  "size_bytes": 14189
+  "size_bytes": 12921
  },
  "inst-0005": {
   "slug": "customisation",
@@ -789,7 +789,7 @@
   "deceptive": false,
   "pair": "customisation-cond2",
   "file": "corpus/inst-0005.html",
-  "size_bytes": 10492
+  "size_bytes": 12965
  },
  "inst-0228": {
   "slug": "customisation",
@@ -798,7 +798,7 @@
   "deceptive": true,
   "pair": "customisation-cond3",
   "file": "corpus/inst-0228.html",
-  "size_bytes": 7173
+  "size_bytes": 2836
  },
  "inst-0095": {
   "slug": "customisation",
@@ -807,7 +807,7 @@
   "deceptive": false,
   "pair": "customisation-cond3",
   "file": "corpus/inst-0095.html",
-  "size_bytes": 6732
+  "size_bytes": 6071
  },
  "inst-0175": {
   "slug": "cuteness",
@@ -816,7 +816,7 @@
   "deceptive": true,
   "pair": "cuteness-cond1",
   "file": "corpus/inst-0175.html",
-  "size_bytes": 4518
+  "size_bytes": 4916
  },
  "inst-0033": {
   "slug": "cuteness",
@@ -825,7 +825,7 @@
   "deceptive": false,
   "pair": "cuteness-cond1",
   "file": "corpus/inst-0033.html",
-  "size_bytes": 3085
+  "size_bytes": 4916
  },
  "inst-0091": {
   "slug": "cuteness",
@@ -834,7 +834,7 @@
   "deceptive": true,
   "pair": "cuteness-cond2",
   "file": "corpus/inst-0091.html",
-  "size_bytes": 5090
+  "size_bytes": 4359
  },
  "inst-0197": {
   "slug": "cuteness",
@@ -843,7 +843,7 @@
   "deceptive": false,
   "pair": "cuteness-cond2",
   "file": "corpus/inst-0197.html",
-  "size_bytes": 3208
+  "size_bytes": 4359
  },
  "inst-0193": {
   "slug": "cuteness",
@@ -852,7 +852,7 @@
   "deceptive": true,
   "pair": "cuteness-cond3",
   "file": "corpus/inst-0193.html",
-  "size_bytes": 5643
+  "size_bytes": 4626
  },
  "inst-0186": {
   "slug": "cuteness",
@@ -861,7 +861,7 @@
   "deceptive": false,
   "pair": "cuteness-cond3",
   "file": "corpus/inst-0186.html",
-  "size_bytes": 2859
+  "size_bytes": 5048
  },
  "inst-0227": {
   "slug": "dead-end",
@@ -870,7 +870,7 @@
   "deceptive": true,
   "pair": "dead-end-cond1",
   "file": "corpus/inst-0227.html",
-  "size_bytes": 3027
+  "size_bytes": 2587
  },
  "inst-0362": {
   "slug": "dead-end",
@@ -879,7 +879,7 @@
   "deceptive": false,
   "pair": "dead-end-cond1",
   "file": "corpus/inst-0362.html",
-  "size_bytes": 3069
+  "size_bytes": 2587
  },
  "inst-0054": {
   "slug": "dead-end",
@@ -888,7 +888,7 @@
   "deceptive": true,
   "pair": "dead-end-cond2",
   "file": "corpus/inst-0054.html",
-  "size_bytes": 4083
+  "size_bytes": 6808
  },
  "inst-0257": {
   "slug": "dead-end",
@@ -897,7 +897,7 @@
   "deceptive": false,
   "pair": "dead-end-cond2",
   "file": "corpus/inst-0257.html",
-  "size_bytes": 3949
+  "size_bytes": 6800
  },
  "inst-0053": {
   "slug": "dead-end",
@@ -906,7 +906,7 @@
   "deceptive": true,
   "pair": "dead-end-cond3",
   "file": "corpus/inst-0053.html",
-  "size_bytes": 3235
+  "size_bytes": 2841
  },
  "inst-0347": {
   "slug": "dead-end",
@@ -915,7 +915,7 @@
   "deceptive": false,
   "pair": "dead-end-cond3",
   "file": "corpus/inst-0347.html",
-  "size_bytes": 2980
+  "size_bytes": 2841
  },
  "inst-0120": {
   "slug": "disguised-ad",
@@ -924,7 +924,7 @@
   "deceptive": true,
   "pair": "disguised-ad-cond1",
   "file": "corpus/inst-0120.html",
-  "size_bytes": 6280
+  "size_bytes": 2486
  },
  "inst-0297": {
   "slug": "disguised-ad",
@@ -933,7 +933,7 @@
   "deceptive": false,
   "pair": "disguised-ad-cond1",
   "file": "corpus/inst-0297.html",
-  "size_bytes": 4652
+  "size_bytes": 2476
  },
  "inst-0090": {
   "slug": "disguised-ad",
@@ -942,7 +942,7 @@
   "deceptive": true,
   "pair": "disguised-ad-cond2",
   "file": "corpus/inst-0090.html",
-  "size_bytes": 9487
+  "size_bytes": 9275
  },
  "inst-0041": {
   "slug": "disguised-ad",
@@ -951,7 +951,7 @@
   "deceptive": false,
   "pair": "disguised-ad-cond2",
   "file": "corpus/inst-0041.html",
-  "size_bytes": 10865
+  "size_bytes": 9275
  },
  "inst-0368": {
   "slug": "disguised-ad",
@@ -960,7 +960,7 @@
   "deceptive": true,
   "pair": "disguised-ad-cond3",
   "file": "corpus/inst-0368.html",
-  "size_bytes": 7031
+  "size_bytes": 6345
  },
  "inst-0162": {
   "slug": "disguised-ad",
@@ -969,7 +969,7 @@
   "deceptive": false,
   "pair": "disguised-ad-cond3",
   "file": "corpus/inst-0162.html",
-  "size_bytes": 7838
+  "size_bytes": 6327
  },
  "inst-0340": {
   "slug": "drip-pricing",
@@ -978,7 +978,7 @@
   "deceptive": true,
   "pair": "drip-pricing-cond1",
   "file": "corpus/inst-0340.html",
-  "size_bytes": 9771
+  "size_bytes": 8886
  },
  "inst-0096": {
   "slug": "drip-pricing",
@@ -987,7 +987,7 @@
   "deceptive": false,
   "pair": "drip-pricing-cond1",
   "file": "corpus/inst-0096.html",
-  "size_bytes": 10634
+  "size_bytes": 8886
  },
  "inst-0235": {
   "slug": "drip-pricing",
@@ -996,7 +996,7 @@
   "deceptive": true,
   "pair": "drip-pricing-cond2",
   "file": "corpus/inst-0235.html",
-  "size_bytes": 2671
+  "size_bytes": 2469
  },
  "inst-0281": {
   "slug": "drip-pricing",
@@ -1005,7 +1005,7 @@
   "deceptive": false,
   "pair": "drip-pricing-cond2",
   "file": "corpus/inst-0281.html",
-  "size_bytes": 4129
+  "size_bytes": 2477
  },
  "inst-0020": {
   "slug": "drip-pricing",
@@ -1014,7 +1014,7 @@
   "deceptive": true,
   "pair": "drip-pricing-cond3",
   "file": "corpus/inst-0020.html",
-  "size_bytes": 5189
+  "size_bytes": 4220
  },
  "inst-0339": {
   "slug": "drip-pricing",
@@ -1023,7 +1023,7 @@
   "deceptive": false,
   "pair": "drip-pricing-cond3",
   "file": "corpus/inst-0339.html",
-  "size_bytes": 5375
+  "size_bytes": 4411
  },
  "inst-0345": {
   "slug": "encouraging-anti-social-behavior",
@@ -1032,7 +1032,7 @@
   "deceptive": true,
   "pair": "encouraging-anti-social-behavior-cond1",
   "file": "corpus/inst-0345.html",
-  "size_bytes": 6875
+  "size_bytes": 5564
  },
  "inst-0241": {
   "slug": "encouraging-anti-social-behavior",
@@ -1041,7 +1041,7 @@
   "deceptive": false,
   "pair": "encouraging-anti-social-behavior-cond1",
   "file": "corpus/inst-0241.html",
-  "size_bytes": 2814
+  "size_bytes": 6423
  },
  "inst-0153": {
   "slug": "encouraging-anti-social-behavior",
@@ -1050,7 +1050,7 @@
   "deceptive": true,
   "pair": "encouraging-anti-social-behavior-cond2",
   "file": "corpus/inst-0153.html",
-  "size_bytes": 8349
+  "size_bytes": 9094
  },
  "inst-0319": {
   "slug": "encouraging-anti-social-behavior",
@@ -1059,7 +1059,7 @@
   "deceptive": false,
   "pair": "encouraging-anti-social-behavior-cond2",
   "file": "corpus/inst-0319.html",
-  "size_bytes": 5489
+  "size_bytes": 9116
  },
  "inst-0129": {
   "slug": "encouraging-anti-social-behavior",
@@ -1068,7 +1068,7 @@
   "deceptive": true,
   "pair": "encouraging-anti-social-behavior-cond3",
   "file": "corpus/inst-0129.html",
-  "size_bytes": 7356
+  "size_bytes": 6492
  },
  "inst-0145": {
   "slug": "encouraging-anti-social-behavior",
@@ -1077,7 +1077,7 @@
   "deceptive": false,
   "pair": "encouraging-anti-social-behavior-cond3",
   "file": "corpus/inst-0145.html",
-  "size_bytes": 3670
+  "size_bytes": 6714
  },
  "inst-0008": {
   "slug": "endorsement-and-testimonials",
@@ -1086,7 +1086,7 @@
   "deceptive": true,
   "pair": "endorsement-and-testimonials-cond1",
   "file": "corpus/inst-0008.html",
-  "size_bytes": 5351
+  "size_bytes": 5086
  },
  "inst-0218": {
   "slug": "endorsement-and-testimonials",
@@ -1095,7 +1095,7 @@
   "deceptive": false,
   "pair": "endorsement-and-testimonials-cond1",
   "file": "corpus/inst-0218.html",
-  "size_bytes": 5362
+  "size_bytes": 5086
  },
  "inst-0111": {
   "slug": "endorsement-and-testimonials",
@@ -1104,7 +1104,7 @@
   "deceptive": true,
   "pair": "endorsement-and-testimonials-cond2",
   "file": "corpus/inst-0111.html",
-  "size_bytes": 17334
+  "size_bytes": 16644
  },
  "inst-0067": {
   "slug": "endorsement-and-testimonials",
@@ -1113,7 +1113,7 @@
   "deceptive": false,
   "pair": "endorsement-and-testimonials-cond2",
   "file": "corpus/inst-0067.html",
-  "size_bytes": 8915
+  "size_bytes": 16634
  },
  "inst-0237": {
   "slug": "endorsement-and-testimonials",
@@ -1122,7 +1122,7 @@
   "deceptive": true,
   "pair": "endorsement-and-testimonials-cond3",
   "file": "corpus/inst-0237.html",
-  "size_bytes": 7850
+  "size_bytes": 6912
  },
  "inst-0002": {
   "slug": "endorsement-and-testimonials",
@@ -1131,7 +1131,7 @@
   "deceptive": false,
   "pair": "endorsement-and-testimonials-cond3",
   "file": "corpus/inst-0002.html",
-  "size_bytes": 6996
+  "size_bytes": 6875
  },
  "inst-0243": {
   "slug": "false-hierarchy",
@@ -1140,7 +1140,7 @@
   "deceptive": true,
   "pair": "false-hierarchy-cond1",
   "file": "corpus/inst-0243.html",
-  "size_bytes": 4348
+  "size_bytes": 1372
  },
  "inst-0309": {
   "slug": "false-hierarchy",
@@ -1149,7 +1149,7 @@
   "deceptive": false,
   "pair": "false-hierarchy-cond1",
   "file": "corpus/inst-0309.html",
-  "size_bytes": 3747
+  "size_bytes": 3782
  },
  "inst-0360": {
   "slug": "false-hierarchy",
@@ -1158,7 +1158,7 @@
   "deceptive": true,
   "pair": "false-hierarchy-cond2",
   "file": "corpus/inst-0360.html",
-  "size_bytes": 3993
+  "size_bytes": 3366
  },
  "inst-0049": {
   "slug": "false-hierarchy",
@@ -1167,7 +1167,7 @@
   "deceptive": false,
   "pair": "false-hierarchy-cond2",
   "file": "corpus/inst-0049.html",
-  "size_bytes": 3819
+  "size_bytes": 3264
  },
  "inst-0016": {
   "slug": "false-hierarchy",
@@ -1176,7 +1176,7 @@
   "deceptive": true,
   "pair": "false-hierarchy-cond3",
   "file": "corpus/inst-0016.html",
-  "size_bytes": 4130
+  "size_bytes": 1311
  },
  "inst-0123": {
   "slug": "false-hierarchy",
@@ -1185,7 +1185,7 @@
   "deceptive": false,
   "pair": "false-hierarchy-cond3",
   "file": "corpus/inst-0123.html",
-  "size_bytes": 3657
+  "size_bytes": 3247
  },
  "inst-0114": {
   "slug": "fear-of-missing-out-fomo",
@@ -1194,7 +1194,7 @@
   "deceptive": true,
   "pair": "fear-of-missing-out-fomo-cond1",
   "file": "corpus/inst-0114.html",
-  "size_bytes": 13208
+  "size_bytes": 9284
  },
  "inst-0142": {
   "slug": "fear-of-missing-out-fomo",
@@ -1203,7 +1203,7 @@
   "deceptive": false,
   "pair": "fear-of-missing-out-fomo-cond1",
   "file": "corpus/inst-0142.html",
-  "size_bytes": 12443
+  "size_bytes": 9284
  },
  "inst-0336": {
   "slug": "fear-of-missing-out-fomo",
@@ -1212,7 +1212,7 @@
   "deceptive": true,
   "pair": "fear-of-missing-out-fomo-cond2",
   "file": "corpus/inst-0336.html",
-  "size_bytes": 5302
+  "size_bytes": 4617
  },
  "inst-0009": {
   "slug": "fear-of-missing-out-fomo",
@@ -1221,7 +1221,7 @@
   "deceptive": false,
   "pair": "fear-of-missing-out-fomo-cond2",
   "file": "corpus/inst-0009.html",
-  "size_bytes": 4291
+  "size_bytes": 4617
  },
  "inst-0149": {
   "slug": "fear-of-missing-out-fomo",
@@ -1230,7 +1230,7 @@
   "deceptive": true,
   "pair": "fear-of-missing-out-fomo-cond3",
   "file": "corpus/inst-0149.html",
-  "size_bytes": 6027
+  "size_bytes": 5052
  },
  "inst-0288": {
   "slug": "fear-of-missing-out-fomo",
@@ -1239,7 +1239,7 @@
   "deceptive": false,
   "pair": "fear-of-missing-out-fomo-cond3",
   "file": "corpus/inst-0288.html",
-  "size_bytes": 3987
+  "size_bytes": 5052
  },
  "inst-0116": {
   "slug": "feedforward-ambiguity",
@@ -1248,7 +1248,7 @@
   "deceptive": true,
   "pair": "feedforward-ambiguity-cond1",
   "file": "corpus/inst-0116.html",
-  "size_bytes": 3613
+  "size_bytes": 2626
  },
  "inst-0073": {
   "slug": "feedforward-ambiguity",
@@ -1257,7 +1257,7 @@
   "deceptive": false,
   "pair": "feedforward-ambiguity-cond1",
   "file": "corpus/inst-0073.html",
-  "size_bytes": 3132
+  "size_bytes": 2654
  },
  "inst-0161": {
   "slug": "feedforward-ambiguity",
@@ -1266,7 +1266,7 @@
   "deceptive": true,
   "pair": "feedforward-ambiguity-cond2",
   "file": "corpus/inst-0161.html",
-  "size_bytes": 2202
+  "size_bytes": 1890
  },
  "inst-0371": {
   "slug": "feedforward-ambiguity",
@@ -1275,7 +1275,7 @@
   "deceptive": false,
   "pair": "feedforward-ambiguity-cond2",
   "file": "corpus/inst-0371.html",
-  "size_bytes": 8707
+  "size_bytes": 1890
  },
  "inst-0022": {
   "slug": "feedforward-ambiguity",
@@ -1284,7 +1284,7 @@
   "deceptive": true,
   "pair": "feedforward-ambiguity-cond3",
   "file": "corpus/inst-0022.html",
-  "size_bytes": 3258
+  "size_bytes": 2533
  },
  "inst-0292": {
   "slug": "feedforward-ambiguity",
@@ -1293,7 +1293,7 @@
   "deceptive": false,
   "pair": "feedforward-ambiguity-cond3",
   "file": "corpus/inst-0292.html",
-  "size_bytes": 2630
+  "size_bytes": 2533
  },
  "inst-0276": {
   "slug": "forced-continuity",
@@ -1302,7 +1302,7 @@
   "deceptive": true,
   "pair": "forced-continuity-cond1",
   "file": "corpus/inst-0276.html",
-  "size_bytes": 2648
+  "size_bytes": 1857
  },
  "inst-0130": {
   "slug": "forced-continuity",
@@ -1311,7 +1311,7 @@
   "deceptive": false,
   "pair": "forced-continuity-cond1",
   "file": "corpus/inst-0130.html",
-  "size_bytes": 4238
+  "size_bytes": 2259
  },
  "inst-0141": {
   "slug": "forced-continuity",
@@ -1320,7 +1320,7 @@
   "deceptive": true,
   "pair": "forced-continuity-cond2",
   "file": "corpus/inst-0141.html",
-  "size_bytes": 4767
+  "size_bytes": 4095
  },
  "inst-0066": {
   "slug": "forced-continuity",
@@ -1329,7 +1329,7 @@
   "deceptive": false,
   "pair": "forced-continuity-cond2",
   "file": "corpus/inst-0066.html",
-  "size_bytes": 1816
+  "size_bytes": 4095
  },
  "inst-0364": {
   "slug": "forced-continuity",
@@ -1338,7 +1338,7 @@
   "deceptive": true,
   "pair": "forced-continuity-cond3",
   "file": "corpus/inst-0364.html",
-  "size_bytes": 2901
+  "size_bytes": 2505
  },
  "inst-0275": {
   "slug": "forced-continuity",
@@ -1347,7 +1347,7 @@
   "deceptive": false,
   "pair": "forced-continuity-cond3",
   "file": "corpus/inst-0275.html",
-  "size_bytes": 1295
+  "size_bytes": 2505
  },
  "inst-0201": {
   "slug": "forced-grace-period",
@@ -1356,7 +1356,7 @@
   "deceptive": true,
   "pair": "forced-grace-period-cond1",
   "file": "corpus/inst-0201.html",
-  "size_bytes": 8251
+  "size_bytes": 6590
  },
  "inst-0131": {
   "slug": "forced-grace-period",
@@ -1365,7 +1365,7 @@
   "deceptive": false,
   "pair": "forced-grace-period-cond1",
   "file": "corpus/inst-0131.html",
-  "size_bytes": 1826
+  "size_bytes": 7346
  },
  "inst-0204": {
   "slug": "forced-grace-period",
@@ -1374,7 +1374,7 @@
   "deceptive": true,
   "pair": "forced-grace-period-cond2",
   "file": "corpus/inst-0204.html",
-  "size_bytes": 5845
+  "size_bytes": 4847
  },
  "inst-0003": {
   "slug": "forced-grace-period",
@@ -1383,7 +1383,7 @@
   "deceptive": false,
   "pair": "forced-grace-period-cond2",
   "file": "corpus/inst-0003.html",
-  "size_bytes": 5350
+  "size_bytes": 4958
  },
  "inst-0302": {
   "slug": "forced-grace-period",
@@ -1392,7 +1392,7 @@
   "deceptive": true,
   "pair": "forced-grace-period-cond3",
   "file": "corpus/inst-0302.html",
-  "size_bytes": 3673
+  "size_bytes": 3446
  },
  "inst-0078": {
   "slug": "forced-grace-period",
@@ -1401,7 +1401,7 @@
   "deceptive": false,
   "pair": "forced-grace-period-cond3",
   "file": "corpus/inst-0078.html",
-  "size_bytes": 2964
+  "size_bytes": 3446
  },
  "inst-0192": {
   "slug": "forced-registration",
@@ -1410,7 +1410,7 @@
   "deceptive": true,
   "pair": "forced-registration-cond1",
   "file": "corpus/inst-0192.html",
-  "size_bytes": 6360
+  "size_bytes": 5805
  },
  "inst-0280": {
   "slug": "forced-registration",
@@ -1419,7 +1419,7 @@
   "deceptive": false,
   "pair": "forced-registration-cond1",
   "file": "corpus/inst-0280.html",
-  "size_bytes": 3802
+  "size_bytes": 5805
  },
  "inst-0026": {
   "slug": "forced-registration",
@@ -1428,7 +1428,7 @@
   "deceptive": true,
   "pair": "forced-registration-cond2",
   "file": "corpus/inst-0026.html",
-  "size_bytes": 3368
+  "size_bytes": 2991
  },
  "inst-0122": {
   "slug": "forced-registration",
@@ -1437,7 +1437,7 @@
   "deceptive": false,
   "pair": "forced-registration-cond2",
   "file": "corpus/inst-0122.html",
-  "size_bytes": 3251
+  "size_bytes": 2991
  },
  "inst-0056": {
   "slug": "forced-registration",
@@ -1446,7 +1446,7 @@
   "deceptive": true,
   "pair": "forced-registration-cond3",
   "file": "corpus/inst-0056.html",
-  "size_bytes": 3846
+  "size_bytes": 3402
  },
  "inst-0320": {
   "slug": "forced-registration",
@@ -1455,7 +1455,7 @@
   "deceptive": false,
   "pair": "forced-registration-cond3",
   "file": "corpus/inst-0320.html",
-  "size_bytes": 3381
+  "size_bytes": 3402
  },
  "inst-0081": {
   "slug": "friend-spam",
@@ -1464,7 +1464,7 @@
   "deceptive": true,
   "pair": "friend-spam-cond1",
   "file": "corpus/inst-0081.html",
-  "size_bytes": 2623
+  "size_bytes": 2488
  },
  "inst-0358": {
   "slug": "friend-spam",
@@ -1473,7 +1473,7 @@
   "deceptive": false,
   "pair": "friend-spam-cond1",
   "file": "corpus/inst-0358.html",
-  "size_bytes": 2176
+  "size_bytes": 2488
  },
  "inst-0369": {
   "slug": "friend-spam",
@@ -1482,7 +1482,7 @@
   "deceptive": true,
   "pair": "friend-spam-cond2",
   "file": "corpus/inst-0369.html",
-  "size_bytes": 5981
+  "size_bytes": 5037
  },
  "inst-0283": {
   "slug": "friend-spam",
@@ -1491,7 +1491,7 @@
   "deceptive": false,
   "pair": "friend-spam-cond2",
   "file": "corpus/inst-0283.html",
-  "size_bytes": 2581
+  "size_bytes": 4756
  },
  "inst-0060": {
   "slug": "friend-spam",
@@ -1500,7 +1500,7 @@
   "deceptive": true,
   "pair": "friend-spam-cond3",
   "file": "corpus/inst-0060.html",
-  "size_bytes": 2316
+  "size_bytes": 1511
  },
  "inst-0225": {
   "slug": "friend-spam",
@@ -1509,7 +1509,7 @@
   "deceptive": false,
   "pair": "friend-spam-cond3",
   "file": "corpus/inst-0225.html",
-  "size_bytes": 2201
+  "size_bytes": 2127
  },
  "inst-0121": {
   "slug": "granting-and-interaction",
@@ -1518,7 +1518,7 @@
   "deceptive": true,
   "pair": "granting-and-interaction-cond1",
   "file": "corpus/inst-0121.html",
-  "size_bytes": 3061
+  "size_bytes": 4245
  },
  "inst-0238": {
   "slug": "granting-and-interaction",
@@ -1527,7 +1527,7 @@
   "deceptive": false,
   "pair": "granting-and-interaction-cond1",
   "file": "corpus/inst-0238.html",
-  "size_bytes": 3726
+  "size_bytes": 4246
  },
  "inst-0198": {
   "slug": "granting-and-interaction",
@@ -1536,7 +1536,7 @@
   "deceptive": true,
   "pair": "granting-and-interaction-cond2",
   "file": "corpus/inst-0198.html",
-  "size_bytes": 4791
+  "size_bytes": 4173
  },
  "inst-0262": {
   "slug": "granting-and-interaction",
@@ -1545,7 +1545,7 @@
   "deceptive": false,
   "pair": "granting-and-interaction-cond2",
   "file": "corpus/inst-0262.html",
-  "size_bytes": 2433
+  "size_bytes": 4173
  },
  "inst-0099": {
   "slug": "granting-and-interaction",
@@ -1554,7 +1554,7 @@
   "deceptive": true,
   "pair": "granting-and-interaction-cond3",
   "file": "corpus/inst-0099.html",
-  "size_bytes": 5423
+  "size_bytes": 4893
  },
  "inst-0370": {
   "slug": "granting-and-interaction",
@@ -1563,7 +1563,7 @@
   "deceptive": false,
   "pair": "granting-and-interaction-cond3",
   "file": "corpus/inst-0370.html",
-  "size_bytes": 4095
+  "size_bytes": 4893
  },
  "inst-0177": {
   "slug": "grinding",
@@ -1572,7 +1572,7 @@
   "deceptive": true,
   "pair": "grinding-cond1",
   "file": "corpus/inst-0177.html",
-  "size_bytes": 5591
+  "size_bytes": 5304
  },
  "inst-0048": {
   "slug": "grinding",
@@ -1581,7 +1581,7 @@
   "deceptive": false,
   "pair": "grinding-cond1",
   "file": "corpus/inst-0048.html",
-  "size_bytes": 5871
+  "size_bytes": 5312
  },
  "inst-0234": {
   "slug": "grinding",
@@ -1590,7 +1590,7 @@
   "deceptive": true,
   "pair": "grinding-cond2",
   "file": "corpus/inst-0234.html",
-  "size_bytes": 5923
+  "size_bytes": 5714
  },
  "inst-0156": {
   "slug": "grinding",
@@ -1599,7 +1599,7 @@
   "deceptive": false,
   "pair": "grinding-cond2",
   "file": "corpus/inst-0156.html",
-  "size_bytes": 5115
+  "size_bytes": 5716
  },
  "inst-0148": {
   "slug": "grinding",
@@ -1608,7 +1608,7 @@
   "deceptive": true,
   "pair": "grinding-cond3",
   "file": "corpus/inst-0148.html",
-  "size_bytes": 5085
+  "size_bytes": 4615
  },
  "inst-0037": {
   "slug": "grinding",
@@ -1617,7 +1617,7 @@
   "deceptive": false,
   "pair": "grinding-cond3",
   "file": "corpus/inst-0037.html",
-  "size_bytes": 5111
+  "size_bytes": 4615
  },
  "inst-0057": {
   "slug": "hidden-information",
@@ -1626,7 +1626,7 @@
   "deceptive": true,
   "pair": "hidden-information-cond1",
   "file": "corpus/inst-0057.html",
-  "size_bytes": 8269
+  "size_bytes": 7602
  },
  "inst-0087": {
   "slug": "hidden-information",
@@ -1635,7 +1635,7 @@
   "deceptive": false,
   "pair": "hidden-information-cond1",
   "file": "corpus/inst-0087.html",
-  "size_bytes": 9214
+  "size_bytes": 7537
  },
  "inst-0279": {
   "slug": "hidden-information",
@@ -1644,7 +1644,7 @@
   "deceptive": true,
   "pair": "hidden-information-cond2",
   "file": "corpus/inst-0279.html",
-  "size_bytes": 3092
+  "size_bytes": 2342
  },
  "inst-0113": {
   "slug": "hidden-information",
@@ -1653,7 +1653,7 @@
   "deceptive": false,
   "pair": "hidden-information-cond2",
   "file": "corpus/inst-0113.html",
-  "size_bytes": 2979
+  "size_bytes": 2350
  },
  "inst-0058": {
   "slug": "hidden-information",
@@ -1662,7 +1662,7 @@
   "deceptive": true,
   "pair": "hidden-information-cond3",
   "file": "corpus/inst-0058.html",
-  "size_bytes": 4284
+  "size_bytes": 3424
  },
  "inst-0164": {
   "slug": "hidden-information",
@@ -1671,7 +1671,7 @@
   "deceptive": false,
   "pair": "hidden-information-cond3",
   "file": "corpus/inst-0164.html",
-  "size_bytes": 4066
+  "size_bytes": 3066
  },
  "inst-0169": {
   "slug": "high-demand",
@@ -1680,7 +1680,7 @@
   "deceptive": true,
   "pair": "high-demand-cond1",
   "file": "corpus/inst-0169.html",
-  "size_bytes": 13348
+  "size_bytes": 11468
  },
  "inst-0039": {
   "slug": "high-demand",
@@ -1689,7 +1689,7 @@
   "deceptive": false,
   "pair": "high-demand-cond1",
   "file": "corpus/inst-0039.html",
-  "size_bytes": 9108
+  "size_bytes": 12126
  },
  "inst-0108": {
   "slug": "high-demand",
@@ -1698,7 +1698,7 @@
   "deceptive": true,
   "pair": "high-demand-cond2",
   "file": "corpus/inst-0108.html",
-  "size_bytes": 5155
+  "size_bytes": 4477
  },
  "inst-0236": {
   "slug": "high-demand",
@@ -1707,7 +1707,7 @@
   "deceptive": false,
   "pair": "high-demand-cond2",
   "file": "corpus/inst-0236.html",
-  "size_bytes": 6847
+  "size_bytes": 4477
  },
  "inst-0064": {
   "slug": "high-demand",
@@ -1716,7 +1716,7 @@
   "deceptive": true,
   "pair": "high-demand-cond3",
   "file": "corpus/inst-0064.html",
-  "size_bytes": 5515
+  "size_bytes": 2249
  },
  "inst-0285": {
   "slug": "high-demand",
@@ -1725,7 +1725,7 @@
   "deceptive": false,
   "pair": "high-demand-cond3",
   "file": "corpus/inst-0285.html",
-  "size_bytes": 5187
+  "size_bytes": 5197
  },
  "inst-0318": {
   "slug": "immortal-accounts",
@@ -1734,7 +1734,7 @@
   "deceptive": true,
   "pair": "immortal-accounts-cond1",
   "file": "corpus/inst-0318.html",
-  "size_bytes": 7181
+  "size_bytes": 6657
  },
  "inst-0242": {
   "slug": "immortal-accounts",
@@ -1743,7 +1743,7 @@
   "deceptive": false,
   "pair": "immortal-accounts-cond1",
   "file": "corpus/inst-0242.html",
-  "size_bytes": 6305
+  "size_bytes": 6617
  },
  "inst-0344": {
   "slug": "immortal-accounts",
@@ -1752,7 +1752,7 @@
   "deceptive": true,
   "pair": "immortal-accounts-cond2",
   "file": "corpus/inst-0344.html",
-  "size_bytes": 4648
+  "size_bytes": 3571
  },
  "inst-0069": {
   "slug": "immortal-accounts",
@@ -1761,7 +1761,7 @@
   "deceptive": false,
   "pair": "immortal-accounts-cond2",
   "file": "corpus/inst-0069.html",
-  "size_bytes": 5386
+  "size_bytes": 4015
  },
  "inst-0139": {
   "slug": "immortal-accounts",
@@ -1770,7 +1770,7 @@
   "deceptive": true,
   "pair": "immortal-accounts-cond3",
   "file": "corpus/inst-0139.html",
-  "size_bytes": 5579
+  "size_bytes": 4673
  },
  "inst-0136": {
   "slug": "immortal-accounts",
@@ -1779,7 +1779,7 @@
   "deceptive": false,
   "pair": "immortal-accounts-cond3",
   "file": "corpus/inst-0136.html",
-  "size_bytes": 5715
+  "size_bytes": 4673
  },
  "inst-0102": {
   "slug": "infinite-scrolling",
@@ -1788,7 +1788,7 @@
   "deceptive": true,
   "pair": "infinite-scrolling-cond1",
   "file": "corpus/inst-0102.html",
-  "size_bytes": 13132
+  "size_bytes": 11003
  },
  "inst-0224": {
   "slug": "infinite-scrolling",
@@ -1797,7 +1797,7 @@
   "deceptive": false,
   "pair": "infinite-scrolling-cond1",
   "file": "corpus/inst-0224.html",
-  "size_bytes": 4453
+  "size_bytes": 11006
  },
  "inst-0086": {
   "slug": "infinite-scrolling",
@@ -1806,7 +1806,7 @@
   "deceptive": true,
   "pair": "infinite-scrolling-cond2",
   "file": "corpus/inst-0086.html",
-  "size_bytes": 2842
+  "size_bytes": 2134
  },
  "inst-0140": {
   "slug": "infinite-scrolling",
@@ -1815,7 +1815,7 @@
   "deceptive": false,
   "pair": "infinite-scrolling-cond2",
   "file": "corpus/inst-0140.html",
-  "size_bytes": 6224
+  "size_bytes": 2134
  },
  "inst-0184": {
   "slug": "infinite-scrolling",
@@ -1824,7 +1824,7 @@
   "deceptive": true,
   "pair": "infinite-scrolling-cond3",
   "file": "corpus/inst-0184.html",
-  "size_bytes": 13863
+  "size_bytes": 11217
  },
  "inst-0172": {
   "slug": "infinite-scrolling",
@@ -1833,7 +1833,7 @@
   "deceptive": false,
   "pair": "infinite-scrolling-cond3",
   "file": "corpus/inst-0172.html",
-  "size_bytes": 15339
+  "size_bytes": 12120
  },
  "inst-0050": {
   "slug": "information-without-context",
@@ -1842,7 +1842,7 @@
   "deceptive": true,
   "pair": "information-without-context-cond1",
   "file": "corpus/inst-0050.html",
-  "size_bytes": 4205
+  "size_bytes": 1494
  },
  "inst-0190": {
   "slug": "information-without-context",
@@ -1851,7 +1851,7 @@
   "deceptive": false,
   "pair": "information-without-context-cond1",
   "file": "corpus/inst-0190.html",
-  "size_bytes": 3213
+  "size_bytes": 3597
  },
  "inst-0178": {
   "slug": "information-without-context",
@@ -1860,7 +1860,7 @@
   "deceptive": true,
   "pair": "information-without-context-cond2",
   "file": "corpus/inst-0178.html",
-  "size_bytes": 4345
+  "size_bytes": 3614
  },
  "inst-0160": {
   "slug": "information-without-context",
@@ -1869,7 +1869,7 @@
   "deceptive": false,
   "pair": "information-without-context-cond2",
   "file": "corpus/inst-0160.html",
-  "size_bytes": 3765
+  "size_bytes": 3614
  },
  "inst-0115": {
   "slug": "information-without-context",
@@ -1878,7 +1878,7 @@
   "deceptive": true,
   "pair": "information-without-context-cond3",
   "file": "corpus/inst-0115.html",
-  "size_bytes": 3774
+  "size_bytes": 1176
  },
  "inst-0199": {
   "slug": "information-without-context",
@@ -1887,7 +1887,7 @@
   "deceptive": false,
   "pair": "information-without-context-cond3",
   "file": "corpus/inst-0199.html",
-  "size_bytes": 3391
+  "size_bytes": 3520
  },
  "inst-0004": {
   "slug": "intermediate-currency",
@@ -1896,7 +1896,7 @@
   "deceptive": true,
   "pair": "intermediate-currency-cond1",
   "file": "corpus/inst-0004.html",
-  "size_bytes": 6096
+  "size_bytes": 5321
  },
  "inst-0027": {
   "slug": "intermediate-currency",
@@ -1905,7 +1905,7 @@
   "deceptive": false,
   "pair": "intermediate-currency-cond1",
   "file": "corpus/inst-0027.html",
-  "size_bytes": 6071
+  "size_bytes": 5321
  },
  "inst-0200": {
   "slug": "intermediate-currency",
@@ -1914,7 +1914,7 @@
   "deceptive": true,
   "pair": "intermediate-currency-cond2",
   "file": "corpus/inst-0200.html",
-  "size_bytes": 5505
+  "size_bytes": 4401
  },
  "inst-0294": {
   "slug": "intermediate-currency",
@@ -1923,7 +1923,7 @@
   "deceptive": false,
   "pair": "intermediate-currency-cond2",
   "file": "corpus/inst-0294.html",
-  "size_bytes": 5412
+  "size_bytes": 4702
  },
  "inst-0316": {
   "slug": "intermediate-currency",
@@ -1932,7 +1932,7 @@
   "deceptive": true,
   "pair": "intermediate-currency-cond3",
   "file": "corpus/inst-0316.html",
-  "size_bytes": 10997
+  "size_bytes": 9343
  },
  "inst-0042": {
   "slug": "intermediate-currency",
@@ -1941,7 +1941,7 @@
   "deceptive": false,
   "pair": "intermediate-currency-cond3",
   "file": "corpus/inst-0042.html",
-  "size_bytes": 6512
+  "size_bytes": 10258
  },
  "inst-0128": {
   "slug": "labyrinthine-navigation",
@@ -1950,7 +1950,7 @@
   "deceptive": true,
   "pair": "labyrinthine-navigation-cond1",
   "file": "corpus/inst-0128.html",
-  "size_bytes": 2178
+  "size_bytes": 1976
  },
  "inst-0109": {
   "slug": "labyrinthine-navigation",
@@ -1959,7 +1959,7 @@
   "deceptive": false,
   "pair": "labyrinthine-navigation-cond1",
   "file": "corpus/inst-0109.html",
-  "size_bytes": 1137
+  "size_bytes": 1982
  },
  "inst-0013": {
   "slug": "labyrinthine-navigation",
@@ -1968,7 +1968,7 @@
   "deceptive": true,
   "pair": "labyrinthine-navigation-cond2",
   "file": "corpus/inst-0013.html",
-  "size_bytes": 7577
+  "size_bytes": 6873
  },
  "inst-0179": {
   "slug": "labyrinthine-navigation",
@@ -1977,7 +1977,7 @@
   "deceptive": false,
   "pair": "labyrinthine-navigation-cond2",
   "file": "corpus/inst-0179.html",
-  "size_bytes": 3097
+  "size_bytes": 6873
  },
  "inst-0295": {
   "slug": "labyrinthine-navigation",
@@ -1986,7 +1986,7 @@
   "deceptive": true,
   "pair": "labyrinthine-navigation-cond3",
   "file": "corpus/inst-0295.html",
-  "size_bytes": 12405
+  "size_bytes": 10925
  },
  "inst-0210": {
   "slug": "labyrinthine-navigation",
@@ -1995,7 +1995,7 @@
   "deceptive": false,
   "pair": "labyrinthine-navigation-cond3",
   "file": "corpus/inst-0210.html",
-  "size_bytes": 4798
+  "size_bytes": 10985
  },
  "inst-0017": {
   "slug": "limited-time-message",
@@ -2004,7 +2004,7 @@
   "deceptive": true,
   "pair": "limited-time-message-cond1",
   "file": "corpus/inst-0017.html",
-  "size_bytes": 4856
+  "size_bytes": 1031
  },
  "inst-0306": {
   "slug": "limited-time-message",
@@ -2013,7 +2013,7 @@
   "deceptive": false,
   "pair": "limited-time-message-cond1",
   "file": "corpus/inst-0306.html",
-  "size_bytes": 2875
+  "size_bytes": 2750
  },
  "inst-0072": {
   "slug": "limited-time-message",
@@ -2022,7 +2022,7 @@
   "deceptive": true,
   "pair": "limited-time-message-cond2",
   "file": "corpus/inst-0072.html",
-  "size_bytes": 2464
+  "size_bytes": 2299
  },
  "inst-0170": {
   "slug": "limited-time-message",
@@ -2031,7 +2031,7 @@
   "deceptive": false,
   "pair": "limited-time-message-cond2",
   "file": "corpus/inst-0170.html",
-  "size_bytes": 2511
+  "size_bytes": 2285
  },
  "inst-0182": {
   "slug": "limited-time-message",
@@ -2040,7 +2040,7 @@
   "deceptive": true,
   "pair": "limited-time-message-cond3",
   "file": "corpus/inst-0182.html",
-  "size_bytes": 4166
+  "size_bytes": 3860
  },
  "inst-0093": {
   "slug": "limited-time-message",
@@ -2049,7 +2049,7 @@
   "deceptive": false,
   "pair": "limited-time-message-cond3",
   "file": "corpus/inst-0093.html",
-  "size_bytes": 2463
+  "size_bytes": 3860
  },
  "inst-0143": {
   "slug": "low-stock",
@@ -2058,7 +2058,7 @@
   "deceptive": true,
   "pair": "low-stock-cond1",
   "file": "corpus/inst-0143.html",
-  "size_bytes": 3535
+  "size_bytes": 3023
  },
  "inst-0154": {
   "slug": "low-stock",
@@ -2067,7 +2067,7 @@
   "deceptive": false,
   "pair": "low-stock-cond1",
   "file": "corpus/inst-0154.html",
-  "size_bytes": 3273
+  "size_bytes": 3023
  },
  "inst-0270": {
   "slug": "low-stock",
@@ -2076,7 +2076,7 @@
   "deceptive": true,
   "pair": "low-stock-cond2",
   "file": "corpus/inst-0270.html",
-  "size_bytes": 5278
+  "size_bytes": 4386
  },
  "inst-0029": {
   "slug": "low-stock",
@@ -2085,7 +2085,7 @@
   "deceptive": false,
   "pair": "low-stock-cond2",
   "file": "corpus/inst-0029.html",
-  "size_bytes": 4289
+  "size_bytes": 4374
  },
  "inst-0106": {
   "slug": "low-stock",
@@ -2094,7 +2094,7 @@
   "deceptive": true,
   "pair": "low-stock-cond3",
   "file": "corpus/inst-0106.html",
-  "size_bytes": 10874
+  "size_bytes": 7163
  },
  "inst-0015": {
   "slug": "low-stock",
@@ -2103,7 +2103,7 @@
   "deceptive": false,
   "pair": "low-stock-cond3",
   "file": "corpus/inst-0015.html",
-  "size_bytes": 12047
+  "size_bytes": 9044
  },
  "inst-0233": {
   "slug": "parasocial-pressure",
@@ -2112,7 +2112,7 @@
   "deceptive": true,
   "pair": "parasocial-pressure-cond1",
   "file": "corpus/inst-0233.html",
-  "size_bytes": 5508
+  "size_bytes": 4633
  },
  "inst-0046": {
   "slug": "parasocial-pressure",
@@ -2121,7 +2121,7 @@
   "deceptive": false,
   "pair": "parasocial-pressure-cond1",
   "file": "corpus/inst-0046.html",
-  "size_bytes": 4690
+  "size_bytes": 4962
  },
  "inst-0085": {
   "slug": "parasocial-pressure",
@@ -2130,7 +2130,7 @@
   "deceptive": true,
   "pair": "parasocial-pressure-cond2",
   "file": "corpus/inst-0085.html",
-  "size_bytes": 4275
+  "size_bytes": 3147
  },
  "inst-0335": {
   "slug": "parasocial-pressure",
@@ -2139,7 +2139,7 @@
   "deceptive": false,
   "pair": "parasocial-pressure-cond2",
   "file": "corpus/inst-0335.html",
-  "size_bytes": 3029
+  "size_bytes": 3571
  },
  "inst-0310": {
   "slug": "parasocial-pressure",
@@ -2148,7 +2148,7 @@
   "deceptive": true,
   "pair": "parasocial-pressure-cond3",
   "file": "corpus/inst-0310.html",
-  "size_bytes": 1768
+  "size_bytes": 1312
  },
  "inst-0207": {
   "slug": "parasocial-pressure",
@@ -2157,7 +2157,7 @@
   "deceptive": false,
   "pair": "parasocial-pressure-cond3",
   "file": "corpus/inst-0207.html",
-  "size_bytes": 1752
+  "size_bytes": 1634
  },
  "inst-0259": {
   "slug": "pay-to-avoid",
@@ -2166,7 +2166,7 @@
   "deceptive": true,
   "pair": "pay-to-avoid-cond1",
   "file": "corpus/inst-0259.html",
-  "size_bytes": 10427
+  "size_bytes": 10415
  },
  "inst-0300": {
   "slug": "pay-to-avoid",
@@ -2175,7 +2175,7 @@
   "deceptive": false,
   "pair": "pay-to-avoid-cond1",
   "file": "corpus/inst-0300.html",
-  "size_bytes": 9127
+  "size_bytes": 10049
  },
  "inst-0313": {
   "slug": "pay-to-avoid",
@@ -2184,7 +2184,7 @@
   "deceptive": true,
   "pair": "pay-to-avoid-cond2",
   "file": "corpus/inst-0313.html",
-  "size_bytes": 5236
+  "size_bytes": 5679
  },
  "inst-0289": {
   "slug": "pay-to-avoid",
@@ -2193,7 +2193,7 @@
   "deceptive": false,
   "pair": "pay-to-avoid-cond2",
   "file": "corpus/inst-0289.html",
-  "size_bytes": 4598
+  "size_bytes": 5675
  },
  "inst-0331": {
   "slug": "pay-to-avoid",
@@ -2202,7 +2202,7 @@
   "deceptive": true,
   "pair": "pay-to-avoid-cond3",
   "file": "corpus/inst-0331.html",
-  "size_bytes": 4358
+  "size_bytes": 4028
  },
  "inst-0097": {
   "slug": "pay-to-avoid",
@@ -2211,7 +2211,7 @@
   "deceptive": false,
   "pair": "pay-to-avoid-cond3",
   "file": "corpus/inst-0097.html",
-  "size_bytes": 4372
+  "size_bytes": 4028
  },
  "inst-0311": {
   "slug": "pay-to-play",
@@ -2220,7 +2220,7 @@
   "deceptive": true,
   "pair": "pay-to-play-cond1",
   "file": "corpus/inst-0311.html",
-  "size_bytes": 4577
+  "size_bytes": 4109
  },
  "inst-0254": {
   "slug": "pay-to-play",
@@ -2229,7 +2229,7 @@
   "deceptive": false,
   "pair": "pay-to-play-cond1",
   "file": "corpus/inst-0254.html",
-  "size_bytes": 4279
+  "size_bytes": 4113
  },
  "inst-0167": {
   "slug": "pay-to-play",
@@ -2238,7 +2238,7 @@
   "deceptive": true,
   "pair": "pay-to-play-cond2",
   "file": "corpus/inst-0167.html",
-  "size_bytes": 3576
+  "size_bytes": 2489
  },
  "inst-0183": {
   "slug": "pay-to-play",
@@ -2247,7 +2247,7 @@
   "deceptive": false,
   "pair": "pay-to-play-cond2",
   "file": "corpus/inst-0183.html",
-  "size_bytes": 2632
+  "size_bytes": 3012
  },
  "inst-0124": {
   "slug": "pay-to-play",
@@ -2256,7 +2256,7 @@
   "deceptive": true,
   "pair": "pay-to-play-cond3",
   "file": "corpus/inst-0124.html",
-  "size_bytes": 3494
+  "size_bytes": 2331
  },
  "inst-0127": {
   "slug": "pay-to-play",
@@ -2265,7 +2265,7 @@
   "deceptive": false,
   "pair": "pay-to-play-cond3",
   "file": "corpus/inst-0127.html",
-  "size_bytes": 3340
+  "size_bytes": 3171
  },
  "inst-0155": {
   "slug": "persuasive-language",
@@ -2274,7 +2274,7 @@
   "deceptive": true,
   "pair": "persuasive-language-cond1",
   "file": "corpus/inst-0155.html",
-  "size_bytes": 3164
+  "size_bytes": 1006
  },
  "inst-0343": {
   "slug": "persuasive-language",
@@ -2283,7 +2283,7 @@
   "deceptive": false,
   "pair": "persuasive-language-cond1",
   "file": "corpus/inst-0343.html",
-  "size_bytes": 2496
+  "size_bytes": 2736
  },
  "inst-0338": {
   "slug": "persuasive-language",
@@ -2292,7 +2292,7 @@
   "deceptive": true,
   "pair": "persuasive-language-cond2",
   "file": "corpus/inst-0338.html",
-  "size_bytes": 3848
+  "size_bytes": 2854
  },
  "inst-0321": {
   "slug": "persuasive-language",
@@ -2301,7 +2301,7 @@
   "deceptive": false,
   "pair": "persuasive-language-cond2",
   "file": "corpus/inst-0321.html",
-  "size_bytes": 2871
+  "size_bytes": 3375
  },
  "inst-0176": {
   "slug": "persuasive-language",
@@ -2310,7 +2310,7 @@
   "deceptive": true,
   "pair": "persuasive-language-cond3",
   "file": "corpus/inst-0176.html",
-  "size_bytes": 6022
+  "size_bytes": 4268
  },
  "inst-0023": {
   "slug": "persuasive-language",
@@ -2319,7 +2319,7 @@
   "deceptive": false,
   "pair": "persuasive-language-cond3",
   "file": "corpus/inst-0023.html",
-  "size_bytes": 4558
+  "size_bytes": 5340
  },
  "inst-0248": {
   "slug": "plain-evil",
@@ -2328,7 +2328,7 @@
   "deceptive": true,
   "pair": "plain-evil-cond1",
   "file": "corpus/inst-0248.html",
-  "size_bytes": 5632
+  "size_bytes": 5969
  },
  "inst-0079": {
   "slug": "plain-evil",
@@ -2337,7 +2337,7 @@
   "deceptive": false,
   "pair": "plain-evil-cond1",
   "file": "corpus/inst-0079.html",
-  "size_bytes": 4264
+  "size_bytes": 5969
  },
  "inst-0355": {
   "slug": "plain-evil",
@@ -2346,7 +2346,7 @@
   "deceptive": true,
   "pair": "plain-evil-cond2",
   "file": "corpus/inst-0355.html",
-  "size_bytes": 4234
+  "size_bytes": 3984
  },
  "inst-0112": {
   "slug": "plain-evil",
@@ -2355,7 +2355,7 @@
   "deceptive": false,
   "pair": "plain-evil-cond2",
   "file": "corpus/inst-0112.html",
-  "size_bytes": 3276
+  "size_bytes": 3984
  },
  "inst-0222": {
   "slug": "plain-evil",
@@ -2364,7 +2364,7 @@
   "deceptive": true,
   "pair": "plain-evil-cond3",
   "file": "corpus/inst-0222.html",
-  "size_bytes": 4613
+  "size_bytes": 3411
  },
  "inst-0044": {
   "slug": "plain-evil",
@@ -2373,7 +2373,7 @@
   "deceptive": false,
   "pair": "plain-evil-cond3",
   "file": "corpus/inst-0044.html",
-  "size_bytes": 3290
+  "size_bytes": 3411
  },
  "inst-0125": {
   "slug": "playing-by-appointment",
@@ -2382,7 +2382,7 @@
   "deceptive": true,
   "pair": "playing-by-appointment-cond1",
   "file": "corpus/inst-0125.html",
-  "size_bytes": 5593
+  "size_bytes": 5079
  },
  "inst-0301": {
   "slug": "playing-by-appointment",
@@ -2391,7 +2391,7 @@
   "deceptive": false,
   "pair": "playing-by-appointment-cond1",
   "file": "corpus/inst-0301.html",
-  "size_bytes": 5751
+  "size_bytes": 5087
  },
  "inst-0202": {
   "slug": "playing-by-appointment",
@@ -2400,7 +2400,7 @@
   "deceptive": true,
   "pair": "playing-by-appointment-cond2",
   "file": "corpus/inst-0202.html",
-  "size_bytes": 3147
+  "size_bytes": 2116
  },
  "inst-0181": {
   "slug": "playing-by-appointment",
@@ -2409,7 +2409,7 @@
   "deceptive": false,
   "pair": "playing-by-appointment-cond2",
   "file": "corpus/inst-0181.html",
-  "size_bytes": 3459
+  "size_bytes": 2496
  },
  "inst-0094": {
   "slug": "playing-by-appointment",
@@ -2418,7 +2418,7 @@
   "deceptive": true,
   "pair": "playing-by-appointment-cond3",
   "file": "corpus/inst-0094.html",
-  "size_bytes": 5062
+  "size_bytes": 3439
  },
  "inst-0365": {
   "slug": "playing-by-appointment",
@@ -2427,7 +2427,7 @@
   "deceptive": false,
   "pair": "playing-by-appointment-cond3",
   "file": "corpus/inst-0365.html",
-  "size_bytes": 4906
+  "size_bytes": 4149
  },
  "inst-0157": {
   "slug": "positive-or-negative-framing",
@@ -2436,7 +2436,7 @@
   "deceptive": true,
   "pair": "positive-or-negative-framing-cond1",
   "file": "corpus/inst-0157.html",
-  "size_bytes": 5685
+  "size_bytes": 2024
  },
  "inst-0278": {
   "slug": "positive-or-negative-framing",
@@ -2445,7 +2445,7 @@
   "deceptive": false,
   "pair": "positive-or-negative-framing-cond1",
   "file": "corpus/inst-0278.html",
-  "size_bytes": 2083
+  "size_bytes": 2024
  },
  "inst-0217": {
   "slug": "positive-or-negative-framing",
@@ -2454,7 +2454,7 @@
   "deceptive": true,
   "pair": "positive-or-negative-framing-cond2",
   "file": "corpus/inst-0217.html",
-  "size_bytes": 2142
+  "size_bytes": 1953
  },
  "inst-0208": {
   "slug": "positive-or-negative-framing",
@@ -2463,7 +2463,7 @@
   "deceptive": false,
   "pair": "positive-or-negative-framing-cond2",
   "file": "corpus/inst-0208.html",
-  "size_bytes": 2420
+  "size_bytes": 1955
  },
  "inst-0323": {
   "slug": "positive-or-negative-framing",
@@ -2472,7 +2472,7 @@
   "deceptive": true,
   "pair": "positive-or-negative-framing-cond3",
   "file": "corpus/inst-0323.html",
-  "size_bytes": 2117
+  "size_bytes": 1968
  },
  "inst-0253": {
   "slug": "positive-or-negative-framing",
@@ -2481,7 +2481,7 @@
   "deceptive": false,
   "pair": "positive-or-negative-framing-cond3",
   "file": "corpus/inst-0253.html",
-  "size_bytes": 1832
+  "size_bytes": 1968
  },
  "inst-0312": {
   "slug": "pre-delivered-content",
@@ -2490,7 +2490,7 @@
   "deceptive": true,
   "pair": "pre-delivered-content-cond1",
   "file": "corpus/inst-0312.html",
-  "size_bytes": 4748
+  "size_bytes": 4457
  },
  "inst-0194": {
   "slug": "pre-delivered-content",
@@ -2499,7 +2499,7 @@
   "deceptive": false,
   "pair": "pre-delivered-content-cond1",
   "file": "corpus/inst-0194.html",
-  "size_bytes": 5024
+  "size_bytes": 4433
  },
  "inst-0080": {
   "slug": "pre-delivered-content",
@@ -2508,7 +2508,7 @@
   "deceptive": true,
   "pair": "pre-delivered-content-cond2",
   "file": "corpus/inst-0080.html",
-  "size_bytes": 21926
+  "size_bytes": 20165
  },
  "inst-0185": {
   "slug": "pre-delivered-content",
@@ -2517,7 +2517,7 @@
   "deceptive": false,
   "pair": "pre-delivered-content-cond2",
   "file": "corpus/inst-0185.html",
-  "size_bytes": 22671
+  "size_bytes": 20165
  },
  "inst-0138": {
   "slug": "pre-delivered-content",
@@ -2526,7 +2526,7 @@
   "deceptive": true,
   "pair": "pre-delivered-content-cond3",
   "file": "corpus/inst-0138.html",
-  "size_bytes": 11489
+  "size_bytes": 10304
  },
  "inst-0293": {
   "slug": "pre-delivered-content",
@@ -2535,7 +2535,7 @@
   "deceptive": false,
   "pair": "pre-delivered-content-cond3",
   "file": "corpus/inst-0293.html",
-  "size_bytes": 11013
+  "size_bytes": 10702
  },
  "inst-0077": {
   "slug": "pressured-selling",
@@ -2544,7 +2544,7 @@
   "deceptive": true,
   "pair": "pressured-selling-cond1",
   "file": "corpus/inst-0077.html",
-  "size_bytes": 3159
+  "size_bytes": 2975
  },
  "inst-0034": {
   "slug": "pressured-selling",
@@ -2553,7 +2553,7 @@
   "deceptive": false,
   "pair": "pressured-selling-cond1",
   "file": "corpus/inst-0034.html",
-  "size_bytes": 2752
+  "size_bytes": 2975
  },
  "inst-0195": {
   "slug": "pressured-selling",
@@ -2562,7 +2562,7 @@
   "deceptive": true,
   "pair": "pressured-selling-cond2",
   "file": "corpus/inst-0195.html",
-  "size_bytes": 4856
+  "size_bytes": 3620
  },
  "inst-0223": {
   "slug": "pressured-selling",
@@ -2571,7 +2571,7 @@
   "deceptive": false,
   "pair": "pressured-selling-cond2",
   "file": "corpus/inst-0223.html",
-  "size_bytes": 2280
+  "size_bytes": 4207
  },
  "inst-0354": {
   "slug": "pressured-selling",
@@ -2580,7 +2580,7 @@
   "deceptive": true,
   "pair": "pressured-selling-cond3",
   "file": "corpus/inst-0354.html",
-  "size_bytes": 2855
+  "size_bytes": 1829
  },
  "inst-0103": {
   "slug": "pressured-selling",
@@ -2589,7 +2589,7 @@
   "deceptive": false,
   "pair": "pressured-selling-cond3",
   "file": "corpus/inst-0103.html",
-  "size_bytes": 2291
+  "size_bytes": 2222
  },
  "inst-0277": {
   "slug": "price-comparison-prevention",
@@ -2598,7 +2598,7 @@
   "deceptive": true,
   "pair": "price-comparison-prevention-cond1",
   "file": "corpus/inst-0277.html",
-  "size_bytes": 2997
+  "size_bytes": 2702
  },
  "inst-0110": {
   "slug": "price-comparison-prevention",
@@ -2607,7 +2607,7 @@
   "deceptive": false,
   "pair": "price-comparison-prevention-cond1",
   "file": "corpus/inst-0110.html",
-  "size_bytes": 2588
+  "size_bytes": 2787
  },
  "inst-0258": {
   "slug": "price-comparison-prevention",
@@ -2616,7 +2616,7 @@
   "deceptive": true,
   "pair": "price-comparison-prevention-cond2",
   "file": "corpus/inst-0258.html",
-  "size_bytes": 3339
+  "size_bytes": 2963
  },
  "inst-0028": {
   "slug": "price-comparison-prevention",
@@ -2625,7 +2625,7 @@
   "deceptive": false,
   "pair": "price-comparison-prevention-cond2",
   "file": "corpus/inst-0028.html",
-  "size_bytes": 3422
+  "size_bytes": 2984
  },
  "inst-0168": {
   "slug": "price-comparison-prevention",
@@ -2634,7 +2634,7 @@
   "deceptive": true,
   "pair": "price-comparison-prevention-cond3",
   "file": "corpus/inst-0168.html",
-  "size_bytes": 3057
+  "size_bytes": 2767
  },
  "inst-0205": {
   "slug": "price-comparison-prevention",
@@ -2643,7 +2643,7 @@
   "deceptive": false,
   "pair": "price-comparison-prevention-cond3",
   "file": "corpus/inst-0205.html",
-  "size_bytes": 3366
+  "size_bytes": 2824
  },
  "inst-0213": {
   "slug": "privacy-maze",
@@ -2652,7 +2652,7 @@
   "deceptive": true,
   "pair": "privacy-maze-cond1",
   "file": "corpus/inst-0213.html",
-  "size_bytes": 3074
+  "size_bytes": 2635
  },
  "inst-0226": {
   "slug": "privacy-maze",
@@ -2661,7 +2661,7 @@
   "deceptive": false,
   "pair": "privacy-maze-cond1",
   "file": "corpus/inst-0226.html",
-  "size_bytes": 3223
+  "size_bytes": 2635
  },
  "inst-0065": {
   "slug": "privacy-maze",
@@ -2670,7 +2670,7 @@
   "deceptive": true,
   "pair": "privacy-maze-cond2",
   "file": "corpus/inst-0065.html",
-  "size_bytes": 3921
+  "size_bytes": 3188
  },
  "inst-0014": {
   "slug": "privacy-maze",
@@ -2679,7 +2679,7 @@
   "deceptive": false,
   "pair": "privacy-maze-cond2",
   "file": "corpus/inst-0014.html",
-  "size_bytes": 3297
+  "size_bytes": 3188
  },
  "inst-0134": {
   "slug": "privacy-maze",
@@ -2688,7 +2688,7 @@
   "deceptive": true,
   "pair": "privacy-maze-cond3",
   "file": "corpus/inst-0134.html",
-  "size_bytes": 6531
+  "size_bytes": 5771
  },
  "inst-0299": {
   "slug": "privacy-maze",
@@ -2697,7 +2697,7 @@
   "deceptive": false,
   "pair": "privacy-maze-cond3",
   "file": "corpus/inst-0299.html",
-  "size_bytes": 3400
+  "size_bytes": 5771
  },
  "inst-0239": {
   "slug": "privacy-zuckering",
@@ -2706,7 +2706,7 @@
   "deceptive": true,
   "pair": "privacy-zuckering-cond1",
   "file": "corpus/inst-0239.html",
-  "size_bytes": 1600
+  "size_bytes": 1347
  },
  "inst-0189": {
   "slug": "privacy-zuckering",
@@ -2715,7 +2715,7 @@
   "deceptive": false,
   "pair": "privacy-zuckering-cond1",
   "file": "corpus/inst-0189.html",
-  "size_bytes": 2134
+  "size_bytes": 1347
  },
  "inst-0264": {
   "slug": "privacy-zuckering",
@@ -2724,7 +2724,7 @@
   "deceptive": true,
   "pair": "privacy-zuckering-cond2",
   "file": "corpus/inst-0264.html",
-  "size_bytes": 2426
+  "size_bytes": 2129
  },
  "inst-0268": {
   "slug": "privacy-zuckering",
@@ -2733,7 +2733,7 @@
   "deceptive": false,
   "pair": "privacy-zuckering-cond2",
   "file": "corpus/inst-0268.html",
-  "size_bytes": 2008
+  "size_bytes": 2129
  },
  "inst-0074": {
   "slug": "privacy-zuckering",
@@ -2742,7 +2742,7 @@
   "deceptive": true,
   "pair": "privacy-zuckering-cond3",
   "file": "corpus/inst-0074.html",
-  "size_bytes": 1426
+  "size_bytes": 1326
  },
  "inst-0070": {
   "slug": "privacy-zuckering",
@@ -2751,7 +2751,7 @@
   "deceptive": false,
   "pair": "privacy-zuckering-cond3",
   "file": "corpus/inst-0070.html",
-  "size_bytes": 1507
+  "size_bytes": 1326
  },
  "inst-0215": {
   "slug": "psychological-tricks",
@@ -2760,7 +2760,7 @@
   "deceptive": true,
   "pair": "psychological-tricks-cond1",
   "file": "corpus/inst-0215.html",
-  "size_bytes": 5233
+  "size_bytes": 3865
  },
  "inst-0171": {
   "slug": "psychological-tricks",
@@ -2769,7 +2769,7 @@
   "deceptive": false,
   "pair": "psychological-tricks-cond1",
   "file": "corpus/inst-0171.html",
-  "size_bytes": 3368
+  "size_bytes": 4717
  },
  "inst-0180": {
   "slug": "psychological-tricks",
@@ -2778,7 +2778,7 @@
   "deceptive": true,
   "pair": "psychological-tricks-cond2",
   "file": "corpus/inst-0180.html",
-  "size_bytes": 11473
+  "size_bytes": 8984
  },
  "inst-0250": {
   "slug": "psychological-tricks",
@@ -2787,7 +2787,7 @@
   "deceptive": false,
   "pair": "psychological-tricks-cond2",
   "file": "corpus/inst-0250.html",
-  "size_bytes": 4043
+  "size_bytes": 9068
  },
  "inst-0082": {
   "slug": "psychological-tricks",
@@ -2796,7 +2796,7 @@
   "deceptive": true,
   "pair": "psychological-tricks-cond3",
   "file": "corpus/inst-0082.html",
-  "size_bytes": 5361
+  "size_bytes": 3797
  },
  "inst-0333": {
   "slug": "psychological-tricks",
@@ -2805,7 +2805,7 @@
   "deceptive": false,
   "pair": "psychological-tricks-cond3",
   "file": "corpus/inst-0333.html",
-  "size_bytes": 3762
+  "size_bytes": 4704
  },
  "inst-0287": {
   "slug": "pull-to-refresh",
@@ -2814,7 +2814,7 @@
   "deceptive": true,
   "pair": "pull-to-refresh-cond1",
   "file": "corpus/inst-0287.html",
-  "size_bytes": 1275
+  "size_bytes": 1228
  },
  "inst-0256": {
   "slug": "pull-to-refresh",
@@ -2823,7 +2823,7 @@
   "deceptive": false,
   "pair": "pull-to-refresh-cond1",
   "file": "corpus/inst-0256.html",
-  "size_bytes": 8177
+  "size_bytes": 1228
  },
  "inst-0150": {
   "slug": "pull-to-refresh",
@@ -2832,7 +2832,7 @@
   "deceptive": true,
   "pair": "pull-to-refresh-cond2",
   "file": "corpus/inst-0150.html",
-  "size_bytes": 2765
+  "size_bytes": 2606
  },
  "inst-0349": {
   "slug": "pull-to-refresh",
@@ -2841,7 +2841,7 @@
   "deceptive": false,
   "pair": "pull-to-refresh-cond2",
   "file": "corpus/inst-0349.html",
-  "size_bytes": 2730
+  "size_bytes": 2606
  },
  "inst-0249": {
   "slug": "pull-to-refresh",
@@ -2850,7 +2850,7 @@
   "deceptive": true,
   "pair": "pull-to-refresh-cond3",
   "file": "corpus/inst-0249.html",
-  "size_bytes": 1796
+  "size_bytes": 1650
  },
  "inst-0191": {
   "slug": "pull-to-refresh",
@@ -2859,7 +2859,7 @@
   "deceptive": false,
   "pair": "pull-to-refresh-cond3",
   "file": "corpus/inst-0191.html",
-  "size_bytes": 1804
+  "size_bytes": 1650
  },
  "inst-0105": {
   "slug": "reduced-friction",
@@ -2868,7 +2868,7 @@
   "deceptive": true,
   "pair": "reduced-friction-cond1",
   "file": "corpus/inst-0105.html",
-  "size_bytes": 3226
+  "size_bytes": 2758
  },
  "inst-0206": {
   "slug": "reduced-friction",
@@ -2877,7 +2877,7 @@
   "deceptive": false,
   "pair": "reduced-friction-cond1",
   "file": "corpus/inst-0206.html",
-  "size_bytes": 5013
+  "size_bytes": 2760
  },
  "inst-0231": {
   "slug": "reduced-friction",
@@ -2886,7 +2886,7 @@
   "deceptive": true,
   "pair": "reduced-friction-cond2",
   "file": "corpus/inst-0231.html",
-  "size_bytes": 2652
+  "size_bytes": 2734
  },
  "inst-0098": {
   "slug": "reduced-friction",
@@ -2895,7 +2895,7 @@
   "deceptive": false,
   "pair": "reduced-friction-cond2",
   "file": "corpus/inst-0098.html",
-  "size_bytes": 3161
+  "size_bytes": 2734
  },
  "inst-0314": {
   "slug": "reduced-friction",
@@ -2904,7 +2904,7 @@
   "deceptive": true,
   "pair": "reduced-friction-cond3",
   "file": "corpus/inst-0314.html",
-  "size_bytes": 3226
+  "size_bytes": 2740
  },
  "inst-0212": {
   "slug": "reduced-friction",
@@ -2913,7 +2913,7 @@
   "deceptive": false,
   "pair": "reduced-friction-cond3",
   "file": "corpus/inst-0212.html",
-  "size_bytes": 3201
+  "size_bytes": 2742
  },
  "inst-0271": {
   "slug": "reference-pricing",
@@ -2922,7 +2922,7 @@
   "deceptive": true,
   "pair": "reference-pricing-cond1",
   "file": "corpus/inst-0271.html",
-  "size_bytes": 2985
+  "size_bytes": 1859
  },
  "inst-0366": {
   "slug": "reference-pricing",
@@ -2931,7 +2931,7 @@
   "deceptive": false,
   "pair": "reference-pricing-cond1",
   "file": "corpus/inst-0366.html",
-  "size_bytes": 2885
+  "size_bytes": 1869
  },
  "inst-0021": {
   "slug": "reference-pricing",
@@ -2940,7 +2940,7 @@
   "deceptive": true,
   "pair": "reference-pricing-cond2",
   "file": "corpus/inst-0021.html",
-  "size_bytes": 2643
+  "size_bytes": 2285
  },
  "inst-0055": {
   "slug": "reference-pricing",
@@ -2949,7 +2949,7 @@
   "deceptive": false,
   "pair": "reference-pricing-cond2",
   "file": "corpus/inst-0055.html",
-  "size_bytes": 2566
+  "size_bytes": 2285
  },
  "inst-0089": {
   "slug": "reference-pricing",
@@ -2958,7 +2958,7 @@
   "deceptive": true,
   "pair": "reference-pricing-cond3",
   "file": "corpus/inst-0089.html",
-  "size_bytes": 3173
+  "size_bytes": 1219
  },
  "inst-0298": {
   "slug": "reference-pricing",
@@ -2967,7 +2967,7 @@
   "deceptive": false,
   "pair": "reference-pricing-cond3",
   "file": "corpus/inst-0298.html",
-  "size_bytes": 2598
+  "size_bytes": 2761
  },
  "inst-0030": {
   "slug": "small-or-moving-close-button",
@@ -2976,7 +2976,7 @@
   "deceptive": true,
   "pair": "small-or-moving-close-button-cond1",
   "file": "corpus/inst-0030.html",
-  "size_bytes": 757
+  "size_bytes": 719
  },
  "inst-0342": {
   "slug": "small-or-moving-close-button",
@@ -2985,7 +2985,7 @@
   "deceptive": false,
   "pair": "small-or-moving-close-button-cond1",
   "file": "corpus/inst-0342.html",
-  "size_bytes": 796
+  "size_bytes": 723
  },
  "inst-0075": {
   "slug": "small-or-moving-close-button",
@@ -2994,7 +2994,7 @@
   "deceptive": true,
   "pair": "small-or-moving-close-button-cond2",
   "file": "corpus/inst-0075.html",
-  "size_bytes": 899
+  "size_bytes": 848
  },
  "inst-0132": {
   "slug": "small-or-moving-close-button",
@@ -3003,7 +3003,7 @@
   "deceptive": false,
   "pair": "small-or-moving-close-button-cond2",
   "file": "corpus/inst-0132.html",
-  "size_bytes": 805
+  "size_bytes": 857
  },
  "inst-0043": {
   "slug": "small-or-moving-close-button",
@@ -3012,7 +3012,7 @@
   "deceptive": true,
   "pair": "small-or-moving-close-button-cond3",
   "file": "corpus/inst-0043.html",
-  "size_bytes": 1821
+  "size_bytes": 1288
  },
  "inst-0274": {
   "slug": "small-or-moving-close-button",
@@ -3021,7 +3021,7 @@
   "deceptive": false,
   "pair": "small-or-moving-close-button-cond3",
   "file": "corpus/inst-0274.html",
-  "size_bytes": 793
+  "size_bytes": 1520
  },
  "inst-0038": {
   "slug": "sneak-into-basket",
@@ -3030,7 +3030,7 @@
   "deceptive": true,
   "pair": "sneak-into-basket-cond1",
   "file": "corpus/inst-0038.html",
-  "size_bytes": 7285
+  "size_bytes": 6713
  },
  "inst-0351": {
   "slug": "sneak-into-basket",
@@ -3039,7 +3039,7 @@
   "deceptive": false,
   "pair": "sneak-into-basket-cond1",
   "file": "corpus/inst-0351.html",
-  "size_bytes": 7812
+  "size_bytes": 6713
  },
  "inst-0045": {
   "slug": "sneak-into-basket",
@@ -3048,7 +3048,7 @@
   "deceptive": true,
   "pair": "sneak-into-basket-cond2",
   "file": "corpus/inst-0045.html",
-  "size_bytes": 7335
+  "size_bytes": 2302
  },
  "inst-0117": {
   "slug": "sneak-into-basket",
@@ -3057,7 +3057,7 @@
   "deceptive": false,
   "pair": "sneak-into-basket-cond2",
   "file": "corpus/inst-0117.html",
-  "size_bytes": 9367
+  "size_bytes": 5004
  },
  "inst-0006": {
   "slug": "sneak-into-basket",
@@ -3066,7 +3066,7 @@
   "deceptive": true,
   "pair": "sneak-into-basket-cond3",
   "file": "corpus/inst-0006.html",
-  "size_bytes": 6701
+  "size_bytes": 2547
  },
  "inst-0035": {
   "slug": "sneak-into-basket",
@@ -3075,7 +3075,7 @@
   "deceptive": false,
   "pair": "sneak-into-basket-cond3",
   "file": "corpus/inst-0035.html",
-  "size_bytes": 6617
+  "size_bytes": 5995
  },
  "inst-0151": {
   "slug": "social-pyramid",
@@ -3084,7 +3084,7 @@
   "deceptive": true,
   "pair": "social-pyramid-cond1",
   "file": "corpus/inst-0151.html",
-  "size_bytes": 5787
+  "size_bytes": 4703
  },
  "inst-0305": {
   "slug": "social-pyramid",
@@ -3093,7 +3093,7 @@
   "deceptive": false,
   "pair": "social-pyramid-cond1",
   "file": "corpus/inst-0305.html",
-  "size_bytes": 3331
+  "size_bytes": 4705
  },
  "inst-0346": {
   "slug": "social-pyramid",
@@ -3102,7 +3102,7 @@
   "deceptive": true,
   "pair": "social-pyramid-cond2",
   "file": "corpus/inst-0346.html",
-  "size_bytes": 12124
+  "size_bytes": 4768
  },
  "inst-0052": {
   "slug": "social-pyramid",
@@ -3111,7 +3111,7 @@
   "deceptive": false,
   "pair": "social-pyramid-cond2",
   "file": "corpus/inst-0052.html",
-  "size_bytes": 2725
+  "size_bytes": 5156
  },
  "inst-0252": {
   "slug": "social-pyramid",
@@ -3120,7 +3120,7 @@
   "deceptive": true,
   "pair": "social-pyramid-cond3",
   "file": "corpus/inst-0252.html",
-  "size_bytes": 5312
+  "size_bytes": 3578
  },
  "inst-0247": {
   "slug": "social-pyramid",
@@ -3129,7 +3129,7 @@
   "deceptive": false,
   "pair": "social-pyramid-cond3",
   "file": "corpus/inst-0247.html",
-  "size_bytes": 4650
+  "size_bytes": 4405
  },
  "inst-0147": {
   "slug": "trick-questions",
@@ -3138,7 +3138,7 @@
   "deceptive": true,
   "pair": "trick-questions-cond1",
   "file": "corpus/inst-0147.html",
-  "size_bytes": 3516
+  "size_bytes": 1143
  },
  "inst-0329": {
   "slug": "trick-questions",
@@ -3147,7 +3147,7 @@
   "deceptive": false,
   "pair": "trick-questions-cond1",
   "file": "corpus/inst-0329.html",
-  "size_bytes": 3061
+  "size_bytes": 2928
  },
  "inst-0040": {
   "slug": "trick-questions",
@@ -3156,7 +3156,7 @@
   "deceptive": true,
   "pair": "trick-questions-cond2",
   "file": "corpus/inst-0040.html",
-  "size_bytes": 3732
+  "size_bytes": 1319
  },
  "inst-0240": {
   "slug": "trick-questions",
@@ -3165,7 +3165,7 @@
   "deceptive": false,
   "pair": "trick-questions-cond2",
   "file": "corpus/inst-0240.html",
-  "size_bytes": 1458
+  "size_bytes": 3067
  },
  "inst-0230": {
   "slug": "trick-questions",
@@ -3174,7 +3174,7 @@
   "deceptive": true,
   "pair": "trick-questions-cond3",
   "file": "corpus/inst-0230.html",
-  "size_bytes": 3256
+  "size_bytes": 2036
  },
  "inst-0291": {
   "slug": "trick-questions",
@@ -3183,7 +3183,7 @@
   "deceptive": false,
   "pair": "trick-questions-cond3",
   "file": "corpus/inst-0291.html",
-  "size_bytes": 1826
+  "size_bytes": 2950
  },
  "inst-0267": {
   "slug": "visual-prominence",
@@ -3192,7 +3192,7 @@
   "deceptive": true,
   "pair": "visual-prominence-cond1",
   "file": "corpus/inst-0267.html",
-  "size_bytes": 5353
+  "size_bytes": 4112
  },
  "inst-0361": {
   "slug": "visual-prominence",
@@ -3201,7 +3201,7 @@
   "deceptive": false,
   "pair": "visual-prominence-cond1",
   "file": "corpus/inst-0361.html",
-  "size_bytes": 3464
+  "size_bytes": 4472
  },
  "inst-0084": {
   "slug": "visual-prominence",
@@ -3210,7 +3210,7 @@
   "deceptive": true,
   "pair": "visual-prominence-cond2",
   "file": "corpus/inst-0084.html",
-  "size_bytes": 3938
+  "size_bytes": 2529
  },
  "inst-0071": {
   "slug": "visual-prominence",
@@ -3219,7 +3219,7 @@
   "deceptive": false,
   "pair": "visual-prominence-cond2",
   "file": "corpus/inst-0071.html",
-  "size_bytes": 3187
+  "size_bytes": 3247
  },
  "inst-0372": {
   "slug": "visual-prominence",
@@ -3228,7 +3228,7 @@
   "deceptive": true,
   "pair": "visual-prominence-cond3",
   "file": "corpus/inst-0372.html",
-  "size_bytes": 3233
+  "size_bytes": 2156
  },
  "inst-0326": {
   "slug": "visual-prominence",
@@ -3237,7 +3237,7 @@
   "deceptive": false,
   "pair": "visual-prominence-cond3",
   "file": "corpus/inst-0326.html",
-  "size_bytes": 2545
+  "size_bytes": 2308
  },
  "inst-0076": {
   "slug": "watch-ads-to-unlock-features",
@@ -3246,7 +3246,7 @@
   "deceptive": true,
   "pair": "watch-ads-to-unlock-features-cond1",
   "file": "corpus/inst-0076.html",
-  "size_bytes": 6665
+  "size_bytes": 6853
  },
  "inst-0357": {
   "slug": "watch-ads-to-unlock-features",
@@ -3255,7 +3255,7 @@
   "deceptive": false,
   "pair": "watch-ads-to-unlock-features-cond1",
   "file": "corpus/inst-0357.html",
-  "size_bytes": 2512
+  "size_bytes": 6853
  },
  "inst-0101": {
   "slug": "watch-ads-to-unlock-features",
@@ -3264,7 +3264,7 @@
   "deceptive": true,
   "pair": "watch-ads-to-unlock-features-cond2",
   "file": "corpus/inst-0101.html",
-  "size_bytes": 6511
+  "size_bytes": 5096
  },
  "inst-0282": {
   "slug": "watch-ads-to-unlock-features",
@@ -3273,7 +3273,7 @@
   "deceptive": false,
   "pair": "watch-ads-to-unlock-features-cond2",
   "file": "corpus/inst-0282.html",
-  "size_bytes": 5320
+  "size_bytes": 6155
  },
  "inst-0068": {
   "slug": "watch-ads-to-unlock-features",
@@ -3282,7 +3282,7 @@
   "deceptive": true,
   "pair": "watch-ads-to-unlock-features-cond3",
   "file": "corpus/inst-0068.html",
-  "size_bytes": 1881
+  "size_bytes": 1669
  },
  "inst-0263": {
   "slug": "watch-ads-to-unlock-features",
@@ -3291,7 +3291,7 @@
   "deceptive": false,
   "pair": "watch-ads-to-unlock-features-cond3",
   "file": "corpus/inst-0263.html",
-  "size_bytes": 1745
+  "size_bytes": 1669
  },
  "inst-0024": {
   "slug": "wrong-language",
@@ -3300,7 +3300,7 @@
   "deceptive": true,
   "pair": "wrong-language-cond1",
   "file": "corpus/inst-0024.html",
-  "size_bytes": 4127
+  "size_bytes": 3303
  },
  "inst-0352": {
   "slug": "wrong-language",
@@ -3309,7 +3309,7 @@
   "deceptive": false,
   "pair": "wrong-language-cond1",
   "file": "corpus/inst-0352.html",
-  "size_bytes": 3386
+  "size_bytes": 3303
  },
  "inst-0032": {
   "slug": "wrong-language",
@@ -3318,7 +3318,7 @@
   "deceptive": true,
   "pair": "wrong-language-cond2",
   "file": "corpus/inst-0032.html",
-  "size_bytes": 3939
+  "size_bytes": 2396
  },
  "inst-0174": {
   "slug": "wrong-language",
@@ -3327,7 +3327,7 @@
   "deceptive": false,
   "pair": "wrong-language-cond2",
   "file": "corpus/inst-0174.html",
-  "size_bytes": 3521
+  "size_bytes": 2398
  },
  "inst-0018": {
   "slug": "wrong-language",
@@ -3336,7 +3336,7 @@
   "deceptive": true,
   "pair": "wrong-language-cond3",
   "file": "corpus/inst-0018.html",
-  "size_bytes": 7723
+  "size_bytes": 7263
  },
  "inst-0330": {
   "slug": "wrong-language",
@@ -3345,6 +3345,6 @@
   "deceptive": false,
   "pair": "wrong-language-cond3",
   "file": "corpus/inst-0330.html",
-  "size_bytes": 7621
+  "size_bytes": 7263
  }
 }

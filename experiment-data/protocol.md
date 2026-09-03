@@ -169,3 +169,35 @@ Verified programmatically (tools/verify_sandbox_identity.py):
 Conclusion: the experiment corpus IS the sandbox (after the documented
 sanitization transform), and both sides cover all 62 patterns in both dark
 and non-dark versions across all three condition layers.
+
+## Run 5 — updated Sandbox rerun
+
+The updated-Sandbox rerun is pinned to Sandbox commit
+`f022958ecd083782f4fab53002c538afec0eac11` and was captured on
+2026-09-03 using Chromium at `/usr/bin/chromium` through
+`http://127.0.0.1:3000`. The updated interface exposes the two variants as
+`User view` (A) and `Auditor view` (B). Each mode was captured in a fresh page
+load. The capture follows the first eligible non-stop button in each condition
+shell, with a maximum of four states; it does not exhaustively explore all
+branches.
+
+The final post-sanitization corpus contains 372 fragments and 831 states:
+66 one-state, 215 two-state, 29 three-state, and 62 four-state fragments.
+Passes `tools/sanitize_corpus.py`, `tools/sanitize_corpus2.py`, and
+`tools/harden_corpus.py` were followed by the shared leak-policy verifier; the
+final corpus had zero residual policy markers and zero size-metadata
+mismatches.
+
+The fresh auditors use the Hermes-configured `gpt-5.6-luna-900k` model via
+`openai-codex`, not the DeepSeek model used in the historical Run 4 record.
+Prompts are recorded in `auditor-prompts-run5.md`, and the exact run metadata
+is recorded in `results/run5-metadata.json`. The ten auditor runs classify
+only their assigned opaque fragments, Condition 0 before Condition 1.
+
+The completed Run-5 raw inventory contains 744 rows (two arms for each of
+372 instances). Strict verification reported zero integrity issues. Aggregate
+results are: Condition 0, TP/FP/TN/FN = 159/161/25/27 and $F_1=0.6285$;
+Condition 1, TP/FP/TN/FN = 155/158/28/31 and $F_1=0.6212$. The exact paired
+McNemar result is $b=12$, $c=13$, $p=1.0000$. The result is a null,
+model-specific rerun of the complete intervention package, not a confirmation
+of an ontology-only effect.

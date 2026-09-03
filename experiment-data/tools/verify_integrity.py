@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Data-integrity verification + error inventory (reconstructed)."""
 import json
+import os
 import pathlib
+import re
 from collections import defaultdict
+from leak_policy import find_leaks
 
-EXP = pathlib.Path("/home/neliq/Coding/master-project/experiment-data")
+EXP = pathlib.Path(os.environ.get("EXPERIMENT_DIR", pathlib.Path(__file__).resolve().parents[1]))
 RAW = EXP / "results" / "raw"
 
 _gt = json.loads((EXP / "ground-truth.json").read_text())
@@ -15,6 +18,9 @@ else:
 instances = json.loads((EXP / "instances.json").read_text())
 
 agents = {}
+schema_issues = []
+assignment_issues = []
+agent_by_instance = defaultdict(set)
 for f in sorted(RAW.glob("agent-*.jsonl")):
     rows = []
     for line in f.read_text().splitlines():
@@ -22,12 +28,56 @@ for f in sorted(RAW.glob("agent-*.jsonl")):
             rows.append(json.loads(line))
     agents[f.stem] = rows
 
+for name, rows in agents.items():
+    assignment_file = EXP / "agent-lists-run4" / f"{name}.txt"
+    assigned = set(re.findall(r"inst-\d+", assignment_file.read_text())) if assignment_file.exists() else set()
+    row_ids = {r.get("instance_id") for r in rows}
+    if len(rows) != 2 * len(assigned) or row_ids != assigned:
+        assignment_issues.append((name, len(rows), len(assigned), len(row_ids)))
+    for r in rows:
+        agent_by_instance[r.get("instance_id")].add(name)
+        if r.get("instance_id") not in assigned:
+            assignment_issues.append((name, "unassigned", r.get("instance_id")))
+        if r.get("arm") not in ("c0", "c1"):
+            schema_issues.append((name, "arm", r.get("arm")))
+        if not isinstance(r.get("deceptive"), bool):
+            schema_issues.append((name, "deceptive", r.get("instance_id")))
+        if not isinstance(r.get("confidence"), (int, float)) or not 0 <= r.get("confidence") <= 1:
+            schema_issues.append((name, "confidence", r.get("instance_id")))
+        if not isinstance(r.get("justification"), str) or not r.get("justification", "").strip():
+            schema_issues.append((name, "justification", r.get("instance_id")))
+
+pair_agents = defaultdict(set)
+for iid, meta in instances.items():
+    pair = (meta.get("slug"), meta.get("condition_index"), meta.get("variant"))
+    pair_agents[pair].update(agent_by_instance.get(iid, set()))
+for slug in sorted({meta.get("slug") for meta in instances.values()}):
+    for layer in (1, 2, 3):
+        a_agents = pair_agents[(slug, layer, "A")]
+        b_agents = pair_agents[(slug, layer, "B")]
+        overlap = a_agents & b_agents
+        if overlap:
+            assignment_issues.append((slug, layer, "A/B same auditor", sorted(overlap)))
+
 by_id = defaultdict(dict)
+duplicate_rows = []
+seen_rows = set()
 for name, rows in agents.items():
     for r in rows:
+        key = (r["instance_id"], r["arm"])
+        if key in seen_rows:
+            duplicate_rows.append((name, *key))
+            continue
+        seen_rows.add(key)
         by_id[r["instance_id"]][r["arm"]] = (name, r)
 
 issues = 0
+if schema_issues:
+    print(f"SCHEMA ISSUES: {schema_issues[:10]}")
+    issues += len(schema_issues)
+if assignment_issues:
+    print(f"ASSIGNMENT ISSUES: {assignment_issues[:10]}")
+    issues += len(assignment_issues)
 for iid in sorted(ground):
     d = by_id.get(iid, {})
     for arm in ("c0", "c1"):
@@ -46,6 +96,36 @@ unknown = seen - set(ground)
 if unknown:
     print(f"UNKNOWN instance ids: {unknown}")
     issues += 1
+if duplicate_rows:
+    print(f"DUPLICATE instance/arm rows: {duplicate_rows[:10]}")
+    issues += len(duplicate_rows)
+
+expected_files = {f"{iid}.html" for iid in ground}
+actual_files = {f.name for f in (EXP / "corpus").glob("*.html")}
+missing_files = expected_files - actual_files
+extra_files = actual_files - expected_files
+if missing_files:
+    print(f"MISSING corpus files: {sorted(missing_files)[:10]}")
+    issues += len(missing_files)
+if extra_files:
+    print(f"EXTRA corpus files: {sorted(extra_files)[:10]}")
+    issues += len(extra_files)
+
+size_mismatches = []
+leaks = []
+for iid, meta in instances.items():
+    fragment = EXP / "corpus" / f"{iid}.html"
+    if fragment.exists():
+        if meta.get("size_bytes") != fragment.stat().st_size:
+            size_mismatches.append((iid, meta.get("size_bytes"), fragment.stat().st_size))
+        for leak in find_leaks(fragment.read_text(errors="replace")):
+            leaks.append((iid, leak))
+if size_mismatches:
+    print(f"SIZE MISMATCHES: {len(size_mismatches)} (sample {size_mismatches[:5]})")
+    issues += len(size_mismatches)
+if leaks:
+    print(f"LEAK MARKERS: {len(leaks)} (sample {leaks[:10]})")
+    issues += len(leaks)
 print(f"INTEGRITY ISSUES: {issues}")
 
 # error inventory
@@ -81,3 +161,5 @@ M.append("|---|---|---|---|---|---|---|---|")
 M.extend(inv)
 (EXP / "results" / "error-inventory.md").write_text("\n".join(M) + "\n")
 print(f"error inventory: {len(inv)} rows")
+if issues:
+    raise SystemExit(1)

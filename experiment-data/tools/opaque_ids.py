@@ -15,7 +15,7 @@ import pathlib
 import random
 
 SEED = int(os.environ.get("OPAQUE_SEED", "20260817"))
-EXP = pathlib.Path("/home/neliq/Coding/master-project/experiment-data")
+EXP = pathlib.Path(os.environ.get("EXPERIMENT_DIR", pathlib.Path(__file__).resolve().parents[1]))
 CORPUS = EXP / "corpus"
 MANIFEST = json.loads((EXP / "manifest.json").read_text())
 
@@ -46,7 +46,7 @@ for m, iid in zip(entries, ids):
         "deceptive": m["deceptive"],
         "pair": f"{m['slug']}-cond{m['condition_index']}",
         "file": f"corpus/{iid}.html",
-        "size_bytes": m["size_bytes"],
+        "size_bytes": new_file.stat().st_size,
     }
 print("opaque ids:", len(instances), "instances")
 
