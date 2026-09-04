@@ -19,7 +19,6 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * Variant B (benign): the same action is 2 clicks from home.
  */
 
-const TAU_DEPTH = 4;
 const DARK_DEPTH = 6;
 const BENIGN_DEPTH = 2;
 
@@ -63,11 +62,9 @@ function resolveNode(root: Node, path: string[]): Node {
 }
 
 export function LabyrinthineNavigationCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [pathA, setPathA] = React.useState<string[]>([]);
 
@@ -78,43 +75,12 @@ export function LabyrinthineNavigationCond1({
   const [noteA, setNoteA] = React.useState<string | null>(null);
   const [settingsMessage, setSettingsMessage] = React.useState<string | null>(null);
 
-  const reset = () => {
-    setPathA([]);
-    setConfirmingA(false);
-    setConfirmingB(false);
-    setOutcomeA("none");
-    setOutcomeB("none");
-    setNoteA(null);
-    setSettingsMessage(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d(v_home, v_target) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DARK_DEPTH} clicks</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d(v_home, v_target) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{BENIGN_DEPTH} clicks</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Heuristic threshold &tau;_depth</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_DEPTH}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Trigger: {DARK_DEPTH} &gt; {TAU_DEPTH}</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Labyrinthine Navigation: Excessive Navigational Depth"
       userTitle="Harbor — Account settings"
       caption="Excessive Navigational Depth — the critical user action sits 6 navigational levels deep in the settings graph, far beyond the &tau;_depth = 4 heuristic threshold."
-      auditorStats={stats}
       deltaNote={`In Variant A, d(v_home, v_target) = ${DARK_DEPTH}: deleting the account is buried under Settings → Account & Security → Membership plan → Manage membership → Account deletion → Request, with unrelated leaf pages en route. In Variant B the same action is d = ${BENIGN_DEPTH} (Settings → Delete account), inside the threshold.`}
       benign={
         <div className="space-y-3">

@@ -23,24 +23,16 @@ import { ShoppingCart, TrendingUp } from "lucide-react";
  */
 
 const BACKEND_PURCHASES = 14;
-const TAU_ANIMATE_MS = 1000;
 
 export function HighDemandCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [phaseA, setPhaseA] = React.useState<"idle" | "revealed">("idle");
   const [phaseB, setPhaseB] = React.useState<"idle" | "revealed">("idle");
   const [count, setCount] = React.useState(24); // the animated badge counter (Variant A)
 
-  const reset = () => {
-    setPhaseA("idle");
-    setPhaseB("idle");
-    setCount(24);
-  };
 
   // Variant A: rapid numeric incrementation — 450 ms (< τ_animate = 1000 ms).
   React.useEffect(() => {
@@ -51,34 +43,10 @@ export function HighDemandCond2({
     return () => window.clearInterval(id);
   }, [phaseA]);
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δ t_update (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">450 ms</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_animate threshold</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_ANIMATE_MS} ms</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">IsAnimated (A / B)</span>
-        <span className="font-mono font-semibold tabular-nums">
-          <span className="text-red-500">True</span> / <span className="text-green-500">False</span>
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Backend U_true</span>
-        <span className="font-mono font-semibold tabular-nums">{BACKEND_PURCHASES} purchases</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="High Demand: Visual Dynamics of Social-Proof Badges"
       caption="Visual Dynamics of Social-Proof Badges — demand badges animated below the perceptual-realism refresh threshold fabricate urgency through artificial visual dynamism."
-      auditorStats={stats}
       deltaNote="Variant A animates the “X bought this” badge: rapid numeric incrementation every 450 ms (Δt_update = 450 ms < τ_animate = 1000 ms) plus a pulse, starting from a fabricated 24 that no purchase log backs. Variant B shows the same badge statically at the true backend count (14) — Δt_update = ∞, IsAnimated = False — with each purchase resolvable to a row in the visible backend event log."
       benign={
         <div className="space-y-3">

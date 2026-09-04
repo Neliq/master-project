@@ -1,0 +1,6 @@
+STATE s1
+Nest — your network Deterministic Pull to refresh a few times — you’ll get the same message every single time. Pull to refresh Refresh #0 — outcome identical to all previous ones.
+
+STATE s2
+Nest — your network Deterministic Pull to refresh a few times — you’ll get the same message every single time. Refreshing… Refresh #0 — outcome identical to all previous ones.
+

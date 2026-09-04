@@ -26,42 +26,17 @@ const PROXIMITY_THRESHOLD = 120; // τ_proximity, px
 const NODE_GAP_DARK = 24; // px between the two contradictory nodes in A
 
 export function ConflictingInformationCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [started, setStarted] = React.useState(false);
 
-  const reset = () => setStarted(false);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Prop(t₁) — “FREE trial”</span>
-        <span className="font-mono font-semibold tabular-nums">no charge</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Prop(t₂) — “Payment due today”</span>
-        <span className="font-mono font-semibold tabular-nums">$49.00 now</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Prop(t₁) ∧ Prop(t₂) ⇒ ⊥</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">unsatisfiable</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d_DOM(t₁, t₂)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{NODE_GAP_DARK}px &lt; τ ({PROXIMITY_THRESHOLD}px)</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Conflicting Information: Structural Proximity of Contradictory Factual Nodes"
       caption="Structural Proximity of Contradictory Factual Nodes — a “FREE trial” claim and a “payment due today” note sit a few pixels apart in the same card, yet their propositions are mutually unsatisfiable."
-      auditorStats={stats}
       deltaNote="In Variant A the two factual nodes are placed within d_DOM = 24px (< τ_proximity), and their propositions are contradictory — “free trial, no charge” ∧ “payment of $49.00 due today” ⇒ ⊥ — so starting the trial charges you immediately. In Variant B the claims are consistent: the trial is genuinely free for 30 days and the first payment comes only afterwards, so both propositions are satisfiable."
       benign={
         <div className="space-y-3">

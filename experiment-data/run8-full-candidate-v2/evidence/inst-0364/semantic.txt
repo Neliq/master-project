@@ -1,0 +1,6 @@
+STATE s0
+Cancellation flow Signup flow Premium — free trial Try Premium free. You get unlimited projects, priority support, and analytics. Visa •••• 4242 Free trial Start free trial Simple language, friendly tone — and no mention of renewal or cancellation anywhere on this screen.
+
+STATE s1
+Cancellation flow Signup flow Cancel subscription We're sorry to see you go. Please be aware that cancellation is an irreversible action: you will permanently abandon your progress, lose all of your benefits and accumulated data, and forfeit any remaining time on your current billing cycle. Upon cancellation, your account will immediately cease to function, all collaborative privileges will be revoked, and any content you have created may be permanently deleted without the possibility of recovery. Should you choose to proceed with this final and definitive termination of your subscription, please confirm below. I still want to cancel
+

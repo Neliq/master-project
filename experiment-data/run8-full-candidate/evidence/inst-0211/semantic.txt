@@ -1,0 +1,12 @@
+STATE s0
+Personalize your plan Pick from 30 optional add-on channels (each $2/mo). All options are shown below — review them all before choosing. Premier League Champions League La Liga Serie A NBA NFL MLB NHL Formula 1 MotoGP CNN+ BBC World Sky News Bloomberg TV Reuters TV Al Jazeera Euronews France 24 CNA TRT World Nick Jr Cartoonito Boomerang PBS Kids Disney Junior CBeebies BabyTV Tooncast Kix Pop Add 0 add-ons to my plan
+
+STATE s1
+Personalize your plan Pick from 30 optional add-on channels (each $2/mo). All options are shown below — review them all before choosing. Premier League Champions League La Liga Serie A NBA NFL MLB NHL Formula 1 MotoGP CNN+ BBC World Sky News Bloomberg TV Reuters TV Al Jazeera Euronews France 24 CNA TRT World Nick Jr Cartoonito Boomerang PBS Kids Disney Junior CBeebies BabyTV Tooncast Kix Pop Add 1 add-on to my plan
+
+STATE s2
+Personalize your plan Pick from 30 optional add-on channels (each $2/mo). All options are shown below — review them all before choosing. Premier League Champions League La Liga Serie A NBA NFL MLB NHL Formula 1 MotoGP CNN+ BBC World Sky News Bloomberg TV Reuters TV Al Jazeera Euronews France 24 CNA TRT World Nick Jr Cartoonito Boomerang PBS Kids Disney Junior CBeebies BabyTV Tooncast Kix Pop Add 0 add-ons to my plan
+
+STATE s3
+Personalize your plan Pick from 30 optional add-on channels (each $2/mo). All options are shown below — review them all before choosing. Premier League Champions League La Liga Serie A NBA NFL MLB NHL Formula 1 MotoGP CNN+ BBC World Sky News Bloomberg TV Reuters TV Al Jazeera Euronews France 24 CNA TRT World Nick Jr Cartoonito Boomerang PBS Kids Disney Junior CBeebies BabyTV Tooncast Kix Pop Add 1 add-on to my plan
+

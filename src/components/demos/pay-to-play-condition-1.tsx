@@ -41,21 +41,14 @@ const needDark = (s: number) => Math.pow(2, s);
 const needBenign = (s: number) => s + 1;
 
 export function PayToPlayCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [taps, setTaps] = React.useState(0);
   const [darkTaps, setDarkTaps] = React.useState(0);
   const [skips, setSkips] = React.useState(0);
 
-  const reset = () => {
-    setTaps(0);
-    setDarkTaps(0);
-    setSkips(0);
-  };
 
   const dark = stageProgress(darkTaps, needDark);
   const benign = stageProgress(taps, needBenign);
@@ -66,33 +59,11 @@ export function PayToPlayCond1({
     setDarkTaps((t) => t + (needDark(dark.stage) - dark.progress));
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Stage L_i (dark)</span>
-        <span className="font-mono font-semibold tabular-nums">{dark.stage}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_free(L_i) = c^i</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{needDark(dark.stage)} taps</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_paid(L_i) = O(1)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">1 tap ($4.99)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_free / E_paid</span>
-        <span className="font-mono font-semibold tabular-nums">{needDark(dark.stage)}×</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pay-To-Play: Exponential Friction and Paid Bypass"
       userTitle="Harvest Valley"
       caption="Exponential Friction and Paid Bypass — the free path demands exponentially more taps per stage (c^i), while the paid bypass collapses the same stage to a single click (O(1))."
-      auditorStats={stats}
       deltaNote="Both variants show the same farm and the same tap counter — only the effort curve differs. In Variant A the free path needs 2^i taps per stage while a $4.99 skip finishes the stage in one click, so the microtransaction becomes the only sane escape. In Variant B the free path needs i+1 taps per stage, so effort stays trivial and no paid bypass is offered."
       benign={
         <div className="space-y-3">

@@ -27,46 +27,18 @@ const COERCION_HITS_DARK = ["unlock", "don't miss"];
 const TAU_SENTIMENT = 0.5;
 
 export function VisualProminenceCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<null | "apply" | "full-price">(null);
   const [benignChoice, setBenignChoice] = React.useState<null | "apply" | "full-price">(null);
 
-  const reset = () => {
-    setDarkChoice(null);
-    setBenignChoice(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sent(L) dominant label (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">+{SENT_DARK.toFixed(2)} (&gt; &plusmn;{TAU_SENTIMENT})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Coercion lexemes (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{COERCION_HITS_DARK.join(", ")}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">L &cap; D_coercion (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&ne; &empty;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sent(L) benign label</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">+{SENT_BENIGN.toFixed(2)}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Visual Prominence: Semantic Neutrality of Dominant Action Labels"
       caption="Semantic Neutrality of Dominant Action Labels — the visually dominant button's label should be neutral; here its sentiment and coercion lexemes amplify the visual dominance."
-      auditorStats={stats}
       deltaNote="Both variants offer the same $50 discount. In Variant A the dominant label is emotionally loaded: Sent = +0.86 (|Sent| > 0.5) and it contains coercion lexemes {'unlock', 'don't miss'} from D_coercion. In Variant B the identical offer is labeled neutrally (Sent = +0.12, L ∩ D_coercion = ∅)."
       benign={
         <div className="space-y-3">

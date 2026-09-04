@@ -1,0 +1,6 @@
+STATE s0
+We care about your privacy We and our partners process personal data to serve personalised ads and content, measure performance, and derive insights, as described in our privacy policy. Accept All Manage options Essential cookies only Accept All is the prominent action; Manage options is a quieter link below.
+
+STATE s1
+We care about your privacy We and our partners process personal data to serve personalised ads and content, measure performance, and derive insights, as described in our privacy policy. Accept All Manage options Essential cookies only Accept All is the prominent action; Manage options is a quieter link below. Privacy settings saved Accept All drew attention first because it was the large filled action, while the settings link was quieter.
+

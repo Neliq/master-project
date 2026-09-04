@@ -29,54 +29,20 @@ const RATIO = W_GAIN / W_LOSS; // ≈ 11.45
 const TAU = 3.0;
 
 export function PositiveOrNegativeFramingCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkDecision, setDarkDecision] = React.useState<"keep" | "cancel" | null>(null);
   const [benignDecision, setBenignDecision] = React.useState<"keep" | "cancel" | null>(null);
   const [darkSubmitted, setDarkSubmitted] = React.useState(false);
   const [benignSubmitted, setBenignSubmitted] = React.useState(false);
 
-  const reset = () => {
-    setDarkDecision(null);
-    setBenignDecision(null);
-    setDarkSubmitted(false);
-    setBenignSubmitted(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(F_gain) = area × contrast</span>
-        <span className="font-mono font-semibold tabular-nums">{W_GAIN.toLocaleString()}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(F_loss) = area × contrast</span>
-        <span className="font-mono font-semibold tabular-nums">{W_LOSS.toLocaleString()}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">max(W_gain/W_loss, W_loss/W_gain)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {RATIO.toFixed(1)}× &gt; {TAU.toFixed(1)}
-        </span>
-      </div>
-          <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Your decision</span>
-        <span className="font-mono font-semibold tabular-nums">
-          {darkDecision ? (darkDecision === "keep" ? "Keep (gain pole)" : "Cancel (loss pole)") : "—"}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Positive Or Negative Framing: Visual Weight Asymmetry Between Framing Poles"
       caption="Visual Weight Asymmetry Between Framing Poles — the gain-framed renewal is a giant high-contrast button while the loss-framed cancellation is a whisper of grey text; the same decision rendered at wildly different visual weights."
-      auditorStats={stats}
       deltaNote="Variant A renders the gain pole at 11.5× the visual weight (area × contrast) of the loss pole, pushing the ratio past tau_frame_asymmetry. Variant B keeps both poles as equal-size, equal-contrast buttons with the exact same information, so the decision is presented without a visual thumb on the scale."
       benign={
         <div className="space-y-3">

@@ -71,53 +71,23 @@ function Post({
 }
 
 export function EncouragingAntiSocialBehaviorCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [tone, setTone] = React.useState<Tone>("heated");
   const [posted, setPosted] = React.useState(false);
   const [benignTone, setBenignTone] = React.useState<Tone>("civil");
   const [benignPosted, setBenignPosted] = React.useState(false);
-  const reset = () => {
-    setTone("heated");
-    setPosted(false);
-    setBenignTone("civil");
-    setBenignPosted(false);
-  };
 
   const darkReach = posted ? reachFor(tone, true) : null;
   const benignReach = benignPosted ? reachFor(benignTone, false) : null;
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_polarity(M) — hostile post</span>
-        <span className="font-mono font-semibold tabular-nums">+0.9</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">V_visibility (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DARK_REACH.hostile.toLocaleString()} vs {DARK_REACH.civil.toLocaleString()} &mdash; &prop; polarity</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">V_visibility (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{BENIGN_REACH} vs {BENIGN_REACH} &mdash; independent</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Systemic incentive</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">hostility rewarded</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Encouraging Anti-Social Behavior: Algorithmic Amplification of Outrage"
       userTitle="Chirp — compose"
       caption="Algorithmic Amplification of Outrage — the distribution algorithm assigns higher visibility to highly polarized content, so hostility is the rational strategy for reaching an audience."
-      auditorStats={stats}
       deltaNote={`Variant A defaults the composer to the 'Heated' tone and labels feed posts 'Boosted'/'Not boosted', implying the algorithm amplifies polarized content — reach scales with polarity (${DARK_REACH.hostile.toLocaleString()} hostile views vs ${DARK_REACH.civil.toLocaleString()} civil). Variant B starts on the neutral 'Civil' tone, shows every post at the same reach (${BENIGN_REACH} views), and removes boost markers — there is no incentive to escalate.`}
       benign={
         <div className="space-y-3">

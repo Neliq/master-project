@@ -30,11 +30,9 @@ const PARTNERS = [
 ];
 
 export function AutomaticAcceptThirdPartyTermCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [acceptedA, setAcceptedA] = React.useState(false);
   const [acceptedB, setAcceptedB] = React.useState(false);
@@ -42,43 +40,14 @@ export function AutomaticAcceptThirdPartyTermCond1({
   const [createdA, setCreatedA] = React.useState(false);
   const [createdB, setCreatedB] = React.useState(false);
 
-  const reset = () => {
-    setAcceptedA(false);
-    setAcceptedB(false);
-    setPartnersB(PARTNERS.map(() => false));
-    setCreatedA(false);
-    setCreatedB(false);
-  };
 
   const boundCount = partnersB.filter(Boolean).length;
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|T_third_party|</span>
-        <span className="font-mono font-semibold tabular-nums">{PARTNERS.length} agreements</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Toggles in DOM</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0 (dark) / {PARTNERS.length} (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Accept(T_primary) &rArr; &forall;t_i</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True (dark) / per-toggle (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Entities bound</span>
-        <span className="font-mono font-semibold tabular-nums">{createdA || createdB ? `${createdA ? PARTNERS.length : "—"} (dark) / ${createdB ? boundCount : "—"} (benign)` : "—"}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Automatic Accept Third Party Term: Bundled Transitive Consent"
       userTitle="Orbit — Terms & partners"
       caption="One indivisible &ldquo;I accept&rdquo; node fuses the primary terms with every third-party agreement — no individual toggles exist in the DOM."
-      auditorStats={stats}
       deltaNote={`In Variant A checking the primary box and clicking create binds all ${PARTNERS.length} partner agreements at once (∄ Toggle(t_i) ∈ DOM). Variant B renders each partner with its own labelled toggle, and only the ${boundCount} you checked are bound.`}
       benign={
         <div className="space-y-3">

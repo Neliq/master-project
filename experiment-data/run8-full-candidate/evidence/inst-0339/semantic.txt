@@ -1,0 +1,9 @@
+STATE s0
+Harborview Suites ★ 4.8 · Waterfront · 3 nights · 2 guests Free cancellation Breakfast included $19.00 per night Total for 3 nights: $70.75 — includes reservation service fee, booking fee and convenience charge. Continue to booking Price summary shown above the fold, in full.
+
+STATE s1
+Review & pay Harborview Suites · 3 nights x $19.00 = $57.00 Reservation service fee $7.50 Booking fee $4.00 Convenience charge $2.25 Total for 3 nights $70.75 Back Pay $70.75
+
+STATE s2
+Review & pay Harborview Suites · 3 nights x $19.00 = $57.00 Reservation service fee $7.50 Booking fee $4.00 Convenience charge $2.25 Total for 3 nights $70.75 Back Paid Fee terminology visible from the start initial ∩ fees differs from none — the initial pricing page already named the reservation service fee, booking fee and convenience charge and quoted the full $70.75 total above the fold. Nothing was added at checkout.
+

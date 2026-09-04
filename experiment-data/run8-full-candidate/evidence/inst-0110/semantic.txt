@@ -1,0 +1,6 @@
+STATE s0
+CloudNimbus Pro Annual plan — billed yearly Fiat price PLN 149.00 / year, VAT incl. Priced directly in fiat — comparable against any other store in any currency. Convert to USD / EUR
+
+STATE s1
+CloudNimbus Pro Annual plan — billed yearly Fiat price PLN 149.00 / year, VAT incl. Priced directly in fiat — comparable against any other store in any currency. Convert to USD / EUR convert(149.00 PLN) = { USD 38.11, EUR 34.90 } differs from none The conversion is defined in the DOM, so you can evaluate the real-world equivalent and compare across markets.
+

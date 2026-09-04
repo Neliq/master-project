@@ -1,0 +1,6 @@
+STATE s1
+Seasonal sale — ends Friday 23:59 40% off everything. Deadline: Friday, 23:59 CET — 2 days, 6 hours from now. When exactly does it end? Plan my purchase
+
+STATE s2
+Seasonal sale — ends Friday 23:59 40% off everything. Deadline: Friday, 23:59 CET — 2 days, 6 hours from now. When exactly does it end? Concrete answer: Friday 23:59 CET. That timestamp exists in the DOM, so you can schedule your purchase — and your comparison shopping — around a real constraint. Plan my purchase
+

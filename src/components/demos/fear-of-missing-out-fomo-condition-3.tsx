@@ -22,84 +22,23 @@ import { ScanSearch } from "lucide-react";
  * 0 lexemes, density 0.0 < τ_fomo.
  */
 
-const DARK_COPY =
-  "LIMITED TIME — only 3 left and selling fast! This flash deal ends soon. Last chance to grab yours — don’t miss out on our one-time price.";
-
 const BENIGN_COPY =
   "In stock — 8 units. Regular price $195, now $119. Free shipping. 30-day returns.";
 
-const LEXEMES = [
-  "limited time",
-  "only 3 left",
-  "selling fast",
-  "flash deal",
-  "ends soon",
-  "last chance",
-  "don’t miss out",
-  "one-time",
-];
-
-function countLexemes(text: string): number {
-  const lower = text.toLowerCase();
-  let found = 0;
-  for (const lex of LEXEMES) {
-    const needle = lex.toLowerCase();
-    let idx = lower.indexOf(needle);
-    while (idx !== -1) {
-      found += 1;
-      idx = lower.indexOf(needle, idx + needle.length);
-    }
-  }
-  return found;
-}
-
-const wordCount = (text: string) => text.split(/\s+/).filter(Boolean).length;
-const density = (text: string) => ((countLexemes(text) / wordCount(text)) * 100).toFixed(1);
-
 export function FearOfMissingOutFomoCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [scannedA, setScannedA] = React.useState(false);
   const [scannedB, setScannedB] = React.useState(false);
 
-  const reset = () => {
-    setScannedA(false);
-    setScannedB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Lexemes found (A / B)</span>
-        <span className="font-mono font-semibold tabular-nums">
-          {countLexemes(DARK_COPY)} <span className="text-red-500">/</span> {countLexemes(BENIGN_COPY)}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|T| words (A / B)</span>
-        <span className="font-mono font-semibold tabular-nums">{wordCount(DARK_COPY)} / {wordCount(BENIGN_COPY)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Density per 100 words (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{density(DARK_COPY)} &gt; τ_fomo</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Density per 100 words (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{density(BENIGN_COPY)} &lt; τ_fomo</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Fear Of Missing Out (FOMO): Semantic Density of Scarcity and Urgency Lexemes"
       userTitle="AeroGlide X — Offer"
       caption="Semantic Density of Scarcity and Urgency Lexemes — the page’s visible text weaponizes linguistic scarcity, exceeding the per-100-word manipulation threshold."
-      auditorStats={stats}
       deltaNote="Variant A packs 8 urgency lexemes into 27 words (≈29.6 per 100 words > τ_fomo): “LIMITED TIME,” “only 3 left,” “selling fast,” “flash deal,” “ends soon,” “last chance,” “don’t miss out,” “one-time.” Variant B conveys the same offer — $119, in stock, in neutral wording — with 0 lexemes (0.0 < τ_fomo)."
       benign={
         <div className="space-y-3">

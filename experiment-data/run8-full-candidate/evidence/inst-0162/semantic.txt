@@ -1,0 +1,6 @@
+STATE s0
+TechDaily — Read Why your phone is always listening (and what to do) Voice assistants wake on trigger words, but the microphone pipeline is always hot. We measured the actual data flow between your phone and the vendor's cloud over 30 days, and the results are… complicated. Advertisement third-party · sponsor Our sponsor builds privacy-focused VPNs for the whole family. Take a look if you are shopping around. Learn more about our sponsor Previous page 1 / 2 (native control — host) Next
+
+STATE s1
+TechDaily — Read Why your phone is always listening (and what to do) Voice assistants wake on trigger words, but the microphone pipeline is always hot. We measured the actual data flow between your phone and the vendor's cloud over 30 days, and the results are… complicated. Advertisement third-party · sponsor Our sponsor builds privacy-focused VPNs for the whole family. Take a look if you are shopping around. Learn more about our sponsor Previous page 1 / 2 (native control — host) Next
+

@@ -1,0 +1,6 @@
+STATE s0
+TechDaily your daily engineering brief The silicon shortage is finally easing Chip fabs are ramping output faster than analysts predicted. What that means for prices. TechDaily · 14 min read Why your laptop still has a fan Thermal design hasn't changed in a decade. Here is why engineers keep the fan. TechDaily · 9 min read Sponsored ad · third-party Try the AI that writes your code for you DevGPT Pro generates, reviews, and deploys your pull requests. Join 2M developers. Learn more about this offer
+
+STATE s1
+TechDaily your daily engineering brief The silicon shortage is finally easing Chip fabs are ramping output faster than analysts predicted. What that means for prices. TechDaily · 14 min read Why your laptop still has a fan Thermal design hasn't changed in a decade. Here is why engineers keep the fan. TechDaily · 9 min read Sponsored ad · third-party Try the AI that writes your code for you DevGPT Pro generates, reviews, and deploys your pull requests. Join 2M developers. Learn more about this offer TechDaily · article The silicon shortage is finally easing Chip fabs are ramping output faster than analysts predicted. What that means for prices. Capacity is returning across the supply chain, bringing prices and delivery times back toward normal.
+

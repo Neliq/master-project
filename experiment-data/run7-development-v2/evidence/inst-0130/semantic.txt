@@ -1,0 +1,9 @@
+STATE s0
+Premium — free trial 7 days of free trial remaining. trial Cached token payment — Visa •••• 4242 $14.99/mo Renewal reminder: your free trial ends in 7 days. After it ends,$14.99/mo will be charged to •••• 4242 unless you cancel before then. Cancel trial — nothing will be charged
+
+STATE s1
+Premium — free trial Your trial period has concluded. trial Cached token payment — Visa •••• 4242 $14.99/mo Your free trial has ended Continue with Premium at $14.99/month, charged to •••• 4242? Nothing is charged until you confirm. Yes — charge me $14.99/mo No — cancel my subscription
+
+STATE s2
+Premium — free trial Your trial period has concluded. premium Cached token payment — Visa •••• 4242 $14.99/mo Premium active — $14.99/mo $14.99 was charged to •••• 4242 after you confirmed at the prompt. The renewal reminder and the confirm step were both shown before any charge.
+

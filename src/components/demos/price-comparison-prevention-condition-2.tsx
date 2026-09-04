@@ -26,46 +26,17 @@ const ITEMS = [
 ];
 
 export function PriceComparisonPreventionCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [compared, setCompared] = React.useState(false);
 
-  const reset = () => setCompared(false);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">fontSize ratio — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">8/13 ≈ 0.62 &lt; τ</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">fontSize ratio — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">10/13 ≈ 0.77 ≥ τ</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CR(N_unit, bg) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 2.6 (vs 7.6 headline)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_suppress</span>
-        <span className="font-mono font-semibold tabular-nums">0.70</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Cheaper per 100 g</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">Crunchy (PLN 2.29)</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Price Comparison Prevention: Visual Suppression of Unit-Price Information"
       caption="Visual Suppression of Unit-Price Information — unit prices are rendered at a font size and contrast ratio below τ_suppress relative to the headline price, defeating per-unit comparison."
-      auditorStats={stats}
       deltaNote="Variant A shrinks and fades the unit-price nodes (8/13 ≈ 0.62 < τ_suppress = 0.70, contrast ≈ 2.6), so per-100 g comparison is practically impossible. Variant B renders them at near-headline size and contrast (10/13 ≈ 0.77), and the cheaper product is immediately obvious."
       benign={
         <div className="space-y-3">

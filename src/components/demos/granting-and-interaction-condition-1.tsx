@@ -23,11 +23,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function GrantingAndInteractionCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [locationGrantedA, setLocationGrantedA] = React.useState(false);
   const [deniedA, setDeniedA] = React.useState(false);
@@ -35,42 +33,8 @@ export function GrantingAndInteractionCond1({
   const [tagsOnB, setTagsOnB] = React.useState(false);
   const [photoTakenB, setPhotoTakenB] = React.useState(false);
 
-  const reset = () => {
-    setLocationGrantedA(false);
-    setDeniedA(false);
-    setPhotoTakenA(false);
-    setTagsOnB(false);
-    setPhotoTakenB(false);
-  };
 
   const blockedA = !locationGrantedA;
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_core (interaction)</span>
-        <span className="font-mono font-semibold tabular-nums">Take photo (shutter)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_requested (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">Location</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Dep(I_core, P_requested)</span>
-        <span className="font-mono font-semibold tabular-nums">∅ (no dependency)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">State(I_core)</span>
-        <span className={`font-mono font-semibold tabular-nums ${blockedA ? "text-red-500" : "text-green-500"}`}>
-          {blockedA ? "Blocked" : "Open"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Photo taken?</span>
-        <span className="font-mono font-semibold tabular-nums">{photoTakenA ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
 
   const header = (accent: "rose" | "emerald") => (
     <div className="flex items-center justify-between">
@@ -114,11 +78,10 @@ export function GrantingAndInteractionCond1({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Granting and Interaction: Interaction Gating"
       userTitle="Trailblaze — Add a photo"
       caption="Interaction Gating — core interactions are held hostage until a non-essential permission is granted, even though the interaction has no functional dependency on it."
-      auditorStats={stats}
       deltaNote="In Variant A the shutter stays blocked until you grant location access — yet Dep(take-photo, location) = ∅, so the permission is pure extraction. In Variant B the shutter works immediately and location is a clearly separated optional tag toggle."
       benign={
         <div className="space-y-3">

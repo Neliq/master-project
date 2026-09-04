@@ -1,0 +1,6 @@
+STATE s1
+Y Your profile @you · 214 profile views · growing every minute Someone liked your post No identity reference — tap “view” anyway A user is viewing your profile No identity reference — tap “view” anyway Several people viewed your listing No identity reference — tap “view” anyway Somebody commented on your photo No identity reference — tap “view” anyway
+
+STATE s2
+Y Your profile @you · 214 profile views · growing every minute Someone liked your post No identity reference — tap “view” anyway A user is viewing your profile No identity reference — tap “view” anyway Several people viewed your listing No identity reference — tap “view” anyway Somebody commented on your photo No identity reference — tap “view” anyway Activity update “Someone liked your post” has no IdentityRef : no name, no handle, no profile link. There is nobody to visit — the profile the system would open does not exist.
+

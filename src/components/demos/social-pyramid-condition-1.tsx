@@ -24,11 +24,9 @@ const K_REFERRALS = 3;
 const FRIEND_NAMES = ["Maya", "Jonas", "Priya", "Leo", "Ava"];
 
 export function SocialPyramidCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkInvites, setDarkInvites] = React.useState(0);
   const [benignInvites, setBenignInvites] = React.useState(0);
@@ -37,14 +35,6 @@ export function SocialPyramidCond1({
   const [darkBlockedNotice, setDarkBlockedNotice] = React.useState(false);
   const [benignLinkCopied, setBenignLinkCopied] = React.useState(false);
 
-  const reset = () => {
-    setDarkInvites(0);
-    setBenignInvites(0);
-    setDarkExportDone(false);
-    setBenignExportDone(false);
-    setDarkBlockedNotice(false);
-    setBenignLinkCopied(false);
-  };
 
   const invite = (dark: boolean) => {
     const setInvites = dark ? setDarkInvites : setBenignInvites;
@@ -58,29 +48,6 @@ export function SocialPyramidCond1({
 
   const locked = darkInvites < K_REFERRALS;
   const remaining = Math.max(0, K_REFERRALS - darkInvites);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|R_user| (referrals)</span>
-        <span className="font-mono font-semibold tabular-nums">{darkInvites}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">k (threshold)</span>
-        <span className="font-mono font-semibold tabular-nums">{K_REFERRALS}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Access(U_core) (dark logic)</span>
-        <span className={`font-mono font-semibold tabular-nums ${locked ? "text-red-500" : "text-green-500"}`}>
-          {locked ? "Blocked" : "Open"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">k − |R_user|</span>
-        <span className="font-mono font-semibold tabular-nums">{remaining}</span>
-      </div>
-    </>
-  ) : null;
 
   const exportButton = (dark: boolean) => {
     const downloadExport = () => {
@@ -106,11 +73,10 @@ export function SocialPyramidCond1({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Social Pyramid: Referral-Gated Progression"
       userTitle="Focusly data export"
       caption="Referral-Gated Progression — a core utility stays blocked until the user recruits k new accounts through their referral link, forcing them to pay with social capital."
-      auditorStats={stats}
       deltaNote={`In Variant A Access(U_core) = Blocked while |R_user| < ${K_REFERRALS}: exporting your own data is impossible until you recruit ${K_REFERRALS} friends. In Variant B the same export works immediately and the invite mechanic is an optional extra that gates nothing.`}
       benign={
         <div className="space-y-3">

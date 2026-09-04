@@ -25,11 +25,9 @@ const COUNTDOWN_MAX = 10;
 const AFFORDANCE_DELAY_MS = 3000;
 
 export function AutoPlayCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [stoppedA, setStoppedA] = React.useState(false);
   const [stoppedB, setStoppedB] = React.useState(false);
@@ -38,14 +36,6 @@ export function AutoPlayCond2({
 
   const [countdownB, setCountdownB] = React.useState(COUNTDOWN_MAX);
 
-  const reset = () => {
-    setStoppedA(false);
-    setStoppedB(false);
-    setCountdownA(COUNTDOWN_MAX);
-    setAffordanceReadyA(false);
-
-    setCountdownB(COUNTDOWN_MAX);
-  };
 
   React.useEffect(() => {
     const id = window.setInterval(() => {
@@ -62,33 +52,11 @@ export function AutoPlayCond2({
     return () => window.clearTimeout(t);
   }, [stoppedA, affordanceReadyA]);
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Visibility(B_cancel)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">6px &middot; 25% opacity &rarr; 0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Visibility(B_cancel)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">40px &middot; 100% opacity</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Cost(S_play &rarr; False)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&gg; 1 — delayed + tiny + low contrast</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Cost(S_play &rarr; False)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">1 click</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Auto-Play: Affordance Suppression"
       userTitle="Streamly — Video player"
       caption="Affordance Suppression — the cancel affordance is minimized, hidden, or delayed, inflating the effort required to regain control of the automation."
-      auditorStats={stats}
       deltaNote="Variant A hides the stop control as a 6px, 25%-opacity dot that only appears after 3 seconds, and clicking the player does nothing — stopping costs real effort. Variant B shows a full-size 'Stop autoplay' button immediately; one click ends the countdown."
       benign={
         <div className="space-y-3">

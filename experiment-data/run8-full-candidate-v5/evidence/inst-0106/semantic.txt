@@ -1,0 +1,12 @@
+STATE s0
+CloudNine Smart Lamp Dimmable smart lamp with app control and schedules. $59.00 Only 3 left! Load count (simulated reloads) 1 Transaction log (t1 → t2) 0 purchases Session clock (the delay) 3s Reload page
+
+STATE s1
+CloudNine Smart Lamp Dimmable smart lamp with app control and schedules. $59.00 Only 5 left! Load count (simulated reloads) 2 Transaction log (t1 → t2) 0 purchases Session clock (the delay) 4s Reload page
+
+STATE s2
+CloudNine Smart Lamp Dimmable smart lamp with app control and schedules. $59.00 Only 1 left! Load count (simulated reloads) 3 Transaction log (t1 → t2) 0 purchases Session clock (the delay) 4s Reload page
+
+STATE s3
+CloudNine Smart Lamp Dimmable smart lamp with app control and schedules. $59.00 Only 4 left! Load count (simulated reloads) 4 Transaction log (t1 → t2) 0 purchases Session clock (the delay) 4s Reload page
+

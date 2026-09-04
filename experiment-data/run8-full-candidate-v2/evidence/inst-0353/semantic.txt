@@ -1,0 +1,6 @@
+STATE s0
+CloudPlus Pro $12/mo 50 GB storage Unlimited projects Priority support Fine print: Storage is 50 GB on Pro. Additional storage available as add-ons. Choose Pro — $12/mo
+
+STATE s1
+CloudPlus Pro $12/mo 50 GB storage Unlimited projects Priority support Fine print: Storage is 50 GB on Pro. Additional storage available as add-ons. Choose Pro — $12/mo Plan selected — claims consistent the sem and the sem is satisfiable — headline and fine print describe the same fact, so the card’s truth conditions hold together.
+

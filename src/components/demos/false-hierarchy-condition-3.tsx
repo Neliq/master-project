@@ -23,50 +23,18 @@ import { AlertTriangle, CheckCircle2, Scale, Shield } from "lucide-react";
  */
 
 export function FalseHierarchyCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<null | "accept" | "decline">(null);
   const [benignChoice, setBenignChoice] = React.useState<null | "accept" | "decline">(null);
 
-  const reset = () => {
-    setDarkChoice(null);
-    setBenignChoice(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent(L(B₁))</span>
-        <span className="font-mono font-semibold tabular-nums">accept</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent(L(B₂))</span>
-        <span className="font-mono font-semibold tabular-nums">reject (decline)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent(L(B₂)) ≡ ¬Intent(L(B₁))</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">true</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Tag(B_business) / Tag(B_user)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&lt;button&gt; / &lt;button&gt;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">N_parent</span>
-        <span className="font-mono font-semibold tabular-nums">consent modal</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="False Hierarchy: Strict Semantic Opposition"
       caption="Strict Semantic Opposition — the two buttons are NLP-verified logical opposites (Intent(B₂) ≡ ¬Intent(B₁)); Variant A uses a harder-to-parse negative clause while Variant B states the same choice directly."
-      auditorStats={stats}
       deltaNote="In both variants the algorithm verifies strict opposition — Intent(L(B₂)) ≡ ¬Intent(L(B₁)) — so the binary is mathematically established. Variant A uses the harder-to-parse wording “No, I don't accept tracking”, while Variant B uses direct clauses (“Accept” vs “Decline”). Both variants retain equal button affordances; only the wording changes."
       benign={
         <div className="space-y-3">

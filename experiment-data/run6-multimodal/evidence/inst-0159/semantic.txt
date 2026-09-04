@@ -1,0 +1,6 @@
+STATE s1
+FitClub gym membership Billed monthly · cancel anytime Manage your membership Choose what happens to your account: Cancel my membership Keep my membership
+
+STATE s2
+FitClub gym membership Billed monthly · cancel anytime Manage your membership Choose what happens to your account: Cancel my membership Keep my membership Membership cancelled
+

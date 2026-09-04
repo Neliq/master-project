@@ -20,46 +20,17 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function ReferencePricingCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [measured, setMeasured] = React.useState(false);
 
-  const reset = () => setMeasured(false);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CR(N_ref, bg) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">2.31 &lt; 3.00</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CR(N_ref, bg) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">7.23 ≥ 3.00</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_ref_cr</span>
-        <span className="font-mono font-semibold tabular-nums">3.00 (WCAG 2.1)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">fontSize ratio — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">20/9 = 2.22 &gt; τ_skew</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">fontSize ratio — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">15/12 = 1.25</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Reference Pricing: Visual Salience of Reference-Price Strikethrough"
       caption="Visual Salience of Reference-Price Strikethrough — the reference price is rendered below the WCAG 2.1 informational contrast minimum (τ = 3.0) while the current price dominates, fading the comparison baseline to near-invisibility."
-      auditorStats={stats}
       deltaNote="Variant A fades the “was” price below a 3.0 contrast ratio (2.31) and skews the font sizes (20/9 = 2.22 > τ_size_skew) so the current price dominates the visual field. Variant B keeps the same prices but renders the reference at readable contrast (7.23) and comparable size."
       benign={
         <div className="space-y-3">

@@ -1,0 +1,6 @@
+STATE s1
+⚠ Storage notice Your storage is nearly full. Review your options before continuing. Storage notice ACTION REQUIRED URGENT! Your free storage is FULL. You MUST upgrade NOW or risk LOSING your photos TODAY. Don't wait — this limited-time offer ends SOON. Act now before it's too late! Upgrade now — save 50% TODAY Learn more View details
+
+STATE s2
+⚠ Storage notice Your storage is nearly full. Review your options before continuing. Storage notice ACTION REQUIRED URGENT! Your free storage is FULL. You MUST upgrade NOW or risk LOSING your photos TODAY. Don't wait — this limited-time offer ends SOON. Act now before it's too late! Upgrade now — save 50% TODAY Learn more Your upgrade is active. You can manage it from your account settings. View details
+

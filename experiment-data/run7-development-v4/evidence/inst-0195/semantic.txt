@@ -1,0 +1,6 @@
+STATE s0
+Protect your purchase Add a 2-Year Extended Care Plan for $19.99 one-time. 0:57 left! HURRY! Only 57 seconds left at this price! Add for $19.99 No thanks Offer expires in 59 seconds @keyframes dp-shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-2px); } 40% { transform: translateX(2px); } 60% { transform: translateX(-2px); } 80% { transform: translateX(2px); } } @keyframes dp-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+STATE s1
+Protect your purchase Add a 2-Year Extended Care Plan for $19.99 one-time. 0:57 left! HURRY! Only 57 seconds left at this price! Add for $19.99 No thanks Offer expires in 59 seconds Protection plan added The $19.99 plan will appear on your order. @keyframes dp-shake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-2px); } 40% { transform: translateX(2px); } 60% { transform: translateX(-2px); } 80% { transform: translateX(2px); } } @keyframes dp-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+

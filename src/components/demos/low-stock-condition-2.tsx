@@ -28,46 +28,15 @@ const HUE_DARK = 12; // red-orange alarm spectrum
 const HUE_BENIGN = 220; // neutral blue
 
 export function LowStockCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [refreshes, setRefreshes] = React.useState(0);
   const [checkedOut, setCheckedOut] = React.useState(false);
 
-  const reset = () => {
-    setRefreshes(0);
-    setCheckedOut(false);
-  };
 
   const refreshFeed = () => setRefreshes((n) => n + 1);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Hue(N_stock) — Variant A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{HUE_DARK}&deg; &isin; [0&deg;, 30&deg;]</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Hue(N_stock) — Variant B</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{HUE_BENIGN}&deg; &notin; [0&deg;, 30&deg;]</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_displayed / I_true (Variant A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{STOCK} / {TRUE_STOCK} — fabricated</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&Delta;Stock_actual (after refresh)</span>
-        <span className="font-mono font-semibold tabular-nums">{refreshes} refresh{refreshes === 1 ? "" : "es"}, level {STOCK} &rarr; {STOCK} = 0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Alarm spectrum condition</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">Hue &isin; range &and; &Delta;Stock = 0</span>
-      </div>
-    </>
-  ) : null;
 
   const badgeDark = (
     <span
@@ -119,10 +88,9 @@ export function LowStockCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Low Stock: Visual Alarm Salience of Scarcity Indicators"
       caption="Visual Alarm Salience of Scarcity Indicators — the scarcity badge is painted in the red-orange alarm spectrum even though the stock level behind it never changes."
-      auditorStats={stats}
       deltaNote={`Both variants render the same product card. Variant A pins the displayed count at ${STOCK} units (alarm hue ${HUE_DARK}°, pulsing) while the backend actually holds ${TRUE_STOCK} units — the low number is fabricated, and refreshing never changes either value, so the alarm hue is pure color-manipulated urgency. Variant B shows the same ${STOCK} units as genuine live-feed data with a neutral hue ${HUE_BENIGN}°, so no alarm is manufactured.`}
       benign={
         <div className="space-y-3">

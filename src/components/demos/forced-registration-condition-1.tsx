@@ -23,11 +23,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
 type Stage = "cart" | "auth" | "done";
 
 export function ForcedRegistrationCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [stageA, setStageA] = React.useState<Stage>("cart");
   const [emailA, setEmailA] = React.useState("");
@@ -36,35 +34,6 @@ export function ForcedRegistrationCond1({
   const [emailB, setEmailB] = React.useState("");
   const [passwordB, setPasswordB] = React.useState("");
 
-  const reset = () => {
-    setStageA("cart");
-    setEmailA("");
-    setPasswordA("");
-    setStageB("cart");
-    setEmailB("");
-    setPasswordB("");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_intent</span>
-        <span className="font-mono font-semibold tabular-nums">Cart (1 item)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_terminal</span>
-        <span className="font-mono font-semibold tabular-nums">Order confirmed</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∀π : S_auth ∈ π (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True — no guest path</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Current stage</span>
-        <span className="font-mono font-semibold tabular-nums">{stageA}</span>
-      </div>
-    </>
-  ) : null;
 
   const cartSummary = (
     <div className="rounded-md border bg-card p-3">
@@ -158,11 +127,10 @@ export function ForcedRegistrationCond1({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Forced Registration: Absolute State Blocking"
       userTitle="Northstar — Browse catalog"
       caption="Absolute State Blocking — every path from intent (cart) to completion (order confirmed) is routed through the registration node, so a one-time purchase cannot finish without creating an account."
-      auditorStats={stats}
       deltaNote="In Variant A every transition path from cart to confirmation passes through the registration form (S_auth ∈ π for all π) — no guest option exists. In Variant B a direct guest-checkout path exists (S_auth ∉ π), so the same order completes in one click without an account."
       benign={
         <div className="space-y-3">

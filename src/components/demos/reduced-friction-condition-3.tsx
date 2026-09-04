@@ -26,47 +26,19 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const PLAN_PRICE = "$29.99";
 
 export function ReducedFrictionCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [aCommitted, setACommitted] = React.useState(false);
   const [bCommitted, setBCommitted] = React.useState(false);
 
-  const reset = () => {
-    setACommitted(false);
-    setBCommitted(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∃n: Match(T(n), Pattern_confirm) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">False — 0 nodes</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∃n: Match(T(n), Pattern_confirm) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">True — button node</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Pattern_confirm lexicon</span>
-        <span className="font-mono font-semibold tabular-nums">“Are you sure?” · “This cannot be undone” · “Confirm purchase”</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Charge</span>
-        <span className="font-mono font-semibold tabular-nums">{PLAN_PRICE}/mo — both variants</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Reduced Friction: Semantic Absence of Confirmation Language"
       userTitle="Harbor — Confirm changes"
       caption="Semantic Absence of Confirmation Language — a high-commitment action fires with no confirmation-seeking or reversibility-assuring text node anywhere on the path."
-      auditorStats={stats}
       deltaNote="In Variant A the button is a promotional node (“Start my plan”) and the path contains no confirmation language at all (Match = False). In Variant B the very same commitment is preceded by “This cannot be undone” and the button itself reads “Confirm purchase” — a confirmation node exists on the path."
       benign={
         <div className="space-y-3">

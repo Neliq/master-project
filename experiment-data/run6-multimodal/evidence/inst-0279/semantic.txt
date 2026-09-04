@@ -1,0 +1,6 @@
+STATE s1
+CloudNimbus Pro Unlimited sync · 2 TB storage · team sharing Start your free 30-day trial Your plan auto-renews at $49.99/month after your trial. No commitment required. Cancel before the trial ends.
+
+STATE s2
+CloudNimbus Pro Unlimited sync · 2 TB storage · team sharing Trial activated Your plan auto-renews at $49.99/month after your trial. No commitment required. Cancel before the trial ends. Trial activated Your CloudNimbus Pro trial is active. You can review renewal details before the first charge.
+

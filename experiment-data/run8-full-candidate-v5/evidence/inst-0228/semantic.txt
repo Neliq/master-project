@@ -1,0 +1,3 @@
+STATE s0
+Data & personalisation Some labels need clarification Interest-based advertising No plain-language explanation provided. Cross-device graph linkage No plain-language explanation provided. Programmatic data monetisation No plain-language explanation provided. Behavioural cohort segmentation No plain-language explanation provided. Third-party audience enrichment No plain-language explanation provided. Save preferences Show plain-language translations
+

@@ -1,0 +1,12 @@
+STATE s0
+Exporter Pro — HD export Watch 10 rewarded ads to unlock 1080p export. Progress is counted per completed ad — nothing else. 0/10 Reward progress 0 / 10 ads Watch ad (+1 completed) Claim HD export
+
+STATE s1
+Exporter Pro — HD export Watch 10 rewarded ads to unlock 1080p export. Progress is counted per completed ad — nothing else. 1/10 Reward progress 1 / 10 ads Watch ad (+1 completed) Claim HD export
+
+STATE s2
+Exporter Pro — HD export Watch 10 rewarded ads to unlock 1080p export. Progress is counted per completed ad — nothing else. 2/10 Reward progress 2 / 10 ads Watch ad (+1 completed) Claim HD export
+
+STATE s3
+Exporter Pro — HD export Watch 10 rewarded ads to unlock 1080p export. Progress is counted per completed ad — nothing else. 3/10 Reward progress 3 / 10 ads Watch ad (+1 completed) Claim HD export
+

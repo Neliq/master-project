@@ -1,0 +1,76 @@
+{
+  "run_id": "run6-multimodal-20260903",
+  "started_at": "2026-09-03",
+  "sandbox_repository": "/home/neliq/Coding/master-project",
+  "sandbox_commit": "82c93800b1190867d2f1168ea2ea402ec39017a8",
+  "model": "gpt-5.6-luna-900k via openai-codex",
+  "environment": {
+    "bun": "1.4.0",
+    "node": "v22.23.2",
+    "chromium": "152.0.7977.75",
+    "chromium_path": "/usr/bin/chromium"
+  },
+  "corpus": {
+    "patterns": 62,
+    "condition_layers": 3,
+    "variants": 2,
+    "instances": 372,
+    "labels": "construction-based; Variant A deceptive and Variant B benign",
+    "dom_states_after_sanitization": 814,
+    "dom_state_distribution": {"1": 71, "2": 214, "3": 33, "4": 54},
+    "visual_screenshots": 825,
+    "visual_color_transform": "none; native current Sandbox colors preserved",
+    "b_panel_capture": "second non-dark comparison card in Auditor view",
+    "sanitization": ["sanitize_corpus.py", "sanitize_corpus2.py", "harden_corpus.py"],
+    "hardened_fragments": 372,
+    "emptied_fragments": 0
+  },
+  "evidence": {
+    "per_instance": ["visual-sheet.png", "dom.html", "semantic.txt"],
+    "bundles": 372,
+    "visual_sheets": 372,
+    "dom_files": 372,
+    "semantic_files": 372,
+    "integrity_issues": 0
+  },
+  "assignment": {
+    "agent_lists": 10,
+    "order": "deterministically shuffled within agent with seed 20260903 plus agent number",
+    "pair_split": "A/B mates assigned to different auditors",
+    "c0_context": "independent fresh batch; no ontology",
+    "c1_context": "independent fresh batch; same evidence plus ontology and guidance"
+  },
+  "conditions": {
+    "c0": "vision + DOM + semantic text",
+    "c1": "vision + DOM + semantic text + unchanged ontology and O1-O6/E1-E6 protocol"
+  },
+  "statistics": {
+    "primary_unit": "paired opaque instance",
+    "primary_test": "exact two-sided McNemar test",
+    "alpha": 0.05,
+    "bootstrap": "paired instance bootstrap, 5000 draws, fixed seed recorded in aggregator",
+    "post_hoc_changes": "none permitted"
+  },
+  "modality_trace": {
+    "c0": "all 372 assigned IDs had successful vision_analyze calls in the ten Run 6 C0 sessions; several failed first attempts were followed by successful retries",
+    "c1": "all 372 assigned IDs had successful vision_analyze calls across the ten main C1 sessions and single-instance recovery sessions; inst-0343 had a successful retry after one failed path, and inst-0295/inst-0346 were recovered separately",
+    "dom_and_semantic": "all 744 accepted records contain nonempty distinct DOM and semantic evidence fields; evidence verifier passed",
+    "model": "gpt-5.6-luna-900k",
+    "vision_successes": 744
+  },
+  "results": {
+    "c0_accuracy": 0.8198924731182796,
+    "c1_accuracy": 0.75,
+    "c0_f1": 0.8112676056338027,
+    "c1_f1": 0.7350427350427351,
+    "mcnemar_exact_two_sided_p": 0.011174544214771171,
+    "direction": "significant degradation under C1 formalization intervention"
+  },
+  "outputs": {
+    "c0": "results/raw-c0/",
+    "c1": "results/raw-c1/",
+    "merged": "results/raw/",
+    "aggregate": "results/results.json",
+    "report": "results/report.md"
+  }
+}

@@ -1,0 +1,12 @@
+STATE s1
+Your goal: delete your account — find the way through the menu. More options step 1 / 7 Home → More options More options Next Usage & activity Next System resources Next Legal & compliance Next Storage management Next Account lifecycle Next Terminate account Destination
+
+STATE s2
+Your goal: delete your account — find the way through the menu. Usage & activity step 2 / 7 Home → More options → Usage & activity Usage & activity Next System resources Next Legal & compliance Next Storage management Next Account lifecycle Next Terminate account Destination
+
+STATE s3
+Your goal: delete your account — find the way through the menu. System resources step 3 / 7 Home → More options → Usage & activity → System resources System resources Next Legal & compliance Next Storage management Next Account lifecycle Next Terminate account Destination
+
+STATE s4
+Your goal: delete your account — find the way through the menu. Legal & compliance step 4 / 7 Home → More options → Usage & activity → System resources → Legal & compliance Legal & compliance Next Storage management Next Account lifecycle Next Terminate account Destination
+

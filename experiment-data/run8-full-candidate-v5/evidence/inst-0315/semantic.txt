@@ -1,0 +1,9 @@
+STATE s0
+PixelQuest — level complete! Continue to next level
+
+STATE s1
+PixelQuest — level complete! Advertisement Advertisement Aurora Trek — the light jacket for all seasons. Waterproof, windproof, packable. Visit shop You can skip in 15s Skip ad
+
+STATE s2
+PixelQuest — level complete! Neutral framing The ad was labelled clearly and the skip control stayed available, so you could leave whenever you wanted.
+

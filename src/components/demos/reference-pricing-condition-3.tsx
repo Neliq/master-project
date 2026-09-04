@@ -22,46 +22,17 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function ReferencePricingCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [probed, setProbed] = React.useState(false);
 
-  const reset = () => setProbed(false);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_ref &gt; P_cur — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">299 &gt; 199</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_ref &gt; P_cur — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">n/a — single price</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CSS(N_ref) ∩ S_strike</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{"{line-through}"} ≠ ∅</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Anchor present</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">yes (dark)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Perceived saving</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">33% anchored</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Reference Pricing: Dual-Pricing Co-occurrence and Anchoring"
       caption="Dual-Pricing Co-occurrence and Anchoring — a higher reference price P_ref is structurally marked as deprecated (line-through) next to the current price, anchoring the perceived value of P_cur."
-      auditorStats={stats}
       deltaNote="Variant A co-locates P_ref = 299 above P_cur = 199 with a strikethrough, so every glance anchors on a 33% “saving”. Variant B shows the same current price with a factual 30-day baseline instead — no secondary price, no anchor."
       benign={
         <div className="space-y-3">

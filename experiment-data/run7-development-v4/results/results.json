@@ -1,0 +1,480 @@
+{
+  "run_id": "run7-development-v2",
+  "purpose": "bounded development pilot; not confirmatory",
+  "n_instances": 72,
+  "condition_0": {
+    "tp": 30,
+    "fp": 5,
+    "tn": 31,
+    "fn": 6,
+    "precision": 0.8571428571428571,
+    "recall": 0.8333333333333334,
+    "f1": 0.8450704225352113,
+    "accuracy": 0.8472222222222222,
+    "kappa": 0.6944444444444444,
+    "bootstrap_ci_95": {
+      "precision": {
+        "lower": 0.7352941176470589,
+        "upper": 0.967741935483871
+      },
+      "recall": {
+        "lower": 0.7045244107744109,
+        "upper": 0.9459459459459459
+      },
+      "f1": {
+        "lower": 0.7428571428571428,
+        "upper": 0.9268292682926829
+      },
+      "accuracy": {
+        "lower": 0.7638888888888888,
+        "upper": 0.9305555555555556
+      },
+      "kappa": {
+        "lower": 0.5211267605633803,
+        "upper": 0.8578199052132702
+      }
+    }
+  },
+  "condition_1": {
+    "tp": 25,
+    "fp": 5,
+    "tn": 31,
+    "fn": 11,
+    "precision": 0.8333333333333334,
+    "recall": 0.6944444444444444,
+    "f1": 0.7575757575757577,
+    "accuracy": 0.7777777777777778,
+    "kappa": 0.5555555555555556,
+    "bootstrap_ci_95": {
+      "precision": {
+        "lower": 0.6857142857142857,
+        "upper": 0.96
+      },
+      "recall": {
+        "lower": 0.5428571428571428,
+        "upper": 0.8378596338273754
+      },
+      "f1": {
+        "lower": 0.6296031746031745,
+        "upper": 0.8571428571428572
+      },
+      "accuracy": {
+        "lower": 0.6805555555555556,
+        "upper": 0.8611111111111112
+      },
+      "kappa": {
+        "lower": 0.3521126760563381,
+        "upper": 0.7256513303769396
+      }
+    }
+  },
+  "unknown_count": {
+    "c0": 1,
+    "c1": 10
+  },
+  "unknown_rate": {
+    "c0": 0.013888888888888888,
+    "c1": 0.1388888888888889
+  },
+  "mcnemar": {
+    "b": 8,
+    "c": 13,
+    "n": 21,
+    "p_exact_binomial": 0.38331031799316406
+  },
+  "paired_bootstrap_ci_95": {
+    "accuracy_delta": {
+      "lower": -0.19444444444444442,
+      "upper": 0.05555555555555558
+    },
+    "f1_delta": {
+      "lower": -0.23350581914556523,
+      "upper": 0.051667102206736315
+    }
+  },
+  "per_pattern": {
+    "c0": {
+      "activity-messages": {
+        "tp": 2,
+        "fp": 1,
+        "tn": 2,
+        "fn": 1,
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "automating-the-user-away": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "conflicting-information": {
+        "tp": 3,
+        "fp": 1,
+        "tn": 2,
+        "fn": 0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1": 0.8571428571428571,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "false-hierarchy": {
+        "tp": 3,
+        "fp": 1,
+        "tn": 2,
+        "fn": 0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1": 0.8571428571428571,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "forced-continuity": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "granting-and-interaction": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 3,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "kappa": 1.0
+      },
+      "hidden-information": {
+        "tp": 3,
+        "fp": 1,
+        "tn": 2,
+        "fn": 0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1": 0.8571428571428571,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "information-without-context": {
+        "tp": 2,
+        "fp": 1,
+        "tn": 2,
+        "fn": 1,
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "intermediate-currency": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 3,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "kappa": 1.0
+      },
+      "plain-evil": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 3,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "kappa": 1.0
+      },
+      "pressured-selling": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "trick-questions": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      }
+    },
+    "c1": {
+      "activity-messages": {
+        "tp": 2,
+        "fp": 1,
+        "tn": 2,
+        "fn": 1,
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "automating-the-user-away": {
+        "tp": 2,
+        "fp": 1,
+        "tn": 2,
+        "fn": 1,
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "conflicting-information": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 3,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "false-hierarchy": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "forced-continuity": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "granting-and-interaction": {
+        "tp": 1,
+        "fp": 1,
+        "tn": 2,
+        "fn": 2,
+        "precision": 0.5,
+        "recall": 0.3333333333333333,
+        "f1": 0.4,
+        "accuracy": 0.5,
+        "kappa": 0.0
+      },
+      "hidden-information": {
+        "tp": 2,
+        "fp": 1,
+        "tn": 2,
+        "fn": 1,
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "information-without-context": {
+        "tp": 2,
+        "fp": 1,
+        "tn": 2,
+        "fn": 1,
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "intermediate-currency": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 3,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "kappa": 1.0
+      },
+      "plain-evil": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "pressured-selling": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 3,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "kappa": 1.0
+      },
+      "trick-questions": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 3,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "kappa": 1.0
+      }
+    }
+  },
+  "per_agent": {
+    "c0": {
+      "agent-01": {
+        "tp": 12,
+        "fp": 1,
+        "tn": 5,
+        "fn": 0,
+        "precision": 0.9230769230769231,
+        "recall": 1.0,
+        "f1": 0.9600000000000001,
+        "accuracy": 0.9444444444444444,
+        "kappa": 0.8695652173913043
+      },
+      "agent-02": {
+        "tp": 8,
+        "fp": 0,
+        "tn": 8,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1": 0.888888888888889,
+        "accuracy": 0.8888888888888888,
+        "kappa": 0.7804878048780487
+      },
+      "agent-03": {
+        "tp": 7,
+        "fp": 2,
+        "tn": 7,
+        "fn": 2,
+        "precision": 0.7777777777777778,
+        "recall": 0.7777777777777778,
+        "f1": 0.7777777777777778,
+        "accuracy": 0.7777777777777778,
+        "kappa": 0.5555555555555556
+      },
+      "agent-04": {
+        "tp": 3,
+        "fp": 2,
+        "tn": 11,
+        "fn": 2,
+        "precision": 0.6,
+        "recall": 0.6,
+        "f1": 0.6,
+        "accuracy": 0.7777777777777778,
+        "kappa": 0.4461538461538462
+      }
+    },
+    "c1": {
+      "agent-01": {
+        "tp": 8,
+        "fp": 1,
+        "tn": 5,
+        "fn": 4,
+        "precision": 0.8888888888888888,
+        "recall": 0.6666666666666666,
+        "f1": 0.761904761904762,
+        "accuracy": 0.7222222222222222,
+        "kappa": 0.4444444444444444
+      },
+      "agent-02": {
+        "tp": 6,
+        "fp": 3,
+        "tn": 5,
+        "fn": 4,
+        "precision": 0.6666666666666666,
+        "recall": 0.6,
+        "f1": 0.631578947368421,
+        "accuracy": 0.6111111111111112,
+        "kappa": 0.22222222222222232
+      },
+      "agent-03": {
+        "tp": 6,
+        "fp": 0,
+        "tn": 9,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "agent-04": {
+        "tp": 5,
+        "fp": 1,
+        "tn": 12,
+        "fn": 0,
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1": 0.9090909090909091,
+        "accuracy": 0.9444444444444444,
+        "kappa": 0.8695652173913043
+      }
+    }
+  },
+  "run_metadata": {
+    "run_id": "run7-development-v4",
+    "purpose": "bounded development pilot; not a confirmatory significance test",
+    "source_run": "run6-multimodal",
+    "sample_seed": 20260911,
+    "n_instances": 72,
+    "n_patterns": 12,
+    "n_agents_per_arm": 4,
+    "complete_pattern_pool": 55,
+    "model": "gpt-5.6-luna-900k",
+    "evidence": "aligned visual/DOM/semantic state manifests; native colors preserved",
+    "changes": [
+      "unknown is distinct from benign",
+      "compact predicate cards plus structured evidence ledger",
+      "pattern-specific escape applicability",
+      "original state IDs preserved across modalities"
+    ],
+    "counterexamples": "not added per user instruction",
+    "alignment_issues": 0,
+    "statistical_policy": "pilot direction only; freeze before held-out evaluation"
+  }
+}

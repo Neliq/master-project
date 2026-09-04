@@ -27,42 +27,17 @@ const ORPHAN_THRESHOLD = 80; // τ_orphan, px
 const DISTANCE_DARK = 112; // px between the badge and the separate inbox descriptor in A
 
 export function InformationWithoutContextCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [clicked, setClicked] = React.useState(false);
 
-  const reset = () => setClicked(false);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">N_metric</span>
-        <span className="font-mono font-semibold tabular-nums">badge “1”</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">N_descriptor in range?</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">absent</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d(N_metric, N_descriptor)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DISTANCE_DARK}px &gt; τ ({ORPHAN_THRESHOLD}px)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Orphaned → forced click</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{clicked ? "yes" : "pending"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Information Without Context: Structural Orphaned Nodes"
       caption="Structural Orphaned Nodes — the badge “1” floats on the inbox icon with no descriptor in cognitive association range, so the only way to learn its meaning is to click."
-      auditorStats={stats}
       deltaNote="In Variant A the metric node is orphaned: d(N_metric, N_descriptor) ≈ 260px far exceeds τ_orphan (80px), because the descriptor “New Messages” lives outside the badge&rsquo;s perceptual cluster — the click is pure uninformed compulsion. In Variant B the descriptor sits directly beside the badge, so d < τ_orphan and the number explains itself."
       benign={
         <div className="space-y-3">

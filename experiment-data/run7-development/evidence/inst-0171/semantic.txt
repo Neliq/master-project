@@ -1,0 +1,6 @@
+STATE s0
+CloudStore backup plans Two honest plans. Pick the one that fits your storage needs. Basic $4 /month 5 GB cloud storage No sync 1 device Pro $12 /month 100 GB cloud storage Real-time sync 3 devices
+
+STATE s1
+CloudStore backup plans Two honest plans. Pick the one that fits your storage needs. Basic $4 /month 5 GB cloud storage No sync 1 device Pro $12 /month 100 GB cloud storage Real-time sync 3 devices Fair choice matrix No decoy exists, so no option artificially inflates another’s value. Your preference reflects the real trade-off between storage, sync, and price.
+

@@ -1,0 +1,6 @@
+STATE s1
+You’ve been selected! Claim your free gift card — a $25 reward is waiting for you. Continue
+
+STATE s2
+You’ve been selected! Claim your free gift card — a $25 reward is waiting for you. Close
+

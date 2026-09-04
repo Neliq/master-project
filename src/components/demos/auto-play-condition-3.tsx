@@ -25,14 +25,12 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const COUNTDOWN_MAX = 5;
 
 export function AutoPlayCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Dark panel: autoplay is always on and never disclosed.
-  const [autoA, setAutoA] = React.useState(true);
+  const [autoA] = React.useState(true);
   // Benign panel: autoplay is explicit and user-controllable.
   const [autoB, setAutoB] = React.useState(true);
   const [countA, setCountA] = React.useState(COUNTDOWN_MAX);
@@ -40,14 +38,6 @@ export function AutoPlayCond3({
   const [startedA, setStartedA] = React.useState(false);
   const [startedB, setStartedB] = React.useState(false);
 
-  const reset = () => {
-    setAutoA(true);
-    setAutoB(true);
-    setCountA(COUNTDOWN_MAX);
-    setCountB(COUNTDOWN_MAX);
-    setStartedA(false);
-    setStartedB(false);
-  };
 
   React.useEffect(() => {
     if (!autoA || startedA) return;
@@ -77,33 +67,11 @@ export function AutoPlayCond3({
     return () => window.clearInterval(id);
   }, [autoB, startedB]);
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Frame(T_autoplay)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{"{ Continuation, Next }"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Frame(T_autoplay)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">explicit disclosure</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&not;&exist; &ldquo;autoplay&rdquo; in T_visible</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True — word absent</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&not;&exist; &ldquo;autoplay&rdquo; in T_visible</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">False — disclosed</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Auto-Play: Semantic Framing of Auto-Play as Content Continuation"
       userTitle="Streamly — Recommended episode"
       caption="Semantic Framing of Auto-Play as Content Continuation — automatic playback is labeled 'Up Next' or 'Continue watching' with no 'autoplay' disclosure, reframing a system action as user-initiated continuity."
-      auditorStats={stats}
       deltaNote="Variant A frames the auto-advance as 'Up Next' with a countdown and never prints the word 'autoplay' — the automation masquerades as continuity. Variant B keeps the identical end screen but adds an 'Autoplay: ON' toggle and a sentence that names autoplay explicitly, so the automatic behavior is disclosed and controllable."
       benign={
         <div className="space-y-3">

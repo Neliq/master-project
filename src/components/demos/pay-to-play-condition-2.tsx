@@ -22,54 +22,24 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const EPISODE_TITLE = "Episode 4: The Heist";
 
 export function PayToPlayCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [benignPurchased, setBenignPurchased] = React.useState(false);
   const [darkPurchased, setDarkPurchased] = React.useState(false);
   const [benignDismissed, setBenignDismissed] = React.useState(false);
   const [darkDismissed, setDarkDismissed] = React.useState(false);
 
-  const reset = () => {
-    setBenignPurchased(false);
-    setDarkPurchased(false);
-    setBenignDismissed(false);
-    setDarkDismissed(false);
-  };
 
   const benignRevealed = benignPurchased || benignDismissed;
   const darkRevealed = darkPurchased || darkDismissed;
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(O_unlock)/A_viewport (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 0.95 &gt; τ</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(O_unlock)/A_viewport (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">≈ 0.28</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Dismiss target A(N_dismiss)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">16×16 px &lt; 44×44</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Paywall dismissed?</span>
-        <span className="font-mono font-semibold tabular-nums">{darkDismissed ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pay-To-Play: Visual Dominance of Payment-Unlock Overlays"
       userTitle="Episode 4: The Heist"
       caption="Visual Dominance of Payment-Unlock Overlays — the paywall covers nearly the whole viewport and its dismiss control is a 16×16 px sliver, far below the 44×44 px WCAG minimum."
-      auditorStats={stats}
       deltaNote="Both variants gate the same episode behind the same $3.99. Variant A renders the payment prompt as a full-bleed overlay with a 16×16 px dismiss '×' (occlusion ≈ 0.95 > τ_occlusion; A(N_dismiss) < 44×44). Variant B shrinks the prompt to a compact inline row with a 44×44 px dismiss target, so the content — not the paywall — dominates the interface."
       benign={
         <div className="space-y-3">

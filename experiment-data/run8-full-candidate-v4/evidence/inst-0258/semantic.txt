@@ -1,0 +1,6 @@
+STATE s0
+Granola aisle Two sizes of the same line. Headline prices only. Pack prices shown Fruity Granola 500 g PLN 2.58 / 100 g PLN 12.90 Crunchy Granola 1 kg PLN 2.29 / 100 g PLN 22.90 Compare per 100 g
+
+STATE s1
+Granola aisle Two sizes of the same line. Headline prices only. Pack prices shown Fruity Granola 500 g PLN 2.58 / 100 g PLN 12.90 Crunchy Granola 1 kg PLN 2.29 / 100 g PLN 22.90 Compare per 100 g Unit-price comparison unavailable Pack prices are shown, but the per-100 g figures are not available in a readable format.
+

@@ -1,0 +1,6 @@
+STATE s1
+Wireless Noise-Cancelling Headphones $89.00 — one-time purchase, no subscription Subtotal $89.00 Shipping Free Total $89.00 Checkout as guest Create account
+
+STATE s2
+Wireless Noise-Cancelling Headphones $89.00 — one-time purchase, no subscription Subtotal $89.00 Shipping Free Total $89.00 Order confirmed Thank you! Your headphones are on the way — no account was required. Direct path exists There is a path π with auth not in π: “Checkout as guest” reaches terminal directly. Registration stays available for users who want it — it is never a toll on a one-time purchase.
+

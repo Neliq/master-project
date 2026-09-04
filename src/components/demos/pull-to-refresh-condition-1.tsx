@@ -38,11 +38,9 @@ function postFor(i: number): string {
 }
 
 export function PullToRefreshCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Shared feed: both panels show the same payload in the same order.
   const [feedA, setFeedA] = React.useState<string[]>(() =>
@@ -132,49 +130,12 @@ export function PullToRefreshCond1({
     );
   };
 
-  const reset = () => {
-    timersRef.current.forEach((id) => window.clearTimeout(id));
-    timersRef.current = [];
-    pullRef.current = 0;
-    setFeedA(Array.from({ length: 3 }, (_, i) => postFor(i)));
-    setFeedB(Array.from({ length: 3 }, (_, i) => postFor(i)));
-    setFeedSeqA(3);
-    setFeedSeqB(3);
-    setRefreshCountB(0);
-    setCommittedA(false);
-    setPull(0);
-    setPulling(false);
-    setRefreshingA(false);
-    setRefreshingB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">ΔY_touch (current pull)</span>
-        <span className="font-mono font-semibold tabular-nums">{pull}px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_commit (snap threshold)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_COMMIT}px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">R_elastic(ΔY) friction</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&gt; 0 — non-linear (A) / = 0 (B)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_refresh()</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">needs ΔY ≥ τ_commit (A) / fires on tap (B)</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pull To Refresh (Variable-Reward Trap): Kinesthetic Resistance and Action Commitment"
       userTitle="Pulse — Your feed"
       caption="Kinesthetic Resistance and Action Commitment — pulling must overcome non-linear elastic friction and cross the commitment threshold before the lever snaps and the refresh fires."
-      auditorStats={stats}
       deltaNote="Variant A demands sustained physical effort against a hidden commitment threshold: the pull builds non-linear elastic resistance, but the threshold, the progress and the payoff are never disclosed — release too early and the gesture silently snaps back with nothing. Variant B delivers the identical feed payload through a plain Refresh button — one tap, no threshold, no lever physics."
       benign={
         <div className="space-y-3">

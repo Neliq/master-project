@@ -26,11 +26,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const TAU_PERIPHERAL = 160; // τ_peripheral_vision in px (illustrative)
 
 export function BadDefaultsPreselectionCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Variant A: pre-checked consent hidden in a collapsed accordion.
   const [aConsent, setAConsent] = React.useState(true);
@@ -40,40 +38,11 @@ export function BadDefaultsPreselectionCond2({
   const [bConsent, setBConsent] = React.useState(false);
   const [bSubmitted, setBSubmitted] = React.useState(false);
 
-  const reset = () => {
-    setAConsent(true);
-    setAExpanded(false);
-    setASubmitted(false);
-    setBConsent(false);
-    setBSubmitted(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">V(c, t₀) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">False (collapsed accordion)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d_spatial(c, N_submit) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">~{260}px &gt; {TAU_PERIPHERAL}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">V(c, t₀) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">True (visible viewport)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d_spatial(c, N_submit) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">~24px &lt; {TAU_PERIPHERAL}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Bad Defaults / Preselection: Visual or Structural Obfuscation"
       caption="Visual or Structural Obfuscation — the pre-checked consent is hidden inside a collapsed accordion far from the submit button, so it escapes peripheral vision entirely."
-      auditorStats={stats}
       deltaNote="In Variant A the pre-checked consent sits inside a collapsed accordion: V(c, t₀) = False and d_spatial(c, N_submit) ≈ 260px > τ_peripheral_vision = 160px, so it is never visually parsed. Variant B places the same consent — unchecked — directly above the submit button at ≈ 24px."
       benign={
         <div className="space-y-3">

@@ -1,0 +1,2087 @@
+{
+  "run_id": "run7-development-v5",
+  "source_run": "run6-multimodal",
+  "sample_seed": 20260911,
+  "complete_pattern_pool": 55,
+  "eligible_pattern_pool": 43,
+  "excluded_incomplete_patterns": [
+    "countdown-timer",
+    "forced-grace-period",
+    "infinite-scrolling",
+    "limited-time-message",
+    "parasocial-pressure",
+    "pull-to-refresh",
+    "reference-pricing"
+  ],
+  "excluded_prior_development_patterns": [
+    "activity-messages",
+    "automating-the-user-away",
+    "conflicting-information",
+    "false-hierarchy",
+    "forced-continuity",
+    "granting-and-interaction",
+    "hidden-information",
+    "information-without-context",
+    "intermediate-currency",
+    "plain-evil",
+    "pressured-selling",
+    "trick-questions"
+  ],
+  "selected_patterns": [
+    "addictive-design",
+    "bundling",
+    "confirmshaming",
+    "cuteness",
+    "endorsement-and-testimonials",
+    "friend-spam",
+    "immortal-accounts",
+    "pay-to-avoid",
+    "persuasive-language",
+    "pre-delivered-content",
+    "price-comparison-prevention",
+    "sneak-into-basket"
+  ],
+  "records": [
+    {
+      "instance_id": "inst-0002",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0006",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0008",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0010",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0012",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0023",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0025",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0028",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0033",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0035",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0038",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0045",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0060",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0067",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0069",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0080",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0081",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0091",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0097",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0100",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0104",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0107",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0110",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0111",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0117",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0119",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0133",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0136",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0138",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0139",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0144",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0155",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0168",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0175",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0176",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0185",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0186",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0187",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0193",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0194",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0197",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0205",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0216",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0218",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0225",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0237",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0242",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0258",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0259",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0266",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0269",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0272",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0277",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0283",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0286",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0289",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0290",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0293",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0300",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0303",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0312",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0313",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0317",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0318",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0321",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0331",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0338",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0343",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0344",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0351",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        },
+        {
+          "state_id": "s2",
+          "screenshot": "s2.png",
+          "dom": "dom.html",
+          "dom_state_id": "s2",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s2"
+        },
+        {
+          "state_id": "s3",
+          "screenshot": "s3.png",
+          "dom": "dom.html",
+          "dom_state_id": "s3",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s3"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0358",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    },
+    {
+      "instance_id": "inst-0369",
+      "source": "Run 6 evidence, semantic IDs regenerated from original DOM comments",
+      "visual_sheet": "visual-sheet.png",
+      "dom": "dom.html",
+      "semantic": "semantic.txt",
+      "state_manifest": "state-manifest.json",
+      "states": [
+        {
+          "state_id": "s0",
+          "screenshot": "s0.png",
+          "dom": "dom.html",
+          "dom_state_id": "s0",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s0"
+        },
+        {
+          "state_id": "s1",
+          "screenshot": "s1.png",
+          "dom": "dom.html",
+          "dom_state_id": "s1",
+          "semantic": "semantic.txt",
+          "semantic_state_id": "s1"
+        }
+      ]
+    }
+  ],
+  "alignment_issues": []
+}

@@ -1,0 +1,3 @@
+STATE s0
+Finish creating your account Read the agreements, then tick the box yourself to accept them. I agree to the Terms of Service, Privacy Policy, and third-party data-sharing agreements. Starts unchecked — acceptance happens only when you actively tick this box. Create account
+

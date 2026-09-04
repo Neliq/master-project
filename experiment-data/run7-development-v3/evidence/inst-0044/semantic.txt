@@ -1,0 +1,6 @@
+STATE s0
+Delete your account Deleting your account is permanent. Here is what happens: Your 1,284 photos and profile will be removed and cannot be recovered. Your 9 years of memories will be removed with your account. Your friends will no longer see your profile in their networks. You can export your data before deleting — the download is available for 30 days. No payments are taken after deletion; any balance is refunded. Delete my account Keep my account Export your data
+
+STATE s1
+Delete your account Deleting your account is permanent. Here is what happens: Your 1,284 photos and profile will be removed and cannot be recovered. Your 9 years of memories will be removed with your account. Your friends will no longer see your profile in their networks. You can export your data before deleting — the download is available for 30 days. No payments are taken after deletion; any balance is refunded. Delete my account Keep my account Export your data Deletion request saved Your deletion request was saved. You can keep your account active until the request is confirmed.
+

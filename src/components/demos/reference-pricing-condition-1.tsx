@@ -28,50 +28,18 @@ const darkPct = ((DARK_REF - DARK_CUR) / DARK_REF) * 100;
 const benignPct = ((BENIGN_REF - BENIGN_CUR) / BENIGN_REF) * 100;
 
 export function ReferencePricingCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [checked, setChecked] = React.useState(false);
   const [bought, setBought] = React.useState(false);
 
-  const reset = () => {
-    setChecked(false);
-    setBought(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_ref / P_cur — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">999.00 / 99.90</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_ref / P_cur — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">129.00 / 99.90</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δ_pct — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{darkPct.toFixed(1)}% &gt; τ</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δ_pct — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{benignPct.toFixed(1)}% ≤ τ</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_unrealistic</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU}%</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Reference Pricing: Mathematical Exaggeration of Discount"
       caption="Mathematical Exaggeration of Discount — the implied percentage discount Δ_pct = (P_ref − P_cur)/P_ref exceeds the unrealistic threshold (τ = 70%) without contextual justification."
-      auditorStats={stats}
       deltaNote="Variant A anchors against an inflated PLN 999 reference, implying a 90% discount — far above τ_unrealistic = 70%. Variant B keeps the same selling price but anchors against a realistic PLN 129 reference (22.6%), which is plausible."
       benign={
         <div className="space-y-3">

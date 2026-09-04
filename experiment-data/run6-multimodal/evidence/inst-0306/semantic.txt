@@ -1,0 +1,6 @@
+STATE s1
+Flash sale — 40% off sitewide This week only, while the deadline lasts. Sale ends Thu 03 Sept, 12:10 CEST Claim 40% off
+
+STATE s2
+Flash sale — 40% off sitewide This week only, while the deadline lasts. Sale ends Thu 03 Sept, 12:10 CEST Claim 40% off Purchased before the real deadline You bought at the sale price while the offer was genuinely live. The deadline is a concrete date and time — a real constraint, so planning is possible.
+

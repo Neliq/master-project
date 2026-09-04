@@ -28,17 +28,13 @@ const DAYS_WAIT = 30; // NER entity parsed from the confirmation copy
 const WAIT_HOURS = DAYS_WAIT * 24; // 720 h
 const HOURS_PER_TICK = 2; // simulation speed: 2 simulated hours per tick
 const TICK_MS = 120;
-const T_REQUEST = "2026-08-15 10:32 UTC";
-const T_EXECUTE = "2026-09-14 10:32 UTC"; // request + 30 days
 
 type Stage = "idle" | "pending" | "done";
 
 export function ForcedGracePeriodCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [stageA, setStageA] = React.useState<Stage>("idle");
   const [hoursA, setHoursA] = React.useState<number>(() => 0);
@@ -52,46 +48,15 @@ export function ForcedGracePeriodCond1({
     return () => window.clearInterval(iv);
   }, [stageA]);
 
-  const reset = () => {
-    setStageA("idle");
-    setHoursA(0);
-    setStageB("idle");
-  };
 
   const elapsedComplete = hoursA >= WAIT_HOURS;
   const pct = Math.round((hoursA / WAIT_HOURS) * 100);
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T_request / T_execute</span>
-        <span className="font-mono font-semibold tabular-nums">{T_REQUEST.slice(0, 10)} → {T_EXECUTE.slice(0, 10)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">NER entity E_time</span>
-        <span className="font-mono font-semibold tabular-nums text-yellow-600 dark:text-yellow-400">“{DAYS_WAIT} days” → {WAIT_HOURS} h</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δt = T_execute − T_request</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{WAIT_HOURS} h (A) / 0 h (B)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δt ≥ Δt_min ({DT_MIN_HOURS} h)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True (A) → fired / False (B)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Simulated clock (A)</span>
-        <span className="font-mono font-semibold tabular-nums">{hoursA} / {WAIT_HOURS} h</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Forced Grace Period: Temporal Discrepancy Extraction"
       userTitle="Harbor — Close account"
       caption="Temporal Discrepancy Extraction — a termination request that could execute instantly is deferred by an artificial 30-day window extracted from the confirmation copy."
-      auditorStats={stats}
       deltaNote="Both variants process the identical deletion request and display the same confirmation information. Variant A parks the account in a mandatory 30-day pending state — Δt = 720 h ≥ Δt_min (24 h), so the heuristic fires — while Variant B executes the request immediately (Δt = 0 h). The only difference is the programmatic delay."
       benign={
         <div className="space-y-3">

@@ -1,0 +1,6 @@
+STATE s0
+Order summary Pro Camera Bundle — $299 . 2 units in stock. Offer price valid through Aug 17 at 11:59 PM. Pro Camera Bundle $299.00 Processing & service fee $2.99 Total $301.99 Add optional 2-year protection plan — +$39.99 Covers accidental damage. Not selected by default — this is entirely optional. One-time payment. No subscription, no hidden fees — the processing fee is shown above before you pay. Terms One-time purchase billed today. No subscription. Privacy Order details are used to fulfil this purchase. Refund policy Eligible returns follow the standard policy. Complete purchase — $301.99
+
+STATE s1
+Order summary Pro Camera Bundle — $299 . 2 units in stock. Offer price valid through Aug 17 at 11:59 PM. Pro Camera Bundle $299.00 Processing & service fee $2.99 Total $301.99 Add optional 2-year protection plan — +$39.99 Covers accidental damage. Not selected by default — this is entirely optional. One-time payment. No subscription, no hidden fees — the processing fee is shown above before you pay. Terms One-time purchase billed today. No subscription. Privacy Order details are used to fulfil this purchase. Refund policy Eligible returns follow the standard policy. Purchase complete Purchase complete Your order is confirmed for $301.99. The protection plan, processing fee, stock level, and offer deadline were shown before payment.
+

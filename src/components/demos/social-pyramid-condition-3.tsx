@@ -40,44 +40,13 @@ const GROWTH_DARK = ((9 - 3) / (3 - 1)).toFixed(1); // 3.0
 const GROWTH_BENIGN = "undefined (flat rewards)";
 
 export function SocialPyramidCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkSelected, setDarkSelected] = React.useState<Tier | null>(null);
   const [benignSelected, setBenignSelected] = React.useState<Tier | null>(null);
 
-  const reset = () => {
-    setDarkSelected(null);
-    setBenignSelected(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intensity(Reward_1..3) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">1 &rarr; 3 &rarr; 9</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intensity — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">1 &rarr; 1 &rarr; 1</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Growth &Delta;I&#8323;/&Delta;I&#8322; (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{GROWTH_DARK} &gt; &tau;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Growth (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{GROWTH_BENIGN}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&tau;_escalation</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_ESCALATION.toFixed(1)}</span>
-      </div>
-    </>
-  ) : null;
 
   const tierList = (
     tiers: { tier: Tier; invites: number; reward: string; intensity: number }[],
@@ -128,11 +97,10 @@ export function SocialPyramidCond3({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Social Pyramid: Semantic Escalation of Referral-Reward Language"
       userTitle="Referral rewards"
       caption="Semantic Escalation of Referral-Reward Language — reward descriptions escalate in hyperbolic intensity from tier to tier, tracing an exponential incentivization curve characteristic of pyramid-recruitment structures."
-      auditorStats={stats}
       deltaNote={`In Variant A tier rewards escalate from an exclusive sticker set to premium status and finally priority support with creator perks (intensity 1 → 3 → 9, growth ${GROWTH_DARK} > τ_escalation). In Variant B the same three rewards are described flatly (intensity 1 → 1 → 1, growth ${GROWTH_BENIGN}) — identical payload, no escalation.`}
       benign={
         <div className="space-y-3">

@@ -1,0 +1,12 @@
+STATE s0
+LuckyPins 0 coins Your reward is ready. You've visited 12 days in a row. You can earn a few coins while playing. When you're ready, play again. Play again 0 plays • 4 coins each — predictable rewards
+
+STATE s1
+LuckyPins 4 coins Your reward is ready. You've visited 12 days in a row. You can earn a few coins while playing. When you're ready, play again. +4 coins — same as last time, as expected Play again 1 plays • 4 coins each — predictable rewards
+
+STATE s2
+LuckyPins 8 coins Your reward is ready. You've visited 12 days in a row. You can earn a few coins while playing. When you're ready, play again. +4 coins — same as last time, as expected Play again 2 plays • 4 coins each — predictable rewards
+
+STATE s3
+LuckyPins 12 coins Your reward is ready. You've visited 12 days in a row. You can earn a few coins while playing. When you're ready, play again. +4 coins — same as last time, as expected Play again 3 plays • 4 coins each — predictable rewards
+

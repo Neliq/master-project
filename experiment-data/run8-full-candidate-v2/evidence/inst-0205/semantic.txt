@@ -1,0 +1,6 @@
+STATE s0
+Beverages — lemonade Same product, two sizes. Unit qualifiers are present. Price per litre shown Sparkling Lemonade 500 ml PLN 9.98 / l PLN 4.99 Sparkling Lemonade 1 L PLN 8.99 / l PLN 8.99 Compare unit prices
+
+STATE s1
+Beverages — lemonade Same product, two sizes. Unit qualifiers are present. Price per litre shown Sparkling Lemonade 500 ml PLN 9.98 / l PLN 4.99 Sparkling Lemonade 1 L PLN 8.99 / l PLN 8.99 Compare unit prices standard ∩ rendered = {per l, per 100 ml} differs from none The 1 L bottle is cheaper per liter: PLN 8.99/l vs PLN 9.98/l for the 500 ml bottle.
+

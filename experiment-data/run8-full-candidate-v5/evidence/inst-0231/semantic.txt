@@ -1,0 +1,6 @@
+STATE s0
+Account settings Manage your profile details. Display name Email Save changes Delete account Both buttons are identical in weight and sit side by side — the delete is inside the safety-margin radius.
+
+STATE s1
+Account settings Manage your profile details. Display name Email Save changes Delete account Settings saved. Notice how “Delete account” looks and sits exactly like “Save changes” — 8px apart.
+

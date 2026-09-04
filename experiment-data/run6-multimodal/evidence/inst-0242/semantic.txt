@@ -1,0 +1,12 @@
+STATE s1
+Account settings maya.r@example.com · Member since 2019 Pro Email address maya.r@example.com Plan Pro Delete account
+
+STATE s2
+Account settings maya.r@example.com · Member since 2019 Pro Email address maya.r@example.com Plan Pro Delete your account? This is permanent. All photos, notes and plan history will be removed. Keep account Delete my account
+
+STATE s3
+Account settings maya.r@example.com · Member since 2019 Pro Email address maya.r@example.com Plan Pro Delete account
+
+STATE s4
+Account settings maya.r@example.com · Member since 2019 Pro Email address maya.r@example.com Plan Pro Delete your account? This is permanent. All photos, notes and plan history will be removed. Keep account Delete my account
+

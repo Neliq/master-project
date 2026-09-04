@@ -1,0 +1,12 @@
+STATE s1
+Cookie consent Pursuant to the provisions of our data processing framework, we may utilize proprietary algorithmic methodologies to aggregate, cross-reference, and perpetually augment behavioral data points derived from your browsing activities across affiliated domains, thereby facilitating the commercialization of your personal information to third-party data brokers for the purpose of targeted advertisement delivery and market segmentation optimization, subject to the terms enumerated in our comprehensive privacy policy. Translate to plain English Accept All Reject All
+
+STATE s2
+Cookie consent We use cookies to remember your preferences and to show you relevant ads. We never sell your personal data, and you can change your choices at any time in your settings. This helps keep the site free to use. Show original wording Accept All Reject All
+
+STATE s3
+Cookie consent Pursuant to the provisions of our data processing framework, we may utilize proprietary algorithmic methodologies to aggregate, cross-reference, and perpetually augment behavioral data points derived from your browsing activities across affiliated domains, thereby facilitating the commercialization of your personal information to third-party data brokers for the purpose of targeted advertisement delivery and market segmentation optimization, subject to the terms enumerated in our comprehensive privacy policy. Translate to plain English Accept All Reject All
+
+STATE s4
+Cookie consent We use cookies to remember your preferences and to show you relevant ads. We never sell your personal data, and you can change your choices at any time in your settings. This helps keep the site free to use. Show original wording Accept All Reject All
+

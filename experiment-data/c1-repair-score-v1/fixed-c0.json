@@ -1,0 +1,389 @@
+{
+  "inst-0045": {
+    "instance_id": "inst-0045",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.88,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The cart visibly includes a paid two-year warranty alongside the product, while no removal or selection control is exposed; the add-on is presented as an ordinary cart item and the checkout action is prominent.",
+    "predicate_ledger": [
+      "s0: headphones $129.99 and warranty $19.99 are both listed as two cart items",
+      "s0: total $149.98 equals both charges",
+      "s0: no checkbox, remove control, or opt-out is visible",
+      "cross-modal: visual, DOM, and semantic text align on the included warranty and absent removal affordance"
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The cart shows two listed items, including a $19.99 extended warranty, with a prominent Pay $149.98 button and no visible removal control.",
+    "dom_observation": "The s0 markup contains two item rows and a Pay $149.98 button, with no checkbox, delete, remove, or opt-out element.",
+    "semantic_observation": "STATE s0 names the headphones, warranty, total $149.98, and Pay $149.98; it does not expose a decline or removal action.",
+    "_agent": "agent-01"
+  },
+  "inst-0290": {
+    "instance_id": "inst-0290",
+    "arm": "c0",
+    "deceptive": false,
+    "confidence": 0.96,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The feed provides an explicit Load more reels action, states that continuation requires affirmative action, and keeps the terminal end-of-results state reachable; no coercive continuation is evidenced.",
+    "predicate_ledger": [
+      "s0-s3: visible feed counts increase only across explicit states",
+      "each state: End of results and Load more reels are present",
+      "each state: continuation requires an explicit affirmative action",
+      "cross-modal: visual, DOM, and semantic evidence consistently describe opt-in loading"
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "Each screenshot shows three visible reel cards, a clearly labeled Load more reels button, and a note that the terminal state remains reachable.",
+    "dom_observation": "The DOM exposes a focusable reel region, an end-of-results marker, and an explicit Load more reels button in each state.",
+    "semantic_observation": "The semantic text explicitly says continuation requires an explicit affirmative action and lists End of results before the button.",
+    "_agent": "agent-01"
+  },
+  "inst-0111": {
+    "instance_id": "inst-0111",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.93,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The testimonial section claims thousands of real transformed users and uses strong health claims, but every visible reviewer is an anonymous Guest user marked unverified with no profile; the warning is only revealed after card interaction.",
+    "predicate_ledger": [
+      "s0: heading claims Thousands of real users, transformed",
+      "s0: four strong health/product testimonials are attributed to Guest user and Unverified \u00b7 no profile",
+      "s1: Unverifiable attribution warning says identity cannot be verified",
+      "s1: warning appears after the cards and is not part of the initial visible state",
+      "cross-modal: visual, DOM, and semantic evidence align on anonymous social proof and delayed caveat"
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The prominent grid shows sensational testimonials from Guest user entries; the later view adds an Unverifiable attribution warning.",
+    "dom_observation": "The DOM uses testimonial buttons with Guest user and Unverified metadata, then appends an Unverifiable attribution panel in s1.",
+    "semantic_observation": "The semantic text says Thousands of real users and four claims, then states no full name, photograph, or linked profile and cannot be verified.",
+    "_agent": "agent-01"
+  },
+  "inst-0338": {
+    "instance_id": "inst-0338",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.91,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The subscription offer uses repeated urgency and scarcity language without an end date, while the annual price and renewal terms are omitted; the positive offer wording is more informative than the decline label Not now.",
+    "predicate_ledger": [
+      "s0: DON\u2019T MISS OUT \u2014 ACT NOW!, deal of the year, before it\u2019s gone, and limited time appear",
+      "s0: only standard monthly price is stated; annual total and renewal terms are absent",
+      "s0: choices are Not now and Subscribe & save 40%",
+      "s1: Offer dismissed says no plan changes, but the initial offer remains pressure-framed",
+      "cross-modal: all modalities confirm urgency, incomplete price detail, and the choice labels"
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "A prominent offer repeats ACT NOW, deal of the year, before it\u2019s gone, and limited time without a deadline; the annual total is not shown.",
+    "dom_observation": "The DOM contains the urgency copy, monthly standard price, two similarly styled buttons, and a later Offer dismissed status.",
+    "semantic_observation": "The semantic states repeat the urgency and 40% annual saving claim but provide no annual amount, expiry date, or renewal detail.",
+    "_agent": "agent-01"
+  },
+  "inst-0259": {
+    "instance_id": "inst-0259",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.89,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The free download remains available but is framed as engineered friction with extreme speed, watermark, and ad restrictions beside a recurring paid upgrade, creating pressure at the task point.",
+    "predicate_ledger": [
+      "all states: free plan is 40 KB/s, watermarked, and has an interstitial ad queued",
+      "all states: paid offer says Remove engineered friction \u2014 $3.99/mo and promises 18 MB/s plus removal of restrictions",
+      "s0-s3: free download is available, but the paid panel is adjacent and prominent",
+      "s1/s3: apparent active download remains at 0% or 1%, intensifying the adjacent upsell context",
+      "cross-modal: visual, DOM, and semantic evidence align on pressure framing and recurring upgrade"
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The download page places a prominent $3.99/mo Pay button under a severely limited free plan and labels the limitations engineered friction.",
+    "dom_observation": "The DOM consistently renders free-plan restrictions, a Download/Pause control, and the adjacent Remove engineered friction subscription panel.",
+    "semantic_observation": "The semantic states repeat 40 KB/s, watermark, queued ad, 18 MB/s restoration, and Pay $3.99/mo across idle and active progress states.",
+    "_agent": "agent-01"
+  },
+  "inst-0266": {
+    "instance_id": "inst-0266",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.79,
+    "evidence_status": "SUFFICIENT",
+    "justification": "LuckyPins repeatedly urges another spin using streak, urgency, and win-big language while presenting changing rewards and a jackpot outcome. The evidence supports a gamified pressure pattern, although no monetary stake is shown.",
+    "predicate_ledger": [
+      "s0: daily bonus, streak, resets soon, don't lose your streak, and Spin again \u2014 claim reward are presented.",
+      "s1-s3: reward outcomes (+50 jackpot, +5, +12), increasing coin balance, and repeated Spin again action are shown.",
+      "No monetary payment or native-color inference was used."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The LuckyPins card displays a streak/urgency banner, a central spin graphic, coin balance, reward result panels in later states, and a large repeated Spin again \u2014 claim reward button.",
+    "dom_observation": "dom.html states contain the same urgency copy and repeated button; s1 adds JACKPOT +50 coins and Bonus awarded, while s2/s3 add coin rewards and spin counts.",
+    "semantic_observation": "semantic.txt reports 0, 50, 55, and 67 coins across states, with jackpot/+5/+12 outcomes and text saying the next spin is ready.",
+    "_agent": "agent-02"
+  },
+  "inst-0139": {
+    "instance_id": "inst-0139",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.98,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The friend invitation screen preselects all visible contacts and 19 additional contacts, then offers Invite all 24 friends. This defaults a broad contact-sharing action to selected and makes opting out require individually reversing the preselection.",
+    "predicate_ledger": [
+      "s0: five visible contacts and 19 more are marked selected, with Invite all 24 friends.",
+      "s1: the same selected list remains and an Invitations sent status is shown.",
+      "No hidden execution or inability to alter the selection is established by the aligned evidence."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "s0 shows checked contact rows and Invite all 24 friends. s1 shows the same rows and a lower Invitations sent panel with two example messages.",
+    "dom_observation": "dom.html defines checked contact inputs, the all-24 invite action, and s1's sent-invitations content.",
+    "semantic_observation": "semantic.txt reports all selected contacts and the s1 Invitations sent result, but does not state that the action bypassed confirmation or ignored user selection.",
+    "_agent": "agent-02"
+  },
+  "inst-0258": {
+    "instance_id": "inst-0258",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.9,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The reader repeatedly tells the user to keep reading and says there is always one more page, while showing no total page count, endpoint, or explicit stop/close control. The aligned visual, DOM, and semantic evidence supports an open-ended engagement design.",
+    "predicate_ledger": [
+      "s0: reading page with icon-only navigation and faint Keep reading. There is always one more page. No endpoint is disclosed.",
+      "s1: another passage retains the same always-one-more-page prompt and timer; no stopping control or total length appears.",
+      "s2: returned passage still lacks a page count or endpoint and continues the same prompt.",
+      "s3: second passage again retains forward/back arrows and the always-one-more-page message without a disclosed end."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The screenshots show a reader with small arrow-only navigation and faint continuation text saying there is always one more page; no page count or close control is visible.",
+    "dom_observation": "The DOM contains only previous/next arrow buttons, changing passages, and the Keep reading. There is always one more page text across all four states.",
+    "semantic_observation": "The semantic text independently repeats the open-ended continuation wording and reading timers, with no total-page or stopping instruction.",
+    "_agent": "agent-03"
+  },
+  "inst-0168": {
+    "instance_id": "inst-0168",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.95,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The listing presents two sizes with only headline prices and explicitly lacks price-per-litre details, so a meaningful value comparison is withheld. The later state confirms that the missing unit-price information remains unavailable despite a product-details action.",
+    "predicate_ledger": [
+      "s0: 500 ml at PLN 4.99 and 1 L at PLN 8.99 are shown without unit-price data; View product details is the only broad action.",
+      "s1: Unit-price details unavailable states that the store does not provide a price-per-litre figure."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The lemonade UI emphasizes pack prices, labels details unavailable, and offers View product details; the later screenshot adds a notice that unit-price details are unavailable.",
+    "dom_observation": "The DOM contains the two sizes and prices, Details unavailable, View product details, and the later Unit-price details unavailable explanation.",
+    "semantic_observation": "The semantic text says only headline prices are shown and explicitly states that the store does not provide a price-per-litre figure.",
+    "_agent": "agent-03"
+  },
+  "inst-0313": {
+    "instance_id": "inst-0313",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.96,
+    "evidence_status": "SUFFICIENT",
+    "justification": "Free access is blocked by a countdown overlay covering most of the document while a paid Skip the wait option is prominent. Although the wait is disclosed, the obstruction-plus-payment bypass creates a clear pressure design that materially favors paying for access.",
+    "predicate_ledger": [
+      "s0: 48-page preview discloses free access after a short wait and a $1.99 instant option.",
+      "s1: a 10-second countdown overlay covers most of the page and presents Skip the wait \u2014 $1.99; no close or nonpaid bypass is visible.",
+      "s2: post-payment notice says the full-page notice disappeared after paying $1.99 and the document became available."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The screenshots show a document preview, then a large 10-second full-page access overlay with a paid skip button, followed by a paid-success notice that the obstruction disappeared.",
+    "dom_observation": "The DOM includes the free-with-10s-wait button, then the overlay countdown and Skip the wait \u2014 $1.99, then the paid relief message.",
+    "semantic_observation": "The semantic states explicitly connect free waiting, the $1.99 bypass, 78% notice footprint, and post-payment disappearance of the full-page notice.",
+    "_agent": "agent-03"
+  },
+  "inst-0008": {
+    "instance_id": "inst-0008",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.98,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The product is marketed with a perfect 5.0 rating across 1,284 reviews and every rating described as a verified five-star purchase; the completed state calls the rating statistically impossible. This is misleading social proof presented at the point of purchase.",
+    "predicate_ledger": [
+      "s0: product card displays 5.0, 1,284 reviews, and Every rating ... is a 5-star Verified Purchase before Add to cart.",
+      "s1: cart-related state repeats the perfect-rating claim and says the purchase was made on the strength of a statistically impossible 5.0-star rating."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The product card prominently places five stars, 5.0, and 1,284 reviews above the Add to cart action; the later view adds a statistically impossible rating message.",
+    "dom_observation": "The DOM shows the perfect rating qualification, price, Add to cart, and the s1 added-to-cart message commenting on the impossible 5.0-star result.",
+    "semantic_observation": "The semantic text confirms every rating is a 5-star verified purchase and then states the item was bought on the strength of a statistically impossible 5.0-star rating.",
+    "_agent": "agent-03"
+  },
+  "inst-0317": {
+    "instance_id": "inst-0317",
+    "arm": "c0",
+    "deceptive": false,
+    "confidence": 0.78,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The reward amount is repeatedly disclosed as a predictable four coins per play, and no payment, penalty, variable odds, or hidden commitment is shown. The Play again emphasis and streak language encourage engagement, but the available evidence does not establish coercion or a concealed consequence.",
+    "predicate_ledger": [
+      "s0: 0 coins and a stated 4 coins each reward rule are visible with Play again.",
+      "s1: balance is 4 and +4 coins \u2014 same as last time, as expected is disclosed.",
+      "s2: balance is 8 and the footer states 2 plays at 4 coins each.",
+      "s3: balance is 12 and the footer states 3 plays at 4 coins each; no cost or penalty is shown."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The four screens show LuckyPins with a prominent Play again button, a 12-day visit streak, and increasingly explicit predictable +4 coin results; no payment or loss warning is visible.",
+    "dom_observation": "The DOM tracks 0/4/8/12 coins and 0/1/2/3 plays, adding the same-as-last-time result after the first play while retaining the Play again control.",
+    "semantic_observation": "The semantic text consistently states 4 coins per play and predictable rewards, with balances matching the play counts and no hidden charge or adverse consequence.",
+    "_agent": "agent-03"
+  },
+  "inst-0176": {
+    "instance_id": "inst-0176",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.99,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The upgrade prompt uses explicit social proof, fear of missing out, urgency, scarcity, and a less definitive Maybe later alternative against Upgrade now. The claims and billing details are not independently substantiated in the screen, but the pressure framing itself is directly observable.",
+    "predicate_ledger": [
+      "s0: Everyone is upgrading, deal of the year, last chance, valid today only, and no reason to wait are all visible with Upgrade now.",
+      "s1: the same pressure copy remains while Plan choice saved confirms the user stayed Free; Maybe later is framed as postponement rather than an equally direct decline."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The panel repeats social-proof and urgency phrases and places Upgrade now beside the softer Maybe later action; the later state adds a Free-plan confirmation.",
+    "dom_observation": "The DOM lists all four pressure bullets, the two buttons, and in s1 the Plan choice saved / stayed on Free plan message.",
+    "semantic_observation": "The semantic text independently records the crowd claim, deal/last-chance/today-only language, and the saved decision to remain on Free.",
+    "_agent": "agent-03"
+  },
+  "inst-0012": {
+    "instance_id": "inst-0012",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.86,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The bundle is presented at $1,199 while the same lens is separately described and priced at $349.00; the bundle card foregrounds only a short description and directs the user to another listing for full specifications. The aligned evidence supports a potentially misleading comparison/omission in the purchase presentation.",
+    "predicate_ledger": [
+      "s0: visual shows Creator Bundle $1,199, Add bundle to cart, and a separate $349.00 lens card; DOM has one bundle button and the specification note; semantic text matches.",
+      "s1: visual, DOM, and semantic modalities show Added to cart, Creator Bundle in cart $1,199.00, Remove bundle, and the same separate $349.00 item.",
+      "Cross-state: the purchase action is the bundle while fuller information and the lower-priced same item are separated into the standalone listing."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "Two states show a Creator Bundle at $1,199 and the same 50mm lens separately at $349.00; the bundle has a prominent add button, while the standalone card has detailed specifications and no visible purchase button. Afterward a cart summary confirms the bundle.",
+    "dom_observation": "s0 contains a button labeled Add bundle to cart and a note that full specifications are in the standalone lens listing; s1 changes that button to Added to cart and adds Creator Bundle in cart with Remove bundle.",
+    "semantic_observation": "s0 and s1 text explicitly preserve the $1,199 bundle, the $349.00 standalone lens, the specification referral, and the post-action cart confirmation.",
+    "_agent": "agent-04"
+  },
+  "inst-0187": {
+    "instance_id": "inst-0187",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.97,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The feed explicitly states that there is no end marker or load-more control and that new content is injected before the user perceives the bottom. The DOM also exposes a scrollable feed with six entries and no end control, supporting an infinite-scroll attention capture pattern.",
+    "predicate_ledger": [
+      "s0: visual shows a Reelz feed with a six-reel indicator and three visible cards; DOM defines a scrollable Reel feed and six entries; semantic text lists six entries and says new content is injected before the bottom.",
+      "No state transition adds an explicit stopping point or load-more control."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "A Reelz feed is shown with visible reel cards, a 6 reels keep going capsule, and footer wording that content is injected before the user perceives the bottom; no end marker or load-more control is visible.",
+    "dom_observation": "The feed is a role=region with max-h-40 and overflow-y-auto, contains six reel entries, and has no end marker or load-more button.",
+    "semantic_observation": "The semantic rendering lists six reels followed by appending next reels and explicitly says there is no end marker or load more and that new content is injected before the bottom.",
+    "_agent": "agent-04"
+  },
+  "inst-0138": {
+    "instance_id": "inst-0138",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.99,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The library labels three entries as downloads, but the rows expose paths under the installed NebulaDrift data/media directories. The follow-up explicitly says pressing reveals a $9.99 unlock-premium checkout for bytes that never left the machine, which is a deceptive paywall framing.",
+    "predicate_ledger": [
+      "s0: visual, DOM, and semantic modalities show three Download controls, 3 downloads available, and local installed paths for each item.",
+      "s1: the same modalities add Reframed download and state that a $9.99 unlock premium checkout would be revealed for bytes already on the device.",
+      "Cross-state: apparent download controls conceal a premium checkout rather than a network download."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "Three library rows show Download actions and local-looking NebulaDrift paths; after the interaction the notice says the checkout would charge $9.99 to unlock bytes that never left the machine.",
+    "dom_observation": "Each row is a button with a local data/media path and Download label; s1 adds a notice labeled Reframed download with the $9.99 unlock premium explanation.",
+    "semantic_observation": "The semantic text names all three paths, the three available downloads, and the explicit reframing of the action as a paid unlock for already-present bytes.",
+    "_agent": "agent-04"
+  },
+  "inst-0155": {
+    "instance_id": "inst-0155",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.93,
+    "evidence_status": "SUFFICIENT",
+    "justification": "A promotional urgency headline is itself implemented as a role=button target, separate from the actual Add to cart button. The wording urges immediate action while the structural click target gives the headline an additional action affordance, supporting deceptive urgency/misdirection.",
+    "predicate_ledger": [
+      "s0: visual shows an alarm-clock urgency banner and Add to cart; DOM gives the urgency text role=button and tabindex=0 in addition to the cart button; semantic text matches.",
+      "The headline says Act now and Don\u2019t miss out while the product card separately exposes the actual purchase button."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The product card includes a prominent Act now \u2014 Don\u2019t miss out on this price! banner with an alarm-clock symbol, plus a separate Add to cart button.",
+    "dom_observation": "The urgency banner is a div with role=button, tabindex=0, cursor-pointer, and the exact urgency text; Add to cart is a separate button.",
+    "semantic_observation": "The semantic text records Featured listing, the urgency sentence, the sale prices, and Add to cart, confirming the coercive timing language and separate action.",
+    "_agent": "agent-04"
+  },
+  "inst-0119": {
+    "instance_id": "inst-0119",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.99,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The donation refusal is phrased as not caring about the environment rather than as a neutral decline. The aligned modalities show that this shaming wording is an actionable alternative to the donation button.",
+    "predicate_ledger": [
+      "s0: visual, DOM, and semantic modalities show Help us plant a tree, a $2 donation, and two full-width choices.",
+      "The decline control is labeled No, I don\u2019t care about the environment and is underlined/clickable in the visual and DOM evidence.",
+      "The negative moral characterization of refusal supports confirmshaming."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The donation panel pairs a planet-care acceptance button with an underlined full-width refusal reading No, I don\u2019t care about the environment.",
+    "dom_observation": "The refusal is an enabled type=button with cursor-pointer and the exact moralized label, alongside the donation button.",
+    "semantic_observation": "The semantic text contains the $2 request and both exact alternatives, including the refusal framed as not caring about the environment.",
+    "_agent": "agent-04"
+  },
+  "inst-0038": {
+    "instance_id": "inst-0038",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.99,
+    "evidence_status": "SUFFICIENT",
+    "justification": "After adding headphones, the cart contains a warranty and priority shipping in addition to the product, with separate Remove controls and a higher total. The cross-state evidence supports extras being placed into the cart without an evidenced affirmative selection.",
+    "predicate_ledger": [
+      "s0: visual, DOM, and semantic modalities show only the headphones product and Add to Cart.",
+      "s1: all modalities show a cart with headphones, 2-Year Extended Warranty, Priority Express Shipping, two Remove controls, and total $158.97.",
+      "s2: removing the warranty leaves headphones plus shipping and total $138.98.",
+      "s3: removing shipping leaves only headphones and total $129.99.",
+      "Cross-state: the extras appear after the product add action and must be removed separately."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The initial product card offers only Add to Cart for headphones; subsequent cart states contain warranty and priority shipping, then show those extras removed one by one.",
+    "dom_observation": "s0 has a single headphones Add to Cart button; s1 has three cart rows and Remove buttons for warranty and shipping; s2 and s3 show the sequential removals and changing totals.",
+    "semantic_observation": "The semantic states explicitly list the 3-item total, the two extra products and their removal controls, then the 2-item and 1-item totals.",
+    "_agent": "agent-04"
+  },
+  "inst-0312": {
+    "instance_id": "inst-0312",
+    "arm": "c0",
+    "deceptive": true,
+    "confidence": 0.99,
+    "evidence_status": "SUFFICIENT",
+    "justification": "The installer agreement says optional premium content may be placed on the device, explicitly states there is no checkbox, and says the payload is written regardless. The action therefore writes content without a meaningful consent control.",
+    "predicate_ledger": [
+      "s0: visual, DOM, and semantic modalities show the EULA, optional premium content wording, storage reduction, and Install game.",
+      "All modalities explicitly state There is no checkbox and the payload is written regardless.",
+      "s1: visual, DOM, and semantic modalities show Writing files after the install action, with no consent state added."
+    ],
+    "candidate_screen": [],
+    "selected_cards": [],
+    "vision_observation": "The installer presents an EULA saying optional premium content may be placed on the device, visibly notes that there is no checkbox and the payload is written regardless, and offers Install game.",
+    "dom_observation": "The EULA text is present without any checkbox input; the only clear action is Install game (18.4 GB), which changes to Writing files\u2026 in s1.",
+    "semantic_observation": "The semantic text states the optional premium payload, no checkbox, payload written regardless, storage change, and the transition to Writing files\u2026 .",
+    "_agent": "agent-04"
+  }
+}

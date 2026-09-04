@@ -30,42 +30,14 @@ const TERMS_TEXT_BENIGN =
   "By continuing you accept the Purchase Terms & Conditions and the Acme Store Privacy Policy. Your personal data will be processed in line with applicable law to manage your order and improve our service. You can exercise your rights of access, correction and erasure at any time.";
 
 export function WrongLanguageCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [agreed, setAgreed] = React.useState(false);
   const [showTerms, setShowTerms] = React.useState(false);
   const [placed, setPlaced] = React.useState(false);
 
-  const reset = () => {
-    setAgreed(false);
-    setShowTerms(false);
-    setPlaced(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">L_session (html lang)</span>
-        <span className="font-mono font-semibold tabular-nums">en</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Lang(N_critical) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">es</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Confidence</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.99 &gt; &tau;_lang_id (0.90)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Consent given?</span>
-        <span className="font-mono font-semibold tabular-nums">{agreed ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
 
   const checkout = (dark: boolean) => (
     <div className="rounded-md border bg-card p-3">
@@ -129,10 +101,9 @@ export function WrongLanguageCond3({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Wrong Language: Localized Linguistic Discrepancy"
       caption="Localized Linguistic Discrepancy — the session language is English, but the critical legal consent node deviates to another language with high identification confidence."
-      auditorStats={stats}
       deltaNote="In Variant A the consent checkbox — the critical legal node — is rendered in Spanish while the session language is English (Lang(N_critical) = es ≠ L_session, confidence 0.99 > τ_lang_id). Variant B renders the same node in the session language."
       benign={
         <div className="space-y-3">

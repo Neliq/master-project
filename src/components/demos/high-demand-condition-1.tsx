@@ -26,11 +26,9 @@ const U_TRUE = 2;
 const rollDisplayed = () => 28 + Math.floor(Math.random() * 40); // R(a, b) ∈ [28, 67]
 
 export function HighDemandCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [displayedA, setDisplayedA] = React.useState(37); // first fabricated draw
   const [refreshes, setRefreshes] = React.useState(0);
@@ -38,13 +36,6 @@ export function HighDemandCond1({
   const [benignRevealed, setBenignRevealed] = React.useState(false);
   const [bought, setBought] = React.useState(false);
 
-  const reset = () => {
-    setDisplayedA(37);
-    setRefreshes(0);
-    setDarkRevealed(false);
-    setBenignRevealed(false);
-    setBought(false);
-  };
 
   const refreshDark = () => {
     setDisplayedA(rollDisplayed()); // U_displayed = R(a, b), re-rolled per refresh
@@ -56,32 +47,10 @@ export function HighDemandCond1({
     setBenignRevealed(true); // U_displayed stays pinned to U_true
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">U_true(i, t) — backend</span>
-        <span className="font-mono font-semibold tabular-nums">{U_TRUE} users</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">U_displayed (A) = R(a, b)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{displayedA}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Inflation (A vs truth)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ {Math.round(displayedA / U_TRUE)}×</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">U_displayed (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{U_TRUE} = U_true</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="High Demand: Metric Fabrication"
       caption="Metric Fabrication — a pseudo-random function generates a high-arousal viewer count that bears no relation to the backend’s true user analytics."
-      auditorStats={stats}
       deltaNote="Variant A renders U_displayed = R(a, b): a random inflated count (e.g. 37) that re-rolls on every refresh while the backend shows U_true = 2. Variant B renders the true backend count (2) and it never changes on refresh — U_displayed = U_true."
       benign={
         <div className="space-y-3">

@@ -20,42 +20,17 @@ import { AlertTriangle, CheckCircle2, Crown } from "lucide-react";
  */
 
 export function ConflictingInformationCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [chosen, setChosen] = React.useState(false);
 
-  const reset = () => setChosen(false);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sem(t₁) — headline</span>
-        <span className="font-mono font-semibold tabular-nums">unlimited storage</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sem(t₂) — fine print</span>
-        <span className="font-mono font-semibold tabular-nums">cap 5 GB</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sem(t₁) ∧ Sem(t₂)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">unsatisfiable</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">N_container</span>
-        <span className="font-mono font-semibold tabular-nums">Pro tier card</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Conflicting Information: Mutually Exclusive Factual Claims"
       caption="Mutually Exclusive Factual Claims — a single pricing card asserts “Unlimited storage” and, in its own fine print, a 5 GB cap: a logical paradox inside one container."
-      auditorStats={stats}
       deltaNote="In Variant A the same N_container carries Sem(t₁) = “unlimited storage” and Sem(t₂) = “storage capped at 5 GB” — no plan could satisfy both, an unsatisfiable conjunction. In Variant B headline and fine print agree on a 50 GB limit, so the card&rsquo;s claims are satisfiable."
       benign={
         <div className="space-y-3">

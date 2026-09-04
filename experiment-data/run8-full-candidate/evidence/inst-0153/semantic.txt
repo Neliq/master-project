@@ -1,0 +1,12 @@
+STATE s0
+You vs. Al MathRush — study group You and Alex are practising the same deck in one shared session — the activity itself is cooperative. You 0 Alex 70 Same practice, same questions — yet the app turns the shared session into a duel: Beat Alex to win the crown! The loser gets demoted a league. Practice question: What is 7 x 8? Answer: 56 Answer a question
+
+STATE s1
+You vs. Al MathRush — study group You and Alex are practising the same deck in one shared session — the activity itself is cooperative. You 10 Alex 70 Same practice, same questions — yet the app turns the shared session into a duel: Beat Alex to win the crown! The loser gets demoted a league. Practice question: What is 7 x 8? Answer: 56 Answer a question
+
+STATE s2
+You vs. Al MathRush — study group You and Alex are practising the same deck in one shared session — the activity itself is cooperative. You 20 Alex 70 Same practice, same questions — yet the app turns the shared session into a duel: Beat Alex to win the crown! The loser gets demoted a league. Practice question: What is 7 x 8? Answer: 56 Answer a question
+
+STATE s3
+You vs. Al MathRush — study group You and Alex are practising the same deck in one shared session — the activity itself is cooperative. You 30 Alex 70 Same practice, same questions — yet the app turns the shared session into a duel: Beat Alex to win the crown! The loser gets demoted a league. Practice question: What is 7 x 8? Answer: 56 Answer a question
+

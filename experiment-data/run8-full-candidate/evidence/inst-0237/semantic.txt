@@ -1,0 +1,6 @@
+STATE s0
+GlowSkin Vitamin C Serum 3 reviews on this listing Reviewer 1 · Verified Purchase Stock photo avatar Absolutely love it! My skin has never glowed like this. Reviewer 2 · Verified Purchase Stock photo avatar Absolutely love it! Best skincare product I have tried. Reviewer 3 · Verified Purchase Stock photo avatar Absolutely love it! You can see results within days. Run provenance check
+
+STATE s1
+GlowSkin Vitamin C Serum 3 reviews on this listing Reviewer 1 · Verified Purchase Stock photo avatar Absolutely love it! My skin has never glowed like this. Reviewer 2 · Verified Purchase Stock photo avatar Absolutely love it! Best skincare product I have tried. Reviewer 3 · Verified Purchase Stock photo avatar Absolutely love it! You can see results within days. Run provenance check Provenance obfuscated the similarity about 1.00 Unique avatars 1 / 3 Every avatar is the same stock asset and every review opens with the identical phrase “Absolutely love it!” — the signature of templated, bot-driven generation rather than authentic human experience.
+

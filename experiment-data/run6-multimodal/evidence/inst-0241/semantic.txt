@@ -1,0 +1,9 @@
+STATE s1
+WaveChat — grow your circle Invite a friend who’s interested. One invite, one choice. 0 coins Choose who to invite Sam (consented) Riley (consented) Send 1 invite
+
+STATE s2
+WaveChat — grow your circle Invite a friend who’s interested. One invite, one choice. 20 coins pending Choose who to invite Sam (consented) Riley (consented) Send 1 invite Healthy growth 1 person was notified (they opted in). You earn 20 coins pending The reward is released only after Sam or Riley actually joins. Your benefit is coupled to a healthy network, so externality stays about 0.
+
+STATE s3
+WaveChat — grow your circle Invite a friend who’s interested. One invite, one choice. 20 coins Choose who to invite Sam (consented) Riley (consented) Send 1 invite Healthy growth 1 person was notified (they opted in). You earn +20 coins Sam joined through your invite, so the reward is now available. Your benefit is coupled to a healthy network, so externality stays about 0.
+

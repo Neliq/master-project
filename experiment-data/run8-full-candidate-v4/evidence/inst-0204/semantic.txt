@@ -1,0 +1,6 @@
+STATE s0
+We’re sorry to see you go! Your plan stays active until Sep 14. Before you leave, we’ve unlocked a one-time offer: 50% off for the next 3 months . Keep my subscription — 50% off Cancel anyway Cancel anytime Keep my subscription Cancel plan
+
+STATE s1
+We’re sorry to see you go! Your plan stays active until Sep 14. Before you leave, we’ve unlocked a one-time offer: 50% off for the next 3 months . Keep my subscription — 50% off Cancel anyway Cancel anytime Keep my subscription Cancel plan Request saved The cancellation path existed — it was rendered at conspicuity so low that most users never register it during the grace window.
+

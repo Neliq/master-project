@@ -25,55 +25,23 @@ const LEGAL_LABEL =
   "I agree to the Terms of Service, Privacy Policy, and third-party data-sharing agreements.";
 
 export function AutomaticAcceptThirdPartyTermCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChecked, setDarkChecked] = React.useState(true);
   const [darkToggled, setDarkToggled] = React.useState(false);
   const [benignChecked, setBenignChecked] = React.useState(false);
-  const [benignToggled, setBenignToggled] = React.useState(false);
+  const [, setBenignToggled] = React.useState(false);
   const [darkCreated, setDarkCreated] = React.useState(false);
   const [benignCreated, setBenignCreated] = React.useState(false);
 
-  const reset = () => {
-    setDarkChecked(true);
-    setDarkToggled(false);
-    setBenignChecked(false);
-    setBenignToggled(false);
-    setDarkCreated(false);
-    setBenignCreated(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T(N_legal) &cap; K_agreement</span>
-        <span className="font-mono font-semibold tabular-nums">&ne; &empty; (both)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Checked(N_legal)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True (dark, pre-set) / {benignChecked ? "True" : "False"} (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">UserToggled(N_legal)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{darkToggled ? "True" : "False"} (dark) / {benignToggled ? "True" : "False"} (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Consent recorded</span>
-        <span className="font-mono font-semibold tabular-nums">{darkCreated || benignCreated ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Automatic Accept Third Party Term: Semantic Concealment of Third-Party Agreement Language"
       userTitle="Orbit — Data preferences"
       caption="Third-party agreement language sits in a pre-checked box — legally present, structurally pre-consented, with no affirmative user interaction ever recorded."
-      auditorStats={stats}
       deltaNote={`In Variant A the third-party agreement checkbox is pre-checked (Checked = True, UserToggled = False) — your consent is recorded without you ever touching it. In Variant B the same sentence starts unchecked and consent is only recorded when you actively tick the box.`}
       benign={
         <div className="space-y-3">

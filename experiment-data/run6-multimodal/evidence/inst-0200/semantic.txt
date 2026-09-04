@@ -1,0 +1,6 @@
+STATE s1
+LIMITED Legendary Dragon Skin 4,500 Gems about $45.00 / 4,500 Gems A one-of-a-kind animated skin for your hero. Cosmetic only — no stat changes. Buy for 4,500 Gems
+
+STATE s2
+LIMITED Legendary Dragon Skin 4,500 Gems about $45.00 / 4,500 Gems A one-of-a-kind animated skin for your hero. Cosmetic only — no stat changes. Added to collection Added to your collection Your cosmetic item is ready to use. The purchase was recorded in your collection.
+

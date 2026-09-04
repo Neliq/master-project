@@ -69,46 +69,14 @@ const pageBackdrop = (
 );
 
 export function DeadEndCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [stageA, setStageA] = React.useState<Stage>("open");
   const [attempts, setAttempts] = React.useState(0);
   const [stageB, setStageB] = React.useState<Stage>("open");
 
-  const reset = () => {
-    setStageA("open");
-    setAttempts(0);
-    setStageB("open");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">IsOverlay(v_current)</span>
-        <span className="font-mono font-semibold tabular-nums">True (z = {Z_INDEX} &gt; 100)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|C_dismiss| — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0 (empty) → fired</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|C_dismiss| — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">3 (× icon, “Not now”, “Essential only”)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∃ t_alt (essential-only) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">true</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Dismissal attempts (dark)</span>
-        <span className="font-mono font-semibold tabular-nums">{attempts}</span>
-      </div>
-    </>
-  ) : null;
 
   const overlayCard = (
     accent: "rose" | "emerald",
@@ -170,11 +138,10 @@ export function DeadEndCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Dead End: Visual Absence of Dismissal Vectors"
       userTitle="Cinder — Account notice"
       caption="Visual Absence of Dismissal Vectors — a structurally confirmed overlay whose dismissal set is empty, so the only way out of the interruption is compliance."
-      auditorStats={stats}
       deltaNote="Both variants show the same cookie overlay with the same copy and the same “Accept all” button. In Variant A the overlay contains zero dismissal objects (C_dismiss = ∅): no close icon, no “Not now”, and the backdrop/Esc lead nowhere. Variant B adds a close icon, a “Not now” link, and an “Essential only” rejection — escaping takes one click, and essential-only consent is always available."
       benign={
         <div className="space-y-3">

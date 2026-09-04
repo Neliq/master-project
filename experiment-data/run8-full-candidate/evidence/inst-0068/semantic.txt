@@ -1,0 +1,6 @@
+STATE s0
+★ EXCLUSIVE ★ AMAZING ★ PREMIUM LEGENDARY CRATE Contains legendary ultra-rare loot! 0.01% drop rate! Watch one ad to open it FREE! Mythic Watch 1 ad to open (4s)
+
+STATE s1
+★ EXCLUSIVE ★ AMAZING ★ PREMIUM LEGENDARY CRATE Contains legendary ultra-rare loot! 0.01% drop rate! Watch one ad to open it FREE! Mythic Ad 0:04
+

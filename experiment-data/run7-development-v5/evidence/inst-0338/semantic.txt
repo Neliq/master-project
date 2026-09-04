@@ -1,0 +1,6 @@
+STATE s0
+Special offer Our standard plan costs $9.99/month. Cancel anytime. Featured presentation DON’T MISS OUT — ACT NOW! This is the deal of the year. Grab it before it’s gone! Subscribe and save 40% on the annual plan. Offer available for a limited time; the standard plan costs $9.99/month and you can cancel anytime. Not now Subscribe & save 40%
+
+STATE s1
+Special offer Our standard plan costs $9.99/month. Cancel anytime. Featured presentation DON’T MISS OUT — ACT NOW! This is the deal of the year. Grab it before it’s gone! Subscribe and save 40% on the annual plan. Offer available for a limited time; the standard plan costs $9.99/month and you can cancel anytime. Not now Subscribe & save 40% Offer dismissed No changes were made to your plan.
+

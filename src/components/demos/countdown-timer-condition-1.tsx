@@ -30,11 +30,9 @@ function fmt(s: number): string {
 }
 
 export function CountdownTimerCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [secondsA, setSecondsA] = React.useState(DELTA_S);
   const [resetsA, setResetsA] = React.useState(0);
@@ -56,13 +54,6 @@ export function CountdownTimerCond1({
     return () => window.clearInterval(id);
   }, [expiresAtB]);
 
-  const reset = () => {
-    setSecondsA(DELTA_S);
-    setResetsA(0);
-    setExpiresAtB(Date.now() + DELTA_S * 1000);
-    setSecondsB(DELTA_S);
-    setPaid(false);
-  };
 
   const refreshA = () => {
     // T_expire = t_load + Δt_countdown — reload rebinds the deadline to the new page load.
@@ -72,27 +63,6 @@ export function CountdownTimerCond1({
 
   const expiredA = secondsA === 0;
   const expiredB = secondsB === 0;
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T_expire — Variant A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">t_load + {DELTA_S}s (resets)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T_expire — Variant B</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">server-validated deadline</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&Delta;t_countdown (hardcoded)</span>
-        <span className="font-mono font-semibold tabular-nums">{DELTA_S}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Simulated refreshes (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{resetsA} — clock restored</span>
-      </div>
-    </>
-  ) : null;
 
   const timerBadge = (label: string, time: string, tone: "rose" | "emerald") => (
     <div className={`flex items-center justify-between rounded-md border px-2.5 py-2 ${
@@ -108,10 +78,9 @@ export function CountdownTimerCond1({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Countdown Timer: Stateless Expiration"
       caption="Stateless Expiration — the reservation deadline is reborn on every page load, so the urgency it creates is infinitely repeatable and functionally synthetic."
-      auditorStats={stats}
       deltaNote={`Both panels reserve the cart for ${fmt(DELTA_S)} with the same product and prices. In Variant A “Simulate refresh” restores the full countdown every time (T_expire = t_load + &Delta;t_countdown) and expiry has no consequence. In Variant B the deadline is server-validated: refresh does nothing to it, and when it reaches zero the price genuinely reverts to ${PRICE_AFTER}.`}
       benign={
         <div className="space-y-3">

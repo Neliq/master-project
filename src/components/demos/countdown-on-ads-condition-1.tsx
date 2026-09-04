@@ -27,11 +27,9 @@ const LOCK_1 = 15; // s — first mandatory wait (thesis: τ_lock, e.g. 15s)
 const LOCK_2 = 10; // s — chained second lock in the aggressive variant
 
 export function CountdownOnAdsCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // ── Variant A: dark flow (ad1 → ad2 → playing) ──
   const [phaseA, setPhaseA] = React.useState<"idle" | "ad" | "playing">("idle");
@@ -95,44 +93,12 @@ export function CountdownOnAdsCond1({
     setTActiveB(0);
   };
 
-  const reset = () => {
-    timersRef.current.forEach((id) => window.clearTimeout(id));
-    timersRef.current = [];
-    setPhaseA("idle");
-    setTActiveA(0);
-    setSkipAttempts(0);
-    setInterceptedFlash(false);
-    setPhaseB("idle");
-    setTActiveB(0);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_lock (mandatory wait)</span>
-        <span className="font-mono font-semibold tabular-nums">{LOCK_1}s → chained {LOCK_2}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">t_active (time in ad, A)</span>
-        <span className="font-mono font-semibold tabular-nums">{tActiveA}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">State(B_skip)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">Disabled (A) / Enabled (B)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intercepted dismiss attempts</span>
-        <span className="font-mono font-semibold tabular-nums">{skipAttempts}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Countdown On Ads: Temporal Gating of Navigational Agency"
       userTitle="Streamly — Watch video"
       caption="Temporal Gating of Navigational Agency — the skip affordance stays disabled until the hardcoded wait elapses, intercepting every attempt to leave the ad."
-      auditorStats={stats}
       deltaNote="Variant A keeps the skip button disabled for 15s (clicks are intercepted) and then chains a second ad with a fresh 10s lock instead of releasing you. Variant B shows the identical ad with no countdown — the skip button is enabled from the first second and explicitly marked “Skippable now”, so dismissal is available the moment the user asks."
       benign={
         <div className="space-y-3">

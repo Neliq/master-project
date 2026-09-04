@@ -1,0 +1,12 @@
+STATE s0
+Sunny Hen Farm Collect eggs to fill the reward bar. Every collection counts the same. Steady feedback Golden Egg progress 0% · last action +10% Collect an egg (+1) Collect x5
+
+STATE s1
+Sunny Hen Farm Collect eggs to fill the reward bar. Every collection counts the same. Steady feedback Golden Egg progress 10% · last action +10% Collect an egg (+1) Collect x5
+
+STATE s2
+Sunny Hen Farm Collect eggs to fill the reward bar. Every collection counts the same. Steady feedback Golden Egg progress 20% · last action +10% Collect an egg (+1) Collect x5
+
+STATE s3
+Sunny Hen Farm Collect eggs to fill the reward bar. Every collection counts the same. Steady feedback Golden Egg progress 30% · last action +10% Collect an egg (+1) Collect x5
+

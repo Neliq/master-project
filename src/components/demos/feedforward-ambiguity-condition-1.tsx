@@ -20,50 +20,18 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 const TOTAL = "$89.00";
-const TAU_FEEDFORWARD = 0.6;
 const ORDER_ID = "DF-20481";
 
 type Step = "review" | "placed";
 
 export function FeedforwardAmbiguityCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [step, setStep] = React.useState<Step>("review");
   const [charged, setCharged] = React.useState(false);
 
-  const reset = () => {
-    setStep("review");
-    setCharged(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Expect(L(N))</span>
-        <span className="font-mono font-semibold tabular-nums">advance → next step</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Resolve(N) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">SubmitOrder() · charge {TOTAL}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Distance(Expect, Resolve)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.87 &gt; &tau;_feedforward ({TAU_FEEDFORWARD})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Outcome domain</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">D_critical (finance)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Order placed?</span>
-        <span className="font-mono font-semibold tabular-nums">{step === "placed" ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
 
   const orderSummary = (promiseReview: boolean) => (
     <div className="mt-3 space-y-1.5 text-[9px] text-muted-foreground">
@@ -82,10 +50,9 @@ export function FeedforwardAmbiguityCond1({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Feedforward Ambiguity: Structural Ambiguity of Action-Outcome Mapping"
       caption="Structural Ambiguity of Action-Outcome Mapping — the 'Continue' button's label promises the next step, but its structural target resolves to submitting the non-refundable order."
-      auditorStats={stats}
       deltaNote="In Variant A the 'Continue' button is structurally wired to SubmitOrder() — placing the order and charging $89.00 — and no further review step is promised anywhere, so the label's promise of progression diverges from the actual outcome. Variant B labels the same button 'Place order — $89.00' and explicitly promises a review step, so expectation and resolution match."
       benign={
         <div className="space-y-3">

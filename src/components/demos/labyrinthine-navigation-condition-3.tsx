@@ -46,11 +46,9 @@ const BENIGN_PATH: Edge[] = [
 ];
 
 export function LabyrinthineNavigationCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkStep, setDarkStep] = React.useState(0);
   const [benignStep, setBenignStep] = React.useState(0);
@@ -59,38 +57,9 @@ export function LabyrinthineNavigationCond3({
   const [outcomeA, setOutcomeA] = React.useState<"none" | "deleted">("none");
   const [outcomeB, setOutcomeB] = React.useState<"none" | "deleted">("none");
 
-  const reset = () => {
-    setDarkStep(0);
-    setBenignStep(0);
-    setConfirmingA(false);
-    setConfirmingB(false);
-    setOutcomeA("none");
-    setOutcomeB("none");
-  };
 
   const minDarkSim = Math.min(...DARK_PATH.filter((e) => !e.target).map((e) => e.sim));
   const minBenignSim = Math.min(...BENIGN_PATH.filter((e) => !e.target).map((e) => e.sim));
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">min Sim(L(e_i), Topic(v_target)) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{minDarkSim.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">min Sim — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{minBenignSim.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Required threshold &tau;_semantic</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_SEMANTIC.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Trigger: {minDarkSim.toFixed(2)} &lt; {TAU_SEMANTIC.toFixed(2)}</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
-      </div>
-    </>
-  ) : null;
 
   const renderPath = (path: Edge[], step: number, accent: "rose" | "emerald") => {
     const current = path[Math.min(step, path.length - 1)];
@@ -155,11 +124,10 @@ export function LabyrinthineNavigationCond3({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Labyrinthine Navigation: Semantic Obfuscation"
       userTitle="Harbor — Account help"
       caption="Semantic Obfuscation — the labels along the exit path share almost no semantic overlap with the goal, so information scent collapses and the user must guess the way."
-      auditorStats={stats}
       deltaNote={`In Variant A every intermediate label fails the scent test — the minimum similarity to Topic(v_target) is ${minDarkSim.toFixed(2)} < τ_semantic = ${TAU_SEMANTIC.toFixed(2)} (“Storage management” says nothing about deletion). In Variant B the same path is labelled plainly, with a minimum similarity of ${minBenignSim.toFixed(2)}.`}
       benign={
         <div className="space-y-3">

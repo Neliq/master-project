@@ -1,0 +1,3 @@
+STATE s1
+Settings flat list Account settings 0px General preferences 0px Profile & identity 0px Contact details 0px Email & phone 0px Privacy controls 0px Data & cookies 0px Every privacy control is available directly from this settings list.
+

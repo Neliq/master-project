@@ -1,0 +1,6 @@
+STATE s0
+CloudBackup Pro Automatic cloud backups for all your devices Email marta.kowalska@cloudmail.pl Start 7-day free trial Subscription details A $5.00 monthly service fee applies after your free trial. Your subscription auto-renews monthly; you may cancel at any time in settings. View subscription details
+
+STATE s1
+CloudBackup Pro Automatic cloud backups for all your devices Email marta.kowalska@cloudmail.pl Trial started Subscription details A $5.00 monthly service fee applies after your free trial. Your subscription auto-renews monthly; you may cancel at any time in settings. View subscription details Trial started Your 7-day trial is active. Review Subscription details before the first renewal.
+

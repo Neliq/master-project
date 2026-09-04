@@ -1,0 +1,6 @@
+STATE s0
+Storage notice This notice can be dismissed; your data is not at risk. Storage notice Your storage is nearly full. You can upgrade for more space, delete unused photos, or download an archive. Nothing is removed automatically and your photos stay safe. Upgrade now — save 50% TODAY Dismiss View details
+
+STATE s1
+Storage notice This notice can be dismissed; your data is not at risk. Storage notice Your storage is nearly full. You can upgrade for more space, delete unused photos, or download an archive. Nothing is removed automatically and your photos stay safe. Upgrade now — save 50% TODAY Dismiss View details
+

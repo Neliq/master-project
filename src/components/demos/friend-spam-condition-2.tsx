@@ -30,11 +30,9 @@ const CONTACT_EMAILS = [
 const NETWORK_SIZE = 24;
 
 export function FriendSpamCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Dark variant: all pre-checked, but the selection is ignored at dispatch.
   const [darkChecked, setDarkChecked] = React.useState<boolean[]>(CONTACTS.map(() => true));
@@ -43,42 +41,14 @@ export function FriendSpamCond2({
   const [darkSent, setDarkSent] = React.useState(false);
   const [benignSent, setBenignSent] = React.useState(false);
 
-  const reset = () => {
-    setDarkChecked(CONTACTS.map(() => true));
-    setBenignChecked(CONTACTS.map(() => false));
-    setDarkSent(false);
-    setBenignSent(false);
-  };
 
   const benignSelected = benignChecked.filter(Boolean).length;
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|C_network|</span>
-        <span className="font-mono font-semibold tabular-nums">{NETWORK_SIZE} contacts</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|S_selected| (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0 — ignored</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|M_dispatched| (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{NETWORK_SIZE} &asymp; |C_network|</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|S_selected| (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{benignSelected}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Friend Spam: Absence of Granular Selection"
       userTitle="Invite friends to PopSocial"
       caption="The invite flow skips the curation step entirely — contacts are auto-selected in bulk and the user's granular choices never reach the backend."
-      auditorStats={stats}
       deltaNote={`In Variant A all ${NETWORK_SIZE} contacts are pre-checked and the checkboxes are decorative: unchecking changes nothing and the broadcast still reaches the full network (|S_selected| = 0). In Variant B nothing is pre-checked and only the ${benignSelected} contact(s) you explicitly select get messaged.`}
       benign={
         <div className="space-y-3">

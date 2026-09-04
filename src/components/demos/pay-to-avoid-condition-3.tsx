@@ -25,11 +25,9 @@ const EPISODES = ["Episode 1 — Pilot", "Episode 2 — Sparks", "Episode 3 — 
 const PRICE = "$4.99/mo";
 
 export function PayToAvoidCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [videoIndexA, setVideoIndexA] = React.useState(0);
   const [videoIndexB, setVideoIndexB] = React.useState(0);
@@ -46,22 +44,6 @@ export function PayToAvoidCond3({
   const [paidA, setPaidA] = React.useState(false);
   const [paidB, setPaidB] = React.useState(false);
 
-  const reset = () => {
-    setVideoIndexA(0);
-    setVideoIndexB(0);
-    setPhaseA("idle");
-    setPhaseB("idle");
-    setAdLeftA(0);
-    setAdLeftB(0);
-    setWatchedCountA(0);
-    setWatchedCountB(0);
-    setVariantA("dark");
-    setVariantB("benign");
-    setPromptVisibleA(false);
-    setPromptVisibleB(false);
-    setPaidA(false);
-    setPaidB(false);
-  };
 
   const adDuration = (idx: number, v: "dark" | "benign") => (v === "dark" ? 5 * (idx + 1) : 5);
 
@@ -141,33 +123,6 @@ export function PayToAvoidCond3({
     }
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">λ_friction (ad length per video)</span>
-        <span className={`font-mono font-semibold tabular-nums max-w-[55%] truncate text-right ${variantA === "dark" ? "text-red-500" : "text-green-500"}`}>
-          {variantA === "dark" ? "[5s, 10s, 15s]" : "[5s, 5s, 5s]"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d/dt λ_friction</span>
-        <span className={`font-mono font-semibold tabular-nums ${variantA === "dark" ? "text-red-500" : "text-green-500"}`}>
-          {variantA === "dark" ? "&gt; 0 (escalating)" : "= 0 (constant)"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P(N_prompt | λ)</span>
-        <span className={`font-mono font-semibold tabular-nums ${variantA === "dark" ? "text-red-500" : "text-green-500"}`}>
-          {variantA === "dark" ? "≈ 1 (forced)" : "= 0 (dismissible)"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Current ad</span>
-        <span className="font-mono font-semibold tabular-nums">{phaseA === "ad" ? `${adLeftA}s left` : "—"}</span>
-      </div>
-    </>
-  ) : null;
-
   const renderEpisodeList = (isDark: boolean) => {
     const side = isDark ? "A" : "B";
     const panelVideoIndex = isDark ? videoIndexA : videoIndexB;
@@ -220,11 +175,10 @@ export function PayToAvoidCond3({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pay To Avoid: Pain-Point Amplification"
       userTitle="Streamly — Binge queue"
       caption="Pain-Point Amplification — the longer you resist paying, the longer the ads get, until the payment modal becomes unavoidable."
-      auditorStats={stats}
       deltaNote="Both variants show the same 3-episode queue with a pre-roll ad per episode and the same $4.99/mo ad-free offer. Variant A escalates friction the longer you resist (5s → 10s → 15s ads) and ends in a non-dismissible payment modal. Variant B keeps every ad at 5 seconds and renders the offer as a dismissible banner — resisting pays no penalty."
       benign={
         <div className="space-y-3">

@@ -26,42 +26,17 @@ const VALUE_V = 50; // extracted metric v
 const FLASH = "50"; // the rendered numeric value
 
 export function InformationWithoutContextCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [claimed, setClaimed] = React.useState(false);
 
-  const reset = () => setClaimed(false);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">v (extracted metric)</span>
-        <span className="font-mono font-semibold tabular-nums">{VALUE_V}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">U_val (unit) in S_cluster?</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">missing</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">B_val (baseline) in S_cluster?</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">missing</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">U_val ∉ S ∨ B_val ∉ S</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">true</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Information Without Context: Unanchored Quantitative Metrics"
       caption="Unanchored Quantitative Metrics — the banner&rsquo;s prominent value “SAVE 50” carries neither a unit (%, $, PLN) nor a baseline (off what?) inside its semantic cluster."
-      auditorStats={stats}
       deltaNote="In Variant A the high-prominence value v = 50 sits in a cluster with no unit and no denominator — U_val ∉ S_cluster ∧ B_val ∉ S_cluster — so its true meaning (“50 PLN off orders above 500 PLN”) only surfaces after you commit. In Variant B the same offer is anchored: “Save 50% on orders over 100 PLN” keeps unit and baseline inside the cluster, and the sale deadline is stated concretely (“ends tonight at 23:59”)."
       benign={
         <div className="space-y-3">

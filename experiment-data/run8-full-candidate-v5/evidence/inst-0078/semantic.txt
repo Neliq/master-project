@@ -1,0 +1,9 @@
+STATE s0
+Account danger zone CloudPhoto · maya@example.com · Free plan Delete my account
+
+STATE s1
+Confirm account deletion Your account will be permanently deleted immediately. This action cannot be undo ne. Account deletion details Delete my account Cancel
+
+STATE s2
+No delay — no reversal hook Deletion executed immediately. Nothing remains pending, and the confirmation clearly explains that the action is complete with no sign-in step required to keep it cancelled.
+

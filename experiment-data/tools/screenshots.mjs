@@ -20,13 +20,19 @@ fs.mkdirSync(OUT, { recursive: true });
 // filenames are slug-keyed, order does not matter for the figures)
 const patternsSrc = fs.readFileSync(
   "/home/neliq/Coding/master-project/src/lib/patterns.ts", "utf8");
-const slugs = [...patternsSrc.matchAll(/slug:\s*"([^"]+)"/g)].map(m => m[1]);
-if (slugs.length !== 62) throw new Error(`expected 62 slugs, got ${slugs.length}`);
+const slugFilter = new Set((process.env.SHOT_SLUGS || "")
+  .split(",").map(s => s.trim()).filter(Boolean));
+const allSlugs = [...patternsSrc.matchAll(/slug:\s*"([^"]+)"/g)].map(m => m[1]);
+if (allSlugs.length !== 62) throw new Error(`expected 62 slugs, got ${allSlugs.length}`);
+const slugs = allSlugs.filter(slug => !slugFilter.size || slugFilter.has(slug));
+if (!slugs.length) throw new Error("SHOT_SLUGS selected no known slug");
 
 const browser = await puppeteer.launch({
   executablePath: "/usr/bin/chromium", headless: "new", args: ["--no-sandbox"],
 });
 
+const mode = process.env.SHOT_MODE || "user";
+const desiredMode = mode === "auditor" ? "Auditor view" : "User view";
 let errs = 0;
 for (const slug of slugs) {
   try {
@@ -34,17 +40,30 @@ for (const slug of slugs) {
     await page.setViewport({ width: 1400, height: 2400, deviceScaleFactor: 2 });
     await page.goto(`${BASE}/patterns/${slug}`, { waitUntil: "networkidle0", timeout: 30000 });
     await new Promise(r => setTimeout(r, 800)); // let React hydrate
-    // First condition shell, A (deceptive) panel wrapper = header + demo content
-    const el = await page.evaluateHandle(() => {
-      const shell = document.querySelector('[data-dp-simulation]');
-      if (!shell) return null;
-      const headers = Array.from(shell.querySelectorAll('div'))
-        .filter(d => /^Variant A/.test(d.textContent.trim()));
-      if (!headers.length) return null;
-      return headers[0].parentElement;
+    // The current Sandbox exposes each condition through a mode toggle. For
+    // catalogue examples, capture the first condition wrapper in the requested
+    // user/auditor mode: heading, toggle, live interface, and explanation.
+    await page.evaluate((desiredMode) => {
+      const button = [...document.querySelectorAll('button[aria-pressed]')]
+        .find(b => (b.textContent || '').replace(/\s+/g, ' ').trim() === desiredMode);
+      if (!button) throw new Error(`missing ${desiredMode} toggle`);
+      button.click();
+    }, desiredMode);
+    await new Promise(r => setTimeout(r, 150));
+    const marked = await page.evaluateHandle(() => {
+      const firstShell = document.querySelector('[data-dp-simulation]');
+      if (!firstShell) return null;
+      let candidate = firstShell.parentElement;
+      while (candidate && !candidate.querySelector('h2')) {
+        candidate = candidate.parentElement;
+      }
+      if (!candidate) return null;
+      candidate.setAttribute('data-thesis-capture', 'true');
+      return candidate;
     });
-    if (el === null || el === undefined) { console.log(`NO PANEL: ${slug}`); errs++; continue; }
-    await el.asElement().screenshot({ path: path.join(OUT, `${slug}.png`) });
+    const el = marked.asElement();
+    if (!el) { console.log(`NO PANEL: ${slug}`); errs++; continue; }
+    await el.screenshot({ path: path.join(OUT, `${slug}.png`) });
     await page.close();
     console.log(`ok ${slug}`);
   } catch (e) { console.log(`ERR ${slug}: ${e.message.slice(0, 80)}`); errs++; }

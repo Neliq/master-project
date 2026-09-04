@@ -25,11 +25,9 @@ const EPISODES = ["Episode 1 — The Signal", "Episode 2 — The Return"];
 const TAU_SYSTEM = 2;
 
 export function AutomatingTheUserAwayCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [videoIdxA, setVideoIdxA] = React.useState(0);
   const [videoIdxB, setVideoIdxB] = React.useState(0);
@@ -46,18 +44,6 @@ export function AutomatingTheUserAwayCond1({
     "Queue loaded.",
   ]);
 
-  const reset = () => {
-    setVideoIdxA(0);
-    setVideoIdxB(0);
-    setPhaseA("ready");
-    setPhaseB("ready");
-    setProgressA(0);
-    setProgressB(0);
-    setAutoCountdownA(TAU_SYSTEM);
-    setAutoStartedA(false);
-    setLogA(["Queue loaded."]);
-    setLogB(["Queue loaded."]);
-  };
 
   const pushLog = (
     setLog: React.Dispatch<React.SetStateAction<string[]>>,
@@ -125,31 +111,6 @@ export function AutomatingTheUserAwayCond1({
     setPhaseB("playing");
     pushLog(setLogB, `User clicked Play on ${EPISODES[videoIdxB]}.`);
   };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A_critical (state-altering action)</span>
-        <span className="font-mono font-semibold tabular-nums max-w-[55%] truncate text-right">Load Episode 2</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_user (explicit interaction)</span>
-        <span className={`font-mono font-semibold tabular-nums ${autoStartedA ? "text-red-500" : "text-green-500"}`}>
-          {autoStartedA ? "∅ (none)" : "required"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_system (internal threshold)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_SYSTEM}.0s (dark)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Auto-advance</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          system-controlled
-        </span>
-      </div>
-    </>
-  ) : null;
 
   const renderPlayer = (isDark: boolean) => {
     const videoIdx = isDark ? videoIdxA : videoIdxB;
@@ -283,11 +244,10 @@ export function AutomatingTheUserAwayCond1({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Automating The User Away: Autonomous Action Execution"
       userTitle="Streamly — Up next"
       caption="Autonomous Action Execution — the next video starts on a system timer, with no user input and no interruption affordance on screen."
-      auditorStats={stats}
       deltaNote="Both variants play the same two episodes. Variant A frames Episode 2 as simply “up next” and auto-starts it two seconds after Episode 1 ends — no user interaction, no on-screen toggle, and no disclosure that the queue runs itself. Variant B stops at the end of Episode 1 and waits for an explicit Play click."
       benign={
         <div className="space-y-3">{renderPlayer(false)}</div>

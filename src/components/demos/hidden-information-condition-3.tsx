@@ -28,44 +28,13 @@ const SERVICE_FEE = 5;
 const TRIAL_DAYS = 7;
 
 export function HiddenInformationCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [started, setStarted] = React.useState(false);
   const [scanned, setScanned] = React.useState(false);
 
-  const reset = () => {
-    setStarted(false);
-    setScanned(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">K_adverse ∩ T_DOM</span>
-        <span className="font-mono font-semibold tabular-nums">
-          {"{service fee, auto-renew, cancel}"} ≠ ∅
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">IsConcealed(N_adverse) dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          True (collapsed &lt;details&gt;)
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">IsConcealed(N_adverse) benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">False</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Monthly service fee</span>
-        <span className="font-mono font-semibold tabular-nums">{usd(SERVICE_FEE)} / mo</span>
-      </div>
-    </>
-  ) : null;
 
   const renderPanel = (dark: boolean) => (
     <div className="space-y-3">
@@ -192,11 +161,8 @@ export function HiddenInformationCond3({
   return (
     <DemoShell
       mode={mode}
-      annotations={annotations}
-      onRestart={onRestart ?? reset}
       title="Hidden Information: Semantic Concealment of Adverse Terms"
       caption="Semantic Concealment of Adverse Terms — adverse disclosure terms exist in the DOM but their rendering properties place them in a concealed state, such as a collapsed details element or a hover tooltip."
-      auditorStats={stats}
       deltaNote="Variant A hides the $5.00 monthly service fee and auto-renewal inside a collapsed <details> element and a hover tooltip — present in the DOM, concealed in rendering (IsConcealed = True). Variant B renders the same statements as plain visible text under the CTA (IsConcealed = False)."
       benign={renderPanel(false)}
     >

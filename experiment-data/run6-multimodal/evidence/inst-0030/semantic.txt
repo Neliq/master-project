@@ -1,0 +1,3 @@
+STATE s1
+Special offer for you 20% off your next order. Try to close this — the X runs away from your cursor, and if you catch it, something else happens…
+

@@ -1,0 +1,9 @@
+STATE s0
+Pro License — one-time payment Full access forever. No subscription, no renewal. Billed once as $79.00 . Visa •••• 4242 $79.00 Buy now — $79.00
+
+STATE s1
+Pro License — one-time payment Full access forever. No subscription, no renewal. Billed once as $79.00 . Visa •••• 4242 $79.00 Review your purchase Pro License (one-time) $79.00 Total charged now $79.00 You are about to be charged. This purchase is final. Confirm purchase Back
+
+STATE s2
+Pro License — one-time payment Full access forever. No subscription, no renewal. Billed once as $79.00 . Visa •••• 4242 $79.00 Payment processed — $79.00 Your purchase was reviewed before the charge. The total and recurring terms were clear before you committed.
+

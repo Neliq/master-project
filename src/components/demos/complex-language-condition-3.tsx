@@ -47,46 +47,18 @@ const FKGL_DARK = fkgl(DISCLOSURE_DARK);
 const FKGL_BENIGN = fkgl(DISCLOSURE_BENIGN);
 
 export function ComplexLanguageCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [agreed, setAgreed] = React.useState(false);
   const [created, setCreated] = React.useState(false);
 
-  const reset = () => {
-    setAgreed(false);
-    setCreated(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">FKGL(N_text) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{FKGL_DARK.toFixed(1)} &gt; &tau;_edu ({TAU_EDUCATION_LIMIT})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">FKGL (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{FKGL_BENIGN.toFixed(1)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Public reading level (τ)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_EDUCATION_LIMIT} (grade 9)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Consent given?</span>
-        <span className="font-mono font-semibold tabular-nums">{agreed ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Complex Language: Exceedance of Baseline Readability Indices"
       caption="Exceedance of Baseline Readability Indices — the disclosure demands a graduate-level education (FKGL ≈ 21) while the general public reads at an 8th–10th grade level."
-      auditorStats={stats}
       deltaNote={`In Variant A the disclosure's Flesch-Kincaid Grade Level is ${FKGL_DARK.toFixed(1)} — far above τ_education_limit = ${TAU_EDUCATION_LIMIT} — while Variant B states the identical payload at a ${FKGL_BENIGN.toFixed(1)}-grade level.`}
       benign={
         <div className="space-y-3">

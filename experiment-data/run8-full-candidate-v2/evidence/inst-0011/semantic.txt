@@ -1,0 +1,9 @@
+STATE s0
+Aurora Wireless Earbuds Pro $89.00 $129.00 — the discount is applied until the deadline below. Discount ends in 04:29 This discount ends when the countdown reaches zero. The price reverts to $129.00 afterwards. Pay $89.00
+
+STATE s1
+Aurora Wireless Earbuds Pro $89.00 $129.00 — the discount is applied until the deadline below. Discount ends in 04:29 This discount ends when the countdown reaches zero. The price reverts to $129.00 afterwards. Paid ✓ Neutral framing
+
+STATE s2
+Aurora Wireless Earbuds Pro $89.00 $129.00 — the discount is applied until the deadline below. Discount ends in 04:28 This discount ends when the countdown reaches zero. The price reverts to $129.00 afterwards. Paid ✓ Neutral framing
+

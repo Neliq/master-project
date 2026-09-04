@@ -112,11 +112,9 @@ function PlayerFrame({
 }
 
 export function AutoPlayCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Dark panel: autonomous execution — starts without intent, chains.
   const [startedA, setStartedA] = React.useState(false);
@@ -128,15 +126,6 @@ export function AutoPlayCond1({
   const [progressB, setProgressB] = React.useState(0);
   const [episodeB, setEpisodeB] = React.useState(0);
 
-  const reset = () => {
-    setStartedA(false);
-    setPlayingA(false);
-    setProgressA(0);
-    setEpisodeA(0);
-    setPlayingB(false);
-    setProgressB(0);
-    setEpisodeB(0);
-  };
 
   // Autonomous media execution: the dark panel autoplays on view (mount),
   // and re-arms itself whenever the demo is restarted.
@@ -185,33 +174,11 @@ export function AutoPlayCond1({
     setPlayingB(true);
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_intent (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&empty; — no user action</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_intent (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{"{ press play }"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_play(M_media)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True — forced by view</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intersection(M, Viewport)</span>
-        <span className="font-mono font-semibold tabular-nums">&gt; &tau;_visible (in view)</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Auto-Play: Autonomous Media Execution"
       userTitle="Streamly — Watch next"
       caption="Autonomous Media Execution — playback is forced to active purely because the media is in view, so consumption starts as a side effect of navigation, not of intent."
-      auditorStats={stats}
       deltaNote="In Variant A the video starts playing by itself (E_intent = ∅) and chains into the next episode automatically. In Variant B the same player sits idle until you press play, and stops at the end of the episode — momentum never builds without your intent."
       benign={
         <div className="space-y-3">

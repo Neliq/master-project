@@ -40,49 +40,20 @@ const LEX_DENSITY_PLAIN = 0.34;
 const TAU_OBFUSCATION = 0.6;
 
 export function PrivacyMazeCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [outcomeA, setOutcomeA] = React.useState<"none" | "accepted" | "rejected">("none");
   const [translatedA, setTranslatedA] = React.useState(false);
   const [outcomeB, setOutcomeB] = React.useState<"none" | "accepted" | "rejected">("none");
 
-  const reset = () => {
-    setOutcomeA("none");
-    setTranslatedA(false);
-    setOutcomeB("none");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">FKGL(T_privacy) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{FKGL_DARK} (&gt; 14)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">FKGL — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{FKGL_PLAIN}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Lexical density |Unique|/|T|</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{LEX_DENSITY_DARK.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&tau;_obfuscation</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_OBFUSCATION.toFixed(2)}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Privacy Maze: Semantic Obfuscation of Privacy-Related Terminology"
       userTitle="Orbit — Data preferences"
       caption="Semantic Obfuscation of Privacy-Related Terminology — the consent request is written in vocabulary so dense (FKGL &gt; 14) that informed consent becomes impossible."
-      auditorStats={stats}
       deltaNote={`Variant A describes the same data collection in legalistic prose: FKGL ${FKGL_DARK} (> 14) and lexical density ${LEX_DENSITY_DARK.toFixed(2)} (> τ = ${TAU_OBFUSCATION.toFixed(2)}), so the semantic heuristic fires. Variant B carries the identical informational payload in plain language: FKGL ${FKGL_PLAIN}, density ${LEX_DENSITY_PLAIN.toFixed(2)}.`}
       benign={
         <div className="space-y-3">

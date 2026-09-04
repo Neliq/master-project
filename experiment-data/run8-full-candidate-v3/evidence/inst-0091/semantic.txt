@@ -1,0 +1,9 @@
+STATE s0
+Premium Plan $19.99/month — unlimited downloads and 4K streaming. Cancellation step Account overview and billing details. Cancel plan
+
+STATE s1
+Premium Plan $19.99/month — unlimited downloads and 4K streaming. Cancellation step Don’t leave us… Cancel Premium? Your access ends at the end of the current billing period. Keep my plan Yes, cancel
+
+STATE s2
+Premium Plan $19.99/month — unlimited downloads and 4K streaming. Cancellation step Your request has been received Your plan remains active. You can review your membership settings at any time. You can return to Membership settings whenever you want to change this decision.
+

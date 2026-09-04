@@ -55,48 +55,19 @@ function CryingMascot({ extraTear = false }: { extraTear?: boolean }) {
 }
 
 export function CutenessCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<null | "keep" | "leave">(null);
   const [benignChoice, setBenignChoice] = React.useState<null | "keep" | "leave">(null);
   const [hoverLeave, setHoverLeave] = React.useState(false);
 
-  const reset = () => {
-    setDarkChoice(null);
-    setBenignChoice(null);
-    setHoverLeave(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Affect(N_text) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{AFFECT_DARK.toFixed(2)} &gt; {TAU_GUILT}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d_spatial(N_text, i) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{D_SPATIAL}px &lt; {DELTA_PROXIMITY}px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Affect(N_text) (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{AFFECT_BENIGN.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Affective image present (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">none</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Cuteness: Semantic Pairing of Guilt"
       caption="Semantic Pairing of Guilt — guilt-inducing text is glued to a crying mascot, so the copy and the image act as a single compound barrier to canceling."
-      auditorStats={stats}
       deltaNote="In Variant A the crying mascot and the guilt copy ('You're breaking our heart…') form one contextual unit: Affect(N_text) = 0.94 > tau_guilt = 0.7 and the text sits only 6px from the image (d_spatial = 6px < delta_proximity = 24px). Hover 'Unsubscribe anyway' — the mascot cries harder. In Variant B the same decision is presented with neutral copy (Affect = 0.08) and no affective image, so no pairing exists."
       benign={
         <div className="space-y-3">

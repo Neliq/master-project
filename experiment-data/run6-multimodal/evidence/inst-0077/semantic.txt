@@ -1,0 +1,6 @@
+STATE s1
+Checkout One item in your cart. Wireless Earbuds Pro $89.00 Standard shipping $0.00 Total $89.00 Proceed to payment
+
+STATE s2
+Checkout One item in your cart. Wireless Earbuds Pro $89.00 Standard shipping $0.00 Total $89.00 Proceed to payment Optional protection plan Wait! Don’t leave without this! Add SpeedShip 1-Click Express ( $2.99/mo ) and your order ships first, always. This optional plan can be added before you complete payment. Yes, add it No thanks Choose whether to add the plan before continuing to payment.
+

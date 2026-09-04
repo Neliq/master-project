@@ -1,0 +1,6 @@
+STATE s1
+Cookie consent We use cookies to remember your preferences and to show you relevant ads. We never sell your personal data, and you can change your choices at any time in your settings. This helps keep the site free to use. Accept All Reject All Clear, plain-language explanation you can read in one pass.
+
+STATE s2
+Cookie consent We use cookies to remember your preferences and to show you relevant ads. We never sell your personal data, and you can change your choices at any time in your settings. This helps keep the site free to use. Accept All Reject All Clear, plain-language explanation you can read in one pass. Consent was informed You could read what you were agreeing to in one pass, so the wording did not get in the way of an informed decision.
+

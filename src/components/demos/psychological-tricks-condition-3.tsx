@@ -36,50 +36,20 @@ function PriceRow({ label, value, tone }: { label: string; value: string; tone?:
 }
 
 export function PsychologicalTricksCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [wtpBenign, setWtpBenign] = React.useState(PRICE);
   const [wtpDark, setWtpDark] = React.useState(PRICE);
   const [boughtDark, setBoughtDark] = React.useState(false);
   const [boughtBenign, setBoughtBenign] = React.useState(false);
 
-  const reset = () => {
-    setWtpBenign(PRICE);
-    setWtpDark(PRICE);
-    setBoughtDark(false);
-    setBoughtBenign(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_anchor (fabricated MSRP)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">$299</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_actual</span>
-        <span className="font-mono font-semibold tabular-nums">$149</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_anchor / P_actual</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">2.01</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Your WTP (live)</span>
-        <span className="font-mono font-semibold tabular-nums">${wtpDark}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Psychological Tricks: Reference Point Obfuscation"
       caption="Reference Point Obfuscation — a fabricated, high-salience anchor is processed before the real price, contaminating the user's Willingness To Pay and making the baseline cost look like a bargain."
-      auditorStats={stats}
       deltaNote="In Variant A the $299 struck-through MSRP anchor (P_anchor ≫ P_actual = $149) reframes the price as a 50% discount and inflates your WTP reference point. Variant B presents the same lamp at $149 with no anchor, so your valuation forms against the actual value."
       benign={
         <div className="space-y-3">

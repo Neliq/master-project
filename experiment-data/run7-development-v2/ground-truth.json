@@ -1,0 +1,434 @@
+{
+  "inst-0001": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "activity-messages",
+    "condition_index": 3
+  },
+  "inst-0004": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "intermediate-currency",
+    "condition_index": 1
+  },
+  "inst-0016": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "false-hierarchy",
+    "condition_index": 3
+  },
+  "inst-0019": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "automating-the-user-away",
+    "condition_index": 2
+  },
+  "inst-0027": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "intermediate-currency",
+    "condition_index": 1
+  },
+  "inst-0031": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "conflicting-information",
+    "condition_index": 1
+  },
+  "inst-0034": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pressured-selling",
+    "condition_index": 1
+  },
+  "inst-0040": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "trick-questions",
+    "condition_index": 2
+  },
+  "inst-0042": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "intermediate-currency",
+    "condition_index": 3
+  },
+  "inst-0044": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "plain-evil",
+    "condition_index": 3
+  },
+  "inst-0049": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "false-hierarchy",
+    "condition_index": 2
+  },
+  "inst-0050": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "information-without-context",
+    "condition_index": 1
+  },
+  "inst-0057": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "hidden-information",
+    "condition_index": 1
+  },
+  "inst-0058": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "hidden-information",
+    "condition_index": 3
+  },
+  "inst-0061": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "conflicting-information",
+    "condition_index": 3
+  },
+  "inst-0066": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "forced-continuity",
+    "condition_index": 2
+  },
+  "inst-0077": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pressured-selling",
+    "condition_index": 1
+  },
+  "inst-0079": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "plain-evil",
+    "condition_index": 1
+  },
+  "inst-0087": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "hidden-information",
+    "condition_index": 1
+  },
+  "inst-0088": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "conflicting-information",
+    "condition_index": 2
+  },
+  "inst-0092": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "automating-the-user-away",
+    "condition_index": 1
+  },
+  "inst-0099": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "granting-and-interaction",
+    "condition_index": 3
+  },
+  "inst-0103": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pressured-selling",
+    "condition_index": 3
+  },
+  "inst-0112": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "plain-evil",
+    "condition_index": 2
+  },
+  "inst-0113": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "hidden-information",
+    "condition_index": 2
+  },
+  "inst-0115": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "information-without-context",
+    "condition_index": 3
+  },
+  "inst-0121": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "granting-and-interaction",
+    "condition_index": 1
+  },
+  "inst-0123": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "false-hierarchy",
+    "condition_index": 3
+  },
+  "inst-0130": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "forced-continuity",
+    "condition_index": 1
+  },
+  "inst-0137": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "automating-the-user-away",
+    "condition_index": 2
+  },
+  "inst-0141": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "forced-continuity",
+    "condition_index": 2
+  },
+  "inst-0147": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "trick-questions",
+    "condition_index": 1
+  },
+  "inst-0158": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "activity-messages",
+    "condition_index": 2
+  },
+  "inst-0159": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "conflicting-information",
+    "condition_index": 2
+  },
+  "inst-0160": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "information-without-context",
+    "condition_index": 2
+  },
+  "inst-0164": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "hidden-information",
+    "condition_index": 3
+  },
+  "inst-0178": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "information-without-context",
+    "condition_index": 2
+  },
+  "inst-0190": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "information-without-context",
+    "condition_index": 1
+  },
+  "inst-0195": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pressured-selling",
+    "condition_index": 2
+  },
+  "inst-0198": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "granting-and-interaction",
+    "condition_index": 2
+  },
+  "inst-0199": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "information-without-context",
+    "condition_index": 3
+  },
+  "inst-0200": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "intermediate-currency",
+    "condition_index": 2
+  },
+  "inst-0214": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "automating-the-user-away",
+    "condition_index": 3
+  },
+  "inst-0222": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "plain-evil",
+    "condition_index": 3
+  },
+  "inst-0223": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pressured-selling",
+    "condition_index": 2
+  },
+  "inst-0230": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "trick-questions",
+    "condition_index": 3
+  },
+  "inst-0238": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "granting-and-interaction",
+    "condition_index": 1
+  },
+  "inst-0240": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "trick-questions",
+    "condition_index": 2
+  },
+  "inst-0243": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "false-hierarchy",
+    "condition_index": 1
+  },
+  "inst-0248": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "plain-evil",
+    "condition_index": 1
+  },
+  "inst-0262": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "granting-and-interaction",
+    "condition_index": 2
+  },
+  "inst-0275": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "forced-continuity",
+    "condition_index": 3
+  },
+  "inst-0276": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "forced-continuity",
+    "condition_index": 1
+  },
+  "inst-0279": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "hidden-information",
+    "condition_index": 2
+  },
+  "inst-0284": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "activity-messages",
+    "condition_index": 1
+  },
+  "inst-0291": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "trick-questions",
+    "condition_index": 3
+  },
+  "inst-0294": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "intermediate-currency",
+    "condition_index": 2
+  },
+  "inst-0309": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "false-hierarchy",
+    "condition_index": 1
+  },
+  "inst-0316": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "intermediate-currency",
+    "condition_index": 3
+  },
+  "inst-0324": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "automating-the-user-away",
+    "condition_index": 3
+  },
+  "inst-0329": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "trick-questions",
+    "condition_index": 1
+  },
+  "inst-0332": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "activity-messages",
+    "condition_index": 1
+  },
+  "inst-0334": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "conflicting-information",
+    "condition_index": 1
+  },
+  "inst-0341": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "automating-the-user-away",
+    "condition_index": 1
+  },
+  "inst-0350": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "activity-messages",
+    "condition_index": 2
+  },
+  "inst-0353": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "conflicting-information",
+    "condition_index": 3
+  },
+  "inst-0354": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pressured-selling",
+    "condition_index": 3
+  },
+  "inst-0355": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "plain-evil",
+    "condition_index": 2
+  },
+  "inst-0359": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "activity-messages",
+    "condition_index": 3
+  },
+  "inst-0360": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "false-hierarchy",
+    "condition_index": 2
+  },
+  "inst-0364": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "forced-continuity",
+    "condition_index": 3
+  },
+  "inst-0370": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "granting-and-interaction",
+    "condition_index": 3
+  }
+}

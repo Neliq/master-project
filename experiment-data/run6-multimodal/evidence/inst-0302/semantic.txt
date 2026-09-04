@@ -1,0 +1,9 @@
+STATE s1
+Account danger zone CloudPhoto · maya@example.com · Free plan Delete my account
+
+STATE s2
+Confirm account deletion Your account will be permanently deleted in 30 days . Log in to cancel — if you sign back in during this period, we will assume you changed your mind and restore your account. Account deletion details Log in now Wait 30 days
+
+STATE s3
+Request updated Welcome back, Maya! Your deletion request has been cancelled and your account restored. You logged in out of habit — and the confirmation copy said “Log in to cancel” one word after “30 days” , so the system read your muscle memory as a change of intent. The deletion flow connected the waiting period with the sign-in prompt, so returning to the service was treated as a request to keep the account instead of a routine visit.
+

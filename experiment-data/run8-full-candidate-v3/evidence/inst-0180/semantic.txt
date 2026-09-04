@@ -1,0 +1,6 @@
+STATE s0
+Finish setting up your account 14 settings Please review each preference carefully before continuing. Email me order updates SMS order notifications WhatsApp order updates Personalized product recommendations Allow marketing partners to contact me directly Weekly product newsletter Daily deals digest Participate in product improvement surveys Share anonymized usage statistics Auto-renew storage plan each month Sync frequency Every 5 minutes Every hour Manually Marketing email frequency Daily Weekly Never Data retention period 2 years 1 year 3 months Finish setup
+
+STATE s1
+Finish setting up your account 14 settings Please review each preference carefully before continuing. Email me order updates SMS order notifications WhatsApp order updates Personalized product recommendations Allow marketing partners to contact me directly Weekly product newsletter Daily deals digest Participate in product improvement surveys Share anonymized usage statistics Auto-renew storage plan each month Sync frequency Every 5 minutes Every hour Manually Marketing email frequency Daily Weekly Never Data retention period 2 years 1 year 3 months Finish setup Setup saved Your account preferences were saved.
+

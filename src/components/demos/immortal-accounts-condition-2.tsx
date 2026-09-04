@@ -40,44 +40,15 @@ const TAU_EXIT_VISIBILITY = 0.25;
 type Stage = "idle" | "confirm" | "deleted";
 
 export function ImmortalAccountsCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [stageA, setStageA] = React.useState<Stage>("idle");
   const [createdA, setCreatedA] = React.useState(false);
   const [stageB, setStageB] = React.useState<Stage>("idle");
   const [createdB, setCreatedB] = React.useState(false);
 
-  const reset = () => {
-    setStageA("idle");
-    setCreatedA(false);
-    setStageB("idle");
-    setCreatedB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_create) — “Sign up” CTA</span>
-        <span className="font-mono font-semibold tabular-nums">{AREA_CREATE} px² ({CREATE_W}×{CREATE_H})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_delete) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{AREA_DELETE_DARK} px² ({DELETE_W_DARK}×{DELETE_H_DARK})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK.toFixed(3)} &lt; &tau; ({TAU_EXIT_VISIBILITY}) → fired</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{RATIO_BENIGN.toFixed(2)} ≥ &tau;</span>
-      </div>
-    </>
-  ) : null;
 
   const confirmModal = (
     onCancel: () => void,
@@ -184,11 +155,10 @@ export function ImmortalAccountsCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Immortal Accounts: Visual Accessibility of Offboarding Vectors"
       userTitle="Harbor — Create account"
       caption="Visual Accessibility of Offboarding Vectors — the account-deletion affordance is rendered with visual prominence far below its onboarding counterpart, so the exit is present yet engineered to be missed."
-      auditorStats={stats}
       deltaNote="Both variants ship the same “Delete account” affordance at the same position with the same label. In Variant A it renders as an 8px low-contrast text link (A(N_delete) = 1056 px² — 9% of the 12320 px² “Sign up” CTA), pushing the ratio to 0.086, below the fairness threshold τ_exit_visibility = 0.25. In Variant B the affordance is a full-size button with equal area, so the ratio is 1.0."
       benign={
         <div className="space-y-3">

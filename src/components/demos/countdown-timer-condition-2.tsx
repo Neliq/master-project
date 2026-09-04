@@ -36,11 +36,9 @@ function fmt(s: number): string {
 }
 
 export function CountdownTimerCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [secondsA, setSecondsA] = React.useState(TIMER_A_S);
   const [secondsB, setSecondsB] = React.useState(TIMER_B_S);
@@ -61,36 +59,9 @@ export function CountdownTimerCond2({
   const confirmedA = secondsA === 0 || confirmedAOverride;
   const confirmedB = confirmedBOverride;
 
-  const reset = () => {
-    setSecondsA(TIMER_A_S);
-    setSecondsB(TIMER_B_S);
-    setConfirmedAOverride(false);
-    setConfirmedBOverride(false);
-  };
 
   const expiredA = secondsA === 0;
   const expiredB = secondsB === 0;
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&Delta;t_timer — Variant A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{TIMER_A_S}s &lt; &tau; = {TAU_DELIBERATION}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&Delta;t_timer — Variant B</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{TIMER_B_S}s &ge; &tau; = {TAU_DELIBERATION}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&tau;_deliberation (baseline)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_DELIBERATION}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P(Rational_Evaluation)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&rarr; 0 (A) / &asymp; 1 (B)</span>
-      </div>
-    </>
-  ) : null;
 
   const termsCard = (
     <div className="rounded-md border border-border bg-background p-2.5">
@@ -122,10 +93,9 @@ export function CountdownTimerCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Countdown Timer: Cognitive Compression"
       caption="Cognitive Compression — the decision window is deliberately shorter than the time a human needs to read the terms, driving the probability of rational evaluation toward zero."
-      auditorStats={stats}
       deltaNote={`The terms are identical in both panels. Variant A squeezes the decision into ${TIMER_A_S}s (Δt_timer = ${TIMER_A_S}s < τ_deliberation = ${TAU_DELIBERATION}s) and auto-confirms the order at zero. Variant B gives ${TIMER_B_S}s (≥ the deliberation threshold) and never auto-confirms — the rational-evaluation path stays open.`}
       benign={
         <div className="space-y-3">

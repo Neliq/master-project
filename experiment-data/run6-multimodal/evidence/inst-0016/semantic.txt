@@ -1,0 +1,3 @@
+STATE s1
+Personalisation & tracking A binary choice, carefully posed We track your activity to personalise content. Choose how to proceed: I accept tracking No, I don’t accept tracking
+

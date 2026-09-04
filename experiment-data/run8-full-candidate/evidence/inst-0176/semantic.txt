@@ -1,0 +1,6 @@
+STATE s0
+This is the moment everyone upgrades! Don’t be the one left behind — see what you’d miss. Featured plan offer Everyone is upgrading — join the crowd! (2,000,000+ users are on pro) This is the deal of the year — grab it now! (annual billing saves 40%) This is your last chance — don't lose it! (promo price valid today only) There is literally no reason to wait! (upgrade takes 30 seconds) Maybe later Upgrade now
+
+STATE s1
+This is the moment everyone upgrades! Don’t be the one left behind — see what you’d miss. Featured plan offer Everyone is upgrading — join the crowd! (2,000,000+ users are on pro) This is the deal of the year — grab it now! (annual billing saves 40%) This is your last chance — don't lose it! (promo price valid today only) There is literally no reason to wait! (upgrade takes 30 seconds) Maybe later Upgrade now Plan choice saved You stayed on the Free plan.
+

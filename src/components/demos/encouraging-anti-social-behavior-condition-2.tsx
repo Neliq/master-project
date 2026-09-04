@@ -23,11 +23,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function EncouragingAntiSocialBehaviorCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkProgress, setDarkProgress] = React.useState(0);
   const [benignProgress, setBenignProgress] = React.useState(0);
@@ -36,43 +34,17 @@ export function EncouragingAntiSocialBehaviorCond2({
 
   const ALEX_SCORE = 70;
 
-  const reset = () => {
-    setDarkProgress(0);
-    setBenignProgress(0);
-  };
 
   const answer = (dark: boolean) => {
     const setProgress = dark ? setDarkProgress : setBenignProgress;
     setProgress((p) => Math.min(100, p + 10));
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">LayoutType(C_container)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">Competitive (dark)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">LayoutType(C_container)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">Cooperative (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">SplitRatio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.5 — binary opposition</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">SplitRatio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">1.0 — single shared bar</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Encouraging Anti-Social Behavior: Visual Framing of Competitive Antagonism"
       userTitle="MathRush — study group"
       caption="Visual Framing of Competitive Antagonism — a binary 50/50 'You vs. Them' split frames interaction as a zero-sum fight, conditioning users to see peers as opponents to defeat."
-      auditorStats={stats}
       deltaNote="Both panels run the same quiz in the same shared practice session. Variant A splits the screen 50/50 into 'You vs. Alex' with your bar in confrontational red — even though the task is cooperative, the layout frames your study partner as a rival and rewards beating them. Variant B replaces the opposition with a single shared goal bar — you and Alex progress together, so success never requires defeating someone."
       benign={
         <div className="space-y-3">

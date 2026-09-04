@@ -26,46 +26,17 @@ const DRINKS = [
 ];
 
 export function PriceComparisonPreventionCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [compared, setCompared] = React.useState(false);
 
-  const reset = () => setCompared(false);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Q_standard</span>
-        <span className="font-mono font-semibold tabular-nums">{"{per l, per 100 ml, per kg}"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Q_rendered — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">∅</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Q_rendered — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{"{per l, per 100 ml}"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intersection</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">∅ → trigger</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Cheaper per liter</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">1 L (PLN 8.99/l)</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Price Comparison Prevention: Semantic Omission of Comparison-Relevant Qualifiers"
       caption="Semantic Omission of Comparison-Relevant Qualifiers — the standard unit-price vocabulary (“per liter”, “per 100g”) is stripped from the DOM, so Q_standard ∩ Q_rendered is empty and cross-product comparison is impossible."
-      auditorStats={stats}
       deltaNote="Both variants sell identical bottles at identical prices. Variant A omits every unit-price qualifier (Q_standard ∩ Q_rendered = ∅), hiding that the 1 L bottle is cheaper per liter; Variant B keeps the qualifiers, making the comparison trivial."
       benign={
         <div className="space-y-3">

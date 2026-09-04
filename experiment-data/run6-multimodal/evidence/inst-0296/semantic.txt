@@ -1,0 +1,6 @@
+STATE s1
+SnapGrid wants to access your contacts This is a data-access permission : it uploads your address book (128 contacts) to SnapGrid’s servers so we can match you with existing users. You can decline and still use the app. Allow access Not now
+
+STATE s2
+SnapGrid wants to access your contacts This is a data-access permission : it uploads your address book (128 contacts) to SnapGrid’s servers so we can match you with existing users. You can decline and still use the app. Allow access Not now Informed decision You consented knowing the prompt described the upload itself — the frame = Informational, Subject = FirstParty. The consent was informed.
+

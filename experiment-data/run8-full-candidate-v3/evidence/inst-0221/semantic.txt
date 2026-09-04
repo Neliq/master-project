@@ -1,0 +1,6 @@
+STATE s0
+Manage your cookie choices We use cookies to improve your experience. Accept everything, reject everything, or fine-tune — all from this first screen. Accept All Reject All Customise settings
+
+STATE s1
+Manage your cookie choices We use cookies to improve your experience. Accept everything, reject everything, or fine-tune — all from this first screen. Accept All Reject All Customise settings Consent granted (1 click) Accepting took one click, and Reject All was available beside it on the same screen.
+

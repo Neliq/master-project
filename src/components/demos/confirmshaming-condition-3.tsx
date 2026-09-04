@@ -19,46 +19,18 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function ConfirmshamingCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<null | "accept" | "decline">(null);
   const [benignChoice, setBenignChoice] = React.useState<null | "accept" | "decline">(null);
 
-  const reset = () => {
-    setDarkChoice(null);
-    setBenignChoice(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_sentiment(N_accept)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">+0.72 &gt; 0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_sentiment(N_decline)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">-0.81 &laquo; 0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Polarization |&Delta;|</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">1.53 &gt; 1.0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Exit-route valence</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">toxic (shame)</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Confirmshaming: Semantic Asymmetry"
       caption="Semantic Asymmetry — the affirmative node carries positive sentiment while the dismissal node is assigned a toxic semantic score, creating an artificial emotional barrier to rejection."
-      auditorStats={stats}
       deltaNote="In Variant A the exit route reads “No, I don't care about the environment” (S_sentiment ≈ −0.81) against a positive accept copy (≈ +0.72) — a severe polarization that shames you into donating. Variant B keeps the same prompt with a neutral “No, thanks”."
       benign={
         <div className="space-y-3">

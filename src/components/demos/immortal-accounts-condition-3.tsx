@@ -23,11 +23,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const KEYWORDS = ["delete account", "deactivate", "close account", "remove profile"];
 
 export function ImmortalAccountsCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [tabA, setTabA] = React.useState<"profile" | "privacy" | "data">("privacy");
   const [queryA, setQueryA] = React.useState("");
@@ -36,40 +34,11 @@ export function ImmortalAccountsCond3({
   const [queryB, setQueryB] = React.useState("");
   const [scannedB, setScannedB] = React.useState(false);
 
-  const reset = () => {
-    setTabA("privacy");
-    setQueryA("");
-    setScannedA(false);
-    setTabB("privacy");
-    setQueryB("");
-    setScannedB(false);
-  };
 
   // Variant A has no termination text anywhere; Variant B renders one "Delete account" node.
   const hitsBenign = queryB.trim().length > 0 && KEYWORDS.some((k) => k.includes(queryB.trim().toLowerCase())) ? 1 : 0;
   const queryNoResultsA = queryA.trim().length > 0;
   const queryNoResultsB = queryB.trim().length > 0;
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">K_del keywords</span>
-        <span className="font-mono font-semibold tabular-nums">{KEYWORDS.length}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Visible text nodes |T_DOM|</span>
-        <span className="font-mono font-semibold tabular-nums">14</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">K_del &cap; T_DOM (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&empty; (0 nodes)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">K_del &cap; T_DOM (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">&ne; &empty; (1 node)</span>
-      </div>
-    </>
-  ) : null;
 
   const tabs = (selectedTab: "profile" | "privacy" | "data", setSelectedTab: (tab: "profile" | "privacy" | "data") => void) => (
     <div className="flex gap-1 rounded-md border border-border bg-muted/40 p-1">
@@ -140,11 +109,10 @@ export function ImmortalAccountsCond3({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Immortal Accounts: Absolute Absence of Deletion Vectors"
       userTitle="Harbor — Privacy settings"
       caption="Absolute Absence of Deletion Vectors — the settings sub-pages contain no termination keywords at all (K_del ∩ T_DOM = ∅), so the interface offers no structural exit affordance."
-      auditorStats={stats}
       deltaNote={`In Variant A none of K_del = {${KEYWORDS.join(", ")}} appears anywhere in the visible settings DOM — even the search box returns "no results" — so K_del ∩ T_DOM = ∅ and the feature triggers. In Variant B the same settings page renders a plainly labelled "Delete account" node, making the intersection non-empty.`}
       benign={
         <div className="space-y-3">

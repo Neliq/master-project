@@ -1,0 +1,12 @@
+STATE s1
+The Daily Byte newsletter A weekly digest of tech news. One email, every Friday. Membership cancellation Subscribe
+
+STATE s2
+The Daily Byte newsletter A weekly digest of tech news. One email, every Friday. Membership cancellation Welcome aboard! You are subscribed. Plain confirmation, no mascot — the affective assets are nowhere in this state. Manage subscription
+
+STATE s3
+The Daily Byte newsletter A weekly digest of tech news. One email, every Friday. Membership cancellation Don’t go… we’ll really miss you. Keep my subscription Unsubscribe anyway
+
+STATE s4
+The Daily Byte newsletter A weekly digest of tech news. One email, every Friday. Membership cancellation Request received You kept the subscription. Your weekly digest will continue as usual. You can return to newsletter settings at any time to update this choice.
+

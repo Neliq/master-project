@@ -26,11 +26,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const ADS_REQUIRED = 10;
 
 export function WatchAdsToUnlockFeaturesCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [benignAdsWatched, setBenignAdsWatched] = React.useState(0);
   const [darkAdsWatched, setDarkAdsWatched] = React.useState(0);
@@ -38,42 +36,12 @@ export function WatchAdsToUnlockFeaturesCond2({
   const [benignClaimed, setBenignClaimed] = React.useState(false);
   const [darkClaimed, setDarkClaimed] = React.useState(false);
 
-  const reset = () => {
-    setBenignAdsWatched(0);
-    setDarkAdsWatched(0);
-    setDarkClaimAttempted(false);
-    setBenignClaimed(false);
-    setDarkClaimed(false);
-  };
 
   // Dark variant: visual progress runs at 2× the actual progress.
   const visualCountDark = Math.min(ADS_REQUIRED, darkAdsWatched * 2);
   const pVisualDark = visualCountDark / ADS_REQUIRED;
   const pActualDark = darkAdsWatched / ADS_REQUIRED;
   const mismatch = pVisualDark - pActualDark;
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_actual (ads watched / required)</span>
-        <span className="font-mono font-semibold tabular-nums">{darkAdsWatched}/{ADS_REQUIRED}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_visual (rendered bar)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{visualCountDark}/{ADS_REQUIRED}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_visual − P_actual</span>
-        <span className={`font-mono font-semibold tabular-nums ${mismatch > 0.1 ? "text-red-500" : "text-green-500"}`}>
-          {mismatch.toFixed(2)} {mismatch > 0.1 ? "&gt; τ" : "≤ τ"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_mislead (tolerance)</span>
-        <span className="font-mono font-semibold tabular-nums">0.10</span>
-      </div>
-    </>
-  ) : null;
 
   const renderProgress = (accent: "rose" | "emerald") => {
     const isDark = accent === "rose";
@@ -122,11 +90,10 @@ export function WatchAdsToUnlockFeaturesCond2({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Watch Ads To Unlock Features Or Get Rewards: Visual Mismatch Between Reward Progress Display and Actual Progress"
       userTitle="Explorer Pro — HD export"
       caption="Visual Mismatch Between Reward Progress Display and Actual Progress — the progress bar claims near-completion while the real ad count lags far behind."
-      auditorStats={stats}
       deltaNote="Both variants require the same 10 completed ads for the same HD-export reward and count the same button clicks. Variant A renders the bar at double speed (each ad fills 20%, counter reads 2×) so it announces 'reward ready' at 5 real ads — then rejects the claim (P_visual − P_actual = 0.50 > τ_mislead). Variant B's bar advances exactly 10% per ad and the claim succeeds only at 10."
       benign={
         <div className="space-y-3">

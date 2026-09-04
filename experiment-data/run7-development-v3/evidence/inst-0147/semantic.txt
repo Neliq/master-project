@@ -1,0 +1,3 @@
+STATE s0
+Newsletter subscription You are currently subscribed. Manage your preference below. Subscribed Keep me subscribed to the weekly newsletter Check the box to confirm your subscription preference. Save preferences
+

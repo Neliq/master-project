@@ -43,49 +43,18 @@ function feesAtStep(step: number, dark: boolean) {
 }
 
 export function DripPricingCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [step, setStep] = React.useState(0);
   const [confirmed, setConfirmed] = React.useState(false);
 
-  const reset = () => {
-    setStep(0);
-    setConfirmed(false);
-  };
 
   const next = () => {
     if (step >= STEPS.length - 1) setConfirmed(true);
     else setStep((s) => s + 1);
   };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P(s₀) advertised fare</span>
-        <span className="font-mono font-semibold tabular-nums">{usd(BASE_PRICE)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P at current state (dark)</span>
-        <span className="font-mono font-semibold tabular-nums">{usd(priceAtStep(step, true))}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P(s_n) final total</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{usd(TOTAL_PRICE)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_added (optional items)</span>
-        <span className="font-mono font-semibold tabular-nums">$0.00</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_dripped = P(s_n) − P(s₀)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{usd(DRIPPED)} &gt; 0</span>
-      </div>
-    </>
-  ) : null;
 
   const renderFlow = (dark: boolean) => {
     const price = priceAtStep(step, dark);
@@ -236,11 +205,8 @@ export function DripPricingCond1({
   return (
     <DemoShell
       mode={mode}
-      annotations={annotations}
-      onRestart={onRestart ?? reset}
       title="Drip Pricing, Hidden Costs, or Partitioned Pricing: Sequential Price Inflation"
       caption="Sequential Price Inflation — the checkout flow is tracked as a sequence of states and the feature triggers when the final price P(s_n) exceeds the advertised P(s_0) by more than the explicitly added items."
-      auditorStats={stats}
       deltaNote={`Variant A drips three mandatory fees in across the checkout states, so the final total ${usd(TOTAL_PRICE)} exceeds the advertised fare by ${usd(DRIPPED)} (P_dripped > 0). Variant B shows the same all-inclusive total ${usd(TOTAL_PRICE)} from s₀ onward — the price never moves.`}
       benign={renderFlow(false)}
     >

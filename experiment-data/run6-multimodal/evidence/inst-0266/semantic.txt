@@ -1,0 +1,12 @@
+STATE s1
+LuckyPins 0 coins Claim your daily bonus! Streak: 12 days — level up 3 XP away. Spin again for free coins — win big on the bonus wheel. Daily bonus resets soon. Don't lose your streak! Spin again — claim reward 0 spins • rewards are added to your balance after each play
+
+STATE s2
+LuckyPins 50 coins Claim your daily bonus! Streak: 12 days — level up 3 XP away. Spin again for free coins — win big on the bonus wheel. Daily bonus resets soon. Don't lose your streak! ★ JACKPOT! +50 coins ★ Spin again — claim reward 1 spins • rewards are added to your balance after each play Bonus awarded A larger bonus was added to your balance. Your next spin is ready whenever you want to play.
+
+STATE s3
+LuckyPins 55 coins Claim your daily bonus! Streak: 12 days — level up 3 XP away. Spin again for free coins — win big on the bonus wheel. Daily bonus resets soon. Don't lose your streak! +5 coins Spin again — claim reward 2 spins • rewards are added to your balance after each play
+
+STATE s4
+LuckyPins 67 coins Claim your daily bonus! Streak: 12 days — level up 3 XP away. Spin again for free coins — win big on the bonus wheel. Daily bonus resets soon. Don't lose your streak! +12 coins Spin again — claim reward 3 spins • rewards are added to your balance after each play
+

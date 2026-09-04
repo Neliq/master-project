@@ -1,0 +1,6 @@
+STATE s1
+Referral rewards Invite friends to climb the ranks. Tap a tier to inspect it. Tier 1 · 1 invite Unlock an exclusive sticker set. Tier 2 · 3 invites Earn premium status and a monthly planning pack. Tier 3 · 10 invites Join the Focusly Circle with priority support and creator perks. Invite friends to unlock the next reward tier.
+
+STATE s2
+Referral rewards Invite friends to climb the ranks. Tap a tier to inspect it. Tier 1 · 1 invite Unlock an exclusive sticker set. Tier 2 · 3 invites Earn premium status and a monthly planning pack. Tier 3 · 10 invites Join the Focusly Circle with priority support and creator perks. Invite friends to unlock the next reward tier.
+

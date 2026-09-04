@@ -1,0 +1,9 @@
+STATE s0
+Create your account Step 1 of 3 — account details. Email address Password Continue
+
+STATE s1
+Choose your plan Step 2 of 3 — nearly there. Pro plan Unlimited projects · priority support $29 /month auto-renews monthly until you cancel Next Back
+
+STATE s2
+Subscription active Pro plan · renews monthly $29/month Charged $29.00 · marketing emails enabled · manage anytime in Settings.
+

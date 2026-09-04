@@ -42,21 +42,14 @@ const NEGATION_COUNT = countNegations(CLAUSE_TEXT);
 const PLAIN_NEGATION_COUNT = countNegations(PLAIN_TEXT);
 
 export function TrickQuestionsCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [checked, setChecked] = React.useState(false);
   const [showReveal, setShowReveal] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
 
-  const reset = () => {
-    setChecked(false);
-    setShowReveal(false);
-    setSubmitted(false);
-  };
 
   const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
@@ -65,32 +58,10 @@ export function TrickQuestionsCond3({
 
   const handleSubmit = () => setSubmitted(true);
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Negation count N_neg (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{NEGATION_COUNT} (&ge; 2)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Negation count (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{PLAIN_NEGATION_COUNT}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Clause length</span>
-        <span className="font-mono font-semibold tabular-nums">{CLAUSE_TEXT.split(/\s+/).length} words</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Checkbox checked?</span>
-        <span className="font-mono font-semibold tabular-nums">{checked ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Trick Questions: Syntactic Obfuscation via Multiple Negations"
       caption="Syntactic Obfuscation via Multiple Negations — a checkbox whose label is a maze of contradictory clauses, so the user cannot tell what checking means."
-      auditorStats={stats}
       deltaNote={`In Variant A the label stacks ${NEGATION_COUNT} negation modifiers onto the primary verbs (N_neg >= 2, so the heuristic fires). Variant B says the same thing with zero negations in ${PLAIN_TEXT.split(/\s+/).length} words.`}
       benign={
         <div className="space-y-3">

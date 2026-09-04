@@ -1,0 +1,650 @@
+{
+  "inst-0001": {
+    "slug": "activity-messages",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "activity-messages-cond3",
+    "file": "corpus/inst-0001.html",
+    "size_bytes": 6582
+  },
+  "inst-0002": {
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "endorsement-and-testimonials-cond3",
+    "file": "corpus/inst-0002.html",
+    "size_bytes": 6045
+  },
+  "inst-0008": {
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "endorsement-and-testimonials-cond1",
+    "file": "corpus/inst-0008.html",
+    "size_bytes": 5086
+  },
+  "inst-0015": {
+    "slug": "low-stock",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "low-stock-cond3",
+    "file": "corpus/inst-0015.html",
+    "size_bytes": 10610
+  },
+  "inst-0019": {
+    "slug": "automating-the-user-away",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "automating-the-user-away-cond2",
+    "file": "corpus/inst-0019.html",
+    "size_bytes": 4364
+  },
+  "inst-0022": {
+    "slug": "feedforward-ambiguity",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "feedforward-ambiguity-cond3",
+    "file": "corpus/inst-0022.html",
+    "size_bytes": 2533
+  },
+  "inst-0023": {
+    "slug": "persuasive-language",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "persuasive-language-cond3",
+    "file": "corpus/inst-0023.html",
+    "size_bytes": 4099
+  },
+  "inst-0026": {
+    "slug": "forced-registration",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "forced-registration-cond2",
+    "file": "corpus/inst-0026.html",
+    "size_bytes": 2991
+  },
+  "inst-0029": {
+    "slug": "low-stock",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "low-stock-cond2",
+    "file": "corpus/inst-0029.html",
+    "size_bytes": 3955
+  },
+  "inst-0031": {
+    "slug": "conflicting-information",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "conflicting-information-cond1",
+    "file": "corpus/inst-0031.html",
+    "size_bytes": 1252
+  },
+  "inst-0056": {
+    "slug": "forced-registration",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "forced-registration-cond3",
+    "file": "corpus/inst-0056.html",
+    "size_bytes": 3402
+  },
+  "inst-0061": {
+    "slug": "conflicting-information",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "conflicting-information-cond3",
+    "file": "corpus/inst-0061.html",
+    "size_bytes": 2518
+  },
+  "inst-0067": {
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "endorsement-and-testimonials-cond2",
+    "file": "corpus/inst-0067.html",
+    "size_bytes": 8314
+  },
+  "inst-0069": {
+    "slug": "immortal-accounts",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "immortal-accounts-cond2",
+    "file": "corpus/inst-0069.html",
+    "size_bytes": 4956
+  },
+  "inst-0073": {
+    "slug": "feedforward-ambiguity",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "feedforward-ambiguity-cond1",
+    "file": "corpus/inst-0073.html",
+    "size_bytes": 2338
+  },
+  "inst-0082": {
+    "slug": "psychological-tricks",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "psychological-tricks-cond3",
+    "file": "corpus/inst-0082.html",
+    "size_bytes": 3797
+  },
+  "inst-0088": {
+    "slug": "conflicting-information",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "conflicting-information-cond2",
+    "file": "corpus/inst-0088.html",
+    "size_bytes": 1381
+  },
+  "inst-0092": {
+    "slug": "automating-the-user-away",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "automating-the-user-away-cond1",
+    "file": "corpus/inst-0092.html",
+    "size_bytes": 2474
+  },
+  "inst-0099": {
+    "slug": "granting-and-interaction",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "granting-and-interaction-cond3",
+    "file": "corpus/inst-0099.html",
+    "size_bytes": 4893
+  },
+  "inst-0106": {
+    "slug": "low-stock",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "low-stock-cond3",
+    "file": "corpus/inst-0106.html",
+    "size_bytes": 7163
+  },
+  "inst-0111": {
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "endorsement-and-testimonials-cond2",
+    "file": "corpus/inst-0111.html",
+    "size_bytes": 16644
+  },
+  "inst-0116": {
+    "slug": "feedforward-ambiguity",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "feedforward-ambiguity-cond1",
+    "file": "corpus/inst-0116.html",
+    "size_bytes": 2626
+  },
+  "inst-0121": {
+    "slug": "granting-and-interaction",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "granting-and-interaction-cond1",
+    "file": "corpus/inst-0121.html",
+    "size_bytes": 4246
+  },
+  "inst-0122": {
+    "slug": "forced-registration",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "forced-registration-cond2",
+    "file": "corpus/inst-0122.html",
+    "size_bytes": 2935
+  },
+  "inst-0136": {
+    "slug": "immortal-accounts",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "immortal-accounts-cond3",
+    "file": "corpus/inst-0136.html",
+    "size_bytes": 4741
+  },
+  "inst-0137": {
+    "slug": "automating-the-user-away",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "automating-the-user-away-cond2",
+    "file": "corpus/inst-0137.html",
+    "size_bytes": 4372
+  },
+  "inst-0139": {
+    "slug": "immortal-accounts",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "immortal-accounts-cond3",
+    "file": "corpus/inst-0139.html",
+    "size_bytes": 4673
+  },
+  "inst-0143": {
+    "slug": "low-stock",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "low-stock-cond1",
+    "file": "corpus/inst-0143.html",
+    "size_bytes": 3023
+  },
+  "inst-0150": {
+    "slug": "pull-to-refresh",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "pull-to-refresh-cond2",
+    "file": "corpus/inst-0150.html",
+    "size_bytes": 2606
+  },
+  "inst-0154": {
+    "slug": "low-stock",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "low-stock-cond1",
+    "file": "corpus/inst-0154.html",
+    "size_bytes": 2958
+  },
+  "inst-0155": {
+    "slug": "persuasive-language",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "persuasive-language-cond1",
+    "file": "corpus/inst-0155.html",
+    "size_bytes": 1006
+  },
+  "inst-0158": {
+    "slug": "activity-messages",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "activity-messages-cond2",
+    "file": "corpus/inst-0158.html",
+    "size_bytes": 5104
+  },
+  "inst-0159": {
+    "slug": "conflicting-information",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "conflicting-information-cond2",
+    "file": "corpus/inst-0159.html",
+    "size_bytes": 2983
+  },
+  "inst-0161": {
+    "slug": "feedforward-ambiguity",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "feedforward-ambiguity-cond2",
+    "file": "corpus/inst-0161.html",
+    "size_bytes": 1890
+  },
+  "inst-0171": {
+    "slug": "psychological-tricks",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "psychological-tricks-cond1",
+    "file": "corpus/inst-0171.html",
+    "size_bytes": 3103
+  },
+  "inst-0176": {
+    "slug": "persuasive-language",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "persuasive-language-cond3",
+    "file": "corpus/inst-0176.html",
+    "size_bytes": 4268
+  },
+  "inst-0180": {
+    "slug": "psychological-tricks",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "psychological-tricks-cond2",
+    "file": "corpus/inst-0180.html",
+    "size_bytes": 8984
+  },
+  "inst-0191": {
+    "slug": "pull-to-refresh",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "pull-to-refresh-cond3",
+    "file": "corpus/inst-0191.html",
+    "size_bytes": 1628
+  },
+  "inst-0192": {
+    "slug": "forced-registration",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "forced-registration-cond1",
+    "file": "corpus/inst-0192.html",
+    "size_bytes": 5805
+  },
+  "inst-0198": {
+    "slug": "granting-and-interaction",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "granting-and-interaction-cond2",
+    "file": "corpus/inst-0198.html",
+    "size_bytes": 4173
+  },
+  "inst-0214": {
+    "slug": "automating-the-user-away",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "automating-the-user-away-cond3",
+    "file": "corpus/inst-0214.html",
+    "size_bytes": 3023
+  },
+  "inst-0215": {
+    "slug": "psychological-tricks",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "psychological-tricks-cond1",
+    "file": "corpus/inst-0215.html",
+    "size_bytes": 3865
+  },
+  "inst-0218": {
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "endorsement-and-testimonials-cond1",
+    "file": "corpus/inst-0218.html",
+    "size_bytes": 5081
+  },
+  "inst-0237": {
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "endorsement-and-testimonials-cond3",
+    "file": "corpus/inst-0237.html",
+    "size_bytes": 6915
+  },
+  "inst-0238": {
+    "slug": "granting-and-interaction",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "granting-and-interaction-cond1",
+    "file": "corpus/inst-0238.html",
+    "size_bytes": 4981
+  },
+  "inst-0242": {
+    "slug": "immortal-accounts",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "immortal-accounts-cond1",
+    "file": "corpus/inst-0242.html",
+    "size_bytes": 5973
+  },
+  "inst-0249": {
+    "slug": "pull-to-refresh",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "pull-to-refresh-cond3",
+    "file": "corpus/inst-0249.html",
+    "size_bytes": 1650
+  },
+  "inst-0250": {
+    "slug": "psychological-tricks",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "psychological-tricks-cond2",
+    "file": "corpus/inst-0250.html",
+    "size_bytes": 3085
+  },
+  "inst-0256": {
+    "slug": "pull-to-refresh",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "pull-to-refresh-cond1",
+    "file": "corpus/inst-0256.html",
+    "size_bytes": 6510
+  },
+  "inst-0262": {
+    "slug": "granting-and-interaction",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "granting-and-interaction-cond2",
+    "file": "corpus/inst-0262.html",
+    "size_bytes": 2257
+  },
+  "inst-0270": {
+    "slug": "low-stock",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "low-stock-cond2",
+    "file": "corpus/inst-0270.html",
+    "size_bytes": 3380
+  },
+  "inst-0280": {
+    "slug": "forced-registration",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "forced-registration-cond1",
+    "file": "corpus/inst-0280.html",
+    "size_bytes": 3577
+  },
+  "inst-0284": {
+    "slug": "activity-messages",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "activity-messages-cond1",
+    "file": "corpus/inst-0284.html",
+    "size_bytes": 951
+  },
+  "inst-0287": {
+    "slug": "pull-to-refresh",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "pull-to-refresh-cond1",
+    "file": "corpus/inst-0287.html",
+    "size_bytes": 1228
+  },
+  "inst-0292": {
+    "slug": "feedforward-ambiguity",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "feedforward-ambiguity-cond3",
+    "file": "corpus/inst-0292.html",
+    "size_bytes": 2499
+  },
+  "inst-0318": {
+    "slug": "immortal-accounts",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "immortal-accounts-cond1",
+    "file": "corpus/inst-0318.html",
+    "size_bytes": 6657
+  },
+  "inst-0320": {
+    "slug": "forced-registration",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "forced-registration-cond3",
+    "file": "corpus/inst-0320.html",
+    "size_bytes": 3081
+  },
+  "inst-0321": {
+    "slug": "persuasive-language",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "persuasive-language-cond2",
+    "file": "corpus/inst-0321.html",
+    "size_bytes": 2672
+  },
+  "inst-0324": {
+    "slug": "automating-the-user-away",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "automating-the-user-away-cond3",
+    "file": "corpus/inst-0324.html",
+    "size_bytes": 2958
+  },
+  "inst-0332": {
+    "slug": "activity-messages",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "activity-messages-cond1",
+    "file": "corpus/inst-0332.html",
+    "size_bytes": 935
+  },
+  "inst-0333": {
+    "slug": "psychological-tricks",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "psychological-tricks-cond3",
+    "file": "corpus/inst-0333.html",
+    "size_bytes": 3416
+  },
+  "inst-0334": {
+    "slug": "conflicting-information",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "conflicting-information-cond1",
+    "file": "corpus/inst-0334.html",
+    "size_bytes": 2994
+  },
+  "inst-0338": {
+    "slug": "persuasive-language",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "persuasive-language-cond2",
+    "file": "corpus/inst-0338.html",
+    "size_bytes": 2854
+  },
+  "inst-0341": {
+    "slug": "automating-the-user-away",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "automating-the-user-away-cond1",
+    "file": "corpus/inst-0341.html",
+    "size_bytes": 2428
+  },
+  "inst-0343": {
+    "slug": "persuasive-language",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "persuasive-language-cond1",
+    "file": "corpus/inst-0343.html",
+    "size_bytes": 2011
+  },
+  "inst-0344": {
+    "slug": "immortal-accounts",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "immortal-accounts-cond2",
+    "file": "corpus/inst-0344.html",
+    "size_bytes": 3571
+  },
+  "inst-0349": {
+    "slug": "pull-to-refresh",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "pull-to-refresh-cond2",
+    "file": "corpus/inst-0349.html",
+    "size_bytes": 4447
+  },
+  "inst-0350": {
+    "slug": "activity-messages",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "activity-messages-cond2",
+    "file": "corpus/inst-0350.html",
+    "size_bytes": 3292
+  },
+  "inst-0353": {
+    "slug": "conflicting-information",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "conflicting-information-cond3",
+    "file": "corpus/inst-0353.html",
+    "size_bytes": 5707
+  },
+  "inst-0359": {
+    "slug": "activity-messages",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "activity-messages-cond3",
+    "file": "corpus/inst-0359.html",
+    "size_bytes": 6717
+  },
+  "inst-0370": {
+    "slug": "granting-and-interaction",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "granting-and-interaction-cond3",
+    "file": "corpus/inst-0370.html",
+    "size_bytes": 3829
+  },
+  "inst-0371": {
+    "slug": "feedforward-ambiguity",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "feedforward-ambiguity-cond2",
+    "file": "corpus/inst-0371.html",
+    "size_bytes": 6303
+  }
+}

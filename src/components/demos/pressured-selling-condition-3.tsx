@@ -59,50 +59,18 @@ const benignWords = wordCount(BENIGN_COPY);
 const benignDensity = benignWords > 0 ? benignTokens / benignWords : 0;
 
 export function PressuredSellingCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkDecision, setDarkDecision] = React.useState<null | "accepted" | "declined">(null);
   const [benignDecision, setBenignDecision] = React.useState<null | "accepted" | "declined">(null);
 
-  const reset = () => {
-    setDarkDecision(null);
-    setBenignDecision(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|W(M) ∩ D_pressure| (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{darkTokens}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|W(M)| (dark)</span>
-        <span className="font-mono font-semibold tabular-nums">{darkWords} words</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Pressure density (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {darkDensity.toFixed(3)} &gt; {TAU_AROUSAL}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Pressure density (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">
-          {benignDensity.toFixed(3)}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pressured Selling: High-Arousal Lexical Density"
       caption="High-Arousal Lexical Density — the modal's copy is saturated with FOMO trigger phrases so the density of pressure tokens exceeds the aggressive-marketing threshold."
-      auditorStats={stats}
       deltaNote={`Both modals sell the same $19.99 warranty, but Variant A packs ${darkTokens} pressure tokens into ${darkWords} words (density ${darkDensity.toFixed(3)} > τ_arousal = ${TAU_AROUSAL}), while Variant B uses neutral copy with density ${benignDensity.toFixed(3)}. Only the words changed — the offer and buttons are identical.`}
       benign={
         <div className="space-y-3">

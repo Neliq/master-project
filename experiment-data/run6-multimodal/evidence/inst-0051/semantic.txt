@@ -1,0 +1,6 @@
+STATE s1
+Checkout Defaults that work for you, not against you. Delivery speed Standard — $0.00 (default: cheapest tier, user-favorable) Express — +$9.99 Security alerts about my account Place order
+
+STATE s2
+Checkout Defaults that work for you, not against you. Delivery speed Standard — $0.00 (default: cheapest tier, user-favorable) Express — +$9.99 Security alerts about my account Place order User-favorable defaults
+

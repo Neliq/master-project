@@ -23,14 +23,10 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * buttons. If the timer expires, nothing is registered.
  */
 
-const TAU_REACTION = 2.0;
-
 export function AutomatingTheUserAwayCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [remaining, setRemaining] = React.useState(0);
@@ -39,14 +35,6 @@ export function AutomatingTheUserAwayCond3({
   const [declined, setDeclined] = React.useState(false);
   const [autoRegistered, setAutoRegistered] = React.useState(false);
 
-  const reset = () => {
-    setDialogOpen(false);
-    setRemaining(0);
-    setVariant("dark");
-    setConsented(false);
-    setDeclined(false);
-    setAutoRegistered(false);
-  };
 
   const dark = variant === "dark";
   const windowSeconds = dark ? 1.0 : 5.0;
@@ -82,31 +70,6 @@ export function AutomatingTheUserAwayCond3({
     setRemaining(v === "dark" ? 2 : 5);
     setDialogOpen(true);
   };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">t_window (total)</span>
-        <span className={`font-mono font-semibold tabular-nums ${dark ? "text-red-500" : "text-green-500"}`}>
-          {windowSeconds.toFixed(1)}s
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ baseline (reaction)</span>
-        <span className="font-mono font-semibold tabular-nums">≈ {TAU_REACTION.toFixed(1)}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">SemanticType(T_prompt)</span>
-        <span className="font-mono font-semibold tabular-nums">TimedConsent</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Verdict</span>
-        <span className={`font-mono font-semibold tabular-nums ${dark ? "text-red-500" : "text-green-500"}`}>
-          {dark ? "1.0 &lt; 2.0 → manufactured" : "5.0 ≥ 2.0 → adequate"}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   const renderDialog = (isDark: boolean) => {
     const activeHere = dialogOpen && dark === isDark;
@@ -273,11 +236,10 @@ export function AutomatingTheUserAwayCond3({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Automating The User Away: Semantic Speed of Consent-Timing Language"
       userTitle="Streamly — Account signup"
       caption="Semantic Speed of Consent-Timing Language — a timed consent prompt whose countdown is faster than human reaction time registers consent by default."
-      auditorStats={stats}
       deltaNote="Both dialogs share the same location-sharing decision and a visible countdown. Variant A says 'Consent will be registered in 2 seconds' and counts down in half-second ticks — a 1.0s total window under the 2.0s reaction baseline — with a pre-checked, disabled box, and registers consent automatically when the timer ends. Variant B counts down from 5 at normal speed but states plainly that nothing is shared unless you tick the box and click I agree; the timer never registers consent."
       benign={
         <div className="space-y-3">{renderDialog(false)}</div>

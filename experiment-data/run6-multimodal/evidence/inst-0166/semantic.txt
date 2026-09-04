@@ -1,0 +1,6 @@
+STATE s1
+Create your account Included by default Send me exclusive offers and promotions Optional marketing preference Share my data with selected partners Optional data-sharing preference Create account
+
+STATE s2
+Create your account Included by default Send me exclusive offers and promotions Optional marketing preference Share my data with selected partners Optional data-sharing preference Create account Defaults decided for you Your account was created with marketing and data sharing selected in advance. You can change these preferences at any time.
+

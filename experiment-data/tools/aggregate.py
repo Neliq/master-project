@@ -8,7 +8,7 @@ from collections import Counter, defaultdict
 from math import comb
 
 EXP = pathlib.Path(os.environ.get("EXPERIMENT_DIR", pathlib.Path(__file__).resolve().parents[1]))
-RAW = EXP / "results" / "raw"
+RAW = pathlib.Path(os.environ.get("RAW_DIR", EXP / "results" / "raw"))
 
 with (EXP / "ground-truth.json").open() as f:
     _gt = json.load(f)

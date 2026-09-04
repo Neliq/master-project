@@ -66,44 +66,15 @@ function renderHighlighted(text: string, coerciveSet: Set<string>) {
 }
 
 export function DeadEndCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [analyzedA, setAnalyzedA] = React.useState(false);
   const [analyzedB, setAnalyzedB] = React.useState(false);
   const [choiceA, setChoiceA] = React.useState<null | "upgraded" | "learned">(null);
   const [choiceB, setChoiceB] = React.useState<null | "upgraded" | "dismissed">(null);
 
-  const reset = () => {
-    setAnalyzedA(false);
-    setAnalyzedB(false);
-    setChoiceA(null);
-    setChoiceB(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Coercive tokens (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{A.count} of {A.total}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Coercion density (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{ratioA.toFixed(2)} &gt; &tau; ({TAU_COERCION})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Coercion density (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{B.count} / {B.total} = {(B.count / B.total).toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Imperative/urgency lexemes</span>
-        <span className="font-mono font-semibold tabular-nums">MUST, NOW, TODAY, DON&rsquo;T WAIT&hellip;</span>
-      </div>
-    </>
-  ) : null;
 
   const trapPage = (accent: "rose" | "emerald") => (
     <div className="rounded-md border bg-card p-3">
@@ -184,11 +155,10 @@ export function DeadEndCond3({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Dead End: Semantic Coercion Density in Trapped States"
       userTitle="Cinder — Session notice"
       caption="Semantic Coercion Density in Trapped States — the trapped upgrade page's copy is saturated with imperative verbs and urgency lexemes, so the coercive density far exceeds the threshold."
-      auditorStats={stats}
       deltaNote={`Variant A packs ${A.count} imperative/urgency tokens into ${A.total} words — density ${(ratioA * 100).toFixed(0)}%, above τ_coercion = ${TAU_COERCION} (e.g. "MUST upgrade NOW", "DON'T WAIT", "ends SOON"). Variant B communicates the identical storage situation in ${B.total} neutral words with ${B.count} coercive tokens.`}
       benign={
         <div className="space-y-3">

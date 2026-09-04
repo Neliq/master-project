@@ -1,0 +1,12 @@
+STATE s0
+Export your habit data Download your full Focusly history as CSV. Locked — invite 3 more friends to unlock export 0/3 Export data
+
+STATE s1
+Export your habit data Download your full Focusly history as CSV. Locked — invite 2 more friends to unlock export 1/3 Export data ✓ Maya registered via your link
+
+STATE s2
+Export your habit data Download your full Focusly history as CSV. Locked — invite 1 more friend to unlock export 2/3 Export data ✓ Jonas registered via your link
+
+STATE s3
+Export your habit data Download your full Focusly history as CSV. Export data (CSV)
+

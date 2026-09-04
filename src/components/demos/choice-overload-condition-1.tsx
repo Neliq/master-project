@@ -41,21 +41,15 @@ const ALL_TOGGLE_KEYS = [...VENDORS, ...BENIGN_CHOICES];
 type Decision = "accept" | "save" | "reject" | null;
 
 export function ChoiceOverloadCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [toggles, setToggles] = React.useState<Record<string, boolean>>(
     () => Object.fromEntries(ALL_TOGGLE_KEYS.map((v) => [v, false]))
   );
   const [decision, setDecision] = React.useState<Decision>(null);
 
-  const reset = () => {
-    setToggles(Object.fromEntries(ALL_TOGGLE_KEYS.map((v) => [v, false])));
-    setDecision(null);
-  };
 
   const flip = (vendor: string) =>
     setToggles((t) => ({ ...t, [vendor]: !t[vendor] }));
@@ -71,39 +65,6 @@ export function ChoiceOverloadCond1({
   };
 
   const enabledCount = Object.values(toggles).filter(Boolean).length;
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|C_choices| (vendor toggles)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{VENDORS.length}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_overload (upper bound)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_OVERLOAD}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|C_choices| &gt; τ_overload</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {VENDORS.length} &gt; {TAU_OVERLOAD} ✓
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|C_choices| benign (grouped)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">
-          {BENIGN_CHOICES.length} &le; {TAU_OVERLOAD}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Miller band (7 ± 2)</span>
-        <span className="font-mono font-semibold tabular-nums">{MILLER_LOW}–{MILLER_HIGH} items</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Toggles on</span>
-        <span className="font-mono font-semibold tabular-nums">{enabledCount} / {VENDORS.length}</span>
-      </div>
-    </>
-  ) : null;
 
   const toggleList = (accent: "rose" | "emerald", choices = VENDORS) => (
     <div className="mt-2 max-h-40 space-y-1 overflow-y-auto rounded-md border bg-background p-2">
@@ -122,10 +83,9 @@ export function ChoiceOverloadCond1({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Choice Overload: Excessive Element Quantization"
       caption="Excessive Element Quantization — 24 granular vendor toggles with no one-click reject path: declining means manually switching off 24 switches, while accepting is a single click."
-      auditorStats={stats}
       deltaNote="Both variants expose the identical 24-vendor toggle list with the same starting state. Variant A offers only 'Accept all' and 'Save my choices', so the path of least resistance is the provider-favorable default; Variant B adds a 'Reject all' button of equal prominence, making the user-favorable action one click too."
       benign={
         <div className="space-y-3">

@@ -58,11 +58,9 @@ const FKGL_DARK = 9.4;
 const FKGL_BENIGN = 4.9;
 
 export function ForcedContinuityCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Independent tab state per panel so the two flows can be compared side by side.
   const [aTab, setATab] = React.useState<Tab>("signup");
@@ -72,35 +70,6 @@ export function ForcedContinuityCond3({
   const [aStarted, setAStarted] = React.useState(false);
   const [bStarted, setBStarted] = React.useState(false);
 
-  const reset = () => {
-    setATab("signup");
-    setBTab("signup");
-    setACancelled(false);
-    setBCancelled(false);
-    setAStarted(false);
-    setBStarted(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">FKGL(T_signup)</span>
-        <span className="font-mono font-semibold tabular-nums">{FKGL_SIGNUP} (grade 5)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">FKGL(T_cancel) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{FKGL_DARK} — diff {(FKGL_DARK - FKGL_SIGNUP).toFixed(1)} &gt; 2</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">FKGL(T_cancel) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{FKGL_BENIGN} — diff 0.0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Guilt lexemes in cancel</span>
-        <span className="font-mono font-semibold tabular-nums">A: {GUILT_DARK} (rose) · B: {GUILT_BENIGN}</span>
-      </div>
-    </>
-  ) : null;
 
   const signupPanel = (dark: boolean) => {
     const started = dark ? aStarted : bStarted;
@@ -138,11 +107,10 @@ export function ForcedContinuityCond3({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Forced Continuity: Semantic Asymmetry Between Subscription and Cancellation Language"
       userTitle="Streamly — Subscription settings"
       caption="Semantic Asymmetry — the cancellation flow is written several grade levels above the signup flow and laced with guilt lexemes that the signup never mentions."
-      auditorStats={stats}
       deltaNote="Variant A signs you up in grade-5 prose that never mentions the renewal — no “Cancel anytime”, no “$0.00 for 30 days” — and cancels you through a grade-9 guilt wall (“abandon your progress,” “lose your benefits”), so FKGL diff 4.5 > 2 and no renewal feedforward exists anywhere in the flow. Variant B discloses the free-trial terms and cancel-anytime up front, and writes cancellation at the same reading level as signup, with zero guilt lexemes."
       benign={
         <div className="space-y-3">

@@ -53,11 +53,9 @@ function fmt(s: number): string {
 }
 
 export function CountdownTimerCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [seconds, setSeconds] = React.useState(COUNTDOWN_S);
   const [paid, setPaid] = React.useState(false);
@@ -68,34 +66,9 @@ export function CountdownTimerCond3({
     return () => window.clearInterval(id);
   }, []);
 
-  const reset = () => {
-    setSeconds(COUNTDOWN_S);
-    setPaid(false);
-  };
 
   const darkLex = countLexemes(COPY_DARK);
   const benignLex = countLexemes(COPY_BENIGN);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">IsCountdown(N)</span>
-        <span className="font-mono font-semibold tabular-nums">True (live timer)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|T_adjacent ∩ L_amplify| — A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{darkLex.count} &gt; 0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|T_adjacent ∩ L_amplify| — B</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{benignLex.count}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Matched lexemes (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500 max-w-[55%] truncate text-right">{darkLex.found.join(", ") || "—"}</span>
-      </div>
-    </>
-  ) : null;
 
   const highlightLexemes = (text: string) => {
     const parts: React.ReactNode[] = [];
@@ -126,10 +99,9 @@ export function CountdownTimerCond3({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Countdown Timer: Semantic Urgency Inflation via Temporal Lexemes"
       caption="Semantic Urgency Inflation via Temporal Lexemes — urgency-amplifying words (“hurry”, “now or never”, “don't wait”) stack around a countdown to multiply the pressure the numbers alone would create."
-      auditorStats={stats}
       deltaNote={`Both panels run the identical ${fmt(COUNTDOWN_S)} countdown with the same product and prices. Variant A pairs it with ${darkLex.count} amplifying lexemes (highlighted in amber: ${darkLex.found.join(", ")}) — |T_adjacent ∩ L_amplify| = ${darkLex.count} > 0. Variant B uses neutral, factual copy with ${benignLex.count} matched lexemes.`}
       benign={
         <div className="space-y-3">

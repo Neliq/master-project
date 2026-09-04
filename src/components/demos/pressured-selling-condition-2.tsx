@@ -23,24 +23,16 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 const PANIC_SECONDS = 59; // Δt_offer
-const TAU_PANIC_SECONDS = 300; // τ_panic_duration = 5 min
 
 export function PressuredSellingCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkDecision, setDarkDecision] = React.useState<null | "accepted" | "declined">(null);
   const [benignDecision, setBenignDecision] = React.useState<null | "accepted" | "declined">(null);
   const [secondsLeft, setSecondsLeft] = React.useState(PANIC_SECONDS);
 
-  const reset = () => {
-    setDarkDecision(null);
-    setBenignDecision(null);
-    setSecondsLeft(PANIC_SECONDS);
-  };
 
   // The synthetic countdown only ticks while the modal is open and undecided.
   React.useEffect(() => {
@@ -53,34 +45,10 @@ export function PressuredSellingCond2({
 
   const expired = secondsLeft === 0 && darkDecision === null;
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δt_offer (countdown)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {secondsLeft}s
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_panic_duration</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_PANIC_SECONDS}s (5 min)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δt_offer &lt; τ_panic_duration</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CSS(M_upsell) ∩ V_animations</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{'{blink, shake} ≠ ∅'}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pressured Selling: Localized Temporal or Visual Constraints"
       caption="Localized Temporal or Visual Constraints — a sub-five-minute countdown and aggressive animations manufacture urgency around the secondary offer."
-      auditorStats={stats}
       deltaNote="In Variant A the offer carries a 0:59 countdown (Δt_offer = 59s < τ_panic_duration = 300s) plus blinking and shaking animations, and the offer genuinely expires. In Variant B the identical offer has no timer and no animation — the price is simply guaranteed for 30 days."
       benign={
         <div className="space-y-3">

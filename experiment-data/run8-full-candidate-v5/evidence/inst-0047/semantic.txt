@@ -1,0 +1,6 @@
+STATE s0
+You’re in! Welcome to SnapGrid Invite friends from your address book — or skip and start using SnapGrid right away. Your choice, either way. Invite all 128 contacts Skip for now Both options are the same size. the area / the area = 1.
+
+STATE s1
+You’re in! Welcome to SnapGrid Invite friends from your address book — or skip and start using SnapGrid right away. Your choice, either way. Invite all 128 contacts Skip for now Both options are the same size. the area / the area = 1. Invites sent You chose the collective invite deliberately — 128 invites went out.
+

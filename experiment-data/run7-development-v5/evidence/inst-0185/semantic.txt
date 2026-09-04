@@ -1,0 +1,6 @@
+STATE s0
+Nebula Drift — Content Hub 12 of 14 playable Everything is installed and ready — except two add-ons that were never downloaded. Campaign: Core Ready Campaign: Ember Sector Ready 4K Texture Pack Download Multiplayer Arena Maps Ready Ship Skins: Neon Ready Ship Skins: Retro Ready Soundtrack Ready Digital Art Book Ready Expansion: Void Campaign Download Photo Mode Ready Companion App Ready Pilot Suit Pack Ready Concept Art Gallery Ready OST Remix Pack Ready
+
+STATE s1
+Nebula Drift — Content Hub 12 of 14 playable Everything is installed and ready — except two add-ons that were never downloaded. Campaign: Core Ready Campaign: Ember Sector Ready 4K Texture Pack Download Multiplayer Arena Maps Ready Ship Skins: Neon Ready Ship Skins: Retro Ready Soundtrack Ready Digital Art Book Ready Expansion: Void Campaign Download Photo Mode Ready Companion App Ready Pilot Suit Pack Ready Concept Art Gallery Ready OST Remix Pack Ready Ready to play “Campaign: Core” is installed and accessible — the islocked = False. No padlock decorates content you already own.
+

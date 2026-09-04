@@ -25,40 +25,13 @@ const RENEWAL_PRICE = 49.99;
 const TRIAL_DAYS = 30;
 
 export function HiddenInformationCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [started, setStarted] = React.useState(false);
   const [showLine, setShowLine] = React.useState(false);
 
-  const reset = () => {
-    setStarted(false);
-    setShowLine(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_font(N_critical) dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">6px (&lt; 11px)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CR(N_critical, L_bg) dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 1.9:1 (&lt; 4.5:1)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_font / CR benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">11px / ≈ 14.5:1</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Auto-renew charge</span>
-        <span className="font-mono font-semibold tabular-nums">{usd(RENEWAL_PRICE)} / mo</span>
-      </div>
-    </>
-  ) : null;
 
   const renderPanel = (dark: boolean) => (
     <div className="space-y-3">
@@ -150,11 +123,8 @@ export function HiddenInformationCond2({
   return (
     <DemoShell
       mode={mode}
-      annotations={annotations}
-      onRestart={onRestart ?? reset}
       title="Hidden Information: Typographical and Chromatic Camouflage"
       caption="Typographical and Chromatic Camouflage — the critical node is rendered at the extreme margins of legibility, dropping below minimum readable font size or WCAG contrast while the primary interface stays highly visible."
-      auditorStats={stats}
       deltaNote={`Variant A prints the $49.99/month auto-renew disclosure at 6px with ≈1.9:1 contrast (S_font < τ_min_readable ∨ CR < τ_wcag_min). Variant B shows the same disclosure at 11px with ≈14.5:1 contrast in a bordered notice — legible before committing.`}
       benign={renderPanel(false)}
     >

@@ -29,53 +29,19 @@ const AREA_DARK = 8 * 8;
 const AREA_BENIGN = 44 * 44;
 
 export function SmallOrMovingCloseButtonCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [aDismissed, setADismissed] = React.useState(false);
   const [bDismissed, setBDismissed] = React.useState(false);
 
-  const reset = () => {
-    setADismissed(false);
-    setBDismissed(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_close) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {AREA_DARK} px² (8×8)
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_close) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">
-          {AREA_BENIGN} px² (44×44)
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_close)/A(M_parent)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {(AREA_DARK / PARENT_AREA).toFixed(4)} &lt; {DELTA_MICRO}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_wcag_hitbox (44×44)</span>
-        <span className="font-mono font-semibold tabular-nums">{WCAG_MIN_AREA} px²</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Small or Moving Close Button: Microscopic Hitbox"
       userTitle="Streamly — Sign-up offer"
       caption="Microscopic Hitbox — the dismissal vector is scaled down until its interactive surface area falls below the WCAG touch-target minimum and below the fractional threshold relative to the modal."
-      auditorStats={stats}
       deltaNote={`Variant A shrinks the X to 8×8 px — A(N_close) = ${AREA_DARK} px² < τ_wcag_hitbox = ${WCAG_MIN_AREA} px², and A(N_close)/A(M_parent) = ${(AREA_DARK / PARENT_AREA).toFixed(4)} < δ_micro = ${DELTA_MICRO}. Variant B uses the same X at the 44×44 px WCAG target (${AREA_BENIGN} px²).`}
       benign={
         <div className="space-y-3">

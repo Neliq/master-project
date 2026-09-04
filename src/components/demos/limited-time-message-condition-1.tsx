@@ -43,11 +43,9 @@ function formatDeadline(timestamp: number): string {
 }
 
 export function LimitedTimeMessageCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [remaining, setRemaining] = React.useState(START_SECONDS);
   const [cycles, setCycles] = React.useState(1);
@@ -79,40 +77,11 @@ export function LimitedTimeMessageCond1({
     return () => window.clearInterval(id);
   }, [benignDeadline]);
 
-  const reset = () => {
-    setRemaining(START_SECONDS);
-    setCycles(1);
-    setBenignDeadline(Date.now() + START_SECONDS * 1000);
-    setBenignExpired(false);
-    setClaimed(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Offer cycle (i)</span>
-        <span className="font-mono font-semibold tabular-nums">{cycles}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">t_current vs T_end(i)</span>
-        <span className="font-mono font-semibold tabular-nums">{fmt(remaining)} left</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T_end(i+1) shift (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">t + {EXTENSION_SECONDS}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Deadline honoured (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{benignExpired ? "expired" : "pending"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Limited Time Message: Perpetual Extension"
       caption="Perpetual Extension — the implied deadline T_end(i) is silently shifted forward the instant the clock reaches it, so the “limited” offer never actually ends."
-      auditorStats={stats}
       deltaNote="In Variant A the deadline resets the moment it is reached — T_end(i+1) = t_current + Δt — so the “flash sale” never ends and the discounted price is effectively the standard price. In Variant B the same offer carries a concrete, fixed deadline shown as an absolute date and time — no relative countdown that could rebind — and the offer genuinely expires and the button disables once that deadline passes."
       benign={
         <div className="space-y-3">

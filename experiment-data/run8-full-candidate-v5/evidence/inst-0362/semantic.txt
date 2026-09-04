@@ -1,0 +1,6 @@
+STATE s0
+Cookie settings 3 choices We use cookies to improve your experience. By continuing you agree to our use of cookies and similar technologies. Accept all Reject non-essential Try Esc or clicking the page behind the banner — both dismiss it. A neutral exit state v_prev is reachable.
+
+STATE s1
+Cookie settings Closed The banner is closed. The graph is traversable again. Preferences updated Analytics and marketing cookies are enabled. Try Esc or clicking the page behind the banner — both dismiss it. A neutral exit state v_prev is reachable.
+

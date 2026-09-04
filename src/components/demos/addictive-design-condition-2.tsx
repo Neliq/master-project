@@ -24,8 +24,6 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * user can always perceive cognitive closure.
  */
 
-const HYPER_ENGAGEMENT_S = 12;
-
 function PageContent({ page }: { page: number }) {
   const blocks = [
     "At dawn the market stalls open, and the whole street smells of fresh bread and wet pavement. Vendors call out to regulars by name.",
@@ -48,21 +46,14 @@ function PageContent({ page }: { page: number }) {
 }
 
 export function AddictiveDesignCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [pageA, setPageA] = React.useState(1);
   const [pageB, setPageB] = React.useState(1);
   const [session, setSession] = React.useState(0);
 
-  const reset = () => {
-    setPageA(1);
-    setPageB(1);
-    setSession(0);
-  };
 
   // Session clock shared by both panels; the benign panel displays it,
   // the dark panel suppresses it.
@@ -73,39 +64,11 @@ export function AddictiveDesignCond2({
 
   const mm = String(Math.floor(session / 60)).padStart(2, "0");
   const ss = String(session % 60).padStart(2, "0");
-  const overThreshold = session > HYPER_ENGAGEMENT_S;
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T_session</span>
-        <span className={`font-mono font-semibold tabular-nums ${overThreshold ? "text-red-500" : ""}`}>
-          {mm}:{ss} {overThreshold ? `> &tau; (${HYPER_ENGAGEMENT_S}s)` : ""}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&forall;e &isin; E_stop : Visible(e, t)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {overThreshold ? "False — all suppressed" : "Pending session threshold"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CR(e, L_bg) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">1.4 &lt; 3.0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CR(e, L_bg) (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">12.5 &ge; 3.0</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Addictive Design: Eradication of Natural Stopping Cues"
       userTitle="The Market Reader"
       caption="Eradication of Natural Stopping Cues — pagination, end markers, dividers and scroll indicators are removed or rendered imperceptible, so the user can never perceive that the content is finished."
-      auditorStats={stats}
       deltaNote="Both panels show the same 3 pages of content. Variant A hides every completion cue — no page indicator, no dividers, no session clock, low-contrast text. Variant B restores them: 'Page 2 of 3', section dividers, an end-of-results marker and a visible reading-time clock, so closure is always perceptible."
       benign={
         <div className="space-y-3">

@@ -1,0 +1,12 @@
+STATE s0
+The Market Reader Page 1 of 3 At dawn the market stalls open, and the whole street smells of fresh bread and wet pavement. Vendors call out to regulars by name. The baker explains that her sourdough starter is older than she is. Someone at the next stall argues about the correct way to slice a baguette. Next page → Reading for 00:04 stopping cues present
+
+STATE s1
+The Market Reader Page 2 of 3 New for you — page 2 By noon the square is packed. Tourists photograph the fountain while locals sit in the shade, reading, arguing, laughing. The afternoon rain arrives without warning. Everyone ducks under awnings; a street musician keeps playing, dripping and unbothered. ← Prev Next page → Reading for 00:04 stopping cues present
+
+STATE s2
+The Market Reader Page 1 of 3 At dawn the market stalls open, and the whole street smells of fresh bread and wet pavement. Vendors call out to regulars by name. The baker explains that her sourdough starter is older than she is. Someone at the next stall argues about the correct way to slice a baguette. Next page → Reading for 00:04 stopping cues present
+
+STATE s3
+The Market Reader Page 2 of 3 New for you — page 2 By noon the square is packed. Tourists photograph the fountain while locals sit in the shade, reading, arguing, laughing. The afternoon rain arrives without warning. Everyone ducks under awnings; a street musician keeps playing, dripping and unbothered. ← Prev Next page → Reading for 00:05 stopping cues present
+

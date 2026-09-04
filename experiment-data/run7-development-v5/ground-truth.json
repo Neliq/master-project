@@ -1,0 +1,434 @@
+{
+  "inst-0002": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 3
+  },
+  "inst-0006": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "sneak-into-basket",
+    "condition_index": 3
+  },
+  "inst-0008": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 1
+  },
+  "inst-0010": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "confirmshaming",
+    "condition_index": 1
+  },
+  "inst-0012": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "bundling",
+    "condition_index": 3
+  },
+  "inst-0023": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "persuasive-language",
+    "condition_index": 3
+  },
+  "inst-0025": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "confirmshaming",
+    "condition_index": 3
+  },
+  "inst-0028": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "price-comparison-prevention",
+    "condition_index": 2
+  },
+  "inst-0033": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "cuteness",
+    "condition_index": 1
+  },
+  "inst-0035": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "sneak-into-basket",
+    "condition_index": 3
+  },
+  "inst-0038": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "sneak-into-basket",
+    "condition_index": 1
+  },
+  "inst-0045": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "sneak-into-basket",
+    "condition_index": 2
+  },
+  "inst-0060": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "friend-spam",
+    "condition_index": 3
+  },
+  "inst-0067": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 2
+  },
+  "inst-0069": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "immortal-accounts",
+    "condition_index": 2
+  },
+  "inst-0080": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pre-delivered-content",
+    "condition_index": 2
+  },
+  "inst-0081": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "friend-spam",
+    "condition_index": 1
+  },
+  "inst-0091": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "cuteness",
+    "condition_index": 2
+  },
+  "inst-0097": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pay-to-avoid",
+    "condition_index": 3
+  },
+  "inst-0100": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "bundling",
+    "condition_index": 1
+  },
+  "inst-0104": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "bundling",
+    "condition_index": 1
+  },
+  "inst-0107": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "confirmshaming",
+    "condition_index": 2
+  },
+  "inst-0110": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "price-comparison-prevention",
+    "condition_index": 1
+  },
+  "inst-0111": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 2
+  },
+  "inst-0117": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "sneak-into-basket",
+    "condition_index": 2
+  },
+  "inst-0119": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "confirmshaming",
+    "condition_index": 3
+  },
+  "inst-0133": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "bundling",
+    "condition_index": 2
+  },
+  "inst-0136": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "immortal-accounts",
+    "condition_index": 3
+  },
+  "inst-0138": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pre-delivered-content",
+    "condition_index": 3
+  },
+  "inst-0139": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "immortal-accounts",
+    "condition_index": 3
+  },
+  "inst-0144": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "addictive-design",
+    "condition_index": 2
+  },
+  "inst-0155": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "persuasive-language",
+    "condition_index": 1
+  },
+  "inst-0168": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "price-comparison-prevention",
+    "condition_index": 3
+  },
+  "inst-0175": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "cuteness",
+    "condition_index": 1
+  },
+  "inst-0176": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "persuasive-language",
+    "condition_index": 3
+  },
+  "inst-0185": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pre-delivered-content",
+    "condition_index": 2
+  },
+  "inst-0186": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "cuteness",
+    "condition_index": 3
+  },
+  "inst-0187": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "addictive-design",
+    "condition_index": 1
+  },
+  "inst-0193": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "cuteness",
+    "condition_index": 3
+  },
+  "inst-0194": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pre-delivered-content",
+    "condition_index": 1
+  },
+  "inst-0197": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "cuteness",
+    "condition_index": 2
+  },
+  "inst-0205": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "price-comparison-prevention",
+    "condition_index": 3
+  },
+  "inst-0216": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "confirmshaming",
+    "condition_index": 1
+  },
+  "inst-0218": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 1
+  },
+  "inst-0225": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "friend-spam",
+    "condition_index": 3
+  },
+  "inst-0237": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 3
+  },
+  "inst-0242": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "immortal-accounts",
+    "condition_index": 1
+  },
+  "inst-0258": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "price-comparison-prevention",
+    "condition_index": 2
+  },
+  "inst-0259": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pay-to-avoid",
+    "condition_index": 1
+  },
+  "inst-0266": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "addictive-design",
+    "condition_index": 3
+  },
+  "inst-0269": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "bundling",
+    "condition_index": 3
+  },
+  "inst-0272": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "confirmshaming",
+    "condition_index": 2
+  },
+  "inst-0277": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "price-comparison-prevention",
+    "condition_index": 1
+  },
+  "inst-0283": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "friend-spam",
+    "condition_index": 2
+  },
+  "inst-0286": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "addictive-design",
+    "condition_index": 2
+  },
+  "inst-0289": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pay-to-avoid",
+    "condition_index": 2
+  },
+  "inst-0290": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "addictive-design",
+    "condition_index": 1
+  },
+  "inst-0293": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pre-delivered-content",
+    "condition_index": 3
+  },
+  "inst-0300": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pay-to-avoid",
+    "condition_index": 1
+  },
+  "inst-0303": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "bundling",
+    "condition_index": 2
+  },
+  "inst-0312": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pre-delivered-content",
+    "condition_index": 1
+  },
+  "inst-0313": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pay-to-avoid",
+    "condition_index": 2
+  },
+  "inst-0317": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "addictive-design",
+    "condition_index": 3
+  },
+  "inst-0318": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "immortal-accounts",
+    "condition_index": 1
+  },
+  "inst-0321": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "persuasive-language",
+    "condition_index": 2
+  },
+  "inst-0331": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pay-to-avoid",
+    "condition_index": 3
+  },
+  "inst-0338": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "persuasive-language",
+    "condition_index": 2
+  },
+  "inst-0343": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "persuasive-language",
+    "condition_index": 1
+  },
+  "inst-0344": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "immortal-accounts",
+    "condition_index": 2
+  },
+  "inst-0351": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "sneak-into-basket",
+    "condition_index": 1
+  },
+  "inst-0358": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "friend-spam",
+    "condition_index": 1
+  },
+  "inst-0369": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "friend-spam",
+    "condition_index": 2
+  }
+}

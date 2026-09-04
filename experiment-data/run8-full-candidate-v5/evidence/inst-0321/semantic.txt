@@ -1,0 +1,6 @@
+STATE s0
+Special offer Our standard plan costs $9.99/month. Cancel anytime. Standard presentation Special offer — subscribe today Subscribe and save 40% on the annual plan. The standard plan costs $9.99/month and you can cancel anytime. Not now Subscribe & save 40%
+
+STATE s1
+Special offer Our standard plan costs $9.99/month. Cancel anytime. Standard presentation Special offer — subscribe today Subscribe and save 40% on the annual plan. The standard plan costs $9.99/month and you can cancel anytime. Not now Subscribe & save 40% Dismissed The persuasive copy and the factual copy share the same typography: weight ratio 1.0, equal area, no color saturation. The offer stands on its own merits — emphasis does not do the persuading.
+

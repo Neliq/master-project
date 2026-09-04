@@ -1,0 +1,6 @@
+STATE s1
+Aurora Wireless Earbuds Pro $89.00 $129.00 — reserved for you, but only while the clock runs. Your cart is reserved for 04:58 Pay $89.00 before time runs out
+
+STATE s2
+Aurora Wireless Earbuds Pro $89.00 $129.00 — reserved for you, but only while the clock runs. Your cart is reserved for 04:58 Paid ✓
+

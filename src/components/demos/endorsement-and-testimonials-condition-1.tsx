@@ -83,46 +83,18 @@ function DistributionBar({ star, pct, organic, barClass }: { star: number; pct: 
 }
 
 export function EndorsementAndTestimonialsCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [reviewsOpen, setReviewsOpen] = React.useState(false);
   const [added, setAdded] = React.useState(false);
 
-  const reset = () => {
-    setReviewsOpen(false);
-    setAdded(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Mean(S(R_total))</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 5.0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Var(S(R_total))</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 0.00</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">D_rendered vs D_organic</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">mismatch</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Reviews rendered</span>
-        <span className="font-mono font-semibold tabular-nums">1,284</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Endorsement And Testimonials: Statistical Implausibility"
       caption="Statistical Implausibility — the rendered review distribution clusters at the maximum score with zero organic variance, signalling a scrubbed or fabricated environment."
-      auditorStats={stats}
       deltaNote="In Variant A every rendered review is 5.0 stars — Mean ≈ 5.0, Var ≈ 0, so D_rendered ≠ D_organic — while Variant B shows the same product's genuine distribution, which naturally exhibits variance."
       benign={
         <div className="space-y-3">

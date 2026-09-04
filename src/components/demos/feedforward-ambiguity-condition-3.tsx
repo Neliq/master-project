@@ -21,54 +21,18 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * Variant B (benign): the button is labelled with its true outcome.
  */
 
-const TAU_CLARITY = 0.6;
-const SIM_DARK = 0.11;
-
 type Step = 1 | 2 | "done";
 
 export function FeedforwardAmbiguityCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [step, setStep] = React.useState<Step>(1);
-  const [subscribed, setSubscribed] = React.useState(false);
+  const [, setSubscribed] = React.useState(false);
   const [marketingOptIn, setMarketingOptIn] = React.useState(true);
   const [charged, setCharged] = React.useState(false);
 
-  const reset = () => {
-    setStep(1);
-    setSubscribed(false);
-    setMarketingOptIn(true);
-    setCharged(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent_NLP(L(n))</span>
-        <span className="font-mono font-semibold tabular-nums">&ldquo;Next&rdquo; → advance</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Outcome_System(n) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">OptInAll()</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sim(Intent, Outcome)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{SIM_DARK} &lt; &tau;_clarity ({TAU_CLARITY})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Outcome domain</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">D_critical (finance · privacy)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Subscribed?</span>
-        <span className="font-mono font-semibold tabular-nums">{subscribed ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
 
   const planCard = (
     <div className="rounded-md border bg-background p-2.5">
@@ -86,10 +50,9 @@ export function FeedforwardAmbiguityCond3({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Feedforward Ambiguity: Semantic Divergence of Action and Outcome"
       caption="Semantic Divergence of Action and Outcome — 'Next' on the billing step resolves to OptInAll(): a paid, auto-renewing subscription plus marketing opt-ins."
-      auditorStats={stats}
       deltaNote="In Variant A the 'Next' label's predicted intent (advance) is semantically far from the executed OptInAll() — Sim = 0.11 < τ_clarity = 0.60 — while Variant B labels the button 'Subscribe — $29/month' so intent and outcome align."
       benign={
         <div className="space-y-3">

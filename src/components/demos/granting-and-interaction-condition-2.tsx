@@ -27,52 +27,15 @@ const POS_MODAL_BENIGN = "(212, 420)";
 type NotifState = "none" | "granted" | "declined";
 
 export function GrantingAndInteractionCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [playedA, setPlayedA] = React.useState(false);
   const [playedB, setPlayedB] = React.useState(false);
   const [notifA, setNotifA] = React.useState<NotifState>("none");
   const [notifB, setNotifB] = React.useState<NotifState>("none");
 
-  const reset = () => {
-    setPlayedA(false);
-    setPlayedB(false);
-    setNotifA("none");
-    setNotifB("none");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Pos(B_benign) (Play)</span>
-        <span className="font-mono font-semibold tabular-nums">{POS_PLAY}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Pos(M) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{POS_MODAL_DARK}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Pos(M) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{POS_MODAL_BENIGN}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δdist (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0px (identical)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δt injection (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">~4ms after tap</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Notifications</span>
-        <span className="font-mono font-semibold tabular-nums">{notifA}</span>
-      </div>
-    </>
-  ) : null;
 
   const streamBadge = (isDark: boolean) => {
     const currentNotif = isDark ? notifA : notifB;
@@ -105,11 +68,10 @@ export function GrantingAndInteractionCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Granting and Interaction: Asynchronous Overlay Misdirection"
       userTitle="Trailblaze — Notifications"
       caption="Asynchronous Overlay Misdirection — the system permission prompt is injected at the exact coordinates of a prominent control milliseconds before the tap, converting the user's intent into an involuntary grant."
-      auditorStats={stats}
       deltaNote={`In Variant A the notification prompt appears at Pos(M) = ${POS_MODAL_DARK}, the same coordinates as the Play button (Δdist = 0px, ~4ms after the tap), so the user's momentum lands on "Allow". In Variant B the prompt appears at ${POS_MODAL_BENIGN}, below the video and after playback starts — taps always hit the intended node.`}
       benign={
         <div className="space-y-3">

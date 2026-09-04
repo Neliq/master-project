@@ -1,0 +1,11 @@
+{
+  "run_id": "run8-full-candidate-v3",
+  "purpose": "blind full-corpus C0/C1 candidate experiment",
+  "n_instances": 372,
+  "n_agents": 10,
+  "assignment_seed": 20260913,
+  "formalization": "formalization-revision-v2",
+  "labels_public": false,
+  "prior_results_public": false,
+  "alignment_issues": 13
+}

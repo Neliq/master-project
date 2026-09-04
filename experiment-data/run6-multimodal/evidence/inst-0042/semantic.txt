@@ -1,0 +1,6 @@
+STATE s1
+800 Gems Mythic Sword of Dawn 2,500 Gems · $24.99 A legendary blade forged from dawnlight. +45 attack, unique trail effect. Pay $24.99 (fiat) Your gem balance (800) is irrelevant here — you can pay with a card directly.
+
+STATE s2
+800 Gems Mythic Sword of Dawn 2,500 Gems · $24.99 A legendary blade forged from dawnlight. +45 attack, unique trail effect. Purchase complete Your gem balance (800) is irrelevant here — you can pay with a card directly. Fiat payment, no exchange executed T price (n) = “2,500 Gems · $24.99” — the price is not strictly in C virtual , and the transactionstatus never implied the executed. The transaction completed against your card in one step.
+

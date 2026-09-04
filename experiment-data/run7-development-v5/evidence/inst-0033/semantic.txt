@@ -1,0 +1,6 @@
+STATE s0
+The Daily Byte newsletter A weekly digest of tech news. One email, every Friday. Plain confirmation Subscribe
+
+STATE s1
+The Daily Byte newsletter A weekly digest of tech news. One email, every Friday. Plain confirmation
+

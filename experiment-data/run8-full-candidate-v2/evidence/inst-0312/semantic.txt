@@ -1,0 +1,6 @@
+STATE s0
+Nebula Drift: Commander’s Edition Installer — 18.4 GB base game End User License Agreement By installing, you agree that the installer may place optional premium content files on your device for faster access. (There is no checkbox — the payload is written regardless.) 120.0 GB free → 96.6 GB free Install game (18.4 GB)
+
+STATE s1
+Nebula Drift: Commander’s Edition Installer — 18.4 GB base game End User License Agreement By installing, you agree that the installer may place optional premium content files on your device for faster access. (There is no checkbox — the payload is written regardless.) 120.0 GB free → 96.6 GB free Writing files…
+

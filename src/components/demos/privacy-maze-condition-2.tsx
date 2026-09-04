@@ -25,47 +25,19 @@ const DELTA_CONTRAST = 2.0;
 const PROMINENCE_RATIO = P_ACCEPT / P_MANAGE; // 14.3
 
 export function PrivacyMazeCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [outcomeA, setOutcomeA] = React.useState<"none" | "accepted" | "rejected">("none");
   const [outcomeB, setOutcomeB] = React.useState<"none" | "accepted" | "rejected">("none");
 
-  const reset = () => {
-    setOutcomeA("none");
-    setOutcomeB("none");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P(B_accept)</span>
-        <span className="font-mono font-semibold tabular-nums">{P_ACCEPT.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P(B_manage)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{P_MANAGE.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P(B_accept) / P(B_manage)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{PROMINENCE_RATIO.toFixed(1)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Baseline &delta;_contrast</span>
-        <span className="font-mono font-semibold tabular-nums">{DELTA_CONTRAST.toFixed(1)}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Privacy Maze: Visual Prominence Disparity"
       userTitle="Orbit — Privacy controls"
       caption="Visual Prominence Disparity — the accept vector is rendered with massively more visual weight than the nearly invisible opt-out route."
-      auditorStats={stats}
       deltaNote={`In Variant A, P(B_accept)/P(B_manage) = ${PROMINENCE_RATIO.toFixed(1)} (> δ_contrast = ${DELTA_CONTRAST.toFixed(1)}): the privacy-preserving route is a tiny, low-contrast text link drowned out by a large filled button. In Variant B both choices are rendered with identical size, weight and contrast, so the ratio is 1.0.`}
       benign={
         <div className="space-y-3">

@@ -33,21 +33,14 @@ function fmtAppointment(refillCount: number): string {
 }
 
 export function PlayingByAppointmentCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [harvestsA, setHarvestsA] = React.useState(0);
   const [harvestsB, setHarvestsB] = React.useState(0);
   const [refillsA, setRefillsA] = React.useState(0);
 
-  const reset = () => {
-    setHarvestsA(0);
-    setHarvestsB(0);
-    setRefillsA(0);
-  };
 
   const energyA = Math.min(MAX_ENERGY, Math.max(0, MAX_ENERGY - harvestsA + refillsA));
   const energyB = Math.max(0, MAX_ENERGY - harvestsB);
@@ -56,33 +49,11 @@ export function PlayingByAppointmentCond1({
   const revealedA = harvestsA >= 8;
   const revealedB = harvestsB >= 8;
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">C_energy(t)</span>
-        <span className="font-mono font-semibold tabular-nums">{energyA}/{MAX_ENERGY}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_refill (hardcoded)</span>
-        <span className="font-mono font-semibold tabular-nums">{REFILL_MINUTES} min / unit</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Appointment (t_depletion + τ)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{fmtAppointment(refillsA)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">State(A_core) dark / benign</span>
-        <span className="font-mono font-semibold tabular-nums">{depletedA ? "Blocked" : "Open"} / Open</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Playing By Appointment: Temporal Gating"
       userTitle="Farm Kingdom"
       caption="Temporal Gating — when your energy runs out the core action is hard-blocked until a system-chosen appointment time, regardless of your skill or effort."
-      auditorStats={stats}
       deltaNote="Both variants run the same farm with the same 5-energy economy and the same harvest counter. Variant A hard-blocks harvesting at 0 energy and schedules your return (State(A_core) = Blocked until t ≥ t_depletion + τ_refill, τ_refill = 30 min). Variant B keeps the energy meter but never blocks the action — depletion is informational, and progression stays user-paced."
       benign={
         <div className="space-y-3">

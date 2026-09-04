@@ -1,0 +1,6 @@
+STATE s0
+Order summary Confirm your purchase details below. Recommended option Pro Plan — annual $89.00 Tax $7.12 Total due today $96.12 Complete purchase SAVE 20% Cancel order
+
+STATE s1
+Order summary Confirm your purchase details below. Recommended option Pro Plan — annual $89.00 Tax $7.12 Total due today $96.12 Complete purchase SAVE 20% Cancel order Order placed Your order confirmation is ready.
+

@@ -1,0 +1,6 @@
+STATE s1
+NewsPulse — live news feed Scroll toward the bottom. Content loads in batches — but only when you ask for it. 8 items 1. Markets rally as central bank holds rates steady 2. Study finds morning light improves sleep quality 3. Local bakery wins national award for sourdough 4. City council votes on new bike-lane network 5. Researchers publish open data on ocean currents 6. Startup raises €40M for AI-powered weather models 7. Theatre season opens with a sold-out premiere 8. New transit app adds real-time delay alerts Load more stories
+
+STATE s2
+NewsPulse — live news feed Scroll toward the bottom. Content loads in batches — but only when you ask for it. 8 items 1. Markets rally as central bank holds rates steady 2. Study finds morning light improves sleep quality 3. Local bakery wins national award for sourdough 4. City council votes on new bike-lane network 5. Researchers publish open data on ocean currents 6. Startup raises €40M for AI-powered weather models 7. Theatre season opens with a sold-out premiere 8. New transit app adds real-time delay alerts Loading next batch… Loading…
+

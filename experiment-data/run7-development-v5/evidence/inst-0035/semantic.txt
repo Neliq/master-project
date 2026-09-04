@@ -1,0 +1,6 @@
+STATE s0
+Checkout step 3 of 3 · review Order summary 1 item AeroSound X9 Headphones $129.99 Donation to Plant-a-Tree $2.00 You may also like to round up your purchase. This optional donation supports reforestation projects. Total $129.99 Pay $129.99
+
+STATE s1
+Checkout step 3 of 3 · review Order summary 1 item AeroSound X9 Headphones $129.99 Donation to Plant-a-Tree $2.00 You may also like to round up your purchase. This optional donation supports reforestation projects. Total $129.99 Pay $129.99 Consent preceded inclusion The line’s text still entails “optional add-on” — but the userconsented = False — you left it unchecked and paid the base price. The disclosure language here is a genuine choice, not camouflage.
+

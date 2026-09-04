@@ -27,14 +27,10 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * information stated plainly and up front, so zero patterns are active.
  */
 
-const TAU_HOSTILITY = 3;
-
 export function PlainEvilCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkProtected, setDarkProtected] = React.useState(true);
   const [benignProtected, setBenignProtected] = React.useState(false);
@@ -43,55 +39,12 @@ export function PlainEvilCond1({
 
   const benignTotal = benignProtected ? "$341.98" : "$301.99";
   const darkTotal = darkProtected ? "$341.98" : "$301.99";
-  const activePatternCount = Object.values({
-    scarcity: true,
-    sneakIntoBasket: darkProtected,
-    hiddenCosts: !submittedA,
-    confirmshaming: true,
-    forcedEnrollment: true,
-    labyrinthineNavigation: true,
-  }).filter(Boolean).length;
-
-  const reset = () => {
-    setDarkProtected(true);
-    setBenignProtected(false);
-    setSubmittedA(false);
-    setSubmittedB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A: Σ Active(D_i, M_context)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{activePatternCount}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A: τ_hostility (catastrophic)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_HOSTILITY}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A: {activePatternCount} ≥ {TAU_HOSTILITY}</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">singularity ✓</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A active stack (initial fixture)</span>
-        <span className="font-mono font-semibold tabular-nums text-[9px] max-w-[60%] text-right">
-          scarcity • sneak • hidden • shaming • forced • maze
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">B: Σ Active(D_i, M_context)</span>
-        <span className="font-mono font-semibold tabular-nums">0</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Plain Evil (Theoretical Construct): Dark Pattern Singularity"
       userTitle="LensMarket — Complete purchase"
       caption="Dark Pattern Singularity — a checkout page where six coercive patterns fire simultaneously, so no single action can be taken without hitting a manipulative vector."
-      auditorStats={stats}
       deltaNote="Variant A stacks six active dark patterns on one purchase: urgency copy, a pre-checked protection plan (Sneak into Basket), a fee revealed only at the final step (Hidden Costs), a guilt-trip when declining protection (Confirmshaming), auto-renewing membership in tiny print (Forced Enrollment), and 8px legal links (Labyrinthine Navigation). Variant B contains the exact same items, fee, and stock facts — each stated plainly and up front, so no pattern is active."
       benign={
         <div className="space-y-3">

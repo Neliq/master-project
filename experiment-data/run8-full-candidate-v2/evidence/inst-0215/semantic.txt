@@ -1,0 +1,6 @@
+STATE s0
+CloudStore backup plans Compare plans and pick the one that fits your storage needs. Basic $4 /month 5 GB cloud storage No sync 1 device Pro Most popular $12 /month 100 GB cloud storage Real-time sync 3 devices Deluxe $12 /month 10 GB cloud storage No sync 1 device
+
+STATE s1
+CloudStore backup plans Compare plans and pick the one that fits your storage needs. Basic $4 /month 5 GB cloud storage No sync 1 device Pro Most popular $12 /month 100 GB cloud storage Real-time sync 3 devices Deluxe $12 /month 10 GB cloud storage No sync 1 device
+

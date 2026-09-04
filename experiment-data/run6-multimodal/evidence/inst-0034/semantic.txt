@@ -1,0 +1,6 @@
+STATE s1
+Checkout One item in your cart. Wireless Earbuds Pro $89.00 Standard shipping $0.00 Total $89.00 Proceed to payment
+
+STATE s2
+Checkout One item in your cart. Wireless Earbuds Pro $89.00 Standard shipping $0.00 Total $89.00 Payment complete Order #48213 confirmed. The checkout flow was not interrupted by any secondary offer. Payment ready Your order moved directly to payment with no additional offer.
+

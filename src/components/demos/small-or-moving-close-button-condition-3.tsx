@@ -24,51 +24,19 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function SmallOrMovingCloseButtonCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [aDismissed, setADismissed] = React.useState(false);
   const [bDismissed, setBDismissed] = React.useState(false);
 
-  const reset = () => {
-    setADismissed(false);
-    setBDismissed(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">AccessibleName(N_close) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500 max-w-[55%] truncate">
-          “Continue reading”
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent(AccessibleName)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">Proceed ≠ Dismissal</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">AccessibleName(N_close) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500 max-w-[55%] truncate">
-          “Close dialog”
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent(AccessibleName)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">Dismissal ✓</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Small or Moving Close Button: Semantic Obfuscation of Dismissal Labels"
       userTitle="Streamly — Newsletter prompt"
       caption="Semantic Obfuscation of Dismissal Labels — the dismissal control's accessible name says “Continue reading”, so its semantic intent is progression, not dismissal."
-      auditorStats={stats}
       deltaNote="Both variants dismiss the modal with one click. In Variant A the only dismissal vector is a button labeled 'Continue' (accessible name 'Continue reading') with no disclosure that it closes the dialog — AccessibleName(N_close) maps to Intent = Proceed ≠ Dismissal — so users and screen readers are told they are progressing when the control actually closes the dialog. In Variant B the X is named 'Close dialog' and Intent = Dismissal."
       benign={
         <div className="space-y-3">

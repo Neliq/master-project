@@ -28,11 +28,9 @@ const DELTA_T = 14 * 60 + 59; // 14:59 — the "offer duration" Δt
 const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 
 export function FearOfMissingOutFomoCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [secondsA, setSecondsA] = React.useState(DELTA_T);
   const [secondsB, setSecondsB] = React.useState(DELTA_T);
@@ -44,17 +42,6 @@ export function FearOfMissingOutFomoCond1({
   const [boughtA, setBoughtA] = React.useState(false);
   const [boughtB, setBoughtB] = React.useState(false);
 
-  const reset = () => {
-    setSecondsA(DELTA_T);
-    setSecondsB(DELTA_T);
-    setSessionsA(0);
-    setSessionsB(0);
-    setResets(0);
-    setDarkRevealed(false);
-    setBenignRevealed(false);
-    setBoughtA(false);
-    setBoughtB(false);
-  };
 
   // One shared, genuinely-decrementing deadline (the "server-side" clock).
   React.useEffect(() => {
@@ -77,33 +64,11 @@ export function FearOfMissingOutFomoCond1({
     setBenignRevealed(true); // timer untouched: T(s₁) = T(s₀) − elapsed
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δ t (offer duration)</span>
-        <span className="font-mono font-semibold tabular-nums">14:59 (899 s)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T(s₀) at load</span>
-        <span className="font-mono font-semibold tabular-nums">≈ Δ t</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T(s₁) after new session (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{resets > 0 ? `≈ Δ t — reset ×${resets}` : "—"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sessions simulated</span>
-        <span className="font-mono font-semibold tabular-nums">A: {sessionsA} / B: {sessionsB}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Fear Of Missing Out (FOMO): Artificial Temporal Scarcity"
       userTitle="AeroGlide X — Flash sale"
       caption="Artificial Temporal Scarcity — a countdown that deterministically resets its full duration on every new session instead of reflecting a genuine, universal deadline."
-      auditorStats={stats}
       deltaNote="Variant A’s “new session” button resets the shared countdown to a full 14:59 (T(s₁) ≈ Δt — fabricated urgency). Variant B’s identical button leaves the countdown untouched, so it continues from its current value like a real server-side deadline."
       benign={
         <div className="space-y-3">

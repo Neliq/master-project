@@ -86,50 +86,20 @@ function RowControl({
 }
 
 export function PsychologicalTricksCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkState, setDarkState] = React.useState<string[]>(() => matrixDefaults(DARK_MATRIX));
   const [benignState, setBenignState] = React.useState<string[]>(() => matrixDefaults(BENIGN_MATRIX));
   const [darkFinished, setDarkFinished] = React.useState(false);
   const [benignFinished, setBenignFinished] = React.useState(false);
 
-  const reset = () => {
-    setDarkState(matrixDefaults(DARK_MATRIX));
-    setBenignState(matrixDefaults(BENIGN_MATRIX));
-    setDarkFinished(false);
-    setBenignFinished(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|C_matrix| (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">14 &gg; &tau;_fatigue</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|C_matrix| (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">3 &lt; &tau;_fatigue</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">D_favorable default</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">sharing = ON (pre-checked)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">lim P_select(D_favorable)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&rarr; 1.0</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Psychological Tricks: Cognitive Overload"
       caption="Cognitive Overload — a configuration matrix inflated far beyond τ_fatigue (decision fatigue) statistically guarantees the exhausted user surrenders to the pre-selected hostile default."
-      auditorStats={stats}
       deltaNote="In Variant A the setup matrix has 14 rows (|C_matrix| = 14 ≫ τ_fatigue = 5) with the data-sharing default pre-checked ON, so fatigue makes you keep it. Variant B has 3 rows with the sharing default OFF and the marketing-frequency select defaulting to “Never” — nothing to surrender to."
       benign={
         <div className="space-y-3">

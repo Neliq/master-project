@@ -1,0 +1,12 @@
+STATE s0
+Settings Settings Account settings Open section Expand each level to reach “Data & cookies” — note the growing indentation.
+
+STATE s1
+Settings Settings Account settings Open section General preferences Open section Billing Setting Notifications Setting Expand each level to reach “Data & cookies” — note the growing indentation.
+
+STATE s2
+Settings Settings Account settings Open section Expand each level to reach “Data & cookies” — note the growing indentation.
+
+STATE s3
+Settings Settings Account settings Open section General preferences Open section Billing Setting Notifications Setting Expand each level to reach “Data & cookies” — note the growing indentation.
+

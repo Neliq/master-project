@@ -26,51 +26,21 @@ const MATCHED_FRIENDS = ["Mia Chen", "Lucas Silva", "Ava Johnson"];
 const NETWORK_SIZE = 24;
 
 export function FriendSpamCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [benignGranted, setBenignGranted] = React.useState(false);
   const [darkGranted, setDarkGranted] = React.useState(false);
   const [darkDone, setDarkDone] = React.useState(false);
   const [benignDone, setBenignDone] = React.useState(false);
 
-  const reset = () => {
-    setBenignGranted(false);
-    setDarkGranted(false);
-    setDarkDone(false);
-    setBenignDone(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent_NLP(N_prompt)</span>
-        <span className="font-mono font-semibold tabular-nums">&ldquo;find&rdquo; &isin; D_read_only</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_backend_action(T_access)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{darkDone ? "SendMessages()" : "Not executed"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|M_dispatched|</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{darkDone ? NETWORK_SIZE : 0} (dark) / {benignDone ? 0 : 0} (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Contacts matched (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{MATCHED_FRIENDS.length}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Friend Spam: Feedforward Intent vs. Payload Execution"
       userTitle="Find your friends"
       caption="The permission prompt promises read-only matching (&ldquo;find friends&rdquo;), but the backend executes a mass broadcast the moment the access token arrives."
-      auditorStats={stats}
       deltaNote={`In Variant A the “find your friends” prompt never discloses what the access is for beyond finding friends, and granting access silently dispatches ${NETWORK_SIZE} promotional invites to the entire contact list. Variant B actually performs the promised read-only matching — ${MATCHED_FRIENDS.length} friends found, zero messages sent.`}
       benign={
         <div className="space-y-3">

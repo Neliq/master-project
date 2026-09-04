@@ -1,0 +1,12 @@
+STATE s0
+Pulse — your feed 3 posts Morning run along the canal — 8 km done. Finally finished the shelf I've been building. This café's flat white is dangerously good. Refresh feed
+
+STATE s1
+Pulse — your feed 4 posts Morning run along the canal — 8 km done. Finally finished the shelf I've been building. This café's flat white is dangerously good. New plant on the windowsill. Name pending. Refresh feed No action commitment
+
+STATE s2
+Pulse — your feed 5 posts Morning run along the canal — 8 km done. Finally finished the shelf I've been building. This café's flat white is dangerously good. New plant on the windowsill. Name pending. Read 60 pages before the alarm even rang. Refresh feed No action commitment
+
+STATE s3
+Pulse — your feed 6 posts Morning run along the canal — 8 km done. Finally finished the shelf I've been building. This café's flat white is dangerously good. New plant on the windowsill. Name pending. Read 60 pages before the alarm even rang. The fog over the bay this morning was unreal. Refresh feed No action commitment
+

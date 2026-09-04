@@ -25,11 +25,9 @@ import { AlertTriangle, CheckCircle2, Play, X } from "lucide-react";
 const TAU_LOCK = 15; // s — hardcoded mandatory wait
 
 export function CountdownOnAdsCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [phaseA, setPhaseA] = React.useState<"idle" | "ad" | "playing">("idle");
   const [tActiveA, setTActiveA] = React.useState(0);
@@ -72,42 +70,12 @@ export function CountdownOnAdsCond2({
     setTActiveB(0);
   };
 
-  const reset = () => {
-    setPhaseA("idle");
-    setTActiveA(0);
-    setAdClicksA(0);
-    setAdOpenedA(false);
-    setPhaseB("idle");
-    setTActiveB(0);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_lock (mandatory wait)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_LOCK}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">t_active (time in ad, A)</span>
-        <span className="font-mono font-semibold tabular-nums">{tActiveA}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">N_close ∈ DOM(t)?</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">∉ for t &lt; τ_lock (A) / ∈ from t=0 (B)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Clicks that opened the ad (A)</span>
-        <span className="font-mono font-semibold tabular-nums">{adClicksA}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Countdown On Ads: Dynamic Affordance Injection"
       userTitle="Streamly — Watch video"
       caption="Dynamic Affordance Injection — no exit node exists anywhere in the render tree until the exact moment the countdown expires, so the user cannot even plan their departure."
-      auditorStats={stats}
       deltaNote="Variant A omits the 'X' close node (and any other exit indicator) from the DOM for the entire 15s lock — the ad is the only clickable surface, so clicks meant to escape open the ad itself. Variant B renders the identical ad with the 'X' present from the first second, so the user can leave at any moment."
       benign={
         <div className="space-y-3">

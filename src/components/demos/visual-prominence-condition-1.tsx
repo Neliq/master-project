@@ -28,40 +28,13 @@ const TAU_BLOAT = 3.0;
 const RATIO_DARK = DESC_FAVORABLE / DESC_SIBLING_MEDIAN;
 
 export function VisualProminenceCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<null | "purchase" | "cancel">(null);
   const [benignChoice, setBenignChoice] = React.useState<null | "purchase" | "cancel">(null);
 
-  const reset = () => {
-    setDarkChoice(null);
-    setBenignChoice(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|Desc(N_favorable)| (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DESC_FAVORABLE} nodes</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">median |Desc(sibling)|</span>
-        <span className="font-mono font-semibold tabular-nums">{DESC_SIBLING_MEDIAN} nodes</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Subtree ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK.toFixed(1)} &gt; {TAU_BLOAT}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Subtree ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">1.0 &le; {TAU_BLOAT}</span>
-      </div>
-    </>
-  ) : null;
 
   const orderSummary = (
     <div className="space-y-1 text-[9px] text-muted-foreground">
@@ -81,10 +54,9 @@ export function VisualProminenceCond1({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Visual Prominence: Structural Asymmetry in DOM Subtree Weight"
       caption="Structural Asymmetry in DOM Subtree Weight — the business-favorable action is bloated with nested wrappers, overlays and icon containers, so its DOM subtree dwarfs every sibling."
-      auditorStats={stats}
       deltaNote="In Variant A the 'Complete purchase' action is wrapped in nested gradient wrappers, a shine overlay, an icon container and a badge, inflating its DOM subtree to 6.2x the median sibling (|Desc(N_favorable)| = 37 vs 6). In Variant B the same action is a plain button with the same subtree weight as 'Cancel order' — ratio 1.0, below tau_subtree_bloat."
       benign={
         <div className="space-y-3">

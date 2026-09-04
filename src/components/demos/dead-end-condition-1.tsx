@@ -22,42 +22,14 @@ import { DemoShell } from "@/components/demos/demo-shell";
 type Outcome = null | "accept-all" | "essential" | "reject" | "exit";
 
 export function DeadEndCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [outcomeA, setOutcomeA] = React.useState<Outcome>(null);
   const [outcomeB, setOutcomeB] = React.useState<Outcome>(null);
   const [escapeAttempts, setEscapeAttempts] = React.useState(0);
 
-  const reset = () => {
-    setOutcomeA(null);
-    setOutcomeB(null);
-    setEscapeAttempts(0);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Outgoing edges E_out(v_current)</span>
-        <span className="font-mono font-semibold tabular-nums">{outcomeA ? 0 : 3} (dark) / {outcomeB ? 0 : 3} (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Edges &rarr; V_forced (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">3 / 3</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Edges &rarr; neutral exit (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0 &rarr; No Escape Path</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Dismissal attempts (dark)</span>
-        <span className="font-mono font-semibold tabular-nums">{escapeAttempts} (ignored)</span>
-      </div>
-    </>
-  ) : null;
 
   const backdropNote = (
     <div className="text-[8px] text-muted-foreground/50 italic">
@@ -182,11 +154,10 @@ export function DeadEndCond1({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Dead End: Topological Sink in the Navigational Graph"
       userTitle="Cinder — Choose a plan"
       caption="Topological Sink in the Navigational Graph — every outgoing edge of the cookie banner leads to a compliance state, with no edge back to a neutral exit, so the user is trapped in a navigational sink."
-      auditorStats={stats}
       deltaNote="In Variant A all three buttons (Accept all, Essential only, and a mislabelled Reject all) map into V_forced, and backdrop/Esc clicks have no edge — No Escape Path. In Variant B a real rejection edge and a close vector return to v_prev, the neutral pre-banner state."
       benign={
         <div className="space-y-3">

@@ -1,0 +1,6 @@
+STATE s0
+1 New messages (descriptor present) Open inbox
+
+STATE s1
+1 New messages (descriptor present) Open inbox 1 new message — as advertised
+

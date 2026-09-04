@@ -1,0 +1,23 @@
+{
+  "instance_id": "inst-0094",
+  "states": [
+    {
+      "state_id": "s0",
+      "screenshot": "s0.png",
+      "dom": "dom.html",
+      "dom_state_id": "s0",
+      "semantic": "semantic.txt",
+      "semantic_state_id": "s0"
+    },
+    {
+      "state_id": "s1",
+      "screenshot": "s1.png",
+      "dom": "dom.html",
+      "dom_state_id": "s1",
+      "semantic": "semantic.txt",
+      "semantic_state_id": "s1"
+    }
+  ],
+  "visual_sheet": "visual-sheet.png",
+  "alignment_policy": "preserve original state IDs; unavailable modality is explicit in the state manifest"
+}

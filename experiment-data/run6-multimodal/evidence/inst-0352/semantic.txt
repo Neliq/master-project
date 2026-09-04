@@ -1,0 +1,9 @@
+STATE s1
+Account settings StreamFlow Premium — billed monthly. Everything you see here is in English. en Cancel subscription
+
+STATE s2
+Account settings StreamFlow Premium — billed monthly. Everything you see here is in English. en Confirm cancellation Do you really want to cancel your subscription? You will keep access until the end of the current billing period. Yes, cancel my subscription No, keep my subscription
+
+STATE s3
+Account settings StreamFlow Premium — billed monthly. Everything you see here is in English. en Subscription cancelled The termination flow stayed in the session language end to end — the lexicon = { en }. You read exactly what you confirmed: your subscription was cancelled deliberately.
+

@@ -39,52 +39,24 @@ const needDark = (s: number) => Math.pow(2, s);
 const needBenign = (s: number) => s + 1;
 
 export function GrindingCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [actionsA, setActionsA] = React.useState(0);
   const [actionsB, setActionsB] = React.useState(0);
 
-  const reset = () => {
-    setActionsA(0);
-    setActionsB(0);
-  };
 
   const dark = stageProgress(actionsA, needDark);
   const benign = stageProgress(actionsB, needBenign);
   const revealedA = actionsA >= 15;
   const revealedB = actionsB >= 15;
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">{"E(L_i → L_{i+1}) (dark)"}</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{needDark(dark.stage)} forges</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">{"E(L_i → L_{i+1}) (benign)"}</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{needBenign(benign.stage)} forges</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">{"V(L_{i+1}) reward"}</span>
-        <span className="font-mono font-semibold tabular-nums">+{GOLD_PER_LEVEL} gold (linear k)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E/V ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums">{needDark(dark.stage)}/{GOLD_PER_LEVEL}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Grinding: Exponential Effort Scaling"
       userTitle="Forge Master"
       caption="Exponential Effort Scaling — every level demands exponentially more forges (c^i) while the reward stays a flat +10 gold, building a mathematical wall that exhausts the player."
-      auditorStats={stats}
       deltaNote="Both variants run the same forge with the same action counter and the same +10 gold reward. Variant A needs 2^i forges per level (exponential), Variant B only i+1 (linear) — so after the same number of clicks, A's next level is far more expensive while the reward is identical."
       benign={
         <div className="space-y-3">

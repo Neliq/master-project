@@ -24,47 +24,19 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const REMAINING = "02:59:41";
 
 export function PlayingByAppointmentCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [claimedA, setClaimedA] = React.useState(false);
   const [claimedB, setClaimedB] = React.useState(false);
 
-  const reset = () => {
-    setClaimedA(false);
-    setClaimedB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_temporal)/A_viewport (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 0.75 &gt; τ</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_temporal)/A_viewport (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">≈ 0.10</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Saturation(N_temporal) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.92 &gt; 0.8</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Time remaining</span>
-        <span className="font-mono font-semibold tabular-nums">{REMAINING}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Playing By Appointment: Visual Prominence of Temporal-Gating Indicators"
       userTitle="Harvest Moon Festival"
       caption="Visual Prominence of Temporal-Gating Indicators — a pulsing, high-saturation countdown ballooned to viewport-dominant scale turns an artificial deadline into the central visual event."
-      auditorStats={stats}
       deltaNote="Both variants show the identical event with the identical 02:59:41 remaining. Variant A renders the countdown as a giant pulsing, high-saturation block covering ~75% of the panel (A(N_temporal)/A_viewport > τ_appointment; Saturation > 0.8). Variant B shrinks the same timer to a small muted corner chip — the reward content leads, and the deadline merely informs."
       benign={
         <div className="space-y-3">

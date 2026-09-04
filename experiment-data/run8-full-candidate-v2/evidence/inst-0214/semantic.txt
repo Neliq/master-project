@@ -1,0 +1,9 @@
+STATE s0
+CityGuide — location consent The app wants to share your location with 14 advertising partners. window 5.0s Show consent prompt
+
+STATE s1
+CityGuide — location consent The app wants to share your location with 14 advertising partners. window 5.0s Share location with 14 partners? By continuing you agree to share location data with 14 advertising partners. Nothing is shared unless you tick the box and click I agree below — the timer never registers consent. I agree to share my location 5 window = 5.0s · ticks 1000ms I agree Decline
+
+STATE s2
+CityGuide — location consent The app wants to share your location with 14 advertising partners. window 5.0s
+

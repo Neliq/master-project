@@ -25,11 +25,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function PrivacyZuckeringCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Variant A: single fused checkbox drives both data classes (indivisible).
   const [aAll, setAAll] = React.useState(false);
@@ -39,41 +37,12 @@ export function PrivacyZuckeringCond1({
   const [bMonetization, setBMonetization] = React.useState(false);
   const [bCreated, setBCreated] = React.useState(false);
 
-  const reset = () => {
-    setAAll(false);
-    setACreated(false);
-    setBEssential(false);
-    setBMonetization(false);
-    setBCreated(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Access(D_essential)</span>
-        <span className="font-mono font-semibold tabular-nums">A: {String(aAll)} · B: {String(bEssential)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Access(D_monetization)</span>
-        <span className="font-mono font-semibold tabular-nums">A: {String(aAll)} · B: {String(bMonetization)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∃ t_alt (essential w/o monetization) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">¬∃ — fused toggle</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∃ t_alt (essential w/o monetization) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">∃ — granular toggles</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Privacy Zuckering: Bundled Consent and Granularity Violation"
       userTitle="Orbit — Create account"
       caption="Bundled Consent and Granularity Violation — essential service access and monetization tracking are fused into one indivisible consent toggle, so no alternative grants one without the other."
-      auditorStats={stats}
       deltaNote="In Variant A a single checkbox fuses Access(D_essential) with Access(D_monetization): you cannot create an account without accepting profiling/brokerage — ¬∃ t_alt. In Variant B the two data classes get separate toggles, so essential access exists without monetization (t_alt exists)."
       benign={
         <div className="space-y-3">

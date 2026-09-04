@@ -1,0 +1,39 @@
+{
+  "instance_id": "inst-0301",
+  "states": [
+    {
+      "state_id": "s0",
+      "screenshot": "s0.png",
+      "dom": "dom.html",
+      "dom_state_id": "s0",
+      "semantic": "semantic.txt",
+      "semantic_state_id": "s0"
+    },
+    {
+      "state_id": "s1",
+      "screenshot": "s1.png",
+      "dom": "dom.html",
+      "dom_state_id": "s1",
+      "semantic": "semantic.txt",
+      "semantic_state_id": "s1"
+    },
+    {
+      "state_id": "s2",
+      "screenshot": "s2.png",
+      "dom": "dom.html",
+      "dom_state_id": "s2",
+      "semantic": "semantic.txt",
+      "semantic_state_id": "s2"
+    },
+    {
+      "state_id": "s3",
+      "screenshot": "s3.png",
+      "dom": "dom.html",
+      "dom_state_id": "s3",
+      "semantic": "semantic.txt",
+      "semantic_state_id": "s3"
+    }
+  ],
+  "visual_sheet": "visual-sheet.png",
+  "alignment_policy": "preserve original state IDs; unavailable modality is explicit in the state manifest"
+}

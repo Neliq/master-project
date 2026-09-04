@@ -28,52 +28,20 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function PositiveOrNegativeFramingCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<"opt_in" | "opt_out" | null>(null);
   const [benignChoice, setBenignChoice] = React.useState<"opt_in" | "opt_out" | null>(null);
   const [darkSubmitted, setDarkSubmitted] = React.useState(false);
   const [benignSubmitted, setBenignSubmitted] = React.useState(false);
 
-  const reset = () => {
-    setDarkChoice(null);
-    setBenignChoice(null);
-    setDarkSubmitted(false);
-    setBenignSubmitted(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(B_opt_in) — opt-in consequence</span>
-        <span className="font-mono font-semibold tabular-nums">True (trial active)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(B_opt_out) — opt-out consequence</span>
-        <span className="font-mono font-semibold tabular-nums">False (no trial)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(B_opt_in) ≡ ¬A(B_opt_out)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">✓ satisfied</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Selected vector</span>
-        <span className="font-mono font-semibold tabular-nums">
-          {darkChoice ? (darkChoice === "opt_in" ? "B_opt_in" : "B_opt_out") : "—"}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Positive Or Negative Framing: Identification of Mutually Exclusive Vectors"
       caption="Identification of Mutually Exclusive Vectors — a strict binary choice between opt-in and opt-out where the opt-out pole is painted as a loss, exploiting loss aversion to push you toward the gain-framed vector."
-      auditorStats={stats}
       deltaNote="Both variants present the exact same two vectors with the exact same boolean consequences (A(B_opt_in) ≡ ¬A(B_opt_out) holds in both). Variant A negatively frames the opt-out — 'you will lose your exports and pay more later' — manufacturing a loss; Variant B states the same facts neutrally."
       benign={
         <div className="space-y-3">

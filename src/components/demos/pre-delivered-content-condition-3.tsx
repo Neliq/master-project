@@ -29,47 +29,19 @@ const ASSETS = [
 ];
 
 export function PreDeliveredContentCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [clickedA, setClickedA] = React.useState<number | null>(null);
   const [clickedB, setClickedB] = React.useState<number | null>(null);
 
-  const reset = () => {
-    setClickedA(null);
-    setClickedB(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Frame(T_asset) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&ldquo;Purchaseable&rdquo;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Frame(T_asset) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">&ldquo;Installed&rdquo;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">IsLocal(A_asset)</span>
-        <span className="font-mono font-semibold tabular-nums">True (all 3)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">On-disk footprint</span>
-        <span className="font-mono font-semibold tabular-nums">8.4 GB</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pre-Delivered Content: Semantic Framing of Local Assets as Purchase Opportunities"
       userTitle="PixelQuest — Game library"
       caption="Semantic Framing of Local Assets as Purchase Opportunities — already-downloaded content is semantically reframed as downloadable or unlockable, turning a consumed storage cost into a purchase opportunity."
-      auditorStats={stats}
       deltaNote="Variant A labels on-disk assets “Download” / “Unlock premium” — Frame(T_asset) = Purchaseable while IsLocal(A_asset) = True. Variant B labels the identical assets “Installed — Ready to play”, so the completed download is presented as completed."
       benign={
         <div className="space-y-3">

@@ -1,0 +1,6 @@
+STATE s0
+Manage your subscription Your plan renews on Aug 17 . Current rate: $59/yr. Standard rate from renewal: $99/yr. You can keep your plan, pause it, downgrade, or cancel. Keep my plan Pause for 1 month Downgrade to Basic Cancel my subscription All four options are equally easy to reach. Cancelling takes effect at the end of your current period. Confirm
+
+STATE s1
+Manage your subscription Your plan renews on Aug 17 . Current rate: $59/yr. Standard rate from renewal: $99/yr. You can keep your plan, pause it, downgrade, or cancel. Keep my plan Pause for 1 month Downgrade to Basic Cancel my subscription All four options are equally easy to reach. Cancelling takes effect at the end of your current period. Confirm
+

@@ -21,52 +21,19 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function PriceComparisonPreventionCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkConvert, setDarkConvert] = React.useState<"idle" | "failed">("idle");
   const [benignConvert, setBenignConvert] = React.useState<"idle" | "done">("idle");
   const [copyAttempts, setCopyAttempts] = React.useState(0);
 
-  const reset = () => {
-    setDarkConvert("idle");
-    setBenignConvert("idle");
-    setCopyAttempts(0);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T_price(n)</span>
-        <span className="font-mono font-semibold tabular-nums">“2,990 Coins” ≠ ∅</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">F_convert(T_price) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">∅ (null set)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">F_convert(T_price) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">PLN 149 → USD 38</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Cross-market evaluation</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">blocked</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Copy attempts blocked (dark)</span>
-        <span className="font-mono font-semibold tabular-nums">{copyAttempts}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Price Comparison Prevention: Fiat Decoupling"
       caption="Fiat Decoupling — the price node is non-empty, but the conversion function resolves to the empty set, so the cost cannot be evaluated against any real-world currency."
-      auditorStats={stats}
       deltaNote="Variant A prices the product in proprietary “Coins” with no fiat mapping in the DOM — F_convert(T_price) = ∅ — so the true cost is unknowable and copying the price is blocked. Variant B prices the identical product in PLN and converts to other fiat currencies on demand."
       benign={
         <div className="space-y-3">

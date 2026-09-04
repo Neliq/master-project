@@ -1,0 +1,3 @@
+STATE s1
+Invite friends to PopSocial Choose who you’d like to invite. Nothing is sent until you confirm. Mia Chen mia.chen@example.com Lucas Silva lucas.silva@example.com Ava Johnson ava.johnson@example.com Noah Kim noah.kim@example.com Sofia Rossi sofia.rossi@example.com …and 19 more contacts (not selected) Invite selected (0)
+

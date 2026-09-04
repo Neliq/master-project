@@ -8,7 +8,8 @@ from collections import defaultdict
 from leak_policy import find_leaks
 
 EXP = pathlib.Path(os.environ.get("EXPERIMENT_DIR", pathlib.Path(__file__).resolve().parents[1]))
-RAW = EXP / "results" / "raw"
+RAW = pathlib.Path(os.environ.get("RAW_DIR", EXP / "results" / "raw"))
+AGENT_LIST_DIR = pathlib.Path(os.environ.get("AGENT_LIST_DIR", EXP / "agent-lists-run4"))
 
 _gt = json.loads((EXP / "ground-truth.json").read_text())
 if isinstance(_gt, dict):
@@ -29,7 +30,7 @@ for f in sorted(RAW.glob("agent-*.jsonl")):
     agents[f.stem] = rows
 
 for name, rows in agents.items():
-    assignment_file = EXP / "agent-lists-run4" / f"{name}.txt"
+    assignment_file = AGENT_LIST_DIR / f"{name}.txt"
     assigned = set(re.findall(r"inst-\d+", assignment_file.read_text())) if assignment_file.exists() else set()
     row_ids = {r.get("instance_id") for r in rows}
     if len(rows) != 2 * len(assigned) or row_ids != assigned:

@@ -1,0 +1,6 @@
+STATE s0
+SnapCam Take a photo with your front camera. Location: off SNAPCAM · LIVE PREVIEW To use the camera, SnapCam needs access to your location . Not now Allow location
+
+STATE s1
+SnapCam Take a photo with your front camera. Location: off SNAPCAM · LIVE PREVIEW Camera unavailable. Allow location access to use the camera. Not now Allow location “Not now” doesn’t help — the shutter stays blocked until you Allow.
+

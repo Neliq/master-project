@@ -41,46 +41,18 @@ function CryingMascot({ className = "h-12 w-12" }: { className?: string }) {
 }
 
 export function CutenessCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkStage, setDarkStage] = React.useState<Stage>("menu");
   const [benignStage, setBenignStage] = React.useState<Stage>("menu");
 
-  const reset = () => {
-    setDarkStage("menu");
-    setBenignStage("menu");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_affective &cap; DOM(s_onboard)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">&empty; (absent)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_affective in DOM(s_cancel) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">injected</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Injection condition</span>
-        <span className="font-mono font-semibold tabular-nums">s = s_cancel only</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Current state s</span>
-        <span className="font-mono font-semibold tabular-nums">{darkStage}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Cuteness: Structural Conditional Injection of Affective Assets"
       caption="Structural Conditional Injection of Affective Assets — a crying mascot exists nowhere in the product until the moment you try to leave, then it appears out of thin air."
-      auditorStats={stats}
       deltaNote="Both variants run the same two-state flow (subscribe, then unsubscribe). In Variant A the affective mascot node is injected into the DOM only at s = s_cancel — the unsubscribe step — and is absent at s = s_onboard (I_affective ∩ DOM(s_onboard) = ∅ ∧ I_affective ⊂ DOM(s_cancel)). In Variant B no affective asset is ever injected at any state."
       benign={
         <div className="space-y-3">

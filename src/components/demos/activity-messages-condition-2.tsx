@@ -43,11 +43,9 @@ const LAMBDA_A = Math.round(60000 / INTERVAL_A_MS);
 const LAMBDA_B = Math.round(60000 / INTERVAL_B_MS);
 
 export function ActivityMessagesCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [toastsA, setToastsA] = React.useState<string[]>([]);
   const [toastsB, setToastsB] = React.useState<string[]>([]);
@@ -73,38 +71,9 @@ export function ActivityMessagesCond2({
     };
   }, []);
 
-  const reset = () => {
-    setToastsA([]);
-    setToastsB([]);
-    setFinishedA(false);
-    setFinishedB(false);
-    counterA.current = 0;
-    counterB.current = 0;
-  };
 
   const focusA = Math.max(0, 100 - toastsA.length * 16);
   const focusB = Math.max(0, 100 - toastsB.length * 4);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&lambda;_interrupt — Variant A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{LAMBDA_A}/min &gt; &tau;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&lambda;_interrupt — Variant B</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{LAMBDA_B}/min &lt; &tau;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&tau;_cognitive_load</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_LOAD}/min</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Salience(N) &amp; S_focus</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">Max &rarr; Disrupted (A) / Intact (B)</span>
-      </div>
-    </>
-  ) : null;
 
   const specsCard = (
     <div className="rounded-md border bg-card p-3">
@@ -140,10 +109,9 @@ export function ActivityMessagesCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Activity Messages: Cognitive Interruption"
       caption="Cognitive Interruption — high-salience pop-ups are injected faster than the cognitive load threshold, pushing S_focus toward Disrupted while you try to read the specs."
-      auditorStats={stats}
       deltaNote={`Both panels show the same five specification lines and draw messages from the same pool. Variant A injects them every 1.4 s with maximum visual salience (${LAMBDA_A}/min > &tau; = ${TAU_LOAD}/min) — focus collapses. Variant B injects the same content every 9 s, muted and low-salience (${LAMBDA_B}/min < &tau;) — focus stays intact.`}
       benign={
         <div className="space-y-3">

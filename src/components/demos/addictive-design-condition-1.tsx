@@ -64,21 +64,15 @@ function ReelItem({ index }: { index: number }) {
 }
 
 export function AddictiveDesignCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [countA, setCountA] = React.useState(BASE_ITEMS);
   const [countB, setCountB] = React.useState(BASE_ITEMS);
   const refA = React.useRef<HTMLDivElement>(null);
   const refB = React.useRef<HTMLDivElement>(null);
 
-  const reset = () => {
-    setCountA(BASE_ITEMS);
-    setCountB(BASE_ITEMS);
-  };
 
   // Dark panel: E_append fires automatically near the apparent bottom.
   const handleScrollA = () => {
@@ -89,33 +83,11 @@ export function AddictiveDesignCond1({
     }
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Y_max(t) - Y_scroll(t) &lt; &tau;_buffer</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">E_append = True (auto)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Y_max(t) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&rarr; &infin; ({countA} items)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Y_max(t) (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">fixed ({countB} items)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&tau;_buffer</span>
-        <span className="font-mono font-semibold tabular-nums">{BUFFER_PX}px</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Addictive Design: Infinite Frictionless Continuation"
       userTitle="Reelz — Feed"
       caption="Infinite Frictionless Continuation — content is appended in the background before the user perceives the bottom, so the document never reaches a terminal state."
-      auditorStats={stats}
       deltaNote="Scroll Variant A to the bottom: new reels appear automatically (E_append = True), so the document height keeps growing. Variant B stops at a fixed height, shows an 'End of results' marker, and only continues when you explicitly press 'Load more'."
       benign={
         <div className="space-y-3">

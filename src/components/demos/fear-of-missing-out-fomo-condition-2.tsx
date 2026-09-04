@@ -26,21 +26,14 @@ import { ShoppingCart, Zap } from "lucide-react";
 const REAL_STOCK = 8;
 
 export function FearOfMissingOutFomoCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [phaseA, setPhaseA] = React.useState<"idle" | "bought">("idle");
   const [phaseB, setPhaseB] = React.useState<"idle" | "bought">("idle");
   const [stockA, setStockA] = React.useState(7); // the churning display counter (Variant A)
 
-  const reset = () => {
-    setPhaseA("idle");
-    setPhaseB("idle");
-    setStockA(7);
-  };
 
   // Variant A: sub-second churn — 600 ms refresh (< τ_pulsation ≈ 1000 ms).
   React.useEffect(() => {
@@ -51,33 +44,11 @@ export function FearOfMissingOutFomoCond2({
     return () => window.clearInterval(id);
   }, [phaseA]);
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">min Δt_refresh (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">600 ms</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_pulsation threshold</span>
-        <span className="font-mono font-semibold tabular-nums">≈ 1000 ms</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">600 &lt; 1000</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">triggers</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Real inventory</span>
-        <span className="font-mono font-semibold tabular-nums">{REAL_STOCK} units</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Fear Of Missing Out (FOMO): Visual Pulsation Frequency of Urgency Indicators"
       userTitle="AeroGlide X — Inventory"
       caption="Visual Pulsation Frequency of Urgency Indicators — an urgency indicator refreshing at a sub-second cadence manufactures temporal scarcity through rapid visual churn."
-      auditorStats={stats}
       deltaNote="Variant A’s stock counter rewrites itself every 600 ms (min Δt_refresh = 600 ms < τ_pulsation ≈ 1000 ms) and the “Selling fast” badge pulses, while real inventory stays at 8. Variant B shows the same product with a static indicator — no sub-second churn at all."
       benign={
         <div className="space-y-3">

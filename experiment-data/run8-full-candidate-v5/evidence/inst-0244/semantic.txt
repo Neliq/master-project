@@ -1,0 +1,12 @@
+STATE s0
+TorchMate — Flashlight A local utility. Works entirely on your device. Off Switch on flashlight TorchMate requires contact access to continue To use the flashlight, please allow TorchMate to read your contacts. Allow contact access Decline
+
+STATE s1
+TorchMate — Flashlight A local utility. Works entirely on your device. Off Switch on flashlight
+
+STATE s2
+TorchMate — Flashlight A local utility. Works entirely on your device. On Switch off flashlight
+
+STATE s3
+TorchMate — Flashlight A local utility. Works entirely on your device. Off Switch on flashlight
+

@@ -1,0 +1,3 @@
+STATE s1
+Choose your car insurance 8 policies. Compare the actual differences below — excess, breakdown cover, and courtesy car are what separate them. Policy Price/mo Excess Breakdown Courtesy car Essential £9 £250 No No Essential Plus £11 £250 Yes No Complete £13 £150 No No Complete Plus £15 £150 Yes No Total £17 £100 No No Total Plus £19 £100 Yes No Premium £22 £100 Yes Yes Premium Plus £25 £100 Yes Yes Choose a policy
+

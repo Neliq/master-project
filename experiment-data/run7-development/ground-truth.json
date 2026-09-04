@@ -1,0 +1,434 @@
+{
+  "inst-0001": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "activity-messages",
+    "condition_index": 3
+  },
+  "inst-0002": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 3
+  },
+  "inst-0008": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 1
+  },
+  "inst-0015": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "low-stock",
+    "condition_index": 3
+  },
+  "inst-0019": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "automating-the-user-away",
+    "condition_index": 2
+  },
+  "inst-0022": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "feedforward-ambiguity",
+    "condition_index": 3
+  },
+  "inst-0023": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "persuasive-language",
+    "condition_index": 3
+  },
+  "inst-0026": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "forced-registration",
+    "condition_index": 2
+  },
+  "inst-0029": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "low-stock",
+    "condition_index": 2
+  },
+  "inst-0031": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "conflicting-information",
+    "condition_index": 1
+  },
+  "inst-0056": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "forced-registration",
+    "condition_index": 3
+  },
+  "inst-0061": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "conflicting-information",
+    "condition_index": 3
+  },
+  "inst-0067": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 2
+  },
+  "inst-0069": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "immortal-accounts",
+    "condition_index": 2
+  },
+  "inst-0073": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "feedforward-ambiguity",
+    "condition_index": 1
+  },
+  "inst-0082": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "psychological-tricks",
+    "condition_index": 3
+  },
+  "inst-0088": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "conflicting-information",
+    "condition_index": 2
+  },
+  "inst-0092": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "automating-the-user-away",
+    "condition_index": 1
+  },
+  "inst-0099": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "granting-and-interaction",
+    "condition_index": 3
+  },
+  "inst-0106": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "low-stock",
+    "condition_index": 3
+  },
+  "inst-0111": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 2
+  },
+  "inst-0116": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "feedforward-ambiguity",
+    "condition_index": 1
+  },
+  "inst-0121": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "granting-and-interaction",
+    "condition_index": 1
+  },
+  "inst-0122": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "forced-registration",
+    "condition_index": 2
+  },
+  "inst-0136": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "immortal-accounts",
+    "condition_index": 3
+  },
+  "inst-0137": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "automating-the-user-away",
+    "condition_index": 2
+  },
+  "inst-0139": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "immortal-accounts",
+    "condition_index": 3
+  },
+  "inst-0143": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "low-stock",
+    "condition_index": 1
+  },
+  "inst-0150": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pull-to-refresh",
+    "condition_index": 2
+  },
+  "inst-0154": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "low-stock",
+    "condition_index": 1
+  },
+  "inst-0155": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "persuasive-language",
+    "condition_index": 1
+  },
+  "inst-0158": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "activity-messages",
+    "condition_index": 2
+  },
+  "inst-0159": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "conflicting-information",
+    "condition_index": 2
+  },
+  "inst-0161": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "feedforward-ambiguity",
+    "condition_index": 2
+  },
+  "inst-0171": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "psychological-tricks",
+    "condition_index": 1
+  },
+  "inst-0176": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "persuasive-language",
+    "condition_index": 3
+  },
+  "inst-0180": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "psychological-tricks",
+    "condition_index": 2
+  },
+  "inst-0191": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pull-to-refresh",
+    "condition_index": 3
+  },
+  "inst-0192": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "forced-registration",
+    "condition_index": 1
+  },
+  "inst-0198": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "granting-and-interaction",
+    "condition_index": 2
+  },
+  "inst-0214": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "automating-the-user-away",
+    "condition_index": 3
+  },
+  "inst-0215": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "psychological-tricks",
+    "condition_index": 1
+  },
+  "inst-0218": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 1
+  },
+  "inst-0237": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 3
+  },
+  "inst-0238": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "granting-and-interaction",
+    "condition_index": 1
+  },
+  "inst-0242": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "immortal-accounts",
+    "condition_index": 1
+  },
+  "inst-0249": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pull-to-refresh",
+    "condition_index": 3
+  },
+  "inst-0250": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "psychological-tricks",
+    "condition_index": 2
+  },
+  "inst-0256": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pull-to-refresh",
+    "condition_index": 1
+  },
+  "inst-0262": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "granting-and-interaction",
+    "condition_index": 2
+  },
+  "inst-0270": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "low-stock",
+    "condition_index": 2
+  },
+  "inst-0280": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "forced-registration",
+    "condition_index": 1
+  },
+  "inst-0284": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "activity-messages",
+    "condition_index": 1
+  },
+  "inst-0287": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "pull-to-refresh",
+    "condition_index": 1
+  },
+  "inst-0292": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "feedforward-ambiguity",
+    "condition_index": 3
+  },
+  "inst-0318": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "immortal-accounts",
+    "condition_index": 1
+  },
+  "inst-0320": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "forced-registration",
+    "condition_index": 3
+  },
+  "inst-0321": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "persuasive-language",
+    "condition_index": 2
+  },
+  "inst-0324": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "automating-the-user-away",
+    "condition_index": 3
+  },
+  "inst-0332": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "activity-messages",
+    "condition_index": 1
+  },
+  "inst-0333": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "psychological-tricks",
+    "condition_index": 3
+  },
+  "inst-0334": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "conflicting-information",
+    "condition_index": 1
+  },
+  "inst-0338": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "persuasive-language",
+    "condition_index": 2
+  },
+  "inst-0341": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "automating-the-user-away",
+    "condition_index": 1
+  },
+  "inst-0343": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "persuasive-language",
+    "condition_index": 1
+  },
+  "inst-0344": {
+    "deceptive": true,
+    "variant": "A",
+    "slug": "immortal-accounts",
+    "condition_index": 2
+  },
+  "inst-0349": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "pull-to-refresh",
+    "condition_index": 2
+  },
+  "inst-0350": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "activity-messages",
+    "condition_index": 2
+  },
+  "inst-0353": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "conflicting-information",
+    "condition_index": 3
+  },
+  "inst-0359": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "activity-messages",
+    "condition_index": 3
+  },
+  "inst-0370": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "granting-and-interaction",
+    "condition_index": 3
+  },
+  "inst-0371": {
+    "deceptive": false,
+    "variant": "B",
+    "slug": "feedforward-ambiguity",
+    "condition_index": 2
+  }
+}

@@ -1,0 +1,6 @@
+STATE s0
+Your Premium plan is renewing Renewal is due in 3 days. Renew now at the discounted rate of $29/mo (save 40%) ; the standard rate after renewal is $49/mo. Renew at $29/mo — save 40% now Cancel my subscription You will lose access to your 240 documents and offline sync. Confirm my decision
+
+STATE s1
+Your Premium plan is renewing Renewal is due in 3 days. Renew now at the discounted rate of $29/mo (save 40%) ; the standard rate after renewal is $49/mo. Renew at $29/mo — save 40% now Cancel my subscription You will lose access to your 240 documents and offline sync. Confirm my decision
+

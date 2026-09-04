@@ -26,52 +26,20 @@ const AREA_BENIGN = "0.08";
 const TAU_GAMIFICATION = 0.3;
 
 export function SocialPyramidCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const invites = 0;
   const [benignCopied, setBenignCopied] = React.useState(false);
   const [darkCopied, setDarkCopied] = React.useState(false);
   const [darkShared, setDarkShared] = React.useState(false);
 
-  const reset = () => {
-    setBenignCopied(false);
-    setDarkCopied(false);
-    setDarkShared(false);
-  };
 
   const copyReferralLink = (dark: boolean) => {
     void navigator.clipboard?.writeText("https://focusly.example/join/demo").catch(() => undefined);
     (dark ? setDarkCopied : setBenignCopied)(true);
   };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_ref) / A_viewport — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{AREA_DARK} (&gt; &tau;)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_ref) / A_viewport — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{AREA_BENIGN} (&le; &tau;)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&tau;_gamification</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_GAMIFICATION}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Gamified elements (dark)</span>
-        <span className="font-mono font-semibold tabular-nums">7 (bar, badges ×3, counter, CTA ×2)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Gamified elements (benign)</span>
-        <span className="font-mono font-semibold tabular-nums">1 (text link)</span>
-      </div>
-    </>
-  ) : null;
 
   const contentCard = (
     <div className="rounded-md border bg-card p-3">
@@ -94,11 +62,10 @@ export function SocialPyramidCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Social Pyramid: Visual Prominence of Referral-Progress Gamification"
       userTitle="Focusly"
       caption="Visual Prominence of Referral-Progress Gamification — invite-N-friends progress indicators are scaled up until recruitment becomes the dominant visual event of the app."
-      auditorStats={stats}
       deltaNote={`In Variant A the referral banner (progress bar, tier badges, counter, dual CTAs) occupies ${AREA_DARK} of the viewport — A(N_ref)/A_viewport > τ_gamification (${TAU_GAMIFICATION}). In Variant B the identical mechanic is a ${AREA_BENIGN} muted line with no fabricated activity counter, keeping it a secondary feature.`}
       benign={
         <div className="space-y-3">

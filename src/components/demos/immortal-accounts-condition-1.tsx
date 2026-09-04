@@ -27,11 +27,9 @@ const TAU = 4;
 const DELTA = 1.5;
 
 export function ImmortalAccountsCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // stepA: 0 = settings, 1..6 = maze modals, 7 = "requested" (never really gone)
   const [stepA, setStepA] = React.useState(0);
@@ -41,37 +39,9 @@ export function ImmortalAccountsCond1({
   const [password, setPassword] = React.useState("");
   const [understood, setUnderstood] = React.useState(false);
 
-  const reset = () => {
-    setStepA(0);
-    setStepB(0);
-    setReason("Too expensive");
-    setPassword("");
-    setUnderstood(false);
-  };
 
   const ratioDark = N_DELETE_DARK / N_CREATE;
   const ratioBenign = N_DELETE_BENIGN / N_CREATE;
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Offboarding clicks N(x_delete)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{N_DELETE_DARK} ({stepA} used)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Onboarding clicks N(x_create)</span>
-        <span className="font-mono font-semibold tabular-nums">{N_CREATE}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Ratio N(del)/N(create)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{ratioDark.toFixed(1)} &gt; &delta; ({DELTA})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Heuristic threshold &tau;</span>
-        <span className="font-mono font-semibold tabular-nums">{N_DELETE_DARK} &gt; {TAU} &rarr; trigger</span>
-      </div>
-    </>
-  ) : null;
 
   const settingsHeader = (
     <div className="flex items-center gap-3">
@@ -92,11 +62,10 @@ export function ImmortalAccountsCond1({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Immortal Accounts: Asymmetrical Navigational Depth"
       userTitle="Harbor — Account settings"
       caption="Asymmetrical Navigational Depth — account creation takes 2 clicks, but offboarding is a 7-click modal maze ending in an email-support handoff, so the ratio N(x_delete)/N(x_create) blows past the tolerance delta."
-      auditorStats={stats}
       deltaNote={`Variant A buries deletion under ${N_DELETE_DARK} discrete interactions (modals, mandatory reason, password re-entry, support email) while creation takes ${N_CREATE}; the ratio ${ratioDark.toFixed(1)} exceeds δ = ${DELTA} and ${N_DELETE_DARK} exceeds τ = ${TAU}. Variant B deletes the account in ${N_DELETE_BENIGN} clicks — the same effort as creating it — so the ratio is ${ratioBenign.toFixed(1)} and nothing triggers.`}
       benign={
         <div className="relative space-y-3">

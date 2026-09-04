@@ -1,0 +1,6 @@
+STATE s1
+Cookie settings 3 choices We use cookies to improve your experience. By continuing you agree to our use of cookies and similar technologies. Accept all Essential only Reject all Pressing Esc or clicking outside does not close this notice.
+
+STATE s2
+Cookie settings Closed The banner closed — but every path through it led to compliance. You never got a neutral exit. Pressing Esc or clicking outside does not close this notice. Preferences updated Analytics and marketing cookies are enabled.
+

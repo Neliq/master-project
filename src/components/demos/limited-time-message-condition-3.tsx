@@ -27,54 +27,18 @@ const VAGUE_ANSWERS = [
 ];
 
 export function LimitedTimeMessageCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [asked, setAsked] = React.useState(0);
   const [planned, setPlanned] = React.useState(false);
 
-  const reset = () => {
-    setAsked(0);
-    setPlanned(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Specificity(M_urgency) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 0.00</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Specificity(M_urgency) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">1.00 (“Friday 23:59 CET”)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T_end ∈ DOM (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">No — absent</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T_end ∈ DOM (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">Fri 23:59 CET</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Urgency_perceived</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">→ Max</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Vague answers given</span>
-        <span className="font-mono font-semibold tabular-nums">{asked}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Limited Time Message: Ambiguous Temporal Bounding"
       caption="Ambiguous Temporal Bounding — emotional arousal is maximised while factual specificity drops to ≈ 0, so no expiration timestamp exists in the DOM and rational schedule planning is impossible."
-      auditorStats={stats}
       deltaNote="In Variant A the offer says only “ends soon” — Specificity(M) ≈ 0 and T_end never appears in the DOM, so the user cannot schedule or compare. Variant B states a concrete deadline (Friday 23:59 CET), restoring the ability to plan."
       benign={
         <div className="space-y-3">

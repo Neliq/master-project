@@ -28,11 +28,9 @@ const TRIAL_DAYS = 7;
 const PLAN_PRICE = "$14.99";
 
 export function ForcedContinuityCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [daysLeftA, setDaysLeftA] = React.useState(TRIAL_DAYS);
   const [daysLeftB, setDaysLeftB] = React.useState(TRIAL_DAYS);
@@ -45,39 +43,12 @@ export function ForcedContinuityCond1({
   const advanceToExpiryA = () => setDaysLeftA(0);
   const advanceToExpiryB = () => setDaysLeftB(0);
 
-  const reset = () => {
-    setDaysLeftA(TRIAL_DAYS);
-    setDaysLeftB(TRIAL_DAYS);
-    setBChoice(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">t vs t_expiry</span>
-        <span className="font-mono font-semibold tabular-nums">{trialEndedA ? "t ≥ t_expiry" : `${daysLeftA}d left`}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_account(t)</span>
-        <span className="font-mono font-semibold tabular-nums">{trialEndedA ? "S_trial → S_premium" : "S_trial"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Consent_explicit(t) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">False — never asked</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Consent_explicit(t) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{bChoice ? "True — recorded" : "requested at t_expiry"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Forced Continuity: Time-Triggered Silent State Mutation"
       userTitle="Streamly — Membership"
       caption="Time-Triggered Silent State Mutation — the trial-to-paid transition fires purely off the clock, with no contemporary consent at the point of conversion."
-      auditorStats={stats}
       deltaNote="Both variants share the same 7-day clock. When it crosses t_expiry, Variant A silently mutates the trial into premium and charges the cached token — no prompt anywhere. Variant B shows a renewal reminder and a one-click cancel before expiry, then halts at t_expiry and asks for explicit consent before any charge fires."
       benign={
         <div className="space-y-3">

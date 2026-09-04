@@ -1,0 +1,6 @@
+STATE s1
+Flash sale — 50% off hue about 15° Only today — ends in 4 hours Don’t miss it. Full-price customers pay double. Inspect offer container (hue probe) Add to cart — 50% off
+
+STATE s2
+Flash sale — 50% off hue about 15° Only today — ends in 4 hours Don’t miss it. Full-price customers pay double. Inspect offer container (hue probe) the hue = 15° in [0°, 45°] ✓ the match, “ends in | only today”) = True ✓ Offer ends soon Add to cart — 50% off
+

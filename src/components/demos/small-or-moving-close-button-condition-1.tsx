@@ -24,8 +24,6 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * touch-target minimum whose click handler dismisses cleanly.
  */
 
-const TAU_REBIND_MS = 400; // human reaction-time bound
-const REBIND_MS = 120; // measured rebind rate in Variant A
 const EVASION_POSITIONS = [
   { top: 18, right: 28 },
   { top: 44, right: 12 },
@@ -33,23 +31,15 @@ const EVASION_POSITIONS = [
 ];
 
 export function SmallOrMovingCloseButtonCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [aState, setAState] = React.useState<"open" | "intercepted" | "dismissed">("open");
   const [bState, setBState] = React.useState<"open" | "dismissed">("open");
   const [xPos, setXPos] = React.useState({ top: 8, right: 8 });
   const [evasions, setEvasions] = React.useState(0);
 
-  const reset = () => {
-    setAState("open");
-    setBState("open");
-    setXPos({ top: 8, right: 8 });
-    setEvasions(0);
-  };
 
   // Kinetic evasion: the close handler rebinds to a new coordinate on hover.
   const dodge = () => {
@@ -60,33 +50,11 @@ export function SmallOrMovingCloseButtonCond1({
     });
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">IsIntercepted(N_close)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True (capture-phase)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δt_rebind(N_close)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">~{REBIND_MS} ms</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_rebind (reaction time)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_REBIND_MS} ms</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Evasion events</span>
-        <span className="font-mono font-semibold tabular-nums">{evasions}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Small or Moving Close Button: Structural Event-Listener Commandeering on Dismissal Vectors"
       userTitle="Streamly — Video player"
       caption="Structural Event-Listener Commandeering on Dismissal Vectors — the close button's event handler is hijacked: it evades the cursor faster than human reaction time, and its clicks are redirected instead of dismissing."
-      auditorStats={stats}
       deltaNote="In Variant A the X's handler is commandeered twice over: it rebinds to a new position on hover (Δt_rebind ≈ 120 ms < τ_rebind = 400 ms) and a parent capture-phase listener intercepts the click, redirecting you to the offer page instead of closing. In Variant B the same X is stationary, sized at the WCAG 44×44 px touch-target minimum, and its click dismisses the modal."
       benign={
         <div className="space-y-3">

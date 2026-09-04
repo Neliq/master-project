@@ -60,7 +60,12 @@ for (const slug of slugs) {
         await new Promise((r) => setTimeout(r, 100));
 
         const perShell = async (shell) => {
-          const panel = shell.querySelector("[data-dp-content]") || shell;
+          let panel = shell.querySelector("[data-dp-content]");
+          if (variant === "B") {
+            const grid = shell.firstElementChild;
+            const cards = grid ? [...grid.children].filter((e) => e.matches("div")) : [];
+            panel = cards[1]?.querySelector("[data-dp-content]") || null;
+          }
           if (!panel) return null;
 
           const states = [];

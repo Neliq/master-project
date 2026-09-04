@@ -29,36 +29,12 @@ const NOTE_BENIGN = "Privacy settings apply to this site.";
 type Choice = "none" | "all" | "essential";
 
 export function WrongLanguageCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [choice, setChoice] = React.useState<Choice>("none");
 
-  const reset = () => setChoice("none");
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">L_browser (declared locale)</span>
-        <span className="font-mono font-semibold tabular-nums">en-US</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">L_DOM(N_critical) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">fr</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Mismatch</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">fr ≠ en-US</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Consent choice</span>
-        <span className="font-mono font-semibold tabular-nums">{choice}</span>
-      </div>
-    </>
-  ) : null;
 
   const banner = (dark: boolean) => (
     <div className="rounded-md border bg-card p-3">
@@ -116,10 +92,9 @@ export function WrongLanguageCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Wrong Language: Visual-Linguistic Locale Mismatch"
       caption="Visual-Linguistic Locale Mismatch — the consent banner looks English, but the critical opt-out control is rendered in a language that does not match your declared locale."
-      auditorStats={stats}
       deltaNote="In Variant A the critical opt-out control is rendered in French while your browser locale is en-US — L_DOM(N_critical) = fr ≠ L_browser — while Variant B renders the identical control in your locale."
       benign={
         <div className="space-y-3">

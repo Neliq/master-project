@@ -10,7 +10,6 @@
 import type { ComponentType } from "react";
 
 import type { ViewMode } from "@/components/demos/demo-shell";
-import type { AnnotationItem } from "@/components/demos/demo-shell";
 
 import { ActivityMessagesCond1 } from "./demos/activity-messages-condition-1";
 import { ActivityMessagesCond2 } from "./demos/activity-messages-condition-2";
@@ -200,12 +199,8 @@ import { WrongLanguageCond2 } from "./demos/wrong-language-condition-2";
 import { WrongLanguageCond3 } from "./demos/wrong-language-condition-3";
 
 export interface DemoProps {
-  /** "user" hides all audit chrome; "auditor" reveals it. */
+  /** "user" shows the product UI; "auditor" adds comparison context. */
   mode?: ViewMode;
-  /** Auditor-only: dark-pattern element callouts. */
-  annotations?: AnnotationItem[];
-  /** Auditor-only: re-mount the demo. */
-  onRestart?: () => void;
 }
 
 export type DemoComponent = ComponentType<DemoProps>;

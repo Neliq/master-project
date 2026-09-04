@@ -30,50 +30,14 @@ const RATIO_DARK = (W_GUEST_DARK / W_REGISTER_DARK).toFixed(2);
 const RATIO_BENIGN = (W_GUEST_BENIGN / W_REGISTER_BENIGN).toFixed(2);
 
 export function ForcedRegistrationCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [checkoutStartedA, setCheckoutStartedA] = React.useState(false);
   const [guestUsedA, setGuestUsedA] = React.useState(false);
   const [checkoutStartedB, setCheckoutStartedB] = React.useState(false);
 
-  const reset = () => {
-    setCheckoutStartedA(false);
-    setGuestUsedA(false);
-    setCheckoutStartedB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(N_guest) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{W_GUEST_DARK}px²</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(N_guest) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{W_GUEST_BENIGN}px²</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(N_register)</span>
-        <span className="font-mono font-semibold tabular-nums">{W_REGISTER_DARK}px² / {W_REGISTER_BENIGN}px²</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK} &lt; &tau;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{RATIO_BENIGN} &ge; &tau;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&tau;_guest_visibility</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_VISIBILITY}</span>
-      </div>
-    </>
-  ) : null;
 
   const cartSummary = (
     <div className="rounded-md border bg-card p-3">
@@ -97,11 +61,10 @@ export function ForcedRegistrationCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Forced Registration: Visual Degradation of the Guest Checkout Pathway"
       userTitle="Northstar — Checkout"
       caption="Visual Degradation of the Guest Checkout Pathway — the guest option is rendered as a tiny text-only hyperlink while the registration call-to-action dominates as a high-contrast filled button."
-      auditorStats={stats}
       deltaNote={`In Variant A the guest link weighs ${W_GUEST_DARK}px² against ${W_REGISTER_DARK}px² for the registration button — ratio ${RATIO_DARK} < τ_guest_visibility (${TAU_VISIBILITY}), so the user-favorable path is visually buried. In Variant B both buttons weigh ${W_GUEST_BENIGN}px² each — ratio ${RATIO_BENIGN} ≥ τ — so the choice is visually fair.`}
       benign={
         <div className="space-y-3">

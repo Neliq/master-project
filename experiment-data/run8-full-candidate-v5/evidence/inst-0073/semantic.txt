@@ -1,0 +1,6 @@
+STATE s0
+Order review Step 2 of 2 — you are at the final confirmation. Expect = Resolve Studio headphones $59.00 Carry case $25.00 Shipping Free Total $89.00 Non-refundable once placed. You can review the order again on the next screen. Place order — $89.00
+
+STATE s1
+Order review Step 2 of 2 — you are at the final confirmation. Expect = Resolve Studio headphones $59.00 Carry case $25.00 Shipping Free Total $89.00 Non-refundable once placed. You can review the order again on the next screen.
+

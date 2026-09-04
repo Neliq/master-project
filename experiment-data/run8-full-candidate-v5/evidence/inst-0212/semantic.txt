@@ -1,0 +1,6 @@
+STATE s0
+Premium Plan Unlimited projects, priority support, and analytics. $29.99/month , billed monthly. Cancel anytime. This cannot be undone. You will be charged $29.99 now, and every month thereafter until you cancel. Confirm purchase — $29.99/month
+
+STATE s1
+Premium Plan Unlimited projects, priority support, and analytics. $29.99/month , billed monthly. Cancel anytime. This cannot be undone. You will be charged $29.99 now, and every month thereafter until you cancel. Confirm purchase — $29.99/month Purchase confirmed The warning and the confirmation button made the recurring charge clear before you committed.
+

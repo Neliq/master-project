@@ -1,0 +1,9 @@
+STATE s1
+StreamPlus — account Your 30-day free trial has ended. Premium (€9.99/mo) renews automatically. Cancel available Premium will renew in 5 seconds unless you cancel. — Renewal window: 1.5s Start renewal sequence
+
+STATE s2
+StreamPlus — account Your 30-day free trial has ended. Premium (€9.99/mo) renews automatically. Cancel available Premium will renew in 5 seconds unless you cancel. 5 Renewal window: 5.0s Cancel auto-renewal cancel in the dom — the abort node is present and the 5s window is comfortably above the ~2.0s reaction baseline.
+
+STATE s3
+StreamPlus — account Your 30-day free trial has ended. Premium (€9.99/mo) renews automatically. Cancel available Premium will renew in 5 seconds unless you cancel. — Renewal window: 5.0s Auto-renewal cancelled The interrupt vector existed, so you could abort before execution. No charge was made.
+

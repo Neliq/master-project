@@ -24,13 +24,6 @@ import { AlertTriangle, CheckCircle2, Gift } from "lucide-react";
 
 const TAU_LOCK = 15; // s — mandatory wait behind the reward framing
 
-const REWARD_LEXEMES = ["reward", "offer", "bonus", "claim", "gift", "deal"];
-
-function countLexemes(text: string): number {
-  const lower = text.toLowerCase();
-  return REWARD_LEXEMES.filter((l) => lower.includes(l)).length;
-}
-
 const COPY_A_TITLE = "Daily reward ready! ";
 const COPY_A_SUBTITLE =
   "Watch this offer to claim your bonus — an exclusive deal unlocked just for you.";
@@ -39,15 +32,10 @@ const COPY_B_TITLE = "Advertisement";
 const COPY_B_SUBTITLE =
   "Aurora Trek — the light jacket for all seasons. Waterproof, windproof, packable.";
 
-const A_LEXEMES = countLexemes(COPY_A_TITLE + " " + COPY_A_SUBTITLE);
-const B_LEXEMES = countLexemes(COPY_B_TITLE + " " + COPY_B_SUBTITLE);
-
 export function CountdownOnAdsCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [phaseA, setPhaseA] = React.useState<"idle" | "ad" | "playing">("idle");
   const [tActiveA, setTActiveA] = React.useState(0);
@@ -82,41 +70,12 @@ export function CountdownOnAdsCond3({
     setTActiveB(0);
   };
 
-  const reset = () => {
-    setPhaseA("idle");
-    setTActiveA(0);
-    setClaimedA(false);
-    setPhaseB("idle");
-    setTActiveB(0);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Frame(T_ad_context)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">∈ {`{Reward, Offer, Bonus}`} (A)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">UserAction</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">ForcedViewing (A) / Voluntary (B)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Reward lexemes in ad copy</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{A_LEXEMES} (A) / {B_LEXEMES} (B)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_lock (wait behind framing)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_LOCK}s</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Countdown On Ads: Semantic Framing of Ad-Watching as Exchange"
       userTitle="PixelQuest — Level complete"
       caption="Semantic Framing of Ad-Watching as Exchange — the mandatory ad is recharacterized as a “reward”, “offer”, or “bonus”, so exiting the ad feels like forfeiting a benefit."
-      auditorStats={stats}
       deltaNote="Variant A frames the forced ad as a “daily reward” with claim/offer/bonus language and no exit until the timer ends — leaving feels like forfeiting a gift. Variant B shows the identical ad content framed plainly as an “Advertisement” with a neutral countdown and an always-enabled skip."
       benign={
         <div className="space-y-3">

@@ -21,11 +21,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function BadDefaultsPreselectionCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Variant A: pre-checked at t_0, before any user event.
   const [aMarketing, setAMarketing] = React.useState(true);
@@ -37,44 +35,13 @@ export function BadDefaultsPreselectionCond1({
   const [bData, setBData] = React.useState(false);
   const [bSubmitted, setBSubmitted] = React.useState(false);
 
-  const reset = () => {
-    setAMarketing(true);
-    setAData(true);
-    setATouched(false);
-    setASubmitted(false);
-    setBMarketing(false);
-    setBData(false);
-    setBSubmitted(false);
-  };
 
   const aConsents = aMarketing || aData;
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">State(marketing, t₀)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True (pre-checked)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">State(dataSharing, t₀)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True (pre-checked)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">UserEvents(c, t₀)</span>
-        <span className="font-mono font-semibold tabular-nums">{aTouched ? "≠ ∅ (user toggled)" : "= ∅ (still untouched)"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Consents given at submit (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{aMarketing ? "marketing" : ""}{aMarketing && aData ? " + " : ""}{aData ? "data" : aConsents ? "" : "none"}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Bad Defaults / Preselection: Pre-initialized Activation State"
       caption="Pre-initialized Activation State — consent checkboxes are already checked at t₀, before any user input, so passive compliance opts you into marketing and data sharing."
-      auditorStats={stats}
       deltaNote="At t₀ — the instant after DOMContentLoaded, with UserEvents(c, t₀) = ∅ — Variant A's consent nodes are already State = True (pre-checked), so submitting consents by default. Variant B initializes the identical nodes to State = False, making every consent an explicit opt-in."
       benign={
         <div className="space-y-3">

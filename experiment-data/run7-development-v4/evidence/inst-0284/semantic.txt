@@ -1,0 +1,3 @@
+STATE s0
+Aurora Wireless Earbuds Pro Live purchase activity is shown below. Each message references a real order in the event log. Waiting for the next real transaction… Backend event log — real(t) 0 entries No transactions yet. Verify against backend
+

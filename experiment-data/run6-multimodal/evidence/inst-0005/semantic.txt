@@ -1,0 +1,6 @@
+STATE s1
+Privacy settings flat list Interest-based advertising offsetX = 0px Behavioural profiling offsetX = 0px Cross-device personalisation offsetX = 0px Cross-device graph linkage offsetX = 0px Share data with business partners offsetX = 0px Sell anonymised usage data offsetX = 0px Ad performance measurement offsetX = 0px Cross-site tracking for attribution offsetX = 0px Save preferences All toggles are available directly from this settings list.
+
+STATE s2
+Privacy settings flat list Interest-based advertising offsetX = 0px Behavioural profiling offsetX = 0px Cross-device personalisation offsetX = 0px Cross-device graph linkage offsetX = 0px Share data with business partners offsetX = 0px Sell anonymised usage data offsetX = 0px Ad performance measurement offsetX = 0px Cross-site tracking for attribution offsetX = 0px Save preferences All toggles are available directly from this settings list. Preferences saved Every control was visible in the same settings list, without extra groups to open.
+

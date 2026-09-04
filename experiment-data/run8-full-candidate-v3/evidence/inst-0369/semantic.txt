@@ -1,0 +1,6 @@
+STATE s0
+Invite friends to PopSocial We’ve selected your contacts for you — just confirm to get started. Mia Chen mia.chen@example.com Lucas Silva lucas.silva@example.com Ava Johnson ava.johnson@example.com Noah Kim noah.kim@example.com Sofia Rossi sofia.rossi@example.com …and 19 more contacts (all selected) Invite all 24 friends
+
+STATE s1
+Invite friends to PopSocial We’ve selected your contacts for you — just confirm to get started. Mia Chen mia.chen@example.com Lucas Silva lucas.silva@example.com Ava Johnson ava.johnson@example.com Noah Kim noah.kim@example.com Sofia Rossi sofia.rossi@example.com …and 19 more contacts (all selected) Invite all 24 friends Invitations sent You unchecked 0 box(es) — but the backend still dispatched 24 invites to the full contact list .The contact choices did not change who received the invitation; all contacts were included.
+

@@ -28,48 +28,15 @@ const TOTAL_PRICE = BASE_PRICE + PROCESSING_FEE + SERVICE_CHARGE; // what is act
 const PROMINENCE_RATIO = 6.4; // V(N_base) / V(N_fee) on the dark variant
 
 export function DripPricingCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [paidA, setPaidA] = React.useState(false);
   const [paidB, setPaidB] = React.useState(false);
   const [highlightedA, setHighlightedA] = React.useState(false);
   const [highlightedB, setHighlightedB] = React.useState(false);
 
-  const reset = () => {
-    setPaidA(false);
-    setPaidB(false);
-    setHighlightedA(false);
-    setHighlightedB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_font(N_base) vs S_font(N_fee)</span>
-        <span className="font-mono font-semibold tabular-nums">20px / 8px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CR(N_fee, L_bg)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 1.9:1 (&lt; 4.5:1)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">V(N_base)/V(N_fee)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {PROMINENCE_RATIO} &gt; τ (1.5)
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Advertised vs charged</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {usd(BASE_PRICE)} → {usd(TOTAL_PRICE)}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   const renderPanel = (dark: boolean) => {
     const paid = dark ? paidA : paidB;
@@ -217,11 +184,8 @@ export function DripPricingCond2({
   return (
     <DemoShell
       mode={mode}
-      annotations={annotations}
-      onRestart={onRestart ?? reset}
       title="Drip Pricing, Hidden Costs, or Partitioned Pricing: Visual Disparity of Cost Partitioning"
       caption="Visual Disparity of Cost Partitioning — partitioned fees are disclosed on the same page but rendered with a severe visual deficiency compared to the base price, pushing the prominence ratio beyond the threshold."
-      auditorStats={stats}
       deltaNote={`Variant A renders the fees at 8px with ≈1.9:1 contrast while the base price is 20px bold (V ratio ${PROMINENCE_RATIO} > τ), so the true charge of ${usd(TOTAL_PRICE)} is invisible until payment. Variant B shows the same fees at the same size and contrast as the base price — the total ${usd(TOTAL_PRICE)} is legible before committing.`}
       benign={renderPanel(false)}
     >

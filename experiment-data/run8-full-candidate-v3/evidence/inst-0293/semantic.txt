@@ -1,0 +1,6 @@
+STATE s0
+Nebula Drift — Library All installed Every asset below was delivered with your purchase and is already on this device. 4K Texture Pack …/NebulaDrift/data/textures_4k/ Installed Void Campaign Expansion …/NebulaDrift/data/campaign_void/ Installed OST & Art Book …/NebulaDrift/media/ost_artbook/ Installed
+
+STATE s1
+Nebula Drift — Library All installed Every asset below was delivered with your purchase and is already on this device. 4K Texture Pack …/NebulaDrift/data/textures_4k/ Installed Void Campaign Expansion …/NebulaDrift/data/campaign_void/ Installed OST & Art Book …/NebulaDrift/media/ost_artbook/ Installed Already local “4K Texture Pack” (4.2 GB) is at …/NebulaDrift/data/textures_4k/ — the islocal = True and the frame = “Installed”. Nothing to download, nothing to buy.
+

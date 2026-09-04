@@ -1,0 +1,6 @@
+STATE s0
+Common crate — 1 cosmetic sticker Contains one cosmetic sticker (no gameplay effect). Watch one ad to open it free. Common Watch 1 ad to open (4s)
+
+STATE s1
+Common crate — 1 cosmetic sticker Contains one cosmetic sticker (no gameplay effect). Watch one ad to open it free. Common Ad 0:04
+

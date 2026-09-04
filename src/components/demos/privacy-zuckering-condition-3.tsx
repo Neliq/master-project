@@ -39,51 +39,21 @@ const DISCLOSURE_SPECIFIC =
   "SignalHound, and MetaMetrics. Full list: Privacy Policy §3.";
 
 export function PrivacyZuckeringCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [acceptedA, setAcceptedA] = React.useState(false);
   const [createdA, setCreatedA] = React.useState(false);
   const [acceptedB, setAcceptedB] = React.useState(false);
   const [createdB, setCreatedB] = React.useState(false);
 
-  const reset = () => {
-    setAcceptedA(false);
-    setCreatedA(false);
-    setAcceptedB(false);
-    setCreatedB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|E_actual|</span>
-        <span className="font-mono font-semibold tabular-nums">{ENTITY_COUNT} entities</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Specificity(N_disclosure) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.12 &lt; τ_vague</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Specificity(N_disclosure) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">0.93 — named entities</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Disclosure terms (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">“partners” · “affiliates”</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Privacy Zuckering: Semantic Ambiguity of Third-Party Entities"
       userTitle="Orbit — Connected services"
       caption="Semantic Ambiguity of Third-Party Entities — a disclosure built on “partners” and “affiliates” masks a distribution to dozens of named companies."
-      auditorStats={stats}
       deltaNote="Both variants grant the same consent and create the same account. In Variant A the disclosure says “trusted partners and affiliates” (Specificity 0.12 < τ_vague) while 47 named entities actually receive the data. In Variant B the same payload is disclosed by naming the actual companies (Specificity 0.93)."
       benign={
         <div className="space-y-3">

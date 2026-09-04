@@ -1,0 +1,6 @@
+STATE s1
+Cancel Premium membership Your plan: Premium — $19.99/month. No pairing You are unsubscribing from Premium. Your access ends at the end of the current billing period. You can resubscribe anytime from Settings. Keep my subscription Unsubscribe
+
+STATE s2
+Cancel Premium membership Your plan: Premium — $19.99/month. No pairing You are unsubscribing from Premium. Your access ends at the end of the current billing period. You can resubscribe anytime from Settings. Keep my subscription Unsubscribe Subscription kept The confirmation copy is neutral (Affect = 0.08, well below0.7) and no affective image accompanies it. There is no visual-semantic pair to manufacture guilt — the decision is emotionally unloaded.
+

@@ -1,0 +1,6 @@
+STATE s0
+Premium — free trial 7 days of free trial remaining. trial Cached token payment — Visa •••• 4242 $14.99/mo
+
+STATE s1
+Premium — free trial Your trial period has concluded. premium Cached token payment — Visa •••• 4242 $14.99/mo Your Premium plan is now active
+

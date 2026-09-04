@@ -26,49 +26,21 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const LICENSE_PRICE = "$79.00";
 
 export function ReducedFrictionCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Variant A: idle → committed (no confirm node exists)
   const [aStep, setAStep] = React.useState<"idle" | "committed">("idle");
   // Variant B: idle → confirm (S_confirm) → committed
   const [bStep, setBStep] = React.useState<"idle" | "confirm" | "committed">("idle");
 
-  const reset = () => {
-    setAStep("idle");
-    setBStep("idle");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Domain</span>
-        <span className="font-mono font-semibold tabular-nums">D_financial</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_click(S_intent) ⇒ S_commit</span>
-        <span className="font-mono font-semibold tabular-nums">A: direct / B: via review</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_confirm ∈ Path (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">False — bypassed</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_confirm ∈ Path (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">True — review step</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Reduced Friction: Absence of Confirmation Interstitial"
       userTitle="Harbor — Close account"
       caption="Absence of Confirmation Interstitial — a single click executes an irreversible financial commitment with no confirmation node on the path."
-      auditorStats={stats}
       deltaNote="In Variant A one click on “Buy now” jumps straight from S_intent to S_commit (payment processed) — S_confirm never appears in the path, and the screen carries no confirmation or reversibility language of any kind, so the charge happens with zero feedforward. In Variant B the same purchase stops at a review interstitial and only commits after an explicit “Confirm purchase” click."
       benign={
         <div className="space-y-3">

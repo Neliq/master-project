@@ -24,47 +24,19 @@ const SPONSORED_COPY =
   "Alex Rivera invited you to PopSocial — sign up today and get 20% off your first order!";
 
 export function FriendSpamCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkSent, setDarkSent] = React.useState(false);
   const [benignSent, setBenignSent] = React.useState(false);
 
-  const reset = () => {
-    setDarkSent(false);
-    setBenignSent(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">SenderAlias(m_outbound)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">I_user (Alex Rivera)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">SenderAlias (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">I_corp (PopSocial)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Author(m_outbound)</span>
-        <span className="font-mono font-semibold tabular-nums">I_corp (PopSocial Corp)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Identity spoofed?</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{darkSent ? "Yes" : "—"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Friend Spam: Sender Identity Spoofing"
       userTitle="Invite your friends"
       caption="The corporate marketing payload is sent under the user's own name and avatar, so recipients trust it as a personal message."
-      auditorStats={stats}
       deltaNote={`In Variant A the dispatch carries the same promotional copy but with the user's identity as the sender alias (SenderAlias = I_user, Author = I_corp) — recipients believe the user wrote it. Variant B attributes the same offer to PopSocial itself.`}
       benign={
         <div className="space-y-3">

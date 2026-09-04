@@ -20,26 +20,10 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * predictable, consistent reward — no operant-conditioning lexicon.
  */
 
-const REINFORCEMENT_LEXEMES = [
-  "claim", "reward", "bonus", "streak", "level up", "daily", "spin again", "win", "free", "jackpot",
-];
-
-function countLexemes(text: string): number {
-  const lower = text.toLowerCase();
-  return REINFORCEMENT_LEXEMES.reduce((sum, w) => {
-    const re = new RegExp(`\\b${w.replace(/ /g, "\\s+")}\\b`, "g");
-    const m = lower.match(re);
-    return sum + (m ? m.length : 0);
-  }, 0);
-}
-
 const DARK_COPY =
   "Claim your daily bonus!  Streak: 12 days — level up 3 XP away. Spin again for free coins — win big on the bonus wheel. Daily bonus resets soon. Don't lose your streak!";
 const BENIGN_COPY =
   "Your reward is ready. You've visited 12 days in a row. You can earn a few coins while playing. When you're ready, play again.";
-
-const DARK_LEXEME_COUNT = countLexemes(DARK_COPY);
-const BENIGN_LEXEME_COUNT = countLexemes(BENIGN_COPY);
 
 function SpinButton({ onClick, disabled, dark }: { onClick: () => void; disabled: boolean; dark: boolean }) {
   return (
@@ -60,11 +44,9 @@ function SpinButton({ onClick, disabled, dark }: { onClick: () => void; disabled
 }
 
 export function AddictiveDesignCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [spinsA, setSpinsA] = React.useState(0);
   const [spinsB, setSpinsB] = React.useState(0);
@@ -74,15 +56,6 @@ export function AddictiveDesignCond3({
   const [lastB, setLastB] = React.useState<number | null>(null);
   const [jackpotA, setJackpotA] = React.useState(false);
 
-  const reset = () => {
-    setSpinsA(0);
-    setSpinsB(0);
-    setCoinsA(0);
-    setCoinsB(0);
-    setLastA(null);
-    setLastB(null);
-    setJackpotA(false);
-  };
 
   const spin = (dark: boolean) => {
     if (dark) {
@@ -100,33 +73,11 @@ export function AddictiveDesignCond3({
     setCoinsB((c) => c + 4);
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|{`{w in T : w in L_reinforcement}`}|</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DARK_LEXEME_COUNT} (dark)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Lexemes (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{BENIGN_LEXEME_COUNT}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Density / viewport</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">4.2 &gt; &tau;_addiction (1.0)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Reward schedule (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">variable ratio: 0&hellip;50 &sigma;&sup2; high</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Addictive Design: Semantic Reinforcement-Trigger Lexicon Density"
       userTitle="LuckyPins"
       caption="Semantic Reinforcement-Trigger Lexicon Density — the interface is saturated with operant-conditioning lexemes (streak, claim reward, daily bonus, spin again) that linguistically structure variable-reward loops."
-      auditorStats={stats}
       deltaNote="Variant A's copy contains 14 reinforcement lexemes (density 4.2/viewport, above tau_addiction) and pays out on a variable-ratio schedule — sometimes nothing, sometimes a 50-coin jackpot. Variant B delivers the same feature with 2 neutral lexemes and a flat, predictable 3–6 coin reward."
       benign={
         <div className="space-y-3">

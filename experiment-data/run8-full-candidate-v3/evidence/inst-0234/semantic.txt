@@ -1,0 +1,12 @@
+STATE s0
+Sunny Hen Farm Collect eggs to fill the reward bar. The bar… barely moves anymore. Diminishing Golden Egg progress 0.0% · last action +0.00% First collection filled +20% ; your last filled +0.00% . Collect an egg (+1) Collect x5
+
+STATE s1
+Sunny Hen Farm Collect eggs to fill the reward bar. The bar… barely moves anymore. Diminishing Golden Egg progress 20.0% · last action +20.00% First collection filled +20% ; your last filled +20.00% . Collect an egg (+1) Collect x5
+
+STATE s2
+Sunny Hen Farm Collect eggs to fill the reward bar. The bar… barely moves anymore. Diminishing Golden Egg progress 30.0% · last action +10.00% First collection filled +20% ; your last filled +10.00% . Collect an egg (+1) Collect x5
+
+STATE s3
+Sunny Hen Farm Collect eggs to fill the reward bar. The bar… barely moves anymore. Diminishing Golden Egg progress 35.0% · last action +5.00% First collection filled +20% ; your last filled +5.00% . Collect an egg (+1) Collect x5
+

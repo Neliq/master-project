@@ -22,47 +22,14 @@ import { DemoShell } from "@/components/demos/demo-shell";
 
 const SENT_DARK = -0.62;
 const SENT_BENIGN = 0.31;
-const TAU_SENT = -0.3;
-
 export function ForcedRegistrationCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [choiceA, setChoiceA] = React.useState<null | "guest" | "account">(null);
   const [choiceB, setChoiceB] = React.useState<null | "guest" | "account">(null);
 
-  const reset = () => {
-    setChoiceA(null);
-    setChoiceB(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sent(L(N_guest)) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{SENT_DARK.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sent(L(N_guest)) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">+{SENT_BENIGN.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Threshold &tau;_guest_sent</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_SENT.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Trigger (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{SENT_DARK.toFixed(2)} &lt; &tau; &rarr; yes</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Selected option</span>
-        <span className="font-mono font-semibold tabular-nums">{choiceA ?? "—"}</span>
-      </div>
-    </>
-  ) : null;
 
   const cartSummary = (
     <div className="rounded-md border bg-card p-3">
@@ -86,11 +53,10 @@ export function ForcedRegistrationCond3({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Forced Registration: Semantic Framing of the Guest-Checkout Option"
       userTitle="Northstar — Continue as guest"
       caption="Semantic Framing of the Guest-Checkout Option — the guest path is labelled with diminutive, deterring language that frames the privacy-respecting choice as a loss."
-      auditorStats={stats}
       deltaNote={`In Variant A the guest option reads "Continue without benefits — you'll miss out" (Sent = ${SENT_DARK.toFixed(2)} < τ_guest_sent), framing the user-favorable choice as deprivation. In Variant B the same option is described neutrally (Sent = +${SENT_BENIGN.toFixed(2)}): "No account needed — you can create one later."`}
       benign={
         <div className="space-y-3">

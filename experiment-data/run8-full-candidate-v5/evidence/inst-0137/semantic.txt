@@ -1,0 +1,9 @@
+STATE s0
+StreamPlus — account Your 30-day free trial has ended. Premium (€9.99/mo) renews automatically. Renewal options Premium renews automatically in — Renewal window: 1.5s Start renewal sequence
+
+STATE s1
+StreamPlus — account Your 30-day free trial has ended. Premium (€9.99/mo) renews automatically. Renewal options Premium renews automatically in 3 Renewal window: 1.5s Proceed with renewal Renewal options are shown above.
+
+STATE s2
+StreamPlus — account Your 30-day free trial has ended. Premium (€9.99/mo) renews automatically. Renewal options Premium renews automatically in — Renewal window: 1.5s Premium renewed automatically The 1.5s countdown ran below the ~2.0s biological reaction baseline and no cancel button existed, so interception was mathematically improbable — the renewal executed by omission of an interrupt vector.
+

@@ -1,0 +1,6 @@
+STATE s0
+Cancel Premium membership Your plan: Premium — $19.99/month. Please review before leaving You’re breaking our heart… Sad to see you go. Are you really sure? We’ll be lonely without you. Keep my subscription Unsubscribe anyway
+
+STATE s1
+Cancel Premium membership Your plan: Premium — $19.99/month. Please review before leaving You’re breaking our heart… Sad to see you go. Are you really sure? We’ll be lonely without you. Keep my subscription Unsubscribe anyway Subscription kept Your Premium plan remains active.
+

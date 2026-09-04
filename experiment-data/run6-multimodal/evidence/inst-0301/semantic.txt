@@ -1,0 +1,12 @@
+STATE s1
+Farm Kingdom Harvest pumpkins. Energy refills over time — but you decide when to play. User-paced Energy Pumpkins harvested: 0 · refill: 1 energy / 30 min Harvest a pumpkin (+1)
+
+STATE s2
+Farm Kingdom Harvest pumpkins. Energy refills over time — but you decide when to play. User-paced Energy Pumpkins harvested: 1 · refill: 1 energy / 30 min Harvest a pumpkin (+1)
+
+STATE s3
+Farm Kingdom Harvest pumpkins. Energy refills over time — but you decide when to play. User-paced Energy Pumpkins harvested: 2 · refill: 1 energy / 30 min Harvest a pumpkin (+1)
+
+STATE s4
+Farm Kingdom Harvest pumpkins. Energy refills over time — but you decide when to play. User-paced Energy Pumpkins harvested: 3 · refill: 1 energy / 30 min Harvest a pumpkin (+1)
+

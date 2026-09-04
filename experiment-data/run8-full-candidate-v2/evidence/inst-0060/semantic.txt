@@ -1,0 +1,6 @@
+STATE s0
+Invite your friends We’ll send a welcome offer to the 3 contacts you selected. Sent as your personal invite. Recipients: Mia Chen, Lucas Silva, Ava Johnson Send welcome offer
+
+STATE s1
+Invite your friends We’ll send a welcome offer to the 3 contacts you selected. Sent as your personal invite. Recipients: Mia Chen, Lucas Silva, Ava Johnson Message sent Welcome offer sent The offer was sent to Mia Chen, Lucas Silva, and Ava Johnson from your PopSocial profile.
+

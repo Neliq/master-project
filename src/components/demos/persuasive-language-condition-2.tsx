@@ -30,50 +30,18 @@ const TAU_EMPHASIS = 1.5;
 const FW_RATIO = FW_COERCIVE / FW_NEUTRAL;
 
 export function PersuasiveLanguageCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<null | "subscribe" | "not-now">(null);
   const [benignChoice, setBenignChoice] = React.useState<null | "subscribe" | "not-now">(null);
 
-  const reset = () => {
-    setDarkChoice(null);
-    setBenignChoice(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">fontWeight(N_coercive) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{FW_COERCIVE}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">fontWeight(N_neutral)</span>
-        <span className="font-mono font-semibold tabular-nums">{FW_NEUTRAL}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Weight ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{FW_RATIO.toFixed(1)} &gt; {TAU_EMPHASIS}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Area ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{AREA_RATIO_DARK} &gt; {TAU_EMPHASIS}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Weight ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">1.0 &le; {TAU_EMPHASIS}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Persuasive Language: Visual Emphasis Asymmetry on Coercive Text"
       caption="Visual Emphasis Asymmetry on Coercive Text — pressure-language is typographically amplified far beyond the neutral copy that carries the actual facts."
-      auditorStats={stats}
       deltaNote="In Variant A the coercive text 'DON'T MISS OUT — ACT NOW!' is set in weight 800 vs 400 for the neutral copy (ratio 2.0 > tau_emphasis = 1.5) and occupies ~3.8x the bounding-box area in saturated red. In Variant B the exact same information is typeset uniformly (weight ratio 1.0), so no text node is typographically privileged."
       benign={
         <div className="space-y-3">

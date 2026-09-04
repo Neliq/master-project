@@ -1,0 +1,6 @@
+STATE s0
+Mystic Garden Your daily schedule — miss a window and it’s gone forever. Urgent 1 ⏰ Come back at 3 PM — limited window! 2 ⏰ New content drops in 2 hours — don’t be late! 3 ⏰ Your 7-day streak ends tonight — don’t break it! Check availability
+
+STATE s1
+Mystic Garden Your daily schedule — miss a window and it’s gone forever. Urgent 1 ⏰ Come back at 3 PM — limited window! 2 ⏰ New content drops in 2 hours — don’t be late! 3 ⏰ Your 7-day streak ends tonight — don’t break it! Availability checked
+

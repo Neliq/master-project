@@ -1,0 +1,12 @@
+STATE s1
+Harvest Valley Tap to tend your farm. The free path gets… steeper. Much steeper. Free · slow Stage 1 — Sprout 0/1 taps Tend farm (+1 tap)
+
+STATE s2
+Harvest Valley Tap to tend your farm. The free path gets… steeper. Much steeper. Free · slow Stage 2 — Sapling 0/2 taps Tend farm (+1 tap)
+
+STATE s3
+Harvest Valley Tap to tend your farm. The free path gets… steeper. Much steeper. Free · slow Stage 2 — Sapling 1/2 taps Tend farm (+1 tap)
+
+STATE s4
+Harvest Valley Tap to tend your farm. The free path gets… steeper. Much steeper. Free · slow Stage 3 — Orchard 0/4 taps Tend farm (+1 tap) ⚡ Skip this stage instantly — $4.99 Keep tending your farm to reach the next stage.
+

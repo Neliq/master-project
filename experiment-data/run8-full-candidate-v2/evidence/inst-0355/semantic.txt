@@ -1,0 +1,6 @@
+STATE s0
+Last chance to keep your 40% discount! Your plan renews in 2 days — price rises to $99/yr! RENEWAL: AUG 17 AT 11:59 PM Keep my plan & discount Pause for 1 month Downgrade to Basic Cancel my subscription You will keep access through the current billing period after cancellation. Confirm
+
+STATE s1
+Last chance to keep your 40% discount! Your plan renews in 2 days — price rises to $99/yr! RENEWAL: AUG 17 AT 11:59 PM Keep my plan & discount Pause for 1 month Downgrade to Basic Cancel my subscription You will keep access through the current billing period after cancellation. Confirm
+

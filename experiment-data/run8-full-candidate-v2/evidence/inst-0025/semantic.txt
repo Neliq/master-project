@@ -1,0 +1,6 @@
+STATE s0
+Help us plant a tree Add a $2 donation to support reforestation projects. Yes, add a $2 donation No, thanks
+
+STATE s1
+Help us plant a tree Add a $2 donation to support reforestation projects. Yes, add a $2 donation No, thanks
+

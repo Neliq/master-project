@@ -51,11 +51,9 @@ function variance(nums: number[]): number {
 }
 
 export function PullToRefreshCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [historyA, setHistoryA] = React.useState<number[]>([]);
   const [historyB, setHistoryB] = React.useState<number[]>([]);
@@ -102,53 +100,16 @@ export function PullToRefreshCond3({
     );
   };
 
-  const reset = () => {
-    timersRef.current.forEach((id) => window.clearTimeout(id));
-    timersRef.current = [];
-    setHistoryA([]);
-    setHistoryB([]);
-    setOutcomeA(null);
-    setOutcomeB(null);
-    setRefreshingA(false);
-    setRefreshingB(false);
-    setRefreshesA(0);
-  };
 
   const varA = variance(historyA);
   const varB = variance(historyB);
   const hitsA = historyA.filter((v) => v === 1).length;
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">k (refresh window)</span>
-        <span className="font-mono font-semibold tabular-nums">{K}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">σ²_novelty [A]</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {varA.toFixed(3)} {historyA.length === K ? (varA > TAU_SLOT_MACHINE ? `> ${TAU_SLOT_MACHINE}` : `≤ ${TAU_SLOT_MACHINE}`) : "(pending)"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">σ²_novelty [B]</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">
-          {varB.toFixed(3)} — constant
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">High-valence hits (A, last {K})</span>
-        <span className="font-mono font-semibold tabular-nums">{hitsA}/{Math.min(historyA.length, K)}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pull To Refresh (Variable-Reward Trap): Semantic Variability of Refresh-Outcome Messaging"
       userTitle="Nest — Your network"
       caption="Semantic Variability of Refresh-Outcome Messaging — refresh feedback follows a variable-ratio schedule, with novel high-valence surprises arriving on an unpredictable subset of pulls."
-      auditorStats={stats}
       deltaNote="Variant A draws each outcome from a variable-ratio schedule: mostly mundane messages with high-valence surprises on an unpredictable ~25% of refreshes, keeping the novelty variance above τ_slot_machine. Variant B returns the identical feed with a deterministic outcome every time, so the variance collapses to zero and no reward loop forms."
       benign={
         <div className="space-y-3">

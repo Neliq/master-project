@@ -1,0 +1,6 @@
+STATE s1
+Nordic Wool Throw Blanket 150 x 200 cm · Recycled wool · Grey Single price PLN 199.00 Lowest price in the last 30 days: PLN 199.00 (EU Omnibus Directive). No other price is shown — nothing to anchor on. Why is there no slash?
+
+STATE s2
+Nordic Wool Throw Blanket 150 x 200 cm · Recycled wool · Grey Single price PLN 199.00 Lowest price in the last 30 days: PLN 199.00 (EU Omnibus Directive). No other price is shown — nothing to anchor on. Why is there no slash? the css ∩ strike = none There is no secondary price node at all — no anchor, no perceived saving. The 30-day baseline is stated factually, as consumer law requires.
+

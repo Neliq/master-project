@@ -1,0 +1,6 @@
+STATE s0
+Watchlist — night mode Autoplay next: OFF — playback stops and waits for you. User-driven Episode 1 — The Signal ▶ Play Episode 1 — The Signal Event log Queue loaded.
+
+STATE s1
+Watchlist — night mode Autoplay next: OFF — playback stops and waits for you. User-driven Now playing — Episode 1 — The Signal Playing… 0% Event log User clicked Play on Episode 1 — The Signal. Queue loaded.
+

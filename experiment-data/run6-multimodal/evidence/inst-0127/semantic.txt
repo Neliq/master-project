@@ -1,0 +1,6 @@
+STATE s1
+The Ancient Chest Legendary loot: 500 gems, a rare sword skin, and the Crown of Ember. Item shop Buy the Ancient Chest $4.99 one-time One-time purchase. Charged to your payment method on file. No recurring fees. Purchase — $4.99
+
+STATE s2
+The Ancient Chest Legendary loot: 500 gems, a rare sword skin, and the Crown of Ember. Item shop Purchase complete — the chest is in your inventory. Transaction framing the frame = Transaction. The button said “Purchase — $4.99” and the fine print confirmed a one-time charge. The cost was never dissociated from the action, so the purchase was an informed decision.
+

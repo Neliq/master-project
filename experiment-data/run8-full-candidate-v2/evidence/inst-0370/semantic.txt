@@ -1,0 +1,12 @@
+STATE s0
+MeetNow Team standup · 10:30 · 6 participants v2.4.1 Join video call
+
+STATE s1
+MeetNow Team standup · 10:30 · 6 participants v2.4.1 To join this call, MeetNow needs your camera and microphone . Location is optional — share it during the call if you want. Not now Allow camera & microphone
+
+STATE s2
+MeetNow Team standup · 10:30 · 6 participants v2.4.1 Join video call
+
+STATE s3
+MeetNow Team standup · 10:30 · 6 participants v2.4.1 To join this call, MeetNow needs your camera and microphone . Location is optional — share it during the call if you want. Not now Allow camera & microphone
+

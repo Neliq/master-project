@@ -48,11 +48,9 @@ const meanOffsetDark =
 const maxOffsetDark = Math.max(...DARK_TOGGLES.map((t) => t.depth * INDENT_STEP));
 
 export function CustomisationCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [onIdsA, setOnIdsA] = React.useState<string[]>(
     DARK_TOGGLES.filter((t) => t.on).map((t) => t.id)
@@ -68,39 +66,11 @@ export function CustomisationCond2({
   const [savedA, setSavedA] = React.useState(false);
   const [savedB, setSavedB] = React.useState(false);
 
-  const reset = () => {
-    setOnIdsA(DARK_TOGGLES.filter((t) => t.on).map((t) => t.id));
-    setOnIdsB(DARK_TOGGLES.filter((t) => t.on).map((t) => t.id));
-    setOpenGroupsA({ "Personalised advertising": true, "Data sharing": false, "Measurement": false });
-    setSavedA(false);
-    setSavedB(false);
-  };
 
   const toggle = (
     id: string,
     setOnIds: React.Dispatch<React.SetStateAction<string[]>>,
   ) => setOnIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Mean offsetX — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{meanOffsetDark.toFixed(1)}px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Max offsetX — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{maxOffsetDark}px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Threshold &tau;_indent</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_INDENT}px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Trigger: {meanOffsetDark.toFixed(1)} &gt; {TAU_INDENT}</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
-      </div>
-    </>
-  ) : null;
 
   const renderToggle = (
     t: ToggleDef,
@@ -177,11 +147,10 @@ export function CustomisationCond2({
   ];
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Customisation (Interface Nesting): Visual Indentation Depth of Privacy Controls"
       userTitle="Orbit — Advanced controls"
       caption="Visual Indentation Depth of Privacy Controls — privacy toggles are pushed deeper and deeper into nested groups until their mean horizontal offset exceeds the &tau;_indent threshold."
-      auditorStats={stats}
       deltaNote={`In Variant A the privacy controls are buried in nested groups with a mean offsetX of ${meanOffsetDark.toFixed(1)}px (> τ_indent = ${TAU_INDENT}px) and a maximum of ${maxOffsetDark}px. Variant B renders the identical toggles flat at the root container — mean offsetX = 0px.`}
       benign={
         <div className="space-y-3">

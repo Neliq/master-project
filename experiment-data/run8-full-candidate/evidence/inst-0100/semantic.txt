@@ -1,0 +1,6 @@
+STATE s0
+Nova X100 Mirrorless Camera 26MP APS-C sensor · 4K60 video · IBIS $899.00 2-Year Extended Warranty Optional add-on — you can decline it $49.00 Add to cart
+
+STATE s1
+Nova X100 Mirrorless Camera 26MP APS-C sensor · 4K60 video · IBIS $899.00 2-Year Extended Warranty Optional add-on — you can decline it $49.00 Added to cart ✓ Cart Nova X100 Mirrorless Camera $899.00 Subtotal $899.00 Granular choice preserved A discrete event e exists: adding the camera alone yields state = {Camera} for $899.00. The warranty is an independent, unchecked option you can accept or decline.
+

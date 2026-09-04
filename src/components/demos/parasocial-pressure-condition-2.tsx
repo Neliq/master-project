@@ -47,46 +47,18 @@ function Mascot({ size = 36, pleading = false }: { size?: number; pleading?: boo
 }
 
 export function ParasocialPressureCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [benignSupported, setBenignSupported] = React.useState(false);
   const [darkSupported, setDarkSupported] = React.useState(false);
-  const reset = () => {
-    setBenignSupported(false);
-    setDarkSupported(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">min d_spatial(i, N_prompt)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">4px &lt; &tau;_social</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(i) / A_viewport (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.18 &gt; 0.05</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(i) / A_viewport (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">0.02 &lt; 0.05</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&tau;_social (intimacy radius)</span>
-        <span className="font-mono font-semibold tabular-nums">48px</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Parasocial Pressure: Visual Proximity of Anthropomorphic Imagery to Action Prompts"
       userTitle="Support Coco’s world"
       caption="Visual Proximity of Anthropomorphic Imagery to Action Prompts — a mascot face rendered inside the parasocial-intimacy radius of the payment button weaponizes social compliance."
-      auditorStats={stats}
       deltaNote="Both variants offer the identical $2.99 support prompt. In Variant A the mascot is large (18% of the viewport) and sits 4px from the button, inside tau_social; in Variant B the same face is 2% of the viewport and 96px away, so the decision point carries no social pressure."
       benign={
         <div className="space-y-3">

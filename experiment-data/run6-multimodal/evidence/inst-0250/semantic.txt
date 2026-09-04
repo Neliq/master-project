@@ -1,0 +1,6 @@
+STATE s1
+Finish setting up your account 3 settings Three quick choices — you can change any of them later. Email me order updates Share my activity data with advertising partners Marketing email frequency Never Weekly Daily Finish setup
+
+STATE s2
+Finish setting up your account 3 settings Three quick choices — you can change any of them later. Email me order updates Share my activity data with advertising partners Marketing email frequency Never Weekly Daily Finish setup
+

@@ -1,0 +1,6 @@
+STATE s0
+⏰ Limited-time event ends soon! 02:59:41 double points · last chance Harvest Moon Festival Ending soon Seasonal event: earn double points on every harvest until the event ends. Claim reward — before time runs out!
+
+STATE s1
+⏰ Limited-time event ends soon! 02:59:41 double points · last chance Harvest Moon Festival Ending soon Seasonal event: earn double points on every harvest until the event ends. Reward claimed ✓
+

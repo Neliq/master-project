@@ -1,0 +1,6 @@
+STATE s0
+Data & personalisation plain language Show personalised ads Ads based on what you browse on this site. Link my activity across devices Match your preferences across your phone and laptop. Share anonymised usage data Help us improve the product with statistics. Group me with similar users For better product features, not for selling your identity. Use data from other companies Enrich your profile with publicly available information. Save preferences
+
+STATE s1
+Data & personalisation plain language Show personalised ads Ads based on what you browse on this site. Link my activity across devices Match your preferences across your phone and laptop. Share anonymised usage data Help us improve the product with statistics. Group me with similar users For better product features, not for selling your identity. Use data from other companies Enrich your profile with publicly available information. Save preferences Informed choices Every label uses plain language with an explanation attached, so you knew exactly what each toggle did before flipping it.
+

@@ -23,16 +23,13 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * (1s per tick) and a prominent Cancel button.
  */
 
-const TAU_REACTION = 2.0;
 const DARK_WINDOW = 1.5;
 const BENIGN_WINDOW = 5.0;
 
 export function AutomatingTheUserAwayCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [sequenceActive, setSequenceActive] = React.useState(false);
   const [remaining, setRemaining] = React.useState(0);
@@ -40,13 +37,6 @@ export function AutomatingTheUserAwayCond2({
   const [renewed, setRenewed] = React.useState(false);
   const [cancelled, setCancelled] = React.useState(false);
 
-  const reset = () => {
-    setSequenceActive(false);
-    setRemaining(0);
-    setVariant("dark");
-    setRenewed(false);
-    setCancelled(false);
-  };
 
   const dark = variant === "dark";
   const windowSeconds = dark ? DARK_WINDOW : BENIGN_WINDOW;
@@ -75,33 +65,6 @@ export function AutomatingTheUserAwayCond2({
     setRemaining(v === "dark" ? 3 : 5);
     setSequenceActive(true);
   };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">B_cancel ∈ DOM(t)</span>
-        <span className={`font-mono font-semibold tabular-nums ${dark ? "text-red-500" : "text-green-500"}`}>
-          {dark ? "No (omitted)" : "Yes (visible)"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δt_warning</span>
-        <span className={`font-mono font-semibold tabular-nums ${dark ? "text-red-500" : "text-green-500"}`}>
-          {windowSeconds.toFixed(1)}s
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_reaction (baseline)</span>
-        <span className="font-mono font-semibold tabular-nums">≈ {TAU_REACTION.toFixed(1)}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Verdict</span>
-        <span className={`font-mono font-semibold tabular-nums ${dark ? "text-red-500" : "text-green-500"}`}>
-          {dark ? "Δt &lt; τ → predatory" : "Δt ≥ τ → adequate"}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   const renderNotice = (isDark: boolean) => {
     const activeHere = sequenceActive && dark === isDark;
@@ -244,11 +207,10 @@ export function AutomatingTheUserAwayCond2({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Automating The User Away: Omission of the Interrupt Vector"
       userTitle="Streamly — Membership renewal"
       caption="Omission of the Interrupt Vector — the renewal countdown is faster than human reaction time and there is no cancel button to intercept it."
-      auditorStats={stats}
       deltaNote="Both variants present the same renewal notice for the same €9.99/mo plan. Variant A gives a 1.5-second countdown — below the ~2.0s human reaction baseline — and no cancel button anywhere on the screen (B_cancel ∉ DOM). Variant B offers a 5-second window and a prominent Cancel button."
       benign={
         <div className="space-y-3">{renderNotice(false)}</div>

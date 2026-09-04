@@ -1,0 +1,12 @@
+STATE s0
+Hurry — sale ends soon! 40% off everything. Don’t risk missing out — the offer could disappear at any moment. When exactly does it end? Plan my purchase
+
+STATE s1
+Hurry — sale ends soon! 40% off everything. Don’t risk missing out — the offer could disappear at any moment. When exactly does it end? Answer: “Very soon!” Plan my purchase
+
+STATE s2
+Hurry — sale ends soon! 40% off everything. Don’t risk missing out — the offer could disappear at any moment. When exactly does it end? Answer: “We can't disclose the exact time.” Plan my purchase
+
+STATE s3
+Hurry — sale ends soon! 40% off everything. Don’t risk missing out — the offer could disappear at any moment. When exactly does it end? Answer: “Soon. Act now to be safe.” Plan my purchase
+

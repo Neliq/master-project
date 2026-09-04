@@ -22,11 +22,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function PrivacyZuckeringCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Variant A defaults: invasive ON, preserving OFF.
   const [aShare, setAShare] = React.useState(true);
@@ -35,33 +33,6 @@ export function PrivacyZuckeringCond2({
   const [bShare, setBShare] = React.useState(false);
   const [bLimit, setBLimit] = React.useState(true);
 
-  const reset = () => {
-    setAShare(true);
-    setALimit(false);
-    setBShare(false);
-    setBLimit(true);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(N_invasive)/W(N_preserving) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">3.6 &gt; τ_privacy_skew</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(N_invasive)/W(N_preserving) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">1.0 — symmetric</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Invasive default (A / B)</span>
-        <span className="font-mono font-semibold tabular-nums">ON / OFF</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Preserving default (A / B)</span>
-        <span className="font-mono font-semibold tabular-nums">OFF / ON</span>
-      </div>
-    </>
-  ) : null;
 
   const toggle = (
     on: boolean,
@@ -87,11 +58,10 @@ export function PrivacyZuckeringCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Privacy Zuckering: Visual Asymmetry Between Privacy-Invasive and Privacy-Preserving Options"
       userTitle="Orbit — Privacy settings"
       caption="Visual Asymmetry — the data-sharing option is rendered far larger, brighter, and more saturated than the privacy-preserving one, and pre-set to ON."
-      auditorStats={stats}
       deltaNote="In Variant A the invasive toggle is big, saturated, and starts ON while the preserving toggle is tiny and dim (visual-weight ratio 3.6 > τ_privacy_skew). In Variant B both toggles are pixel-identical in weight, and the privacy-preserving state is the default."
       benign={
         <div className="space-y-3">

@@ -28,47 +28,19 @@ const DARK_ACTUAL_TOTAL = 23;
 const BENIGN_DECLARED = ["Acme Analytics", "Beacon Metrics", "Coral Data"];
 
 export function AutomaticAcceptThirdPartyTermCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkDone, setDarkDone] = React.useState(false);
   const [benignDone, setBenignDone] = React.useState(false);
 
-  const reset = () => {
-    setDarkDone(false);
-    setBenignDone(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|E_declared| (named in text)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0 (dark) / {BENIGN_DECLARED.length} (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|E_actual| (bound on accept)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DARK_ACTUAL_TOTAL} (dark) / {BENIGN_DECLARED.length} (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|E_actual| &gg; |E_declared|</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True (dark) / False (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Consented?</span>
-        <span className="font-mono font-semibold tabular-nums">{darkDone || benignDone ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Automatic Accept Third Party Term: Opaque Entity Resolution"
       userTitle="Orbit — Partner terms"
       caption="Vague consent language like &ldquo;trusted partners&rdquo; masks the true scale of legal binding — the named entities are a vanishing fraction of the entities actually granted consent."
-      auditorStats={stats}
       deltaNote={`Variant A names zero entities ("trusted partners") yet binds ${DARK_ACTUAL_TOTAL} on continue. Variant B names exactly ${BENIGN_DECLARED.length} companies and binds exactly those — E_declared = E_actual.`}
       benign={
         <div className="space-y-3">

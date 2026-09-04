@@ -1,0 +1,9 @@
+STATE s0
+Streamly — watch the video Play video
+
+STATE s1
+Streamly — watch the video Sponsored Aurora Trek — the light jacket for all seasons Waterproof, windproof, packable. Free returns for 90 days. Shop now Skippable now — no wait Skip ad
+
+STATE s2
+Streamly — watch the video Video playing You dismissed the ad after 0s. The video is ready to play.
+

@@ -23,11 +23,6 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * Variant B (benign): the same flow renders no affective image at all.
  */
 
-const AREA_RATIO = 0.27; // A(i) / A_viewport for the injected mascot
-const TAU_PROMINENCE = 0.2;
-const CONTRAST = 11.4; // CR(i, L_bg) of the mascot against its backdrop
-const CONTRAST_THRESHOLD = 7.0;
-
 function GiantMascot() {
   return (
     <svg viewBox="0 0 48 48" role="img" aria-label="Sad puppy mascot begging you not to cancel" className="h-28 w-28 sm:h-32 sm:w-32 drop-shadow-lg">
@@ -46,46 +41,18 @@ function GiantMascot() {
 }
 
 export function CutenessCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkStage, setDarkStage] = React.useState<"overview" | "cancel" | "kept" | "gone">("overview");
   const [benignStage, setBenignStage] = React.useState<"overview" | "cancel" | "kept" | "gone">("overview");
 
-  const reset = () => {
-    setDarkStage("overview");
-    setBenignStage("overview");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_affective in I(s_onboard)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">&notin; (withheld)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_affective in I(s_cancel) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&isin; (injected)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(i) / A_viewport (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{AREA_RATIO.toFixed(2)} &gt; {TAU_PROMINENCE}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CR(i, L_bg) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{CONTRAST}:1 &gt; {CONTRAST_THRESHOLD}:1</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Cuteness: Context-Dependent Image Injection"
       caption="Context-Dependent Image Injection — the mascot is withheld during normal use and injected into the cancellation flow at a viewport-dominant scale with extreme contrast."
-      auditorStats={stats}
       deltaNote="In Variant A the affective mascot appears only at s = s_cancel (I_affective ∉ I(s_onboard) ∧ I_affective ∈ I(s_cancel)) and is engineered for maximum impact: A(i)/A_viewport = 0.27 > tau_prominence = 0.2, contrast ratio 11.4:1 > 7.0. In Variant B no affective image is rendered at any state — the confirm step is plain text and a normal button."
       benign={
         <div className="space-y-3">

@@ -1,0 +1,6 @@
+STATE s0
+Checkout Recommended extras A few optional extras are selected for your review. Change anything you do not need. Add Protection Plan — $4.99/mo , auto-renews Optional protection plan Send me offers from our partners Partner offers preference Share my purchase data with third parties Data-sharing preference Place order
+
+STATE s1
+Checkout Recommended extras A few optional extras are selected for your review. Change anything you do not need. Add Protection Plan — $4.99/mo , auto-renews Optional protection plan Send me offers from our partners Partner offers preference Share my purchase data with third parties Data-sharing preference Place order Order preferences saved The order preferences selected on this page are now attached to your account. Review them in Settings whenever you need to make a change.
+

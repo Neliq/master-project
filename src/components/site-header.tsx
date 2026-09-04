@@ -9,13 +9,6 @@ export function SiteHeader() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-center gap-16 px-4">
         <Link
           href="/"
-          className="text-xs font-semibold tracking-[0.16em] text-white transition-opacity hover:opacity-70"
-        >
-          CATALOG
-        </Link>
-
-        <Link
-          href="/"
           className="text-center text-lg font-extrabold leading-[0.9] tracking-[0.12em] text-white transition-opacity hover:opacity-70"
         >
           DARK PATTERN
@@ -23,15 +16,6 @@ export function SiteHeader() {
           LAB
         </Link>
 
-        <a
-          href="https://www.deceptive.design"
-          target="_blank"
-          rel="noreferrer noopener"
-          className="text-xs font-semibold tracking-[0.16em] text-white transition-opacity hover:opacity-70"
-        >
-          SOURCE
-          <span className="sr-only"> taxonomy (opens in a new tab)</span>
-        </a>
       </div>
     </header>
   );

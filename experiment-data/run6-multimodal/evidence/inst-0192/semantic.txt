@@ -1,0 +1,9 @@
+STATE s1
+Wireless Noise-Cancelling Headphones $89.00 — one-time purchase, no subscription Subtotal $89.00 Shipping Free Total $89.00 Proceed to checkout
+
+STATE s2
+Wireless Noise-Cancelling Headphones $89.00 — one-time purchase, no subscription Subtotal $89.00 Shipping Free Total $89.00 No guest checkout exists. Creating an account is required before the order can be completed. Create your account Almost done! An account is required to complete this one-time purchase. Email address Password Create account & place order By creating an account you agree to marketing emails, data retention, and our terms.
+
+STATE s3
+Wireless Noise-Cancelling Headphones $89.00 — one-time purchase, no subscription Subtotal $89.00 Shipping Free Total $89.00 Order confirmed Thank you, new customer! Your headphones are on the way. Account step used for checkout The account step was required before your order could be confirmed. A one-time $89 purchase made leaving the cart feel costly, so the checkout flow asked for an email address, a password, and marketing consent before completing the order.
+

@@ -27,11 +27,9 @@ const QUANT_CYCLE = [3, 5, 1, 4, 2]; // procedurally generated quantifiers (A)
 const BASE_STOCK = 5; // honest stock level (B)
 
 export function LowStockCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [loadsA, setLoadsA] = React.useState(1);
   const [quantA, setQuantA] = React.useState(QUANT_CYCLE[0]);
@@ -45,13 +43,6 @@ export function LowStockCond3({
     return () => window.clearInterval(id);
   }, []);
 
-  const reset = () => {
-    setLoadsA(1);
-    setQuantA(QUANT_CYCLE[0]);
-    setLoadsB(1);
-    setSoldB(0);
-    setElapsed(0);
-  };
 
   const refreshA = () => {
     // Next procedurally generated quantifier, regardless of any real inventory.
@@ -69,32 +60,10 @@ export function LowStockCond3({
   const stockB = Math.max(0, BASE_STOCK - soldB);
   const inconsistent = loadsA >= 2 && quantA !== QUANT_CYCLE[0] && elapsed < 60;
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Q_stock(t1) — first load (A)</span>
-        <span className="font-mono font-semibold tabular-nums">{QUANT_CYCLE[0]} left</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Q_stock(t2) — current load (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{quantA} left</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&Delta;t since first load</span>
-        <span className="font-mono font-semibold tabular-nums">{elapsed}s {elapsed < 60 ? "(< 60s)" : "(≥ 60s)"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">HasTransaction(t1, t2) — A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{loadsA >= 2 ? "False — no purchase logged" : "—"}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Low Stock: Semantic Verifiability of Stock-Level Quantifiers"
       caption="Semantic Verifiability of Stock-Level Quantifiers — reload the page within 60 seconds and the stock count changes even though nobody bought anything."
-      auditorStats={stats}
       deltaNote={`In Variant A every simulated page load draws a new arbitrary quantifier (${QUANT_CYCLE.join(" → ")} …) with an empty transaction log, so Q_stock(t1) ≠ Q_stock(t2) with ¬HasTransaction — the claim is procedurally generated. In Variant B the quantifier is reported verbatim from a visible live backend feed ("In stock — N remaining"), stays stable across reloads, and only decrements when a real purchase is logged.`}
       benign={
         <div className="space-y-3">

@@ -1,0 +1,6 @@
+STATE s0
+Streamly — binge queue Free plan: one ad before each episode. Ad length grows the longer you stay free. 0/3 watched 1 Episode 1 — Pilot pre-roll: 5s ad ▶ Play 2 Episode 2 — Sparks pre-roll: 10s ad 3 Episode 3 — Embers pre-roll: 15s ad
+
+STATE s1
+Streamly — binge queue Free plan: one ad before each episode. Ad length grows the longer you stay free. 0/3 watched 1 Episode 1 — Pilot pre-roll: 5s ad ad 5s 2 Episode 2 — Sparks pre-roll: 10s ad 3 Episode 3 — Embers pre-roll: 15s ad Ad — duration escalated to 5s 5s Ad time increases from one episode to the next on the free plan.
+

@@ -38,46 +38,18 @@ const W_USER = ALPHA * A_USER + BETA * C_USER + GAMMA * F_USER;
 const RATIO_DARK = (W_BUSINESS / W_USER).toFixed(1);
 
 export function FalseHierarchyCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<null | "accept" | "reject">(null);
   const [benignChoice, setBenignChoice] = React.useState<null | "accept" | "reject">(null);
 
-  const reset = () => {
-    setDarkChoice(null);
-    setBenignChoice(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(B_business) = αA + βC + γF</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{W_BUSINESS.toFixed(1)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(B_user)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{W_USER.toFixed(1)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(B_business) / W(B_user)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK} &gt; τ ({TAU_HIERARCHY})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Relational suppression</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">active</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="False Hierarchy: Relational Visual Weight Disparity"
       caption="Relational Visual Weight Disparity — the composite visual weight of “Accept all cookies” (area × contrast × font weight) is ~10× that of “Reject all”, a ratio far past the hierarchy threshold."
-      auditorStats={stats}
       deltaNote="In Variant A the accept option stacks a huge bounding box, a saturated background and bold type — W(B_business) = 31.5 vs W(B_user) = 3.1, ratio ≈ 10.2 ≫ τ_hierarchy (4.0) — so the choice architecture is visually rigged. In Variant B both buttons share equal area, contrast and font weight, and the ratio drops below the threshold."
       benign={
         <div className="space-y-3">

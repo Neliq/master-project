@@ -1,0 +1,6 @@
+STATE s0
+Support Coco’s world Coco is our mascot. You can support the project with a one-time $2.99 contribution — entirely optional. Coco is looking right at you while you decide… Coco would be so happy if you helped. Support now — $2.99
+
+STATE s1
+Support Coco’s world Coco is our mascot. You can support the project with a one-time $2.99 contribution — entirely optional. Coco is looking right at you while you decide… Coco would be so happy if you helped. Support now — $2.99 Support recorded Thanks for supporting Coco’s world. The one-time $2.99 contribution will appear in your receipt.
+

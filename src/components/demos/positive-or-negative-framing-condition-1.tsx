@@ -32,11 +32,9 @@ const RATIO = EXTRA_NODES / UNION_NODES; // 0.333...
 const TAU = 0.2;
 
 export function PositiveOrNegativeFramingCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Per-panel state so the two variants never contaminate each other.
   const [aChoice, setAChoice] = React.useState<"gain" | "loss" | null>(null);
@@ -44,44 +42,11 @@ export function PositiveOrNegativeFramingCond1({
   const [aSubmitted, setASubmitted] = React.useState(false);
   const [bSubmitted, setBSubmitted] = React.useState(false);
 
-  const reset = () => {
-    setAChoice(null);
-    setBChoice(null);
-    setASubmitted(false);
-    setBSubmitted(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|T_gain \ T_loss| (extra nodes)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{EXTRA_NODES}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|T_gain ∪ T_loss|</span>
-        <span className="font-mono font-semibold tabular-nums">{UNION_NODES}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Subtree-difference ratio</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {RATIO.toFixed(2)} &gt; {TAU.toFixed(1)}
-        </span>
-      </div>
-
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Selected option (A / B)</span>
-        <span className="font-mono font-semibold tabular-nums">
-          {aChoice ? (aChoice === "gain" ? "Gain" : "Loss") : "—"} / {bChoice ? (bChoice === "gain" ? "Gain" : "Loss") : "—"}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Positive Or Negative Framing: Structural Asymmetry of Framed Option Subtrees"
       caption="Structural Asymmetry of Framed Option Subtrees — the gain-framed option is built from a richer DOM subtree with extra badge and icon elements, so the interface's structure itself gives one pole more visual weight."
-      auditorStats={stats}
       deltaNote="Both variants ask the same binary question with the same informational payload. In Variant A the gain-framed option's DOM subtree carries 4 extra embellishment nodes (badge, icons, colour wrapper) that the loss-framed option lacks, pushing the subtree-difference ratio past tau. Both outcomes are priced and selectable; only the structure changes. In Variant B both poles share structurally identical subtrees, so the structure stays neutral."
       benign={
         <div className="space-y-3">

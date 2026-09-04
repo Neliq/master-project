@@ -29,11 +29,9 @@ const CATEGORIES = [
 ];
 
 export function CustomisationCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [customisingA, setCustomisingA] = React.useState(false);
   const [customisingB, setCustomisingB] = React.useState(false);
@@ -47,48 +45,17 @@ export function CustomisationCond1({
   const [outcomeB, setOutcomeB] = React.useState<"none" | "accepted" | "rejected">("none");
   const [acceptedViaA, setAcceptedViaA] = React.useState<"layer1" | "custom">("layer1");
 
-  const reset = () => {
-    setCustomisingA(false);
-    setCustomisingB(false);
-    setOnIdsA(CATEGORIES.filter((c) => c.on).map((c) => c.id));
-    setOnIdsB(CATEGORIES.filter((c) => c.on).map((c) => c.id));
-    setOutcomeA("none");
-    setOutcomeB("none");
-    setAcceptedViaA("layer1");
-  };
 
   const toggle = (
     id: string,
     setOnIds: React.Dispatch<React.SetStateAction<string[]>>,
   ) => setOnIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d(S_0, S_accept_all)</span>
-        <span className="font-mono font-semibold tabular-nums">{1} click</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d(S_0, S_reject_all) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{2} clicks</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d(S_0, S_reject_all) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{1} click</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Formula: 1 = 1 &and; 2 &ge; 2</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Customisation (Interface Nesting): Path Depth Asymmetry"
       userTitle="Orbit — Customize privacy"
       caption="Path Depth Asymmetry — the provider-favorable macro-action is one click away on the primary layer, while the user-favorable equivalent is banished into a nested Customise menu."
-      auditorStats={stats}
       deltaNote={`In Variant A, d(S_0, S_accept_all) = 1 but d(S_0, S_reject_all) = 2: “Reject All” exists only inside the “Customise settings” menu (S_custom), so the path of least resistance is mathematically biased toward the provider. In Variant B both macro-actions are on layer 1, so d(S_0, S_reject_all) = 1.`}
       benign={
         <div className="space-y-3">

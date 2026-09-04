@@ -1,0 +1,6 @@
+STATE s1
+You’re in! Welcome to SnapGrid Invite friends from your address book to make SnapGrid better for everyone. Invite all 128 contacts skip
+
+STATE s2
+You’re in! Welcome to SnapGrid Invite friends from your address book to make SnapGrid better for everyone. Invite all 128 contacts skip Invitations sent The invitation was sent to all 128 contacts.
+

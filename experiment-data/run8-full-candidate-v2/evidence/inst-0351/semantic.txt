@@ -1,0 +1,12 @@
+STATE s0
+AeroSound X9 Headphones Over-ear, noise-cancelling, 40h battery. Free returns within 30 days. $129.99 Add to Cart
+
+STATE s1
+Your cart 1 item AeroSound X9 Headphones selected in your cart $129.99 Optional extras — your choice + Add 2-Year Extended Warranty — $19.99 opt in + Add Priority Express Shipping — $8.99 opt in Total $129.99 Proceed to checkout
+
+STATE s2
+Your cart 2 items AeroSound X9 Headphones selected in your cart $129.99 2-Year Extended Warranty selected in your cart $19.99 Optional extras — your choice + Add Priority Express Shipping — $8.99 opt in Total $149.98 Proceed to checkout
+
+STATE s3
+Your cart 3 items AeroSound X9 Headphones selected in your cart $129.99 2-Year Extended Warranty selected in your cart $19.99 Priority Express Shipping selected in your cart $8.99 Optional extras — your choice Total $158.97 Proceed to checkout
+

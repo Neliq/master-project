@@ -56,11 +56,9 @@ function itemName(i: number): string {
 }
 
 export function InfiniteScrollingCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [pageA, setPageA] = React.useState(1);
   const [pageB, setPageB] = React.useState(1);
@@ -102,50 +100,15 @@ export function InfiniteScrollingCond3({
     );
   };
 
-  const reset = () => {
-    timersRef.current.forEach((id) => window.clearTimeout(id));
-    timersRef.current = [];
-    loadingRefA.current = false;
-    loadingRefB.current = false;
-    setPageA(1);
-    setPageB(1);
-    setLoadsA(0);
-    setLoadsB(0);
-    setLoadingA(false);
-    setLoadingB(false);
-  };
 
   const itemsCountA = pageA * PAGE_SIZE;
   const itemsCountB = pageB * PAGE_SIZE;
-  const boundaryHitsB = Math.min(pageB, TOTAL_PAGES_B) + (pageB >= TOTAL_PAGES_B ? 1 : 0);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">N_feed items rendered</span>
-        <span className="font-mono font-semibold tabular-nums">{itemsCountA}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Boundary lexemes found in A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Boundary lexemes found in B</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{boundaryHitsB}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∃ n: Match(T(n), Pattern_boundary)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">False (A) / True (B)</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Infinite Scrolling: Semantic Attenuation of Content Boundaries"
       userTitle="Shelf — Community listings"
       caption="Semantic Attenuation of Content Boundaries — the feed's rendered text contains no pagination or completion language, so no linguistic cue ever tells the reader that the content can end."
-      auditorStats={stats}
       deltaNote="Variant A renders the feed with no boundary markers — no “Page X of N”, no “end of results”, no “no more items” — so the Match() test fails for every item. Variant B renders the same data with explicit page markers, 24 unique listings, and a terminal “End of results” cue exactly at the announced last page, where the “Next page” control disappears — the reader always has a truthful stopping point."
       benign={
         <div className="space-y-3">

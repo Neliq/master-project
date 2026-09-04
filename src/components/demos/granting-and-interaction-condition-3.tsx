@@ -52,44 +52,13 @@ function PermissionChips({ perms, accent }: { perms: readonly string[]; accent: 
 }
 
 export function GrantingAndInteractionCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [aStage, setAStage] = React.useState<Stage>("idle");
   const [bStage, setBStage] = React.useState<Stage>("idle");
 
-  const reset = () => {
-    setAStage("idle");
-    setBStage("idle");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Perms_disclosed (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DISCLOSED_DARK.join(", ")}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Perms_actual (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{ACTUAL_DARK.join(", ")}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&Delta;_perms (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">|{ACTUAL_DARK.length} &minus; {DISCLOSED_DARK.length}| = {GAP_DARK} (&gt; 0)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&Delta;_perms (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{GAP_BENIGN} (= 0)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Call state</span>
-        <span className="font-mono font-semibold tabular-nums">{aStage === "inCall" || bStage === "inCall" ? "in call" : "idle"}</span>
-      </div>
-    </>
-  ) : null;
 
   const appHeader = (
     <div className="flex items-center justify-between">
@@ -117,11 +86,10 @@ export function GrantingAndInteractionCond3({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Granting and Interaction: Semantic Scope Creep in Permission Requests"
       userTitle="Trailblaze — Camera access"
       caption="Semantic Scope Creep in Permission Requests — the natural-language request names fewer permissions than the browser API actually requests, so consent is granted for more than was disclosed."
-      auditorStats={stats}
       deltaNote={`In Variant A the request sentence mentions only the camera and states no purpose, while the app-manifest block right beneath it enumerates ${ACTUAL_DARK.join(", ")} — so Δ_perms = ${GAP_DARK} > 0 is observable on the prompt itself. In Variant B the request names exactly what the manifest requests (${ACTUAL_BENIGN.join(", ")}), so Δ_perms = ${GAP_BENIGN} and consent is fully informed.`}
       benign={
         <div className="space-y-3">

@@ -1,0 +1,390 @@
+{
+  "source": "run6-multimodal/ontology.md",
+  "policy": "keyword-derived applicability map; no formula or threshold changes",
+  "clauses": {
+    "E1": "relative scale/visual comparison",
+    "E2": "disclosure before commitment",
+    "E3": "qualified statistics and denominators",
+    "E4": "real deadlines and anchored time",
+    "E5": "unobservable mechanism remains UNKNOWN",
+    "E6": "visible qualifiers and contextual narrative"
+  },
+  "patterns": {
+    "Immortal Accounts": [
+      "E1",
+      "E2",
+      "E3",
+      "E6"
+    ],
+    "Dead End": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E6"
+    ],
+    "Forced Grace Period": [
+      "E1",
+      "E2",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Privacy Maze": [
+      "E1",
+      "E5",
+      "E6"
+    ],
+    "Labyrinthine Navigation": [
+      "E1",
+      "E3",
+      "E6"
+    ],
+    "Customisation (Interface Nesting)": [
+      "E1",
+      "E6"
+    ],
+    "Intermediate Currency": [
+      "E1",
+      "E2",
+      "E3",
+      "E5",
+      "E6"
+    ],
+    "Disguised Ad": [
+      "E1",
+      "E5",
+      "E6"
+    ],
+    "Sneak Into Basket": [
+      "E1",
+      "E2",
+      "E5",
+      "E6"
+    ],
+    "Drip Pricing, Hidden Costs, or Partitioned Pricing": [
+      "E1",
+      "E2",
+      "E3",
+      "E6"
+    ],
+    "Bundling": [
+      "E1",
+      "E2",
+      "E3",
+      "E5",
+      "E6"
+    ],
+    "Hidden Information": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E6"
+    ],
+    "Reduced Friction": [
+      "E1",
+      "E2",
+      "E3",
+      "E5",
+      "E6"
+    ],
+    "Forced Continuity": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Privacy Zuckering": [
+      "E1",
+      "E2",
+      "E3",
+      "E6"
+    ],
+    "Friend Spam": [
+      "E1",
+      "E2",
+      "E5"
+    ],
+    "Address Book Leeching": [
+      "E1",
+      "E6"
+    ],
+    "Automatic Accept Third Party Term": [
+      "E1",
+      "E5",
+      "E6"
+    ],
+    "Pre-Delivered Content": [
+      "E1",
+      "E2",
+      "E6"
+    ],
+    "Fear Of Missing Out (FOMO)": [
+      "E1",
+      "E3",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "High Demand": [
+      "E1",
+      "E3",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Low Stock": [
+      "E1",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Activity Messages": [
+      "E1",
+      "E3",
+      "E5",
+      "E6"
+    ],
+    "Countdown Timer": [
+      "E3",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Limited Time Message": [
+      "E1",
+      "E3",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Price Comparison Prevention": [
+      "E1",
+      "E2",
+      "E5",
+      "E6"
+    ],
+    "Reference Pricing": [
+      "E1",
+      "E2",
+      "E3",
+      "E6"
+    ],
+    "Conflicting Information": [
+      "E1",
+      "E2",
+      "E3",
+      "E6"
+    ],
+    "Information Without Context": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E6"
+    ],
+    "False Hierarchy": [
+      "E1",
+      "E6"
+    ],
+    "Visual Prominence": [
+      "E1",
+      "E3",
+      "E4",
+      "E6"
+    ],
+    "Persuasive Language": [
+      "E1",
+      "E3",
+      "E5",
+      "E6"
+    ],
+    "Cuteness": [
+      "E1",
+      "E2",
+      "E3",
+      "E5",
+      "E6"
+    ],
+    "Positive Or Negative Framing": [
+      "E1",
+      "E3",
+      "E5",
+      "E6"
+    ],
+    "Choice Overload": [
+      "E1",
+      "E3",
+      "E6"
+    ],
+    "Plain Evil (Theoretical Construct)": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E6"
+    ],
+    "Endorsement And Testimonials": [
+      "E1",
+      "E2",
+      "E3",
+      "E4"
+    ],
+    "Confirmshaming": [
+      "E1",
+      "E4",
+      "E6"
+    ],
+    "Psychological Tricks": [
+      "E1",
+      "E2",
+      "E3"
+    ],
+    "Pressured Selling": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Small or Moving Close Button": [
+      "E1",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Bad Defaults / Preselection": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Trick Questions": [
+      "E1",
+      "E3",
+      "E5",
+      "E6"
+    ],
+    "Wrong Language": [
+      "E1",
+      "E2",
+      "E3",
+      "E6"
+    ],
+    "Complex Language": [
+      "E1",
+      "E2",
+      "E3",
+      "E6"
+    ],
+    "Feedforward Ambiguity": [
+      "E1",
+      "E2",
+      "E3",
+      "E5",
+      "E6"
+    ],
+    "Forced Registration": [
+      "E1",
+      "E4",
+      "E6"
+    ],
+    "Social Pyramid": [
+      "E1",
+      "E3",
+      "E6"
+    ],
+    "Granting and Interaction": [
+      "E1",
+      "E2",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Pay-To-Play": [
+      "E1",
+      "E2",
+      "E4",
+      "E6"
+    ],
+    "Grinding": [
+      "E1",
+      "E2",
+      "E6"
+    ],
+    "Playing By Appointment": [
+      "E1",
+      "E3",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Watch Ads To Unlock Features Or Get Rewards": [
+      "E1",
+      "E4",
+      "E6"
+    ],
+    "Pay To Avoid": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5"
+    ],
+    "Automating The User Away": [
+      "E1",
+      "E2",
+      "E3",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Parasocial Pressure": [
+      "E1",
+      "E6"
+    ],
+    "Encouraging Anti-Social Behavior": [
+      "E1",
+      "E2",
+      "E6"
+    ],
+    "Addictive Design": [
+      "E1",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Infinite Scrolling": [
+      "E2",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Pull To Refresh (Variable-Reward Trap)": [
+      "E1",
+      "E2",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Countdown On Ads": [
+      "E1",
+      "E3",
+      "E4",
+      "E5",
+      "E6"
+    ],
+    "Auto-Play": [
+      "E1",
+      "E2",
+      "E5",
+      "E6"
+    ]
+  }
+}

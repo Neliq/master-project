@@ -1,0 +1,8 @@
+{
+  "run_id": "run8-full-candidate-v2",
+  "n_instances": 372,
+  "sample_seed": 20260913,
+  "n_agents": 10,
+  "alignment_issues": 13,
+  "source_run": "run6-multimodal"
+}

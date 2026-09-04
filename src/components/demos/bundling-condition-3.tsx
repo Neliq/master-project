@@ -46,42 +46,13 @@ const standaloneTokens = STANDALONE_DESC.split(/\s+/).length;
 const entropyRatio = bundledTokens / standaloneTokens;
 
 export function BundlingCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [addedDark, setAddedDark] = React.useState(false);
   const [addedBenign, setAddedBenign] = React.useState(false);
 
-  const reset = () => {
-    setAddedDark(false);
-    setAddedBenign(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">H(T_bundled) tokens (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{bundledTokens}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">H(T_standalone) tokens</span>
-        <span className="font-mono font-semibold tabular-nums">{standaloneTokens}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Entropy ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {entropyRatio.toFixed(2)} (&lt; 0.5)
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Spec rows bundled / standalone</span>
-        <span className="font-mono font-semibold tabular-nums">0 / {STANDALONE_SPECS.length}</span>
-      </div>
-    </>
-  ) : null;
 
   const renderPanel = (dark: boolean) => {
     const isAdded = dark ? addedDark : addedBenign;
@@ -215,11 +186,8 @@ export function BundlingCond3({
   return (
     <DemoShell
       mode={mode}
-      annotations={annotations}
-      onRestart={onRestart ?? reset}
       title="Bundling: Semantic Suppression of Individual Item Descriptions"
       caption="Semantic Suppression of Individual Item Descriptions — bundled items receive shorter, less granular descriptions than their standalone counterparts, dropping the description-entropy ratio below the threshold."
-      auditorStats={stats}
       deltaNote={`Variant A describes the bundled lens with ${bundledTokens} tokens and no spec rows versus ${standaloneTokens} tokens and ${STANDALONE_SPECS.length} rows standalone (ratio ${entropyRatio.toFixed(2)} < 0.5). Variant B gives the bundled item the exact same description and spec rows as the standalone listing (ratio 1.00).`}
       benign={renderPanel(false)}
     >

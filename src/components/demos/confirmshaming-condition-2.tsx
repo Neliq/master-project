@@ -19,46 +19,18 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function ConfirmshamingCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<null | "accept" | "decline">(null);
   const [benignChoice, setBenignChoice] = React.useState<null | "accept" | "decline">(null);
 
-  const reset = () => {
-    setDarkChoice(null);
-    setBenignChoice(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Vis(N_accept)</span>
-        <span className="font-mono font-semibold tabular-nums">1.00</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Vis(N_decline)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.31 &rarr; &tau;_min</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Decline font size</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">9px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Decline contrast ratio</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">1.6:1</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Confirmshaming: Visual Hierarchy Subversion"
       caption="Visual Hierarchy Subversion — the positive choice is hyper-illuminated while the exit link is degraded to the threshold of minimum accessibility (τ_minimum_accessibility)."
-      auditorStats={stats}
       deltaNote="In Variant A the accept button is large and high-contrast (Vis ≈ 1.00) while the decline link sits at 9px with a 1.6:1 contrast ratio — right at τ_minimum_accessibility. In Variant B both options are rendered with identical size and contrast."
       benign={
         <div className="space-y-3">

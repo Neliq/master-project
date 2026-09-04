@@ -21,47 +21,19 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const NETWORK_SIZE = 128;
 
 export function AddressBookLeechingCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkAllowed, setDarkAllowed] = React.useState(false);
   const [benignAllowed, setBenignAllowed] = React.useState<null | "allowed" | "declined">(null);
 
-  const reset = () => {
-    setDarkAllowed(false);
-    setBenignAllowed(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Frame(T_prompt)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">Benefactive (dark) / Informational (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Subject(T_prompt)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">ThirdParty (dark) / FirstParty (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Contacts uploaded</span>
-        <span className="font-mono font-semibold tabular-nums">{NETWORK_SIZE}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Consent state</span>
-        <span className="font-mono font-semibold tabular-nums">{darkAllowed ? "allowed" : "undecided"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Address Book Leeching: Semantic Framing of Contact-Sharing Consent"
       userTitle="Find friends on SnapGrid"
       caption="The permission prompt is framed as a social courtesy to the user's friends rather than as the data-access permission it actually is."
-      auditorStats={stats}
       deltaNote={`In Variant A the prompt says "find your friends" (Frame = Benefactive, Subject = ThirdParty) — the actual action is uploading ${NETWORK_SIZE} contacts to the service. Variant B states plainly that allowing access uploads your address book to the service's servers.`}
       benign={
         <div className="space-y-3">

@@ -25,47 +25,19 @@ const DOMINANCE_BENIGN = 1.0;
 const TAU = 2.0;
 
 export function AddressBookLeechingCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkInvited, setDarkInvited] = React.useState<"none" | "all" | "skipped">("none");
   const [benignInvited, setBenignInvited] = React.useState<"none" | "all" | "skipped">("none");
 
-  const reset = () => {
-    setDarkInvited("none");
-    setBenignInvited("none");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_invite_all) / A(N_skip)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DOMINANCE_DARK} &gt; &tau; (dark) / {DOMINANCE_BENIGN} (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&tau;_invite_dominance</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Invite target</span>
-        <span className="font-mono font-semibold tabular-nums">{NETWORK_SIZE} contacts</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Outcome</span>
-        <span className="font-mono font-semibold tabular-nums">{darkInvited}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Address Book Leeching: Visual Prominence of the Invite-All Affordance"
       userTitle="SnapGrid — welcome"
       caption="The collective &ldquo;invite all&rdquo; affordance visually dominates the skip affordance, pressuring users toward indiscriminate contact sharing."
-      auditorStats={stats}
       deltaNote={`In Variant A the invite-all button dwarfs the skip link (area ratio ${DOMINANCE_DARK} > τ = ${TAU}). In Variant B both affordances are visually balanced (ratio ${DOMINANCE_BENIGN}) so skipping is as easy as inviting.`}
       benign={
         <div className="space-y-3">

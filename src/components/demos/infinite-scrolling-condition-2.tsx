@@ -33,11 +33,9 @@ const SECTIONS = [
 const FOOTER_LINKS = ["Privacy Policy", "Terms of Use", "Contact", "Imprint"];
 
 export function InfiniteScrollingCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Section counts are per-panel: A keeps appending (footer recedes),
   // B is finite (footer reachable). The payload texts are identical.
@@ -87,47 +85,12 @@ export function InfiniteScrollingCond2({
     setGapB(el.scrollHeight - el.scrollTop - el.clientHeight);
   };
 
-  const reset = () => {
-    timersRef.current.forEach((id) => window.clearTimeout(id));
-    timersRef.current = [];
-    appendingRef.current = false;
-    setCountA(4);
-    setCountB(4);
-    setGapA(null);
-    setGapB(0);
-    setAutoAppends(0);
-    setFooterLink(null);
-    if (containerARef.current) containerARef.current.scrollTop = 0;
-    if (containerBRef.current) containerBRef.current.scrollTop = 0;
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">v_scroll (user scroll velocity)</span>
-        <span className="font-mono font-semibold tabular-nums">≈ 240 px/s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d/dt Pos_y(N_footer, t)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≥ v_scroll (A) / 0 (B)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d(viewport, footer) — live (A)</span>
-        <span className="font-mono font-semibold tabular-nums">{gapA === null ? "not measured" : `${gapA}px`}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">lim_{`{t→∞}`} d &gt; 0</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True (A) / False (B)</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Infinite Scrolling: The Unreachable Footer"
       userTitle="Field Notes"
       caption="The Unreachable Footer — the terminal <footer> node with its privacy and contact links is pushed down the Y-axis at least as fast as the user scrolls, so it can never be reached."
-      auditorStats={stats}
       deltaNote="Variant A appends a new section above the footer every time the viewport approaches it, so the footer recedes at ≥ the user's scroll velocity and stays out of reach. Variant B renders the identical sections as a finite list — the footer stays static and the utility links are actually clickable."
       benign={
         <div className="space-y-3">

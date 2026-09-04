@@ -1,0 +1,6 @@
+STATE s0
+AeroGlide X Wireless Headphones Noise-cancelling over-ear · Graphite $119 128 people viewed this in the last hour there exists q = 128 in ℤ⁺ and Qualifier_temporal = “in the last hour” — falsifiable $195 $119 Verify claim
+
+STATE s1
+AeroGlide X Wireless Headphones Noise-cancelling over-ear · Graphite $119 128 people viewed this in the last hour there exists q = 128 in ℤ⁺ and Qualifier_temporal = “in the last hour” — falsifiable $195 $119 Verify claim Claim verified there exists q = 128 in ℤ⁺ with Qualifier_temporal = “in the last hour” — the assertion is bounded and checkable against backend analytics. A claim you can audit is a claim you can trust.
+

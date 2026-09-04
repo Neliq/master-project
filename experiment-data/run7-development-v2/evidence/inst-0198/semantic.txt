@@ -1,0 +1,9 @@
+STATE s0
+StreamApp Live: Downtown City Cam Notifications: ? ▶ Play live stream
+
+STATE s1
+StreamApp Live: Downtown City Cam Notifications: ? ▶ Live stream playing… “StreamApp” Would Like to Send You Notifications Notifications may include alerts, sounds, and icon badges. These can be configured in Settings. Don’t Allow Allow injected at (212, 288) — same coordinates as Play Notification settings
+
+STATE s2
+StreamApp Live: Downtown City Cam Notifications: OFF ▶ Live stream playing… Momentum dodged This time you noticed the swap and hit 'Don't Allow' — but the prompt was engineered to intercept your momentum, and most users tap through it.
+

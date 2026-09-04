@@ -1,0 +1,10 @@
+{
+  "run_id": "c1-repair-v1",
+  "purpose": "C1-only development repair loop; not confirmatory",
+  "n_instances": 20,
+  "n_agents": 4,
+  "assignment_seed": 20260912,
+  "evidence": "copied from state-aligned Run 7 evidence; labels and prior results excluded",
+  "formalization": "formalization-revision-v2",
+  "selection_rule": "scorer-only selection metadata; opaque IDs remain assigned"
+}

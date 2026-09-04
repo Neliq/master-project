@@ -29,44 +29,17 @@ const RATIO_DARK = (TINY_SIZE_PX / BASE_SIZE_PX).toFixed(2); // 0.44
 const RATIO_BENIGN = (BASE_SIZE_PX / BASE_SIZE_PX).toFixed(2); // 1.00
 
 export function IntermediateCurrencyCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [bought, setBought] = React.useState(false);
 
-  const reset = () => {
-    setBought(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">N_virtual label</span>
-        <span className="font-mono font-semibold tabular-nums">{GEM_PRICE.toLocaleString()} Gems</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">N_real disclosure</span>
-        <span className="font-mono font-semibold tabular-nums">{REAL_PRICE} (present)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">fontSize(N_real)/S_base — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{TINY_SIZE_PX}px/{BASE_SIZE_PX}px = {RATIO_DARK} &lt; 0.5</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">fontSize(N_real)/S_base — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{BASE_SIZE_PX}px/{BASE_SIZE_PX}px = {RATIO_BENIGN} &ge; 0.5</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Intermediate Currency: Visual Obscuration of Real-Currency Equivalence"
       caption="Visual Obscuration of Real-Currency Equivalence — the real-dollar price of an item priced in gems exists in the viewport, but it is printed so small that it falls below the 50%-of-base-size threshold."
-      auditorStats={stats}
       deltaNote={`Both panels show the same item, the same 4,500 Gems price, and the same $45.00 equivalent. Variant A prints the real price at ${TINY_SIZE_PX}px against a ${BASE_SIZE_PX}px base (ratio ${RATIO_DARK} < 0.5 — trigger fires); Variant B prints it at the full ${BASE_SIZE_PX}px base size (ratio ${RATIO_BENIGN} ≥ 0.5 — no trigger). The information is identical; only the typography differs.`}
       benign={
         <div className="space-y-3">

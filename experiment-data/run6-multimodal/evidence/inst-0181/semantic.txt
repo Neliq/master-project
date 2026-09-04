@@ -1,0 +1,6 @@
+STATE s1
+Harvest Moon Festival Seasonal event: earn double points on every harvest until the event ends. 02:59:41 2x points +50 event tasks 3 rewards left The event ends in 02:59:41 . The timer is just a fact — play whenever you like before then. Claim event reward
+
+STATE s2
+Harvest Moon Festival Seasonal event: earn double points on every harvest until the event ends. 02:59:41 2x points +50 event tasks 3 rewards left The event ends in 02:59:41 . The timer is just a fact — play whenever you like before then. Reward claimed ✓ Informational deadline The countdown occupied about a tenth of the panel at neutral saturation — a quiet corner chip, not a visual event. The deadline informed you without commanding you.
+

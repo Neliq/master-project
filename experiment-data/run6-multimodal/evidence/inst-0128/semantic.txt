@@ -1,0 +1,6 @@
+STATE s1
+Dashboard Settings Messages Settings
+
+STATE s2
+Dashboard Settings Messages Settings “Messages” — nothing here about deleting your account.
+

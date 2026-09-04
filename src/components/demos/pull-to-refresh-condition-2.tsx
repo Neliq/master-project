@@ -40,11 +40,9 @@ function postFor(i: number): string {
 }
 
 export function PullToRefreshCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Shared feed payload.
   const [feedA, setFeedA] = React.useState<string[]>(() =>
@@ -131,55 +129,12 @@ export function PullToRefreshCond2({
     timersRef.current.push(iv);
   };
 
-  const reset = () => {
-    timersRef.current.forEach((id) => window.clearInterval(id));
-    timersRef.current = [];
-    setFeedA(Array.from({ length: 3 }, (_, i) => postFor(i)));
-    setFeedB(Array.from({ length: 3 }, (_, i) => postFor(i)));
-    setFeedSeqA(3);
-    setFeedSeqB(3);
-    setPhaseA("idle");
-    setElapsedA(0);
-    setPayloadReadyA(false);
-    setNetA(null);
-    setNetReadyMsA(null);
-    setPhaseB("idle");
-    setElapsedB(0);
-    setNetB(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δt_network (last fetch)</span>
-        <span className="font-mono font-semibold tabular-nums">
-          {netA !== null ? `${(netA / 1000).toFixed(2)}s` : "—"} (A) /{" "}
-          {netB !== null ? `${(netB / 1000).toFixed(2)}s` : "—"} (B)
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δt_animation [A]</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {(ANIM_DELAY_A / 1000).toFixed(2)}s — hardcoded
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δt_animation [B]</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">= Δt_network</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_suspense (threshold)</span>
-        <span className="font-mono font-semibold tabular-nums">1.0–2.5s</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pull To Refresh (Variable-Reward Trap): Artificial Anticipation Injection"
       userTitle="Pulse — Your feed"
       caption="Artificial Anticipation Injection — the spinner's duration is decoupled from network latency and held past a psychological suspense threshold, manufacturing anticipation the backend never required."
-      auditorStats={stats}
       deltaNote="Variant A resolves the payload in ~0.2s but holds the spinner for a hardcoded 2.4s (Δt_animation ≫ Δt_network, above the 1.0–2.5s suspense threshold) — the refresh indicator itself shows the 2.4s target next to the actual payload time. Variant B shows the identical feed and payload, but the spinner lasts exactly as long as the network needs — no injected suspense."
       benign={
         <div className="space-y-3">

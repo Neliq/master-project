@@ -38,19 +38,13 @@ function crossedMilestones(milestones: number[], clicks: number): number[] {
 }
 
 export function GrindingCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [clicksA, setClicksA] = React.useState(0);
   const [clicksB, setClicksB] = React.useState(0);
 
-  const reset = () => {
-    setClicksA(0);
-    setClicksB(0);
-  };
 
   const revealedA = clicksA >= 25;
   const revealedB = clicksB >= 25;
@@ -64,33 +58,11 @@ export function GrindingCond3({
 
   const gapsA = crossedA.slice(1).map((m, i) => m - crossedA[i]);
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Milestone positions (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">#{crossedA.join(", #") || "—"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Gaps Δa_i (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{gapsA.join(", ") || "—"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">dΔa/di (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&gt; 0 (widening)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Praise fired (A / B)</span>
-        <span className="font-mono font-semibold tabular-nums">{crossedA.length} / {crossedB.length}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Grinding: Semantic Attenuation of Progress-Milestone Language"
       userTitle="Kelp Farm"
       caption="Semantic Attenuation of Progress-Milestone Language — 'Great job!' appears at exponentially widening intervals, so praise fades precisely as the grind grows."
-      auditorStats={stats}
       deltaNote="Both variants run the same kelp grind with the same action counter. Variant A celebrates milestones at action #3, #8, #20, #50… (gaps 5, 12, 30 — dΔa/di > 0): praise hooks you early, then starves you as the work doubles. Variant B celebrates every 5 actions (gaps constant), so reinforcement tracks the effort honestly."
       benign={
         <div className="space-y-3">

@@ -37,11 +37,9 @@ const TAU_SEM = 0.5;
 type Decision = "delete" | "keep" | null;
 
 export function PlainEvilCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [decisionA, setDecisionA] = React.useState<Decision>(null);
   const [decisionB, setDecisionB] = React.useState<Decision>(null);
@@ -50,54 +48,12 @@ export function PlainEvilCond3({
   const [exportedA, setExportedA] = React.useState(false);
   const [exportedB, setExportedB] = React.useState(false);
 
-  const reset = () => {
-    setDecisionA(null);
-    setDecisionB(null);
-    setRevealedA(false);
-    setRevealedB(false);
-    setExportedA(false);
-    setExportedB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">ρ_coerce (coercive density)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{RHO_COERCE.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">σ_FKGL (complexity outliers)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{SIGMA_FKGL.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">σ_sent (sentiment spread)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{SIGMA_SENT.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">ρ_connot (connotative score)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{RHO_CONNOT.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">‖H_sem‖₂ (L2 norm)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {NORM.toFixed(2)} &gt; {TAU_SEM.toFixed(2)}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Your decision</span>
-        <span className="font-mono font-semibold tabular-nums">
-          A: {decisionA ? (decisionA === "delete" ? "Delete account" : "Keep account") : "—"} / B: {decisionB ? (decisionB === "delete" ? "Delete account" : "Keep account") : "—"}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Plain Evil (Theoretical Construct): Semantic Hostility Density Score"
       userTitle="CloudPhoto — Delete account"
       caption="Semantic Hostility Density Score — an account-deletion page where the copy itself is the weapon: guilt, manufactured permanence, and legalese saturate every visible text node."
-      auditorStats={stats}
       deltaNote="Both variants convey the same facts: deletion is permanent, your 1,284 photos and profile cannot be recovered, you can export data first, and your friends will notice your profile is gone. Variant A wraps those facts in coercive language, sentiment manipulation, and a legalese outlier (L2 norm 0.70 > tau); Variant B states them plainly, so the hostility vector collapses to zero."
       benign={
         <div className="space-y-3">

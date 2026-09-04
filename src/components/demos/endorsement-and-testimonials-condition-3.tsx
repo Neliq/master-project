@@ -62,42 +62,17 @@ function SimilarityRow({ label, value, tone }: { label: string; value: string; t
 }
 
 export function EndorsementAndTestimonialsCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [checked, setChecked] = React.useState(false);
 
-  const reset = () => setChecked(false);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Similarity(I_avatar, I_stock)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 1.00</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Similarity(T(r_i), T(r_j))</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.81 &gt; &tau;_template</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Unique avatars rendered</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">1 / 3</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Verdict</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">bot-generated</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Endorsement And Testimonials: Provenance Obfuscation"
       caption="Provenance Obfuscation — endorsements that reuse stock imagery or templated syntactic structures signal bot-driven generation rather than authentic human experience."
-      auditorStats={stats}
       deltaNote="In Variant A all three avatars are the same stock asset and every review opens with the identical template phrase, so Similarity(I_avatar, I_stock) ≈ 1 and text similarity exceeds τ_template. Variant B uses unique avatars and organic, non-templated text."
       benign={
         <div className="space-y-3">

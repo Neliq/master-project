@@ -1,0 +1,6 @@
+STATE s1
+Your privacy choices We use cookies to improve the site and show relevant ads. Both options below carry exactly the same visual weight — your choice, equally easy to see. Accept All Reject All Equal bounding boxes, equal contrast, equal z-index — P ratio = 1.0
+
+STATE s2
+Your privacy choices We use cookies to improve the site and show relevant ads. Both options below carry exactly the same visual weight — your choice, equally easy to see. Accept All Reject All Equal bounding boxes, equal contrast, equal z-index — P ratio = 1.0 Visual hierarchy is neutral Both options were equally visible, so the layout did not steer you toward one choice.
+

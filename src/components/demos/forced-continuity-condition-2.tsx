@@ -26,11 +26,9 @@ const PLAN_PRICE = "$14.99";
 const NOTICE_DAYS = 7; // τ_fair_notice: 3–7 days before expiry
 
 export function ForcedContinuityCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [daysLeftA, setDaysLeftA] = React.useState(7);
   const [daysLeftB, setDaysLeftB] = React.useState(7);
@@ -41,39 +39,12 @@ export function ForcedContinuityCond2({
   const nextDayA = () => setDaysLeftA((d) => Math.max(0, d - 1));
   const nextDayB = () => setDaysLeftB((d) => Math.max(0, d - 1));
 
-  const reset = () => {
-    setDaysLeftA(7);
-    setDaysLeftB(7);
-    setManageOpened(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Days to renewal</span>
-        <span className="font-mono font-semibold tabular-nums">{daysLeftA}d (τ_fair_notice: 3–7d)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Visible(w, t) in window (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">False — micro-text</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CR(w, L_bg) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">1.8 &lt; 3.0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Visible(w, t) in window (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">True — banner, CR 7.4</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Forced Continuity: Absence of Temporal Feedforward"
       userTitle="Streamly — Trial details"
       caption="Absence of Temporal Feedforward — no visible renewal warning appears inside the fair-notice window; the only notice is rendered below legibility thresholds."
-      auditorStats={stats}
       deltaNote="Both panels show the same plan and the same countdown. In Variant A the renewal notice exists but is 7px at 1.8:1 contrast — below τ_min_visible and CR < 3.0, so Visible(w, t) = False across the whole fair-notice window. In Variant B a high-contrast banner appears the moment the window opens."
       benign={
         <div className="space-y-3">

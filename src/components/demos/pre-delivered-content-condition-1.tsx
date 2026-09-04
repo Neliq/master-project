@@ -26,23 +26,15 @@ const PREMIUM_GB = 5.0; // 3.2 GB 4K texture pack + 1.8 GB Void Campaign expansi
 const FREE_BEFORE_GB = 120.0;
 
 export function PreDeliveredContentCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [phaseA, setPhaseA] = React.useState<"idle" | "installing" | "done">("idle");
   const [phaseB, setPhaseB] = React.useState<"idle" | "installing" | "done">("idle");
   const [consentB, setConsentB] = React.useState(false);
   const [unlockedA, setUnlockedA] = React.useState(false);
 
-  const reset = () => {
-    setPhaseA("idle");
-    setPhaseB("idle");
-    setConsentB(false);
-    setUnlockedA(false);
-  };
 
   React.useEffect(() => {
     if (phaseA !== "installing") return;
@@ -60,33 +52,11 @@ export function PreDeliveredContentCond1({
   const darkFreeAfter = FREE_BEFORE_GB - BASE_GAME_GB - PREMIUM_GB;
   const benignFreeAfter = FREE_BEFORE_GB - BASE_GAME_GB - (consentB ? PREMIUM_GB : 0);
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Size(C_premium)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">5.0 GB ≫ 0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_consent (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">∅ — never asked</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_consent (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{consentB ? "explicit ✓" : "∅ (checkbox off)"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Free space after install (A)</span>
-        <span className="font-mono font-semibold tabular-nums">{darkFreeAfter.toFixed(1)} GB</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pre-Delivered Content: Unconsented Local Storage Consumption"
       userTitle="PixelQuest — Game install"
       caption="Unconsented Local Storage Consumption — premium assets are forced onto the user's disk without any explicit consent request, permanently consuming capacity."
-      auditorStats={stats}
       deltaNote="In Variant A the installer writes 5.0 GB of premium, locked content to the disk with E_consent = ∅, then paywalls it. In Variant B the same payload is only pre-loaded after an explicit, unchecked-by-default consent checkbox, so the user's favorable action (hosting nothing extra) is easy and fair."
       benign={
         <div className="space-y-3">

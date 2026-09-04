@@ -1,0 +1,6 @@
+STATE s1
+Account settings CloudPhoto · Free plan · maya@example.com 2.0 / 2.0 GB used Email address maya@example.com Membership Free tier Sign up — create a new account Delete account
+
+STATE s2
+Account settings CloudPhoto · Free plan · maya@example.com Account created Email address maya@example.com Membership Free tier Sign up — create a new account Delete account
+

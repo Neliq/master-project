@@ -19,42 +19,17 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function ConfirmshamingCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [choice, setChoice] = React.useState<null | "accept" | "decline">(null);
 
-  const reset = () => setChoice(null);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Tag(N_accept)</span>
-        <span className="font-mono font-semibold tabular-nums">&lt;button&gt;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Tag(N_decline)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&lt;span&gt;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">role=&quot;button&quot; on decline</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">absent</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Keyboard-focusable exit</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">no</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Confirmshaming: Structural Asymmetry in Decline-Option Accessibility"
       caption="Structural Asymmetry in Decline-Option Accessibility — the decline option is structurally demoted (no &lt;button&gt; wrapper, no role=&quot;button&quot;) while the acceptance option receives full structural affordance."
-      auditorStats={stats}
       deltaNote="In Variant A the exit is a plain clickable &lt;span&gt; with no role=&quot;button&quot;, so it is invisible to keyboard navigation and screen readers, while the accept action is a full &lt;button&gt;. In Variant B both options are real &lt;button&gt; elements with equal structural affordance."
       benign={
         <div className="space-y-3">

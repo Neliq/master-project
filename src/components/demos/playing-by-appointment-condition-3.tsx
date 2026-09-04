@@ -35,50 +35,21 @@ const MESSAGES_BENIGN = [
 ];
 
 export function PlayingByAppointmentCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [analyzedA, setAnalyzedA] = React.useState(false);
   const [analyzedB, setAnalyzedB] = React.useState(false);
 
-  const reset = () => {
-    setAnalyzedA(false);
-    setAnalyzedB(false);
-  };
 
   const scarcityTotalDark = MESSAGES_DARK.reduce((s, m) => s + m.scarcity.length, 0);
-  const scarcityTotalBenign = MESSAGES_BENIGN.reduce((s, m) => s + m.scarcity.length, 0);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Urgency(T_temporal) max (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.92 &gt; 0.7</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Urgency(T_temporal) max (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">0.18 &lt; 0.7</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Scarcity tokens L_scarcity (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{scarcityTotalDark} &ne; 0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Scarcity tokens (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{scarcityTotalBenign} (= 0)</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Playing By Appointment: Semantic Urgency Encoding in Temporal-Gating Messages"
       userTitle="Mystic Garden"
       caption="Semantic Urgency Encoding in Temporal-Gating Messages — schedule messages carry urgency scores above threshold while embedding scarcity language, compounding the pressure to return on time."
-      auditorStats={stats}
       deltaNote="Both variants announce the identical schedule — a 3 PM window, content in 2 hours, a streak reset at midnight. Variant A wraps each fact in urgent, scarcity-laced copy (Urgency 0.81–0.92 > τ; 4 scarcity tokens). Variant B states the same facts neutrally (Urgency ≤ 0.18; zero scarcity tokens), so no compound semantic pressure is applied."
       benign={
         <div className="space-y-3">

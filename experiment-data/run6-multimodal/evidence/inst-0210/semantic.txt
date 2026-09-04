@@ -1,0 +1,9 @@
+STATE s1
+Your goal: delete your account — follow the menu. Settings step 1 / 3 Home → Settings Settings Sim 0.91 Account Sim 0.88 Delete account Sim 0.97
+
+STATE s2
+Your goal: delete your account — follow the menu. Account step 2 / 3 Home → Settings → Account Account Sim 0.88 Delete account Sim 0.97
+
+STATE s3
+Your goal: delete your account — follow the menu. Delete account step 3 / 3 Home → Settings → Account → Delete account You reached the destination. Confirm below.
+

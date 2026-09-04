@@ -31,40 +31,13 @@ const ENGLISH_NO = "No, keep my subscription";
 type Step = "account" | "confirm" | "done";
 
 export function WrongLanguageCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [step, setStep] = React.useState<Step>("account");
   const [cancelled, setCancelled] = React.useState(false);
 
-  const reset = () => {
-    setStep("account");
-    setCancelled(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">L(S_acquisition)</span>
-        <span className="font-mono font-semibold tabular-nums">{`{ en }`}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">L(S_termination) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{`{ en, de }`}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">L(S_term) ∖ {`{L_session}`}</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{`{ de } ≠ ∅`}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Flow step</span>
-        <span className="font-mono font-semibold tabular-nums">{step}</span>
-      </div>
-    </>
-  ) : null;
 
   const confirmPanel = (dark: boolean) => (
     <div lang={dark ? "de" : "en"} className="rounded-md border bg-card p-3">
@@ -114,10 +87,9 @@ export function WrongLanguageCond1({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Wrong Language: Asymmetric State Application"
       caption="Asymmetric State Application — the interface stays in your session language during signup and checkout, but the cancellation flow abruptly switches to another language."
-      auditorStats={stats}
       deltaNote="In Variant A the termination flow renders in German even though the session language is English — L(S_termination) ∖ {L_session} = {de} ≠ ∅ — while Variant B runs the identical flow entirely in the session language."
       benign={
         <div className="space-y-3">

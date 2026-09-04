@@ -23,15 +23,10 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * baseline.
  */
 
-const U_SYSTEM = "18 MB/s";
-const U_DEFAULT_DARK = "40 KB/s";
-
 export function PayToAvoidCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [planA, setPlanA] = React.useState<"free" | "paid">("free");
   const [planB, setPlanB] = React.useState<"free" | "paid">("free");
@@ -40,14 +35,6 @@ export function PayToAvoidCond1({
   const [progressA, setProgressA] = React.useState(0);
   const [progressB, setProgressB] = React.useState(0);
 
-  const reset = () => {
-    setPlanA("free");
-    setPlanB("free");
-    setDownloadingA(false);
-    setDownloadingB(false);
-    setProgressA(0);
-    setProgressB(0);
-  };
 
   // Shared crawl: dark+free throttled, paid/benign fast. The interval is
   // variant-agnostic; the increment encodes the injected friction.
@@ -63,36 +50,6 @@ export function PayToAvoidCond1({
     }, 300);
     return () => window.clearInterval(id);
   }, [downloadingA, downloadingB, planA, planB]);
-
-  const darkDegraded = planA === "free";
-  const ratio = planA === "free" ? 0.002 : 1.0;
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">U_system (capacity)</span>
-        <span className="font-mono font-semibold tabular-nums">{U_SYSTEM}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">U_default (free tier)</span>
-        <span className={`font-mono font-semibold tabular-nums ${darkDegraded ? "text-red-500" : "text-green-500"}`}>
-          {darkDegraded ? U_DEFAULT_DARK : U_SYSTEM}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">D_artificial</span>
-        <span className={`font-mono font-semibold tabular-nums max-w-[55%] truncate text-right ${darkDegraded ? "text-red-500" : "text-green-500"}`}>
-          {darkDegraded ? "{throttle, watermark, ad}" : "∅ (none)"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">U_default / U_system</span>
-        <span className={`font-mono font-semibold tabular-nums ${darkDegraded ? "text-red-500" : "text-green-500"}`}>
-          {ratio.toFixed(3)} {darkDegraded ? "(≪ 1)" : "(= 1)"}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   const renderDownloadPanel = (accent: "rose" | "emerald") => {
     const isDark = accent === "rose";
@@ -240,11 +197,10 @@ export function PayToAvoidCond1({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pay To Avoid: Artificial State Degradation"
       userTitle="SwiftDrop — Download"
       caption="Artificial State Degradation — the software is throttled and watermarked below its own capacity, and payment only restores the baseline."
-      auditorStats={stats}
       deltaNote="Both variants offer the same $3.99/mo plan for the same app. Variant A first artificially degrades the free tier (40 KB/s throttle, watermark, queued ad) and sells the upgrade as removing that degradation — paying for the cessation of hostility. Variant B never degrades anything: the free tier runs at full capacity and the upgrade adds genuinely new features."
       benign={
         <div className="space-y-3">{renderDownloadPanel("emerald")}</div>

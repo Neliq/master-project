@@ -29,57 +29,21 @@ const E_COERCIVE = 6; // registered listeners on the coercive text node (dark)
 const E_NEUTRAL = 1; // the real Add to cart control is the neutral action node
 const TAU_LISTENER = 3.0;
 const LISTENER_SKEW = (E_COERCIVE / E_NEUTRAL).toFixed(1);
-const BENIGN_SKEW = (0 / E_NEUTRAL).toFixed(1);
-
 export function PersuasiveLanguageCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkCart, setDarkCart] = React.useState<null | "added">(null);
   const [benignCart, setBenignCart] = React.useState<null | "added">(null);
   const [hoverFires, setHoverFires] = React.useState(0);
   const [coerciveHovered, setCoerciveHovered] = React.useState(false);
 
-  const reset = () => {
-    setDarkCart(null);
-    setBenignCart(null);
-    setHoverFires(0);
-    setCoerciveHovered(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|E(N_coercive)| (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{E_COERCIVE} listeners</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|E(N_neutral)|</span>
-        <span className="font-mono font-semibold tabular-nums">{E_NEUTRAL}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Listener skew (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{LISTENER_SKEW} &gt; {TAU_LISTENER}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Listener skew (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{BENIGN_SKEW} &le; {TAU_LISTENER}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Hover events fired</span>
-        <span className="font-mono font-semibold tabular-nums">{hoverFires}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Persuasive Language: Structural Density of Event Listeners on Coercive Text Nodes"
       caption="Structural Density of Event Listeners on Coercive Text Nodes — emotionally loaded text is wired up as an interactive conversion trap, not just displayed."
-      auditorStats={stats}
       deltaNote="In Variant A the coercive headline node registers 6 event listeners (onclick, onmouseenter, onmouseleave, onfocus, ontouchstart, delegated keydown) while the real Add to cart control supplies 1 neutral listener — a 6.0 skew above tau_listener_skew = 3.0. Hover it and watch events fire; click it and it adds the item to your cart. In Variant B the same headline is static text with zero listeners, so the corresponding skew is 0.0/1.0 and the predicate stays false."
       benign={
         <div className="space-y-3">

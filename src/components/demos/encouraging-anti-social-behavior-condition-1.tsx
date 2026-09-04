@@ -26,48 +26,19 @@ const CONTACTS = 248;
 const CONTACT_PREVIEWS = ["Mia Chen", "Lucas Silva", "Ava Johnson", "Noah Kim", "Sofia Rossi", "Eli Turner"];
 
 export function EncouragingAntiSocialBehaviorCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkSent, setDarkSent] = React.useState(false);
   const [benignSent, setBenignSent] = React.useState(false);
   const [benignJoined, setBenignJoined] = React.useState(false);
-  const reset = () => {
-    setDarkSent(false);
-    setBenignSent(false);
-    setBenignJoined(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A_antisocial (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">mass-invite {CONTACTS} contacts</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">V_reward (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">+500 coins, immediate</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_externality</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{CONTACTS} notifications &gg; 0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A_antisocial (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">1 consented invite</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Encouraging Anti-Social Behavior: Reward-Coupled Social Externality"
       userTitle="WaveChat — grow your circle"
       caption="Reward-Coupled Social Externality — progression is hinged on actions that dump negative externalities (notification fatigue) on non-consenting third parties, decoupling user reward from network health."
-      auditorStats={stats}
       deltaNote="Variant A pays +500 coins the instant you mass-invite all 248 contacts, externalizing 248 notifications onto people who never asked. Variant B lets you invite one friend who consented, and the reward only arrives when they actually join — user benefit and network health move together."
       benign={
         <div className="space-y-3">

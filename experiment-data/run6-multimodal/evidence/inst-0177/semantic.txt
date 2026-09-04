@@ -1,0 +1,12 @@
+STATE s1
+Forge Master Forge swords to level up. Keep forging. Keep forging… Grind Level 1 0/1 forges · +10 gold Gold earned so far: 0 Forge a sword (+1) Forge x5
+
+STATE s2
+Forge Master Forge swords to level up. Keep forging. Keep forging… Grind Level 2 0/2 forges · +10 gold Gold earned so far: 10 Forge a sword (+1) Forge x5
+
+STATE s3
+Forge Master Forge swords to level up. Keep forging. Keep forging… Grind Level 2 1/2 forges · +10 gold Gold earned so far: 10 Forge a sword (+1) Forge x5
+
+STATE s4
+Forge Master Forge swords to level up. Keep forging. Keep forging… Grind Level 3 0/4 forges · +10 gold Gold earned so far: 20 Forge a sword (+1) Forge x5
+

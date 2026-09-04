@@ -26,42 +26,17 @@ const HOST = "filevaultpro.io";
 const AD_DOMAIN = "offers.northstar-security.com";
 
 export function DisguisedAdCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [clicked, setClicked] = React.useState<null | "big" | "direct">(null);
 
-  const reset = () => setClicked(null);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">B_action (primary-styled)</span>
-        <span className="font-mono font-semibold tabular-nums">&ldquo;Download Now&rdquo;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">D_host</span>
-        <span className="font-mono font-semibold tabular-nums">{HOST}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">D_target(B_action) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{AD_DOMAIN} (external ad network)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">D_target ≠ D_host — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Disguised Ad: Cross-Origin Action Masking"
       caption="Cross-Origin Action Masking — a visually prominent button labeled like a native task (Download) structurally routes you to an external advertising domain instead of the host application."
-      auditorStats={stats}
       deltaNote={`The page layout, the product, and the button label ("Download Now") are identical in both panels. The only difference is the resolved href: in Variant A the button targets ${AD_DOMAIN} — an external ad domain, so D_target ≠ D_host and the feature triggers; in Variant B the same button targets ${HOST} — the real download.`}
       benign={
         <div className="space-y-3">

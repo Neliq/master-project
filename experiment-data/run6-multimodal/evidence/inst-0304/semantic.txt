@@ -1,0 +1,6 @@
+STATE s1
+Streamly — auto-advance playing Field Notes — Episode 2 Next episode in 8s Stop autoplay
+
+STATE s2
+Streamly — auto-advance stopped Field Notes — Episode 2 Autoplay stopped — next episode will wait. Stopped in 1 click Regaining control was immediate: the stop action was visible beside the player and required one click.
+

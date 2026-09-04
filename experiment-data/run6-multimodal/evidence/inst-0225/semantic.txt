@@ -1,0 +1,6 @@
+STATE s1
+Invite your friends We’ll send a welcome offer to the 3 contacts you selected. The message is clearly branded as coming from PopSocial. Send welcome offer
+
+STATE s2
+Invite your friends We’ll send a welcome offer to the 3 contacts you selected. The message is clearly branded as coming from PopSocial. Message sent Honest sender attribution PS PopSocial Sponsored Alex Rivera invited you to PopSocial — sign up today and get 20% off your first order! the senderalias = corp = the author. Recipients can tell at a glance that this is a corporate promotion, not a personal plea.
+

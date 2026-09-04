@@ -1,0 +1,21 @@
+{
+  "run_id": "run7-development-v3",
+  "purpose": "bounded development pilot; not a confirmatory significance test",
+  "source_run": "run6-multimodal",
+  "sample_seed": 20260911,
+  "n_instances": 72,
+  "n_patterns": 12,
+  "n_agents_per_arm": 4,
+  "complete_pattern_pool": 55,
+  "model": "gpt-5.6-luna-900k",
+  "evidence": "aligned visual/DOM/semantic state manifests; native colors preserved",
+  "changes": [
+    "unknown is distinct from benign",
+    "compact predicate cards plus structured evidence ledger",
+    "pattern-specific escape applicability",
+    "original state IDs preserved across modalities"
+  ],
+  "counterexamples": "not added per user instruction",
+  "alignment_issues": 0,
+  "statistical_policy": "pilot direction only; freeze before held-out evaluation"
+}

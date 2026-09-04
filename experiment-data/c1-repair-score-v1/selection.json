@@ -1,0 +1,10 @@
+{
+  "selection_rule": "All v5 C1 regressions: C0 prediction matched the held-out construction label and v5 C1 prediction did not; no ranking or cherry-picking within that set.",
+  "source_run": "run7-development-v5",
+  "ids": [
+    "inst-0111", "inst-0258", "inst-0313", "inst-0119", "inst-0138",
+    "inst-0338", "inst-0266", "inst-0259", "inst-0139", "inst-0045",
+    "inst-0168", "inst-0008", "inst-0176", "inst-0012", "inst-0187",
+    "inst-0155", "inst-0038", "inst-0312", "inst-0290", "inst-0317"
+  ]
+}

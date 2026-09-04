@@ -1,0 +1,3 @@
+STATE s0
+Pip’s PetPal Pip is doing great today. Pip can get a premium room for $2.99 — more toys, more snacks. Want to upgrade? It’s your call, no pressure. Upgrade — $2.99 Not now emotion(A) = +0.6 -1 … +1
+

@@ -1,0 +1,12 @@
+STATE s1
+TorchMate — Flashlight A local utility. Works entirely on your device. Off Switch on flashlight Allow TorchMate to access your contacts? This is a data-access permission: it uploads your address book to our servers. You can keep using the flashlight without it. Allow access Not now
+
+STATE s2
+TorchMate — Flashlight A local utility. Works entirely on your device. On Switch off flashlight Allow TorchMate to access your contacts? This is a data-access permission: it uploads your address book to our servers. You can keep using the flashlight without it. Allow access Not now
+
+STATE s3
+TorchMate — Flashlight A local utility. Works entirely on your device. Off Switch on flashlight Allow TorchMate to access your contacts? This is a data-access permission: it uploads your address book to our servers. You can keep using the flashlight without it. Allow access Not now
+
+STATE s4
+TorchMate — Flashlight A local utility. Works entirely on your device. On Switch off flashlight Allow TorchMate to access your contacts? This is a data-access permission: it uploads your address book to our servers. You can keep using the flashlight without it. Allow access Not now
+

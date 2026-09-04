@@ -23,11 +23,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function BadDefaultsPreselectionCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Variant A: provider-favorable defaults.
   const [aProtection, setAProtection] = React.useState(true); // D_financial_cost
@@ -39,15 +37,6 @@ export function BadDefaultsPreselectionCond3({
   const [bAlerts, setBAlerts] = React.useState(true); // user-favorable (security)
   const [bSubmitted, setBSubmitted] = React.useState(false);
 
-  const reset = () => {
-    setAProtection(true);
-    setAOffers(true);
-    setAData(true);
-    setASubmitted(false);
-    setBExpress(false);
-    setBAlerts(true);
-    setBSubmitted(false);
-  };
 
   const aDomains = [
     aProtection ? "D_financial_cost" : null,
@@ -55,36 +44,10 @@ export function BadDefaultsPreselectionCond3({
     aData ? "D_privacy_loss" : null,
   ].filter(Boolean);
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent(L(c)) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500 max-w-[60%] truncate text-right">
-          {aDomains.join(", ") || "none"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Trigger condition</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          Intent(L(c)) ∈ D_provider ✓
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent(L(c)) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">user-favorable</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Default shipping</span>
-        <span className="font-mono font-semibold tabular-nums">{bExpress ? "Express (+$9.99)" : "Standard (free)"}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Bad Defaults / Preselection: Semantic Intent of the Default Action"
       caption="Semantic Intent of the Default Action — the pre-selected defaults map to provider-favorable consequence domains: financial cost, marketing opt-in, and privacy loss."
-      auditorStats={stats}
       deltaNote="Variant A pre-checks a paid protection plan (Intent(L(c)) ∈ D_financial_cost), partner offers (D_marketing_opt_in) and data sharing (D_privacy_loss) — every default penalizes the user. Variant B defaults to the user-favorable side: cheapest shipping tier, no marketing, no data sharing."
       benign={
         <div className="space-y-3">

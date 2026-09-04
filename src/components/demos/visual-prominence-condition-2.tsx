@@ -26,42 +26,14 @@ const TAU_AREA = 4.0;
 const RATIO_DARK = AREA_FAVORABLE / AREA_BASELINE;
 
 export function VisualProminenceCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<null | "accept" | "decline" | "manage">(null);
   const [benignChoice, setBenignChoice] = React.useState<null | "accept" | "decline" | "manage">(null);
   const [showBoxes, setShowBoxes] = React.useState(false);
 
-  const reset = () => {
-    setDarkChoice(null);
-    setBenignChoice(null);
-    setShowBoxes(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_favorable) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{AREA_FAVORABLE.toLocaleString()} px&sup2;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(E_baseline) mean</span>
-        <span className="font-mono font-semibold tabular-nums">{AREA_BASELINE.toLocaleString()} px&sup2;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Area ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK.toFixed(1)} &gt; {TAU_AREA}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Area ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">1.0 &le; {TAU_AREA}</span>
-      </div>
-    </>
-  ) : null;
 
   const boxToggle = (
     <label className="flex cursor-pointer items-center gap-1.5 text-[9px] text-muted-foreground select-none">
@@ -76,10 +48,9 @@ export function VisualProminenceCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Visual Prominence: Absolute Bounding Box Dominance"
       caption="Absolute Bounding Box Dominance — one action's interactive surface mathematically dwarfs the baseline UI, so clicking it takes almost no effort while every alternative is microscopic."
-      auditorStats={stats}
       deltaNote="In Variant A the 'Accept all cookies' button covers ~26,880 px^2 while standard elements average ~4,860 px^2 — a ratio of 5.5, far above tau_area = 4.0. In Variant B all three options share equal bounding box area (ratio 1.0). Toggle 'Visualize bounding boxes' to see the measured surfaces."
       benign={
         <div className="space-y-3">

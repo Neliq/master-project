@@ -1,0 +1,12 @@
+STATE s1
+Checkout — order summary Acme Store · 2 items · Free shipping html lang=“en” Wireless headphones $129.00 USB-C charger $19.00 Total $148.00 Términos y Condiciones Acepto los Términos y Condiciones y la Política de Privacidad Place order — $148.00
+
+STATE s2
+Checkout — order summary Acme Store · 2 items · Free shipping html lang=“en” Wireless headphones $129.00 USB-C charger $19.00 Total $148.00 Términos y Condiciones Al continuar, usted acepta los Términos y Condiciones de Compra y la Política de Privacidad de Acme Store. Sus datos personales serán procesados conforme a la legislación aplicable para la gestión del pedido y la mejora del servicio. Podrá ejercer sus derechos de acceso, rectificación y supresión en cualquier momento. Acepto los Términos y Condiciones y la Política de Privacidad Place order — $148.00
+
+STATE s3
+Checkout — order summary Acme Store · 2 items · Free shipping html lang=“en” Wireless headphones $129.00 USB-C charger $19.00 Total $148.00 Términos y Condiciones Acepto los Términos y Condiciones y la Política de Privacidad Place order — $148.00
+
+STATE s4
+Checkout — order summary Acme Store · 2 items · Free shipping html lang=“en” Wireless headphones $129.00 USB-C charger $19.00 Total $148.00 Términos y Condiciones Al continuar, usted acepta los Términos y Condiciones de Compra y la Política de Privacidad de Acme Store. Sus datos personales serán procesados conforme a la legislación aplicable para la gestión del pedido y la mejora del servicio. Podrá ejercer sus derechos de acceso, rectificación y supresión en cualquier momento. Acepto los Términos y Condiciones y la Política de Privacidad Place order — $148.00
+

@@ -33,42 +33,13 @@ const SUM_PRICES = COMPONENTS.reduce((s, c) => s + c.price, 0); // $1,297
 const SAVINGS = SUM_PRICES - BUNDLE_PRICE;
 
 export function BundlingCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [addedDark, setAddedDark] = React.useState(false);
   const [addedBenign, setAddedBenign] = React.useState(false);
 
-  const reset = () => {
-    setAddedDark(false);
-    setAddedBenign(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">ΣA(n)/A(C_bundle) dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 0% (&lt; 30%)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">ΣA(n)/A(C_bundle) benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">≈ 62%</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Σ component prices</span>
-        <span className="font-mono font-semibold tabular-nums">{usd(SUM_PRICES)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Bundle price / savings</span>
-        <span className="font-mono font-semibold tabular-nums">
-          {usd(BUNDLE_PRICE)} / {usd(SAVINGS)}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   const renderPanel = (dark: boolean) => {
     const isAdded = dark ? addedDark : addedBenign;
@@ -217,11 +188,8 @@ export function BundlingCond2({
   return (
     <DemoShell
       mode={mode}
-      annotations={annotations}
-      onRestart={onRestart ?? reset}
       title="Bundling: Visual Obscuration of Individual Component Pricing"
       caption="Visual Obscuration of Individual Component Pricing — the aggregate visual area devoted to individual-component prices inside the bundle card falls below the breakdown threshold, suppressing the decomposition that enables rational comparison."
-      auditorStats={stats}
       deltaNote="Variant A shows only the bundle total and the item names — the per-component prices are never rendered (≈0% of the card area, below τ_breakdown). Variant B renders the same itemised table at full visual weight (≈62%), so the $1,297 sum of separate purchases is directly comparable to the $1,199 bundle."
       benign={renderPanel(false)}
     >

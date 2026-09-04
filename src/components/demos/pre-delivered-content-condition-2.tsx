@@ -45,23 +45,15 @@ const DARK_LOCKED = new Set([1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13]);
 const BENIGN_LOCKED = new Set([2, 8]);
 
 export function PreDeliveredContentCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [clickedA, setClickedA] = React.useState<string | null>(null);
   const [clickedB, setClickedB] = React.useState<string | null>(null);
-  const [clicksA, setClicksA] = React.useState(0);
-  const [clicksB, setClicksB] = React.useState(0);
+  const [, setClicksA] = React.useState(0);
+  const [, setClicksB] = React.useState(0);
 
-  const reset = () => {
-    setClickedA(null);
-    setClickedB(null);
-    setClicksA(0);
-    setClicksB(0);
-  };
 
   const handleClick = (
     name: string,
@@ -73,33 +65,11 @@ export function PreDeliveredContentCond2({
     if (locked) setClicks((c) => c + 1);
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|Locked| / |Accessible| (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">12 / 2</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Locked ratio (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">6.0 &gt; τ_locked_ratio</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Locked ratio (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">0.17 &lt; τ</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Locked tiles clicked</span>
-        <span className="font-mono font-semibold tabular-nums">{clicksA} dark / {clicksB} benign</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pre-Delivered Content: Visual Density of Locked-Content Badges"
       userTitle="PixelQuest — Expansion pack"
       caption="Visual Density of Locked-Content Badges — locked-versus-accessible node density makes the interface visually dominated by assets the user already hosts but cannot access."
-      auditorStats={stats}
       deltaNote="Variant A locks 12 of 14 tiles — padlocks on content already delivered to disk (ratio 6.0 > τ). Variant B leaves the same 14 tiles unlocked; only 2 are non-accessible, and those are genuinely absent from the device and downloadable (ratio 0.17 < τ)."
       benign={
         <div className="space-y-3">

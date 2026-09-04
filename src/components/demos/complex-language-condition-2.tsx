@@ -51,46 +51,17 @@ const FKGL_BENIGN = fkgl(PLAIN_BENIGN);
 const RATIO_DARK = (DARK_FONT_SIZE / BASE_FONT_SIZE).toFixed(2);
 
 export function ComplexLanguageCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [paid, setPaid] = React.useState(false);
 
-  const reset = () => setPaid(false);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">FKGL(N_complex) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{FKGL_DARK.toFixed(1)} &gt; 12</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">FKGL (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{FKGL_BENIGN.toFixed(1)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">fontSize / S_base (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK} &lt; &tau;_shrink ({TAU_SHRINK})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_base / fontSize</span>
-        <span className="font-mono font-semibold tabular-nums">{BASE_FONT_SIZE}px / {DARK_FONT_SIZE}px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Paid?</span>
-        <span className="font-mono font-semibold tabular-nums">{paid ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Complex Language: Visual Density of Legalese Text Blocks"
       caption="Visual Density of Legalese Text Blocks — a FKGL 21 legal passage is rendered at 7px under a 13px body font, making it visually inconspicuous and semantically impenetrable."
-      auditorStats={stats}
       deltaNote={`In Variant A the FKGL ${FKGL_DARK.toFixed(1)} legal block is rendered at ${DARK_FONT_SIZE}px (ratio ${RATIO_DARK} < τ_shrink ${TAU_SHRINK}). Variant B renders the same payload at body size in plain English (FKGL ${FKGL_BENIGN.toFixed(1)}).`}
       benign={
         <div className="space-y-3">

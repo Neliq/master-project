@@ -1,0 +1,9 @@
+STATE s0
+800 Gems Mythic Sword of Dawn 2,500 Gems A legendary blade forged from dawnlight. +45 attack, unique trail effect. Insufficient Gems — top up to continue Exchange — the only way to pay Buy 3,000 Gems — $29.99 No card payments accepted for this item. Fiat money must first be converted into gems.
+
+STATE s1
+3,800 Gems Mythic Sword of Dawn 2,500 Gems A legendary blade forged from dawnlight. +45 attack, unique trail effect. Pay 2,500 Gems Exchange — the only way to pay Buy 3,000 Gems — $29.99 No card payments accepted for this item. Fiat money must first be converted into gems.
+
+STATE s2
+3,800 Gems Mythic Sword of Dawn 2,500 Gems A legendary blade forged from dawnlight. +45 attack, unique trail effect. Pay 2,500 Gems Exchange — the only way to pay Exchange already executed No card payments accepted for this item. Fiat money must first be converted into gems.
+

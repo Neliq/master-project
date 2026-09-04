@@ -25,11 +25,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function ReducedFrictionCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Variant A
   const [aSaved, setASaved] = React.useState(false);
@@ -38,40 +36,12 @@ export function ReducedFrictionCond2({
   const [bStep, setBStep] = React.useState<"idle" | "confirm" | "deleted">("idle");
   const [bSaved, setBSaved] = React.useState(false);
 
-  const reset = () => {
-    setASaved(false);
-    setADeleted(false);
-    setBStep("idle");
-    setBSaved(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d_spatial(delete, save) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">8px &lt; τ_safety</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d_spatial(delete, save) (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">64px &ge; τ_safety</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Visual weight (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">identical — muscle memory</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Confirmation node (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">present</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Reduced Friction: Visual Proximity of Destructive Actions to Neutral UI"
       userTitle="Harbor — Account settings"
       caption="Visual Proximity of Destructive Actions to Neutral UI — an irreversible action placed inside the safety-margin radius of routine controls invites accidental commitment."
-      auditorStats={stats}
       deltaNote="In Variant A “Delete account” shares the styling and position of “Save changes” (d_spatial = 8px < τ_safety), so muscle memory can land on an irreversible delete. In Variant B the delete is moved into a separate danger zone with distinct styling and a confirm step."
       benign={
         <div className="space-y-3">

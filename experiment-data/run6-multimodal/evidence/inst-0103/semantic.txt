@@ -1,0 +1,6 @@
+STATE s1
+Extend your coverage You can add a two-year extended warranty for $19.99. The price is guaranteed for the next 30 days. You can decide now, or add it later before your order ships. Neutral copy Add for $19.99 No thanks
+
+STATE s2
+Extend your coverage You can add a two-year extended warranty for $19.99. The price is guaranteed for the next 30 days. You can decide now, or add it later before your order ships. Neutral copy Warranty added. Coverage will be included with this order.
+

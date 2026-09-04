@@ -64,11 +64,9 @@ const BENIGN_RATIO = jargonRatio(BENIGN_LABELS);
 const TAU_JARGON = 0.4;
 
 export function CustomisationCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [onIdsA, setOnIdsA] = React.useState<string[]>(["d1", "d2", "d3"]);
   const [onIdsB, setOnIdsB] = React.useState<string[]>(["d1", "d2", "d3"]);
@@ -76,39 +74,11 @@ export function CustomisationCond3({
   const [savedB, setSavedB] = React.useState(false);
   const [translatedA, setTranslatedA] = React.useState(false);
 
-  const reset = () => {
-    setOnIdsA(["d1", "d2", "d3"]);
-    setOnIdsB(["d1", "d2", "d3"]);
-    setSavedA(false);
-    setSavedB(false);
-    setTranslatedA(false);
-  };
 
   const toggle = (
     id: string,
     setOnIds: React.Dispatch<React.SetStateAction<string[]>>,
   ) => setOnIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Jargon ratio — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DARK_RATIO.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Jargon ratio — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{BENIGN_RATIO.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Threshold &tau;_jargon</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_JARGON.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Trigger: {DARK_RATIO.toFixed(2)} &gt; {TAU_JARGON.toFixed(2)}</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
-      </div>
-    </>
-  ) : null;
 
   const renderDarkToggle = (
     label: string,
@@ -152,11 +122,10 @@ export function CustomisationCond3({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Customisation (Interface Nesting): Semantic Obfuscation of Privacy Toggle Labels"
       userTitle="Orbit — Data settings"
       caption="Semantic Obfuscation of Privacy Toggle Labels — the toggles that control data sharing are labelled in domain jargon with no plain-language explanation, so their jargon ratio trips the &tau;_jargon threshold."
-      auditorStats={stats}
       deltaNote={`Variant A's toggle labels are jargon-dense: ${DARK_LABELS.length} labels yield a jargon ratio of ${DARK_RATIO.toFixed(2)} (> τ_jargon = ${TAU_JARGON.toFixed(2)}) and carry no explanations. Variant B says the same things in plain language with a short explanation per toggle — jargon ratio ${BENIGN_RATIO.toFixed(2)}.`}
       benign={
         <div className="space-y-3">

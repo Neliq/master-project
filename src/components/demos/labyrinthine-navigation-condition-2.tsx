@@ -83,19 +83,13 @@ const BENIGN_LIST = [
 ];
 
 export function LabyrinthineNavigationCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [open, setOpen] = React.useState<Record<string, boolean>>({});
   const [found, setFound] = React.useState(false);
 
-  const reset = () => {
-    setOpen({});
-    setFound(false);
-  };
 
   const toggle = (id: string) => setOpen((prev) => ({ ...prev, [id]: !prev[id] }));
 
@@ -140,33 +134,11 @@ export function LabyrinthineNavigationCond2({
     );
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">max D_render(n) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DARK_MAX_INDENT}px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">max D_render(n) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">0px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Cognitive-overload &tau;_nesting</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_NESTING}px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Trigger: {DARK_MAX_INDENT} &gt; {TAU_NESTING}</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Labyrinthine Navigation: Visual Nesting Depth of Navigation Elements"
       userTitle="Harbor — Settings"
       caption="Visual Nesting Depth of Navigation Elements — the account-privacy entry is rendered 72px deep inside a six-level visual hierarchy, far beyond the &tau;_nesting = 48px cognitive-overload threshold."
-      auditorStats={stats}
       deltaNote={`In Variant A the privacy-relevant entry is nested six levels down with a cumulative ${DARK_MAX_INDENT}px of indentation (max D_render > τ_nesting = ${TAU_NESTING}px), so the user must traverse an unreasonable visual hierarchy to find it. Variant B renders the identical entries flat at 0px indentation.`}
       benign={
         <div className="space-y-3">

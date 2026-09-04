@@ -1,0 +1,6 @@
+STATE s0
+Nebula Drift: Commander’s Edition Installer — 18.4 GB base game Pre-load premium add-ons now (5.0 GB — 4K texture pack + Void Campaign expansion) Off by default. These assets stay off your disk until you ask for them. 120.0 GB free → 101.6 GB free Install game (18.4 GB)
+
+STATE s1
+Nebula Drift: Commander’s Edition Installer — 18.4 GB base game Pre-load premium add-ons now (5.0 GB — 4K texture pack + Void Campaign expansion) Off by default. These assets stay off your disk until you ask for them. 120.0 GB free → 101.6 GB free Writing files…
+

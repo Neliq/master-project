@@ -1,0 +1,6 @@
+STATE s1
+Finish creating your account Almost done — confirm below to get started. I agree to the Terms of Service, Privacy Policy, and third-party data-sharing agreements. This box was already checked for you. Create account
+
+STATE s2
+Finish creating your account Almost done — confirm below to get started. I agree to the Terms of Service, Privacy Policy, and third-party data-sharing agreements. This box was already checked for you. Create account Pre-consented clause The agreement included third-party data sharing, but its checkbox was already selected when the page loaded. You could create the account without ever actively selecting it. The sharing preference was therefore bundled into account creation instead of being an explicit choice at the moment you signed up.
+

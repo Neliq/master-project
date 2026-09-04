@@ -1,0 +1,6 @@
+STATE s0
+Almost there! A $50 discount is available on your order of $120.00. Featured offer YES! Unlock my $50 savings — don’t miss out! No thanks, I’ll pay the full price
+
+STATE s1
+Almost there! A $50 discount is available on your order of $120.00. Featured offer YES! Unlock my $50 savings — don’t miss out! No thanks, I’ll pay the full price Discount applied Your pricing preference was saved for checkout.
+

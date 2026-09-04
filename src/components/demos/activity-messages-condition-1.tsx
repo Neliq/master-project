@@ -45,11 +45,9 @@ const REAL_EVENTS: Event[] = [
 ];
 
 export function ActivityMessagesCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [events, setEvents] = React.useState<Event[]>([]);
   const [verifiedA, setVerifiedA] = React.useState(false);
@@ -74,33 +72,6 @@ export function ActivityMessagesCond1({
     return () => window.clearInterval(id);
   }, []);
 
-  const reset = () => {
-    setEvents([]);
-    setVerifiedA(false);
-    setVerifiedB(false);
-    counter.current = 0;
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">M_displayed(t) — messages shown</span>
-        <span className="font-mono font-semibold tabular-nums">{events.length}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_real(t) — backend log entries</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0 (fabricated) / {events.length} (real)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">M_displayed ⊆ E_real?</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">No — M ∉ E_real (A)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Injection interval</span>
-        <span className="font-mono font-semibold tabular-nums">2.8s / message</span>
-      </div>
-    </>
-  ) : null;
 
   const toastRow = (ev: Event, dark: boolean) => (
     <div
@@ -133,10 +104,9 @@ export function ActivityMessagesCond1({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Activity Messages: Asynchronous Event Fabrication"
       caption="Asynchronous Event Fabrication — purchase pop-ups stream in continuously, but none of them maps to a real transaction in the backend event log."
-      auditorStats={stats}
       deltaNote="Both panels stream the same names, cities and products. In Variant A the pop-ups carry no order id and the backend log stays empty (M_displayed ∉ E_real — fabricated). In Variant B every message references a real order id that is present in the visible backend log (M_displayed ⊆ E_real)."
       benign={
         <div className="space-y-3">

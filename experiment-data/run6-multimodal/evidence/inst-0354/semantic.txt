@@ -1,0 +1,6 @@
+STATE s1
+WAIT! Don’t miss out! WAIT! Don't miss out! Last chance — only 3 left at this price! Offer expires soon! Hurry, act now before this exclusive deal is gone forever! This limited offer won't come back! Limited-time offer Add for $19.99 No thanks
+
+STATE s2
+WAIT! Don’t miss out! WAIT! Don't miss out! Last chance — only 3 left at this price! Offer expires soon! Hurry, act now before this exclusive deal is gone forever! This limited offer won't come back! Limited-time offer Warranty added. It will appear in your order summary.
+

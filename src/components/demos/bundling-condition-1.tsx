@@ -27,46 +27,14 @@ const CAMERA = { name: "Nova X100 Mirrorless Camera", price: 899 };
 const WARRANTY = { name: "2-Year Extended Warranty", price: 49 };
 
 export function BundlingCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [addedDark, setAddedDark] = React.useState(false);
   const [addedBenign, setAddedBenign] = React.useState(false);
   const [warrantyChecked, setWarrantyChecked] = React.useState(false);
 
-  const reset = () => {
-    setAddedDark(false);
-    setAddedBenign(false);
-    setWarrantyChecked(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">C_state after E_purchase (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {"{Camera, Warranty}"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∃ e: add primary alone?</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">No</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Warranty checkbox (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">checked &amp; disabled</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Forced subtotal (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {usd(CAMERA.price + WARRANTY.price)}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   const renderPanel = (dark: boolean) => {
     const isAdded = dark ? addedDark : addedBenign;
@@ -213,11 +181,8 @@ export function BundlingCond1({
   return (
     <DemoShell
       mode={mode}
-      annotations={annotations}
-      onRestart={onRestart ?? reset}
       title="Bundling: Inseparable Transactional Nodes"
       caption="Inseparable Transactional Nodes — executing the primary purchase event inevitably stages both the primary and a supplementary item, with no discrete event to buy the primary item alone."
-      auditorStats={stats}
       deltaNote="Variant A forces the warranty into the cart with a checked-and-disabled checkbox, so adding the camera always yields {Camera, Warranty}. Variant B leaves the warranty as an independent, unchecked option — the camera alone is a discrete, purchasable event."
       benign={renderPanel(false)}
     >

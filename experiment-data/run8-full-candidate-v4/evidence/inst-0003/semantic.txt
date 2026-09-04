@@ -1,0 +1,6 @@
+STATE s0
+We’re sorry to see you go! Your plan stays active until Sep 14. If you’d like to stay, you can keep your current rate: 50% off for the next 3 months (through Dec 14, no hidden terms). Keep my subscription — 50% off Continue with cancellation the state — “Keep my subscription” 1.00 the state — “Cancel anyway” 1.00
+
+STATE s1
+We’re sorry to see you go! Your plan stays active until Sep 14. If you’d like to stay, you can keep your current rate: 50% off for the next 3 months (through Dec 14, no hidden terms). Keep my subscription — 50% off Continue with cancellation the state — “Keep my subscription” 1.00 the state — “Cancel anyway” 1.00 Choice made with equal salience You weighed the offer against a cancellation button of identical size, contrast, and weight — the state/the state = 1.00 at least the difference (0.30) . Staying was your decision, not the only visible option.
+

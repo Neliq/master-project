@@ -29,49 +29,21 @@ const PACK_USD = 29.99;
 const START_BALANCE = 800;
 
 export function IntermediateCurrencyCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [balanceA, setBalanceA] = React.useState(START_BALANCE);
   const [paidA, setPaidA] = React.useState(false);
   const [paidB, setPaidB] = React.useState(false);
 
-  const reset = () => {
-    setBalanceA(START_BALANCE);
-    setPaidA(false);
-    setPaidB(false);
-  };
 
   const enough = balanceA >= PRICE_GEMS;
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Wallet balance</span>
-        <span className="font-mono font-semibold tabular-nums">{balanceA.toLocaleString()} Gems</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T_price(n) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&ldquo;{PRICE_GEMS.toLocaleString()} Gems&rdquo; ∈ C_virtual</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T_price(n) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">&ldquo;{PRICE_GEMS.toLocaleString()} Gems &middot; ${PRICE_USD.toFixed(2)}&rdquo;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Gating — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">Pay locked until E_exchange executed {enough ? "✓" : "✗"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Intermediate Currency: Lexical Tokenization mapped to Forced Exchange"
       caption="Lexical Tokenization mapped to Forced Exchange — the price exists only in the virtual token lexicon, and the transaction cannot complete until you have first executed the coin exchange with real money."
-      auditorStats={stats}
       deltaNote={`Both panels show the same sword and the same gem balance. Variant A prices it strictly in the virtual lexicon ("${PRICE_GEMS.toLocaleString()} Gems") and keeps Pay locked until you execute the coin exchange; Variant B adds a fiat price ($${PRICE_USD.toFixed(2)}) and lets you pay directly — no exchange vector required.`}
       benign={
         <div className="space-y-3">

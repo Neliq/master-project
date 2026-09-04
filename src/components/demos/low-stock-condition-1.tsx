@@ -26,46 +26,18 @@ const I_DISPLAYED_DARK = 2; // fabricated frontend quantity
 const TAU_SCARCITY = 5;
 
 export function LowStockCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [added, setAdded] = React.useState(false);
   const [verified, setVerified] = React.useState(false);
 
-  const reset = () => {
-    setAdded(false);
-    setVerified(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_displayed(x) — frontend (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{I_DISPLAYED_DARK} (&le; &tau;)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_displayed(x) — frontend (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{I_TRUE}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_true(x) — backend DB</span>
-        <span className="font-mono font-semibold tabular-nums">{I_TRUE}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">&tau;_scarcity (panic threshold)</span>
-        <span className="font-mono font-semibold tabular-nums">I &le; {TAU_SCARCITY}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Low Stock: Inventory Fabrication"
       caption="Inventory Fabrication — the frontend renders a panic-level stock number that is algorithmically generated and has no relation to the real backend inventory."
-      auditorStats={stats}
       deltaNote={`In Variant A the page claims “Only ${I_DISPLAYED_DARK} left at this price!” while the backend database actually holds ${I_TRUE} units (I_displayed = ${I_DISPLAYED_DARK} &le; &tau; = ${TAU_SCARCITY}, yet I_displayed &lt;&lt; I_true = ${I_TRUE}). Variant B shows the true stock level with the exact same product card.`}
       benign={
         <div className="space-y-3">

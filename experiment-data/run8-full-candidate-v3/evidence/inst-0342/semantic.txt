@@ -1,0 +1,3 @@
+STATE s0
+Special offer for you 20% off your next order. The X in the corner dismisses this — it never moves, it meets the 44x44 px touch-target minimum, and its click handler closes the dialog directly.
+

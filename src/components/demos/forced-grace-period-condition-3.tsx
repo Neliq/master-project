@@ -24,8 +24,6 @@ import { AlertTriangle, CheckCircle2, LogIn, Trash2 } from "lucide-react";
  * so no temporal entity and no reversal hook are syntactically bound.
  */
 
-const TAU_WORDS = 8; // minimum semantic distance threshold
-
 const CONFIRM_A =
   "Your account will be permanently deleted in 30 days. Log in to cancel — if you sign back in during this period, we will assume you changed your mind and restore your account.";
 
@@ -33,42 +31,6 @@ const CONFIRM_B =
   "Your account will be permanently deleted immediately. This action cannot be undone.";
 
 const REVERT_KEYWORDS = ["log in to cancel", "reactivate", "undo"];
-
-function tokenize(s: string): string[] {
-  return s.toLowerCase().split(/\s+/).filter(Boolean);
-}
-
-function stripPunct(w: string): string {
-  return w.replace(/[^a-z0-9]/g, "");
-}
-
-/** Textual distance (in tokens) between the time entity and the nearest reversal keyword. */
-function minReversalDistance(text: string, phrases: string[]): number {
-  const tokens = tokenize(text).map(stripPunct);
-  const entityIdx = tokens.lastIndexOf("days"); // end of the "30 days" entity
-  const phraseStarts: number[] = [];
-  phrases.forEach((p) => {
-    const pt = tokenize(p).map(stripPunct);
-    for (let i = 0; i + pt.length <= tokens.length; i++) {
-      let ok = true;
-      for (let j = 0; j < pt.length; j++) {
-        if (tokens[i + j] !== pt[j]) {
-          ok = false;
-          break;
-        }
-      }
-      if (ok) {
-        phraseStarts.push(i);
-        break;
-      }
-    }
-  });
-  if (entityIdx < 0 || phraseStarts.length === 0) return Infinity;
-  return Math.min(...phraseStarts.map((k) => Math.abs(k - entityIdx)));
-}
-
-const DIST_A = minReversalDistance(CONFIRM_A, REVERT_KEYWORDS); // 1 word
-const DIST_B = minReversalDistance(CONFIRM_B, REVERT_KEYWORDS); // 21 words
 
 /** Renders the confirmation text with the time entity and reversal keywords highlighted. */
 function highlightConfirmation(
@@ -116,44 +78,14 @@ function highlightConfirmation(
 type Stage = "idle" | "confirm" | "resolved";
 
 export function ForcedGracePeriodCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [stageA, setStageA] = React.useState<Stage>("idle");
   const [aborted, setAborted] = React.useState(false);
   const [stageB, setStageB] = React.useState<Stage>("idle");
 
-  const reset = () => {
-    setStageA("idle");
-    setAborted(false);
-    setStageB("idle");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">K_revert</span>
-        <span className="font-mono font-semibold tabular-nums">{`{“log in to cancel”, “reactivate”, “undo”}`}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_time entity (n_confirm)</span>
-        <span className="font-mono font-semibold tabular-nums text-yellow-600 dark:text-yellow-400">“30 days”</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">min d(k, e) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DIST_A} word{DIST_A === 1 ? "" : "s"} &lt; &tau; ({TAU_WORDS}) → fired</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">min d(k, e) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">
-          {Number.isFinite(DIST_B) ? `${DIST_B} words &gt; &tau; (${TAU_WORDS})` : "∞ — no delay / no reversal keyword"}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   const dangerZone = (
     accent: "rose" | "emerald",
@@ -196,11 +128,10 @@ export function ForcedGracePeriodCond3({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Forced Grace Period: Semantic Proximity of Reversal"
       userTitle="Harbor — Account removal"
       caption="Semantic Proximity of Reversal — the temporal delay and the reversal trap are syntactically bound into a single condition, so a habitual log-in silently aborts the deletion."
-      auditorStats={stats}
       deltaNote="Variant A confirms a 30-day deletion and binds the reversal keyword “log in to cancel” one word from the time entity “30 days” (d = 1 < τ_words = 8) — logging in aborts the deletion. Variant B deletes immediately: the confirmation carries no temporal-delay entity and no reversal keyword, so neither the ≥24h delay nor the semantic-proximity condition fires."
       benign={
         <div className="space-y-3">

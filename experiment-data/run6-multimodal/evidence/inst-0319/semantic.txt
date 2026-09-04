@@ -1,0 +1,12 @@
+STATE s1
+You + Al MathRush — team challenge Practice question: What is 7 x 8? Answer: 56 Team progress 0% Reach 100% together — every answer by either of you helps the team. Answer a question
+
+STATE s2
+You + Al MathRush — team challenge Practice question: What is 7 x 8? Answer: 56 Team progress 10% Reach 100% together — every answer by either of you helps the team. Answer a question
+
+STATE s3
+You + Al MathRush — team challenge Practice question: What is 7 x 8? Answer: 56 Team progress 20% Reach 100% together — every answer by either of you helps the team. Answer a question
+
+STATE s4
+You + Al MathRush — team challenge Practice question: What is 7 x 8? Answer: 56 Team progress 30% Reach 100% together — every answer by either of you helps the team. Answer a question
+

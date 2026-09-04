@@ -24,47 +24,19 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const PRICE = "$4.99";
 
 export function PayToPlayCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [benignPurchased, setBenignPurchased] = React.useState(false);
   const [darkPurchased, setDarkPurchased] = React.useState(false);
 
-  const reset = () => {
-    setBenignPurchased(false);
-    setDarkPurchased(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Frame(T_payment) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&ldquo;Unlock&rdquo;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Frame(T_payment) (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">Transaction</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Price prominence (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">fine print</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Purchased?</span>
-        <span className="font-mono font-semibold tabular-nums">{benignPurchased ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pay-To-Play: Semantic Framing of Payment as Unlock"
       userTitle="Ember Temple — Ancient Chest"
       caption="Semantic Framing of Payment as Unlock — a required payment is dressed up as an 'unlock' instead of a purchase, dissociating the money from the action."
-      auditorStats={stats}
       deltaNote="Both variants sell the identical Ancient Chest for $4.99. Variant A frames the payment as 'Unlock the Ancient Chest' (Frame ∈ {Unlock, Discover, Enhance}) with the price in fine print. Variant B frames the identical offer as a transaction — 'Buy the Ancient Chest' — with the price on the button, so spending inhibition stays intact."
       benign={
         <div className="space-y-3">

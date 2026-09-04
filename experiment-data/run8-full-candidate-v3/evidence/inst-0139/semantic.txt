@@ -1,0 +1,6 @@
+STATE s0
+Settings Manage your account, privacy and data. No exit profile privacy Data & storage Download my data Export a copy of everything we store. ZIP Marketing preferences Emails, notifications and offers. ON Data retention period How long we keep your profile. 10 yrs
+
+STATE s1
+Settings Manage your account, privacy and data. No exit profile privacy Data & storage Download my data Export a copy of everything we store. ZIP Marketing preferences Emails, notifications and offers. ON Data retention period How long we keep your profile. 10 yrs
+

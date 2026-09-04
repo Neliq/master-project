@@ -1,0 +1,6 @@
+STATE s0
+Mystic Garden Your daily schedule, stated plainly. Nothing to fear, nothing to rush. Neutral copy 1 Next harvest window: 3 PM. 2 New content arrives in 2 hours. 3 Streak counter resets at midnight. Check availability
+
+STATE s1
+Mystic Garden Your daily schedule, stated plainly. Nothing to fear, nothing to rush. Neutral copy 1 Next harvest window: 3 PM. urgency 0.12 · scarcity tokens: 0 2 New content arrives in 2 hours. urgency 0.18 · scarcity tokens: 0 3 Streak counter resets at midnight. urgency 0.09 · scarcity tokens: 0 Availability checked No compound pressure The schedule is stated plainly and the available times are easy to compare. The reminder informs you without pushing you to return before you are ready.
+

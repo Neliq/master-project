@@ -1,0 +1,495 @@
+{
+  "run_id": "run7-development-v2",
+  "purpose": "bounded development pilot; not confirmatory",
+  "n_instances": 72,
+  "condition_0": {
+    "tp": 28,
+    "fp": 5,
+    "tn": 31,
+    "fn": 8,
+    "precision": 0.8484848484848485,
+    "recall": 0.7777777777777778,
+    "f1": 0.8115942028985507,
+    "accuracy": 0.8194444444444444,
+    "kappa": 0.6388888888888888,
+    "bootstrap_ci_95": {
+      "precision": {
+        "lower": 0.71875,
+        "upper": 0.9655172413793104
+      },
+      "recall": {
+        "lower": 0.6363636363636364,
+        "upper": 0.90625
+      },
+      "f1": {
+        "lower": 0.7017543859649124,
+        "upper": 0.8999999999999999
+      },
+      "accuracy": {
+        "lower": 0.7222222222222222,
+        "upper": 0.9027777777777778
+      },
+      "kappa": {
+        "lower": 0.4492714813213134,
+        "upper": 0.8037459484600513
+      }
+    }
+  },
+  "condition_1": {
+    "tp": 12,
+    "fp": 3,
+    "tn": 33,
+    "fn": 24,
+    "precision": 0.8,
+    "recall": 0.3333333333333333,
+    "f1": 0.47058823529411764,
+    "accuracy": 0.625,
+    "kappa": 0.25,
+    "bootstrap_ci_95": {
+      "precision": {
+        "lower": 0.5714285714285714,
+        "upper": 1.0
+      },
+      "recall": {
+        "lower": 0.1841507177033493,
+        "upper": 0.5
+      },
+      "f1": {
+        "lower": 0.2857142857142857,
+        "upper": 0.625
+      },
+      "accuracy": {
+        "lower": 0.5138888888888888,
+        "upper": 0.7361111111111112
+      },
+      "kappa": {
+        "lower": 0.07096345989152163,
+        "upper": 0.4358298367208593
+      }
+    }
+  },
+  "unknown_count": {
+    "c0": 0,
+    "c1": 25
+  },
+  "unknown_rate": {
+    "c0": 0.0,
+    "c1": 0.3472222222222222
+  },
+  "mcnemar": {
+    "b": 6,
+    "c": 20,
+    "n": 26,
+    "p_exact_binomial": 0.009355306625366211
+  },
+  "paired_bootstrap_ci_95": {
+    "accuracy_delta": {
+      "lower": -0.33333333333333326,
+      "upper": -0.06944444444444442
+    },
+    "f1_delta": {
+      "lower": -0.5382825567502987,
+      "upper": -0.16077485380117035
+    }
+  },
+  "per_pattern": {
+    "c0": {
+      "addictive-design": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "bundling": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "confirmshaming": {
+        "tp": 3,
+        "fp": 1,
+        "tn": 2,
+        "fn": 0,
+        "precision": 0.75,
+        "recall": 1.0,
+        "f1": 0.8571428571428571,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "cuteness": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "endorsement-and-testimonials": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 3,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "kappa": 1.0
+      },
+      "friend-spam": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 3,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "immortal-accounts": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 3,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "pay-to-avoid": {
+        "tp": 2,
+        "fp": 2,
+        "tn": 1,
+        "fn": 1,
+        "precision": 0.5,
+        "recall": 0.6666666666666666,
+        "f1": 0.5714285714285715,
+        "accuracy": 0.5,
+        "kappa": 0.0
+      },
+      "persuasive-language": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 3,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "kappa": 1.0
+      },
+      "pre-delivered-content": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 3,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "kappa": 1.0
+      },
+      "price-comparison-prevention": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 3,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "kappa": 1.0
+      },
+      "sneak-into-basket": {
+        "tp": 3,
+        "fp": 2,
+        "tn": 1,
+        "fn": 0,
+        "precision": 0.6,
+        "recall": 1.0,
+        "f1": 0.7499999999999999,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      }
+    },
+    "c1": {
+      "addictive-design": {
+        "tp": 0,
+        "fp": 2,
+        "tn": 1,
+        "fn": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.16666666666666666,
+        "kappa": -0.6666666666666667
+      },
+      "bundling": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 3,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "confirmshaming": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "cuteness": {
+        "tp": 3,
+        "fp": 0,
+        "tn": 3,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "kappa": 1.0
+      },
+      "endorsement-and-testimonials": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 3,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "friend-spam": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 3,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "f1": 0.8,
+        "accuracy": 0.8333333333333334,
+        "kappa": 0.6666666666666667
+      },
+      "immortal-accounts": {
+        "tp": 0,
+        "fp": 0,
+        "tn": 3,
+        "fn": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.5,
+        "kappa": 0.0
+      },
+      "pay-to-avoid": {
+        "tp": 0,
+        "fp": 0,
+        "tn": 3,
+        "fn": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.5,
+        "kappa": 0.0
+      },
+      "persuasive-language": {
+        "tp": 0,
+        "fp": 0,
+        "tn": 3,
+        "fn": 3,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "accuracy": 0.5,
+        "kappa": 0.0
+      },
+      "pre-delivered-content": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 3,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "price-comparison-prevention": {
+        "tp": 1,
+        "fp": 0,
+        "tn": 3,
+        "fn": 2,
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "f1": 0.5,
+        "accuracy": 0.6666666666666666,
+        "kappa": 0.33333333333333326
+      },
+      "sneak-into-basket": {
+        "tp": 1,
+        "fp": 1,
+        "tn": 2,
+        "fn": 2,
+        "precision": 0.5,
+        "recall": 0.3333333333333333,
+        "f1": 0.4,
+        "accuracy": 0.5,
+        "kappa": 0.0
+      }
+    }
+  },
+  "per_agent": {
+    "c0": {
+      "agent-01": {
+        "tp": 5,
+        "fp": 3,
+        "tn": 8,
+        "fn": 2,
+        "precision": 0.625,
+        "recall": 0.7142857142857143,
+        "f1": 0.6666666666666666,
+        "accuracy": 0.7222222222222222,
+        "kappa": 0.43037974683544294
+      },
+      "agent-02": {
+        "tp": 7,
+        "fp": 0,
+        "tn": 7,
+        "fn": 4,
+        "precision": 1.0,
+        "recall": 0.6363636363636364,
+        "f1": 0.7777777777777778,
+        "accuracy": 0.7777777777777778,
+        "kappa": 0.5764705882352942
+      },
+      "agent-03": {
+        "tp": 7,
+        "fp": 1,
+        "tn": 9,
+        "fn": 1,
+        "precision": 0.875,
+        "recall": 0.875,
+        "f1": 0.875,
+        "accuracy": 0.8888888888888888,
+        "kappa": 0.7749999999999999
+      },
+      "agent-04": {
+        "tp": 9,
+        "fp": 1,
+        "tn": 7,
+        "fn": 1,
+        "precision": 0.9,
+        "recall": 0.9,
+        "f1": 0.9,
+        "accuracy": 0.8888888888888888,
+        "kappa": 0.7749999999999999
+      }
+    },
+    "c1": {
+      "agent-01": {
+        "tp": 2,
+        "fp": 2,
+        "tn": 9,
+        "fn": 5,
+        "precision": 0.5,
+        "recall": 0.2857142857142857,
+        "f1": 0.36363636363636365,
+        "accuracy": 0.6111111111111112,
+        "kappa": 0.11267605633802817
+      },
+      "agent-02": {
+        "tp": 6,
+        "fp": 0,
+        "tn": 7,
+        "fn": 5,
+        "precision": 1.0,
+        "recall": 0.5454545454545454,
+        "f1": 0.7058823529411764,
+        "accuracy": 0.7222222222222222,
+        "kappa": 0.4827586206896552
+      },
+      "agent-03": {
+        "tp": 2,
+        "fp": 1,
+        "tn": 9,
+        "fn": 6,
+        "precision": 0.6666666666666666,
+        "recall": 0.25,
+        "f1": 0.36363636363636365,
+        "accuracy": 0.6111111111111112,
+        "kappa": 0.16
+      },
+      "agent-04": {
+        "tp": 2,
+        "fp": 0,
+        "tn": 8,
+        "fn": 8,
+        "precision": 1.0,
+        "recall": 0.2,
+        "f1": 0.33333333333333337,
+        "accuracy": 0.5555555555555556,
+        "kappa": 0.18181818181818193
+      }
+    }
+  },
+  "run_metadata": {
+    "run_id": "run7-development-v5",
+    "purpose": "bounded development pilot; not a confirmatory significance test",
+    "source_run": "run6-multimodal",
+    "sample_seed": 20260911,
+    "n_instances": 72,
+    "n_patterns": 12,
+    "n_agents_per_arm": 4,
+    "complete_pattern_pool": 55,
+    "eligible_pattern_pool": 43,
+    "excluded_prior_development_patterns": [
+      "activity-messages",
+      "automating-the-user-away",
+      "conflicting-information",
+      "false-hierarchy",
+      "forced-continuity",
+      "granting-and-interaction",
+      "hidden-information",
+      "information-without-context",
+      "intermediate-currency",
+      "plain-evil",
+      "pressured-selling",
+      "trick-questions"
+    ],
+    "model": "gpt-5.6-luna-900k",
+    "evidence": "aligned visual/DOM/semantic state manifests; native colors preserved",
+    "changes": [
+      "unknown is distinct from benign",
+      "compact predicate cards plus structured evidence ledger",
+      "pattern-specific escape applicability",
+      "original state IDs preserved across modalities"
+    ],
+    "counterexamples": "not added per user instruction",
+    "alignment_issues": 0,
+    "statistical_policy": "pilot direction only; freeze before held-out evaluation"
+  }
+}

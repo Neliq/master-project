@@ -33,45 +33,17 @@ const DELTA_BENIGN = 41.2;
 const fmt = (n: number) => `$${n.toFixed(2)}`;
 
 export function SneakIntoBasketCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Variant B: user declines the suggested add-on
   const [declinedB, setDeclinedB] = React.useState(false);
   const [checkedOutA, setCheckedOutA] = React.useState(false);
   const [checkedOutB, setCheckedOutB] = React.useState(false);
 
-  const reset = () => {
-    setDeclinedB(false);
-    setCheckedOutA(false);
-    setCheckedOutB(false);
-  };
 
   const totalB = HEADPHONES.price + (declinedB ? 0 : WARRANTY.price);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δ_color(v_injected, v_user) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DELTA_DARK} &lt; τ_camouflage ({TAU_CAMOUFLAGE})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δ_color — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{DELTA_BENIGN} &gt; τ_camouflage</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Rendered as (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">identical bg · type · radius</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Total charged (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{fmt(HEADPHONES.price + WARRANTY.price)} incl. {fmt(WARRANTY.price)} unrequested</span>
-      </div>
-    </>
-  ) : null;
 
   const userLine = (name: string, price: number) => (
     <div className="flex items-center justify-between rounded-md border bg-background px-2.5 py-2">
@@ -86,11 +58,10 @@ export function SneakIntoBasketCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Sneak Into Basket: Visual Indistinguishability of Surcharged Items"
       userTitle="Northstar — Cart review"
       caption="Visual Indistinguishability of Surcharged Items — the injected line item is rendered with the same chromatic and typographic properties as your own items, so it falls inside the camouflage radius and escapes notice."
-      auditorStats={stats}
       deltaNote={`Both carts contain the same two lines: ${HEADPHONES.name} and ${WARRANTY.name}. In Variant A the warranty reuses the identical card styling (Δ_color = ${DELTA_DARK} < τ_camouflage = ${TAU_CAMOUFLAGE}), so it reads as part of your purchase. In Variant B the same line sits in a tinted, dashed, clearly-badged "suggested add-on" section (Δ_color = ${DELTA_BENIGN}), so nothing can be overlooked.`}
       benign={
         <div className="space-y-3">

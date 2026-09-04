@@ -1,0 +1,12 @@
+STATE s1
+Trailblaze Quest — Level 2 The Ember Mines are locked. Earn 1 Energy to unlock this level. ⚡ 0 Watch ad to earn 1 Energy (6s)
+
+STATE s2
+Trailblaze Quest — Level 2 The Ember Mines are locked. Earn 1 Energy to unlock this level. ⚡ 0 Sponsored Aurora Trek A lighter jacket for every forecast Waterproof, packable, and backed by free returns for 90 days. See the collection 0:06 0% Skip ad Unskippable — verified attention time is the only accepted currency for this unlock.
+
+STATE s3
+Trailblaze Quest — Level 2 The Ember Mines are locked. Earn 1 Energy to unlock this level. ⚡ 0 Sponsored Aurora Trek A lighter jacket for every forecast Waterproof, packable, and backed by free returns for 90 days. See the collection Ad paused Return to the app to continue earning progress. paused 0% Skip ad Return to app — resume watching Unskippable — verified attention time is the only accepted currency for this unlock.
+
+STATE s4
+Trailblaze Quest — Level 2 The Ember Mines are locked. Earn 1 Energy to unlock this level. ⚡ 0 Sponsored Aurora Trek A lighter jacket for every forecast Waterproof, packable, and backed by free returns for 90 days. See the collection 0:06 0% Skip ad Unskippable — verified attention time is the only accepted currency for this unlock.
+

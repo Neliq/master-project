@@ -1,0 +1,6 @@
+STATE s0
+PixelQuest — level complete! Continue to next level
+
+STATE s1
+PixelQuest — level complete! Your daily reward is ready Daily reward ready! Watch this offer to claim your bonus — an exclusive deal unlocked just for you. ⏳ Claiming in 15s… Watch the offer to claim your bonus 15s
+

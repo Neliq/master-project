@@ -1,0 +1,182 @@
+{
+  "inst-0111": {
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "endorsement-and-testimonials-cond2",
+    "file": "corpus/inst-0111.html",
+    "size_bytes": 16644
+  },
+  "inst-0258": {
+    "slug": "price-comparison-prevention",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "price-comparison-prevention-cond2",
+    "file": "corpus/inst-0258.html",
+    "size_bytes": 2963
+  },
+  "inst-0313": {
+    "slug": "pay-to-avoid",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "pay-to-avoid-cond2",
+    "file": "corpus/inst-0313.html",
+    "size_bytes": 5679
+  },
+  "inst-0119": {
+    "slug": "confirmshaming",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "confirmshaming-cond3",
+    "file": "corpus/inst-0119.html",
+    "size_bytes": 1155
+  },
+  "inst-0138": {
+    "slug": "pre-delivered-content",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "pre-delivered-content-cond3",
+    "file": "corpus/inst-0138.html",
+    "size_bytes": 10304
+  },
+  "inst-0338": {
+    "slug": "persuasive-language",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "persuasive-language-cond2",
+    "file": "corpus/inst-0338.html",
+    "size_bytes": 2854
+  },
+  "inst-0266": {
+    "slug": "addictive-design",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "addictive-design-cond3",
+    "file": "corpus/inst-0266.html",
+    "size_bytes": 5806
+  },
+  "inst-0259": {
+    "slug": "pay-to-avoid",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "pay-to-avoid-cond1",
+    "file": "corpus/inst-0259.html",
+    "size_bytes": 10415
+  },
+  "inst-0139": {
+    "slug": "immortal-accounts",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "immortal-accounts-cond3",
+    "file": "corpus/inst-0139.html",
+    "size_bytes": 4673
+  },
+  "inst-0045": {
+    "slug": "sneak-into-basket",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "sneak-into-basket-cond2",
+    "file": "corpus/inst-0045.html",
+    "size_bytes": 2302
+  },
+  "inst-0168": {
+    "slug": "price-comparison-prevention",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "price-comparison-prevention-cond3",
+    "file": "corpus/inst-0168.html",
+    "size_bytes": 2767
+  },
+  "inst-0008": {
+    "slug": "endorsement-and-testimonials",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "endorsement-and-testimonials-cond1",
+    "file": "corpus/inst-0008.html",
+    "size_bytes": 5086
+  },
+  "inst-0176": {
+    "slug": "persuasive-language",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "persuasive-language-cond3",
+    "file": "corpus/inst-0176.html",
+    "size_bytes": 4268
+  },
+  "inst-0012": {
+    "slug": "bundling",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "bundling-cond3",
+    "file": "corpus/inst-0012.html",
+    "size_bytes": 7089
+  },
+  "inst-0187": {
+    "slug": "addictive-design",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "addictive-design-cond1",
+    "file": "corpus/inst-0187.html",
+    "size_bytes": 2881
+  },
+  "inst-0155": {
+    "slug": "persuasive-language",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "persuasive-language-cond1",
+    "file": "corpus/inst-0155.html",
+    "size_bytes": 1006
+  },
+  "inst-0038": {
+    "slug": "sneak-into-basket",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "sneak-into-basket-cond1",
+    "file": "corpus/inst-0038.html",
+    "size_bytes": 6713
+  },
+  "inst-0312": {
+    "slug": "pre-delivered-content",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "pre-delivered-content-cond1",
+    "file": "corpus/inst-0312.html",
+    "size_bytes": 4457
+  },
+  "inst-0290": {
+    "slug": "addictive-design",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "addictive-design-cond1",
+    "file": "corpus/inst-0290.html",
+    "size_bytes": 20407
+  },
+  "inst-0317": {
+    "slug": "addictive-design",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "addictive-design-cond3",
+    "file": "corpus/inst-0317.html",
+    "size_bytes": 4911
+  }
+}

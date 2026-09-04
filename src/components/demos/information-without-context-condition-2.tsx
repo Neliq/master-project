@@ -30,44 +30,19 @@ const CONTEXT_WEIGHT = 0.8; // W(N_context)
 const METRIC_CR = 9.6; // contrast ratio of the metric against its background
 
 export function InformationWithoutContextCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [bought, setBought] = React.useState(false);
 
-  const reset = () => setBought(false);
 
   const ratio = (METRIC_WEIGHT / CONTEXT_WEIGHT).toFixed(1);
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(N_metric) = size × CR</span>
-        <span className="font-mono font-semibold tabular-nums">{METRIC_WEIGHT.toFixed(1)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(N_context) (baseline)</span>
-        <span className="font-mono font-semibold tabular-nums">{CONTEXT_WEIGHT.toFixed(1)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">W(N_metric) / W(N_context)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{ratio} &gt; τ ({IMBALANCE_THRESHOLD})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">CR(N_metric, L_bg)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{METRIC_CR} &gt; 7.0</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Information Without Context: Visual Prominence Imbalance Between Metric and Baseline"
       caption="Visual Prominence Imbalance Between Metric and Baseline — a giant saturated “98%” is rendered ~14× heavier than its 8px qualifier, and the qualifier carries no unit denominator or sample size, so the metric is unanchored and reads as a universal verdict."
-      auditorStats={stats}
       deltaNote="In Variant A the metric&rsquo;s visual weight W(N_metric) is 14.4× its contextual baseline, far past τ_context_imbalance (2.0), the metric itself has a 9.6:1 contrast ratio, and the qualifier offers no denominator — “98% of customer reviews” with no count, so U_val and B_val are absent from the cluster. In Variant B metric and baseline share comparable font size, colour and contrast, and the baseline carries the full denominator (“of 12 customer reviews”), so the ratio collapses below the threshold and the sample size is legible at a glance."
       benign={
         <div className="space-y-3">

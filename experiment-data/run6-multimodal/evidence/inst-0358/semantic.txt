@@ -1,0 +1,6 @@
+STATE s1
+Connect your contacts PopSocial matches your contacts against existing users so you can find friends already on the platform. Read-only Allow access to contacts
+
+STATE s2
+Connect your contacts PopSocial matches your contacts against existing users so you can find friends already on the platform. Connected Access granted Read-only matching complete The backend ran the promised local matching operation — Mia Chen, Lucas Silva, Ava Johnson are already on PopSocial. Nothing was sent. Your address book never left your device, matching the intent of the prompt (Intent_NLP(prompt) in read_only).
+

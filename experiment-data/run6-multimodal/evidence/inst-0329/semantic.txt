@@ -1,0 +1,6 @@
+STATE s1
+Newsletter subscription You are currently subscribed. Manage your preference below. Subscribed Keep me subscribed to the weekly newsletter Check the box to confirm your subscription preference. Save preferences
+
+STATE s2
+Newsletter subscription You are currently subscribed. Manage your preference below. Subscribed Keep me subscribed to the weekly newsletter Check the box to confirm your subscription preference. Save preferences Preference saved The visible label and the programmatic label agree, so your subscription status is unchanged — unchecking means you opted out, as labelled.
+

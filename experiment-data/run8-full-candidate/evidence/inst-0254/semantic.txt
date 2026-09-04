@@ -1,0 +1,12 @@
+STATE s0
+Harvest Valley Tap to tend your farm. Each stage needs a few taps — nothing more. Fair effort Stage 1 — Sprout 0/1 taps Tend farm (+1 tap)
+
+STATE s1
+Harvest Valley Tap to tend your farm. Each stage needs a few taps — nothing more. Fair effort Stage 2 — Sapling 0/2 taps Tend farm (+1 tap)
+
+STATE s2
+Harvest Valley Tap to tend your farm. Each stage needs a few taps — nothing more. Fair effort Stage 2 — Sapling 1/2 taps Tend farm (+1 tap)
+
+STATE s3
+Harvest Valley Tap to tend your farm. Each stage needs a few taps — nothing more. Fair effort Stage 3 — Orchard 0/3 taps Tend farm (+1 tap)
+

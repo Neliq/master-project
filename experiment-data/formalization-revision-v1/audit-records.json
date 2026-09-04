@@ -1,0 +1,1767 @@
+{
+  "source": "/home/neliq/Coding/master-project/experiment-data/run6-multimodal/ontology.md",
+  "source_sha256": "65142d27155339fc48d536083bcc82ed62265bed5955500f1e79132cf782ab63",
+  "patterns": 62,
+  "conditions": 186,
+  "formula_lines": 186,
+  "records": [
+    {
+      "line": 12,
+      "pattern": "Immortal Accounts",
+      "condition": "2. Visual Accessibility of Offboarding Vectors",
+      "kind": "FORMULA",
+      "text": "\\frac{A(N_{\\mathrm{delete}})}{A(N_{\\mathrm{create}})} < \\tau_{\\mathrm{exit\\_visibility}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 16,
+      "pattern": "Immortal Accounts",
+      "condition": "3. Absolute Absence of Deletion Vectors",
+      "kind": "FORMULA",
+      "text": "K_{\\mathrm{del}} \\cap T_{\\mathrm{DOM}} = \\emptyset",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 21,
+      "pattern": "Dead End",
+      "condition": "1. Topological Sink in the Navigational Graph",
+      "kind": "FORMULA",
+      "text": "\\forall e \\in E_{\\mathrm{out}}(v_{\\mathrm{current}}), \\text{target}(e) \\in V_{\\mathrm{forced}} \\implies \\text{No Escape Path}",
+      "flags": [
+        "material-implication",
+        "conclusion-not-evidence"
+      ]
+    },
+    {
+      "line": 25,
+      "pattern": "Dead End",
+      "condition": "2. Visual Absence of Dismissal Vectors",
+      "kind": "FORMULA",
+      "text": "C_{\\mathrm{dismiss}} = \\emptyset \\quad \\land \\quad \\text{IsOverlay}(v_{\\mathrm{current}}) = \\mathrm{True}",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 29,
+      "pattern": "Dead End",
+      "condition": "3. Semantic Coercion Density in Trapped States",
+      "kind": "FORMULA",
+      "text": "\\frac{|\\{\\text{Imperative}(w) \\lor \\text{Urgency}(w) : w \\in T(v_{\\mathrm{trap}})\\}|}{|T(v_{\\mathrm{trap}})|} > \\tau_{\\mathrm{coercion}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 42,
+      "pattern": "Forced Grace Period",
+      "condition": "3. Semantic Proximity of Reversal",
+      "kind": "FORMULA",
+      "text": "\\min_{k \\in K_{\\mathrm{revert}}, e \\in E_{\\mathrm{time}}} d(k, e) < \\tau_{\\mathrm{words}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 47,
+      "pattern": "Privacy Maze",
+      "condition": "1. Asymmetrical Path Depth",
+      "kind": "FORMULA",
+      "text": "d(v_{\\mathrm{start}}, v_{\\mathrm{reject\\_all}}) > d(v_{\\mathrm{start}}, v_{\\mathrm{accept\\_all}}) \\quad \\lor \\quad d(v_{\\mathrm{start}}, v_{\\mathrm{reject\\_all}}) > \\tau_{\\mathrm{depth}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 55,
+      "pattern": "Privacy Maze",
+      "condition": "3. Semantic Obfuscation of Privacy-Related Terminology",
+      "kind": "FORMULA",
+      "text": "\\mathrm{FKGL}(T_{\\mathrm{privacy}}) > 14 \\quad \\lor \\quad \\frac{|\\mathrm{Unique}(T_{\\mathrm{privacy}})|}{|T_{\\mathrm{privacy}}|} > \\tau_{\\mathrm{obfuscation}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 60,
+      "pattern": "Labyrinthine Navigation",
+      "condition": "1. Excessive Navigational Depth",
+      "kind": "FORMULA",
+      "text": "d(v_{\\mathrm{home}}, v_{\\mathrm{target}}) > \\tau_{\\mathrm{depth}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 64,
+      "pattern": "Labyrinthine Navigation",
+      "condition": "2. Visual Nesting Depth of Navigation Elements",
+      "kind": "FORMULA",
+      "text": "\\max_{n \\in N_{\\mathrm{nav}}} D_{\\mathrm{render}}(n) > \\tau_{\\mathrm{nesting}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 68,
+      "pattern": "Labyrinthine Navigation",
+      "condition": "3. Semantic Obfuscation",
+      "kind": "FORMULA",
+      "text": "\\exists e_i \\in P : \\mathrm{Sim}(L(e_i), \\mathrm{Topic}(v_{\\mathrm{target}})) < \\tau_{\\mathrm{semantic}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 77,
+      "pattern": "Customisation (Interface Nesting)",
+      "condition": "2. Visual Indentation Depth of Privacy Controls",
+      "kind": "FORMULA",
+      "text": "\\frac{1}{|N_{\\mathrm{privacy}}|} \\sum_{n \\in N_{\\mathrm{privacy}}} \\mathrm{offsetX}(n) > \\tau_{\\mathrm{indent}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 81,
+      "pattern": "Customisation (Interface Nesting)",
+      "condition": "3. Semantic Obfuscation of Privacy Toggle Labels",
+      "kind": "FORMULA",
+      "text": "\\frac{|\\{w \\in L(N_{\\mathrm{privacy}}) : w \\in D_{\\mathrm{jargon}}\\}|}{|L(N_{\\mathrm{privacy}})|} > \\tau_{\\mathrm{jargon}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 90,
+      "pattern": "Intermediate Currency",
+      "condition": "2. Visual Obscuration of Real-Currency Equivalence",
+      "kind": "FORMULA",
+      "text": "N_{\\mathrm{real}} = \\emptyset \\quad \\lor \\quad \\frac{\\mathrm{fontSize}(N_{\\mathrm{real}})}{S_{\\mathrm{base}}} < 0.5",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 94,
+      "pattern": "Intermediate Currency",
+      "condition": "3. Lexical Tokenization mapped to Forced Exchange",
+      "kind": "FORMULA",
+      "text": "T_{\\mathrm{price}}(n) \\in C_{\\mathrm{virtual}} \\quad \\land \\quad \\text{TransactionStatus}(n) \\implies \\text{Executed}(E_{\\mathrm{exchange}})",
+      "flags": [
+        "material-implication"
+      ]
+    },
+    {
+      "line": 99,
+      "pattern": "Disguised Ad",
+      "condition": "1. Cross-Origin Action Masking",
+      "kind": "FORMULA",
+      "text": "B_{\\mathrm{action}} \\neq \\emptyset \\quad \\land \\quad D_{\\mathrm{target}}(B_{\\mathrm{action}}) \\neq D_{\\mathrm{host}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 103,
+      "pattern": "Disguised Ad",
+      "condition": "2. Morphological Similarity",
+      "kind": "FORMULA",
+      "text": "\\max_{v_i \\in V_{\\mathrm{native}}} \\mathrm{sim}(v_{\\mathrm{ad}}, v_i) > \\tau_{\\mathrm{blend}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 107,
+      "pattern": "Disguised Ad",
+      "condition": "3. Semantic Mimicry of Native Action Labels",
+      "kind": "FORMULA",
+      "text": "\\max_{\\ell \\in L_{\\mathrm{native}}} \\mathrm{sim}(L(N_{\\mathrm{ad}}), \\ell) > \\tau_{\\mathrm{masquerade}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 112,
+      "pattern": "Sneak Into Basket",
+      "condition": "1. Unprompted State Mutation",
+      "kind": "FORMULA",
+      "text": "(I_{\\mathrm{cart}} \\setminus I_{\\mathrm{explicit}} \\neq \\emptyset) \\quad \\land \\quad \\nexists e \\in E_{\\mathrm{user}} \\implies \\mathrm{Add}(y)",
+      "flags": [
+        "material-implication",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 116,
+      "pattern": "Sneak Into Basket",
+      "condition": "2. Visual Indistinguishability of Surcharged Items",
+      "kind": "FORMULA",
+      "text": "\\min_{v_u \\in V_{\\mathrm{user}}} \\|v_{\\mathrm{injected}} - v_u\\|_2 < \\tau_{\\mathrm{camouflage}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 120,
+      "pattern": "Sneak Into Basket",
+      "condition": "3. Semantic Obscuration of Injected Line Items",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Entailment}(T(N_{\\mathrm{injected}}), \\text{``optional add-on''}) = \\mathrm{True} \\quad \\land \\quad \\mathrm{UserConsented}(N_{\\mathrm{injected}}) = \\mathrm{False}",
+      "flags": [
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 125,
+      "pattern": "Drip Pricing, Hidden Costs, or Partitioned Pricing",
+      "condition": "1. Sequential Price Inflation",
+      "kind": "FORMULA",
+      "text": "P(s_n) > P(s_0) + I_{\\mathrm{added}} \\quad \\implies \\quad P_{\\mathrm{dripped}} > 0",
+      "flags": [
+        "material-implication"
+      ]
+    },
+    {
+      "line": 129,
+      "pattern": "Drip Pricing, Hidden Costs, or Partitioned Pricing",
+      "condition": "2. Visual Disparity of Cost Partitioning",
+      "kind": "FORMULA",
+      "text": "\\frac{V(N_{\\mathrm{base}})}{V(N_{\\mathrm{fee}})} > \\tau_{\\mathrm{prominence}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 133,
+      "pattern": "Drip Pricing, Hidden Costs, or Partitioned Pricing",
+      "condition": "3. Semantic Concealment of Mandatory Fee Disclosure",
+      "kind": "FORMULA",
+      "text": "T_{\\mathrm{initial}} \\cap K_{\\mathrm{fees}} = \\emptyset \\quad \\land \\quad T_{\\mathrm{final}} \\cap K_{\\mathrm{fees}} \\neq \\emptyset",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 138,
+      "pattern": "Bundling",
+      "condition": "1. Inseparable Transactional Nodes",
+      "kind": "FORMULA",
+      "text": "E_{\\mathrm{purchase}}(I_{\\mathrm{primary}}) \\implies \\{I_{\\mathrm{primary}}, I_{\\mathrm{supp}}\\} \\subseteq C_{\\mathrm{state}} \\quad \\land \\quad \\nexists e : e(I_{\\mathrm{primary}}) \\implies C_{\\mathrm{state}} = \\{I_{\\mathrm{primary}}\\}",
+      "flags": [
+        "material-implication"
+      ]
+    },
+    {
+      "line": 142,
+      "pattern": "Bundling",
+      "condition": "2. Visual Obscuration of Individual Component Pricing",
+      "kind": "FORMULA",
+      "text": "\\frac{\\sum_{n \\in N_{\\mathrm{components}}} A(n)}{A(C_{\\mathrm{bundle}})} < \\tau_{\\mathrm{breakdown}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 146,
+      "pattern": "Bundling",
+      "condition": "3. Semantic Suppression of Individual Item Descriptions",
+      "kind": "FORMULA",
+      "text": "\\frac{H(T_{\\mathrm{bundled}})}{H(T_{\\mathrm{standalone}})} < \\tau_{\\mathrm{description}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 151,
+      "pattern": "Hidden Information",
+      "condition": "1. Structural Burial in High-Density Text",
+      "kind": "FORMULA",
+      "text": "|W(N_{\\mathrm{document}})| > \\tau_{\\mathrm{fatigue}} \\quad \\land \\quad P(t_{\\mathrm{clause}}) = \\mathrm{False}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 155,
+      "pattern": "Hidden Information",
+      "condition": "2. Typographical and Chromatic Camouflage",
+      "kind": "FORMULA",
+      "text": "S_{\\mathrm{font}}(N_{\\mathrm{critical}}) < \\tau_{\\mathrm{min\\_readable}} \\quad \\lor \\quad \\mathrm{CR}(N_{\\mathrm{critical}}, L_{\\mathrm{bg}}) < \\tau_{\\mathrm{wcag\\_min}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 159,
+      "pattern": "Hidden Information",
+      "condition": "3. Semantic Concealment of Adverse Terms",
+      "kind": "FORMULA",
+      "text": "K_{\\mathrm{adverse}} \\cap T_{\\mathrm{DOM}} \\neq \\emptyset \\quad \\land \\quad \\mathrm{IsConcealed}(N_{\\mathrm{adverse}}) = \\mathrm{True}",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 164,
+      "pattern": "Reduced Friction",
+      "condition": "1. Absence of Confirmation Interstitial",
+      "kind": "FORMULA",
+      "text": "E_{\\mathrm{click}}(S_{\\mathrm{intent}}) \\implies S_{\\mathrm{commit}} \\quad \\land \\quad S_{\\mathrm{confirm}} \\notin \\mathrm{Path}(S_{\\mathrm{intent}} \\to S_{\\mathrm{commit}})",
+      "flags": [
+        "material-implication",
+        "state-transition"
+      ]
+    },
+    {
+      "line": 168,
+      "pattern": "Reduced Friction",
+      "condition": "2. Visual Proximity of Destructive Actions to Neutral UI",
+      "kind": "FORMULA",
+      "text": "\\min_{n \\in N_{\\mathrm{neutral}}} d_{\\mathrm{spatial}}(N_{\\mathrm{destructive}}, n) < \\tau_{\\mathrm{safety}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 172,
+      "pattern": "Reduced Friction",
+      "condition": "3. Semantic Absence of Confirmation Language",
+      "kind": "FORMULA",
+      "text": "\\neg\\exists n \\in \\mathrm{Path}(v_{\\mathrm{pre}}, v_{\\mathrm{commit}}) : \\mathrm{Match}(T(n), \\mathrm{Pattern}_{\\mathrm{confirm}}) = \\mathrm{True}",
+      "flags": [
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 177,
+      "pattern": "Forced Continuity",
+      "condition": "1. Time-Triggered Silent State Mutation",
+      "kind": "FORMULA",
+      "text": "t \\geq t_{\\mathrm{expiry}} \\quad \\implies \\quad S_{\\mathrm{account}}(t) \\to S_{\\mathrm{premium}} \\quad \\land \\quad E_{\\mathrm{charge}}(T_{\\mathrm{payment}}) = \\mathrm{True}",
+      "flags": [
+        "material-implication",
+        "state-transition",
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 182,
+      "pattern": "Forced Continuity",
+      "condition": "2. Absence of Temporal Feedforward",
+      "kind": "FORMULA",
+      "text": "\\forall w \\in W_{\\mathrm{renewal}} : \\mathrm{Visible}(w, t) = \\mathrm{False} \\quad \\forall t \\in [t_{\\mathrm{expiry}} - \\tau_{\\mathrm{fair\\_notice}}, t_{\\mathrm{expiry}}]",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 183,
+      "pattern": "Forced Continuity",
+      "condition": "2. Absence of Temporal Feedforward",
+      "kind": "GIVEN",
+      "text": "\\lor \\quad \\frac{A(w)}{A_{\\mathrm{viewport}}} < \\tau_{\\mathrm{min\\_visible}} \\quad \\lor \\quad \\mathrm{CR}(w, L_{\\mathrm{bg}}) < 3.0",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 187,
+      "pattern": "Forced Continuity",
+      "condition": "3. Semantic Asymmetry Between Subscription and Cancellation Language",
+      "kind": "FORMULA",
+      "text": "\\mathrm{FKGL}(T_{\\mathrm{cancel}}) - \\mathrm{FKGL}(T_{\\mathrm{signup}}) > 2 \\quad \\lor \\quad \\mathrm{Guilt}(T_{\\mathrm{cancel}}) - \\mathrm{Guilt}(T_{\\mathrm{signup}}) > \\tau_{\\mathrm{guilt\\_gap}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 192,
+      "pattern": "Privacy Zuckering",
+      "condition": "1. Bundled Consent and Granularity Violation",
+      "kind": "FORMULA",
+      "text": "T_{\\mathrm{accept}} = \\mathrm{True} \\quad \\implies \\quad (\\mathrm{Access}(D_{\\mathrm{essential}}) = \\mathrm{True} \\quad \\land \\quad \\mathrm{Access}(D_{\\mathrm{monetization}}) = \\mathrm{True})",
+      "flags": [
+        "material-implication",
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 193,
+      "pattern": "Privacy Zuckering",
+      "condition": "1. Bundled Consent and Granularity Violation",
+      "kind": "GIVEN",
+      "text": "\\nexists t_{\\mathrm{alt}} : (t_{\\mathrm{alt}} \\implies \\mathrm{Access}(D_{\\mathrm{essential}}) \\land \\neg \\mathrm{Access}(D_{\\mathrm{monetization}}))",
+      "flags": [
+        "material-implication"
+      ]
+    },
+    {
+      "line": 197,
+      "pattern": "Privacy Zuckering",
+      "condition": "2. Visual Asymmetry Between Privacy-Invasive and Privacy-Preserving Options",
+      "kind": "FORMULA",
+      "text": "\\frac{W(N_{\\mathrm{invasive}})}{W(N_{\\mathrm{preserving}})} > \\tau_{\\mathrm{privacy\\_skew}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 201,
+      "pattern": "Privacy Zuckering",
+      "condition": "3. Semantic Ambiguity of Third-Party Entities",
+      "kind": "FORMULA",
+      "text": "|E_{\\mathrm{actual}}| \\gg 1 \\quad \\land \\quad \\mathrm{Specificity}(N_{\\mathrm{disclosure}}) < \\tau_{\\mathrm{vague}}",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 206,
+      "pattern": "Friend Spam",
+      "condition": "1. Feedforward Intent vs. Payload Execution",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Intent}_{\\mathrm{NLP}}(N_{\\mathrm{prompt}}) \\in D_{\\mathrm{read\\_only}} \\quad \\land \\quad E_{\\mathrm{backend\\_action}}(T_{\\mathrm{access}}) \\implies \\mathrm{SendMessages()}",
+      "flags": [
+        "material-implication",
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 210,
+      "pattern": "Friend Spam",
+      "condition": "2. Absence of Granular Selection",
+      "kind": "FORMULA",
+      "text": "|S_{\\mathrm{selected}}| = 0 \\quad \\land \\quad |M_{\\mathrm{dispatched}}| \\approx |C_{\\mathrm{network}}| \\quad \\implies \\quad \\mathrm{Unauthorized \\: Broadcast}",
+      "flags": [
+        "material-implication",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 219,
+      "pattern": "Address Book Leeching",
+      "condition": "1. Utility-Permission Decoupling",
+      "kind": "FORMULA",
+      "text": "\\mathrm{State}(U_{\\mathrm{core}}) = \\mathrm{Blocked} \\quad \\text{given} \\quad P_{\\mathrm{contacts}} = \\mathrm{False} \\quad \\land \\quad \\mathrm{Dep}(U_{\\mathrm{core}}, P_{\\mathrm{contacts}}) = \\emptyset",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 223,
+      "pattern": "Address Book Leeching",
+      "condition": "2. Visual Prominence of the Invite-All Affordance",
+      "kind": "FORMULA",
+      "text": "\\frac{A(N_{\\mathrm{invite\\_all}})}{A(N_{\\mathrm{skip}})} > \\tau_{\\mathrm{invite\\_dominance}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 232,
+      "pattern": "Automatic Accept Third Party Term",
+      "condition": "1. Bundled Transitive Consent",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Accept}(T_{\\mathrm{primary}}) \\implies \\forall t_i \\in T_{\\mathrm{third\\_party}} : \\mathrm{Accept}(t_i) = \\mathrm{True}",
+      "flags": [
+        "material-implication",
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 237,
+      "pattern": "Automatic Accept Third Party Term",
+      "condition": "2. Opaque Entity Resolution",
+      "kind": "FORMULA",
+      "text": "E_{\\mathrm{declared}} \\subset E_{\\mathrm{actual}} \\quad \\land \\quad |E_{\\mathrm{actual}}| \\gg |E_{\\mathrm{declared}}| \\approx 0",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold",
+        "palette-or-absolute-visual"
+      ]
+    },
+    {
+      "line": 241,
+      "pattern": "Automatic Accept Third Party Term",
+      "condition": "3. Semantic Concealment of Third-Party Agreement Language",
+      "kind": "FORMULA",
+      "text": "T(N_{\\mathrm{legal}}) \\cap K_{\\mathrm{agreement}} \\neq \\emptyset \\quad \\land \\quad \\mathrm{Checked}(N_{\\mathrm{legal}}) = \\mathrm{True} \\quad \\land \\quad \\mathrm{UserToggled}(N_{\\mathrm{legal}}) = \\mathrm{False}",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 246,
+      "pattern": "Pre-Delivered Content",
+      "condition": "1. Unconsented Local Storage Consumption",
+      "kind": "FORMULA",
+      "text": "C_{\\mathrm{premium}} \\subseteq S_{\\mathrm{local}} \\quad \\text{given} \\quad E_{\\mathrm{consent}} = \\emptyset \\quad \\land \\quad \\mathrm{Size}(C_{\\mathrm{premium}}) \\gg 0",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 250,
+      "pattern": "Pre-Delivered Content",
+      "condition": "2. Visual Density of Locked-Content Badges",
+      "kind": "FORMULA",
+      "text": "\\frac{|\\{n \\in N : \\mathrm{IsLocked}(n)\\}|}{|\\{n \\in N : \\mathrm{IsAccessible}(n)\\}|} > \\tau_{\\mathrm{locked\\_ratio}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 254,
+      "pattern": "Pre-Delivered Content",
+      "condition": "3. Semantic Framing of Local Assets as Purchase Opportunities",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Frame}(T_{\\mathrm{asset}}) = \\mathrm{Purchaseable} \\quad \\land \\quad \\mathrm{IsLocal}(A_{\\mathrm{asset}}) = \\mathrm{True}",
+      "flags": [
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 259,
+      "pattern": "Fear Of Missing Out (FOMO)",
+      "condition": "1. Artificial Temporal Scarcity",
+      "kind": "FORMULA",
+      "text": "T(s_0) \\approx \\Delta t \\quad \\land \\quad T(s_1) \\approx \\Delta t \\quad \\implies \\quad \\mathrm{Fabricated \\: Urgency}",
+      "flags": [
+        "material-implication",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 263,
+      "pattern": "Fear Of Missing Out (FOMO)",
+      "condition": "2. Visual Pulsation Frequency of Urgency Indicators",
+      "kind": "FORMULA",
+      "text": "\\min_{n \\in N_{\\mathrm{urgency}}} \\Delta t_{\\mathrm{refresh}}(n) < \\tau_{\\mathrm{pulsation}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 267,
+      "pattern": "Fear Of Missing Out (FOMO)",
+      "condition": "3. Semantic Density of Scarcity and Urgency Lexemes",
+      "kind": "FORMULA",
+      "text": "\\frac{|\\{w \\in T : w \\in L_{\\mathrm{FOMO}}\\}|}{|T|} \\times 100 > \\tau_{\\mathrm{fomo}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 272,
+      "pattern": "High Demand",
+      "condition": "1. Metric Fabrication",
+      "kind": "FORMULA",
+      "text": "U_{\\mathrm{displayed}}(i, t) = R(a, b) \\quad \\text{given} \\quad U_{\\mathrm{displayed}}(i, t) \\gg U_{\\mathrm{true}}(i, t)",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 276,
+      "pattern": "High Demand",
+      "condition": "2. Visual Dynamics of Social-Proof Badges",
+      "kind": "FORMULA",
+      "text": "\\exists n \\in N_{\\mathrm{demand}} : \\mathrm{IsAnimated}(n) = \\mathrm{True} \\quad \\land \\quad \\Delta t_{\\mathrm{update}}(n) < \\tau_{\\mathrm{animate}}",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 285,
+      "pattern": "Low Stock",
+      "condition": "1. Inventory Fabrication",
+      "kind": "FORMULA",
+      "text": "I_{\\mathrm{displayed}}(x) \\le \\tau_{\\mathrm{scarcity}} \\quad \\text{given} \\quad I_{\\mathrm{displayed}}(x) \\ll I_{\\mathrm{true}}(x)",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 289,
+      "pattern": "Low Stock",
+      "condition": "2. Visual Alarm Salience of Scarcity Indicators",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Hue}(N_{\\mathrm{stock}}) \\in [0^\\circ, 30^\\circ] \\quad \\land \\quad \\Delta\\mathrm{Stock}_{\\mathrm{actual}} = 0",
+      "flags": [
+        "unobservable-ground-truth",
+        "palette-or-absolute-visual"
+      ]
+    },
+    {
+      "line": 293,
+      "pattern": "Low Stock",
+      "condition": "3. Semantic Verifiability of Stock-Level Quantifiers",
+      "kind": "FORMULA",
+      "text": "\\exists t_1, t_2 : |t_2 - t_1| < 60\\text{s} \\quad \\land \\quad Q_{\\mathrm{stock}}(t_1) \\neq Q_{\\mathrm{stock}}(t_2) \\quad \\land \\quad \\neg\\mathrm{HasTransaction}(t_1, t_2)",
+      "flags": [
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 298,
+      "pattern": "Activity Messages",
+      "condition": "1. Asynchronous Event Fabrication",
+      "kind": "FORMULA",
+      "text": "M_{\\mathrm{displayed}}(t) \\neq \\emptyset \\quad \\land \\quad M_{\\mathrm{displayed}}(t) \\notin E_{\\mathrm{real}}(t)",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 302,
+      "pattern": "Activity Messages",
+      "condition": "2. Cognitive Interruption",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Salience}(N_{\\mathrm{activity}}) \\to \\mathrm{Max} \\quad \\land \\quad \\lambda_{\\mathrm{interrupt}} > \\tau_{\\mathrm{cognitive\\_load}} \\implies S_{\\mathrm{focus}} \\to \\mathrm{Disrupted}",
+      "flags": [
+        "material-implication",
+        "state-transition",
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 306,
+      "pattern": "Activity Messages",
+      "condition": "3. Semantic Specificity of Activity-Notification Content",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Specificity}(T_{\\mathrm{activity}}) < \\tau_{\\mathrm{specificity}} \\quad \\land \\quad \\neg\\exists \\text{IdentityRef} \\in T_{\\mathrm{activity}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 311,
+      "pattern": "Countdown Timer",
+      "condition": "1. Stateless Expiration",
+      "kind": "FORMULA",
+      "text": "T_{\\mathrm{expire}} = t_{\\mathrm{load}} + \\Delta t_{\\mathrm{countdown}} \\quad \\implies \\quad \\text{Urgency is functionally synthetic}",
+      "flags": [
+        "material-implication",
+        "conclusion-not-evidence"
+      ]
+    },
+    {
+      "line": 315,
+      "pattern": "Countdown Timer",
+      "condition": "2. Cognitive Compression",
+      "kind": "FORMULA",
+      "text": "\\Delta t_{\\mathrm{timer}} < \\tau_{\\mathrm{deliberation}} \\quad \\implies \\quad \\mathrm{Probability}(\\mathrm{Rational\\_Evaluation}) \\to 0",
+      "flags": [
+        "material-implication",
+        "state-transition",
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold",
+        "conclusion-not-evidence"
+      ]
+    },
+    {
+      "line": 319,
+      "pattern": "Countdown Timer",
+      "condition": "3. Semantic Urgency Inflation via Temporal Lexemes",
+      "kind": "FORMULA",
+      "text": "\\mathrm{IsCountdown}(N) = \\mathrm{True} \\quad \\land \\quad |T_{\\mathrm{adjacent}}(N) \\cap L_{\\mathrm{amplify}}| > 0",
+      "flags": [
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 324,
+      "pattern": "Limited Time Message",
+      "condition": "1. Perpetual Extension",
+      "kind": "FORMULA",
+      "text": "t_{\\mathrm{current}} \\ge T_{\\mathrm{end}}(i) \\implies T_{\\mathrm{end}}(i+1) = t_{\\mathrm{current}} + \\Delta t_{\\mathrm{extension}}",
+      "flags": [
+        "material-implication"
+      ]
+    },
+    {
+      "line": 328,
+      "pattern": "Limited Time Message",
+      "condition": "2. Visual Salience of Temporal-Urgency Chromatics",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Hue}(C_{\\mathrm{offer}}) \\in [0^\\circ, 45^\\circ] \\quad \\land \\quad \\mathrm{Match}(T(C_{\\mathrm{offer}}), \\mathrm{Pattern}_{\\mathrm{temporal}}) = \\mathrm{True}",
+      "flags": [
+        "unobservable-ground-truth",
+        "palette-or-absolute-visual"
+      ]
+    },
+    {
+      "line": 332,
+      "pattern": "Limited Time Message",
+      "condition": "3. Ambiguous Temporal Bounding",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Specificity}(M_{\\mathrm{urgency}}) \\approx 0 \\quad \\land \\quad T_{\\mathrm{end}} \\notin \\mathrm{DOM} \\implies \\mathrm{Urgency_{perceived}} \\to \\mathrm{Max}",
+      "flags": [
+        "material-implication",
+        "state-transition",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 337,
+      "pattern": "Price Comparison Prevention",
+      "condition": "1. Fiat Decoupling",
+      "kind": "FORMULA",
+      "text": "T_{\\mathrm{price}}(n) \\neq \\emptyset \\quad \\land \\quad F_{\\mathrm{convert}}(T_{\\mathrm{price}}(n)) = \\emptyset",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 341,
+      "pattern": "Price Comparison Prevention",
+      "condition": "2. Visual Suppression of Unit-Price Information",
+      "kind": "FORMULA",
+      "text": "\\frac{\\mathrm{fontSize}(N_{\\mathrm{unit}})}{\\mathrm{fontSize}(N_{\\mathrm{headline}})} < \\tau_{\\mathrm{suppress}} \\quad \\lor \\quad \\frac{\\mathrm{CR}(N_{\\mathrm{unit}}, L_{\\mathrm{bg}})}{\\mathrm{CR}(N_{\\mathrm{headline}}, L_{\\mathrm{bg}})} < \\tau_{\\mathrm{suppress}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 345,
+      "pattern": "Price Comparison Prevention",
+      "condition": "3. Semantic Omission of Comparison-Relevant Qualifiers",
+      "kind": "FORMULA",
+      "text": "Q_{\\mathrm{standard}} \\cap Q_{\\mathrm{rendered}} = \\emptyset",
+      "flags": [
+        "qualitative-or-undefined-threshold",
+        "palette-or-absolute-visual"
+      ]
+    },
+    {
+      "line": 350,
+      "pattern": "Reference Pricing",
+      "condition": "1. Mathematical Exaggeration of Discount",
+      "kind": "FORMULA",
+      "text": "\\Delta_{\\mathrm{pct}} = \\frac{P_{\\mathrm{ref}} - P_{\\mathrm{cur}}}{P_{\\mathrm{ref}}} \\quad \\implies \\quad \\Delta_{\\mathrm{pct}} > \\tau_{\\mathrm{unrealistic}}",
+      "flags": [
+        "material-implication",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 354,
+      "pattern": "Reference Pricing",
+      "condition": "2. Visual Salience of Reference-Price Strikethrough",
+      "kind": "FORMULA",
+      "text": "\\mathrm{CR}(N_{\\mathrm{ref}}, L_{\\mathrm{bg}}) < \\tau_{\\mathrm{ref\\_cr}} \\quad \\land \\quad \\frac{\\mathrm{fontSize}(N_{\\mathrm{current}})}{\\mathrm{fontSize}(N_{\\mathrm{ref}})} > \\tau_{\\mathrm{size\\_skew}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 358,
+      "pattern": "Reference Pricing",
+      "condition": "3. Dual-Pricing Co-occurrence and Anchoring",
+      "kind": "FORMULA",
+      "text": "P_{\\mathrm{ref}} > P_{\\mathrm{cur}} \\quad \\land \\quad \\mathrm{CSS}(N_{\\mathrm{ref}}) \\cap S_{\\mathrm{strike}} \\neq \\emptyset",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 363,
+      "pattern": "Conflicting Information",
+      "condition": "1. Structural Proximity of Contradictory Factual Nodes",
+      "kind": "FORMULA",
+      "text": "\\exists t_1, t_2 \\in \\mathrm{Descendants}(C) : \\mathrm{Prop}(t_1) \\land \\mathrm{Prop}(t_2) \\implies \\bot \\quad \\land \\quad d_{\\mathrm{DOM}}(t_1, t_2) < \\tau_{\\mathrm{proximity}}",
+      "flags": [
+        "material-implication",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 367,
+      "pattern": "Conflicting Information",
+      "condition": "2. Semantic-Visual Mismatch",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Intent}(L(B)) \\cap \\mathrm{Affordance}(C(B)) = \\emptyset \\quad \\implies \\quad \\mathrm{Contradiction}",
+      "flags": [
+        "material-implication",
+        "qualitative-or-undefined-threshold",
+        "conclusion-not-evidence"
+      ]
+    },
+    {
+      "line": 371,
+      "pattern": "Conflicting Information",
+      "condition": "3. Mutually Exclusive Factual Claims",
+      "kind": "FORMULA",
+      "text": "\\exists t_1, t_2 \\in N_{\\mathrm{container}} : \\mathrm{Sem}(t_1) \\land \\mathrm{Sem}(t_2) \\implies \\mathrm{Unsatisfiable}",
+      "flags": [
+        "material-implication",
+        "conclusion-not-evidence"
+      ]
+    },
+    {
+      "line": 376,
+      "pattern": "Information Without Context",
+      "condition": "1. Structural Orphaned Nodes",
+      "kind": "FORMULA",
+      "text": "d(N_{\\mathrm{metric}}, N_{\\mathrm{descriptor}}) > \\tau_{\\mathrm{orphan}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 380,
+      "pattern": "Information Without Context",
+      "condition": "2. Visual Prominence Imbalance Between Metric and Baseline",
+      "kind": "FORMULA",
+      "text": "\\frac{W(N_{\\mathrm{metric}})}{W(N_{\\mathrm{context}})} > \\tau_{\\mathrm{context\\_imbalance}} \\quad \\land \\quad \\mathrm{CR}(N_{\\mathrm{metric}}, L_{\\mathrm{bg}}) > 7.0",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 389,
+      "pattern": "False Hierarchy",
+      "condition": "1. Structural Element Downgrading",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Tag}(B_{\\mathrm{business}}) = \\texttt{<button>} \\quad \\land \\quad \\mathrm{Tag}(B_{\\mathrm{user}}) = \\texttt{<a>} \\quad \\land \\quad S_{\\mathrm{padding}}(B_{\\mathrm{user}}) \\approx 0",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 394,
+      "pattern": "False Hierarchy",
+      "condition": "2. Relational Visual Weight Disparity",
+      "kind": "GIVEN",
+      "text": "\\frac{W(B_{\\mathrm{business}})}{W(B_{\\mathrm{user}})} > \\tau_{\\mathrm{hierarchy}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 403,
+      "pattern": "Visual Prominence",
+      "condition": "1. Structural Asymmetry in DOM Subtree Weight",
+      "kind": "FORMULA",
+      "text": "\\frac{|\\mathrm{Desc}(N_{\\mathrm{favorable}})|}{\\mathrm{median}_{s \\in \\mathrm{Siblings}(N_{\\mathrm{favorable}})} |\\mathrm{Desc}(s)|} > \\tau_{\\mathrm{subtree\\_bloat}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 407,
+      "pattern": "Visual Prominence",
+      "condition": "2. Absolute Bounding Box Dominance",
+      "kind": "FORMULA",
+      "text": "\\frac{A(N_{\\mathrm{favorable}})}{A(E_{\\mathrm{baseline}})} > \\tau_{\\mathrm{area}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 411,
+      "pattern": "Visual Prominence",
+      "condition": "3. Semantic Neutrality of Dominant Action Labels",
+      "kind": "FORMULA",
+      "text": "|\\mathrm{Sent}(L(N_{\\mathrm{favorable}}))| > 0.5 \\quad \\lor \\quad L(N_{\\mathrm{favorable}}) \\cap D_{\\mathrm{coercion}} \\neq \\emptyset",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 416,
+      "pattern": "Persuasive Language",
+      "condition": "1. Structural Density of Event Listeners on Coercive Text Nodes",
+      "kind": "FORMULA",
+      "text": "\\frac{|E(N_{\\mathrm{coercive}})|}{|E(N_{\\mathrm{neutral}})|} > \\tau_{\\mathrm{listener\\_skew}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 420,
+      "pattern": "Persuasive Language",
+      "condition": "2. Visual Emphasis Asymmetry on Coercive Text",
+      "kind": "FORMULA",
+      "text": "\\frac{\\mathrm{fontWeight}(N_{\\mathrm{coercive}})}{\\mathrm{fontWeight}(N_{\\mathrm{neutral}})} > \\tau_{\\mathrm{emphasis}} \\quad \\lor \\quad \\frac{A(N_{\\mathrm{coercive}})}{A(N_{\\mathrm{neutral}})} > \\tau_{\\mathrm{emphasis}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 424,
+      "pattern": "Persuasive Language",
+      "condition": "3. Truth-Conditional Satisfiability",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Sem}(t_1) \\land \\mathrm{Sem}(t_2) \\implies \\mathrm{Satisfiable}",
+      "flags": [
+        "material-implication",
+        "conclusion-not-evidence"
+      ]
+    },
+    {
+      "line": 429,
+      "pattern": "Cuteness",
+      "condition": "1. Structural Conditional Injection of Affective Assets",
+      "kind": "FORMULA",
+      "text": "I_{\\mathrm{affective}} \\cap \\mathrm{DOM}(s_{\\mathrm{onboard}}) = \\emptyset \\quad \\land \\quad I_{\\mathrm{affective}} \\subset \\mathrm{DOM}(s_{\\mathrm{cancel}})",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 434,
+      "pattern": "Cuteness",
+      "condition": "2. Context-Dependent Image Injection",
+      "kind": "GIVEN",
+      "text": "\\land \\quad \\left( \\frac{A(i)}{A_{\\mathrm{viewport}}} > \\tau_{\\mathrm{prominence}} \\quad \\lor \\quad \\mathrm{CR}(i, L_{\\mathrm{bg}}) > 7.0 \\right) \\quad \\forall i \\in I_{\\mathrm{affective}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 438,
+      "pattern": "Cuteness",
+      "condition": "3. Semantic Pairing of Guilt",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Affect}(N_{\\mathrm{text}}) > \\tau_{\\mathrm{guilt}} \\quad \\land \\quad d_{\\mathrm{spatial}}(N_{\\mathrm{text}}, i) < \\delta_{\\mathrm{proximity}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 443,
+      "pattern": "Positive Or Negative Framing",
+      "condition": "1. Structural Asymmetry of Framed Option Subtrees",
+      "kind": "FORMULA",
+      "text": "\\frac{|T_{\\mathrm{gain}} \\setminus T_{\\mathrm{loss}}|}{|T_{\\mathrm{gain}} \\cup T_{\\mathrm{loss}}|} > \\tau_{\\mathrm{frame\\_structure}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 447,
+      "pattern": "Positive Or Negative Framing",
+      "condition": "2. Visual Weight Asymmetry Between Framing Poles",
+      "kind": "FORMULA",
+      "text": "\\max\\left(\\frac{W(F_{\\mathrm{gain}})}{W(F_{\\mathrm{loss}})}, \\frac{W(F_{\\mathrm{loss}})}{W(F_{\\mathrm{gain}})}\\right) > \\tau_{\\mathrm{frame\\_asymmetry}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 456,
+      "pattern": "Choice Overload",
+      "condition": "1. Excessive Element Quantization",
+      "kind": "FORMULA",
+      "text": "|C_{\\mathrm{choices}}| > \\tau_{\\mathrm{overload}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 460,
+      "pattern": "Choice Overload",
+      "condition": "2. Visual Density of Interactive Decision Elements",
+      "kind": "FORMULA",
+      "text": "\\rho = \\frac{n_{\\mathrm{interactive}}}{A_{\\mathrm{viewport}}} > \\tau_{\\mathrm{density}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 464,
+      "pattern": "Choice Overload",
+      "condition": "3. Semantic Similarity Collapse Among Options",
+      "kind": "FORMULA",
+      "text": "\\frac{1}{|C|(|C|-1)} \\sum_{i \\neq j} \\mathrm{sim}(T_i, T_j) > \\tau_{\\mathrm{similarity}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 469,
+      "pattern": "Plain Evil (Theoretical Construct)",
+      "condition": "1. Dark Pattern Singularity",
+      "kind": "FORMULA",
+      "text": "\\sum_{i=1}^{n} \\mathrm{Active}(D_i, M_{\\mathrm{context}}) \\ge \\tau_{\\mathrm{hostility}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 473,
+      "pattern": "Plain Evil (Theoretical Construct)",
+      "condition": "2. Visual Hostility Density Index",
+      "kind": "FORMULA",
+      "text": "H = \\frac{\\sum_{i} \\mathbb{1}_{\\mathrm{hostile}}(N_i) \\cdot w_i}{A_{\\mathrm{viewport}}} > \\tau_{\\mathrm{hostility}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 477,
+      "pattern": "Plain Evil (Theoretical Construct)",
+      "condition": "3. Semantic Hostility Density Score",
+      "kind": "FORMULA",
+      "text": "\\|H_{\\mathrm{sem}}\\|_2 = \\sqrt{\\rho_{\\mathrm{coerce}}^2 + \\sigma_{\\mathrm{FKGL}}^2 + \\sigma_{\\mathrm{sent}}^2 + \\rho_{\\mathrm{connot}}^2} > \\tau_{\\mathrm{hostile\\_sem}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 482,
+      "pattern": "Endorsement And Testimonials",
+      "condition": "1. Statistical Implausibility",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Mean}(S(R_{\\mathrm{total}})) \\approx 5.0 \\quad \\land \\quad \\mathrm{Var}(S(R_{\\mathrm{total}})) \\approx 0 \\implies D_{\\mathrm{rendered}} \\neq D_{\\mathrm{organic}}",
+      "flags": [
+        "material-implication",
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold",
+        "palette-or-absolute-visual"
+      ]
+    },
+    {
+      "line": 490,
+      "pattern": "Endorsement And Testimonials",
+      "condition": "3. Provenance Obfuscation",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Similarity}(I_{\\mathrm{avatar}}(P_i), I_{\\mathrm{stock\\_database}}) \\approx 1 \\quad \\lor \\quad \\mathrm{Similarity}(T_{\\mathrm{text}}(r_i), T_{\\mathrm{text}}(r_j)) > \\tau_{\\mathrm{template}}",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 499,
+      "pattern": "Confirmshaming",
+      "condition": "2. Visual Hierarchy Subversion",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Vis}(N_{\\mathrm{accept}}) \\gg \\mathrm{Vis}(N_{\\mathrm{decline}}) \\quad \\land \\quad \\mathrm{Vis}(N_{\\mathrm{decline}}) \\to \\tau_{\\mathrm{minimum\\_accessibility}}",
+      "flags": [
+        "state-transition",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 508,
+      "pattern": "Psychological Tricks",
+      "condition": "1. Asymmetric Dominance",
+      "kind": "FORMULA",
+      "text": "V(O_{\\mathrm{target}}) \\gg V(O_{\\mathrm{decoy}}) \\quad \\land \\quad \\mathrm{Cost}(O_{\\mathrm{target}}) \\approx \\mathrm{Cost}(O_{\\mathrm{decoy}}) \\implies P_{\\mathrm{select}}(O_{\\mathrm{target}}) \\to \\mathrm{Max}",
+      "flags": [
+        "material-implication",
+        "state-transition",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 512,
+      "pattern": "Psychological Tricks",
+      "condition": "2. Cognitive Overload",
+      "kind": "FORMULA",
+      "text": "|C_{\\mathrm{matrix}}| \\gg \\tau_{\\mathrm{fatigue}} \\quad \\implies \\quad \\lim_{t \\to \\infty} P_{\\mathrm{select}}(D_{\\mathrm{favorable}}) = 1",
+      "flags": [
+        "material-implication",
+        "state-transition",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 516,
+      "pattern": "Psychological Tricks",
+      "condition": "3. Reference Point Obfuscation",
+      "kind": "FORMULA",
+      "text": "P_{\\mathrm{anchor}} \\gg P_{\\mathrm{actual}} \\quad \\implies \\quad \\mathrm{WTP}(U_{\\mathrm{anchored}}) > \\mathrm{WTP}(U_{\\mathrm{baseline}})",
+      "flags": [
+        "material-implication",
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold",
+        "conclusion-not-evidence",
+        "palette-or-absolute-visual"
+      ]
+    },
+    {
+      "line": 521,
+      "pattern": "Pressured Selling",
+      "condition": "1. Transactional Flow Interruption",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Click}(B_{\\mathrm{proceed}}) \\implies \\mathrm{Visibility}(M_{\\mathrm{upsell}}) = \\mathrm{True} \\quad \\land \\quad s_{\\mathrm{final}} \\notin S_{\\mathrm{current}}",
+      "flags": [
+        "material-implication",
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 525,
+      "pattern": "Pressured Selling",
+      "condition": "2. Localized Temporal or Visual Constraints",
+      "kind": "FORMULA",
+      "text": "\\Delta t_{\\mathrm{offer}} < \\tau_{\\mathrm{panic\\_duration}} \\quad \\lor \\quad (\\mathrm{CSS}(M_{\\mathrm{upsell}}) \\cap V_{\\mathrm{animations}} \\neq \\emptyset)",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 529,
+      "pattern": "Pressured Selling",
+      "condition": "3. High-Arousal Lexical Density",
+      "kind": "FORMULA",
+      "text": "\\frac{|W(M) \\cap D_{\\mathrm{pressure}}|}{|W(M)|} > \\tau_{\\mathrm{arousal}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 534,
+      "pattern": "Small or Moving Close Button",
+      "condition": "1. Structural Event-Listener Commandeering on Dismissal Vectors",
+      "kind": "FORMULA",
+      "text": "\\mathrm{IsIntercepted}(N_{\\mathrm{close}}) = \\mathrm{True} \\quad \\lor \\quad \\Delta t_{\\mathrm{rebind}}(N_{\\mathrm{close}}) < \\tau_{\\mathrm{rebind}}",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 538,
+      "pattern": "Small or Moving Close Button",
+      "condition": "2. Microscopic Hitbox",
+      "kind": "FORMULA",
+      "text": "A(N_{\\mathrm{close}}) < \\tau_{\\mathrm{wcag\\_hitbox}} \\quad \\lor \\quad \\frac{A(N_{\\mathrm{close}})}{A(M_{\\mathrm{parent}})} < \\delta_{\\mathrm{micro}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 542,
+      "pattern": "Small or Moving Close Button",
+      "condition": "3. Semantic Obfuscation of Dismissal Labels",
+      "kind": "FORMULA",
+      "text": "\\mathrm{AccessibleName}(N_{\\mathrm{close}}) = \\emptyset \\quad \\lor \\quad \\mathrm{Intent}(\\mathrm{AccessibleName}(N_{\\mathrm{close}})) \\neq \\mathrm{Dismissal}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 547,
+      "pattern": "Bad Defaults / Preselection",
+      "condition": "1. Pre-initialized Activation State",
+      "kind": "FORMULA",
+      "text": "\\exists c \\in C : \\mathrm{State}(c, t_0) = \\mathrm{True} \\quad \\land \\quad \\mathrm{UserEvents}(c, t_0) = \\emptyset",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 551,
+      "pattern": "Bad Defaults / Preselection",
+      "condition": "2. Visual or Structural Obfuscation",
+      "kind": "FORMULA",
+      "text": "V(c, t_0) = \\mathrm{False} \\quad \\lor \\quad d_{\\mathrm{spatial}}(c, N_{\\mathrm{submit}}) > \\tau_{\\mathrm{peripheral\\_vision}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 560,
+      "pattern": "Trick Questions",
+      "condition": "1. Structural Label-Input Semantic Mismatch",
+      "kind": "FORMULA",
+      "text": "\\mathrm{SemanticDist}(L_{\\mathrm{aria}}(N), L_{\\mathrm{visual}}(N)) > \\tau_{\\mathrm{label\\_mismatch}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 564,
+      "pattern": "Trick Questions",
+      "condition": "2. Affordance-Consequence Mismatch",
+      "kind": "FORMULA",
+      "text": "(\\mathrm{State}(c) = \\mathrm{True}) \\implies (\\mathrm{Intent}(L(c)) \\in D_{\\mathrm{deny}})",
+      "flags": [
+        "material-implication",
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 568,
+      "pattern": "Trick Questions",
+      "condition": "3. Syntactic Obfuscation via Multiple Negations",
+      "kind": "FORMULA",
+      "text": "N_{\\mathrm{neg}}(L(c)) \\geq 2 \\quad \\implies \\quad \\mathrm{Linguistic \\: Obfuscation}",
+      "flags": [
+        "material-implication"
+      ]
+    },
+    {
+      "line": 573,
+      "pattern": "Wrong Language",
+      "condition": "1. Asymmetric State Application",
+      "kind": "FORMULA",
+      "text": "\\mathbb{L}(S_{\\mathrm{acquisition}}) = \\{L_{\\mathrm{session}}\\} \\quad \\land \\quad \\mathbb{L}(S_{\\mathrm{termination}}) \\setminus \\{L_{\\mathrm{session}}\\} \\neq \\emptyset",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 581,
+      "pattern": "Wrong Language",
+      "condition": "3. Localized Linguistic Discrepancy",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Lang}(N_{\\mathrm{critical}}) \\neq L_{\\mathrm{session}} \\quad \\land \\quad \\mathrm{Confidence}(\\mathrm{Lang}(N_{\\mathrm{critical}})) > \\tau_{\\mathrm{lang\\_id}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 586,
+      "pattern": "Complex Language",
+      "condition": "1. Structural Nesting Depth of Legal/Technical Text Nodes",
+      "kind": "FORMULA",
+      "text": "D_{\\mathrm{DOM}}(N_{\\mathrm{complex}}) > \\tau_{\\mathrm{legal\\_depth}} \\quad \\lor \\quad \\frac{1}{|N_{\\mathrm{complex}}|} \\sum_{n} |\\mathrm{text}(n)| > \\tau_{\\mathrm{clause\\_length}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 590,
+      "pattern": "Complex Language",
+      "condition": "2. Visual Density of Legalese Text Blocks",
+      "kind": "FORMULA",
+      "text": "\\frac{\\mathrm{fontSize}(N_{\\mathrm{complex}})}{S_{\\mathrm{base}}} < \\tau_{\\mathrm{shrink}} \\quad \\land \\quad \\mathrm{FKGL}(N_{\\mathrm{complex}}) > 12",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 594,
+      "pattern": "Complex Language",
+      "condition": "3. Exceedance of Baseline Readability Indices",
+      "kind": "FORMULA",
+      "text": "\\mathrm{FKGL}(N_{\\mathrm{text}}) > \\tau_{\\mathrm{education\\_limit}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 599,
+      "pattern": "Feedforward Ambiguity",
+      "condition": "1. Structural Ambiguity of Action-Outcome Mapping",
+      "kind": "FORMULA",
+      "text": "\\exists N \\in \\mathrm{Interactive} : \\mathrm{Distance}(\\mathrm{Expect}(L(N)), \\mathrm{Resolve}(N)) > \\tau_{\\mathrm{feedforward}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 603,
+      "pattern": "Feedforward Ambiguity",
+      "condition": "2. Iconographic Entropy and Missing Affordances",
+      "kind": "FORMULA",
+      "text": "H(\\mathrm{CV}_{\\mathrm{class}}(N_{\\mathrm{icon}})) > \\tau_{\\mathrm{entropy}} \\quad \\land \\quad T_{\\mathrm{hover}} = \\emptyset",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 607,
+      "pattern": "Feedforward Ambiguity",
+      "condition": "3. Semantic Divergence of Action and Outcome",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Sim}(\\mathrm{Intent}_{\\mathrm{NLP}}(L(n)), \\mathrm{Outcome}_{\\mathrm{System}}(n)) < \\tau_{\\mathrm{clarity}} \\quad \\land \\quad \\mathrm{Outcome}_{\\mathrm{System}}(n) \\in D_{\\mathrm{critical}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 612,
+      "pattern": "Forced Registration",
+      "condition": "1. Absolute State Blocking",
+      "kind": "FORMULA",
+      "text": "\\forall \\pi \\in \\mathrm{Paths}(S_{\\mathrm{intent}} \\to S_{\\mathrm{terminal}}) : S_{\\mathrm{auth}} \\in \\pi",
+      "flags": [
+        "state-transition"
+      ]
+    },
+    {
+      "line": 616,
+      "pattern": "Forced Registration",
+      "condition": "2. Visual Degradation of the Guest Checkout Pathway",
+      "kind": "FORMULA",
+      "text": "\\frac{W(N_{\\mathrm{guest}})}{W(N_{\\mathrm{register}})} < \\tau_{\\mathrm{guest\\_visibility}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 620,
+      "pattern": "Forced Registration",
+      "condition": "3. Semantic Framing of the Guest-Checkout Option",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Sent}(L(N_{\\mathrm{guest}})) < \\tau_{\\mathrm{guest\\_sent}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 629,
+      "pattern": "Social Pyramid",
+      "condition": "2. Visual Prominence of Referral-Progress Gamification",
+      "kind": "FORMULA",
+      "text": "\\frac{A(N_{\\mathrm{referral\\_progress}})}{A_{\\mathrm{viewport}}} > \\tau_{\\mathrm{gamification}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 633,
+      "pattern": "Social Pyramid",
+      "condition": "3. Semantic Escalation of Referral-Reward Language",
+      "kind": "FORMULA",
+      "text": "\\frac{\\Delta \\mathrm{Intensity}(\\mathrm{Reward}_n)}{\\Delta \\mathrm{Intensity}(\\mathrm{Reward}_{n-1})} > \\tau_{\\mathrm{escalation}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 638,
+      "pattern": "Granting and Interaction",
+      "condition": "1. Interaction Gating",
+      "kind": "FORMULA",
+      "text": "\\mathrm{State}(I_{\\mathrm{core}}) = \\mathrm{Blocked} \\quad \\text{given} \\quad (P_{\\mathrm{requested}} = \\mathrm{False} \\quad \\land \\quad \\mathrm{Dep}(I_{\\mathrm{core}}, P_{\\mathrm{requested}}) = \\emptyset)",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 642,
+      "pattern": "Granting and Interaction",
+      "condition": "2. Asynchronous Overlay Misdirection",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Pos}(M_{\\mathrm{system\\_prompt}}, t) \\approx \\mathrm{Pos}(B_{\\mathrm{benign}}, t) \\quad \\text{as} \\quad t \\to t_{\\mathrm{interaction}}",
+      "flags": [
+        "state-transition",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 646,
+      "pattern": "Granting and Interaction",
+      "condition": "3. Semantic Scope Creep in Permission Requests",
+      "kind": "FORMULA",
+      "text": "|\\mathrm{Perms}_{\\mathrm{actual}} \\setminus \\mathrm{Perms}_{\\mathrm{disclosed}}| > 0",
+      "flags": [
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 651,
+      "pattern": "Pay-To-Play",
+      "condition": "1. Exponential Friction and Paid Bypass",
+      "kind": "FORMULA",
+      "text": "E_{\\mathrm{free}}(L_i) \\propto c^i \\quad (c > 1) \\quad \\land \\quad E_{\\mathrm{paid}}(L_i) = \\mathcal{O}(1)",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 655,
+      "pattern": "Pay-To-Play",
+      "condition": "2. Visual Dominance of Payment-Unlock Overlays",
+      "kind": "FORMULA",
+      "text": "\\frac{A(O_{\\mathrm{unlock}})}{A_{\\mathrm{viewport}}} > \\tau_{\\mathrm{occlusion}} \\quad \\lor \\quad A(N_{\\mathrm{dismiss}}) < 44 \\times 44",
+      "flags": [
+        "qualitative-or-undefined-threshold",
+        "palette-or-absolute-visual"
+      ]
+    },
+    {
+      "line": 664,
+      "pattern": "Grinding",
+      "condition": "1. Exponential Effort Scaling",
+      "kind": "FORMULA",
+      "text": "E(L_i \\to L_{i+1}) \\propto c^i \\quad (c > 1) \\quad \\land \\quad V(L_{i+1}) \\approx V(L_i) + k",
+      "flags": [
+        "state-transition",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 668,
+      "pattern": "Grinding",
+      "condition": "2. Visual Diminishing-Returns Feedback Loop",
+      "kind": "FORMULA",
+      "text": "\\frac{\\Delta P_{k}}{\\Delta P_{1}} < e^{-\\lambda(k-1)} \\quad \\land \\quad \\frac{d^2 P}{di^2} < 0",
+      "flags": [
+        "state-transition"
+      ]
+    },
+    {
+      "line": 672,
+      "pattern": "Grinding",
+      "condition": "3. Semantic Attenuation of Progress-Milestone Language",
+      "kind": "FORMULA",
+      "text": "\\Delta a_i = \\mathrm{Pos}(\\mathrm{Milestone}_{i}) - \\mathrm{Pos}(\\mathrm{Milestone}_{i-1}) \\quad \\land \\quad \\frac{d\\Delta a}{di} > 0",
+      "flags": [
+        "state-transition"
+      ]
+    },
+    {
+      "line": 677,
+      "pattern": "Playing By Appointment",
+      "condition": "1. Temporal Gating",
+      "kind": "FORMULA",
+      "text": "\\mathrm{State}(A_{\\mathrm{core}}) = \\mathrm{Blocked} \\quad \\text{until} \\quad t \\ge t_{\\mathrm{depletion}} + \\tau_{\\mathrm{refill}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 681,
+      "pattern": "Playing By Appointment",
+      "condition": "2. Visual Prominence of Temporal-Gating Indicators",
+      "kind": "FORMULA",
+      "text": "\\frac{A(N_{\\mathrm{temporal}})}{A_{\\mathrm{viewport}}} > \\tau_{\\mathrm{appointment}} \\quad \\lor \\quad \\mathrm{Saturation}(N_{\\mathrm{temporal}}) > 0.8",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 685,
+      "pattern": "Playing By Appointment",
+      "condition": "3. Semantic Urgency Encoding in Temporal-Gating Messages",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Urgency}(T_{\\mathrm{temporal}}) > \\tau_{\\mathrm{appointment\\_urgency}} \\quad \\land \\quad T_{\\mathrm{temporal}} \\cap L_{\\mathrm{scarcity}} \\neq \\emptyset",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 690,
+      "pattern": "Watch Ads To Unlock Features Or Get Rewards",
+      "condition": "1. Attention as Transactional Currency",
+      "kind": "FORMULA",
+      "text": "\\int_{0}^{\\Delta t_{\\mathrm{ad}}} E_{\\mathrm{playback}}(t) \\, dt = \\Delta t_{\\mathrm{ad}} \\implies \\mathrm{State}(R_{\\mathrm{target}}) \\to \\mathrm{Unlocked}",
+      "flags": [
+        "material-implication",
+        "state-transition"
+      ]
+    },
+    {
+      "line": 694,
+      "pattern": "Watch Ads To Unlock Features Or Get Rewards",
+      "condition": "2. Visual Mismatch Between Reward Progress Display and Actual Progress",
+      "kind": "FORMULA",
+      "text": "P_{\\mathrm{visual}} - P_{\\mathrm{actual}} > \\tau_{\\mathrm{mislead}}",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 698,
+      "pattern": "Watch Ads To Unlock Features Or Get Rewards",
+      "condition": "3. Semantic Inflation of Reward Value",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Hyperbole}(T_{\\mathrm{reward}}) - \\mathrm{Utility}(R_{\\mathrm{actual}}) > \\tau_{\\mathrm{hype\\_gap}}",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 707,
+      "pattern": "Pay To Avoid",
+      "condition": "2. Visual Occupancy of the Pain-Point Element",
+      "kind": "FORMULA",
+      "text": "\\frac{A(N_{\\mathrm{pain}})}{A_{\\mathrm{viewport}}} > \\tau_{\\mathrm{pain}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 711,
+      "pattern": "Pay To Avoid",
+      "condition": "3. Pain-Point Amplification",
+      "kind": "FORMULA",
+      "text": "\\frac{d}{dt} \\lambda_{\\mathrm{friction}}(t) > 0 \\quad \\implies \\quad P(N_{\\mathrm{prompt}} \\mid \\lambda_{\\mathrm{friction}}) \\approx 1",
+      "flags": [
+        "material-implication",
+        "state-transition",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 716,
+      "pattern": "Automating The User Away",
+      "condition": "1. Autonomous Action Execution",
+      "kind": "FORMULA",
+      "text": "A_{\\mathrm{critical}} = \\mathrm{Executed} \\quad \\text{given} \\quad E_{\\mathrm{user}} = \\emptyset \\quad \\land \\quad t \\ge \\tau_{\\mathrm{system}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 720,
+      "pattern": "Automating The User Away",
+      "condition": "2. Omission of the Interrupt Vector",
+      "kind": "FORMULA",
+      "text": "B_{\\mathrm{cancel}} \\notin \\mathrm{DOM}(t) \\quad \\lor \\quad \\Delta t_{\\mathrm{warning}} < \\tau_{\\mathrm{reaction}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 729,
+      "pattern": "Parasocial Pressure",
+      "condition": "1. Manufactured Livelihood Dependency",
+      "kind": "FORMULA",
+      "text": "T_{\\mathrm{fiat}} = 0 \\implies \\mathrm{State}(I_{\\mathrm{creator}}) \\to \\mathrm{Failure} \\quad \\text{asserted within} \\quad M_{\\mathrm{pitch}}",
+      "flags": [
+        "material-implication",
+        "state-transition"
+      ]
+    },
+    {
+      "line": 733,
+      "pattern": "Parasocial Pressure",
+      "condition": "2. Visual Proximity of Anthropomorphic Imagery to Action Prompts",
+      "kind": "FORMULA",
+      "text": "\\min_{i \\in I_{\\mathrm{face}}} d_{\\mathrm{spatial}}(i, N_{\\mathrm{prompt}}) < \\tau_{\\mathrm{social}} \\quad \\land \\quad \\frac{A(i)}{A_{\\mathrm{viewport}}} > 0.05",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 737,
+      "pattern": "Parasocial Pressure",
+      "condition": "3. Emotional Asymmetry",
+      "kind": "FORMULA",
+      "text": "E_{\\mathrm{user}} = \\mathrm{Refusal} \\implies \\frac{d}{dt} V_{\\mathrm{emotion}}(A_{\\mathrm{mascot}}) \\to -1",
+      "flags": [
+        "material-implication",
+        "state-transition"
+      ]
+    },
+    {
+      "line": 742,
+      "pattern": "Encouraging Anti-Social Behavior",
+      "condition": "1. Reward-Coupled Social Externality",
+      "kind": "FORMULA",
+      "text": "A_{\\mathrm{antisocial}} \\implies (V_{\\mathrm{reward}} > 0 \\quad \\land \\quad E_{\\mathrm{externality}} \\gg 0)",
+      "flags": [
+        "material-implication",
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 746,
+      "pattern": "Encouraging Anti-Social Behavior",
+      "condition": "2. Visual Framing of Competitive Antagonism",
+      "kind": "FORMULA",
+      "text": "\\mathrm{LayoutType}(C_{\\mathrm{container}}) = \\mathrm{Competitive} \\quad \\land \\quad \\mathrm{SplitRatio} \\approx 0.5",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 750,
+      "pattern": "Encouraging Anti-Social Behavior",
+      "condition": "3. Algorithmic Amplification of Outrage",
+      "kind": "FORMULA",
+      "text": "V_{\\mathrm{visibility}}(M) \\propto P_{\\mathrm{polarity}}(M) \\quad \\implies \\quad \\text{Systemic Incentive for Hostility}",
+      "flags": [
+        "material-implication",
+        "qualitative-or-undefined-threshold",
+        "conclusion-not-evidence"
+      ]
+    },
+    {
+      "line": 755,
+      "pattern": "Addictive Design",
+      "condition": "1. Infinite Frictionless Continuation",
+      "kind": "FORMULA",
+      "text": "Y_{\\mathrm{max}}(t) - Y_{\\mathrm{scroll}}(t) < \\tau_{\\mathrm{buffer}} \\quad \\implies \\quad E_{\\mathrm{append}} = \\mathrm{True}",
+      "flags": [
+        "material-implication",
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 756,
+      "pattern": "Addictive Design",
+      "condition": "1. Infinite Frictionless Continuation",
+      "kind": "GIVEN",
+      "text": "\\lim_{t \\to \\infty} Y_{\\mathrm{max}}(t) = \\infty",
+      "flags": [
+        "state-transition"
+      ]
+    },
+    {
+      "line": 760,
+      "pattern": "Addictive Design",
+      "condition": "2. Eradication of Natural Stopping Cues",
+      "kind": "FORMULA",
+      "text": "\\forall e \\in E_{\\mathrm{stop}} : \\mathrm{Visible}(e, t) = \\mathrm{False} \\quad \\lor \\quad \\frac{A(e)}{A_{\\mathrm{viewport}}} < \\tau_{\\mathrm{min\\_visible}} \\quad \\lor \\quad \\mathrm{CR}(e, L_{\\mathrm{bg}}) < 3.0",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 761,
+      "pattern": "Addictive Design",
+      "condition": "2. Eradication of Natural Stopping Cues",
+      "kind": "GIVEN",
+      "text": "T_{\\mathrm{session}} > \\tau_{\\mathrm{hyper\\_engagement}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 765,
+      "pattern": "Addictive Design",
+      "condition": "3. Semantic Reinforcement-Trigger Lexicon Density",
+      "kind": "FORMULA",
+      "text": "\\frac{|\\{w \\in T : w \\in L_{\\mathrm{reinforcement}}\\}|}{A_{\\mathrm{viewport}}} > \\tau_{\\mathrm{addiction}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 770,
+      "pattern": "Infinite Scrolling",
+      "condition": "1. Autonomous Content Injection",
+      "kind": "FORMULA",
+      "text": "Y_{\\mathrm{document\\_end}} - Y_{\\mathrm{viewport}} \\leq \\tau_{\\mathrm{trigger}} \\quad \\implies \\quad E_{\\mathrm{fetch}}() = \\mathrm{True}",
+      "flags": [
+        "material-implication",
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 774,
+      "pattern": "Infinite Scrolling",
+      "condition": "2. The Unreachable Footer",
+      "kind": "FORMULA",
+      "text": "v_{\\mathrm{scroll}} > 0 \\quad \\implies \\quad \\frac{d}{dt} \\mathrm{Pos}_{y}(N_{\\mathrm{footer}}, t) \\geq v_{\\mathrm{scroll}}",
+      "flags": [
+        "material-implication",
+        "state-transition"
+      ]
+    },
+    {
+      "line": 775,
+      "pattern": "Infinite Scrolling",
+      "condition": "2. The Unreachable Footer",
+      "kind": "GIVEN",
+      "text": "\\lim_{t \\to \\infty} d(Y_{\\mathrm{viewport}}, \\mathrm{Pos}_{y}(N_{\\mathrm{footer}})) > 0",
+      "flags": [
+        "state-transition"
+      ]
+    },
+    {
+      "line": 779,
+      "pattern": "Infinite Scrolling",
+      "condition": "3. Semantic Attenuation of Content Boundaries",
+      "kind": "FORMULA",
+      "text": "\\neg\\exists n \\in N_{\\mathrm{feed}} : \\mathrm{Match}(T(n), \\mathrm{Pattern}_{\\mathrm{boundary}}) = \\mathrm{True}",
+      "flags": [
+        "unobservable-ground-truth"
+      ]
+    },
+    {
+      "line": 784,
+      "pattern": "Pull To Refresh (Variable-Reward Trap)",
+      "condition": "1. Kinesthetic Resistance and Action Commitment",
+      "kind": "FORMULA",
+      "text": "\\Delta Y_{\\mathrm{touch}}(t) \\geq \\tau_{\\mathrm{commit}} \\quad \\land \\quad R_{\\mathrm{elastic}} > 0 \\quad \\implies \\quad E_{\\mathrm{refresh}}() = \\mathrm{True}",
+      "flags": [
+        "material-implication",
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 788,
+      "pattern": "Pull To Refresh (Variable-Reward Trap)",
+      "condition": "2. Artificial Anticipation Injection",
+      "kind": "FORMULA",
+      "text": "\\Delta t_{\\mathrm{animation}} \\gg \\Delta t_{\\mathrm{network}} \\quad \\land \\quad \\Delta t_{\\mathrm{animation}} \\geq \\tau_{\\mathrm{suspense}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 792,
+      "pattern": "Pull To Refresh (Variable-Reward Trap)",
+      "condition": "3. Semantic Variability of Refresh-Outcome Messaging",
+      "kind": "FORMULA",
+      "text": "\\sigma^2(\\{\\mathrm{Novelty}(T_i) : i = 1 \\ldots k\\}) > \\tau_{\\mathrm{slot\\_machine}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 797,
+      "pattern": "Countdown On Ads",
+      "condition": "1. Temporal Gating of Navigational Agency",
+      "kind": "FORMULA",
+      "text": "\\mathrm{State}(B_{\\mathrm{skip}}, t_{\\mathrm{active}}) = \\mathrm{Disabled} \\quad \\text{given} \\quad t_{\\mathrm{active}} < \\tau_{\\mathrm{lock}}",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 801,
+      "pattern": "Countdown On Ads",
+      "condition": "2. Dynamic Affordance Injection",
+      "kind": "FORMULA",
+      "text": "N_{\\mathrm{close}} \\notin \\mathrm{DOM}(t) \\quad \\forall t < \\tau_{\\mathrm{lock}} \\quad \\land \\quad N_{\\mathrm{close}} \\in \\mathrm{DOM}(\\tau_{\\mathrm{lock}})",
+      "flags": [
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 810,
+      "pattern": "Auto-Play",
+      "condition": "1. Autonomous Media Execution",
+      "kind": "FORMULA",
+      "text": "S_{\\mathrm{play}}(M_{\\mathrm{media}}) = \\mathrm{True} \\quad \\text{given} \\quad E_{\\mathrm{intent}} = \\emptyset \\quad \\land \\quad \\mathrm{Intersection}(M_{\\mathrm{media}}, \\mathrm{Viewport}) > \\tau_{\\mathrm{visible}}",
+      "flags": [
+        "unobservable-ground-truth",
+        "qualitative-or-undefined-threshold"
+      ]
+    },
+    {
+      "line": 814,
+      "pattern": "Auto-Play",
+      "condition": "2. Affordance Suppression",
+      "kind": "FORMULA",
+      "text": "\\mathrm{Visibility}(B_{\\mathrm{cancel}}) \\to 0 \\quad \\lor \\quad \\mathrm{Cost}(S_{\\mathrm{play}} \\to \\mathrm{False}) \\gg 1",
+      "flags": [
+        "state-transition",
+        "qualitative-or-undefined-threshold"
+      ]
+    }
+  ]
+}

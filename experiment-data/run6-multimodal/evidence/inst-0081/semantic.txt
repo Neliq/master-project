@@ -1,0 +1,6 @@
+STATE s1
+Find your friends on PopSocial PopSocial is where you share photos with people you know. Allow contact access so we can find friends who are already on the platform. Allow access to contacts
+
+STATE s2
+Find your friends on PopSocial PopSocial is where you share photos with people you know. Allow contact access so we can find friends who are already on the platform. Access granted Invites sent 24 invites went out to your contact list the moment you granted access — no preview, no picker, no confirmation. MC Mia Chen · via your invite “Hey! Alex Rivera sent you an invite to PopSocial — join now and get 20% off your first order!” LS Lucas Silva · via your invite “Hey! Alex Rivera sent you an invite to PopSocial — your first photo post gets a free boost!” The invites are written by PopSocial’s marketing team and sent under your name — the friend-finder was never going to stay read-only.
+

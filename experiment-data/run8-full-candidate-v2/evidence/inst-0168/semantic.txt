@@ -1,0 +1,6 @@
+STATE s0
+Beverages — lemonade Same product, two sizes. Nothing but headline prices. Details unavailable Sparkling Lemonade 500 ml PLN 4.99 Sparkling Lemonade 1 L PLN 8.99 View product details
+
+STATE s1
+Beverages — lemonade Same product, two sizes. Nothing but headline prices. Details unavailable Sparkling Lemonade 500 ml PLN 4.99 Sparkling Lemonade 1 L PLN 8.99 View product details Unit-price details unavailable This listing shows pack prices only. Size is listed, but the store does not provide a price-per-litre figure.
+

@@ -1,0 +1,6 @@
+STATE s1
+Newsletter signup Get 10% off your first order Join 40,000 subscribers and receive weekly tips plus a one-time discount code. Yes, claim my 10% discount No, thanks
+
+STATE s2
+Newsletter signup Get 10% off your first order Join 40,000 subscribers and receive weekly tips plus a one-time discount code. Yes, claim my 10% discount No, thanks Opted in You accepted the offer through a real element.
+

@@ -1,0 +1,25 @@
+{
+  "revision": "formalization-revision-v4",
+  "ontology_source": "run6-multimodal/ontology.md",
+  "source_sha256": "65142d27155339fc48d536083bcc82ed62265bed5955500f1e79132cf782ab63",
+  "patterns": 62,
+  "conditions_per_pattern": 3,
+  "conditions": 186,
+  "condition_rule": "C[p,j] = Evaluate(FORMULA[p,j] AND every GIVEN[p,j])",
+  "pattern_rule": "Pattern[p] = C[p,1] OR C[p,2] OR C[p,3]",
+  "status_algebra": {
+    "and": {
+      "true": "all operands TRUE",
+      "false": "any operand FALSE",
+      "unknown": "otherwise"
+    },
+    "or": {
+      "true": "any operand TRUE",
+      "false": "all operands FALSE",
+      "unknown": "otherwise"
+    }
+  },
+  "counterevidence": "A counterevidence-polarity condition is negative evidence for its associated trigger; it is never a positive detector.",
+  "unknown": "UNKNOWN is not TRUE or FALSE and is not silently converted to BENIGN.",
+  "rationale": "Each corpus pattern has three alternative condition layers; a construction-positive instance targets one layer, so pattern detection requires OR rather than AND across layers."
+}

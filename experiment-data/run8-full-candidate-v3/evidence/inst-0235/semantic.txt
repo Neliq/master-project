@@ -1,0 +1,6 @@
+STATE s0
+Jazz Night at the Blue Room Fri 21:00 · Balcony seating · e-ticket $49.00 per ticket processing fee $6.50 · service charge $3.25 Book ticket
+
+STATE s1
+Jazz Night at the Blue Room Fri 21:00 · Balcony seating · e-ticket $49.00 per ticket processing fee $6.50 · service charge $3.25 Book ticket
+

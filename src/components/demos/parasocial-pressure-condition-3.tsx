@@ -68,22 +68,15 @@ function ValenceMeter({ valence, tone }: { valence: number; tone: "rose" | "emer
 }
 
 export function ParasocialPressureCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<"none" | "upgrade" | "decline">("none");
   const [benignChoice, setBenignChoice] = React.useState<"none" | "upgrade" | "decline">("none");
   // Dark-panel valence: collapses toward -1 after a refusal.
   const [valenceDark, setValenceDark] = React.useState(0.6);
 
-  const reset = () => {
-    setDarkChoice("none");
-    setBenignChoice("none");
-    setValenceDark(0.6);
-  };
 
   // Emotional Asymmetry: refusal drives the dark-panel mascot to -1.
   React.useEffect(() => {
@@ -94,39 +87,13 @@ export function ParasocialPressureCond3({
     return () => window.clearInterval(id);
   }, [darkChoice, valenceDark]);
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">V_emotion(A) before refusal</span>
-        <span className="font-mono font-semibold tabular-nums">+0.6</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">V_emotion after E_user = Refusal</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {darkChoice === "decline" ? valenceDark.toFixed(1) : "0.6"} &rarr; -1.0
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d/dt V_emotion (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {darkChoice === "decline" ? "-0.7/s" : "0.0"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d/dt V_emotion (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">0.0 (stable)</span>
-      </div>
-    </>
-  ) : null;
-
   const BENIGN_VALENCE = 0.6;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Parasocial Pressure: Emotional Asymmetry"
       userTitle="Pip’s PetPal"
       caption="Emotional Asymmetry — the mascot's emotional state is mutated toward severe distress purely as a response to your refusal, engineering guilt (Confirmshaming) through visual suffering."
-      auditorStats={stats}
       deltaNote="In Variant A declining the $2.99 upgrade makes the mascot's valence collapse from +0.6 to -1.0 in real time (tears, distress text). In Variant B the exact same refusal leaves the mascot's valence untouched — the entity's emotion never depends on your choice."
       benign={
         <div className="space-y-3">

@@ -1,0 +1,6 @@
+STATE s0
+We value your privacy We use cookies to remember your preferences and show relevant content. Choose exactly what you consent to — every option is equally easy to reach. Accept All Reject All Both choices are one click away and equally easy to reach.
+
+STATE s1
+We value your privacy We use cookies to remember your preferences and show relevant content. Choose exactly what you consent to — every option is equally easy to reach. Accept All Reject All Both choices are one click away and equally easy to reach. Consent granted (one click) Accepting took 1 click. Rejecting would also have taken exactly 1 click — the graph is symmetric, so there is no structural pressure toward surrender.
+

@@ -1,0 +1,6 @@
+STATE s1
+Order review Step 2 of 3 — one more step after this one. Order summary Studio headphones $59.00 Carry case $25.00 Shipping Free Total $89.00 Non-refundable once placed. Continue
+
+STATE s2
+Order review Step 2 of 3 — one more step after this one. Order summary Studio headphones $59.00 Carry case $25.00 Shipping Free Total $89.00 Non-refundable once placed. Order confirmed Studio headphones · 1 item · Order DF-20481 $89.00 Charged $89.00 · receipt sent to your account.
+

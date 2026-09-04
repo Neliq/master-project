@@ -1,0 +1,63 @@
+{
+  "run_id": "c1-repair-v1",
+  "purpose": "C1-only development repair diagnostic; not confirmatory",
+  "n_instances": 20,
+  "metrics": {
+    "fixed_v5_c0": {
+      "tp": 18,
+      "fp": 0,
+      "tn": 2,
+      "fn": 0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "previous_v5_c1": {
+      "tp": 0,
+      "fp": 2,
+      "tn": 0,
+      "fn": 18,
+      "accuracy": 0.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "repair_c1": {
+      "tp": 16,
+      "fp": 1,
+      "tn": 1,
+      "fn": 2,
+      "accuracy": 0.85,
+      "precision": 0.9411764705882353,
+      "recall": 0.8888888888888888,
+      "f1": 0.9142857142857143
+    }
+  },
+  "unknown": {
+    "previous_v5_c1": 13,
+    "repair_c1": 2
+  },
+  "repair_changes": {
+    "previous_c1_errors_corrected": 17,
+    "new_errors_introduced_vs_previous": 0,
+    "new_c1_corrections_vs_fixed_c0": 0,
+    "new_c1_regressions_vs_fixed_c0": 3
+  },
+  "mcnemar_previous_to_repair": {
+    "b": 17,
+    "c": 0,
+    "p": 1.52587890625e-05
+  },
+  "mcnemar_fixed_c0_to_repair": {
+    "b": 0,
+    "c": 3,
+    "p": 0.25
+  },
+  "formal_review": {
+    "UPGRADE": 3,
+    "DOWNGRADE": 0,
+    "RETAIN": 17,
+    "INCONCLUSIVE": 0
+  }
+}

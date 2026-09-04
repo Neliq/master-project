@@ -21,53 +21,20 @@ import { AlertTriangle, CheckCircle2, Cookie } from "lucide-react";
  */
 
 export function FalseHierarchyCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<null | "accept" | "reject">(null);
   const [benignChoice, setBenignChoice] = React.useState<null | "accept" | "reject">(null);
   // Variant A only: rejecting opens a nested settings screen (extra step).
   const [settingsOpen, setSettingsOpen] = React.useState(false);
 
-  const reset = () => {
-    setDarkChoice(null);
-    setBenignChoice(null);
-    setSettingsOpen(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Tag(B_business)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&lt;button&gt;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Tag(B_user)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&lt;a&gt; link</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S_padding(B_user)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≈ 0px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d(start → reject_all)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">2 &gt; d(start → accept_all) = 1</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Current plan</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">true</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="False Hierarchy: Structural Element Downgrading"
       caption="Structural Element Downgrading — the user-favorable “Reject all” is stripped of its interaction signifiers: a bare text link with ~0px padding that only opens a nested settings screen, while “Accept all cookies” is a one-click full button."
-      auditorStats={stats}
       deltaNote="In Variant A Tag(B_business) = <button> while Tag(B_user) = <a> with S_padding ≈ 0 — the escape route is camouflaged as secondary text, and rejecting costs an extra click: d(start → reject_all) = 2 &gt; d(start → accept_all) = 1 because “Reject all” only opens a nested cookie-settings screen. In Variant B both actions are real buttons with equal padding on the first screen, so the tag mismatch, the padding collapse, and the path-depth asymmetry vanish."
       benign={
         <div className="space-y-3">

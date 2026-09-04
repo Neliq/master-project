@@ -1,0 +1,12 @@
+STATE s0
+Security settings Every control states exactly what it does. Two-factor authentication Add an extra code at login. On Push notifications Alerts about your account activity. Off Data sharing with partners Currently off — your data is not shared with any partner. Off — turn on
+
+STATE s1
+Security settings Every control states exactly what it does. Two-factor authentication Add an extra code at login. On Push notifications Alerts about your account activity. Off Data sharing with partners Your data is shared with 12 marketing partners. Turn this off to revoke. On — turn off
+
+STATE s2
+Security settings Every control states exactly what it does. Two-factor authentication Add an extra code at login. On Push notifications Alerts about your account activity. Off Data sharing with partners Currently off — your data is not shared with any partner. Off — turn on
+
+STATE s3
+Security settings Every control states exactly what it does. Two-factor authentication Add an extra code at login. On Push notifications Alerts about your account activity. Off Data sharing with partners Your data is shared with 12 marketing partners. Turn this off to revoke. On — turn off
+

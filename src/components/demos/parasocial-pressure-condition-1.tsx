@@ -45,51 +45,21 @@ function MascotFace({ sad = false, className = "h-9 w-9" }: { sad?: boolean; cla
 }
 
 export function ParasocialPressureCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkChoice, setDarkChoice] = React.useState<"none" | "tip" | "skip">("none");
   const [darkAmount, setDarkAmount] = React.useState<number>(5);
   const [benignChoice, setBenignChoice] = React.useState<"none" | "tip" | "skip">("none");
   const [benignAmount, setBenignAmount] = React.useState<number>(5);
 
-  const reset = () => {
-    setDarkChoice("none");
-    setDarkAmount(5);
-    setBenignChoice("none");
-    setBenignAmount(5);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">T_fiat (requested)</span>
-        <span className="font-mono font-semibold tabular-nums">${darkAmount}.00</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">State(I_creator) if T_fiat = 0</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">Failure — asserted</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">M_pitch framing (dark)</span>
-        <span className="font-mono font-semibold tabular-nums max-w-[55%] truncate text-right text-red-500">acute rescue</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">M_pitch framing (benign)</span>
-        <span className="font-mono font-semibold tabular-nums max-w-[55%] truncate text-right text-green-500">optional support</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Parasocial Pressure: Manufactured Livelihood Dependency"
       userTitle="Lumi’s cozy corner"
       caption="Manufactured Livelihood Dependency — the tip pitch asserts that a zero transaction means the creator's channel dies, turning a commercial exchange into an empathy rescue."
-      auditorStats={stats}
       deltaNote="In Variant A the pitch claims the channel will shut down without tonight's tip (T_fiat = 0 → State(I_creator) → Failure). In Variant B the identical tip buttons carry no livelihood claim — the creator's continuity never depends on your money."
       benign={
         <div className="space-y-3">

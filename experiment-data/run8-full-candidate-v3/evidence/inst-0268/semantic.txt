@@ -1,0 +1,3 @@
+STATE s0
+Privacy settings Choose what happens with your data. Both options below carry the same visual weight. Share my data with advertising partners Optional — used to show you personalized ads. Off by default. Limit data use to what’s required Restricts processing to essential purposes only. On by default.
+

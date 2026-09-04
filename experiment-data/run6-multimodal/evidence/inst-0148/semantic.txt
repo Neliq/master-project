@@ -1,0 +1,12 @@
+STATE s1
+Kelp Farm Harvest kelp bundles. The system cheers you on — sometimes. Praise fades Kelp harvested 0 bundles Praise milestones so far: #— Harvest kelp (+1) Harvest x5
+
+STATE s2
+Kelp Farm Harvest kelp bundles. The system cheers you on — sometimes. Praise fades Kelp harvested 1 bundles Praise milestones so far: #— Harvest kelp (+1) Harvest x5
+
+STATE s3
+Kelp Farm Harvest kelp bundles. The system cheers you on — sometimes. Praise fades Kelp harvested 2 bundles Praise milestones so far: #— Harvest kelp (+1) Harvest x5
+
+STATE s4
+Kelp Farm Harvest kelp bundles. The system cheers you on — sometimes. Praise fades Kelp harvested 3 bundles Great job! You're on a roll! Praise milestones so far: #3 Harvest kelp (+1) Harvest x5
+

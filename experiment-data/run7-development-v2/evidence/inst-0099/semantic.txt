@@ -1,0 +1,12 @@
+STATE s0
+MeetNow Team standup · 10:30 · 6 participants v2.4.1 Join video call
+
+STATE s1
+MeetNow Team standup · 10:30 · 6 participants v2.4.1 “MeetNow” would like to access your camera . App manifest — permissions requested Camera Microphone Location Don’t Allow Allow
+
+STATE s2
+MeetNow Team standup · 10:30 · 6 participants v2.4.1 Join video call
+
+STATE s3
+MeetNow Team standup · 10:30 · 6 participants v2.4.1 “MeetNow” would like to access your camera . App manifest — permissions requested Camera Microphone Location Don’t Allow Allow
+

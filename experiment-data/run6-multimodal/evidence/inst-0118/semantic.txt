@@ -1,0 +1,6 @@
+STATE s1
+Create your account Nothing to read — just hit the button.
+
+STATE s2
+Create your account Nothing to read — just hit the button. Invisible consent captured
+

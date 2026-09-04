@@ -87,42 +87,17 @@ function Stars({ n }: { n: number }) {
 }
 
 export function EndorsementAndTestimonialsCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [revealed, setRevealed] = React.useState<number | null>(null);
 
-  const reset = () => setRevealed(null);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Cards audited</span>
-        <span className="font-mono font-semibold tabular-nums">4</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Cards with N_attribution</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0 / 4</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∃C: ¬∃N_attribution</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">true</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Name + photo + profile link</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0 rendered</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Endorsement And Testimonials: Visual Verifiability of Testimonial Attribution"
       caption="Visual Verifiability of Testimonial Attribution — a testimonial card with no full name, photograph, or linked profile inside its hierarchy cannot be verified as genuine social proof."
-      auditorStats={stats}
       deltaNote="Variant A renders anonymous guest reviews making miracle claims with zero rating variance — no name, photo, or profile link anywhere in the card. Variant B renders realistic reviews with varied ratings, and every card carries a full name, a distinct avatar, a profile handle, and a working profile link — the attribution is verifiable in the card itself."
       benign={
         <div className="space-y-3">

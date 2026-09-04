@@ -1,0 +1,6 @@
+STATE s1
+Create your account One optional consent, right where you can see it. I agree to receive promotional emails from our partners Visible, unchecked, ~24px from the button — the value = True Create account (submit)
+
+STATE s2
+Create your account One optional consent, right where you can see it. I agree to receive promotional emails from our partners Visible, unchecked, ~24px from the button — the value = True Create account (submit) Nothing hidden
+

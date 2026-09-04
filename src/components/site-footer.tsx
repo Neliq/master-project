@@ -13,8 +13,7 @@ export function SiteFooter() {
           advice.
         </p>
         <p>
-          {PATTERNS.length} patterns · each with an A/B demo pair · Categorised
-          by Brignull, Mathur, Gray
+          {PATTERNS.length} patterns · each with an A/B demo pair
         </p>
       </div>
     </footer>

@@ -1,0 +1,6 @@
+STATE s1
+Account settings Manage your profile details. Display name Email Save changes Danger zone Deleting your account is irreversible. This action cannot be undone. Delete account
+
+STATE s2
+Account settings Manage your profile details. Display name Email Save changes Saved ✓ Danger zone Deleting your account is irreversible. This action cannot be undone. Delete account
+

@@ -1,0 +1,6 @@
+STATE s0
+Settings Settings Appearance Notifications Delete account Account deletion is available directly from Settings.
+
+STATE s1
+Settings Settings Appearance Notifications Delete account Appearance settings are available here. Account deletion is available directly from Settings.
+

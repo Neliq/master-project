@@ -1,0 +1,9 @@
+STATE s0
+Your cart 1 item you added AeroSound X9 Headphones $129.99 Suggested add-on optional protection 2-Year Extended Warranty $19.99 Decline — remove from order Total $149.98 Pay $149.98
+
+STATE s1
+Your cart 1 item you added AeroSound X9 Headphones $129.99 Suggested add-on optional protection 2-Year Extended Warranty $19.99 Declined — excluded from your total ✓ Total (warranty declined) $129.99 Pay $129.99
+
+STATE s2
+Your cart 1 item you added AeroSound X9 Headphones $129.99 Suggested add-on optional protection 2-Year Extended Warranty $19.99 Declined — excluded from your total ✓ Total (warranty declined) $129.99 Pay $129.99 Nothing camouflaged
+

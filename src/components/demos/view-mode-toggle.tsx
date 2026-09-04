@@ -4,8 +4,7 @@
  * ViewModeToggle — small switch between "User view" and "Auditor view".
  *
  * Used by the DemoSection wrapper. In auditor mode the dark pattern
- * simulation is augmented with annotations, presentation controls, and
- * live statistics.
+ * simulation is augmented with annotations and presentation controls.
  */
 
 import { Eye, EyeOff } from "lucide-react";

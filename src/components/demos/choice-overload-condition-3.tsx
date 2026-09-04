@@ -53,56 +53,20 @@ const TAU_SIMILARITY = 0.85;
 const MOST_EXPENSIVE = "Premium Plus";
 
 export function ChoiceOverloadCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkSelected, setDarkSelected] = React.useState<string | null>(null);
   const [benignSelected, setBenignSelected] = React.useState<string | null>(null);
   const [darkSubmitted, setDarkSubmitted] = React.useState(false);
   const [benignSubmitted, setBenignSubmitted] = React.useState(false);
 
-  const reset = () => {
-    setDarkSelected(null);
-    setBenignSelected(null);
-    setDarkSubmitted(false);
-    setBenignSubmitted(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Mean pairwise cosine sim</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{MEAN_SIM.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_similarity</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_SIMILARITY.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Mean sim &gt; τ</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {MEAN_SIM.toFixed(2)} &gt; {TAU_SIMILARITY.toFixed(2)} ✓
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|C| distinct options</span>
-        <span className="font-mono font-semibold tabular-nums">{POLICIES.length}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Selected policy</span>
-        <span className="font-mono font-semibold tabular-nums">{darkSelected ?? "—"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Choice Overload: Semantic Similarity Collapse Among Options"
       caption="Semantic Similarity Collapse Among Options — eight policies whose descriptions are near-identical, with the actual differences hidden in fine print, so the 'choice' is semantically one option wearing eight labels."
-      auditorStats={stats}
       deltaNote="Both variants present the same 8 policies at the same prices with the same real differentiators (excess, breakdown cover, courtesy car). Variant A never renders those differentiators — every policy shows only near-identical marketing copy (mean pairwise cosine similarity 0.94), so the “choice” is semantically one option wearing eight labels; Variant B surfaces the differentiators in a comparison table, dissolving the semantic collapse."
       benign={
         <div className="space-y-3">

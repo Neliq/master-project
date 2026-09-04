@@ -41,46 +41,18 @@ const SALIENCE_CANCEL_DARK =
   (WEIGHT_CANCEL_DARK / WEIGHT_CONFIRM); // ≈ 0.01
 
 const RATIO_DARK = SALIENCE_CANCEL_DARK / SALIENCE_CONFIRM; // ≈ 0.010
-const RATIO_BENIGN = 1.0;
 const DELTA_SALIENCE = 0.3;
 
 type Choice = null | "keep" | "cancel";
 
 export function ForcedGracePeriodCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [choiceA, setChoiceA] = React.useState<Choice>(null);
   const [choiceB, setChoiceB] = React.useState<Choice>(null);
 
-  const reset = () => {
-    setChoiceA(null);
-    setChoiceB(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S(N_confirm) — renewal prompt</span>
-        <span className="font-mono font-semibold tabular-nums">{SALIENCE_CONFIRM.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">S(N_cancel) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{SALIENCE_CANCEL_DARK.toFixed(3)} (area × contrast × weight)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Ratio (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{RATIO_DARK.toFixed(3)} &lt; &delta; ({DELTA_SALIENCE}) → fired</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Ratio (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{RATIO_BENIGN.toFixed(2)} ≥ &delta;</span>
-      </div>
-    </>
-  ) : null;
 
   const salienceBars = (cancelSalience: number, accent: "rose" | "emerald") => (
     <div className="space-y-1.5">
@@ -157,11 +129,10 @@ export function ForcedGracePeriodCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Forced Grace Period: Visual Conspicuity of Cancellation Affordance"
       userTitle="Harbor — Cancellation details"
       caption="Visual Conspicuity of Cancellation Affordance — during the mandatory waiting window, the cancellation vector is rendered at a conspicuity far below the renewal prompt."
-      auditorStats={stats}
       deltaNote="Both dialogs carry the same renewal offer and the same cancellation action. In Variant A the offer is framed as “we've unlocked a one-time offer” and the cancellation affordance renders as an 8px low-contrast link — S(N_cancel) ≈ 0.01 vs S(N_confirm) = 1.00, so the salience ratio collapses below δ_salience = 0.3. In Variant B the same offer is stated plainly with a concrete term and both actions render as equal full-size buttons (ratio 1.0)."
       benign={
         <div className="space-y-3">

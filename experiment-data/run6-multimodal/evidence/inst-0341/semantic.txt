@@ -1,0 +1,6 @@
+STATE s1
+Watchlist — night mode Up next: Episode 2 — The Return. Autonomous Episode 1 — The Signal ▶ Play Episode 1 — The Signal Event log Queue loaded.
+
+STATE s2
+Watchlist — night mode Up next: Episode 2 — The Return. Autonomous Now playing — Episode 1 — The Signal Playing… 0% Event log User clicked Play on Episode 1 — The Signal. Queue loaded.
+

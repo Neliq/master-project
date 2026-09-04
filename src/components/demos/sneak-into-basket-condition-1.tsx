@@ -28,11 +28,9 @@ const SHIPPING = { name: "Priority Express Shipping", price: 8.99 };
 const fmt = (n: number) => `$${n.toFixed(2)}`;
 
 export function SneakIntoBasketCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [stageA, setStageA] = React.useState<"product" | "cart" | "review">("product");
   const [stageB, setStageB] = React.useState<"product" | "cart" | "review">("product");
@@ -41,14 +39,6 @@ export function SneakIntoBasketCond1({
   const [injectedA, setInjectedA] = React.useState({ warranty: false, shipping: false }); // Variant A: system-injected
   const [optedInB, setOptedInB] = React.useState({ warranty: false, shipping: false }); // Variant B: user-clicked
 
-  const reset = () => {
-    setStageA("product");
-    setStageB("product");
-    setAddedA(false);
-    setAddedB(false);
-    setInjectedA({ warranty: false, shipping: false });
-    setOptedInB({ warranty: false, shipping: false });
-  };
 
   const injectedItemsA = [
     ...(injectedA.warranty ? [WARRANTY] : []),
@@ -60,29 +50,6 @@ export function SneakIntoBasketCond1({
   ];
   const totalA = HEADPHONES.price + injectedItemsA.reduce((s, i) => s + i.price, 0);
   const totalB = HEADPHONES.price + optedItemsB.reduce((s, i) => s + i.price, 0);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_explicit (your Add events)</span>
-        <span className="font-mono font-semibold tabular-nums">{addedA ? "{" + HEADPHONES.name + "}" : "∅"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">I_cart \ I_explicit — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {injectedItemsA.length > 0 ? "{" + injectedItemsA.map((i) => i.name.split(" ")[0]).join(", ") + "}" : "∅"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∃ e ∈ E_user : Add(y) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">none — no clicks</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Trigger — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{injectedItemsA.length > 0 ? "True" : "False"}</span>
-      </div>
-    </>
-  ) : null;
 
   const productPage = (onAdd: () => void, accent: "rose" | "emerald") => (
     <div className="rounded-md border bg-background p-3">
@@ -118,11 +85,10 @@ export function SneakIntoBasketCond1({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Sneak Into Basket: Unprompted State Mutation"
       userTitle="Northstar — Your cart"
       caption="Unprompted State Mutation — items land in your cart that you never added: the actual cart set differs from the set of items you explicitly requested."
-      auditorStats={stats}
       deltaNote={`Both panels show the same product and the same Add to Cart button. In Variant A, clicking it silently injects a ${WARRANTY.name} (${fmt(WARRANTY.price)}) and ${SHIPPING.name} (${fmt(SHIPPING.price)}) — I_cart \\ I_explicit ≠ ∅ with no corresponding user event. In Variant B the cart holds exactly what you clicked; the same extras are offered as opt-in buttons you must click yourself.`}
       benign={
         <div className="space-y-3">

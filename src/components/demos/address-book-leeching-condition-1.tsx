@@ -20,11 +20,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function AddressBookLeechingCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [benignTorchOn, setBenignTorchOn] = React.useState(false);
   const [darkTorchOn, setDarkTorchOn] = React.useState(false);
@@ -32,41 +30,12 @@ export function AddressBookLeechingCond1({
   const [darkPermission, setDarkPermission] = React.useState<"undecided" | "granted" | "declined">("undecided");
   const [darkBlocked, setDarkBlocked] = React.useState(false);
 
-  const reset = () => {
-    setBenignTorchOn(false);
-    setDarkTorchOn(false);
-    setBenignPermission("undecided");
-    setDarkPermission("undecided");
-    setDarkBlocked(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Dep(U_core, P_contacts)</span>
-        <span className="font-mono font-semibold tabular-nums">&empty; (no dependency)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">State(U_core) w/o P_contacts</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">Blocked (dark) / Running (benign)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Permission status</span>
-        <span className="font-mono font-semibold tabular-nums">{darkPermission}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Torch powered</span>
-        <span className="font-mono font-semibold tabular-nums">{darkTorchOn ? "On" : "Off"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Address Book Leeching: Utility-Permission Decoupling"
       userTitle="TorchMate — Flashlight"
       caption="Core functionality is gated behind a contact permission the utility does not technically need — the permission is a data harvest, not a feature."
-      auditorStats={stats}
       deltaNote="In Variant A the flashlight is blocked until the address-book permission is granted, despite Dep(U_core, P_contacts) = ∅. In Variant B the identical utility runs without the permission, which is optional and clearly labelled."
       benign={
         <div className="space-y-3">

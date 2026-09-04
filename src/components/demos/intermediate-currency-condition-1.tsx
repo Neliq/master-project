@@ -29,36 +29,13 @@ const PACK_USD = 47.1;
 const LEFTOVER = PACK_COINS - PRICE_COINS; // 201 unspendable coins
 
 export function IntermediateCurrencyCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [step, setStep] = React.useState<"product" | "after" | "done">("product");
 
   const reset = () => setStep("product");
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Product cost</span>
-        <span className="font-mono font-semibold tabular-nums">{PRICE_COINS.toLocaleString()} coins ≈ ${PRICE_USD.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">target(E_purchase) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">V_exchange (coin store)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">target(E_purchase) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">V_checkout (fiat)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Fiat checkout offered (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">Never</span>
-      </div>
-    </>
-  ) : null;
 
   const productCard = (onBuy: () => void, accent: "rose" | "emerald", showFiat: boolean) => (
     <div className="rounded-md border bg-background overflow-hidden">
@@ -98,10 +75,9 @@ export function IntermediateCurrencyCond1({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Intermediate Currency: Interception of the Fiat Checkout Flow"
       caption="Interception of the Fiat Checkout Flow — the Buy action systematically bypasses the fiat payment gateway and is forcibly rerouted into the platform's virtual-currency exchange."
-      auditorStats={stats}
       deltaNote={`Both panels show the identical product card and the identical Buy action. The only difference is the transition target and the price disclosure: in Variant A the product is priced only in coins (no fiat equivalent on the card) and the Buy action routes to the coin exchange (V_exchange — no fiat checkout is ever offered); in Variant B the card shows the fiat equivalent ($${PRICE_USD.toFixed(2)}) and routes straight to the fiat payment gateway (V_checkout).`}
       benign={
         <div className="space-y-3">

@@ -20,46 +20,18 @@ import { DemoShell } from "@/components/demos/demo-shell";
  */
 
 export function LimitedTimeMessageCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [probed, setProbed] = React.useState(false);
   const [added, setAdded] = React.useState(false);
 
-  const reset = () => {
-    setProbed(false);
-    setAdded(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Hue(C_offer) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">15° ∈ [0°, 45°]</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Hue(C_offer) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">210° ∉ [0°, 45°]</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Match(T, Pattern_temporal)</span>
-        <span className="font-mono font-semibold tabular-nums">“ends in” → True</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Compound signal</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">dark: active</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Limited Time Message: Visual Salience of Temporal-Urgency Chromatics"
       caption="Visual Salience of Temporal-Urgency Chromatics — a warm-spectrum accent (hue 0°–45°) co-occurring with a temporal-scarcity claim (“ends in”, “only today”) creates a compound visual-linguistic urgency signal."
-      auditorStats={stats}
       deltaNote="Both variants carry identical urgency copy — only the palette differs. Variant A paints the offer container in the urgency spectrum (hue ≈ 15°), satisfying the co-occurrence condition; Variant B uses a neutral hue (≈ 210°), so the same claim never triggers the compound signal."
       benign={
         <div className="space-y-3">

@@ -60,40 +60,13 @@ const SAT_DARK = modelSatisfiable(CLAIMS_DARK);
 const SAT_BENIGN = modelSatisfiable(CLAIMS_BENIGN);
 
 export function PersuasiveLanguageCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [choice, setChoice] = React.useState<null | "upgrade" | "later">(null);
   const [verified, setVerified] = React.useState(false);
 
-  const reset = () => {
-    setChoice(null);
-    setVerified(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Sem(t1) &and; Sem(t2) model</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{SAT_DARK ? "SATISFIABLE" : "UNSAT"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Contradictions found</span>
-        <span className="font-mono font-semibold tabular-nums">0</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">False claims</span>
-        <span className="font-mono font-semibold tabular-nums">0 / {CLAIMS_DARK.length}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Framing (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">excitement + urgency</span>
-      </div>
-    </>
-  ) : null;
 
   const truthTable = (claims: Claim[], dark: boolean) => (
     <div className="space-y-1.5">
@@ -145,10 +118,9 @@ export function PersuasiveLanguageCond3({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Persuasive Language: Truth-Conditional Satisfiability"
       caption="Truth-Conditional Satisfiability — every persuasive claim is factually true and logically consistent; only the emotional framing is manipulated."
-      auditorStats={stats}
       deltaNote="Both variants contain the same four factual claims (Sem(t1)..Sem(t4)) and both models are satisfiable — no claim contradicts another. In Variant A each fact is wrapped in an emotionally loaded connotation ('grab it now!', 'don't lose it!'); in Variant B the same facts are stated neutrally. The manipulation is connotative bias without falsity."
       benign={
         <div className="space-y-3">

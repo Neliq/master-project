@@ -42,27 +42,18 @@ const N_INTERACTIVE_DARK = TOTAL_ITEMS + 1; // 30 chips + 1 action button
 const N_INTERACTIVE_BENIGN = CATEGORIES.length + 1; // 3 headers + 1 action button
 const AREA_VIEWPORT = 100; // normalized units
 const RHO_DARK = N_INTERACTIVE_DARK / AREA_VIEWPORT; // 0.31
-const RHO_BENIGN = N_INTERACTIVE_BENIGN / AREA_VIEWPORT; // 0.04
 const TAU_DENSITY = 0.25;
 
 export function ChoiceOverloadCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkSelected, setDarkSelected] = React.useState<Record<string, boolean>>({});
   const [benignSelected, setBenignSelected] = React.useState<Record<string, boolean>>({});
   const [darkAdded, setDarkAdded] = React.useState(false);
   const [benignAdded, setBenignAdded] = React.useState(false);
 
-  const reset = () => {
-    setDarkSelected({});
-    setBenignSelected({});
-    setDarkAdded(false);
-    setBenignAdded(false);
-  };
 
   const toggle = (name: string, dark: boolean) => {
     const setSelected = dark ? setDarkSelected : setBenignSelected;
@@ -71,33 +62,6 @@ export function ChoiceOverloadCond2({
 
   const darkSelectedCount = Object.values(darkSelected).filter(Boolean).length;
   const benignSelectedCount = Object.values(benignSelected).filter(Boolean).length;
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">n_interactive (dark viewport)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{N_INTERACTIVE_DARK}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A_viewport</span>
-        <span className="font-mono font-semibold tabular-nums">{AREA_VIEWPORT} u²</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">ρ (dark) = n / A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {RHO_DARK.toFixed(2)} &gt; {TAU_DENSITY.toFixed(2)}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">ρ (benign, staged)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{RHO_BENIGN.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Add-ons selected</span>
-        <span className="font-mono font-semibold tabular-nums">{darkSelectedCount} / {TOTAL_ITEMS}</span>
-      </div>
-    </>
-  ) : null;
 
   const chip = (name: string, accent: "rose" | "emerald", dense: boolean, dark: boolean) => {
     const selected = dark ? darkSelected : benignSelected;
@@ -120,10 +84,9 @@ export function ChoiceOverloadCond2({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Choice Overload: Visual Density of Interactive Decision Elements"
       caption="Visual Density of Interactive Decision Elements — 31 clickable nodes are packed into one compact viewport, so dense that comparing them rationally is impossible before decision fatigue sets in."
-      auditorStats={stats}
       deltaNote="Both variants offer the same 30 add-ons with the same prices and the same selection mechanism. Variant A renders all of them as a saturated grid in a small viewport (rho = 0.31 > tau); Variant B stages the same 30 add-ons inside three collapsible categories, so the primary viewport holds just 4 interactive elements (rho = 0.04) and the density heuristic no longer fires."
       benign={
         <div className="space-y-3">

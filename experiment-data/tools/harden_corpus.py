@@ -162,6 +162,14 @@ def is_analysis_box(node):
     return "M12 9v4m0 4h.01" in txt or "M20 6L9 17l-5-5" in txt or "M9 12l2 2 4-4" in txt
 
 
+def has_interactive(node):
+    if isinstance(node, Node):
+        if node.tag in {"button", "a", "input", "select", "textarea"}:
+            return True
+        return any(has_interactive(c) for c in node.children)
+    return False
+
+
 def harden_node(node, parent_list):
     if isinstance(node, str):
         return [node]
@@ -170,7 +178,7 @@ def harden_node(node, parent_list):
     matched_pre = [m for m in STRONG_MARKERS if m in low_pre]
     if matched_pre and node.tag in ("p", "span", "small", "strong", "em", "label"):
         return []
-    if matched_pre and node.tag == "div" and len(txt_pre.strip()) < 400:
+    if matched_pre and node.tag == "div" and len(txt_pre.strip()) < 400 and not has_interactive(node):
         return []
     out = []
     for child in node.children:
@@ -198,7 +206,7 @@ def harden_node(node, parent_list):
             elif len(txt_pre) <= 400:
                 # short container: surgery; drop ONLY if nothing survives
                 scrub_text_nodes(node, matched)
-                if len(full_text(node).strip()) < 40:
+                if len(full_text(node).strip()) < 40 and not has_interactive(node):
                     return []
             else:
                 scrub_text_nodes(node, matched)
@@ -254,7 +262,7 @@ def process_file(path):
         serialized = neutralize_colors(serialized)
         serialized = re.sub(r"\s{2,}", " ", serialized)
         plain = re.sub(r"<[^>]+>", " ", serialized)
-        if len(plain.strip()) >= 40:
+        if len(plain.strip()) >= 40 or re.search(r"<(?:button|a|input|select|textarea)\b", serialized, re.I):
             out_states.append(serialized)
     if not out_states:
         path.unlink()

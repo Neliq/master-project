@@ -22,7 +22,6 @@ import * as React from "react";
 
 import { getDemo } from "@/components/pattern-demo";
 import { ViewModeToggle } from "@/components/demos/view-mode-toggle";
-import { AUDITOR_ANNOTATIONS } from "@/lib/auditor-annotations";
 import { PATTERNS_BY_SLUG } from "@/lib/patterns";
 import type { ViewMode } from "@/components/demos/demo-shell";
 
@@ -38,13 +37,11 @@ export function DemoSection({
   showControls?: boolean;
 }) {
   const [mode, setMode] = React.useState<ViewMode>("user");
-  const [restartKey, setRestartKey] = React.useState(0);
 
   const pattern = PATTERNS_BY_SLUG[slug];
   const conditionDemos = pattern?.conditionDemos;
   const conditions = pattern?.conditions;
 
-  const onRestart = () => setRestartKey((k) => k + 1);
 
   // Resolve the demo component(s) outside JSX to satisfy lint rules.
   const singleDemo = React.useMemo(() => {
@@ -86,10 +83,7 @@ export function DemoSection({
           </div>
         )}
         <DemoComp
-          key={restartKey}
           mode={mode}
-          annotations={mode === "auditor" ? AUDITOR_ANNOTATIONS[slug] : []}
-          onRestart={onRestart}
         />
       </div>
     );
@@ -117,10 +111,7 @@ export function DemoSection({
               )}
               {entry.Component ? (
                 <entry.Component
-                  key={restartKey}
                   mode={mode}
-                  annotations={mode === "auditor" ? AUDITOR_ANNOTATIONS[slug] : []}
-                  onRestart={onRestart}
                 />
               ) : null}
             </div>
@@ -128,10 +119,7 @@ export function DemoSection({
         </div>
       ) : legacyDemo ? (
         <legacyDemo.Component
-          key={restartKey}
           mode={mode}
-          annotations={mode === "auditor" ? AUDITOR_ANNOTATIONS[slug] : []}
-          onRestart={onRestart}
         />
       ) : null}
     </div>

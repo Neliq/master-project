@@ -1,0 +1,6 @@
+STATE s1
+Order summary Confirm your purchase details below. Standard checkout Pro Plan — annual $89.00 Tax $7.12 Total due today $96.12 Cancel order Complete purchase
+
+STATE s2
+Order summary Confirm your purchase details below. Standard checkout Pro Plan — annual $89.00 Tax $7.12 Total due today $96.12 Cancel order Complete purchase Order cancelled Both actions are plain, single-layer buttons: each subtree carries roughly the same weight (the count about 2, ratio 1.0 at most 3). Nothing in the DOM structure steers you toward one of them.
+

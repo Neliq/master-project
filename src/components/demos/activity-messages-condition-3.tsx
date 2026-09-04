@@ -53,46 +53,18 @@ function iconFor(name: string, cls: string) {
 }
 
 export function ActivityMessagesCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [clickedA, setClickedA] = React.useState<number | null>(null);
   const [clickedB, setClickedB] = React.useState<number | null>(null);
 
-  const reset = () => {
-    setClickedA(null);
-    setClickedB(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Specificity(T_activity) — A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.2 &lt; &tau; = {TAU_SPECIFICITY}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Specificity(T_activity) — B</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">0.9 &ge; &tau; = {TAU_SPECIFICITY}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">IdentityRef present — A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">No (¬∃ IdentityRef)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">IdentityRef present — B</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">Yes (name + handle)</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Activity Messages: Semantic Specificity of Activity-Notification Content"
       caption="Semantic Specificity of Activity-Notification Content — vague messages like “Someone liked your post” carry no identity reference, so the social signal cannot be verified."
-      auditorStats={stats}
       deltaNote="Both feeds describe the same kind of activity (likes, profile views, listing views, comments). Variant A phrases them vaguely with no name, handle, or profile link (Specificity 0.2 < τ, ¬∃IdentityRef); Variant B attaches a verifiable identity to every message (Specificity 0.9 ≥ τ)."
       benign={
         <div className="space-y-3">

@@ -1,0 +1,6 @@
+STATE s1
+TechDaily — Read Why your phone is always listening (and what to do) Voice assistants wake on trigger words, but the microphone pipeline is always hot. We measured the actual data flow between your phone and the vendor's cloud over 30 days, and the results are… complicated. AD Continue reading Some vendors offer a free tier. Some don’t. Find out which of the big three actually keeps logs. Next Previous page 1 / 2 (native control — host) Next
+
+STATE s2
+TechDaily — Read Why your phone is always listening (and what to do) Voice assistants wake on trigger words, but the microphone pipeline is always hot. We measured the actual data flow between your phone and the vendor's cloud over 30 days, and the results are… complicated. AD Continue reading Some vendors offer a free tier. Some don’t. Find out which of the big three actually keeps logs. Next Previous page 1 / 2 (native control — host) Next Semantic masquerade — that was an ad
+

@@ -43,11 +43,9 @@ function headlineFor(index: number): string {
 }
 
 export function InfiniteScrollingCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [itemsA, setItemsA] = React.useState<string[]>(() =>
     Array.from({ length: 8 }, (_, i) => headlineFor(i))
@@ -123,49 +121,12 @@ export function InfiniteScrollingCond1({
     );
   };
 
-  const reset = () => {
-    timersRef.current.forEach((id) => window.clearTimeout(id));
-    timersRef.current = [];
-    fetchingRef.current = false;
-    setItemsA(Array.from({ length: 8 }, (_, i) => headlineFor(i)));
-    setItemsB(Array.from({ length: 8 }, (_, i) => headlineFor(i)));
-    setDistA(null);
-    setDistB(0);
-    setAutoFetches(0);
-    setManualLoads(0);
-    setLoadingA(false);
-    setLoadingB(false);
-    if (containerARef.current) containerARef.current.scrollTop = 0;
-    if (containerBRef.current) containerBRef.current.scrollTop = 0;
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_trigger (spatial threshold)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_TRIGGER}px</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Y_end − Y_viewport (live, A)</span>
-        <span className="font-mono font-semibold tabular-nums">{distA === null ? "not measured" : `${distA}px`}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_fetch() in A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">auto — no user action</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_fetch() in B</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">after “Load More” click</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Infinite Scrolling: Autonomous Content Injection"
       userTitle="NewsPulse — Live feed"
       caption="Autonomous Content Injection — the feed fetches the next batch by itself as soon as the viewport crosses the spatial threshold, with no “Load More” button ever offered."
-      auditorStats={stats}
       deltaNote="Variant A appends items automatically the instant the viewport crosses the 800px spatial threshold — E_fetch() fires with no affirmative user action. Variant B keeps the identical feed and payload but gates every batch behind an explicit “Load More” button, so the user decides when content continues."
       benign={
         <div className="space-y-3">

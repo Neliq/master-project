@@ -21,46 +21,16 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * controls that state their outcome and state.
  */
 
-const TAU_ENTROPY = 1.8;
-const ENTROPY_DARK = "2.31 bits";
-
 type Pressed = "none" | "2fa" | "push" | "share" | "toggle";
 
 export function FeedforwardAmbiguityCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [sharing, setSharing] = React.useState(false);
   const [pressed, setPressed] = React.useState<Pressed>("none");
 
-  const reset = () => {
-    setSharing(false);
-    setPressed("none");
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">H(CV_class(N_icon))</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{ENTROPY_DARK} &gt; &tau;_entropy ({TAU_ENTROPY})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Tooltip T_hover</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">∅ (absent)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Accessible label</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">∅ (absent)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Data sharing</span>
-        <span className="font-mono font-semibold tabular-nums">{sharing ? "ON" : "OFF"}</span>
-      </div>
-    </>
-  ) : null;
 
   const networkIcon = (
     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -84,10 +54,9 @@ export function FeedforwardAmbiguityCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Feedforward Ambiguity: Iconographic Entropy and Missing Affordances"
       caption="Iconographic Entropy and Missing Affordances — a critical privacy action hangs on a bare icon with no label, no tooltip, and a high-entropy meaning space."
-      auditorStats={stats}
       deltaNote="In Variant A the data-sharing control is a label-less, tooltip-less icon whose classifier entropy (2.31 bits) exceeds τ_entropy. Variant B keeps the identical setting but replaces it with an explicit, labelled switch."
       benign={
         <div className="space-y-3">

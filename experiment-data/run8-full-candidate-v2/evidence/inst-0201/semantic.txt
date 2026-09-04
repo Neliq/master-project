@@ -1,0 +1,9 @@
+STATE s0
+CloudPhoto Pro — $9.99/mo Renews monthly · billed to maya@example.com Delete my account
+
+STATE s1
+Deletion request received We’ve received your request. Your account will be permanently deleted in 30 days . Estimated completion: Sep 14, 2026 Request submitted Aug 15, 2026 Scheduled deletion Sep 14, 2026 Waiting period 30 days View scheduled completion
+
+STATE s2
+Deletion request received We’ve received your request. Your account will be permanently deleted in 30 days . Estimated completion: Sep 14, 2026 Request submitted Aug 15, 2026 Scheduled deletion Sep 14, 2026 Waiting period 30 days View scheduled completion
+

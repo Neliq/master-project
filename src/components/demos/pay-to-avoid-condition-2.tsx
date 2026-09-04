@@ -25,14 +25,10 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const WAIT_SECONDS = 10;
 const OCCUPANCY_DARK = 0.78;
 const OCCUPANCY_BENIGN = 0.09;
-const TAU_PAIN = 0.3;
-
 export function PayToAvoidCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [waitingA, setWaitingA] = React.useState(false);
   const [waitingB, setWaitingB] = React.useState(false);
@@ -43,16 +39,6 @@ export function PayToAvoidCond2({
   const [releasedA, setReleasedA] = React.useState(false);
   const [releasedB, setReleasedB] = React.useState(false);
 
-  const reset = () => {
-    setWaitingA(false);
-    setWaitingB(false);
-    setRemainingA(WAIT_SECONDS);
-    setRemainingB(WAIT_SECONDS);
-    setPaidA(false);
-    setPaidB(false);
-    setReleasedA(false);
-    setReleasedB(false);
-  };
 
   React.useEffect(() => {
     if (!waitingA) return;
@@ -115,31 +101,6 @@ export function PayToAvoidCond2({
     }
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A(N_pain) / A_viewport</span>
-        <span className={`font-mono font-semibold tabular-nums ${waitingA || !releasedA ? "text-red-500" : "text-green-500"}`}>
-          {OCCUPANCY_DARK.toFixed(2)} (dark) / {OCCUPANCY_BENIGN.toFixed(2)} (benign)
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_pain (threshold)</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_PAIN.toFixed(2)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Verdict (dark)</span>
-        <span className={`font-mono font-semibold tabular-nums ${waitingA ? "text-red-500" : "text-green-500"}`}>
-          {waitingA ? `${OCCUPANCY_DARK.toFixed(2)} > ${TAU_PAIN.toFixed(2)} → active` : "not active"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Countdown (dark)</span>
-        <span className="font-mono font-semibold tabular-nums">{waitingA ? `${remainingA}s` : "—"}</span>
-      </div>
-    </>
-  ) : null;
-
   const documentCard = (
     <div className="rounded-md border border-border bg-card p-3">
       <div className="flex items-start justify-between gap-2">
@@ -188,11 +149,10 @@ export function PayToAvoidCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pay To Avoid: Visual Occupancy of the Pain-Point Element"
       userTitle="Product guide — Chapter 4"
       caption="Visual Occupancy of the Pain-Point Element — the waiting screen devours the viewport, so paying for relief becomes the path of least resistance."
-      auditorStats={stats}
       deltaNote="Both variants gate the same document behind the same 10-second free delay and offer the same $1.99 removal. Variant A renders the pain-point as a full-screen blocking overlay (~78% of the viewport) so the document is unreadable until you pay or wait. Variant B renders it as a slim banner (~9%) that never blocks reading — same friction, honest footprint."
       benign={
         <div className="space-y-3">

@@ -1,0 +1,650 @@
+{
+  "inst-0001": {
+    "slug": "activity-messages",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "activity-messages-cond3",
+    "file": "corpus/inst-0001.html",
+    "size_bytes": 6582
+  },
+  "inst-0004": {
+    "slug": "intermediate-currency",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "intermediate-currency-cond1",
+    "file": "corpus/inst-0004.html",
+    "size_bytes": 5321
+  },
+  "inst-0016": {
+    "slug": "false-hierarchy",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "false-hierarchy-cond3",
+    "file": "corpus/inst-0016.html",
+    "size_bytes": 1311
+  },
+  "inst-0019": {
+    "slug": "automating-the-user-away",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "automating-the-user-away-cond2",
+    "file": "corpus/inst-0019.html",
+    "size_bytes": 4364
+  },
+  "inst-0027": {
+    "slug": "intermediate-currency",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "intermediate-currency-cond1",
+    "file": "corpus/inst-0027.html",
+    "size_bytes": 5465
+  },
+  "inst-0031": {
+    "slug": "conflicting-information",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "conflicting-information-cond1",
+    "file": "corpus/inst-0031.html",
+    "size_bytes": 1252
+  },
+  "inst-0034": {
+    "slug": "pressured-selling",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "pressured-selling-cond1",
+    "file": "corpus/inst-0034.html",
+    "size_bytes": 2520
+  },
+  "inst-0040": {
+    "slug": "trick-questions",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "trick-questions-cond2",
+    "file": "corpus/inst-0040.html",
+    "size_bytes": 1320
+  },
+  "inst-0042": {
+    "slug": "intermediate-currency",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "intermediate-currency-cond3",
+    "file": "corpus/inst-0042.html",
+    "size_bytes": 5998
+  },
+  "inst-0044": {
+    "slug": "plain-evil",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "plain-evil-cond3",
+    "file": "corpus/inst-0044.html",
+    "size_bytes": 3139
+  },
+  "inst-0049": {
+    "slug": "false-hierarchy",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "false-hierarchy-cond2",
+    "file": "corpus/inst-0049.html",
+    "size_bytes": 3259
+  },
+  "inst-0050": {
+    "slug": "information-without-context",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "information-without-context-cond1",
+    "file": "corpus/inst-0050.html",
+    "size_bytes": 1494
+  },
+  "inst-0057": {
+    "slug": "hidden-information",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "hidden-information-cond1",
+    "file": "corpus/inst-0057.html",
+    "size_bytes": 7602
+  },
+  "inst-0058": {
+    "slug": "hidden-information",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "hidden-information-cond3",
+    "file": "corpus/inst-0058.html",
+    "size_bytes": 3424
+  },
+  "inst-0061": {
+    "slug": "conflicting-information",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "conflicting-information-cond3",
+    "file": "corpus/inst-0061.html",
+    "size_bytes": 2518
+  },
+  "inst-0066": {
+    "slug": "forced-continuity",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "forced-continuity-cond2",
+    "file": "corpus/inst-0066.html",
+    "size_bytes": 3342
+  },
+  "inst-0077": {
+    "slug": "pressured-selling",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "pressured-selling-cond1",
+    "file": "corpus/inst-0077.html",
+    "size_bytes": 2975
+  },
+  "inst-0079": {
+    "slug": "plain-evil",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "plain-evil-cond1",
+    "file": "corpus/inst-0079.html",
+    "size_bytes": 4715
+  },
+  "inst-0087": {
+    "slug": "hidden-information",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "hidden-information-cond1",
+    "file": "corpus/inst-0087.html",
+    "size_bytes": 7921
+  },
+  "inst-0088": {
+    "slug": "conflicting-information",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "conflicting-information-cond2",
+    "file": "corpus/inst-0088.html",
+    "size_bytes": 1381
+  },
+  "inst-0092": {
+    "slug": "automating-the-user-away",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "automating-the-user-away-cond1",
+    "file": "corpus/inst-0092.html",
+    "size_bytes": 2474
+  },
+  "inst-0099": {
+    "slug": "granting-and-interaction",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "granting-and-interaction-cond3",
+    "file": "corpus/inst-0099.html",
+    "size_bytes": 4893
+  },
+  "inst-0103": {
+    "slug": "pressured-selling",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "pressured-selling-cond3",
+    "file": "corpus/inst-0103.html",
+    "size_bytes": 1676
+  },
+  "inst-0112": {
+    "slug": "plain-evil",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "plain-evil-cond2",
+    "file": "corpus/inst-0112.html",
+    "size_bytes": 2917
+  },
+  "inst-0113": {
+    "slug": "hidden-information",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "hidden-information-cond2",
+    "file": "corpus/inst-0113.html",
+    "size_bytes": 2345
+  },
+  "inst-0115": {
+    "slug": "information-without-context",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "information-without-context-cond3",
+    "file": "corpus/inst-0115.html",
+    "size_bytes": 1176
+  },
+  "inst-0121": {
+    "slug": "granting-and-interaction",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "granting-and-interaction-cond1",
+    "file": "corpus/inst-0121.html",
+    "size_bytes": 4246
+  },
+  "inst-0123": {
+    "slug": "false-hierarchy",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "false-hierarchy-cond3",
+    "file": "corpus/inst-0123.html",
+    "size_bytes": 2597
+  },
+  "inst-0130": {
+    "slug": "forced-continuity",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "forced-continuity-cond1",
+    "file": "corpus/inst-0130.html",
+    "size_bytes": 3657
+  },
+  "inst-0137": {
+    "slug": "automating-the-user-away",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "automating-the-user-away-cond2",
+    "file": "corpus/inst-0137.html",
+    "size_bytes": 4372
+  },
+  "inst-0141": {
+    "slug": "forced-continuity",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "forced-continuity-cond2",
+    "file": "corpus/inst-0141.html",
+    "size_bytes": 4095
+  },
+  "inst-0147": {
+    "slug": "trick-questions",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "trick-questions-cond1",
+    "file": "corpus/inst-0147.html",
+    "size_bytes": 1143
+  },
+  "inst-0158": {
+    "slug": "activity-messages",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "activity-messages-cond2",
+    "file": "corpus/inst-0158.html",
+    "size_bytes": 5104
+  },
+  "inst-0159": {
+    "slug": "conflicting-information",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "conflicting-information-cond2",
+    "file": "corpus/inst-0159.html",
+    "size_bytes": 2983
+  },
+  "inst-0160": {
+    "slug": "information-without-context",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "information-without-context-cond2",
+    "file": "corpus/inst-0160.html",
+    "size_bytes": 3301
+  },
+  "inst-0164": {
+    "slug": "hidden-information",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "hidden-information-cond3",
+    "file": "corpus/inst-0164.html",
+    "size_bytes": 3176
+  },
+  "inst-0178": {
+    "slug": "information-without-context",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "information-without-context-cond2",
+    "file": "corpus/inst-0178.html",
+    "size_bytes": 3614
+  },
+  "inst-0190": {
+    "slug": "information-without-context",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "information-without-context-cond1",
+    "file": "corpus/inst-0190.html",
+    "size_bytes": 2798
+  },
+  "inst-0195": {
+    "slug": "pressured-selling",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "pressured-selling-cond2",
+    "file": "corpus/inst-0195.html",
+    "size_bytes": 3622
+  },
+  "inst-0198": {
+    "slug": "granting-and-interaction",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "granting-and-interaction-cond2",
+    "file": "corpus/inst-0198.html",
+    "size_bytes": 4173
+  },
+  "inst-0199": {
+    "slug": "information-without-context",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "information-without-context-cond3",
+    "file": "corpus/inst-0199.html",
+    "size_bytes": 2417
+  },
+  "inst-0200": {
+    "slug": "intermediate-currency",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "intermediate-currency-cond2",
+    "file": "corpus/inst-0200.html",
+    "size_bytes": 4401
+  },
+  "inst-0214": {
+    "slug": "automating-the-user-away",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "automating-the-user-away-cond3",
+    "file": "corpus/inst-0214.html",
+    "size_bytes": 3023
+  },
+  "inst-0222": {
+    "slug": "plain-evil",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "plain-evil-cond3",
+    "file": "corpus/inst-0222.html",
+    "size_bytes": 3411
+  },
+  "inst-0223": {
+    "slug": "pressured-selling",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "pressured-selling-cond2",
+    "file": "corpus/inst-0223.html",
+    "size_bytes": 2047
+  },
+  "inst-0230": {
+    "slug": "trick-questions",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "trick-questions-cond3",
+    "file": "corpus/inst-0230.html",
+    "size_bytes": 2037
+  },
+  "inst-0238": {
+    "slug": "granting-and-interaction",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "granting-and-interaction-cond1",
+    "file": "corpus/inst-0238.html",
+    "size_bytes": 4981
+  },
+  "inst-0240": {
+    "slug": "trick-questions",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "trick-questions-cond2",
+    "file": "corpus/inst-0240.html",
+    "size_bytes": 1312
+  },
+  "inst-0243": {
+    "slug": "false-hierarchy",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "false-hierarchy-cond1",
+    "file": "corpus/inst-0243.html",
+    "size_bytes": 1372
+  },
+  "inst-0248": {
+    "slug": "plain-evil",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "plain-evil-cond1",
+    "file": "corpus/inst-0248.html",
+    "size_bytes": 5969
+  },
+  "inst-0262": {
+    "slug": "granting-and-interaction",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "granting-and-interaction-cond2",
+    "file": "corpus/inst-0262.html",
+    "size_bytes": 2257
+  },
+  "inst-0275": {
+    "slug": "forced-continuity",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "forced-continuity-cond3",
+    "file": "corpus/inst-0275.html",
+    "size_bytes": 1097
+  },
+  "inst-0276": {
+    "slug": "forced-continuity",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "forced-continuity-cond1",
+    "file": "corpus/inst-0276.html",
+    "size_bytes": 1857
+  },
+  "inst-0279": {
+    "slug": "hidden-information",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "hidden-information-cond2",
+    "file": "corpus/inst-0279.html",
+    "size_bytes": 2342
+  },
+  "inst-0284": {
+    "slug": "activity-messages",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "activity-messages-cond1",
+    "file": "corpus/inst-0284.html",
+    "size_bytes": 951
+  },
+  "inst-0291": {
+    "slug": "trick-questions",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "trick-questions-cond3",
+    "file": "corpus/inst-0291.html",
+    "size_bytes": 1661
+  },
+  "inst-0294": {
+    "slug": "intermediate-currency",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "intermediate-currency-cond2",
+    "file": "corpus/inst-0294.html",
+    "size_bytes": 4705
+  },
+  "inst-0309": {
+    "slug": "false-hierarchy",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "false-hierarchy-cond1",
+    "file": "corpus/inst-0309.html",
+    "size_bytes": 3423
+  },
+  "inst-0316": {
+    "slug": "intermediate-currency",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "intermediate-currency-cond3",
+    "file": "corpus/inst-0316.html",
+    "size_bytes": 9346
+  },
+  "inst-0324": {
+    "slug": "automating-the-user-away",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "automating-the-user-away-cond3",
+    "file": "corpus/inst-0324.html",
+    "size_bytes": 2958
+  },
+  "inst-0329": {
+    "slug": "trick-questions",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "trick-questions-cond1",
+    "file": "corpus/inst-0329.html",
+    "size_bytes": 2818
+  },
+  "inst-0332": {
+    "slug": "activity-messages",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "activity-messages-cond1",
+    "file": "corpus/inst-0332.html",
+    "size_bytes": 935
+  },
+  "inst-0334": {
+    "slug": "conflicting-information",
+    "condition_index": 1,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "conflicting-information-cond1",
+    "file": "corpus/inst-0334.html",
+    "size_bytes": 2994
+  },
+  "inst-0341": {
+    "slug": "automating-the-user-away",
+    "condition_index": 1,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "automating-the-user-away-cond1",
+    "file": "corpus/inst-0341.html",
+    "size_bytes": 2428
+  },
+  "inst-0350": {
+    "slug": "activity-messages",
+    "condition_index": 2,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "activity-messages-cond2",
+    "file": "corpus/inst-0350.html",
+    "size_bytes": 3292
+  },
+  "inst-0353": {
+    "slug": "conflicting-information",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "conflicting-information-cond3",
+    "file": "corpus/inst-0353.html",
+    "size_bytes": 5707
+  },
+  "inst-0354": {
+    "slug": "pressured-selling",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "pressured-selling-cond3",
+    "file": "corpus/inst-0354.html",
+    "size_bytes": 1831
+  },
+  "inst-0355": {
+    "slug": "plain-evil",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "plain-evil-cond2",
+    "file": "corpus/inst-0355.html",
+    "size_bytes": 3984
+  },
+  "inst-0359": {
+    "slug": "activity-messages",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "activity-messages-cond3",
+    "file": "corpus/inst-0359.html",
+    "size_bytes": 6717
+  },
+  "inst-0360": {
+    "slug": "false-hierarchy",
+    "condition_index": 2,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "false-hierarchy-cond2",
+    "file": "corpus/inst-0360.html",
+    "size_bytes": 3366
+  },
+  "inst-0364": {
+    "slug": "forced-continuity",
+    "condition_index": 3,
+    "variant": "A",
+    "deceptive": true,
+    "pair": "forced-continuity-cond3",
+    "file": "corpus/inst-0364.html",
+    "size_bytes": 2505
+  },
+  "inst-0370": {
+    "slug": "granting-and-interaction",
+    "condition_index": 3,
+    "variant": "B",
+    "deceptive": false,
+    "pair": "granting-and-interaction-cond3",
+    "file": "corpus/inst-0370.html",
+    "size_bytes": 3829
+  }
+}

@@ -69,46 +69,18 @@ function TierCard({
 }
 
 export function PsychologicalTricksCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkSelected, setDarkSelected] = React.useState<string | null>(null);
   const [benignSelected, setBenignSelected] = React.useState<string | null>(null);
 
-  const reset = () => {
-    setDarkSelected(null);
-    setBenignSelected(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Cost(O_target) vs Cost(O_decoy)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">$12 &asymp; $12</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Metrics where V(O_decoy) &lt; V(O_target)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">3 / 3</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P_select(O_target)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&rarr; Max</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Decoy present</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">yes (O_decoy)</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Psychological Tricks: Asymmetric Dominance"
       caption="Asymmetric Dominance — a decoy option that is inferior to the target tier in every metric while costing about the same artificially inflates the target's perceived value."
-      auditorStats={stats}
       deltaNote="In Variant A the $12 “Deluxe” decoy is dominated by the $12 “Pro” target on all three metrics, steering choice toward Pro. Variant B removes the decoy entirely, leaving the same two genuine tiers."
       benign={
         <div className="space-y-3">

@@ -1,0 +1,6 @@
+STATE s0
+Almost there! A $50 discount is available on your order of $120.00. Standard offer Continue without discount Apply $50 discount
+
+STATE s1
+Almost there! A $50 discount is available on your order of $120.00. Standard offer Continue without discount Apply $50 discount Full price kept The dominant label is semantically neutral: the sent = +0.12 (within ±0.5) and L ∩ coercion = none. The decision is presented as a plain fact, so the visual dominance of the button is not reinforced by loaded wording.
+

@@ -1,0 +1,6 @@
+STATE s0
+Referral rewards Invite friends to earn these rewards. Tap a tier to inspect it. Tier 1 · 1 invite Intensity 1 Sticker pack for your profile. Tier 2 · 3 invites Intensity 1 Premium badge next to your name. Tier 3 · 10 invites Intensity 1 Extended cloud storage (+10 GB).
+
+STATE s1
+Referral rewards Invite friends to earn these rewards. Tap a tier to inspect it. Tier 1 · 1 invite Intensity 1 Sticker pack for your profile. Tier 2 · 3 invites Intensity 1 Premium badge next to your name. Tier 3 · 10 invites Intensity 1 Extended cloud storage (+10 GB). Flat incentivization Every tier adds one concrete, verifiable benefit in plain language. The flat reward descriptions have no measurable escalation, so the quotient is undefined rather than being presented as a fabricated numeric growth value.
+

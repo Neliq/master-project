@@ -1,0 +1,6 @@
+STATE s0
+SnapCam Take a photo with your front camera. Tags: off SNAPCAM · LIVE PREVIEW Take photo Photo location tags Optional — the camera works either way. Off by default.
+
+STATE s1
+SnapCam Take a photo with your front camera. Tags: off SNAPCAM · LIVE PREVIEW Take photo Photo location tags Optional — the camera works either way. Off by default. Photo captured — no permission toll the dep = none, and the interface honored it: the shutter worked with zero permissions granted. Location is offered as a separated, optional tag feature — consent stays genuine because utility was never fused with data extraction.
+

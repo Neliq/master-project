@@ -31,11 +31,9 @@ const DONATION_TEXT =
 const fmt = (n: number) => `$${n.toFixed(2)}`;
 
 export function SneakIntoBasketCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Variant A: pre-checked at mount — the user never consented
   const [donationA, setDonationA] = React.useState(true);
@@ -44,33 +42,6 @@ export function SneakIntoBasketCond3({
   const [donationB, setDonationB] = React.useState(false);
   const [paidB, setPaidB] = React.useState(false);
 
-  const reset = () => {
-    setDonationA(true);
-    setPaidA(false);
-    setDonationB(false);
-    setPaidB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Disclosure language in line text</span>
-        <span className="font-mono font-semibold tabular-nums">&ldquo;optional donation&rdquo;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Entailment(T, &ldquo;optional add-on&rdquo;)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">UserConsented — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">False (pre-checked for you)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">UserConsented — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{donationB ? "True (you checked)" : "False (you declined)"}</span>
-      </div>
-    </>
-  ) : null;
 
   const donationLine = (
     name: string,
@@ -102,11 +73,10 @@ export function SneakIntoBasketCond3({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Sneak Into Basket: Semantic Obscuration of Injected Line Items"
       userTitle="Northstar — Checkout"
       caption="Semantic Obscuration of Injected Line Items — the added line's own text reveals its optional add-on nature (“optional donation”), yet it was included in the order without any explicit user opt-in."
-      auditorStats={stats}
       deltaNote={`Both panels present the identical order and the identical "optional donation" line. In Variant A the box is pre-checked and the $2.00 silently folded into the total — Entailment = True but UserConsented = False. In Variant B the same line is an unchecked, clearly-labeled opt-in outside the base total — consent precedes inclusion.`}
       benign={
         <div className="space-y-3">

@@ -25,8 +25,6 @@ import { Newspaper, Cpu, Rocket, Megaphone } from "lucide-react";
 
 const SIM_DARK = 0.97;
 const SIM_BENIGN = 0.31;
-const TAU_BLEND = 0.85;
-
 interface FeedCardData {
   id: "article1" | "article2" | "ad";
   title: string;
@@ -42,36 +40,12 @@ const CARDS: FeedCardData[] = [
 ];
 
 export function DisguisedAdCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [clicked, setClicked] = React.useState<null | "article1" | "article2" | "ad">(null);
 
-  const reset = () => setClicked(null);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">sim(v_ad, v_native) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{SIM_DARK} &gt; τ_blend ({TAU_BLEND})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">sim(v_ad, v_native) — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{SIM_BENIGN} &le; τ_blend</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Matched features (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">bg · type · radius · ratio</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Disclosure (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">none — fully camouflaged</span>
-      </div>
-    </>
-  ) : null;
 
   const feedHeader = (
     <div className="mb-2 flex items-center gap-1.5">
@@ -105,10 +79,9 @@ export function DisguisedAdCond2({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Disguised Ad: Morphological Similarity"
       caption="Morphological Similarity — the ad's visual feature vector (background color, typography, border radius, aspect ratio) is pushed beyond the blend threshold, so it is indistinguishable from genuine editorial content."
-      auditorStats={stats}
       deltaNote={`The feed, the articles, and the sponsored content are identical in both panels. In Variant A the ad card reuses the exact same visual styling as the article cards (sim ${SIM_DARK} > τ_blend) with no disclosure at all — no "AD" tag, no "Sponsored" marker, and a "Read more" button that mimics a native action label; in Variant B the same content is given a tinted background, dashed border, and a prominent SPONSORED badge (sim ${SIM_BENIGN} ≤ τ_blend), so it no longer camouflages as editorial.`}
       benign={
         <div className="space-y-3">

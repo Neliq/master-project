@@ -24,11 +24,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const CHECKBOX_LABEL = "Yes, I'd like to claim my $10 welcome bonus";
 
 export function TrickQuestionsCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   // Per-panel state: the dark variant starts with the box pre-checked.
   const [aChecked, setAChecked] = React.useState(true);
@@ -36,39 +34,11 @@ export function TrickQuestionsCond2({
   const [aClaimed, setAClaimed] = React.useState<null | "granted" | "denied" | "none">(null);
   const [bClaimed, setBClaimed] = React.useState<null | "granted" | "denied" | "none">(null);
 
-  const reset = () => {
-    setAChecked(true);
-    setBChecked(false);
-    setAClaimed(null);
-    setBClaimed(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">State(c, t0) — Variant A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True (pre-checked)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Physical affordance (State)</span>
-        <span className="font-mono font-semibold tabular-nums">{aChecked ? "True (checked)" : "False"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent(L(c)) domain (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">D_deny (opt-out)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Reversal</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">check = deny</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Trick Questions: Affordance-Consequence Mismatch"
       caption="Affordance-Consequence Mismatch — the box is pre-checked at load and its checked state maps to a denial: the positive action of ticking an opt-in box actually opts you out."
-      auditorStats={stats}
       deltaNote="In Variant A the box starts pre-checked (State = True at t0 with zero user events) and the positive action (checking the box) is wired to an opt-out intent (D_deny): completing signup with the box ticked refuses the bonus. In Variant B the box starts unchecked, the signup button stays disabled until you tick it, and the checked state means what the affordance promises: the bonus is granted."
       benign={
         <div className="space-y-3">

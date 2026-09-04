@@ -58,23 +58,15 @@ function PaymentConfirmed() {
 }
 
 export function PressuredSellingCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [darkStage, setDarkStage] = React.useState<"cart" | "payment">("cart");
   const [benignStage, setBenignStage] = React.useState<"cart" | "payment">("cart");
   const [upsellOpen, setUpsellOpen] = React.useState(false);
   const [upsellDecision, setUpsellDecision] = React.useState<null | "accepted" | "declined">(null);
 
-  const reset = () => {
-    setDarkStage("cart");
-    setBenignStage("cart");
-    setUpsellOpen(false);
-    setUpsellDecision(null);
-  };
 
   // B_proceed click in Variant A: injects M_upsell, checkout stays blocked.
   const proceedDark = () => setUpsellOpen(true);
@@ -87,30 +79,10 @@ export function PressuredSellingCond1({
     setDarkStage("payment");
   };
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Click(B_proceed) ⇒ Visibility(M_upsell)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {upsellOpen ? "True (injected)" : darkStage === "cart" ? "—" : "False"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">s_final ∈ S_current</span>
-        <span className="font-mono font-semibold tabular-nums">{darkStage === "payment" ? "True" : "False"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Upsell decision</span>
-        <span className="font-mono font-semibold tabular-nums">{upsellDecision ?? "pending"}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Pressured Selling: Transactional Flow Interruption"
       caption="Transactional Flow Interruption — clicking the primary checkout action injects an unexpected upsell modal, and the final payment state stays unreachable until a secondary decision is made."
-      auditorStats={stats}
       deltaNote="In Variant A, clicking “Proceed to payment” fires Click(B_proceed) ⇒ Visibility(M_upsell) = True: an upsell modal is force-injected and s_final leaves S_current until you decide. In Variant B the identical click goes straight to payment — no modal, no blocked flow."
       benign={
         <div className="space-y-3">

@@ -24,55 +24,19 @@ import { AlertTriangle, Check, CheckCircle2 } from "lucide-react";
  */
 
 export function ConflictingInformationCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [choice, setChoice] = React.useState<null | "cancel" | "keep">(null);
   // Variant A only: the cancellation path requires an extra confirmation step.
   const [confirming, setConfirming] = React.useState(false);
 
-  const reset = () => {
-    setChoice(null);
-    setConfirming(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent(L(B)) — label “Cancel”</span>
-        <span className="font-mono font-semibold tabular-nums">destructive</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Affordance(C(B)) — green bg</span>
-        <span className="font-mono font-semibold tabular-nums">confirm</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Intent ∩ Affordance</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">∅ (mismatch)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">N(x_delete) vs N(x_create) (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">2 &gt; 1 — asymmetry</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Exit vector (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">demoted text link</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Decision in Variant A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{choice === "cancel" ? "cancelled" : "pending"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Conflicting Information: Semantic-Visual Mismatch"
       caption="Semantic-Visual Mismatch — the destructive “Cancel my membership” path is painted in the confirm affordance color (green) and placed behind an extra confirmation step while the card’s “cancel anytime” claim is contradicted by a minimum-term fee clause."
-      auditorStats={stats}
       deltaNote="In Variant A Intent(L(B)) = cancel (destructive) ∩ Affordance(C(B)) = green (confirm) = ∅, so the button that ends your membership is dressed in the color your brain reads as safe/confirm. Variant A also obstructs the exit: the card claims “cancel anytime” yet the fine print imposes a 12-month minimum term with a $49 early-cancellation fee, and cancellation is demoted to a small text link that demands a second confirmation step (N(x_delete) = 2 &gt; N(x_create) = 1). In Variant B the affordances are honest: the destructive action is red, the safe one is green, Intent ∩ Affordance is non-empty for both, and cancelling takes a single prominent click with no conflicting terms."
       benign={
         <div className="space-y-3">

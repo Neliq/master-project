@@ -1,0 +1,9 @@
+STATE s0
+PREMIUM Stellar Nova Bundle 1,299 coins Unlock exclusive in-game items, skins, and 500 bonus coins. Limited time offer for new players. Fiat equivalent: $40.79 — charged in your currency Buy Now — $40.79 by Stellar Games Inc.
+
+STATE s1
+Back to store Secure fiat checkout the fiat checkout — pay with your card, no coins required. Stellar Nova Bundle 1,299 coins Total $40.79 Card number •••• •••• •••• 4242 MM/YY 12/28 CVC ••• Pay $40.79 now Charged in your currency. No virtual-currency exchange in this flow.
+
+STATE s2
+Direct fiat purchase target(E purchase ) = V checkout : your $40.79 was charged directly to your card. The product card disclosed the fiat equivalent up front, and no top-up screen or exchange rate was interposed between your money and the product.
+

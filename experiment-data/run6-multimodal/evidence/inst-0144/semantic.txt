@@ -1,0 +1,12 @@
+STATE s1
+The Market Reader At dawn the market stalls open, and the whole street smells of fresh bread and wet pavement. Vendors call out to regulars by name. The baker explains that her sourdough starter is older than she is. Someone at the next stall argues about the correct way to slice a baguette. ‹ › Keep reading. There is always one more page. You have been reading for 00:02.
+
+STATE s2
+The Market Reader By noon the square is packed. Tourists photograph the fountain while locals sit in the shade, reading, arguing, laughing. The afternoon rain arrives without warning. Everyone ducks under awnings; a street musician keeps playing, dripping and unbothered. ‹ › Keep reading. There is always one more page. You have been reading for 00:02.
+
+STATE s3
+The Market Reader At dawn the market stalls open, and the whole street smells of fresh bread and wet pavement. Vendors call out to regulars by name. The baker explains that her sourdough starter is older than she is. Someone at the next stall argues about the correct way to slice a baguette. ‹ › Keep reading. There is always one more page. You have been reading for 00:03.
+
+STATE s4
+The Market Reader By noon the square is packed. Tourists photograph the fountain while locals sit in the shade, reading, arguing, laughing. The afternoon rain arrives without warning. Everyone ducks under awnings; a street musician keeps playing, dripping and unbothered. ‹ › Keep reading. There is always one more page. You have been reading for 00:03.
+

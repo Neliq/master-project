@@ -65,53 +65,15 @@ const DOCUMENT_WORDS =
 const CLAUSE_START = CLAUSE_PARTS.before.split(/\s+/).length; // word index of t_clause
 
 export function HiddenInformationCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [agreed, setAgreed] = React.useState(false);
   const [created, setCreated] = React.useState(false);
   const [located, setLocated] = React.useState(false);
   const termsRefs = React.useRef<{ dark: HTMLDivElement | null; benign: HTMLDivElement | null }>({ dark: null, benign: null });
 
-  const reset = () => {
-    setAgreed(false);
-    setCreated(false);
-    setLocated(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">|W(N_document)|</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {DOCUMENT_WORDS} (&gt; 250)
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">P(t_clause) dark / benign</span>
-        <span className="font-mono font-semibold tabular-nums">
-          <span className="text-red-500">False</span> / <span className="text-green-500">True</span>
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Clause position</span>
-        <span className="font-mono font-semibold tabular-nums">
-          word {CLAUSE_START} / {DOCUMENT_WORDS}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Auto-renew charge</span>
-        <span className="font-mono font-semibold tabular-nums">$49.99 / mo</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Renewal warning (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">visible — 7-day reminder</span>
-      </div>
-    </>
-  ) : null;
 
   const renderPanel = (dark: boolean) => (
     <div className="space-y-3">
@@ -285,11 +247,8 @@ export function HiddenInformationCond1({
   return (
     <DemoShell
       mode={mode}
-      annotations={annotations}
-      onRestart={onRestart ?? reset}
       title="Hidden Information: Structural Burial in High-Density Text"
       caption="Structural Burial in High-Density Text — the critical clause sits inside an excessively long document with no semantic or visual emphasis to distinguish it from the surrounding boilerplate."
-      auditorStats={stats}
       deltaNote={`Variant A buries the $49.99/mo auto-renew clause at word ${CLAUSE_START} of ${DOCUMENT_WORDS} with no emphasis tags (P = False) and no upfront price disclosure. Variant B marks the clause with <strong>/<em> (P = True), discloses the full price in the headline (“$0 for the first month, then $49.99/month”), and shows a visible renewal warning — so the same information is findable at a glance and no fee is ever hidden.`}
       benign={renderPanel(false)}
     >

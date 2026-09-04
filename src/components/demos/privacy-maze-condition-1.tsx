@@ -20,7 +20,6 @@ import { DemoShell } from "@/components/demos/demo-shell";
  * Variant B (benign): accept and reject are both one click, side by side.
  */
 
-const DEPTH_ACCEPT = 1;
 const DEPTH_REJECT = 5;
 const TAU_DEPTH = 4;
 
@@ -70,11 +69,9 @@ function ToggleRow({
 }
 
 export function PrivacyMazeCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [step, setStep] = React.useState<"banner" | "purposes" | "partners" | "advanced" | "confirm">("banner");
   const [onIds, setOnIds] = React.useState<string[]>(
@@ -84,44 +81,15 @@ export function PrivacyMazeCond1({
   const [outcomeB, setOutcomeB] = React.useState<"none" | "accepted" | "rejected">("none");
   const [acceptedVia, setAcceptedVia] = React.useState<"banner" | "defaults">("banner");
 
-  const reset = () => {
-    setStep("banner");
-    setOnIds(PURPOSES.filter((p) => p.on).map((p) => p.id));
-    setOutcomeA("none");
-    setOutcomeB("none");
-    setAcceptedVia("banner");
-  };
 
   const toggle = (id: string) =>
     setOnIds((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d(v_start, v_accept_all)</span>
-        <span className="font-mono font-semibold tabular-nums">{DEPTH_ACCEPT} click</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d(v_start, v_reject_all)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DEPTH_REJECT} clicks</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Heuristic threshold &tau;_depth</span>
-        <span className="font-mono font-semibold tabular-nums">{TAU_DEPTH}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Trigger: {DEPTH_REJECT} &gt; {TAU_DEPTH}</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">TRUE</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Privacy Maze: Asymmetrical Path Depth"
       userTitle="Orbit — Privacy choices"
       caption="Asymmetrical Path Depth — accepting tracking is one click, while rejecting it is buried five navigational steps deep in a maze of granular toggles."
-      auditorStats={stats}
       deltaNote={`In Variant A, d(v_start, v_accept_all) = 1 but d(v_start, v_reject_all) = ${DEPTH_REJECT} (> τ_depth = ${TAU_DEPTH}): rejecting means crossing three dense toggle screens, a buried tiny link, and a confirmation dialog. In Variant B both terminal states sit one click from v_start, so the graph is balanced.`}
       benign={
         <div className="space-y-3">

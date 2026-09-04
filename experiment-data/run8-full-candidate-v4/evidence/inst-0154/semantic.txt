@@ -1,0 +1,6 @@
+STATE s0
+Aurora Wireless Earbuds Pro True wireless, 36h battery, active noise cancelling. $89.00 In stock — 148 available Add to cart
+
+STATE s1
+Aurora Wireless Earbuds Pro True wireless, 36h battery, active noise cancelling. $89.00 In stock — 148 available Added to cart ✓ Honest inventory The stock badge shows the real backend quantity: displayed(x) = 148 = true(x). There is no manufactured scarcity, so the Fear Of Missing Out trigger never fires.
+

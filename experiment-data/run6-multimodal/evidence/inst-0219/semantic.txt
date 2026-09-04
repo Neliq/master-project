@@ -1,0 +1,12 @@
+STATE s1
+Privacy settings mean offsetX 34.0px Personalised advertising Interest-based advertising Nested setting Behavioural profiling Nested setting Cross-device personalisation Cross-device graph linkage Data sharing Measurement Save preferences
+
+STATE s2
+Privacy settings mean offsetX 34.0px Personalised advertising Cross-device personalisation Cross-device graph linkage Data sharing Measurement Save preferences
+
+STATE s3
+Privacy settings mean offsetX 34.0px Personalised advertising Interest-based advertising Nested setting Behavioural profiling Nested setting Cross-device personalisation Cross-device graph linkage Data sharing Measurement Save preferences
+
+STATE s4
+Privacy settings mean offsetX 34.0px Personalised advertising Cross-device personalisation Cross-device graph linkage Data sharing Measurement Save preferences
+

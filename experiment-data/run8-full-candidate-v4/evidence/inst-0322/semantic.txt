@@ -1,0 +1,6 @@
+STATE s0
+Data sharing consent By continuing, you agree to our Terms of Service and to sharing your usage data with the following companies: Acme Analytics purpose: advertising analytics Beacon Metrics purpose: advertising analytics Coral Data purpose: advertising analytics That’s the complete list — no unnamed recipients are added when you continue. Continue
+
+STATE s1
+Data sharing consent By continuing, you agree to our Terms of Service and to sharing your usage data with the following companies: Acme Analytics purpose: advertising analytics Beacon Metrics purpose: advertising analytics Coral Data purpose: advertising analytics That’s the complete list — no unnamed recipients are added when you continue. Continue Preferences saved Your consent applies to exactly the 3 companies listed above. No hidden partners are added.
+

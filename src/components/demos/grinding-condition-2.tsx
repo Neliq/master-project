@@ -35,19 +35,13 @@ function darkProgress(clicks: number): number {
 }
 
 export function GrindingCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [clicksA, setClicksA] = React.useState(0);
   const [clicksB, setClicksB] = React.useState(0);
 
-  const reset = () => {
-    setClicksA(0);
-    setClicksB(0);
-  };
 
   const revealedA = clicksA >= 12;
   const revealedB = clicksB >= 12;
@@ -56,33 +50,11 @@ export function GrindingCond2({
   const pB = Math.min(100, clicksB * BENIGN_DELTA);
   const eggUnlocked = pB >= 100;
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">ΔP_1 (first action)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">+{DARK_DELTA_0.toFixed(1)}%</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">ΔP_k (action {Math.max(1, clicksA)})</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">+{lastDeltaA.toFixed(2)}%</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">ΔP_k / ΔP_1</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{clicksA === 0 ? "—" : (lastDeltaA / DARK_DELTA_0).toFixed(4)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">d²P/di² (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&lt; 0 (concave)</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Grinding: Visual Diminishing-Returns Feedback Loop"
       userTitle="Sunny Hen Farm"
       caption="Visual Diminishing-Returns Feedback Loop — the reward bar's per-action progress decays exponentially, so the bar creeps ever more slowly and the reward recedes."
-      auditorStats={stats}
       deltaNote="Both variants collect the same number of eggs toward the same Golden Egg. Variant A's bar fills +20%, then +10%, +5%, +2.5%… per collection (ΔP_i ≈ ΔP_0·e^(−λi), so d²P/di² < 0) — the feedback attenuates to compel more grinding. Variant B fills a constant +10% per collection and the egg unlocks after exactly 10 actions."
       benign={
         <div className="space-y-3">

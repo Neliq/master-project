@@ -1,0 +1,6 @@
+STATE s0
+We care about your privacy We use cookies to improve your experience. Choose how much you share. Equal-size choices Decline Preferences Accept all Visualize bounding boxes
+
+STATE s1
+We care about your privacy We use cookies to improve your experience. Choose how much you share. Equal-size choices Decline Preferences Accept all Visualize bounding boxes Cookies declined Every option occupies the same interactive surface area. The ratio the area / the area about 1.0 stays below 4, so no action is physically privileged — picking “Decline” costs exactly the same effort as picking “Accept all”.
+

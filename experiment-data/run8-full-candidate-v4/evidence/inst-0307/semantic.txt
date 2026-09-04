@@ -1,0 +1,6 @@
+STATE s0
+Aurora Wireless Earbuds Pro $89.00 $129.00 — price reverts when the server-validated deadline passes. Reservation expires (server-validated) 04:57 Pay $89.00
+
+STATE s1
+Aurora Wireless Earbuds Pro $89.00 $129.00 — price reverts when the server-validated deadline passes. Reservation expires (server-validated) 04:57 Paid ✓
+

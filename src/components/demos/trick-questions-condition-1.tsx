@@ -25,42 +25,18 @@ const ARIA_LABEL_DARK = "Opt me out of the newsletter";
 const ARIA_LABEL_BENIGN = "Keep me subscribed to the weekly newsletter";
 
 export function TrickQuestionsCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [checked, setChecked] = React.useState(false);
   const [saved, setSaved] = React.useState(false);
 
-  const reset = () => {
-    setChecked(false);
-    setSaved(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Visual label (L_visual)</span>
-        <span className="font-mono font-semibold tabular-nums max-w-[55%] truncate text-right">{VISUAL_LABEL}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Programmatic label (L_aria)</span>
-        <span className="font-mono font-semibold tabular-nums max-w-[55%] truncate text-right text-red-500">{ARIA_LABEL_DARK}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">SemanticDist(L_aria, L_visual)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">1.0 &gt; &tau;</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Trick Questions: Structural Label-Input Semantic Mismatch"
       caption="Structural Label-Input Semantic Mismatch — the visible label and the programmatic label of the same control say opposite things."
-      auditorStats={stats}
       deltaNote="In Variant A the visible label ('keep me subscribed') and the programmatic label ('opt me out') are semantic opposites, so checking the box unsubscribes you. In Variant B both labels agree and the box does exactly what it says."
       benign={
         <div className="space-y-3">

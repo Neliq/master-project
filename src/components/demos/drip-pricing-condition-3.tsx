@@ -33,11 +33,9 @@ const ROOM_TOTAL = NIGHT_RATE * NIGHTS;
 const GRAND_TOTAL = ROOM_TOTAL + FEES.reduce((s, f) => s + f.amount, 0);
 
 export function DripPricingCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [pageA, setPageA] = React.useState(0);
   const [pageB, setPageB] = React.useState(0);
@@ -46,37 +44,6 @@ export function DripPricingCond3({
   const [paidA, setPaidA] = React.useState(false);
   const [paidB, setPaidB] = React.useState(false);
 
-  const reset = () => {
-    setPageA(0);
-    setPageB(0);
-    setScannedA(false);
-    setScannedB(false);
-    setPaidA(false);
-    setPaidB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">K_fees ∩ T_initial (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">∅ (absent above fold)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">K_fees ∩ T_final</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">≠ ∅ (3 terms)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Trigger (∧)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">True</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Quoted vs billed</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {usd(NIGHT_RATE)}/night → {usd(GRAND_TOTAL)}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   const feeList = (
     <div className="space-y-1">
@@ -259,11 +226,8 @@ export function DripPricingCond3({
   return (
     <DemoShell
       mode={mode}
-      annotations={annotations}
-      onRestart={onRestart ?? reset}
       title="Drip Pricing, Hidden Costs, or Partitioned Pricing: Semantic Concealment of Mandatory Fee Disclosure"
       caption="Semantic Concealment of Mandatory Fee Disclosure — mandatory-fee terminology is absent from the initial pricing page above the fold and only appears on the final checkout page."
-      auditorStats={stats}
       deltaNote="Variant A keeps the initial pricing page free of any fee words (T_initial ∩ K_fees = ∅) and only introduces “service fee”, “booking fee” and “convenience charge” at the final step. Variant B names the same three fees on the initial page and quotes the full total above the fold, so the semantic concealment never occurs."
       benign={renderFlow(false)}
     >

@@ -1,0 +1,12 @@
+STATE s1
+Kelp Farm Harvest kelp bundles. Encouragement arrives on a steady schedule. Steady praise Kelp harvested 0 bundles Praise milestones so far: #— — every 5 actions, gaps constant. Harvest kelp (+1) Harvest x5
+
+STATE s2
+Kelp Farm Harvest kelp bundles. Encouragement arrives on a steady schedule. Steady praise Kelp harvested 1 bundles Praise milestones so far: #— — every 5 actions, gaps constant. Harvest kelp (+1) Harvest x5
+
+STATE s3
+Kelp Farm Harvest kelp bundles. Encouragement arrives on a steady schedule. Steady praise Kelp harvested 2 bundles Praise milestones so far: #— — every 5 actions, gaps constant. Harvest kelp (+1) Harvest x5
+
+STATE s4
+Kelp Farm Harvest kelp bundles. Encouragement arrives on a steady schedule. Steady praise Kelp harvested 3 bundles Praise milestones so far: #— — every 5 actions, gaps constant. Harvest kelp (+1) Harvest x5
+

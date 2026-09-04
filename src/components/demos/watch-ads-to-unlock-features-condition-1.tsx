@@ -25,11 +25,9 @@ const AD_SECONDS = 6;
 const SKIP_AFTER_SECONDS = 1;
 
 export function WatchAdsToUnlockFeaturesCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [adStateA, setAdStateA] = React.useState<"idle" | "playing" | "done">("idle");
   const [adStateB, setAdStateB] = React.useState<"idle" | "playing" | "done">("idle");
@@ -46,22 +44,6 @@ export function WatchAdsToUnlockFeaturesCond1({
   const [unlockedA, setUnlockedA] = React.useState(false);
   const [unlockedB, setUnlockedB] = React.useState(false);
 
-  const reset = () => {
-    setAdStateA("idle");
-    setAdStateB("idle");
-    setSecondsLeftA(AD_SECONDS);
-    setSecondsLeftB(AD_SECONDS);
-    setAttentionRequiredA(true);
-    setAttentionRequiredB(true);
-    setSwitchedAwayA(false);
-    setSwitchedAwayB(false);
-    setSkippedA(false);
-    setSkippedB(false);
-    setEnergyA(0);
-    setEnergyB(0);
-    setUnlockedA(false);
-    setUnlockedB(false);
-  };
 
   // The ad only advances while playback is verified: in the dark variant,
   // switching away sets E_playback = 0 and the integral freezes.
@@ -138,31 +120,6 @@ export function WatchAdsToUnlockFeaturesCond1({
       setUnlockedB(true);
     }
   };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Δt_ad (ad duration)</span>
-        <span className="font-mono font-semibold tabular-nums">{AD_SECONDS}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">E_playback(t)</span>
-        <span className={`font-mono font-semibold tabular-nums ${pausedA ? "text-red-500" : "text-green-500"}`}>
-          {pausedA ? "0 (paused)" : playingA ? "1 (playing)" : "—"}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∫ E_playback dt</span>
-        <span className="font-mono font-semibold tabular-nums">{Math.min(AD_SECONDS, AD_SECONDS - secondsLeftA)}s / {AD_SECONDS}s</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">State(R_target)</span>
-        <span className={`font-mono font-semibold tabular-nums ${unlockedA ? "text-green-500" : "text-red-500"}`}>
-          {unlockedA ? "Unlocked" : "Locked"}
-        </span>
-      </div>
-    </>
-  ) : null;
 
   const renderAdPlayer = (accent: "rose" | "emerald") => {
     const isDark = accent === "rose";
@@ -263,11 +220,10 @@ export function WatchAdsToUnlockFeaturesCond1({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Watch Ads To Unlock Features Or Get Rewards: Attention as Transactional Currency"
       userTitle="Trailblaze Quest — Level 2"
       caption="Attention as Transactional Currency — the app demands uninterrupted, fully-visible ad playback as the sole currency to unlock a feature."
-      auditorStats={stats}
       deltaNote="Both variants gate the next level behind one 6-second ad and grant the same +1 Energy token. Variant A makes the ad unskippable and pauses it the moment you switch away — attention is verified and is the only accepted currency (∫E_playback dt = Δt_ad). Variant B keeps the reward but lets you skip after 1s and switch away freely, so attention is no longer extorted."
       benign={
         <div className="space-y-3">

@@ -31,55 +31,22 @@ const DEPTH_DARK = 6;
 const DEPTH_BENIGN = 1;
 
 export function ComplexLanguageCond1({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [openA, setOpenA] = React.useState([false, false, false]);
   const [agreed, setAgreed] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
 
-  const reset = () => {
-    setOpenA([false, false, false]);
-    setAgreed(false);
-    setSubmitted(false);
-  };
 
   const toggleA = (i: number) =>
     setOpenA((prev) => prev.map((v, j) => (j === i ? !v : v)));
 
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">D_DOM(N_complex) (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{DEPTH_DARK} &gt; &tau;_legal_depth ({TAU_LEGAL_DEPTH})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">D_DOM(N_complex) (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{DEPTH_BENIGN}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Mean clause length (dark)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{CLAUSE_DARK.length} &gt; &tau;_clause ({TAU_CLAUSE_LENGTH})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Clause length (benign)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{CLAUSE_BENIGN.length} chars</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Agreed?</span>
-        <span className="font-mono font-semibold tabular-nums">{agreed ? "Yes" : "No"}</span>
-      </div>
-    </>
-  ) : null;
-
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Complex Language: Structural Nesting Depth of Legal/Technical Text Nodes"
       caption="Structural Nesting Depth — the binding auto-renewal clause is buried deep inside nested legal containers, far below the site's median content depth."
-      auditorStats={stats}
       deltaNote={`In Variant A the renewal clause sits ${DEPTH_DARK} DOM levels deep inside nested collapsibles (τ_legal_depth = ${TAU_LEGAL_DEPTH}) with a ${CLAUSE_DARK.length}-character clause (τ_clause_length = ${TAU_CLAUSE_LENGTH}). Variant B shows the identical clause at depth ${DEPTH_BENIGN} in plain language.`}
       benign={
         <div className="space-y-3">

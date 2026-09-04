@@ -30,40 +30,13 @@ const AD_LABEL_DARK = "Next";
 const AD_LABEL_BENIGN = "Learn more about our sponsor";
 
 export function DisguisedAdCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [page, setPage] = React.useState<1 | 2>(1);
   const [adClicked, setAdClicked] = React.useState<null | "dark" | "benign">(null);
 
-  const reset = () => {
-    setPage(1);
-    setAdClicked(null);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">L_native corpus</span>
-        <span className="font-mono font-semibold tabular-nums">{"{"}{NATIVE_LABELS.join(", ")}{"}"}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Label(N_ad) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">&ldquo;{AD_LABEL_DARK}&rdquo;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">max sim(L(N_ad), ℓ) — dark</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{SIM_DARK} &gt; τ_masquerade ({TAU_MASQUERADE})</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">max sim — benign</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">{SIM_BENIGN} &le; τ_masquerade</span>
-      </div>
-    </>
-  ) : null;
 
   const nativePagination = (
     <div className="flex items-center justify-between rounded-md border bg-background px-2 py-1.5">
@@ -92,10 +65,9 @@ export function DisguisedAdCond3({
   );
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Disguised Ad: Semantic Mimicry of Native Action Labels"
       caption="Semantic Mimicry of Native Action Labels — the ad's button label is semantically near-identical to a native functional label such as “Next”, “Play”, or “Download”, impersonating the interface's own vocabulary."
-      auditorStats={stats}
       deltaNote={`The article, the native pagination, and the ad placement are identical in both panels. In Variant A the ad's button is labeled "${AD_LABEL_DARK}" — cosine similarity ${SIM_DARK} with the native "Next" label, above τ_masquerade (${TAU_MASQUERADE}) — so clicking it looks like turning the page. In Variant B the same ad is labeled "${AD_LABEL_BENIGN}" (sim ${SIM_BENIGN}), semantically distant from every native label.`}
       benign={
         <div className="space-y-3">

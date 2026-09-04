@@ -1,0 +1,9 @@
+STATE s1
+PREMIUM Stellar Nova Bundle 1,299 coins Unlock exclusive in-game items, skins, and 500 bonus coins. Limited time offer for new players. Buy Now — 1,299 coins by Stellar Games Inc.
+
+STATE s2
+Back to store Top up your wallet Add coins to your wallet to complete this purchase Stellar Nova Bundle costs 1,299 coins . Your wallet is empty — you must buy coins before you can buy anything. Fiat payment is not accepted for in-game items. 1,500 Coins $ 47.10 · best value pack +201 extra Buy 1,500 Coins — $47.10 Remaining balance stays in your wallet. Unused coins never expire.
+
+STATE s3
+Wallet updated 1,500 coins added Available balance 201 coins
+

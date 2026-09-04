@@ -26,44 +26,17 @@ import { ScanSearch, Users } from "lucide-react";
 const Q = 128;
 
 export function HighDemandCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [verified, setVerified] = React.useState(false);
 
-  const reset = () => setVerified(false);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">∃q ∈ ℤ⁺ (quantifier)</span>
-        <span className="font-mono font-semibold tabular-nums">{Q}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Qualifier (A)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">¬∃ — none</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Qualifier (B)</span>
-        <span className="font-mono font-semibold tabular-nums text-green-500">&ldquo;in the last hour&rdquo;</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Claim falsifiable (A / B)</span>
-        <span className="font-mono font-semibold tabular-nums">
-          <span className="text-red-500">No</span> / <span className="text-green-500">Yes</span>
-        </span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="High Demand: Semantic Verifiability of Social-Proof Quantifiers"
       caption="Semantic Verifiability of Social-Proof Quantifiers — a precise numeric quantifier with no temporal or geographic bound renders the demand claim semantically unfalsifiable."
-      auditorStats={stats}
       deltaNote="Variant A claims “128 people are viewing this” — ∃q = 128 ∈ ℤ⁺ but ¬∃ Qualifier_temporal/geographic, so the assertion can never be checked. Variant B keeps the identical count but bounds it: “128 people viewed this in the last hour,” making the claim verifiable against real analytics."
       benign={
         <div className="space-y-3">

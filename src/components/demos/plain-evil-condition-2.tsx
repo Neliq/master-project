@@ -33,57 +33,21 @@ const CANCEL_FONT_PX = 8; // below-threshold cancellation vector
 type Decision = "keep" | "pause" | "downgrade" | "cancel" | null;
 
 export function PlainEvilCond2({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [decisionA, setDecisionA] = React.useState<Decision>(null);
   const [decisionB, setDecisionB] = React.useState<Decision>(null);
   const [submittedA, setSubmittedA] = React.useState(false);
   const [submittedB, setSubmittedB] = React.useState(false);
 
-  const reset = () => {
-    setDecisionA(null);
-    setDecisionB(null);
-    setSubmittedA(false);
-    setSubmittedB(false);
-  };
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Σ 1_hostile(N_i)·w_i</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{HOSTILE_WEIGHT.toFixed(1)}</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">A_viewport</span>
-        <span className="font-mono font-semibold tabular-nums">{AREA_VIEWPORT} u²</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">H = Σw / A</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">
-          {H_INDEX.toFixed(2)} &gt; {TAU_HOSTILITY.toFixed(2)}
-        </span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Cancel vector font size</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">{CANCEL_FONT_PX}px (&lt; 12px)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Your decision</span>
-        <span className="font-mono font-semibold tabular-nums">A: {decisionA ?? "—"} / B: {decisionB ?? "—"}</span>
-      </div>
-    </>
-  ) : null;
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Plain Evil (Theoretical Construct): Visual Hostility Density Index"
       userTitle="CloudPhoto — Manage subscription"
       caption="Visual Hostility Density Index — a cancellation page where every retention vector screams in red and orange while the cancel path shrinks to an 8px grey whisper, saturating the viewport with hostile visual markers."
-      auditorStats={stats}
       deltaNote="Both variants communicate the same facts: renewal in 2 days, price rising from $59 to $99/yr, and the availability of keep / pause / downgrade / cancel. Variant A renders them as a hostile gauntlet — urgency banners in red/orange, oversized retention buttons, and an 8px cancel link (H = 0.25 > tau). Variant B uses neutral colors and four equal-size, equal-contrast buttons, so no hostile markers exist (H ≈ 0). The displayed values are illustrative Variant-A inputs; the benign zero baseline is a qualitative comparison rather than a live DOM measurement."
       benign={
         <div className="space-y-3">

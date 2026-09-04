@@ -1,0 +1,12 @@
+STATE s0
+AeroGlide X Wireless Headphones Flash deal Shared global deadline 14:58 Session #0 Deadline: 14:58 $195 $119 Buy now — $119
+
+STATE s1
+AeroGlide X Wireless Headphones Flash deal Shared global deadline 14:57 Session #0 Deadline: 14:57 $195 $119 Order confirmed
+
+STATE s2
+AeroGlide X Wireless Headphones Flash deal Shared global deadline 14:57 Session #1 Deadline: 14:57 $195 $119 Order confirmed Global deadline preserved The countdown continued from its current value because the deadline is shared across sessions. Starting over did not add time to the offer.
+
+STATE s3
+AeroGlide X Wireless Headphones Flash deal Shared global deadline 14:56 Session #2 Deadline: 14:56 $195 $119 Order confirmed Global deadline preserved The countdown continued from its current value because the deadline is shared across sessions. Starting over did not add time to the offer.
+

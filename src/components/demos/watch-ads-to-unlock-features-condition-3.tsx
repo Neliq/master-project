@@ -27,11 +27,9 @@ import { DemoShell } from "@/components/demos/demo-shell";
 const AD_SECONDS = 4;
 
 export function WatchAdsToUnlockFeaturesCond3({
-  mode = "user", annotations = [], onRestart,
+  mode = "user",
 }: {
   mode?: "user" | "auditor";
-  annotations?: import("@/components/demos/demo-shell").AnnotationItem[];
-  onRestart?: () => void;
 } = {}) {
   const [adStateA, setAdStateA] = React.useState<"idle" | "watching" | "done">("idle");
   const [adStateB, setAdStateB] = React.useState<"idle" | "watching" | "done">("idle");
@@ -40,14 +38,6 @@ export function WatchAdsToUnlockFeaturesCond3({
   const [crateOpenedA, setCrateOpenedA] = React.useState(false);
   const [crateOpenedB, setCrateOpenedB] = React.useState(false);
 
-  const reset = () => {
-    setAdStateA("idle");
-    setAdStateB("idle");
-    setAdLeftA(AD_SECONDS);
-    setAdLeftB(AD_SECONDS);
-    setCrateOpenedA(false);
-    setCrateOpenedB(false);
-  };
 
   const watchingA = adStateA === "watching";
   const watchingB = adStateB === "watching";
@@ -80,27 +70,6 @@ export function WatchAdsToUnlockFeaturesCond3({
     const t = window.setTimeout(() => setAdStateB("done"), 250);
     return () => window.clearTimeout(t);
   }, [watchingB, adLeftB]);
-
-  const stats = mode === "auditor" ? (
-    <>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Hyperbole(T_reward)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.95</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Utility(R_actual)</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.00 (cosmetic)</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">Hype gap</span>
-        <span className="font-mono font-semibold tabular-nums text-red-500">0.95 &gt; τ_hype_gap</span>
-      </div>
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-muted-foreground">τ_hype_gap</span>
-        <span className="font-mono font-semibold tabular-nums">0.30</span>
-      </div>
-    </>
-  ) : null;
 
   const renderItemReveal = (accent: "rose" | "emerald") => {
     const isDark = accent === "rose";
@@ -228,11 +197,10 @@ export function WatchAdsToUnlockFeaturesCond3({
   };
 
   return (
-    <DemoShell mode={mode} annotations={annotations} onRestart={onRestart ?? reset}
+    <DemoShell mode={mode}
       title="Watch Ads To Unlock Features Or Get Rewards: Semantic Inflation of Reward Value"
       userTitle="Legendary crate"
       caption="Semantic Inflation of Reward Value — hyperbolic storefront language sells a reward whose real utility is zero."
-      auditorStats={stats}
       deltaNote="Both crates cost the same 4-second ad and contain the identical item — a cosmetic Star Sticker with zero gameplay impact. Variant A advertises it with superlatives ('LEGENDARY', 'EXCLUSIVE', 'AMAZING') and buries the 'cosmetic only' fine print; Variant B describes the sticker exactly as it is, so the hype-utility gap is zero."
       benign={
         <div className="space-y-3">{renderCratePanel("emerald")}</div>

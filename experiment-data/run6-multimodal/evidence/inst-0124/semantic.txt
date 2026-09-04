@@ -1,0 +1,6 @@
+STATE s1
+Mysterious Ancient Chest A legendary chest lies sealed beneath the Ember Temple. Only the worthy may open it. Discover ✨ Unlock the Ancient Chest A small one-time fee applies. Unlock to enhance your journey. $4.99 — charged to your payment method on file.
+
+STATE s2
+Mysterious Ancient Chest A legendary chest lies sealed beneath the Ember Temple. Only the worthy may open it. Discover Chest unlocked! Your journey is enhanced.
+
