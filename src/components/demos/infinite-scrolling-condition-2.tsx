@@ -40,7 +40,7 @@ export function InfiniteScrollingCond2({
   // Section counts are per-panel: A keeps appending (footer recedes),
   // B is finite (footer reachable). The payload texts are identical.
   const [countA, setCountA] = React.useState(4);
-  const [countB, setCountB] = React.useState(4);
+  const [countB] = React.useState(4);
   const [gapA, setGapA] = React.useState<number | null>(null);
   const [gapB, setGapB] = React.useState(0);
   const [autoAppends, setAutoAppends] = React.useState(0);

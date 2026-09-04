@@ -30,7 +30,7 @@ export function AutomatingTheUserAwayCond1({
   mode?: "user" | "auditor";
 } = {}) {
   const [videoIdxA, setVideoIdxA] = React.useState(0);
-  const [videoIdxB, setVideoIdxB] = React.useState(0);
+  const [videoIdxB] = React.useState(0);
   const [phaseA, setPhaseA] = React.useState<"ready" | "playing" | "ended">("ready");
   const [phaseB, setPhaseB] = React.useState<"ready" | "playing" | "ended">("ready");
   const [progressA, setProgressA] = React.useState(0);

@@ -36,7 +36,7 @@ export function CountdownTimerCond1({
 } = {}) {
   const [secondsA, setSecondsA] = React.useState(DELTA_S);
   const [resetsA, setResetsA] = React.useState(0);
-  const [expiresAtB, setExpiresAtB] = React.useState(() => Date.now() + DELTA_S * 1000);
+  const [expiresAtB] = React.useState(() => Date.now() + DELTA_S * 1000);
   const [secondsB, setSecondsB] = React.useState(DELTA_S);
   const [paid, setPaid] = React.useState(false);
 

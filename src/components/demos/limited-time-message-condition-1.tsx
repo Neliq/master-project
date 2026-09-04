@@ -49,7 +49,7 @@ export function LimitedTimeMessageCond1({
 } = {}) {
   const [remaining, setRemaining] = React.useState(START_SECONDS);
   const [cycles, setCycles] = React.useState(1);
-  const [benignDeadline, setBenignDeadline] = React.useState(() => Date.now() + START_SECONDS * 1000);
+  const [benignDeadline] = React.useState(() => Date.now() + START_SECONDS * 1000);
   const [benignExpired, setBenignExpired] = React.useState(false);
   const [claimed, setClaimed] = React.useState(false);
 

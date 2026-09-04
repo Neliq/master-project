@@ -10,8 +10,7 @@
  *   comparison context visible in the demo header and A/B labels.
  *
  * The dark-pattern UI is wrapped in a `[data-dp-simulation]` container so
- * the audit layer can count clicks and (later) the CSS can react to speed
- * via `[data-dp-speed]`.
+ * CSS can target the simulation and its speed via `[data-dp-speed]`.
  */
 
 import * as React from "react";
@@ -51,7 +50,7 @@ export interface DemoShellProps {
   deltaNote?: string;
   /** Optional className for the root card. */
   className?: string;
-  /** View mode: "user" shows only the dark pattern UI; "auditor" adds audit chrome. */
+  /** View mode: "user" shows the product UI; "auditor" adds comparison context. */
   mode?: ViewMode;
   /** Auditor-only: speed multiplier. */
   speed?: number;
