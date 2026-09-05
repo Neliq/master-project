@@ -234,15 +234,53 @@
   font-family: "Hermes Mono", "Courier New", monospace !important;
 }
 
-.sandbox-card-image::after {
+.sandbox-card-image,
+.pattern-page-thumbnail {
+  isolation: isolate;
+}
+
+.sandbox-card-image::before,
+.sandbox-card-image::after,
+.pattern-page-thumbnail::before,
+.pattern-page-thumbnail::after {
   position: absolute;
-  inset: 0;
+  inset: -4%;
   pointer-events: none;
   content: "";
-  opacity: 0.32;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.2' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
+  z-index: 1;
 }
+
+.sandbox-card-image::before,
+.pattern-page-thumbnail::before {
+  background-image:
+    radial-gradient(circle, rgb(0 0 0 / 58%) 0 1.05px, transparent 1.45px),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.42' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.95'/%3E%3C/svg%3E");
+  background-size: 4px 4px, 90px 90px;
+  background-position: 0 0, 13px -9px;
+  mix-blend-mode: multiply;
+  opacity: 0.58;
+  transform: scale(1.07) rotate(0.65deg);
+}
+
+.sandbox-card-image::after,
+.pattern-page-thumbnail::after {
+  background-image:
+    radial-gradient(circle, rgb(255 255 255 / 92%) 0 1.15px, transparent 1.45px),
+    radial-gradient(circle, rgb(255 255 255 / 68%) 0 0.7px, transparent 1px);
+  background-size: 4px 4px, 6px 6px;
+  background-position: 0 0, 2px 1px;
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  transform: scale(1.08) rotate(-1.8deg);
+}
+
+.sandbox-card-image > img,
+.pattern-page-thumbnail > img {
+  z-index: 0;
+  filter: contrast(1.32) saturate(1.2) brightness(1.02) blur(0.12px);
+  transform: scale(1.025) rotate(0.3deg);
+}
+
 
 .sandbox-hero-description {
   font-family: "Hermes Mono", "Courier New", monospace;

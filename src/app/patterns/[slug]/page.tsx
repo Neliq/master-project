@@ -131,7 +131,7 @@ export default async function PatternPage({ params }: PageProps) {
             </p>
           </div>
           {image ? (
-            <div className="relative min-w-0 max-w-lg flex-1 self-center aspect-square overflow-hidden border border-white">
+            <div className="pattern-page-thumbnail relative min-w-0 max-w-lg flex-1 self-center aspect-[7/6] overflow-hidden border border-white">
               <Image
                 src={image}
                 alt=""

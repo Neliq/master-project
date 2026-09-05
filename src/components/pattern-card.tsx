@@ -46,7 +46,7 @@ export function PatternCard({ pattern, className }: PatternCardProps) {
       </div>
 
       {image ? (
-        <div className="sandbox-card-image relative -mx-5 mb-3 aspect-square overflow-hidden border-y border-[#0000f2]/15">
+        <div className="sandbox-card-image relative -mx-5 mb-3 aspect-[7/6] overflow-hidden border-y border-[#0000f2]/15">
           <Image
             src={image}
             alt=""
