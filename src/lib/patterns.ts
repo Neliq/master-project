@@ -1328,6 +1328,12 @@ export const PATTERNS_BY_SLUG: Record<string, Pattern> = PATTERNS.reduce(
   {} as Record<string, Pattern>
 );
 
+/** Stable numeric identifier used by isolated demo URLs (/pattern/condition/variant). */
+export function getPatternNumber(slug: string): number | undefined {
+  const index = PATTERNS.findIndex((pattern) => pattern.slug === slug);
+  return index === -1 ? undefined : index + 1;
+}
+
 /** Look up a category by its id; falls back to a stub so the page never throws. */
 export function getCategory(id: string): Category {
   return (

@@ -25,6 +25,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 export type ViewMode = "user" | "auditor";
+export type IsolatedVariant = "dark" | "benign";
+
+const DemoIsolationContext = React.createContext<IsolatedVariant | null>(null);
+
+export function DemoIsolationProvider({
+  variant,
+  children,
+}: {
+  variant: IsolatedVariant;
+  children: ReactNode;
+}) {
+  return (
+    <DemoIsolationContext.Provider value={variant}>
+      {children}
+    </DemoIsolationContext.Provider>
+  );
+}
 
 export interface DemoShellProps {
   /** Pattern name, e.g. "Sneak Into Basket". */
@@ -70,6 +87,7 @@ export function DemoShell({
   speed = 1,
 }: DemoShellProps) {
   const isAuditor = mode === "auditor";
+  const isolatedVariant = React.useContext(DemoIsolationContext);
   const simulationRef = React.useRef<HTMLDivElement>(null);
 
   // Keep evaluator vocabulary out of the simulated product surface. The
@@ -94,10 +112,27 @@ export function DemoShell({
     return () => observer.disconnect();
   }, [isAuditor]);
 
+  if (isolatedVariant) {
+    return (
+      <div
+        ref={simulationRef}
+        data-isolated-demo
+        data-dp-simulation
+        data-dp-mode={mode}
+        data-dp-speed={speed}
+        className="relative w-full"
+      >
+        <div data-dp-content className="text-card-foreground">
+          {isolatedVariant === "benign" ? benign : children}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Card
       className={cn(
-        "demo-shell-frame overflow-hidden rounded-none border border-white/40 py-0 ring-1 ring-white/20",
+        "demo-shell-frame w-full max-w-full overflow-hidden rounded-none border border-white/40 py-0 ring-1 ring-white/20",
         className
       )}
     >
@@ -146,7 +181,7 @@ export function DemoShell({
           data-dp-simulation
           data-dp-mode={mode}
           data-dp-speed={speed}
-          className="relative border border-white bg-white p-4 ring-1 ring-white/20"
+          className="relative mx-auto w-fit max-w-2xl border border-white bg-white p-4 ring-1 ring-white/20"
         >
           {benign && isAuditor ? (
             <>
