@@ -121,8 +121,8 @@ export default async function PatternPage({ params }: PageProps) {
 
       {/* Header */}
       <header className="border-b border-white/25 pb-8">
-        <div className="flex items-center gap-8">
-          <div className="min-w-0 flex-1">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8">
+          <div className="order-2 min-w-0 flex-1 sm:order-1">
             <h1 className="pattern-page-title text-3xl font-semibold tracking-tight sm:text-4xl">
               {pattern.name}
             </h1>
@@ -131,7 +131,7 @@ export default async function PatternPage({ params }: PageProps) {
             </p>
           </div>
           {image ? (
-            <div className="pattern-page-thumbnail relative min-w-0 max-w-lg flex-1 self-center aspect-[7/6] overflow-hidden border border-white">
+            <div className="pattern-page-thumbnail order-1 relative aspect-[7/6] w-full max-w-lg self-center overflow-hidden border border-white sm:order-2 sm:flex-1">
               <Image
                 src={image}
                 alt=""
