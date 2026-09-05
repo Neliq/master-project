@@ -95,10 +95,10 @@ export default function HomePage() {
               aria-labelledby={`${category.id}-title`}
             >
               <div className="mb-6 flex flex-col gap-1">
-                <div className="flex items-center gap-2">
+                <div className="flex min-w-0 items-center gap-2">
                   <h2
                     id={`${category.id}-title`}
-                    className="text-left text-5xl font-semibold tracking-tight sm:text-7xl"
+                    className="min-w-0 break-words text-left text-5xl font-semibold tracking-tight sm:text-7xl"
                   >
                     {category.name}
                   </h2>
