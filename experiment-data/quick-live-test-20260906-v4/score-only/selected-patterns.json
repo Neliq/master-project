@@ -1,0 +1,62 @@
+[
+  {
+    "pattern_number": 1,
+    "slug": "immortal-accounts",
+    "name": "Immortal Accounts",
+    "card": "card-001-immortal-accounts.md"
+  },
+  {
+    "pattern_number": 26,
+    "slug": "price-comparison-prevention",
+    "name": "Price Comparison Prevention",
+    "card": "card-026-price-comparison-prevention.md"
+  },
+  {
+    "pattern_number": 9,
+    "slug": "sneak-into-basket",
+    "name": "Sneak Into Basket",
+    "card": "card-009-sneak-into-basket.md"
+  },
+  {
+    "pattern_number": 28,
+    "slug": "conflicting-information",
+    "name": "Conflicting Information",
+    "card": "card-028-conflicting-information.md"
+  },
+  {
+    "pattern_number": 32,
+    "slug": "persuasive-language",
+    "name": "Persuasive Language",
+    "card": "card-032-persuasive-language.md"
+  },
+  {
+    "pattern_number": 33,
+    "slug": "cuteness",
+    "name": "Cuteness",
+    "card": "card-033-cuteness.md"
+  },
+  {
+    "pattern_number": 58,
+    "slug": "addictive-design",
+    "name": "Addictive Design",
+    "card": "card-058-addictive-design.md"
+  },
+  {
+    "pattern_number": 16,
+    "slug": "friend-spam",
+    "name": "Friend Spam",
+    "card": "card-016-friend-spam.md"
+  },
+  {
+    "pattern_number": 54,
+    "slug": "pay-to-avoid",
+    "name": "Pay To Avoid",
+    "card": "card-054-pay-to-avoid.md"
+  },
+  {
+    "pattern_number": 38,
+    "slug": "confirmshaming",
+    "name": "Confirmshaming",
+    "card": "card-038-confirmshaming.md"
+  }
+]

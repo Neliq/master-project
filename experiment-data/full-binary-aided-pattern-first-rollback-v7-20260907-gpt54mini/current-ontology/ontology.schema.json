@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:master-thesis:deceptive-interface-heuristics:ontology.schema.json",
+  "title": "Machine-readable semantics for deceptive interface heuristics",
+  "description": "Schema for the source-preserving, LLM-oriented semantic translation of the thesis formalizations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "ontology_id",
+    "version",
+    "translation_contract",
+    "evaluation_contract",
+    "validation",
+    "patterns"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "ontology_id": { "const": "deceptive-interface-heuristics" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "translation_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relationship",
+        "source_authority",
+        "source_formula_count",
+        "translated_condition_count",
+        "original_formulas_preserved_verbatim",
+        "original_given_paragraphs_preserved",
+        "translation_description",
+        "no_new_taxonomy_entries",
+        "no_new_thresholds",
+        "no_experiment_rerun_required_for_translation"
+      ],
+      "properties": {
+        "relationship": { "const": "one-to-one" },
+        "source_authority": { "type": "string" },
+        "source_formula_count": { "const": 186 },
+        "translated_condition_count": { "const": 186 },
+        "original_formulas_preserved_verbatim": { "const": true },
+        "original_given_paragraphs_preserved": { "const": true },
+        "translation_description": { "type": "string", "minLength": 20 },
+        "no_new_taxonomy_entries": { "const": true },
+        "no_new_thresholds": { "const": true },
+        "no_experiment_rerun_required_for_translation": { "const": true }
+      }
+    },
+    "evaluation_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "atom_statuses",
+        "boolean_composition",
+        "material_implication",
+        "unobservable_claims",
+        "missing_data",
+        "visual_measurements",
+        "operator_semantics",
+        "threshold_policy",
+        "benchmark_labels",
+        "pattern_composition"
+      ],
+      "properties": {
+        "atom_statuses": {
+          "type": "array",
+          "const": ["TRUE", "FALSE", "UNKNOWN"]
+        },
+        "boolean_composition": {"type": "string"},
+        "material_implication": { "type": "string" },
+        "unobservable_claims": { "type": "string" },
+        "missing_data": { "type": "string" },
+        "visual_measurements": { "type": "string" },
+        "operator_semantics": { "type": "string", "minLength": 20 },
+        "threshold_policy": { "type": "string", "minLength": 20 },
+        "benchmark_labels": { "type": "string", "minLength": 20 },
+        "pattern_composition": { "type": "string" }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "active_patterns",
+        "active_conditions",
+        "formula_card_matches",
+        "independent_second_researcher_review",
+        "limitation"
+      ],
+      "properties": {
+        "active_patterns": { "const": 62 },
+        "active_conditions": { "const": 186 },
+        "formula_card_matches": { "const": 186 },
+        "independent_second_researcher_review": { "const": false },
+        "limitation": { "type": "string", "minLength": 20 }
+      }
+    },
+    "patterns": {
+      "type": "array",
+      "minItems": 62,
+      "maxItems": 62,
+      "items": { "$ref": "#/$defs/pattern" }
+    }
+  },
+  "$defs": {
+    "stringArray": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "pattern": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "ordinal",
+        "name",
+        "family",
+        "card_source",
+        "card_sha256",
+        "conditions",
+        "composition"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^DP-[0-9]{3}$" },
+        "ordinal": { "type": "integer", "minimum": 1, "maximum": 62 },
+        "name": { "type": "string", "minLength": 1 },
+        "family": { "type": "string", "minLength": 1 },
+        "card_source": { "type": "string", "pattern": "^ontology/cards/card-[0-9]{3}-.+\\.md$" },
+        "card_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "conditions": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "$ref": "#/$defs/condition" }
+        },
+        "composition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "condition_ids",
+            "true_if",
+            "false_if",
+            "unknown_if",
+            "counterevidence_conditions_cannot_create_trigger"
+          ],
+          "properties": {
+            "type": { "const": "OR" },
+            "condition_ids": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": { "type": "string", "pattern": "^DP-[0-9]{3}-C[123]$" }
+            },
+            "true_if": { "type": "string" },
+            "false_if": { "type": "string" },
+            "unknown_if": { "type": "string" },
+            "counterevidence_conditions_cannot_create_trigger": { "const": true }
+          }
+        }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "ordinal", "name", "source", "translation", "machine_semantics"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^DP-[0-9]{3}-C[123]$" },
+        "ordinal": { "type": "integer", "minimum": 1, "maximum": 3 },
+        "name": { "type": "string", "minLength": 1 },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["file", "file_sha256", "formula_line", "given_line", "formula_tex", "given_tex"],
+          "properties": {
+            "file": { "type": "string", "pattern": "^subsections/[0-9]{2}-.+\\.tex$" },
+            "file_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "formula_line": { "type": "integer", "minimum": 1 },
+            "given_line": { "type": "integer", "minimum": 1 },
+            "formula_tex": { "type": "string", "minLength": 1 },
+            "given_tex": { "type": "string", "minLength": 1 }
+          }
+        },
+        "translation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "operational_reading",
+            "polarity",
+            "comparison_policy",
+            "review_policy",
+            "required_atoms",
+            "unknown_when",
+            "direct_counterevidence",
+            "anti_inference"
+          ],
+          "properties": {
+            "operational_reading": { "type": "string", "minLength": 1 },
+            "polarity": { "enum": ["trigger", "counterevidence"] },
+            "comparison_policy": { "type": "string", "minLength": 1 },
+            "review_policy": { "type": "string", "minLength": 1 },
+            "required_atoms": { "$ref": "#/$defs/stringArray" },
+            "unknown_when": { "$ref": "#/$defs/stringArray" },
+            "direct_counterevidence": { "$ref": "#/$defs/stringArray" },
+            "anti_inference": { "$ref": "#/$defs/stringArray" },
+            "semantic_correction": { "type": "string" }
+          }
+        },
+        "machine_semantics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "language",
+            "status_values",
+            "required_atom_operator",
+            "pseudo_code",
+            "true_if",
+            "false_if",
+            "unknown_if",
+            "implication_mode",
+            "missing_data_is_not",
+            "unobservable_terms_detected",
+            "pattern_trigger_eligible"
+          ],
+          "properties": {
+            "type": { "const": "condition-proof-obligation" },
+            "language": { "const": "strict-evidence-pseudocode-v1" },
+            "status_values": { "const": ["TRUE", "FALSE", "UNKNOWN"] },
+            "required_atom_operator": { "const": "SOURCE_BOOLEAN_STRUCTURE" },
+            "pseudo_code": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "true_if": { "type": "string", "minLength": 1 },
+            "false_if": { "type": "string", "minLength": 1 },
+            "unknown_if": { "type": "string", "minLength": 1 },
+            "implication_mode": { "const": "observed-proof-obligation" },
+            "missing_data_is_not": { "type": "string", "minLength": 1 },
+            "unobservable_terms_detected": { "$ref": "#/$defs/stringArray" },
+            "pattern_trigger_eligible": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }
+}

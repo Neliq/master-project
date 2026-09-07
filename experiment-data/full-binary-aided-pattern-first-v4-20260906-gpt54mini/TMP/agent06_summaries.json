@@ -1,0 +1,641 @@
+[
+  {
+    "instance_id": "task-8ff7a0e70622",
+    "url": "http://127.0.0.1:3000/49/1/2",
+    "text": "SnapCam Take a photo with your front camera. Tags: off SNAPCAM \u00b7 LIVE PREVIEW Take photo Photo location tags Optional \u2014 the camera works either way. Off by default.",
+    "buttons": [
+      "Take photo"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-f92154de07f9",
+    "url": "http://127.0.0.1:3000/45/3/2",
+    "text": "Create your account Read the data-processing notice, then confirm. Plain-language notice We use your data to show useful suggestions and offers. You can turn this off in Settings. You can see, fix, or delete your data at any time. I have read and understand the Data Processing Notice You can change this choice later in Settings. Create account",
+    "buttons": [
+      "Create account"
+    ],
+    "inputs": [
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-507592029943",
+    "url": "http://127.0.0.1:3000/34/3/2",
+    "text": "Try Pro free for 7 days Full access to all Pro features. After the trial, the plan is $19/mo. Either way you keep your account. Free plan: $0 Start my free 7-day trial Full Pro access for 7 days, then $19/mo. Cancel anytime during the trial. No thanks \u2014 stay on the free plan Keep your free plan: 3 exports/month, no charge. You can upgrade anytime. Confirm my choice",
+    "buttons": [
+      "Confirm my choice"
+    ],
+    "inputs": [
+      "input:on",
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-bfa6304fb7d4",
+    "url": "http://127.0.0.1:3000/19/2/2",
+    "text": "Nebula Drift \u2014 Content Hub 12 of 14 playable Everything is installed and ready \u2014 except two add-ons that were never downloaded. Campaign: Core Ready Campaign: Ember Sector Ready 4K Texture Pack Download Multiplayer Arena Maps Ready Ship Skins: Neon Ready Ship Skins: Retro Ready Soundtrack Ready Digital Art Book Ready Expansion: Void Campaign Download Photo Mode Ready Companion App Ready Pilot Suit Pack Ready Concept Art Gallery Ready OST Remix Pack Ready",
+    "buttons": [
+      "Campaign: Core Ready",
+      "Campaign: Ember Sector Ready",
+      "4K Texture Pack Download",
+      "Multiplayer Arena Maps Ready",
+      "Ship Skins: Neon Ready",
+      "Ship Skins: Retro Ready",
+      "Soundtrack Ready",
+      "Digital Art Book Ready",
+      "Expansion: Void Campaign Download",
+      "Photo Mode Ready",
+      "Companion App Ready",
+      "Pilot Suit Pack Ready",
+      "Concept Art Gallery Ready",
+      "OST Remix Pack Ready"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-fff52af4613e",
+    "url": "http://127.0.0.1:3000/57/2/1",
+    "text": "You vs. Al MathRush \u2014 study group You and Alex are practising the same deck in one shared session \u2014 the activity itself is cooperative. You 0 Alex 70 Same practice, same questions \u2014 yet the app turns the shared session into a duel: Beat Alex to win the crown! The loser gets demoted a league. Practice question: What is 7 \u00d7 8? Answer: 56 Answer a question",
+    "buttons": [
+      "Answer a question"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-1fa60ad3ac60",
+    "url": "http://127.0.0.1:3000/17/2/1",
+    "text": "You\u2019re in! Welcome to SnapGrid Invite friends from your address book to make SnapGrid better for everyone. Invite all 128 contactsskip",
+    "buttons": [
+      "Invite all 128 contacts",
+      "skip"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-a59339f42514",
+    "url": "http://127.0.0.1:3000/15/3/2",
+    "text": "Create your account Join NoteDrop \u2014 cloud notes that sync everywhere. How your data is used Your data is shared with 47 third-party companies for advertising and analytics, including Acme Analytics, DataCorp Ltd, BrightAds Network, PixelPoint Media, Nimbus Insights, TrackWave, AdReach Partners, QuantLoop, SignalHound, and MetaMetrics. Full list: Privacy Policy \u00a73. The complete recipient list is shown above. I agree to the Privacy Policy and the sharing described above Create account",
+    "buttons": [
+      "Create account"
+    ],
+    "inputs": [
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-65019e1d7682",
+    "url": "http://127.0.0.1:3000/27/1/2",
+    "text": "Aurora Wireless Headphones ANC \u00b7 40 h battery \u00b7 Satin black \u221223% PLN 129.00 PLN 99.90 Discount: 22.6% \u2014 within a plausible band. Check the mathBuy now",
+    "buttons": [
+      "Check the math",
+      "Buy now"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-27b0bea8e535",
+    "url": "http://127.0.0.1:3000/35/3/1",
+    "text": "Choose your car insurance 8 policies to compare \u2014 each one tailored for drivers like you. Select the cover that fits your lifestyle. Essential Reliable cover for everyday driving \u00a39/mo Essential Plus Reliable cover for everyday driving, with added benefits \u00a311/mo Complete Comprehensive cover for everyday driving \u00a313/mo Complete Plus Comprehensive cover for everyday driving, with added benefits \u00a315/mo Total Comprehensive protection for everyday driving \u00a317/mo Total Plus Comprehensive protection for everyday driving, with added benefits \u00a319/mo Premium Complete protection for everyday driving \u00a322/mo Premium Plus \u2605 Most popular Complete protection for everyday driving, with added benefits \u00a325/mo Choose a policy",
+    "buttons": [
+      "Choose a policy"
+    ],
+    "inputs": [
+      "input:on",
+      "input:on",
+      "input:on",
+      "input:on",
+      "input:on",
+      "input:on",
+      "input:on",
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-2ba2ca12b097",
+    "url": "http://127.0.0.1:3000/42/1/2",
+    "text": "Create your account Everything below is optional and starts unchecked. Send me exclusive offers and promotions Share my data with selected partners Create account",
+    "buttons": [
+      "Create account"
+    ],
+    "inputs": [
+      "input:on",
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-daf7cc94e937",
+    "url": "http://127.0.0.1:3000/4/1/2",
+    "text": "We value your privacy We use cookies to remember your preferences and show relevant content. Choose exactly what you consent to \u2014 every option is equally easy to reach. Accept All Reject All Both choices are one click away and equally easy to reach.",
+    "buttons": [
+      "Accept All",
+      "Reject All"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-44da2742f220",
+    "url": "http://127.0.0.1:3000/43/3/1",
+    "text": "You\u2019ve been selected for an exclusive offer! As a valued customer, you qualify for Premium Gold Access \u2014 a $49.99/mo value, available to you for the introductory price of just $0.00 for the first 30 days. After your trial, your plan auto-renews at full price unless you cancel. I do not decline to not receive marketing communications about products and services unrelated to my purchase unless I have previously indicated no preference not to be excluded from promotional offers that do not pertain to my transaction history, in which case I do not object to not being opted out of receiving such communications without my prior written consent not having been obtained, except where such communications are not prohibited by applicable law. Try to figure out what checking this box actually means. Confirm & activate Premium Gold Access",
+    "buttons": [
+      "Confirm & activate Premium Gold Access"
+    ],
+    "inputs": [
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-d67765e6c974",
+    "url": "http://127.0.0.1:3000/41/2/1",
+    "text": "Newsletter Sign up to get 10% off your first order. There is a close target somewhere in the corner\u2026 if you can find it. It\u2019s 8 \u00d7 8 px, faded into the card. Try clicking the tiny X in the top-right corner.",
+    "buttons": [],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-9f606c0fb893",
+    "url": "http://127.0.0.1:3000/33/2/2",
+    "text": "Premium Plan $19.99/month \u2014 unlimited downloads and 4K streaming. Active Account overview and billing details. Cancel plan",
+    "buttons": [
+      "Cancel plan"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-09b3c2ec3946",
+    "url": "http://127.0.0.1:3000/47/1/1",
+    "text": "Wireless Noise-Cancelling Headphones $89.00 \u2014 one-time purchase, no subscription Subtotal $89.00 Shipping Free Total $89.00 Proceed to checkout",
+    "buttons": [
+      "Proceed to checkout"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-48fbbe4fec62",
+    "url": "http://127.0.0.1:3000/48/1/1",
+    "text": "Export your habit data Download your full Focusly history as CSV. Locked \u2014 invite 3 more friends to unlock export 0/3 Simulate a friend joining Export data",
+    "buttons": [
+      "Simulate a friend joining",
+      "Export data"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-61b697b1a28f",
+    "url": "http://127.0.0.1:3000/1/1/1",
+    "text": "Account settings maya.r@example.com \u00b7 Member since 2019 Pro Email address maya.r@example.com Plan Pro Delete account Step 0 of 7 \u00b7 N(x_delete) = 7 interactions \u00b7 N(x_create) = 2",
+    "buttons": [
+      "Delete account"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-eab224d73703",
+    "url": "http://127.0.0.1:3000/62/1/1",
+    "text": "Streamly \u2014 Field Notes auto FIELD NOTES Field Notes \u2014 Episode 1 \u2014 The first river crossing 0% Starting automatically\u2026 Auto-advancing\u2026 the next episode begins by itself in a moment.",
+    "buttons": [],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-d511ab75c256",
+    "url": "http://127.0.0.1:3000/5/1/1",
+    "text": "Dashboard Settings Messages Settings",
+    "buttons": [
+      "Messages",
+      "Settings"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-795e6f9bdb82",
+    "url": "http://127.0.0.1:3000/18/2/1",
+    "text": "Data sharing consent By continuing, you agree to our Terms of Service and to sharing your usage data with our trusted partners to improve your experience. Continue",
+    "buttons": [
+      "Continue"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-f4bb6f7d5780",
+    "url": "http://127.0.0.1:3000/48/2/1",
+    "text": "Invite Friends Bronze Silver Gold 0/2 friends Unlock Silver in 2 more! Copy invite link Share on WhatsApp Only 2 friends away from exclusive rewards! Today\u2019s focus session 25-minute deep-work timer with your streaks and stats. Streak: 12 days Focus: 9h 20m Sessions: 214",
+    "buttons": [
+      "Copy invite link",
+      "Share on WhatsApp"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-410ed49f888c",
+    "url": "http://127.0.0.1:3000/16/2/2",
+    "text": "Invite friends to PopSocial Choose who you\u2019d like to invite. Nothing is sent until you confirm. Mia Chen mia.chen@example.com Lucas Silva lucas.silva@example.com Ava Johnson ava.johnson@example.com Noah Kim noah.kim@example.com Sofia Rossi sofia.rossi@example.com \u2026and 19 more contacts (not selected) Invite selected (0)",
+    "buttons": [
+      "Invite selected (0)"
+    ],
+    "inputs": [
+      "input:on",
+      "input:on",
+      "input:on",
+      "input:on",
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-177ac3a6b3c2",
+    "url": "http://127.0.0.1:3000/21/2/2",
+    "text": "AeroGlide X Wireless Headphones Noise-cancelling over-ear \u00b7 Graphite $119 14 people bought this in the last hour Static badge \u00b7 \u0394t_update = \u221e \u2265 \u03c4_animate \u00b7 count matches the backend event log below Backend purchase log \u2014 last hour 14 events 12:58 \u2014 P. Novak \u00b7 AeroGlide X \u2713 12:51 \u2014 S. Iyer \u00b7 AeroGlide X \u2713 12:44 \u2014 L. Ferreira \u00b7 AeroGlide X \u2713 \u2026 11 more (total 14) \u2713 $195 $119 Buy now",
+    "buttons": [
+      "Buy now"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-4798dee6d29e",
+    "url": "http://127.0.0.1:3000/30/2/2",
+    "text": "Cookie consent Your privacy on this site We and our partners use cookies to store and access information on your device. Accept all cookies Reject all",
+    "buttons": [
+      "Accept all cookies",
+      "Reject all"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-37e4eddfa964",
+    "url": "http://127.0.0.1:3000/16/3/2",
+    "text": "Invite your friends We\u2019ll send a welcome offer to the 3 contacts you selected. The message is clearly branded as coming from PopSocial. Send welcome offer",
+    "buttons": [
+      "Send welcome offer"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-8724a309fb16",
+    "url": "http://127.0.0.1:3000/38/1/2",
+    "text": "Newsletter signup Get 10% off your first order Join 40,000 subscribers and receive weekly tips plus a one-time discount code. Yes, claim my 10% discountNo, thanks",
+    "buttons": [
+      "Yes, claim my 10% discount",
+      "No, thanks"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-fff3cd8201d5",
+    "url": "http://127.0.0.1:3000/42/3/2",
+    "text": "Checkout Defaults that work for you, not against you. Delivery speed Standard \u2014 $0.00 (default: cheapest tier, user-favorable) Express \u2014 +$9.99 Security alerts about my account Place order",
+    "buttons": [
+      "Place order"
+    ],
+    "inputs": [
+      "input:on",
+      "input:on",
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-e72313911283",
+    "url": "http://127.0.0.1:3000/46/1/1",
+    "text": "Order review Step 2 of 3 \u2014 one more step after this one. Order summary Studio headphones $59.00 Carry case $25.00 Shipping Free Total $89.00 Non-refundable once placed. Continue",
+    "buttons": [
+      "Continue"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-405761c6b22a",
+    "url": "http://127.0.0.1:3000/5/3/2",
+    "text": "Your goal: delete your account \u2014 follow the menu. Settings step 1 / 3 Home \u2192 Settings Settings Next Account Next Delete account Destination",
+    "buttons": [
+      "Settings Next",
+      "Account Next",
+      "Delete account Destination"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-ad26bb2576ed",
+    "url": "http://127.0.0.1:3000/54/2/1",
+    "text": "Product guide \u2014 chapter 4.pdf 48 pages \u00b7 Free access begins after a short wait. Pay $1.99 for instant access. PDF Chapter 4 \u00b7 Delivery planning A practical checklist for the final handoff Confirm the owner, review the latest changes, and record the decision before the project moves into production. A short written handoff keeps the next step clear for everyone. Product guide \u00b7 48 pages Page 1 of 48 Read document (free with 10s wait)",
+    "buttons": [
+      "Read document (free with 10s wait)"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-0282d261f8e1",
+    "url": "http://127.0.0.1:3000/23/1/1",
+    "text": "Aurora Wireless Earbuds Pro Others are buying right now. Act fast before they sell out! Waiting for the next \u201cpurchase\u201d\u2026 Backend event log \u2014 E_real(t) 0 entries Querying transactions for this product\u2026 no records found. Check recent purchases",
+    "buttons": [
+      "Check recent purchases"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-c364b5248ccc",
+    "url": "http://127.0.0.1:3000/42/3/1",
+    "text": "Checkout Recommended extras A few optional extras are selected for your review. Change anything you do not need. Add Protection Plan \u2014 $4.99/mo, auto-renews Optional protection plan Send me offers from our partners Partner offers preference Share my purchase data with third parties Data-sharing preference Place order",
+    "buttons": [
+      "Place order"
+    ],
+    "inputs": [
+      "input:on",
+      "input:on",
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-dce06159359c",
+    "url": "http://127.0.0.1:3000/58/2/2",
+    "text": "The Market Reader Page 1 of 3 At dawn the market stalls open, and the whole street smells of fresh bread and wet pavement. Vendors call out to regulars by name. The baker explains that her sourdough starter is older than she is. Someone at the next stall argues about the correct way to slice a baguette. Next page \u2192 Reading for 00:00 stopping cues present",
+    "buttons": [
+      "Next page \u2192"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-4a4533b94dab",
+    "url": "http://127.0.0.1:3000/38/3/1",
+    "text": "Help us plant a tree Add a $2 donation to support reforestation projects. Yes, I care about the planet \u2014 add the donation No, I don\u2019t care about the environment",
+    "buttons": [
+      "Yes, I care about the planet \u2014 add the donation",
+      "No, I don\u2019t care about the environment"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-f16902c79ba9",
+    "url": "http://127.0.0.1:3000/31/1/1",
+    "text": "Order summary Confirm your purchase details below. Recommended option Pro Plan \u2014 annual $89.00 Tax $7.12 Total due today $96.12 Complete purchase SAVE 20% Cancel order",
+    "buttons": [
+      "Complete purchase",
+      "Cancel order"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-73870bc22431",
+    "url": "http://127.0.0.1:3000/7/3/1",
+    "text": "800 Gems Mythic Sword of Dawn 2,500 Gems A legendary blade forged from dawnlight. +45 attack, unique trail effect. Insufficient Gems \u2014 top up to continue Exchange \u2014 the only way to pay Buy 3,000 Gems \u2014 $29.99 No card payments accepted for this item. Fiat money must first be converted into gems.",
+    "buttons": [
+      "Insufficient Gems \u2014 top up to continue",
+      "Buy 3,000 Gems \u2014 $29.99"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-2b8bd6fef176",
+    "url": "http://127.0.0.1:3000/15/2/1",
+    "text": "Privacy settings Choose what happens with your data. Share my data with advertising partners Helps us show you better, more relevant ads. Limit data use to what\u2019s required Restricts processing to essential purposes. Privacy settings saved Sharing is currently enabled. You can change this preference in Privacy settings.",
+    "buttons": [],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-a062fc1619f2",
+    "url": "http://127.0.0.1:3000/33/1/2",
+    "text": "The Daily Byte newsletter A weekly digest of tech news. One email, every Friday. Plain confirmation Subscribe",
+    "buttons": [
+      "Subscribe"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-ac08aaaed643",
+    "url": "http://127.0.0.1:3000/36/1/1",
+    "text": "Only 2 left at this price \u2014 sale ends tonight! Order summary Pro Camera Bundle $299.00 Total $299.00 Protect your purchase \u2014 2-year protection plan +$39.99 Included in your order to cover accidental damage. Keep it selected so you are not left paying for repairs yourself. By completing your purchase you agree to our auto-renewing membership ($9.99/mo, billed after 30 days). Cancel anytime via support chat. Terms Privacy Refund policy Subscription details Complete purchase",
+    "buttons": [
+      "Complete purchase"
+    ],
+    "inputs": [
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-0ab91fcd1480",
+    "url": "http://127.0.0.1:3000/21/1/1",
+    "text": "AeroGlide X Wireless Headphones Noise-cancelling over-ear \u00b7 Graphite $119 37 people are viewing this right now U_displayed = R(a, b) \u2014 pseudo-random, detached from backend truth $195 $119 37 watching Add to cart Refresh analytics",
+    "buttons": [
+      "Add to cart",
+      "Refresh analytics"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-f75a87a1e296",
+    "url": "http://127.0.0.1:3000/20/1/1",
+    "text": "AeroGlide X Wireless Headphones Flash deal Deal ends in 14:59 Session #0 Deadline: 14:59 $195 $119 Only today Buy now \u2014 $119 Simulate new session (clear cookies)",
+    "buttons": [
+      "Buy now \u2014 $119",
+      "Simulate new session (clear cookies)"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-d03648b8146b",
+    "url": "http://127.0.0.1:3000/5/2/1",
+    "text": "Settings Settings Account settings Open section Expand each level to reach \u201cData & cookies\u201d \u2014 note the growing indentation.",
+    "buttons": [
+      "Account settings"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-0dd9ea8851a6",
+    "url": "http://127.0.0.1:3000/58/3/1",
+    "text": "LuckyPins 0 coins Claim your daily bonus! Streak: 12 days \u2014 level up 3 XP away. Spin again for free coins \u2014 win big on the bonus wheel. Daily bonus resets soon. Don't lose your streak! Spin again \u2014 claim reward 0 spins \u2022 rewards are added to your balance after each play",
+    "buttons": [
+      "Spin again \u2014 claim reward"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-d54607d53ec1",
+    "url": "http://127.0.0.1:3000/10/3/2",
+    "text": "Harborview Suites \u2605 4.8 \u00b7 Waterfront \u00b7 3 nights \u00b7 2 guests Free cancellation Breakfast included $19.00 per night Total for 3 nights: $70.75 \u2014 includes reservation service fee, booking fee and convenience charge. Continue to booking Price summary shown above the fold, in full.",
+    "buttons": [
+      "Continue to booking"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-94187440425b",
+    "url": "http://127.0.0.1:3000/11/1/1",
+    "text": "Nova X100 Mirrorless Camera 26MP APS-C sensor \u00b7 4K60 video \u00b7 IBIS $899.00 2-Year Extended Warranty Included with this offer \u2014 cannot be removed $49.00 Add to cart",
+    "buttons": [
+      "Add to cart"
+    ],
+    "inputs": [
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-6d4d85c12d70",
+    "url": "http://127.0.0.1:3000/14/1/2",
+    "text": "Premium \u2014 free trial 7 days of free trial remaining. trial Cached token T_payment \u2014 Visa \u2022\u2022\u2022\u2022 4242 $14.99/mo Renewal reminder: your free trial ends in 7 days. After it ends,$14.99/mo will be charged to \u2022\u2022\u2022\u2022 4242 unless you cancel before then. Skip ahead \u2014 advance to t_expiryCancel trial \u2014 nothing will be charged",
+    "buttons": [
+      "Skip ahead \u2014 advance to t_expiry",
+      "Cancel trial \u2014 nothing will be charged"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-3b4495f19d7a",
+    "url": "http://127.0.0.1:3000/26/2/2",
+    "text": "Granola aisle Two sizes of the same line. Unit prices are clearly rendered. Unit prices visible Fruity Granola 500 g PLN 2.58 / 100 g PLN 12.90 Crunchy Granola 1 kg PLN 2.29 / 100 g PLN 22.90 Compare per 100 g",
+    "buttons": [
+      "Compare per 100 g"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-157175f10bb3",
+    "url": "http://127.0.0.1:3000/22/3/2",
+    "text": "CloudNine Smart Lamp Dimmable smart lamp with app control and schedules. $59.00 In stock \u2014 5 remaining Live stock feed \u2014 backend source 5 units Load count (simulated reloads) 1 Transaction log (t1 \u2192 t2) 0 purchases Session clock (\u0394t) 0s Reload page Someone bought one",
+    "buttons": [
+      "Reload page",
+      "Someone bought one"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-2840be150a37",
+    "url": "http://127.0.0.1:3000/17/3/2",
+    "text": "SnapGrid wants to access your contacts This is a data-access permission: it uploads your address book (128 contacts) to SnapGrid\u2019s servers so we can match you with existing users. You can decline and still use the app. Allow access Not now",
+    "buttons": [
+      "Allow access",
+      "Not now"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-e741aeaa7ef4",
+    "url": "http://127.0.0.1:3000/5/2/2",
+    "text": "Settings flat list Account settings Available here General preferences Available here Profile & identity Available here Contact details Available here Email & phone Available here Privacy controls Available here Data & cookies Available here Every privacy control is available directly from this settings list.",
+    "buttons": [
+      "Account settings Available here",
+      "General preferences Available here",
+      "Profile & identity Available here",
+      "Contact details Available here",
+      "Email & phone Available here",
+      "Privacy controls Available here",
+      "Data & cookies Available here"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-c97e9fd17633",
+    "url": "http://127.0.0.1:3000/2/1/1",
+    "text": "Cookie settings 3 choices We use cookies to improve your experience. By continuing you agree to our use of cookies and similar technologies. Accept all Essential only Reject all Pressing Esc or clicking outside does not close this notice.",
+    "buttons": [
+      "Accept all",
+      "Essential only",
+      "Reject all"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-79db30e7bbb2",
+    "url": "http://127.0.0.1:3000/51/2/1",
+    "text": "Sunny Hen Farm Collect eggs to fill the reward bar. The bar\u2026 barely moves anymore. Diminishing Golden Egg progress 0.0% \u00b7 last action +0.00% First collection filled +20%; your last filled +0.00%. Collect an egg (+1) Collect \u00d75",
+    "buttons": [
+      "Collect an egg (+1)",
+      "Collect \u00d75"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-5bc29f7a1e90",
+    "url": "http://127.0.0.1:3000/52/1/2",
+    "text": "Farm Kingdom Harvest pumpkins. Energy refills over time \u2014 but you decide when to play. User-paced Energy Pumpkins harvested: 0 \u00b7 refill: 1 energy / 30 min Harvest a pumpkin (+1)",
+    "buttons": [
+      "Harvest a pumpkin (+1)"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-7e5703dd1af3",
+    "url": "http://127.0.0.1:3000/22/3/1",
+    "text": "CloudNine Smart Lamp Dimmable smart lamp with app control and schedules. $59.00 Only 3 left! Load count (simulated reloads) 1 Transaction log (t1 \u2192 t2) 0 purchases Session clock (\u0394t) 0s Reload page",
+    "buttons": [
+      "Reload page"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-7c87f222089d",
+    "url": "http://127.0.0.1:3000/43/3/2",
+    "text": "You\u2019ve been selected for an exclusive offer! As a valued customer, you qualify for Premium Gold Access \u2014 a $49.99/mo value, available to you for the introductory price of just $0.00 for the first 30 days. After your trial, your plan auto-renews at full price unless you cancel. I agree to receive marketing communications about products and services. I can unsubscribe at any time. 0 negations \u2014 checking the box opts you in. Uncheck to opt out. Confirm & activate Premium Gold Access",
+    "buttons": [
+      "Confirm & activate Premium Gold Access"
+    ],
+    "inputs": [
+      "input:on"
+    ]
+  },
+  {
+    "instance_id": "task-4ab6f61c1332",
+    "url": "http://127.0.0.1:3000/51/1/2",
+    "text": "Forge Master Forge swords to level up. Each level needs a few more \u2014 always fair. Fair curve Level 1 0/1 forges \u00b7 +10 gold Gold earned so far: 0 Forge a sword (+1) Forge \u00d75",
+    "buttons": [
+      "Forge a sword (+1)",
+      "Forge \u00d75"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-82843f67f123",
+    "url": "http://127.0.0.1:3000/4/2/1",
+    "text": "We care about your privacy We and our partners process personal data to serve personalised ads and content, measure performance, and derive insights, as described in our privacy policy. Accept All Manage options Essential cookies only Accept All is the prominent action; Manage options is a quieter link below.",
+    "buttons": [
+      "Accept All",
+      "Manage options"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-b0a37ef92b4b",
+    "url": "http://127.0.0.1:3000/9/2/1",
+    "text": "Your cart 2 items AeroSound X9 Headphones $129.99 2-Year Extended Warranty $19.99 Total $149.98 Pay $149.98",
+    "buttons": [
+      "Pay $149.98"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-7e1a237fe0e6",
+    "url": "http://127.0.0.1:3000/50/3/2",
+    "text": "The Ancient Chest Legendary loot: 500 gems, a rare sword skin, and the Crown of Ember. Item shop Buy the Ancient Chest $4.99 one-time One-time purchase. Charged to your payment method on file. No recurring fees. Purchase \u2014 $4.99",
+    "buttons": [
+      "Purchase \u2014 $4.99"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-ba11af17c8d5",
+    "url": "http://127.0.0.1:3000/39/3/2",
+    "text": "Nordic Desk Lamp Matte aluminium \u00b7 warm dimmable LED $149 everyday price What would you pay for this lamp? $149 $50 $300 Buy now",
+    "buttons": [
+      "Buy now"
+    ],
+    "inputs": [
+      "input:150"
+    ]
+  },
+  {
+    "instance_id": "task-2b8ae430edf9",
+    "url": "http://127.0.0.1:3000/27/1/1",
+    "text": "Aurora Wireless Headphones ANC \u00b7 40 h battery \u00b7 Satin black \u221290% PLN 999.00 PLN 99.90 Was 999.00 \u2014 now 99.90. Limited stock! Check the mathBuy now \u2014 90% off!",
+    "buttons": [
+      "Check the math",
+      "Buy now \u2014 90% off!"
+    ],
+    "inputs": []
+  },
+  {
+    "instance_id": "task-7ab447aa4209",
+    "url": "http://127.0.0.1:3000/32/3/2",
+    "text": "Upgrade to Pro Here is what the Pro plan offers. Standard plan details 2,000,000+ users are on Pro. Annual billing saves 40%. Promo price valid today only. Upgrade takes 30 seconds. Maybe later Upgrade to Pro",
+    "buttons": [
+      "Maybe later",
+      "Upgrade to Pro"
+    ],
+    "inputs": []
+  }
+]

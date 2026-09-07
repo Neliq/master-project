@@ -1,0 +1,16 @@
+{
+  "run_id": "binary-aided-support-test-20260906-v9",
+  "purpose": "binary support-only formalization aid test",
+  "base_url": "http://127.0.0.1:3000",
+  "patterns": 10,
+  "instances": 20,
+  "agents_per_arm": 3,
+  "arms": [
+    "not-aided",
+    "aided"
+  ],
+  "seed": 20260906,
+  "labels_public": false,
+  "aided_material": "general pseudocode formalizations with context gates; no demonstrations",
+  "ontology_sha256": "ccb1b85e8192103b92eef1853384bf1a13d5a622008965fc58172c25f6e3533c"
+}

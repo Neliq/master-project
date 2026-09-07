@@ -1,0 +1,202 @@
+{
+  "task-9362b83e7414": {
+    "instance_id": "task-9362b83e7414",
+    "slug": "conflicting-information",
+    "pattern_name": "Conflicting Information",
+    "pattern_number": 28,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/28/1/2"
+  },
+  "task-5ec63eaa785b": {
+    "instance_id": "task-5ec63eaa785b",
+    "slug": "addictive-design",
+    "pattern_name": "Addictive Design",
+    "pattern_number": 58,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/58/1/1"
+  },
+  "task-a10c4377880b": {
+    "instance_id": "task-a10c4377880b",
+    "slug": "addictive-design",
+    "pattern_name": "Addictive Design",
+    "pattern_number": 58,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/58/1/2"
+  },
+  "task-b137e07b54b3": {
+    "instance_id": "task-b137e07b54b3",
+    "slug": "friend-spam",
+    "pattern_name": "Friend Spam",
+    "pattern_number": 16,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/16/1/2"
+  },
+  "task-c97e9fd17633": {
+    "instance_id": "task-c97e9fd17633",
+    "slug": "conflicting-information",
+    "pattern_name": "Conflicting Information",
+    "pattern_number": 28,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/28/1/1"
+  },
+  "task-2d2c86d02d74": {
+    "instance_id": "task-2d2c86d02d74",
+    "slug": "sneak-into-basket",
+    "pattern_name": "Sneak Into Basket",
+    "pattern_number": 9,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/9/1/2"
+  },
+  "task-14c907d72bb5": {
+    "instance_id": "task-14c907d72bb5",
+    "slug": "price-comparison-prevention",
+    "pattern_name": "Price Comparison Prevention",
+    "pattern_number": 26,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/26/1/1"
+  },
+  "task-93284055bbb9": {
+    "instance_id": "task-93284055bbb9",
+    "slug": "pay-to-avoid",
+    "pattern_name": "Pay To Avoid",
+    "pattern_number": 54,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/54/1/1"
+  },
+  "task-b2fb7a86baac": {
+    "instance_id": "task-b2fb7a86baac",
+    "slug": "cuteness",
+    "pattern_name": "Cuteness",
+    "pattern_number": 33,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/33/1/1"
+  },
+  "task-61b697b1a28f": {
+    "instance_id": "task-61b697b1a28f",
+    "slug": "immortal-accounts",
+    "pattern_name": "Immortal Accounts",
+    "pattern_number": 1,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/1/1/1"
+  },
+  "task-daf7cc94e937": {
+    "instance_id": "task-daf7cc94e937",
+    "slug": "confirmshaming",
+    "pattern_name": "Confirmshaming",
+    "pattern_number": 38,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/38/1/2"
+  },
+  "task-5a2d2fd46f2a": {
+    "instance_id": "task-5a2d2fd46f2a",
+    "slug": "pay-to-avoid",
+    "pattern_name": "Pay To Avoid",
+    "pattern_number": 54,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/54/1/2"
+  },
+  "task-c5f963ba3f65": {
+    "instance_id": "task-c5f963ba3f65",
+    "slug": "sneak-into-basket",
+    "pattern_name": "Sneak Into Basket",
+    "pattern_number": 9,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/9/1/1"
+  },
+  "task-68ea0e272324": {
+    "instance_id": "task-68ea0e272324",
+    "slug": "persuasive-language",
+    "pattern_name": "Persuasive Language",
+    "pattern_number": 32,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/32/1/1"
+  },
+  "task-59a797a87cda": {
+    "instance_id": "task-59a797a87cda",
+    "slug": "confirmshaming",
+    "pattern_name": "Confirmshaming",
+    "pattern_number": 38,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/38/1/1"
+  },
+  "task-3a5eb4ebad4e": {
+    "instance_id": "task-3a5eb4ebad4e",
+    "slug": "immortal-accounts",
+    "pattern_name": "Immortal Accounts",
+    "pattern_number": 1,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/1/1/2"
+  },
+  "task-a43335c359da": {
+    "instance_id": "task-a43335c359da",
+    "slug": "price-comparison-prevention",
+    "pattern_name": "Price Comparison Prevention",
+    "pattern_number": 26,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/26/1/2"
+  },
+  "task-af64bfc208f6": {
+    "instance_id": "task-af64bfc208f6",
+    "slug": "friend-spam",
+    "pattern_name": "Friend Spam",
+    "pattern_number": 16,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/16/1/1"
+  },
+  "task-418e66c19427": {
+    "instance_id": "task-418e66c19427",
+    "slug": "persuasive-language",
+    "pattern_name": "Persuasive Language",
+    "pattern_number": 32,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/32/1/2"
+  },
+  "task-7cde744aa1e5": {
+    "instance_id": "task-7cde744aa1e5",
+    "slug": "cuteness",
+    "pattern_name": "Cuteness",
+    "pattern_number": 33,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/33/1/2"
+  }
+}

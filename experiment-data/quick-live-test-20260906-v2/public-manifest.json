@@ -1,0 +1,31 @@
+{
+  "run_id": "quick-live-test-20260906-v2",
+  "purpose": "quick live isolated-demo ablation",
+  "base_url": "http://127.0.0.1:3000",
+  "patterns": 10,
+  "conditions_per_pattern": 1,
+  "instances": 20,
+  "agents_per_arm": 3,
+  "arms": [
+    "c0",
+    "c1",
+    "c2"
+  ],
+  "seed": 20260906,
+  "evidence_mode": "live isolated URL; no static evidence bundle",
+  "labels_public": false,
+  "ontology_source": "Master-Thesis/ontology",
+  "ontology_sha256": "ccb1b85e8192103b92eef1853384bf1a13d5a622008965fc58172c25f6e3533c",
+  "card_source_sha256": {
+    "card-001-immortal-accounts.md": "48cf66019e79afa28aedc74f1914be00f5385954b6410bf01d95bd26dfb8828e",
+    "card-026-price-comparison-prevention.md": "a5acd2bd3366d5b8995a6fe97aeb4c25c4264b352834cea48063691874115e56",
+    "card-009-sneak-into-basket.md": "41047c5f3488aca93e252139fe498173ff400045ffa5f0cbc9af37ac9e3383d7",
+    "card-028-conflicting-information.md": "1863266823d96dcc4f31431076ceed91dc868d3f5ebea14fddf73e6ba5fdf316",
+    "card-032-persuasive-language.md": "82d3c518c6f884933e2b558442b47e01a3e1748720b2404ec1cfa510d9d753f6",
+    "card-033-cuteness.md": "e1437a8701a6db62ce07db5549e6ee0487bed88be46e73460da7ffb53425cef3",
+    "card-058-addictive-design.md": "ebeccf41ae57d6ce9a7dc707bd9a9a5a34b46c2610442214fddb122fa8fba358",
+    "card-016-friend-spam.md": "9a239d1970e3d585b51f60094434fbfc906c8da5311c2beaeb0bca71706037aa",
+    "card-054-pay-to-avoid.md": "35ea7f1eb3eda0985dc7a1a9e8b90d0f8def0e3d5f48247ee7649d8b46fded1b",
+    "card-038-confirmshaming.md": "28df892f8c99bcb5d971729dba1a8c36b23c06e05675fa45a4345226ce0b257f"
+  }
+}

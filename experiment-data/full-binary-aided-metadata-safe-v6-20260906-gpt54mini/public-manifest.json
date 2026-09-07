@@ -1,0 +1,21 @@
+{
+  "run_id": "full-binary-aided-metadata-safe-v6-20260906-gpt54mini",
+  "purpose": "full two-arm binary aided versus not-aided live isolated-demo test",
+  "base_url": "http://127.0.0.1:3000",
+  "patterns": 62,
+  "conditions_per_pattern": 3,
+  "variants_per_condition": 2,
+  "distinct_interfaces": 372,
+  "audit_rows_total": 744,
+  "agents_total": 12,
+  "agents_per_arm": 6,
+  "arms": [
+    "not-aided",
+    "aided"
+  ],
+  "seed": 20260906,
+  "labels_public": false,
+  "evidence_mode": "live isolated URL; scoped data-isolated-demo DOM and transitions",
+  "ontology_source": "Master-Thesis/ontology",
+  "ontology_sha256": "ccb1b85e8192103b92eef1853384bf1a13d5a622008965fc58172c25f6e3533c"
+}

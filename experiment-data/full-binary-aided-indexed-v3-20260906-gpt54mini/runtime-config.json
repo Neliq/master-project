@@ -1,0 +1,18 @@
+{
+  "model": "gpt-5.4-mini",
+  "provider": "openai-codex",
+  "service_tier": "fast",
+  "reasoning_effort": "minimal",
+  "arms": [
+    "not-aided",
+    "aided"
+  ],
+  "agents_total": 12,
+  "agents_per_arm": 6,
+  "distinct_interfaces": 372,
+  "audit_rows_total": 744,
+  "seed": 20260906,
+  "ontology_sha256": "ccb1b85e8192103b92eef1853384bf1a13d5a622008965fc58172c25f6e3533c",
+  "aid_package": "indexed-formalization-screening",
+  "aid_index_sha256": "3aab2984bf6275af5f42ad2085cb1ca67c258ac133e2dcf0659fc9abe37a8c4a"
+}

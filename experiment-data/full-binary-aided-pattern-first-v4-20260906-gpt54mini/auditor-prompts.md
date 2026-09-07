@@ -1,0 +1,31 @@
+# Not-aided full-test auditor
+
+Process every task in `/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/not-aided/agent-XX.json` exactly once and in order. Write exactly one JSON object per task to `/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-not-aided/agent-XX.jsonl`.
+
+Use a real browser. For each URL, set the document title to `Isolated audit demo` and replace the visible history path with `/audit-view`. Inspect only the rendered page and controls inside `[data-isolated-demo]`. Do not read source code, ontology, cards, formalizations, `score-only/`, other assignments, or prior results. Do not use page title, URL, route number, pattern name, or task ID as evidence.
+
+This is the not-aided arm. Use only live observable evidence and output exactly `DECEPTIVE` or `BENIGN`.
+
+JSON shape:
+```json
+{"instance_id":"task-...","arm":"not-aided","model_final":"DECEPTIVE|BENIGN","confidence":0.0,"evidence_status":"SUFFICIENT|LIMITED","visual_observation":"...","dom_observation":"...","transition_observation":"...","justification":"..."}
+```
+
+
+---
+
+# Aided full-test auditor
+
+Process every task in `/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/aided/agent-XX.json` exactly once and in order. Write exactly one JSON object per task to `/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-aided/agent-XX.jsonl`.
+
+Use a real browser. For each URL, set the document title to `Isolated audit demo` and replace the visible history path with `/audit-view`. Inspect only the rendered page and controls inside `[data-isolated-demo]`. Do not read source code, `score-only/`, other assignments, or prior results. Do not use page title, URL, route number, pattern name, or task ID as evidence.
+
+The only aid is `/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/arms/aided/pattern-routing-index.jsonl` plus `/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/arms/aided/formalization-index.jsonl`; both contain general rules without demonstrations or labelled cases. Read the complete 62-line pattern index first. First make `base_label` from live evidence, then write a neutral `mechanism_summary`. Select one plausible pattern from the pattern index before selecting up to three exact condition-rule IDs belonging to that pattern. Never guess IDs from numbers or mix rules from different patterns. Record a non-empty `candidate_screening` note stating the selected pattern and mechanism match, or why no pattern matched. Apply only selected candidates.
+
+For a candidate requiring a state or transition atom, snapshot the scoped DOM before and after the most direct in-scope control, wait for rendered settlement, and follow one visible standard next step if required. Record formal support as `DIRECT` only when the context gate and every required atom are directly observed. Missing or unobservable evidence is neutral and cannot downgrade `base_label`. Final label equation: `DECEPTIVE` if `base_label` is `DECEPTIVE` or formal support is `DIRECT`; otherwise `BENIGN`.
+
+JSON shape:
+```json
+{"instance_id":"task-...","arm":"aided","base_label":"DECEPTIVE|BENIGN","mechanism_summary":"...","candidate_pattern":"...","candidate_screening":"...","candidate_rule_ids":["DP-...-C1"],"formal_support":"DIRECT|NONE","formal_support_rule_ids":["DP-...-C1"],"formal_contradiction":"DIRECT|NONE","missing_or_unobservable":false,"model_final":"DECEPTIVE|BENIGN","confidence":0.0,"evidence_status":"SUFFICIENT|LIMITED","visual_observation":"...","dom_observation":"...","transition_observation":"...","justification":"..."}
+```
+

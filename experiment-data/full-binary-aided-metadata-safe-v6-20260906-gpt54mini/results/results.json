@@ -1,0 +1,7172 @@
+{
+  "run_id": "full-binary-aided-metadata-safe-v6-20260906-gpt54mini",
+  "runtime": {
+    "model": "gpt-5.4-mini",
+    "provider": "openai-codex",
+    "service_tier": "fast",
+    "reasoning_effort": "minimal",
+    "arms": [
+      "not-aided",
+      "aided"
+    ],
+    "agents_total": 12,
+    "agents_per_arm": 6,
+    "distinct_interfaces": 372,
+    "audit_rows_total": 744,
+    "seed": 20260906,
+    "ontology_sha256": "ccb1b85e8192103b92eef1853384bf1a13d5a622008965fc58172c25f6e3533c",
+    "aid_package": "metadata-safe-ranked-pattern-shortlist-indexed-formalization-screening",
+    "pattern_index_sha256": "2c4eb8b9fd304ec78ce10a424d93bf6c94ca9a525d78e73a72df6a058d8c8fd4",
+    "aid_index_sha256": "3aab2984bf6275af5f42ad2085cb1ca67c258ac133e2dcf0659fc9abe37a8c4a"
+  },
+  "design": {
+    "distinct_interfaces": 372,
+    "audit_rows_total": 744,
+    "patterns": 62,
+    "conditions_per_pattern": 3,
+    "agents_total": 12,
+    "agents_per_arm": {
+      "not-aided": 6,
+      "aided": 6
+    },
+    "arms": [
+      "not-aided",
+      "aided"
+    ],
+    "binary_only": true,
+    "aided_mode": "support-only, context-gated, candidate-shortlisted pseudocode"
+  },
+  "metrics": {
+    "not-aided": {
+      "n": 372,
+      "accuracy": 0.6532258064516129,
+      "precision": 0.6363636363636364,
+      "recall": 0.7150537634408602,
+      "f1": 0.6734177215189874,
+      "tp": 133,
+      "fp": 76,
+      "tn": 110,
+      "fn": 53
+    },
+    "aided": {
+      "n": 372,
+      "accuracy": 0.6155913978494624,
+      "precision": 0.5972850678733032,
+      "recall": 0.7096774193548387,
+      "f1": 0.6486486486486487,
+      "tp": 132,
+      "fp": 89,
+      "tn": 97,
+      "fn": 54
+    },
+    "aided_base": {
+      "n": 372,
+      "accuracy": 0.6155913978494624,
+      "precision": 0.5972850678733032,
+      "recall": 0.7096774193548387,
+      "f1": 0.6486486486486487,
+      "tp": 132,
+      "fp": 89,
+      "tn": 97,
+      "fn": 54
+    }
+  },
+  "aided_internal_harm_events": 0,
+  "aided_internal_help_events": 0,
+  "not_aided_vs_aided_flips": 122,
+  "per_pattern": {
+    "infinite-scrolling": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "automating-the-user-away": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "small-or-moving-close-button": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "activity-messages": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "countdown-on-ads": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "parasocial-pressure": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "disguised-ad": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "addictive-design": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "feedforward-ambiguity": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "forced-continuity": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "persuasive-language": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "forced-registration": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "high-demand": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "bad-defaults-preselection": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "reduced-friction": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "privacy-zuckering": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "automatic-accept-third-party-term": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "pressured-selling": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "complex-language": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "choice-overload": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "intermediate-currency": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "conflicting-information": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "countdown-timer": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "playing-by-appointment": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "sneak-into-basket": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "price-comparison-prevention": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "immortal-accounts": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "low-stock": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "encouraging-anti-social-behavior": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "confirmshaming": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "wrong-language": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "auto-play": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "pay-to-play": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "address-book-leeching": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "endorsement-and-testimonials": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "watch-ads-to-unlock-features": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "pre-delivered-content": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "positive-or-negative-framing": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "information-without-context": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "reference-pricing": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "customisation": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "granting-and-interaction": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "plain-evil": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "privacy-maze": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "pay-to-avoid": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "pull-to-refresh": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "psychological-tricks": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "social-pyramid": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "friend-spam": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "limited-time-message": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "cuteness": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "hidden-information": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "labyrinthine-navigation": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "dead-end": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "trick-questions": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "false-hierarchy": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "fear-of-missing-out-fomo": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "bundling": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "grinding": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    },
+    "forced-grace-period": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "visual-prominence": {
+      "not-aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "drip-pricing": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ]
+    }
+  },
+  "per_condition": {
+    "3": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "1": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        }
+      ]
+    },
+    "2": {
+      "not-aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        }
+      ],
+      "aided": [
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "BENIGN"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "BENIGN",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "DECEPTIVE"
+        },
+        {
+          "truth": "DECEPTIVE",
+          "prediction": "BENIGN"
+        }
+      ]
+    }
+  },
+  "diagnostics": {
+    "direct_support_count": 0,
+    "internal_help_cases": [],
+    "internal_harm_cases": [],
+    "cross_arm_flip_cases": [
+      {
+        "instance_id": "task-01042b0c497f",
+        "slug": "infinite-scrolling",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-0212e0637230",
+        "slug": "automating-the-user-away",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-0282d261f8e1",
+        "slug": "activity-messages",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-060dcc5115e1",
+        "slug": "addictive-design",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-110d10cd3096",
+        "slug": "conflicting-information",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-177ac3a6b3c2",
+        "slug": "high-demand",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-18a7b53fe0a5",
+        "slug": "countdown-on-ads",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-1a1b71cb9b2c",
+        "slug": "wrong-language",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-1ed83457ff26",
+        "slug": "pay-to-play",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-1fa60ad3ac60",
+        "slug": "address-book-leeching",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-1fc51d188742",
+        "slug": "parasocial-pressure",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-2840be150a37",
+        "slug": "address-book-leeching",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-289a7a3e67a0",
+        "slug": "addictive-design",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-28a796726010",
+        "slug": "address-book-leeching",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-2b8bd6fef176",
+        "slug": "privacy-zuckering",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-2f86b5c83550",
+        "slug": "forced-registration",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-329b9e7fb8b4",
+        "slug": "pay-to-avoid",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-330ecff4b346",
+        "slug": "addictive-design",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-35fe86dd675a",
+        "slug": "parasocial-pressure",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-3778b253bc16",
+        "slug": "reference-pricing",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-39a913d3d55d",
+        "slug": "low-stock",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-3a5eb4ebad4e",
+        "slug": "immortal-accounts",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-3a997edc052b",
+        "slug": "complex-language",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-3e1abe0e0c37",
+        "slug": "cuteness",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-405761c6b22a",
+        "slug": "labyrinthine-navigation",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-40a6ba914eb2",
+        "slug": "encouraging-anti-social-behavior",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-418e66c19427",
+        "slug": "dead-end",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-421751563294",
+        "slug": "forced-continuity",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-425fa3c4034a",
+        "slug": "forced-registration",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-444aa4c19eaf",
+        "slug": "activity-messages",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-48a17a3332d2",
+        "slug": "countdown-timer",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-48abfda877c1",
+        "slug": "automatic-accept-third-party-term",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-4982cbc58844",
+        "slug": "fear-of-missing-out-fomo",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-4a4533b94dab",
+        "slug": "confirmshaming",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-4e4bcfce1d02",
+        "slug": "address-book-leeching",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-4fafa075fba8",
+        "slug": "customisation",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-50bd34c45555",
+        "slug": "automatic-accept-third-party-term",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-54ab6edfd08d",
+        "slug": "addictive-design",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-559439c96ce7",
+        "slug": "false-hierarchy",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-5a2d2fd46f2a",
+        "slug": "forced-grace-period",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-5a59a8a373a3",
+        "slug": "pressured-selling",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-5d6f2d3c6695",
+        "slug": "forced-registration",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-5ec63eaa785b",
+        "slug": "forced-grace-period",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-5ed9820bf9ef",
+        "slug": "playing-by-appointment",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-600384325ee4",
+        "slug": "small-or-moving-close-button",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-60d189871703",
+        "slug": "hidden-information",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-61b697b1a28f",
+        "slug": "immortal-accounts",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-6210db73b9ee",
+        "slug": "privacy-zuckering",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-68ea0e272324",
+        "slug": "dead-end",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-6a196087814e",
+        "slug": "pull-to-refresh",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-738028e908fc",
+        "slug": "trick-questions",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-795e6f9bdb82",
+        "slug": "automatic-accept-third-party-term",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-79759eb4fad2",
+        "slug": "grinding",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-79db30e7bbb2",
+        "slug": "grinding",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-7c87b3f602b4",
+        "slug": "visual-prominence",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-7e1a237fe0e6",
+        "slug": "pay-to-play",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-7e5703dd1af3",
+        "slug": "low-stock",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-7fb2985d528b",
+        "slug": "granting-and-interaction",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-82843f67f123",
+        "slug": "privacy-maze",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-82d451318c8b",
+        "slug": "friend-spam",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-83150be22c03",
+        "slug": "small-or-moving-close-button",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-87a829c39c69",
+        "slug": "wrong-language",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-889be36742a3",
+        "slug": "information-without-context",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-8aba1c88998a",
+        "slug": "bundling",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-8b2ce6a76f02",
+        "slug": "price-comparison-prevention",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-8c6c46eed4ed",
+        "slug": "social-pyramid",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-901093605b79",
+        "slug": "cuteness",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-90bcc83b8711",
+        "slug": "trick-questions",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-91ec0c239fa0",
+        "slug": "pressured-selling",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-93284055bbb9",
+        "slug": "forced-grace-period",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-94628fd8dae5",
+        "slug": "false-hierarchy",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-95efae00a5d5",
+        "slug": "drip-pricing",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-98e8ffe40e05",
+        "slug": "countdown-timer",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-994e0e6d67e0",
+        "slug": "low-stock",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-99afd725a815",
+        "slug": "social-pyramid",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-9aaa79aa8c6a",
+        "slug": "feedforward-ambiguity",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-9c4e64d563ee",
+        "slug": "disguised-ad",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-9cb7c5681748",
+        "slug": "confirmshaming",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-9d30473ccb3b",
+        "slug": "reduced-friction",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-a10e1e9111c9",
+        "slug": "infinite-scrolling",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-a43335c359da",
+        "slug": "immortal-accounts",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-a59339f42514",
+        "slug": "privacy-zuckering",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-a60224f24a32",
+        "slug": "labyrinthine-navigation",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-a82621b958be",
+        "slug": "grinding",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-a88d1a27bb31",
+        "slug": "limited-time-message",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-a9894be7dac3",
+        "slug": "intermediate-currency",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-ac6b174d3513",
+        "slug": "hidden-information",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-ad26bb2576ed",
+        "slug": "pay-to-avoid",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-ae7d2ce50152",
+        "slug": "false-hierarchy",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-af232659c3f4",
+        "slug": "friend-spam",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-af64bfc208f6",
+        "slug": "forced-grace-period",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-b0a37ef92b4b",
+        "slug": "sneak-into-basket",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-b137e07b54b3",
+        "slug": "forced-grace-period",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-b554ddae7bb6",
+        "slug": "conflicting-information",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-b80dd5cf3461",
+        "slug": "information-without-context",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-ba11af17c8d5",
+        "slug": "psychological-tricks",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-ba1a6124179f",
+        "slug": "pre-delivered-content",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-ba4b64c511ec",
+        "slug": "forced-registration",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-bf275e0b39ba",
+        "slug": "wrong-language",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-bfa6304fb7d4",
+        "slug": "pre-delivered-content",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-c0cca6b69bb4",
+        "slug": "low-stock",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-c1473a4908d0",
+        "slug": "countdown-on-ads",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-c258ffbcc12a",
+        "slug": "customisation",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-c5f963ba3f65",
+        "slug": "immortal-accounts",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-c7cc9dd57b0f",
+        "slug": "feedforward-ambiguity",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-c7d57299bf04",
+        "slug": "drip-pricing",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-c7deb05c28f3",
+        "slug": "forced-registration",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-cd785901edb3",
+        "slug": "visual-prominence",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-ce4e175e333e",
+        "slug": "price-comparison-prevention",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-d54607d53ec1",
+        "slug": "drip-pricing",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-d8f53c51570f",
+        "slug": "pay-to-play",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-db4e983ebfca",
+        "slug": "false-hierarchy",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-dc67c5d7c6f6",
+        "slug": "small-or-moving-close-button",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-dcfe9daa4e5e",
+        "slug": "forced-continuity",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-dfab36d0609e",
+        "slug": "encouraging-anti-social-behavior",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-e28f03754b57",
+        "slug": "pull-to-refresh",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-e86f2c38d99d",
+        "slug": "confirmshaming",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-f24c2928d3ae",
+        "slug": "cuteness",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-f98a6865c8b7",
+        "slug": "auto-play",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-faf02c2c3cae",
+        "slug": "pay-to-avoid",
+        "not_aided": "BENIGN",
+        "aided": "DECEPTIVE"
+      },
+      {
+        "instance_id": "task-fc8c917c547e",
+        "slug": "positive-or-negative-framing",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      },
+      {
+        "instance_id": "task-fff52af4613e",
+        "slug": "encouraging-anti-social-behavior",
+        "not_aided": "DECEPTIVE",
+        "aided": "BENIGN"
+      }
+    ],
+    "formal_layer_non_degrading_vs_aided_base": true,
+    "aided_correct_changes_vs_not_aided": 54,
+    "aided_regressions_vs_not_aided": 68
+  },
+  "validation": {
+    "issues": 0,
+    "rows": {
+      "not-aided": 372,
+      "aided": 372
+    }
+  }
+}

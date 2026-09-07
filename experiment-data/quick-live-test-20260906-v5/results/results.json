@@ -1,0 +1,134 @@
+{
+  "run_id": "quick-live-test-20260906-v5",
+  "design": {
+    "patterns": 10,
+    "instances": 20,
+    "agents_per_arm": 3,
+    "arms": [
+      "c0",
+      "c1",
+      "c2"
+    ],
+    "live_urls": true,
+    "unknown_is_abstention": true,
+    "factors": {
+      "formal_reasoning": "C0 vs C1 ledger",
+      "routing": "C1 ledger vs C2 ledger; screen and selection recall",
+      "aggregation": "ledger-only vs agreement-gated final"
+    }
+  },
+  "metrics": {
+    "c0_model": {
+      "n": 20,
+      "unknown": 1,
+      "coverage": 0.95,
+      "covered_accuracy": 0.9473684210526315,
+      "tp": 8,
+      "fp": 0,
+      "tn": 10,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.8888888888888888,
+      "f1": 0.9411764705882353
+    },
+    "c1_model": {
+      "n": 20,
+      "unknown": 6,
+      "coverage": 0.7,
+      "covered_accuracy": 0.8571428571428571,
+      "tp": 4,
+      "fp": 1,
+      "tn": 8,
+      "fn": 1,
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1": 0.8000000000000002
+    },
+    "c1_ledger": {
+      "n": 20,
+      "unknown": 6,
+      "coverage": 0.7,
+      "covered_accuracy": 0.7857142857142857,
+      "tp": 3,
+      "fp": 0,
+      "tn": 8,
+      "fn": 3,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666
+    },
+    "c1_aggregate": {
+      "n": 20,
+      "unknown": 8,
+      "coverage": 0.6,
+      "covered_accuracy": 0.9166666666666666,
+      "tp": 3,
+      "fp": 0,
+      "tn": 8,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571428571428571
+    },
+    "c2_model": {
+      "n": 20,
+      "unknown": 7,
+      "coverage": 0.65,
+      "covered_accuracy": 0.8461538461538461,
+      "tp": 6,
+      "fp": 0,
+      "tn": 5,
+      "fn": 2,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571428571428571
+    },
+    "c2_ledger": {
+      "n": 20,
+      "unknown": 7,
+      "coverage": 0.65,
+      "covered_accuracy": 0.8461538461538461,
+      "tp": 6,
+      "fp": 0,
+      "tn": 5,
+      "fn": 2,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571428571428571
+    },
+    "c2_aggregate": {
+      "n": 20,
+      "unknown": 7,
+      "coverage": 0.65,
+      "covered_accuracy": 0.8461538461538461,
+      "tp": 6,
+      "fp": 0,
+      "tn": 5,
+      "fn": 2,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571428571428571
+    }
+  },
+  "routing": {
+    "c1_target_available": 20,
+    "c2_target_screen": {
+      "MATCH": 18,
+      "NO_MATCH": 2
+    },
+    "c2_target_selected": 20,
+    "c2_target_match_or_unknown": 18,
+    "c2_target_screen_recall": 0.9,
+    "c2_target_card_recall": 1.0,
+    "c2_target_recall_match_or_unknown": 0.9,
+    "c2_target_selection_rate": 1.0
+  },
+  "validation": {
+    "issues": 0,
+    "rows": {
+      "c0": 20,
+      "c1": 20,
+      "c2": 20
+    }
+  }
+}

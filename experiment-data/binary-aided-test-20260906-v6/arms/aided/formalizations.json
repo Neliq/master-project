@@ -1,0 +1,278 @@
+[
+  {
+    "rule_id": "DP-001-C1",
+    "pattern": "Immortal Accounts",
+    "operational_reading": "Measured deletion path is longer than creation path",
+    "required_atoms": [
+      "The creation and deletion actions are identified from the same starting state.",
+      "The shortest interaction path for both actions is observed or directly countable.",
+      "The stated deletion/creation ratio exceeds the formula threshold."
+    ],
+    "direct_counterevidence": [
+      "The measured deletion path is not longer than the creation path."
+    ],
+    "pseudocode": [
+      "INPUT evidence_ledger, with state IDs and modality availability.",
+      "CHECK the pattern-specific domain/context gate.",
+      "IF the core context is contradicted: RETURN NO_MATCH.",
+      "PARSE the original formula while preserving every AND, OR, NOT, quantifier, and grouping.",
+      "EVALUATE each atomic operand only from directly observed evidence.",
+      "IF an operand required by the formula is UNKNOWN: keep the formula result UNKNOWN unless its Boolean branch is already decisive.",
+      "EVALUATE AND as FALSE if any operand is FALSE, TRUE if all are TRUE, otherwise UNKNOWN.",
+      "EVALUATE OR as TRUE if any operand is TRUE, FALSE if all are FALSE, otherwise UNKNOWN.",
+      "EVALUATE implication only as an observed premise-and-consequence proof obligation; never use vacuous truth.",
+      "IF the formula result is UNKNOWN: RETURN UNKNOWN.",
+      "IF the formula result is FALSE: RETURN FALSE.",
+      "IF direct_counterevidence is observed: RETURN FALSE.",
+      "RETURN TRUE."
+    ]
+  },
+  {
+    "rule_id": "DP-004-C1",
+    "pattern": "Price Comparison Prevention",
+    "operational_reading": "A price is shown without an available fiat conversion",
+    "required_atoms": [
+      "A nonempty price token is visible in the complete relevant price scope.",
+      "No fiat conversion function/label is present in that same scope."
+    ],
+    "direct_counterevidence": [
+      "A direct fiat conversion is available and visible in the relevant scope."
+    ],
+    "pseudocode": [
+      "INPUT evidence_ledger, with state IDs and modality availability.",
+      "CHECK the pattern-specific domain/context gate.",
+      "IF the core context is contradicted: RETURN NO_MATCH.",
+      "PARSE the original formula while preserving every AND, OR, NOT, quantifier, and grouping.",
+      "EVALUATE each atomic operand only from directly observed evidence.",
+      "IF an operand required by the formula is UNKNOWN: keep the formula result UNKNOWN unless its Boolean branch is already decisive.",
+      "EVALUATE AND as FALSE if any operand is FALSE, TRUE if all are TRUE, otherwise UNKNOWN.",
+      "EVALUATE OR as TRUE if any operand is TRUE, FALSE if all are FALSE, otherwise UNKNOWN.",
+      "EVALUATE implication only as an observed premise-and-consequence proof obligation; never use vacuous truth.",
+      "IF the formula result is UNKNOWN: RETURN UNKNOWN.",
+      "IF the formula result is FALSE: RETURN FALSE.",
+      "IF direct_counterevidence is observed: RETURN FALSE.",
+      "RETURN TRUE."
+    ]
+  },
+  {
+    "rule_id": "DP-007-C1",
+    "pattern": "Sneak Into Basket",
+    "operational_reading": "An item appears in the cart without a matching user event",
+    "required_atoms": [
+      "The item is present in the cart/final checkout state.",
+      "The item is absent from the set of explicitly selected items.",
+      "The aligned event trace shows no user event that adds or selects that item."
+    ],
+    "direct_counterevidence": [
+      "A matching explicit add/select event is observed for the item."
+    ],
+    "pseudocode": [
+      "INPUT evidence_ledger, with state IDs and modality availability.",
+      "CHECK the pattern-specific domain/context gate.",
+      "IF the core context is contradicted: RETURN NO_MATCH.",
+      "PARSE the original formula while preserving every AND, OR, NOT, quantifier, and grouping.",
+      "EVALUATE each atomic operand only from directly observed evidence.",
+      "IF an operand required by the formula is UNKNOWN: keep the formula result UNKNOWN unless its Boolean branch is already decisive.",
+      "EVALUATE AND as FALSE if any operand is FALSE, TRUE if all are TRUE, otherwise UNKNOWN.",
+      "EVALUATE OR as TRUE if any operand is TRUE, FALSE if all are FALSE, otherwise UNKNOWN.",
+      "EVALUATE implication only as an observed premise-and-consequence proof obligation; never use vacuous truth.",
+      "IF the formula result is UNKNOWN: RETURN UNKNOWN.",
+      "IF the formula result is FALSE: RETURN FALSE.",
+      "IF direct_counterevidence is observed: RETURN FALSE.",
+      "RETURN TRUE."
+    ]
+  },
+  {
+    "rule_id": "DP-012-C1",
+    "pattern": "Conflicting Information",
+    "operational_reading": "Two nearby factual propositions trigger only when their extracted truth conditions are explicitly mutually unsatisfiable within the same DOM scope.",
+    "required_atoms": [
+      "Two factual propositions are identified within the same named container.",
+      "Their proposition representations are directly evaluated as mutually unsatisfiable.",
+      "Their DOM distance is below the stated proximity threshold."
+    ],
+    "direct_counterevidence": [
+      "The propositions are jointly satisfiable or are not in the same relevant scope."
+    ],
+    "pseudocode": [
+      "INPUT evidence_ledger, with state IDs and modality availability.",
+      "CHECK the pattern-specific domain/context gate.",
+      "IF the core context is contradicted: RETURN NO_MATCH.",
+      "PARSE the original formula while preserving every AND, OR, NOT, quantifier, and grouping.",
+      "EVALUATE each atomic operand only from directly observed evidence.",
+      "IF an operand required by the formula is UNKNOWN: keep the formula result UNKNOWN unless its Boolean branch is already decisive.",
+      "EVALUATE AND as FALSE if any operand is FALSE, TRUE if all are TRUE, otherwise UNKNOWN.",
+      "EVALUATE OR as TRUE if any operand is TRUE, FALSE if all are FALSE, otherwise UNKNOWN.",
+      "EVALUATE implication only as an observed premise-and-consequence proof obligation; never use vacuous truth.",
+      "IF the formula result is UNKNOWN: RETURN UNKNOWN.",
+      "IF the formula result is FALSE: RETURN FALSE.",
+      "IF direct_counterevidence is observed: RETURN FALSE.",
+      "RETURN TRUE."
+    ]
+  },
+  {
+    "rule_id": "DP-018-C1",
+    "pattern": "Persuasive Language",
+    "operational_reading": "Coercive text has greater event-listener density than neutral text",
+    "required_atoms": [
+      "Coercive and neutral comparison text nodes are identified.",
+      "Event-listener counts are directly exposed for both nodes.",
+      "The ratio exceeds the stated threshold."
+    ],
+    "direct_counterevidence": [
+      "The ratio does not exceed the threshold."
+    ],
+    "pseudocode": [
+      "INPUT evidence_ledger, with state IDs and modality availability.",
+      "CHECK the pattern-specific domain/context gate.",
+      "IF the core context is contradicted: RETURN NO_MATCH.",
+      "PARSE the original formula while preserving every AND, OR, NOT, quantifier, and grouping.",
+      "EVALUATE each atomic operand only from directly observed evidence.",
+      "IF an operand required by the formula is UNKNOWN: keep the formula result UNKNOWN unless its Boolean branch is already decisive.",
+      "EVALUATE AND as FALSE if any operand is FALSE, TRUE if all are TRUE, otherwise UNKNOWN.",
+      "EVALUATE OR as TRUE if any operand is TRUE, FALSE if all are FALSE, otherwise UNKNOWN.",
+      "EVALUATE implication only as an observed premise-and-consequence proof obligation; never use vacuous truth.",
+      "IF the formula result is UNKNOWN: RETURN UNKNOWN.",
+      "IF the formula result is FALSE: RETURN FALSE.",
+      "IF direct_counterevidence is observed: RETURN FALSE.",
+      "RETURN TRUE."
+    ]
+  },
+  {
+    "rule_id": "DP-021-C1",
+    "pattern": "Cuteness",
+    "operational_reading": "Affective assets appear in cancellation but not onboarding DOM",
+    "required_atoms": [
+      "The onboarding and cancellation states are identified and aligned.",
+      "The affective asset is absent from onboarding DOM and present in cancellation DOM."
+    ],
+    "direct_counterevidence": [
+      "The asset is present in both states or absent from both."
+    ],
+    "pseudocode": [
+      "INPUT evidence_ledger, with state IDs and modality availability.",
+      "CHECK the pattern-specific domain/context gate.",
+      "IF the core context is contradicted: RETURN NO_MATCH.",
+      "PARSE the original formula while preserving every AND, OR, NOT, quantifier, and grouping.",
+      "EVALUATE each atomic operand only from directly observed evidence.",
+      "IF an operand required by the formula is UNKNOWN: keep the formula result UNKNOWN unless its Boolean branch is already decisive.",
+      "EVALUATE AND as FALSE if any operand is FALSE, TRUE if all are TRUE, otherwise UNKNOWN.",
+      "EVALUATE OR as TRUE if any operand is TRUE, FALSE if all are FALSE, otherwise UNKNOWN.",
+      "EVALUATE implication only as an observed premise-and-consequence proof obligation; never use vacuous truth.",
+      "IF the formula result is UNKNOWN: RETURN UNKNOWN.",
+      "IF the formula result is FALSE: RETURN FALSE.",
+      "IF direct_counterevidence is observed: RETURN FALSE.",
+      "RETURN TRUE."
+    ]
+  },
+  {
+    "rule_id": "DP-031-C1",
+    "pattern": "Addictive Design",
+    "operational_reading": "Near-end scrolling triggers observed content append",
+    "required_atoms": [
+      "The evidence shows the pattern-specific scroll/feed context near a document boundary.",
+      "A fetch/append transition is observed after that near-end state, with repeated continuation or no stable end boundary."
+    ],
+    "direct_counterevidence": [
+      "A stable end boundary is observed, or the interface is a bounded reward/play loop without scroll/feed continuation."
+    ],
+    "pseudocode": [
+      "INPUT evidence_ledger, with state IDs and modality availability.",
+      "CHECK the pattern-specific domain/context gate.",
+      "IF the core context is contradicted: RETURN NO_MATCH.",
+      "PARSE the original formula while preserving every AND, OR, NOT, quantifier, and grouping.",
+      "EVALUATE each atomic operand only from directly observed evidence.",
+      "IF an operand required by the formula is UNKNOWN: keep the formula result UNKNOWN unless its Boolean branch is already decisive.",
+      "EVALUATE AND as FALSE if any operand is FALSE, TRUE if all are TRUE, otherwise UNKNOWN.",
+      "EVALUATE OR as TRUE if any operand is TRUE, FALSE if all are FALSE, otherwise UNKNOWN.",
+      "EVALUATE implication only as an observed premise-and-consequence proof obligation; never use vacuous truth.",
+      "IF the formula result is UNKNOWN: RETURN UNKNOWN.",
+      "IF the formula result is FALSE: RETURN FALSE.",
+      "IF direct_counterevidence is observed: RETURN FALSE.",
+      "RETURN TRUE."
+    ]
+  },
+  {
+    "rule_id": "DP-039-C1",
+    "pattern": "Friend Spam",
+    "operational_reading": "Read-only contact intent leads to observed outbound messaging",
+    "required_atoms": [
+      "The prompt's intended action is read-only matching/searching.",
+      "An outbound message/broadcast action is directly observed after the access event.",
+      "The transition from access to outbound action is evidenced in the aligned state/event record."
+    ],
+    "direct_counterevidence": [
+      "Only read-only matching occurs and no outbound message action is observed."
+    ],
+    "pseudocode": [
+      "INPUT evidence_ledger, with state IDs and modality availability.",
+      "CHECK the pattern-specific domain/context gate.",
+      "IF the core context is contradicted: RETURN NO_MATCH.",
+      "PARSE the original formula while preserving every AND, OR, NOT, quantifier, and grouping.",
+      "EVALUATE each atomic operand only from directly observed evidence.",
+      "IF an operand required by the formula is UNKNOWN: keep the formula result UNKNOWN unless its Boolean branch is already decisive.",
+      "EVALUATE AND as FALSE if any operand is FALSE, TRUE if all are TRUE, otherwise UNKNOWN.",
+      "EVALUATE OR as TRUE if any operand is TRUE, FALSE if all are FALSE, otherwise UNKNOWN.",
+      "EVALUATE implication only as an observed premise-and-consequence proof obligation; never use vacuous truth.",
+      "IF the formula result is UNKNOWN: RETURN UNKNOWN.",
+      "IF the formula result is FALSE: RETURN FALSE.",
+      "IF direct_counterevidence is observed: RETURN FALSE.",
+      "RETURN TRUE."
+    ]
+  },
+  {
+    "rule_id": "DP-048-C1",
+    "pattern": "Pay To Avoid",
+    "operational_reading": "The default state is materially degraded by an artificial penalty",
+    "required_atoms": [
+      "Default and system/reference utility states are identified for the same feature.",
+      "The artificial degradation term is observed or explicitly represented.",
+      "The stated utility inequality is met."
+    ],
+    "direct_counterevidence": [
+      "The default state is not materially degraded or the feature is inherently unavailable."
+    ],
+    "pseudocode": [
+      "INPUT evidence_ledger, with state IDs and modality availability.",
+      "CHECK the pattern-specific domain/context gate.",
+      "IF the core context is contradicted: RETURN NO_MATCH.",
+      "PARSE the original formula while preserving every AND, OR, NOT, quantifier, and grouping.",
+      "EVALUATE each atomic operand only from directly observed evidence.",
+      "IF an operand required by the formula is UNKNOWN: keep the formula result UNKNOWN unless its Boolean branch is already decisive.",
+      "EVALUATE AND as FALSE if any operand is FALSE, TRUE if all are TRUE, otherwise UNKNOWN.",
+      "EVALUATE OR as TRUE if any operand is TRUE, FALSE if all are FALSE, otherwise UNKNOWN.",
+      "EVALUATE implication only as an observed premise-and-consequence proof obligation; never use vacuous truth.",
+      "IF the formula result is UNKNOWN: RETURN UNKNOWN.",
+      "IF the formula result is FALSE: RETURN FALSE.",
+      "IF direct_counterevidence is observed: RETURN FALSE.",
+      "RETURN TRUE."
+    ]
+  },
+  {
+    "rule_id": "DP-059-C1",
+    "pattern": "Confirmshaming",
+    "operational_reading": "Decline is not exposed as an equivalent interactive control",
+    "required_atoms": [
+      "Accept and decline nodes are identified in the same state.",
+      "The decline node is not a button/equivalent button role while accept is."
+    ],
+    "direct_counterevidence": [
+      "Both choices expose equivalent interactive semantics."
+    ],
+    "pseudocode": [
+      "INPUT evidence_ledger, with state IDs and modality availability.",
+      "CHECK the pattern-specific domain/context gate.",
+      "IF the core context is contradicted: RETURN NO_MATCH.",
+      "PARSE the original formula while preserving every AND, OR, NOT, quantifier, and grouping.",
+      "EVALUATE each atomic operand only from directly observed evidence.",
+      "IF an operand required by the formula is UNKNOWN: keep the formula result UNKNOWN unless its Boolean branch is already decisive.",
+      "EVALUATE AND as FALSE if any operand is FALSE, TRUE if all are TRUE, otherwise UNKNOWN.",
+      "EVALUATE OR as TRUE if any operand is TRUE, FALSE if all are FALSE, otherwise UNKNOWN.",
+      "EVALUATE implication only as an observed premise-and-consequence proof obligation; never use vacuous truth.",
+      "IF the formula result is UNKNOWN: RETURN UNKNOWN.",
+      "IF the formula result is FALSE: RETURN FALSE.",
+      "IF direct_counterevidence is observed: RETURN FALSE.",
+      "RETURN TRUE."
+    ]
+  }
+]

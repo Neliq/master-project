@@ -1,0 +1,78 @@
+# Confirmshaming [misdirection]
+
+This card is an application-oriented presentation of the unchanged ontology.
+It does not add labels, counterexamples, thresholds, or definitions.
+
+## Card-level rule
+
+Evaluate each condition independently. A condition is TRUE only when all
+required atoms are directly supported. It is FALSE only with direct
+counterevidence. Otherwise it is UNKNOWN. A pattern needs one complete
+TRUE trigger condition; a counterevidence condition cannot create a trigger.
+
+Domain/context gate: At least one pattern-specific object/context and one mechanism anchor must be directly observed. If the core context is contradicted, mark this card NO_MATCH rather than UNKNOWN.
+
+## Condition 1: 1. Structural Asymmetry in Decline-Option Accessibility
+
+Original formula (verbatim): `\mathrm{Tag}(N_{\mathrm{decline}}) \notin \{\texttt{<button>}, \texttt{[role="button"]}\} \quad \land \quad \mathrm{Tag}(N_{\mathrm{accept}}) = \texttt{<button>}`
+Operational reading: **Decline is not exposed as an equivalent interactive control**
+Polarity: `trigger`
+Comparison policy: Use the original formula's explicit threshold or equality; do not invent values.
+Review policy: TRUE requires a complete observed proof; FALSE requires a false atom or direct counterevidence; UNKNOWN is retained when a required atom, threshold, scope, or observation is unavailable. Do not recode UNKNOWN as BENIGN without a declared mapping.
+
+### Required atoms
+- Accept and decline nodes are identified in the same state.
+- The decline node is not a button/equivalent button role while accept is.
+
+### Mark UNKNOWN when
+- The control semantics are not exposed.
+
+### Direct counterevidence
+- Both choices expose equivalent interactive semantics.
+
+### Do not infer
+- Different HTML tags are insufficient if accessibility semantics are equivalent.
+
+## Condition 2: 2. Visual Hierarchy Subversion
+
+Original formula (verbatim): `\mathrm{Vis}(N_{\mathrm{accept}}) > \tau_{\mathrm{visibility\_skew}}\,\mathrm{Vis}(N_{\mathrm{decline}}) \quad \land \quad \mathrm{Vis}(N_{\mathrm{decline}}) < \tau_{\mathrm{minimum\_accessibility}}`
+Operational reading: **Decline is visually subordinated below the stated accessibility threshold**
+Polarity: `trigger`
+Comparison policy: A direct within-interface comparison may satisfy the qualitative relation when both operands and the direction are explicitly observed; no numeric threshold may be invented.
+Review policy: TRUE requires a complete observed proof; FALSE requires a false atom or direct counterevidence; UNKNOWN is retained when a required atom, threshold, scope, or observation is unavailable. Do not recode UNKNOWN as BENIGN without a declared mapping.
+
+### Required atoms
+- Accept and decline visual nodes are identified in the same state.
+- Their relative visibility is observed and exceeds the stated disparity.
+- Decline visibility meets the stated minimum-accessibility failure condition.
+
+### Mark UNKNOWN when
+- Relative visibility or the minimum threshold is not measurable.
+
+### Direct counterevidence
+- Decline is comparably visible and accessible.
+
+### Do not infer
+- A text link is not automatically shaming without the relative comparison.
+
+## Condition 3: 3. Semantic Asymmetry
+
+Original formula (verbatim): `S_{\mathrm{sentiment}}(N_{\mathrm{accept}}) > \tau_{\mathrm{affirming}} \quad \land \quad S_{\mathrm{sentiment}}(N_{\mathrm{decline}}) < -\tau_{\mathrm{shame}}`
+Operational reading: **Accept language is positive while decline language is negative**
+Polarity: `trigger`
+Comparison policy: A direct within-interface comparison may satisfy the qualitative relation when both operands and the direction are explicitly observed; no numeric threshold may be invented.
+Review policy: TRUE requires a complete observed proof; FALSE requires a false atom or direct counterevidence; UNKNOWN is retained when a required atom, threshold, scope, or observation is unavailable. Do not recode UNKNOWN as BENIGN without a declared mapping.
+
+### Required atoms
+- Accept and decline labels are identified as the opposing choices.
+- Their sentiment values meet the stated positive/negative relationship.
+
+### Mark UNKNOWN when
+- Choice roles or sentiment cannot be reliably determined.
+
+### Direct counterevidence
+- Decline language is neutral/respectful or accept language is not positive under the stated measure.
+
+### Do not infer
+- A negative product consequence is not the same as a negative label aimed at the user.
+
