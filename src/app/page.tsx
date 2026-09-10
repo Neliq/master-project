@@ -1,5 +1,5 @@
 /**
- * Homepage — the catalog of all 60 dark patterns grouped by category.
+ * Homepage — the catalog of all 64 dark patterns grouped by category.
  *
  * Pure server component: every card is statically rendered, so the page
  * ships in HTML. The dynamic [slug] subpage handles the per-pattern

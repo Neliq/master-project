@@ -1,7 +1,7 @@
 /**
  * Dark pattern registry for the educational site.
  *
- * 62 patterns sourced from the Master's thesis, organised by
+ * 64 patterns sourced from the Master's thesis, organised by
  * six thematic groups defined in the Master's thesis. Every pattern ships with its
  * formal conditions (extracted from the thesis LaTeX) and a
  * short summary derived from the thesis prose. The `built` flag
@@ -1317,6 +1317,46 @@ export const PATTERNS: Pattern[] = [
     { conditionIndex: 1, demoSlug: "auto-play-condition-2" },
     { conditionIndex: 2, demoSlug: "auto-play-condition-3" },
   ],
+  },
+  {
+    slug: "nagging",
+    name: "Nagging",
+    category: "engagement-exploitation",
+    summary: "Nagging repeatedly presents the same or a materially equivalent request after dismissal or non-response. It uses recurring prompts, banners, or interruptions to sustain attention or pressure completion, while the thesis conditions remain limited to directly observable recurrence, salience, and repeated imperative language.",
+    iconName: "bell",
+    built: true,
+    conditions: [
+      { title: "Repeated Prompt Injection", description: "The same request reappears after dismissal within a declared observation window.", formula: "\\exists p_1,p_2 \\in P_{\\mathrm{prompt}} : A(p_1) = A(p_2) \\land t(p_2) > t(p_1) \\land \\Delta t(p_1,p_2) \\leq \\tau_{\\mathrm{repeat}} \\land \\mathrm{Dismissed}(p_1) = \\mathrm{True} \\land \\mathrm{Injected}(p_2) = \\mathrm{True}", given: "To identify repeated prompt injection, let $P_{\\mathrm{prompt}}$ be the set of prompt instances observed within the declared route and session, and let $A(p)$ be a normalized action signature containing the request target and requested action. The predicate $A(p_1)=A(p_2)$ requires material equivalence rather than merely similar wording. Let $t(p)$ be the observed render or insertion time, $\\Delta t(p_1,p_2)=t(p_2)-t(p_1)$, and $\\tau_{\\mathrm{repeat}}$ the declared observation window. $\\mathrm{Dismissed}(p_1)$ is TRUE only when the evidence records a close, decline, defer, or equivalent dismissal transition; $\\mathrm{Injected}(p_2)$ is TRUE only when the equivalent request is newly inserted or visibly re-presented after that transition. A single reminder, a user-requested prompt, or a later prompt with materially new task information is outside this condition." },
+      { title: "Persistent Interruption Salience", description: "The recurring request is rendered as a visually salient interruption.", formula: "\\frac{A(N_{\\mathrm{nag}})}{A_{\\mathrm{viewport}}} > \\tau_{\\mathrm{nag\\_area}} \\lor z(N_{\\mathrm{nag}}) \\geq \\tau_{\\mathrm{nag\\_layer}}", given: "To measure the rendered salience of a recurring prompt, let $N_{\\mathrm{nag}}$ be the prompt node in the inspected state, $A(N_{\\mathrm{nag}})$ its rendered bounding-box area, and $A_{\\mathrm{viewport}}$ the visible viewport area in the same capture. Let $z(N_{\\mathrm{nag}})$ denote the observed stacking rank or overlay-layer indicator, and let $\\tau_{\\mathrm{nag\\_area}}$ and $\\tau_{\\mathrm{nag\\_layer}}$ be declared thresholds. The condition is present when either the prompt occupies more than the declared viewport fraction or it is rendered as a high-layer interruption over the active task. This concerns observable persistence and visual salience; it does not infer that a user noticed, attended to, or was affected by the prompt." },
+      { title: "Imperative Repetition Without New Context", description: "Imperative wording repeats without materially new task context.", formula: "\\exists p_1,p_2 \\in P_{\\mathrm{prompt}} : A(p_1) = A(p_2) \\land |W(N_{\\mathrm{nag}})| > 0 \\land \\frac{|W(N_{\\mathrm{nag}}) \\cap L_{\\mathrm{imperative}}|}{|W(N_{\\mathrm{nag}})|} > \\tau_{\\mathrm{imperative}} \\land \\mathrm{ContextChange}(p_1,p_2) = \\mathrm{False}", given: "To evaluate repeated imperative wording, let $P_{\\mathrm{prompt}}$ be the set of prompt instances in the declared route and session, and let $A(p)$ be their normalized action signature. Let $W(N_{\\mathrm{nag}})$ be the normalized visible token multiset of the recurring prompt and $L_{\\mathrm{imperative}}$ a declared lexicon of request or command terms such as ``enable,'' ``subscribe,'' ``invite,'' or ``finish setup.'' The non-zero cardinality guard prevents an empty prompt from satisfying the ratio. $\\mathrm{ContextChange}(p_1,p_2)$ is TRUE only when the inspected task state, user request, or materially available information changes between two equivalent prompt observations. The condition is present when the imperative-token ratio exceeds $\\tau_{\\mathrm{imperative}}$ while the equivalent request is repeated without new task context. Neutral status updates and reminders that add relevant information remain outside this operational condition." },
+    ],
+    conditionDemos: [
+      { conditionIndex: 0, demoSlug: "nagging-condition-1" },
+      { conditionIndex: 1, demoSlug: "nagging-condition-2" },
+      { conditionIndex: 2, demoSlug: "nagging-condition-3" },
+    ],
+
+    references: ["Nie et al. (2024)"],
+  },
+  {
+    slug: "games-for-other-purposes",
+    name: "Games For Other Purposes",
+    category: "engagement-exploitation",
+    summary: "Games For Other Purposes concerns game-like progression, rewards, or challenges coupled to a non-game task in a way that redirects or sustains engagement. The thesis assigns it to Engagement Exploitation and narrows the entry to observable task dependence, visual dominance, or reward framing rather than treating all gamification as deceptive.",
+    iconName: "play",
+    built: true,
+    conditions: [
+      { title: "Game Layer Coupled to a Non-Game Task", description: "A game-like layer governs progression in a task outside an entertainment-game context.", formula: "\\mathrm{GameLayer}(G_{\\mathrm{task}}, I_{\\mathrm{task}}) = \\mathrm{True} \\land \\mathrm{Purpose}(I_{\\mathrm{task}}) \\notin \\mathcal{P}_{\\mathrm{entertainment}} \\land \\exists a_{\\mathrm{task}} \\in \\mathcal{A}(I_{\\mathrm{task}}) : \\mathrm{Governs}(G_{\\mathrm{task}},a_{\\mathrm{task}}) = \\mathrm{True} \\land \\mathrm{Progress}(a_{\\mathrm{task}}) > 0", given: "To identify a game layer applied for another purpose, let $I_{\\mathrm{task}}$ be the inspected interface and $G_{\\mathrm{task}}$ the points, levels, quests, lives, challenges, or progression state rendered within it. $\\mathrm{GameLayer}(G_{\\mathrm{task}},I_{\\mathrm{task}})$ is TRUE when those game-like elements are observable in the interface, while $\\mathrm{Purpose}(I_{\\mathrm{task}})$ denotes the declared task context. Let $\\mathcal{P}_{\\mathrm{entertainment}}$ be the set of task purposes whose primary activity is an entertainment game, and let $\\mathcal{A}(I_{\\mathrm{task}})$ be the observable task-action set. $\\mathrm{Governs}(G_{\\mathrm{task}},a_{\\mathrm{task}})$ is TRUE when the game layer controls, gates, or structures a non-game action, and $\\mathrm{Progress}(a_{\\mathrm{task}})>0$ records an observable change in game progress after that action. Game-like decoration or voluntary rewards that are not coupled to the non-game task do not satisfy this condition." },
+      { title: "Visual Dominance of Repurposed Game Mechanics", description: "The repurposed game layer is visually dominant over ordinary task controls.", formula: "A(N_{\\mathrm{game}}) > 0 \\land A_{\\mathrm{viewport}} > 0 \\land \\frac{A(N_{\\mathrm{game}})}{A_{\\mathrm{viewport}}} > \\tau_{\\mathrm{game\\_salience}} \\land W(N_{\\mathrm{game}}) > \\tau_{\\mathrm{task\\_weight}} W(N_{\\mathrm{task}})", given: "To compare the visual prominence of the repurposed game layer with the underlying task, let $N_{\\mathrm{game}}$ be the visible game-like node set and $N_{\\mathrm{task}}$ the ordinary task controls or information in the same capture. Let $A(\\cdot)$ be the sum of rendered bounding-box areas, $A_{\\mathrm{viewport}}$ the visible viewport area, and $W(\\cdot)$ a declared visual-weight measure based on selected observable features such as area, contrast, typographic prominence, or overlay placement. The positive-area guards prevent undefined ratios. The condition is present when the game layer exceeds the declared salience fraction and its measured visual weight exceeds $\\tau_{\\mathrm{task\\_weight}}$ times the task layer's weight. The comparison does not infer distraction, attention, or intentional concealment." },
+      { title: "Reward Framing of Non-Game Compliance", description: "Non-game compliance is framed as game advancement and access depends on the associated reward state.", formula: "\\mathrm{Frame}(T_{\\mathrm{task}}) \\in L_{\\mathrm{game\\_reward}} \\land \\mathrm{Access}(I_{\\mathrm{task}} \\mid R_{\\mathrm{game}}) = \\mathrm{True} \\land \\mathrm{Access}(I_{\\mathrm{task}} \\mid \\neg R_{\\mathrm{game}}) = \\mathrm{False}", given: "To identify reward framing of ordinary task compliance, let $T_{\\mathrm{task}}$ be the visible text surrounding the non-game action, $L_{\\mathrm{game\\_reward}}$ a declared lexicon containing terms such as ``level up,'' ``badge,'' ``streak,'' ``challenge,'' and ``unlock,'' and $R_{\\mathrm{game}}$ the associated reward or progression state. $\\mathrm{Frame}(T_{\\mathrm{task}}) \\in L_{\\mathrm{game\\_reward}}$ requires the task to be explicitly described using game-advancement language. $\\mathrm{Access}(I_{\\mathrm{task}} \\mid R_{\\mathrm{game}})$ and $\\mathrm{Access}(I_{\\mathrm{task}} \\mid \\neg R_{\\mathrm{game}})$ are the observed access outcomes with and without the required reward state, respectively. The condition therefore requires an observable dependency between game reward and non-game access or completion; game-themed wording or voluntary, non-blocking rewards alone are insufficient." },
+    ],
+    conditionDemos: [
+      { conditionIndex: 0, demoSlug: "games-for-other-purposes-condition-1" },
+      { conditionIndex: 1, demoSlug: "games-for-other-purposes-condition-2" },
+      { conditionIndex: 2, demoSlug: "games-for-other-purposes-condition-3" },
+    ],
+
+    references: ["Nie et al. (2024)", "Zagal et al. (2013)"],
   }
 ];
 

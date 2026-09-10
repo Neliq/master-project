@@ -2,8 +2,8 @@
  * Pattern subpage — the dynamic route at /patterns/[slug].
  *
  * Renders every pattern's metadata + mathematical conditions. For the
- * three "built" patterns (Auto-Play, Immortal Accounts, Pre-Delivered
- * Content) it also mounts an interactive demo from the demo registry.
+ * patterns with per-condition demos also mount interactive demos from the
+ * demo registry.
  *
  * When a pattern has per-condition demos, the layout groups each demo
  * with its corresponding condition and checklist item:
@@ -11,7 +11,7 @@
  *   Demo 2 → Condition 2 → Checklist 2
  *   Demo 3 → Condition 3 → Checklist 3
  *
- * All 60 patterns are statically generated via `generateStaticParams`.
+ * All 64 patterns are statically generated via `generateStaticParams`.
  */
 
 import Link from "next/link";

@@ -127,6 +127,12 @@ import { LimitedTimeMessageCond3 } from "./demos/limited-time-message-condition-
 import { LowStockCond1 } from "./demos/low-stock-condition-1";
 import { LowStockCond2 } from "./demos/low-stock-condition-2";
 import { LowStockCond3 } from "./demos/low-stock-condition-3";
+import { GamesForOtherPurposesCond1 } from "./demos/games-for-other-purposes-condition-1";
+import { GamesForOtherPurposesCond2 } from "./demos/games-for-other-purposes-condition-2";
+import { GamesForOtherPurposesCond3 } from "./demos/games-for-other-purposes-condition-3";
+import { NaggingCond1 } from "./demos/nagging-condition-1";
+import { NaggingCond2 } from "./demos/nagging-condition-2";
+import { NaggingCond3 } from "./demos/nagging-condition-3";
 import { ParasocialPressureCond1 } from "./demos/parasocial-pressure-condition-1";
 import { ParasocialPressureCond2 } from "./demos/parasocial-pressure-condition-2";
 import { ParasocialPressureCond3 } from "./demos/parasocial-pressure-condition-3";
@@ -322,6 +328,12 @@ const registry: Record<string, DemoComponent> = {
   "low-stock-condition-1": LowStockCond1,
   "low-stock-condition-2": LowStockCond2,
   "low-stock-condition-3": LowStockCond3,
+  "games-for-other-purposes-condition-1": GamesForOtherPurposesCond1,
+  "games-for-other-purposes-condition-2": GamesForOtherPurposesCond2,
+  "games-for-other-purposes-condition-3": GamesForOtherPurposesCond3,
+  "nagging-condition-1": NaggingCond1,
+  "nagging-condition-2": NaggingCond2,
+  "nagging-condition-3": NaggingCond3,
   "parasocial-pressure-condition-1": ParasocialPressureCond1,
   "parasocial-pressure-condition-2": ParasocialPressureCond2,
   "parasocial-pressure-condition-3": ParasocialPressureCond3,

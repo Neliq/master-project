@@ -61,4 +61,6 @@ export const PATTERN_IMAGES: Record<string, string> = {
   "pull-to-refresh": "/images/patterns/pull-to-refresh-7x6.png",
   "countdown-on-ads": "/images/patterns/countdown-on-ads-7x6.png",
   "auto-play": "/images/patterns/auto-play-7x6.png",
+  "nagging": "/images/patterns/nagging-7x6.png",
+  "games-for-other-purposes": "/images/patterns/games-for-other-purposes-7x6.png",
 };

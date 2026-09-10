@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Dark Pattern Lab",
   },
   description:
-    "An educational reference for designers and developers exploring 62 dark patterns through objective, mathematically expressible conditions and interactive A/B demos.",
+    "An educational reference for designers and developers exploring 64 dark patterns through objective, mathematically expressible conditions and interactive A/B demos.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Dark Pattern Lab",
     description:
-      "An educational reference for designers and developers exploring 62 dark patterns through objective, mathematically expressible conditions and interactive A/B demos.",
+      "An educational reference for designers and developers exploring 64 dark patterns through objective, mathematically expressible conditions and interactive A/B demos.",
     type: "website",
   },
 };
