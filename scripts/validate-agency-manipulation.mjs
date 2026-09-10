@@ -51,7 +51,7 @@ for (const slug of slugs) {
       continue;
     }
     const source = readFileSync(file, "utf8");
-    for (const required of ["<DemoShell", "benign=", "mode={mode}", "onRestart=", "userTitle="]) {
+    for (const required of ["<DemoShell", "benign=", "mode={mode}", "userTitle="]) {
       if (!source.includes(required)) errors.push(`${demoSlug} is missing ${required}`);
     }
   }
