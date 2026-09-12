@@ -8,7 +8,6 @@ import {
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import {
   SEMANTIC_COLOR_TOKENS,
@@ -87,52 +86,63 @@ export function SemanticColorCustomization() {
               (token) => token.group === group
             );
 
+            const groupId = `semantic-color-group-${group
+              .toLowerCase()
+              .replaceAll(" ", "-")}`;
+
             return (
-              <Card key={group} className="border-border bg-card text-card-foreground">
-                <CardHeader>
-                  <CardTitle>{group}</CardTitle>
-                  <CardDescription>
-                    {group === "Core interface"
-                      ? "The core surfaces, text, actions, and controls used throughout the demos."
-                      : group === "Charts"
-                        ? "Chart palette variables exposed by the shared theme contract."
-                        : "Sidebar variables exposed by the shared theme contract."
-                    }
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <fieldset className="grid gap-x-4 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
-                    <legend className="sr-only">{group} semantic colors</legend>
-                    {tokens.map((token) => {
-                      const inputId = `semantic-color-${token.property.slice(2)}`;
-                      return (
-                        <div key={token.property} className="min-w-0">
-                          <label
-                            htmlFor={inputId}
-                            className="mb-2 flex min-w-0 flex-col gap-1"
-                          >
-                            <span className="text-sm font-medium">{token.label}</span>
-                            <code className="truncate text-xs text-muted-foreground">
-                              {token.property}
-                            </code>
-                          </label>
-                          <input
-                            id={inputId}
-                            type="color"
-                            value={colors[token.property]}
-                            onChange={handleColorChange(token.property)}
-                            className="h-12 w-full cursor-pointer rounded-lg border border-input bg-background p-1 transition-colors focus-visible:border-ring focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-                            aria-label={`Choose ${token.label} color`}
-                          />
-                          <span className="mt-1 block font-mono text-[11px] text-muted-foreground">
-                            {colors[token.property].toUpperCase()}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </fieldset>
-                </CardContent>
-              </Card>
+              <section key={group} aria-labelledby={groupId}>
+                <Card className="border-border bg-card text-card-foreground">
+                  <CardHeader>
+                    <h2
+                      id={groupId}
+                      className="font-heading text-base leading-snug font-medium"
+                    >
+                      {group}
+                    </h2>
+                    <CardDescription>
+                      {group === "Core interface"
+                        ? "The core surfaces, text, actions, and controls used throughout the demos."
+                        : group === "Charts"
+                          ? "Chart palette variables exposed by the shared theme contract."
+                          : "Sidebar variables exposed by the shared theme contract."
+                      }
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <fieldset className="grid gap-x-4 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+                      <legend className="sr-only">{group} semantic colors</legend>
+                      {tokens.map((token) => {
+                        const inputId = `semantic-color-${token.property.slice(2)}`;
+                        return (
+                          <div key={token.property} className="min-w-0">
+                            <label
+                              htmlFor={inputId}
+                              className="mb-2 flex min-w-0 flex-col gap-1"
+                            >
+                              <span className="text-sm font-medium">{token.label}</span>
+                              <code className="truncate text-xs text-muted-foreground">
+                                {token.property}
+                              </code>
+                            </label>
+                            <input
+                              id={inputId}
+                              type="color"
+                              value={colors[token.property]}
+                              onChange={handleColorChange(token.property)}
+                              className="h-12 w-full cursor-pointer rounded-lg border border-input bg-background p-1 transition-colors focus-visible:border-ring focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                              aria-label={`Choose ${token.label} color`}
+                            />
+                            <span className="mt-1 block font-mono text-[11px] text-muted-foreground">
+                              {colors[token.property].toUpperCase()}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </fieldset>
+                  </CardContent>
+                </Card>
+              </section>
             );
           })}
         </div>
