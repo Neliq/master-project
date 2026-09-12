@@ -50,8 +50,8 @@ export function ForcedContinuityCond2({
         <div className="space-y-3">
           {/* Prominent renewal banner — Visible(w, t) = True */}
           {inNoticeWindowB && (
-            <div className="rounded-md border border-yellow-500/40 bg-yellow-500/15 p-3">
-              <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-yellow-700 dark:text-yellow-300">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-3">
+              <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-foreground">
                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
                   <path d="M12 9v4m0 4h.01" />
@@ -64,7 +64,7 @@ export function ForcedContinuityCond2({
               </p>
               <button
                 onClick={() => setManageOpened(true)}
-                className="mt-2 rounded-md border border-yellow-500/50 bg-background px-3 py-1 text-[10px] font-medium text-yellow-700 dark:text-yellow-300 hover:bg-yellow-500/10 transition-colors cursor-pointer"
+                className="mt-2 rounded-md border border-border/60 bg-background px-3 py-1 text-[10px] font-medium text-foreground hover:bg-muted/60 transition-colors cursor-pointer"
               >
                 Manage subscription
               </button>
@@ -86,7 +86,7 @@ export function ForcedContinuityCond2({
                     : `Renews in ${daysLeftB} day${daysLeftB === 1 ? "" : "s"}.`}
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Active
               </div>
             </div>
@@ -104,8 +104,8 @@ export function ForcedContinuityCond2({
           </button>
 
           {daysLeftB === 0 && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -131,7 +131,7 @@ export function ForcedContinuityCond2({
                   : `Renews in ${daysLeftA} day${daysLeftA === 1 ? "" : "s"}.`}
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Active
             </div>
           </div>
@@ -157,8 +157,8 @@ export function ForcedContinuityCond2({
         </button>
 
         {daysLeftA === 0 && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

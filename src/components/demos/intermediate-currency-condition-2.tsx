@@ -44,18 +44,18 @@ export function IntermediateCurrencyCond2({
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-background overflow-hidden">
-            <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-slate-800 via-violet-700 to-fuchsia-600">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/30 bg-white/15 shadow-lg rotate-[-8deg]">
-                <Gem className="h-6 w-6 text-white" />
+            <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-foreground via-primary to-primary">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-background/30 bg-background/15 shadow-lg rotate-[-8deg]">
+                <Gem className="h-6 w-6 text-primary-foreground" />
               </div>
-              <div className="absolute top-2 right-2 rounded-full bg-yellow-500 px-2 py-0.5 text-[8px] font-bold text-white">
+              <div className="absolute top-2 right-2 rounded-full bg-primary px-2 py-0.5 text-[8px] font-bold text-primary-foreground">
                 LIMITED
               </div>
             </div>
             <div className="p-3">
               <div className="mb-1 flex items-start justify-between gap-2">
                 <h3 className="text-[11px] font-semibold">{ITEM_NAME}</h3>
-                <span className="shrink-0 rounded-full bg-green-50 px-2 py-0.5 text-[10px] font-bold text-green-600 dark:bg-green-500/10 dark:text-green-300">
+                <span className="shrink-0 rounded-full bg-muted/40 px-2 py-0.5 text-[10px] font-bold text-foreground">
                   {GEM_PRICE.toLocaleString()} Gems
                 </span>
               </div>
@@ -68,7 +68,7 @@ export function IntermediateCurrencyCond2({
               </p>
               <button
                 onClick={() => setBought(true)}
-                className="flex w-full items-center justify-center gap-1.5 rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
+                className="flex w-full items-center justify-center gap-1.5 rounded-md bg-primary py-2 text-[10px] font-semibold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
               >
                 <ShoppingCart className="h-3 w-3" />
                 Buy for {GEM_PRICE.toLocaleString()} Gems
@@ -93,18 +93,18 @@ export function IntermediateCurrencyCond2({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-background overflow-hidden">
-          <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-slate-800 via-violet-700 to-fuchsia-600">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/30 bg-white/15 shadow-lg rotate-[-8deg]">
-              <Gem className="h-6 w-6 text-white" />
+          <div className="relative flex h-24 items-center justify-center bg-gradient-to-br from-foreground via-primary to-primary">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg border border-background/30 bg-background/15 shadow-lg rotate-[-8deg]">
+              <Gem className="h-6 w-6 text-primary-foreground" />
             </div>
-            <div className="absolute top-2 right-2 rounded-full bg-yellow-500 px-2 py-0.5 text-[8px] font-bold text-white">
+            <div className="absolute top-2 right-2 rounded-full bg-primary px-2 py-0.5 text-[8px] font-bold text-primary-foreground">
               LIMITED
             </div>
           </div>
           <div className="p-3">
             <div className="mb-1 flex items-start justify-between gap-2">
               <h3 className="text-[11px] font-semibold">{ITEM_NAME}</h3>
-              <span className="shrink-0 rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold text-red-600 dark:bg-red-500/10 dark:text-red-300">
+              <span className="shrink-0 rounded-full bg-muted/40 px-2 py-0.5 text-[10px] font-bold text-foreground">
                 {GEM_PRICE.toLocaleString()} Gems
               </span>
             </div>
@@ -122,8 +122,8 @@ export function IntermediateCurrencyCond2({
             <button
               onClick={() => setBought(true)}
               disabled={bought}
-              className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-white transition-colors ${
-                bought ? "bg-muted text-muted-foreground/50 cursor-not-allowed" : "bg-red-600 hover:bg-red-700 cursor-pointer"
+              className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-primary-foreground transition-colors ${
+                bought ? "bg-muted text-muted-foreground/50 cursor-not-allowed" : "bg-primary hover:bg-primary/80 cursor-pointer"
               }`}
             >
               <ShoppingCart className="h-3 w-3" />
@@ -133,7 +133,7 @@ export function IntermediateCurrencyCond2({
         </div>
 
         {bought && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
             {mode === "auditor" ? (
               <>
                 <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
@@ -150,7 +150,7 @@ export function IntermediateCurrencyCond2({
               </>
             ) : (
               <>
-                <div className="mb-0.5 font-semibold text-yellow-700 dark:text-yellow-300">Added to your collection</div>
+                <div className="mb-0.5 font-semibold text-foreground">Added to your collection</div>
                 <p className="text-muted-foreground">Your cosmetic item is ready to use. The purchase was recorded in your collection.</p>
               </>
             )}

@@ -121,7 +121,7 @@ export function InfiniteScrollingCond3({
                   announced.
                 </p>
               </div>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 {Math.min(pageB, TOTAL_PAGES_B)} of {TOTAL_PAGES_B}
               </span>
             </div>
@@ -133,7 +133,7 @@ export function InfiniteScrollingCond3({
                 </div>
               ))}
               {pageB >= TOTAL_PAGES_B && (
-                <div className="rounded-md border border-green-500/30 bg-green-500/5 px-2 py-2 text-center text-[9px] font-semibold text-green-700 dark:text-green-300">
+                <div className="rounded-md border border-border/60 bg-muted/40 px-2 py-2 text-center text-[9px] font-semibold text-foreground">
                   End of results — no more items
                 </div>
               )}
@@ -154,7 +154,7 @@ export function InfiniteScrollingCond3({
                   className={`rounded-md px-3 py-1.5 text-[10px] font-medium transition-colors ${
                     loadingB
                       ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                      : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                      : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                   }`}
                 >
                   {loadingB ? "Loading…" : "Next page"}
@@ -163,8 +163,8 @@ export function InfiniteScrollingCond3({
             )}
 
             {loadsB >= 2 && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   Boundary markers present
                 </div>
@@ -189,7 +189,7 @@ export function InfiniteScrollingCond3({
                 feed can end?
               </p>
             </div>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               {itemsCountA} items
             </span>
           </div>
@@ -201,7 +201,7 @@ export function InfiniteScrollingCond3({
               </div>
             ))}
             {loadingA && (
-              <div className="flex items-center gap-1.5 rounded border border-red-500/30 bg-red-500/5 px-2 py-1.5 text-[9px] text-red-600 dark:text-red-300">
+              <div className="flex items-center gap-1.5 rounded border border-border/60 bg-muted/40 px-2 py-1.5 text-[9px] text-foreground">
                 <RefreshSpinner /> Appending next batch…
               </div>
             )}
@@ -213,7 +213,7 @@ export function InfiniteScrollingCond3({
             className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
               loadingA
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
             }`}
           >
             {loadingA ? "Loading…" : "Show more results"}

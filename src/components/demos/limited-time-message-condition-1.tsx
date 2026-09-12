@@ -87,8 +87,8 @@ export function LimitedTimeMessageCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <svg className="h-3.5 w-3.5 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted/40">
+                <svg className="h-3.5 w-3.5 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10" />
                   <path d="M12 6v6l4 2" />
                 </svg>
@@ -101,14 +101,14 @@ export function LimitedTimeMessageCond1({
 
             <div className="mt-3 flex items-center justify-between rounded-md border bg-background p-2.5">
               <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">Sale ends</span>
-              <span className="font-mono text-[11px] font-bold tabular-nums text-green-600 dark:text-green-400">
+              <span className="font-mono text-[11px] font-bold tabular-nums text-foreground">
                 {benignExpired ? "ended" : formatDeadline(benignDeadline)}
               </span>
             </div>
 
             {benignExpired && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 px-2.5 py-2 text-[9px] leading-relaxed">
-                <span className="font-semibold text-green-700 dark:text-green-300">Offer ended.</span>{" "}
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 px-2.5 py-2 text-[9px] leading-relaxed">
+                <span className="font-semibold text-foreground">Offer ended.</span>{" "}
                 <span className="text-muted-foreground">The deadline was real — T_end was fixed and the sale is over. No extension, no reset.</span>
               </div>
             )}
@@ -119,7 +119,7 @@ export function LimitedTimeMessageCond1({
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 benignExpired
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
               }`}
             >
               {benignExpired ? "Sale has ended" : "Claim 40% off"}
@@ -127,8 +127,8 @@ export function LimitedTimeMessageCond1({
           </div>
 
           {claimed && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -146,8 +146,8 @@ export function LimitedTimeMessageCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <svg className="h-3.5 w-3.5 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted/40">
+              <svg className="h-3.5 w-3.5 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 6v6l4 2" />
               </svg>
@@ -160,14 +160,14 @@ export function LimitedTimeMessageCond1({
 
           <div className="mt-3 flex items-center justify-between rounded-md border bg-background p-2.5">
             <span className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">Ends in</span>
-            <span className="font-mono text-[11px] font-bold tabular-nums text-red-600 dark:text-red-400">
+            <span className="font-mono text-[11px] font-bold tabular-nums text-foreground">
               {fmt(remaining)}
             </span>
           </div>
 
           {cycles > 1 && (
-            <div className="mt-2 flex items-center gap-1.5 rounded-md border border-red-500/30 bg-red-500/5 px-2.5 py-2 text-[9px] leading-relaxed">
-              <svg className="w-3 h-3 shrink-0 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="mt-2 flex items-center gap-1.5 rounded-md border border-border/60 bg-muted/40 px-2.5 py-2 text-[9px] leading-relaxed">
+              <svg className="w-3 h-3 shrink-0 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
               <span className="text-muted-foreground">
@@ -180,7 +180,7 @@ export function LimitedTimeMessageCond1({
 
           <button
             onClick={() => setClaimed(true)}
-            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Claim 40% off — before it ends!
           </button>

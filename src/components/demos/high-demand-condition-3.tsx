@@ -46,16 +46,16 @@ export function HighDemandCond3({
                 <h3 className="text-[11px] font-semibold">AeroGlide X Wireless Headphones</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">Noise-cancelling over-ear · Graphite</p>
               </div>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 $119
               </span>
             </div>
 
             {/* Bounded claim — temporal qualifier present */}
-            <div className="mt-3 flex items-center gap-2 rounded-md border border-green-500/30 bg-green-500/5 px-3 py-2">
-              <Users className="size-3.5 text-green-600 dark:text-green-400 shrink-0" />
+            <div className="mt-3 flex items-center gap-2 rounded-md border border-border/60 bg-muted/40 px-3 py-2">
+              <Users className="size-3.5 text-foreground shrink-0" />
               <div>
-                <div className="text-[10px] font-medium text-green-700 dark:text-green-300">
+                <div className="text-[10px] font-medium text-foreground">
                   {Q} people viewed this in the last hour
                 </div>
                 <div className="text-[8px] text-muted-foreground">
@@ -71,15 +71,15 @@ export function HighDemandCond3({
 
             <button
               onClick={() => setVerified(true)}
-              className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md border border-green-500/30 bg-green-500/5 py-1.5 text-[10px] font-medium text-green-700 dark:text-green-300 hover:bg-green-500/10 transition-colors cursor-pointer"
+              className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md border border-border/60 bg-muted/40 py-1.5 text-[10px] font-medium text-foreground hover:bg-muted/60 transition-colors cursor-pointer"
             >
               <ScanSearch className="size-3" />
               Verify claim
             </button>
 
             {verified && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -102,16 +102,16 @@ export function HighDemandCond3({
               <h3 className="text-[11px] font-semibold">AeroGlide X Wireless Headphones</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Noise-cancelling over-ear · Graphite</p>
             </div>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               $119
             </span>
           </div>
 
           {/* Unbounded claim — precise number, no qualifier */}
-          <div className="mt-3 flex items-center gap-2 rounded-md border border-red-500/30 bg-red-500/5 px-3 py-2">
-            <Users className="size-3.5 text-red-600 dark:text-red-400 shrink-0 animate-pulse" />
+          <div className="mt-3 flex items-center gap-2 rounded-md border border-border/60 bg-muted/40 px-3 py-2">
+            <Users className="size-3.5 text-foreground shrink-0 animate-pulse" />
             <div>
-              <div className="font-mono text-[13px] font-bold tabular-nums text-red-700 dark:text-red-300">
+              <div className="font-mono text-[13px] font-bold tabular-nums text-foreground">
                 {Q} people are viewing this
               </div>
               <div className="text-[8px] text-muted-foreground">
@@ -123,14 +123,14 @@ export function HighDemandCond3({
           <div className="mt-2 flex items-center justify-between text-[9px] text-muted-foreground">
             <span className="line-through">$195</span>
             <span className="font-semibold text-foreground">$119</span>
-            <span className="text-[8px] font-semibold uppercase tracking-wider text-red-500">
+            <span className="text-[8px] font-semibold uppercase tracking-wider text-foreground">
               {Q} watching now
             </span>
           </div>
 
           <button
             onClick={() => setVerified(true)}
-            className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md border border-red-500/30 bg-red-500/5 py-1.5 text-[10px] font-medium text-red-700 dark:text-red-300 hover:bg-red-500/10 transition-colors cursor-pointer"
+            className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md border border-border/60 bg-muted/40 py-1.5 text-[10px] font-medium text-foreground hover:bg-muted/60 transition-colors cursor-pointer"
           >
             <ScanSearch className="size-3" />
             Verify claim

@@ -102,7 +102,7 @@ export function LabyrinthineNavigationCond2({
       <div key={node.id}>
         <div
           className={`flex items-center gap-1.5 rounded-md border bg-background p-1.5 transition-colors ${
-            isTarget ? "border-red-500/40" : "border-border hover:bg-foreground/5"
+            isTarget ? "border-border/60" : "border-border hover:bg-foreground/5"
           }`}
           style={{ marginLeft: `${px}px` }}
         >
@@ -121,7 +121,7 @@ export function LabyrinthineNavigationCond2({
             ) : (
               <span className="h-3 w-3 shrink-0" />
             )}
-            <span className={`truncate text-[10px] ${isTarget ? "font-semibold text-red-600 dark:text-red-400" : "text-foreground/80"}`}>
+            <span className={`truncate text-[10px] ${isTarget ? "font-semibold text-foreground" : "text-foreground/80"}`}>
               {node.label}
             </span>
           </button>
@@ -145,7 +145,7 @@ export function LabyrinthineNavigationCond2({
           <div className="rounded-md border bg-card p-3">
             <div className="mb-2 flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">Settings</h3>
-              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
+              <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground">
                 flat list
               </span>
             </div>
@@ -156,7 +156,7 @@ export function LabyrinthineNavigationCond2({
                   onClick={() => label === "Data & cookies" && setFound(true)}
                   className={`w-full rounded-md border p-1.5 text-left text-[10px] transition-colors cursor-pointer ${
                     label === "Data & cookies"
-                      ? "border-green-500/40 bg-green-500/10 font-semibold text-green-700 dark:text-green-300 hover:bg-green-500/20"
+                      ? "border-border/60 bg-muted/40 font-semibold text-foreground hover:bg-muted/60"
                       : "border-border bg-background text-foreground/80 hover:bg-foreground/5"
                   }`}
                 >
@@ -173,8 +173,8 @@ export function LabyrinthineNavigationCond2({
           </div>
 
           {found && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>

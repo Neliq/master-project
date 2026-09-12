@@ -62,7 +62,7 @@ export function ForcedContinuityCond1({
                     : `${daysLeftB} day${daysLeftB === 1 ? "" : "s"} of free trial remaining.`}
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 {bChoice === "cancel" ? "cancelled" : trialEndedB && bChoice === "continue" ? "premium" : "trial"}
               </div>
             </div>
@@ -110,7 +110,7 @@ export function ForcedContinuityCond1({
                 <div className="mt-2 flex gap-2">
                   <button
                     onClick={() => setBChoice("continue")}
-                    className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                    className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                   >
                     Yes — charge me {PLAN_PRICE}/mo
                   </button>
@@ -157,7 +157,7 @@ export function ForcedContinuityCond1({
                   : `${daysLeftA} day${daysLeftA === 1 ? "" : "s"} of free trial remaining.`}
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 text-red-500 border-red-500/30">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 text-foreground border-border/60">
               {trialEndedA ? "S_premium" : "S_trial"}
             </div>
           </div>
@@ -177,8 +177,8 @@ export function ForcedContinuityCond1({
           )}
 
           {trialEndedA && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />

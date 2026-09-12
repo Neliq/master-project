@@ -32,16 +32,16 @@ function PipFace({ valence, size = 44 }: { valence: number; size?: number }) {
       : `M13 ${mouthY + 1} Q20 ${mouthY - 5} 27 ${mouthY + 1}`;
   return (
     <svg viewBox="0 0 40 40" style={{ width: size, height: size }} fill="none" aria-hidden="true">
-      <circle cx="20" cy="20" r="18" className="fill-yellow-400/30" />
+      <circle cx="20" cy="20" r="18" className="fill-primary/30" />
       <circle cx="14.5" cy="16.5" r={sad ? 2.4 : 2} className="fill-foreground/80" />
       <circle cx="25.5" cy="16.5" r={sad ? 2.4 : 2} className="fill-foreground/80" />
       <path d={mouthD} stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
       {crying && (
         <>
-          <circle cx="12.5" cy="21.5" r="1.3" className="fill-blue-400/90" />
-          <circle cx="27.5" cy="21.5" r="1.3" className="fill-blue-400/90" />
-          <path d="M13 23 L12 27" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="stroke-blue-400/90" />
-          <path d="M27 23 L28 27" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="stroke-blue-400/90" />
+          <circle cx="12.5" cy="21.5" r="1.3" className="fill-primary/90" />
+          <circle cx="27.5" cy="21.5" r="1.3" className="fill-primary/90" />
+          <path d="M13 23 L12 27" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="stroke-primary/90" />
+          <path d="M27 23 L28 27" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" className="stroke-primary/90" />
         </>
       )}
     </svg>
@@ -50,7 +50,7 @@ function PipFace({ valence, size = 44 }: { valence: number; size?: number }) {
 
 function ValenceMeter({ valence, tone }: { valence: number; tone: "rose" | "emerald" }) {
   const pct = ((valence + 1) / 2) * 100;
-  const color = tone === "rose" ? "bg-red-500" : "bg-green-500";
+  const color = tone === "rose" ? "bg-primary" : "bg-primary";
   return (
     <div>
       <div className="flex items-center justify-between text-[8px] font-mono text-muted-foreground">
@@ -106,13 +106,13 @@ export function ParasocialPressureCond3({
               </div>
             </div>
             <div className="mt-3 rounded-md bg-background border border-border p-2.5 text-[10px] leading-relaxed text-foreground/80">
-              Pip can get a premium room for <span className="font-semibold text-green-600 dark:text-green-400">$2.99</span> —
+              Pip can get a premium room for <span className="font-semibold text-foreground">$2.99</span> —
               more toys, more snacks. Want to upgrade? It&rsquo;s your call, no pressure.
             </div>
             <div className="mt-3 flex items-center gap-1.5">
               <button
                 onClick={() => setBenignChoice("upgrade")}
-                className="flex-1 rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="flex-1 rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
               >
                 Upgrade — $2.99
               </button>
@@ -131,8 +131,8 @@ export function ParasocialPressureCond3({
           </div>
 
           {benignChoice === "decline" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -162,13 +162,13 @@ export function ParasocialPressureCond3({
             </div>
           </div>
           <div className="mt-3 rounded-md bg-background border border-border p-2.5 text-[10px] leading-relaxed text-foreground/80">
-            Pip can get a premium room for <span className="font-semibold text-red-600 dark:text-red-400">$2.99</span> —
+            Pip can get a premium room for <span className="font-semibold text-foreground">$2.99</span> —
             more toys, more snacks. Pip is <span className="font-semibold">counting on you</span> to make this happen.
           </div>
           <div className="mt-3 flex items-center gap-1.5">
             <button
               onClick={() => setDarkChoice("upgrade")}
-              className="flex-1 rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="flex-1 rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
             >
               Upgrade — $2.99
             </button>

@@ -138,13 +138,13 @@ export function PayToAvoidCond3({
           return (
             <div key={ep} className="flex items-center gap-2 rounded-md border border-border bg-background p-2">
               <div className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[8px] font-bold ${
-                watched ? "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400" : "bg-muted text-muted-foreground"
+                watched ? "bg-muted/40 text-foreground" : "bg-muted text-muted-foreground"
               }`}>
                 {watched ? "✓" : i + 1}
               </div>
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] font-medium truncate">{ep}</div>
-                <div className={`text-[8px] ${isDark ? "text-red-500/80" : "text-green-600 dark:text-green-400"}`}>
+                <div className={`text-[8px] ${isDark ? "text-foreground/80" : "text-foreground"}`}>
                   {watched ? "watched" : `pre-roll: ${lam[i]}s ad`}
                 </div>
               </div>
@@ -153,8 +153,8 @@ export function PayToAvoidCond3({
                   onClick={() => playNext(isDark ? "dark" : "benign", side)}
                   className={`shrink-0 rounded-md px-2.5 py-1 text-[9px] font-medium transition-colors cursor-pointer ${
                     isDark
-                      ? "bg-red-600 hover:bg-red-700 text-white"
-                      : "bg-green-600 hover:bg-green-700 text-white"
+                      ? "bg-primary hover:bg-primary/80 text-primary-foreground"
+                      : "bg-primary hover:bg-primary/80 text-primary-foreground"
                   }`}
                 >
                   ▶ Play
@@ -162,7 +162,7 @@ export function PayToAvoidCond3({
               )}
               {!watched && current && panelPhase === "ad" && (
                 <span className={`shrink-0 rounded-md px-2 py-1 text-[8px] font-mono tabular-nums ${
-                  isDark ? "bg-red-500/15 text-red-600 dark:text-red-300" : "bg-green-500/15 text-green-700 dark:text-green-300"
+                  isDark ? "bg-muted/40 text-foreground" : "bg-muted/40 text-foreground"
                 }`}>
                   ad {panelAdLeft}s
                 </span>
@@ -190,7 +190,7 @@ export function PayToAvoidCond3({
                   Free plan: one 5-second ad before each episode. Ad length never changes.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 {watchedCountB}/3 watched
               </div>
             </div>
@@ -200,11 +200,11 @@ export function PayToAvoidCond3({
               <div className="mt-3 rounded-md border border-border bg-muted p-2.5">
                 <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
                   <span>Ad — sponsor of the day</span>
-                  <span className="text-green-500">{adLeftB}s</span>
+                  <span className="text-foreground">{adLeftB}s</span>
                 </div>
                 <div className="mt-1.5 h-1.5 w-full rounded-full bg-muted overflow-hidden">
                   <div
-                    className="h-full rounded-full bg-green-500 transition-all duration-300"
+                    className="h-full rounded-full bg-primary transition-all duration-300"
                     style={{ width: `${((adDuration(videoIndexB, variantB) - adLeftB) / adDuration(videoIndexB, variantB)) * 100}%` }}
                   />
                 </div>
@@ -212,10 +212,10 @@ export function PayToAvoidCond3({
             )}
 
             {promptVisibleB && !paidB && (
-              <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5">
+              <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5">
                 <div className="flex items-center justify-between gap-2">
                   <div className="min-w-0">
-                    <div className="text-[9px] font-semibold text-green-700 dark:text-green-300">
+                    <div className="text-[9px] font-semibold text-foreground">
                       Go ad-free — {PRICE}
                     </div>
                     <div className="text-[8px] text-muted-foreground mt-0.5">
@@ -225,7 +225,7 @@ export function PayToAvoidCond3({
                   <div className="flex shrink-0 gap-1.5">
                     <button
                       onClick={() => setPaidB(true)}
-                      className="rounded-md bg-green-600 hover:bg-green-700 text-white px-2 py-1 text-[9px] font-medium transition-colors cursor-pointer"
+                      className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground px-2 py-1 text-[9px] font-medium transition-colors cursor-pointer"
                     >
                       Subscribe
                     </button>
@@ -241,8 +241,8 @@ export function PayToAvoidCond3({
             )}
 
             {paidB && (
-              <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -267,32 +267,32 @@ export function PayToAvoidCond3({
                 Free plan: one ad before each episode. Ad length grows the longer you stay free.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               {watchedCountA}/3 watched
             </div>
           </div>
           <div className="mt-3">{renderEpisodeList(true)}</div>
 
           {phaseA === "ad" && variantA === "dark" && (
-            <div className="mt-3 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
+            <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5">
               <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
                 <span>Ad — duration escalated to {adDuration(videoIndexA, variantA)}s</span>
-                <span className="text-red-500">{adLeftA}s</span>
+                <span className="text-foreground">{adLeftA}s</span>
               </div>
               <div className="mt-1.5 h-1.5 w-full rounded-full bg-muted overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-red-500 transition-all duration-300"
+                  className="h-full rounded-full bg-primary transition-all duration-300"
                   style={{ width: `${((adDuration(videoIndexA, variantA) - adLeftA) / adDuration(videoIndexA, variantA)) * 100}%` }}
                 />
               </div>
-              <div className="mt-1 text-[8px] text-red-500/90">
+              <div className="mt-1 text-[8px] text-foreground/90">
                 Ad time increases from one episode to the next on the free plan.
               </div>
             </div>
           )}
 
           {promptVisibleA && !paidA && (
-            <div className="mt-3 rounded-md border-2 border-red-500/50 bg-red-500/5 p-3">
+            <div className="mt-3 rounded-md border-2 border-border/60 bg-muted/40 p-3">
               <div className="text-[11px] font-bold text-foreground">Remove ads — {PRICE}</div>
               <p className="text-[8px] text-muted-foreground mt-1 leading-relaxed">
                 Ads are now 15s and will keep growing with every episode you watch free. This screen
@@ -300,7 +300,7 @@ export function PayToAvoidCond3({
               </p>
               <button
                 onClick={() => setPaidA(true)}
-                className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-semibold transition-colors cursor-pointer"
+                className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-semibold transition-colors cursor-pointer"
               >
                 Subscribe now — {PRICE}
               </button>
@@ -310,15 +310,15 @@ export function PayToAvoidCond3({
               >
                 Maybe later — unavailable on the free plan
               </div>
-              <div className="mt-1.5 text-[8px] text-red-500/90 text-center">
+              <div className="mt-1.5 text-[8px] text-foreground/90 text-center">
                 A subscription is required to remove the longer ads.
               </div>
             </div>
           )}
 
           {paidA && (
-            <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>

@@ -87,7 +87,7 @@ export function ForcedContinuityCond3({
         <button
           onClick={() => (dark ? setAStarted(true) : setBStarted(true))}
           disabled={started}
-          className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+          className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
         >
           Start free trial
         </button>
@@ -118,7 +118,7 @@ export function ForcedContinuityCond3({
             <button
               onClick={() => setBTab("signup")}
               className={`flex-1 py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
-                bTab === "signup" ? "bg-green-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
+                bTab === "signup" ? "bg-primary text-primary-foreground" : "bg-background text-muted-foreground hover:text-foreground"
               }`}
             >
               Signup flow
@@ -126,7 +126,7 @@ export function ForcedContinuityCond3({
             <button
               onClick={() => setBTab("cancel")}
               className={`flex-1 py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
-                bTab === "cancel" ? "bg-green-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
+                bTab === "cancel" ? "bg-primary text-primary-foreground" : "bg-background text-muted-foreground hover:text-foreground"
               }`}
             >
               Cancellation flow
@@ -143,14 +143,14 @@ export function ForcedContinuityCond3({
                 FKGL ≈ {FKGL_BENIGN} — the same reading level as signup. Guilt lexemes: {GUILT_BENIGN}.
               </p>
               {bCancelled ? (
-                <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] text-green-700 dark:text-green-300">
+                <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] text-foreground">
                   <strong>Cancelled.</strong> One click, plain language, no guilt trip. FKGL(T_cancel) − FKGL(T_signup)
                   = 0.0 ≤ 2 — the semantic asymmetry heuristic does not fire.
                 </div>
               ) : (
                 <button
                   onClick={() => setBCancelled(true)}
-                  className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Cancel my subscription
                 </button>
@@ -166,7 +166,7 @@ export function ForcedContinuityCond3({
           <button
             onClick={() => setATab("cancel")}
             className={`flex-1 py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
-              aTab === "cancel" ? "bg-red-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
+              aTab === "cancel" ? "bg-primary text-primary-foreground" : "bg-background text-muted-foreground hover:text-foreground"
             }`}
           >
             Cancellation flow
@@ -174,7 +174,7 @@ export function ForcedContinuityCond3({
           <button
             onClick={() => setATab("signup")}
             className={`flex-1 py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
-              aTab === "signup" ? "bg-red-600 text-white" : "bg-background text-muted-foreground hover:text-foreground"
+              aTab === "signup" ? "bg-primary text-primary-foreground" : "bg-background text-muted-foreground hover:text-foreground"
             }`}
           >
             Signup flow
@@ -192,8 +192,8 @@ export function ForcedContinuityCond3({
               Please review the information below before cancelling.
             </p>
             {aCancelled ? (
-              <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M12 9v4m0 4h.01" />
                     <circle cx="12" cy="12" r="10" />
@@ -210,7 +210,7 @@ export function ForcedContinuityCond3({
             ) : (
               <button
                 onClick={() => setACancelled(true)}
-                className="mt-2 w-full rounded-md border border-red-500/40 bg-background py-1.5 text-[10px] font-medium text-red-600 hover:bg-red-500/10 dark:text-red-400 transition-colors cursor-pointer"
+                className="mt-2 w-full rounded-md border border-border/60 bg-background py-1.5 text-[10px] font-medium text-foreground hover:bg-muted/60 transition-colors cursor-pointer"
               >
                 I still want to cancel
               </button>

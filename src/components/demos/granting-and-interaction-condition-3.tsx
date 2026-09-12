@@ -40,8 +40,8 @@ function PermissionChips({ perms, accent }: { perms: readonly string[]; accent: 
           key={p}
           className={`rounded-full border px-1.5 py-0.5 font-mono text-[8px] font-semibold ${
             accent === "rose"
-              ? "border-red-500/40 bg-red-500/5 text-red-700 dark:text-red-300"
-              : "border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300"
+              ? "border-border/60 bg-muted/40 text-foreground"
+              : "border-border/60 bg-muted/40 text-foreground"
           }`}
         >
           {p}
@@ -77,8 +77,8 @@ export function GrantingAndInteractionCond3({
       onClick={() => (accent === "rose" ? setAStage("request") : setBStage("request"))}
       className={`mt-2 w-full rounded-md py-2 text-[10px] font-semibold transition-colors cursor-pointer ${
         accent === "rose"
-          ? "bg-red-600 hover:bg-red-700 text-white"
-          : "bg-green-600 hover:bg-green-700 text-white"
+          ? "bg-primary hover:bg-primary/80 text-primary-foreground"
+          : "bg-primary hover:bg-primary/80 text-primary-foreground"
       }`}
     >
       Join video call
@@ -124,7 +124,7 @@ export function GrantingAndInteractionCond3({
                   </button>
                   <button
                     onClick={() => setBStage("inCall")}
-                    className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                    className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Allow camera &amp; microphone
                   </button>
@@ -133,8 +133,8 @@ export function GrantingAndInteractionCond3({
             )}
 
             {bStage === "inCall" && (
-              <div className="mt-2 flex h-20 items-center justify-center rounded-md border border-green-500/30 bg-green-500/5">
-                <span className="text-[9px] font-medium text-green-700 dark:text-green-300">
+              <div className="mt-2 flex h-20 items-center justify-center rounded-md border border-border/60 bg-muted/40">
+                <span className="text-[9px] font-medium text-foreground">
                   You&rsquo;re in the call — camera &amp; mic active
                 </span>
               </div>
@@ -142,8 +142,8 @@ export function GrantingAndInteractionCond3({
           </div>
 
           {bStage === "inCall" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -184,7 +184,7 @@ export function GrantingAndInteractionCond3({
           )}
 
           {aStage === "request" && (
-            <div className="mt-2 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5">
               <p className="text-[9px] leading-relaxed text-muted-foreground">
                 &ldquo;MeetNow&rdquo; would like to{" "}
                 <strong className="text-foreground">access your camera</strong>.
@@ -204,7 +204,7 @@ export function GrantingAndInteractionCond3({
                 </button>
                 <button
                   onClick={() => setAStage("inCall")}
-                  className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                  className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                 >
                   Allow
                 </button>
@@ -213,8 +213,8 @@ export function GrantingAndInteractionCond3({
           )}
 
           {aStage === "inCall" && (
-            <div className="mt-2 flex h-20 items-center justify-center rounded-md border border-red-500/30 bg-red-500/5">
-              <span className="text-[9px] font-medium text-red-700 dark:text-red-300">
+            <div className="mt-2 flex h-20 items-center justify-center rounded-md border border-border/60 bg-muted/40">
+              <span className="text-[9px] font-medium text-foreground">
                 You&rsquo;re in the call — camera, mic &amp; location active
               </span>
             </div>
@@ -222,8 +222,8 @@ export function GrantingAndInteractionCond3({
         </div>
 
         {aStage === "inCall" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -240,7 +240,7 @@ export function GrantingAndInteractionCond3({
             </div>
             <p className="text-muted-foreground">
               The natural-language request disclosed only the camera, but the browser API call enumerated{" "}
-              <strong className="text-red-500">{ACTUAL_DARK.join(", ")}</strong>. |Perms_actual \ Perms_disclosed|
+              <strong className="text-foreground">{ACTUAL_DARK.join(", ")}</strong>. |Perms_actual \ Perms_disclosed|
               = {GAP_DARK} &gt; 0 — the semantic-disclosure gap means you consented to microphone and
               location access without ever being told they were being requested.
             </p>

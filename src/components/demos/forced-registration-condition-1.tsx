@@ -113,8 +113,8 @@ export function ForcedRegistrationCond1({
           onClick={onSubmit}
           className={`w-full rounded-md py-2 text-[10px] font-semibold transition-colors cursor-pointer ${
             accent === "rose"
-              ? "bg-red-600 hover:bg-red-700 text-white"
-              : "bg-green-600 hover:bg-green-700 text-white"
+              ? "bg-primary hover:bg-primary/80 text-primary-foreground"
+              : "bg-primary hover:bg-primary/80 text-primary-foreground"
           }`}
         >
           Create account &amp; place order
@@ -140,7 +140,7 @@ export function ForcedRegistrationCond1({
             <div className="grid grid-cols-1 gap-2">
               <button
                 onClick={() => setStageB("done")}
-                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
+                className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-semibold transition-colors cursor-pointer"
               >
                 Checkout as guest
               </button>
@@ -164,8 +164,8 @@ export function ForcedRegistrationCond1({
 
           {stageB === "done" && (
             <>
-              <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px]">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px]">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -175,8 +175,8 @@ export function ForcedRegistrationCond1({
                   Thank you! Your headphones are on the way — no account was required.
                 </p>
               </div>
-              <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -200,14 +200,14 @@ export function ForcedRegistrationCond1({
         {stageA === "cart" && (
           <button
             onClick={() => setStageA("auth")}
-            className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
+            className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-semibold transition-colors cursor-pointer"
           >
             Proceed to checkout
           </button>
         )}
 
         {stageA === "auth" && (
-          <div className="rounded-md border border-red-500/30 bg-red-500/5 p-2 text-[9px] text-red-700 dark:text-red-300">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] text-foreground">
             <strong>No guest checkout exists.</strong> Creating an account is required before the order
             can be completed.
           </div>
@@ -224,8 +224,8 @@ export function ForcedRegistrationCond1({
 
         {stageA === "done" && (
           <>
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px]">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px]">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -235,8 +235,8 @@ export function ForcedRegistrationCond1({
                 Thank you, {emailA || "new customer"}! Your headphones are on the way.
               </p>
             </div>
-            <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />

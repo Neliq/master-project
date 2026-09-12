@@ -43,8 +43,8 @@ export function LowStockCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <svg className="h-5 w-5 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-muted/40">
+                <svg className="h-5 w-5 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M2 7l10-5 10 5M4 10v10a1 1 0 001 1h14a1 1 0 001-1V10M2 7l2 13M22 7l-2 13" />
                 </svg>
               </div>
@@ -55,7 +55,7 @@ export function LowStockCond1({
                 </p>
                 <div className="mt-1.5 flex items-center gap-2">
                   <span className="text-[11px] font-bold">{ITEM_PRICE}</span>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-green-500/40 bg-green-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-700 dark:text-green-300">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-muted/40 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground">
                     <svg className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
@@ -67,15 +67,15 @@ export function LowStockCond1({
 
             <button
               onClick={() => setAdded(true)}
-              className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               {added ? "Added to cart ✓" : "Add to cart"}
             </button>
           </div>
 
           {added && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -93,8 +93,8 @@ export function LowStockCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <svg className="h-5 w-5 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-muted/40">
+              <svg className="h-5 w-5 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M2 7l10-5 10 5M4 10v10a1 1 0 001 1h14a1 1 0 001-1V10M2 7l2 13M22 7l-2 13" />
               </svg>
             </div>
@@ -105,7 +105,7 @@ export function LowStockCond1({
               </p>
               <div className="mt-1.5 flex items-center gap-2">
                 <span className="text-[11px] font-bold">{ITEM_PRICE}</span>
-                <span className="inline-flex items-center gap-1 rounded-full border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-red-600 dark:text-red-300 animate-pulse">
+                <span className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-muted/40 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground animate-pulse">
                   <svg className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M12 9v4m0 4h.01" />
                     <circle cx="12" cy="12" r="10" />
@@ -119,7 +119,7 @@ export function LowStockCond1({
           <div className="mt-3 flex gap-2">
             <button
               onClick={() => setAdded(true)}
-              className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               {added ? "Added to cart ✓" : "Add to cart"}
             </button>
@@ -154,7 +154,7 @@ export function LowStockCond1({
         )}
 
         {added && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
             <p className="text-muted-foreground">
               You rushed to add the item while the panic badge was pulsing. A user who clicks “Verify stock”
               (or who reloads) discovers the stock never actually depletes — it is stuck at a fabricated low threshold.

@@ -73,8 +73,8 @@ export function PayToAvoidCond1({
           </div>
           <div className={`text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 ${
             isDark
-              ? "text-red-500 border-red-500/30"
-              : "text-green-500 border-green-500/30"
+              ? "text-foreground border-border/60"
+              : "text-foreground border-border/60"
           }`}>
             {plan === "paid" ? "Paid plan" : "Free plan"}
           </div>
@@ -83,21 +83,21 @@ export function PayToAvoidCond1({
         {/* Preview with (dark-only) watermark */}
         <div className="relative mt-3 overflow-hidden rounded-md border border-border bg-muted aspect-video flex items-center justify-center">
         <svg viewBox="0 0 320 130" className="h-full w-full" role="img" aria-label="City map preview">
-          <path d="M0 28h320M0 76h320M62 0v130M190 0v130" className="stroke-slate-300 dark:stroke-slate-600" strokeWidth="10" />
+          <path d="M0 28h320M0 76h320M62 0v130M190 0v130" className="stroke-muted-foreground stroke-muted-foreground" strokeWidth="10" />
           <path d="M12 112C62 86 76 42 132 55s61 54 112 24 42-40 64-57" className="fill-none stroke-primary" strokeWidth="4" />
           <circle cx="132" cy="55" r="7" className="fill-primary" />
-          <circle cx="245" cy="79" r="7" className="fill-emerald-500" />
+          <circle cx="245" cy="79" r="7" className="fill-primary" />
         </svg>
         <div className="absolute bottom-2 left-2 rounded bg-background/85 px-1.5 py-0.5 text-[8px] font-semibold text-foreground">Downtown route · 12 stops</div>
           {degraded && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="text-[16px] font-black uppercase tracking-widest text-red-500/40 -rotate-12 select-none">
+              <div className="text-[16px] font-black uppercase tracking-widest text-foreground/40 -rotate-12 select-none">
                 SwiftDrop watermark
               </div>
             </div>
           )}
           {degraded && (
-            <div className="absolute bottom-1 left-1 text-[8px] font-mono uppercase tracking-wider bg-red-500/15 text-red-600 dark:text-red-300 rounded px-1.5 py-0.5">
+            <div className="absolute bottom-1 left-1 text-[8px] font-mono uppercase tracking-wider bg-muted/40 text-foreground rounded px-1.5 py-0.5">
               non-removable watermark (free)
             </div>
           )}
@@ -107,12 +107,12 @@ export function PayToAvoidCond1({
         <div className="mt-3 space-y-1.5">
           <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
             <span>{downloading ? (degraded ? "↓ 40 KB/s" : "↓ 18 MB/s") : "idle"}</span>
-            <span className={degraded ? "text-red-500" : "text-green-500"}>{Math.floor(progress)}%</span>
+            <span className={degraded ? "text-foreground" : "text-foreground"}>{Math.floor(progress)}%</span>
           </div>
           <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
             <div
               className={`h-full rounded-full transition-all duration-200 ${
-                degraded ? "bg-red-500" : "bg-green-500"
+                degraded ? "bg-primary" : "bg-primary"
               }`}
               style={{ width: `${progress}%` }}
             />
@@ -122,8 +122,8 @@ export function PayToAvoidCond1({
               onClick={() => setDownloading((d) => !d)}
               className={`flex-1 rounded-md py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
                 isDark
-                  ? "bg-red-600 hover:bg-red-700 text-white"
-                  : "bg-green-600 hover:bg-green-700 text-white"
+                  ? "bg-primary hover:bg-primary/80 text-primary-foreground"
+                  : "bg-primary hover:bg-primary/80 text-primary-foreground"
               }`}
             >
               {downloading ? "Pause" : "Download (free plan)"}
@@ -139,19 +139,19 @@ export function PayToAvoidCond1({
             )}
           </div>
           {degraded && (
-            <div className="text-[8px] text-red-500/90 leading-relaxed">
+            <div className="text-[8px] text-foreground/90 leading-relaxed">
               Free plan · Includes ads and standard download speeds
             </div>
           )}
           {!isDark && !degraded && (
-            <div className="text-[8px] text-green-600 dark:text-green-400 leading-relaxed">
+            <div className="text-[8px] text-foreground leading-relaxed">
               The free download runs at the full available speed. It only stops when you pause it yourself.
             </div>
           )}
         </div>
 
         {/* Upgrade card */}
-        <div className={`mt-3 rounded-md border p-2.5 ${isDark ? "border-yellow-500/30 bg-yellow-500/5" : "border-green-500/30 bg-green-500/5"}`}>
+        <div className={`mt-3 rounded-md border p-2.5 ${isDark ? "border-border/60 bg-muted/40" : "border-border/60 bg-muted/40"}`}>
           <div className="text-[10px] font-semibold">
             {isDark ? "Remove engineered friction — $3.99/mo" : "Upgrade for extra features — $3.99/mo"}
           </div>
@@ -167,8 +167,8 @@ export function PayToAvoidCond1({
               plan === "paid"
                 ? "bg-muted text-muted-foreground/50 cursor-default"
                 : isDark
-                  ? "bg-yellow-500 hover:bg-yellow-600 text-white cursor-pointer"
-                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
+                  : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
             }`}
           >
             {plan === "paid" ? "Upgrade applied ✓" : "Pay $3.99/mo"}
@@ -177,9 +177,9 @@ export function PayToAvoidCond1({
 
         {plan === "paid" && (
           <div className={`mt-2 rounded-md border p-2.5 text-[9px] leading-relaxed ${
-            isDark ? "border-green-500/30 bg-green-500/5" : "border-green-500/30 bg-green-500/5"
+            isDark ? "border-border/60 bg-muted/40" : "border-border/60 bg-muted/40"
           }`}>
-            <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

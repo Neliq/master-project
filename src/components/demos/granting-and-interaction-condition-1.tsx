@@ -45,8 +45,8 @@ export function GrantingAndInteractionCond1({
       <span
         className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[8px] font-semibold uppercase tracking-wider ${
           accent === "rose"
-            ? "border-red-500/30 text-red-500"
-            : "border-green-500/30 text-green-500"
+            ? "border-border/60 text-foreground"
+            : "border-border/60 text-foreground"
         }`}
       >
         {accent === "rose"
@@ -61,7 +61,7 @@ export function GrantingAndInteractionCond1({
   );
 
   const viewfinder = (
-    <div className="mt-2 overflow-hidden rounded-md border border-border bg-slate-900">
+    <div className="mt-2 overflow-hidden rounded-md border border-border bg-foreground">
       <svg viewBox="0 0 320 144" className="block h-24 w-full" role="img" aria-label="Camera preview of a park path">
         <rect width="320" height="144" fill="#4338ca" />
         <rect width="320" height="96" fill="#818cf8" opacity="0.55" />
@@ -91,7 +91,7 @@ export function GrantingAndInteractionCond1({
 
             <button
               onClick={() => setPhotoTakenB(true)}
-              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-semibold transition-colors cursor-pointer"
             >
               Take photo
             </button>
@@ -104,12 +104,12 @@ export function GrantingAndInteractionCond1({
                   aria-checked={tagsOnB}
                   onClick={() => setTagsOnB((v) => !v)}
                   className={`relative h-4 w-7 rounded-full transition-colors cursor-pointer ${
-                    tagsOnB ? "bg-green-600" : "bg-muted"
+                    tagsOnB ? "bg-primary" : "bg-muted"
                   }`}
                   aria-label="Toggle photo location tags"
                 >
                   <span
-                    className={`absolute top-0.5 h-3 w-3 rounded-full bg-white transition-all ${
+                    className={`absolute top-0.5 h-3 w-3 rounded-full bg-background transition-all ${
                       tagsOnB ? "left-3.5" : "left-0.5"
                     }`}
                   />
@@ -122,8 +122,8 @@ export function GrantingAndInteractionCond1({
           </div>
 
           {photoTakenB && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -146,10 +146,10 @@ export function GrantingAndInteractionCond1({
           {viewfinder}
 
           {blockedA ? (
-            <div className="mt-2 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5">
               <p className="text-[9px] leading-relaxed text-muted-foreground">
                 {deniedA ? (
-                  <span className="text-red-700 dark:text-red-300">
+                  <span className="text-foreground">
                     <strong>Camera unavailable.</strong> Allow location access to use the camera.
                   </span>
                 ) : (
@@ -168,13 +168,13 @@ export function GrantingAndInteractionCond1({
                 </button>
                 <button
                   onClick={() => setLocationGrantedA(true)}
-                  className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                  className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                 >
                   Allow location
                 </button>
               </div>
               {deniedA && (
-                <p className="mt-1.5 text-[8px] text-red-700 dark:text-red-300">
+                <p className="mt-1.5 text-[8px] text-foreground">
                   &ldquo;Not now&rdquo; doesn&rsquo;t help — the shutter stays blocked until you Allow.
                 </p>
               )}
@@ -182,7 +182,7 @@ export function GrantingAndInteractionCond1({
           ) : (
             <button
               onClick={() => setPhotoTakenA(true)}
-              className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-semibold transition-colors cursor-pointer"
             >
               Take photo
             </button>

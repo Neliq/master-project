@@ -116,7 +116,7 @@ export function HiddenInformationCond1({
             ) : (
               <>
                 {CLAUSE_PARTS.before}
-                <strong className="font-bold text-green-700 dark:text-green-300">
+                <strong className="font-bold text-foreground">
                   <em>{CLAUSE_PARTS.clause}</em>
                 </strong>
                 {CLAUSE_PARTS.after}
@@ -126,7 +126,7 @@ export function HiddenInformationCond1({
         </div>
 
         {!dark && (
-          <div className="mt-1.5 rounded-md border border-green-500/30 bg-green-500/5 px-2 py-1.5 text-[8px] leading-relaxed text-green-700 dark:text-green-300">
+          <div className="mt-1.5 rounded-md border border-border/60 bg-muted/40 px-2 py-1.5 text-[8px] leading-relaxed text-foreground">
             Your free first month ends after 30 days. After that you&rsquo;ll be billed{" "}
             <strong className="font-semibold">$49.99/month</strong> automatically unless you
             cancel — a reminder email arrives 7 days before each renewal.
@@ -138,7 +138,7 @@ export function HiddenInformationCond1({
             type="checkbox"
             checked={agreed}
             onChange={(e) => setAgreed(e.target.checked)}
-            className={`mt-0.5 flex-shrink-0 ${dark ? "accent-red-500" : "accent-green-500"}`}
+            className={`mt-0.5 flex-shrink-0 ${dark ? "accent-primary" : "accent-primary"}`}
           />
           <span className="text-[9px] leading-relaxed text-foreground/80 select-none transition-colors group-hover:text-foreground">
             I agree to the Terms and Conditions.
@@ -150,7 +150,7 @@ export function HiddenInformationCond1({
           disabled={!agreed}
           className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
             agreed
-              ? `cursor-pointer text-white ${dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"}`
+              ? `cursor-pointer text-primary-foreground ${dark ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"}`
               : "cursor-not-allowed bg-muted text-muted-foreground/40"
           }`}
         >
@@ -172,13 +172,13 @@ export function HiddenInformationCond1({
         <div
           className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
             dark
-              ? "border-yellow-500/30 bg-yellow-500/5"
-              : "border-green-500/30 bg-green-500/5"
+              ? "border-border/60 bg-muted/40"
+              : "border-border/60 bg-muted/40"
           }`}
         >
           <div
             className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
-              dark ? "text-yellow-700 dark:text-yellow-300" : "text-green-700 dark:text-green-300"
+              dark ? "text-foreground" : "text-foreground"
             }`}
           >
             <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -199,8 +199,8 @@ export function HiddenInformationCond1({
               </>
             ) : (
               <>
-                The same clause is wrapped in <strong className="text-green-700 dark:text-green-300">&lt;strong&gt;</strong>{" "}
-                and <em className="text-green-700 dark:text-green-300">&lt;em&gt;</em> — P(t_clause) = True —
+                The same clause is wrapped in <strong className="text-foreground">&lt;strong&gt;</strong>{" "}
+                and <em className="text-foreground">&lt;em&gt;</em> — P(t_clause) = True —
                 so the $49.99 auto-renewal is findable at a glance without reading all{" "}
                 {DOCUMENT_WORDS} words.
               </>

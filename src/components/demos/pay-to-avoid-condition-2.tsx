@@ -133,14 +133,14 @@ export function PayToAvoidCond2({
     <div className="mt-2 space-y-1">
       <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
         <span>{mode === "auditor" ? "A(N_pain) / A_viewport" : "Access notice footprint"}</span>
-        <span className={active && isDark ? "text-red-500" : active ? "text-green-500" : "text-muted-foreground"}>
+        <span className={active && isDark ? "text-foreground" : active ? "text-foreground" : "text-muted-foreground"}>
           {(isDark ? OCCUPANCY_DARK : OCCUPANCY_BENIGN) * 100}%
         </span>
       </div>
       <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
         <div
           className={`h-full rounded-full transition-all duration-500 ${
-            active && isDark ? "bg-red-500" : active ? "bg-green-500" : "bg-muted-foreground/30"
+            active && isDark ? "bg-primary" : active ? "bg-primary" : "bg-muted-foreground/30"
           }`}
           style={{ width: `${(isDark ? OCCUPANCY_DARK : OCCUPANCY_BENIGN) * 100}%` }}
         />
@@ -158,10 +158,10 @@ export function PayToAvoidCond2({
         <div className="space-y-3">
           {documentCard}
           {waitingB && !paidB && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5">
               <div className="flex items-center justify-between gap-2">
                 <div className="min-w-0">
-                  <div className="text-[9px] font-semibold text-green-700 dark:text-green-300">
+                  <div className="text-[9px] font-semibold text-foreground">
                     Free plan — 10s access delay applies
                   </div>
                   <div className="text-[8px] text-muted-foreground mt-0.5">
@@ -171,7 +171,7 @@ export function PayToAvoidCond2({
                 </div>
                 <button
                   onClick={() => removePain("B")}
-                  className="shrink-0 rounded-md border border-green-500/40 bg-green-500/10 hover:bg-green-500/20 text-green-700 dark:text-green-300 px-2 py-1 text-[9px] font-medium transition-colors cursor-pointer"
+                  className="shrink-0 rounded-md border border-border/60 bg-muted/40 hover:bg-muted/60 text-foreground px-2 py-1 text-[9px] font-medium transition-colors cursor-pointer"
                 >
                   Remove delay — $1.99
                 </button>
@@ -180,8 +180,8 @@ export function PayToAvoidCond2({
             </div>
           )}
           {releasedB && !waitingB && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -197,7 +197,7 @@ export function PayToAvoidCond2({
           {!waitingB && !releasedB && (
             <button
               onClick={() => startWait("B")}
-              className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Read document (free with 10s wait)
             </button>
@@ -209,8 +209,8 @@ export function PayToAvoidCond2({
         <div className="relative">
           {documentCard}
           {waitingA && !paidA && (
-            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 rounded-md border border-red-500/40 bg-background/95 p-4 text-center">
-              <svg className="w-6 h-6 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 rounded-md border border-border/60 bg-background/95 p-4 text-center">
+              <svg className="w-6 h-6 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="12" cy="13" r="8" />
                 <path d="M12 9v4l2.5 2.5" />
               </svg>
@@ -220,18 +220,18 @@ export function PayToAvoidCond2({
                   Your document will be available in:
                 </div>
               </div>
-              <div className="font-mono text-[22px] font-bold tabular-nums text-red-500 leading-none">
+              <div className="font-mono text-[22px] font-bold tabular-nums text-foreground leading-none">
                 {remainingA}
               </div>
               <div className="h-1.5 w-3/4 rounded-full bg-muted overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-red-500 transition-all duration-300"
+                  className="h-full rounded-full bg-primary transition-all duration-300"
                   style={{ width: `${((WAIT_SECONDS - remainingA) / WAIT_SECONDS) * 100}%` }}
                 />
               </div>
               <button
                 onClick={() => removePain("A")}
-                className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-semibold transition-colors cursor-pointer"
+                className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-semibold transition-colors cursor-pointer"
               >
                 Skip the wait — $1.99
               </button>
@@ -242,8 +242,8 @@ export function PayToAvoidCond2({
             </div>
           )}
           {releasedA && !waitingA && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -260,7 +260,7 @@ export function PayToAvoidCond2({
           {!waitingA && !releasedA && (
             <button
               onClick={() => startWait("A")}
-              className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Read document (free with 10s wait)
             </button>

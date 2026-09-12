@@ -43,9 +43,9 @@ export function GrantingAndInteractionCond2({
     <span
       className={`shrink-0 rounded-full border px-2 py-0.5 font-mono text-[8px] font-semibold uppercase tracking-wider ${
         currentNotif === "granted"
-          ? "border-red-500/30 text-red-500"
+          ? "border-border/60 text-foreground"
           : currentNotif === "declined"
-            ? "border-green-500/30 text-green-500"
+            ? "border-border/60 text-foreground"
             : "border-border text-muted-foreground"
       }`}
     >
@@ -59,8 +59,8 @@ export function GrantingAndInteractionCond2({
       onClick={() => (accent === "rose" ? setPlayedA(true) : setPlayedB(true))}
       className={`w-full rounded-md py-3 text-[11px] font-bold transition-colors cursor-pointer ${
         accent === "rose"
-          ? "bg-red-600 hover:bg-red-700 text-white"
-          : "bg-green-600 hover:bg-green-700 text-white"
+          ? "bg-primary hover:bg-primary/80 text-primary-foreground"
+          : "bg-primary hover:bg-primary/80 text-primary-foreground"
       }`}
     >
       ▶ Play live stream
@@ -113,7 +113,7 @@ export function GrantingAndInteractionCond2({
                   </button>
                   <button
                     onClick={() => setNotifB("granted")}
-                    className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                    className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Allow
                   </button>
@@ -123,8 +123,8 @@ export function GrantingAndInteractionCond2({
           </div>
 
           {playedB && notifB !== "none" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -169,9 +169,9 @@ export function GrantingAndInteractionCond2({
 
             {/* The system prompt is injected at the exact coordinates of the Play button. */}
             {playedA && notifA === "none" && (
-              <div className="absolute inset-0 z-10 rounded-md border-2 border-blue-500/60 bg-background p-3 shadow-lg">
+              <div className="absolute inset-0 z-10 rounded-md border-2 border-border/60 bg-background p-3 shadow-lg">
                 <div className="flex items-center gap-1.5">
-                  <svg className="h-3.5 w-3.5 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="h-3.5 w-3.5 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
                     <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                   </svg>
@@ -189,12 +189,12 @@ export function GrantingAndInteractionCond2({
                   </button>
                   <button
                     onClick={() => setNotifA("granted")}
-                    className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                    className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Allow
                   </button>
                 </div>
-                <p className="mt-1 text-center text-[7px] font-mono text-blue-600 dark:text-blue-400">
+                <p className="mt-1 text-center text-[7px] font-mono text-foreground">
                   injected at {POS_MODAL_DARK} — same coordinates as Play
                 </p>
               </div>
@@ -203,8 +203,8 @@ export function GrantingAndInteractionCond2({
         </div>
 
         {playedA && notifA === "none" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -221,10 +221,10 @@ export function GrantingAndInteractionCond2({
 
         {playedA && notifA !== "none" && (
           <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
-            notifA === "granted" ? "border-red-500/30 bg-red-500/5" : "border-green-500/30 bg-green-500/5"
+            notifA === "granted" ? "border-border/60 bg-muted/40" : "border-border/60 bg-muted/40"
           }`}>
             <div className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
-              notifA === "granted" ? "text-red-700 dark:text-red-300" : "text-green-700 dark:text-green-300"
+              notifA === "granted" ? "text-foreground" : "text-foreground"
             }`}>
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 {notifA === "granted" ? (

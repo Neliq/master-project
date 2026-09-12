@@ -39,11 +39,11 @@ export function HiddenInformationCond2({
         <div className="flex items-center gap-3">
           <div
             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
-              dark ? "bg-red-100 dark:bg-red-900/30" : "bg-green-100 dark:bg-green-900/30"
+              dark ? "bg-muted/40" : "bg-muted/40"
             }`}
           >
             <svg
-              className={`h-4 w-4 ${dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}
+              className={`h-4 w-4 ${dark ? "text-foreground" : "text-foreground"}`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -62,8 +62,8 @@ export function HiddenInformationCond2({
 
         <button
           onClick={() => setStarted(true)}
-          className={`mt-3 w-full cursor-pointer rounded-md py-2 text-[11px] font-semibold text-white transition-colors ${
-            dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+          className={`mt-3 w-full cursor-pointer rounded-md py-2 text-[11px] font-semibold text-primary-foreground transition-colors ${
+            dark ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"
           }`}
         >
           {started ? "Trial activated" : `Start your free ${TRIAL_DAYS}-day trial`}
@@ -74,15 +74,15 @@ export function HiddenInformationCond2({
           <button
             onClick={() => setShowLine(true)}
             className={`mt-1.5 block w-full cursor-pointer text-left text-[6px] leading-relaxed transition-all hover:underline ${
-              showLine ? "rounded px-1 ring-2 ring-red-500/60" : ""
+              showLine ? "rounded px-1 ring-2 ring-ring/60" : ""
             }`}
             style={{ color: "rgb(185 185 185)" }}
           >
             Your plan auto-renews at {usd(RENEWAL_PRICE)}/month after your trial.
           </button>
         ) : (
-          <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[11px] leading-relaxed">
-            <span className="text-green-700 dark:text-green-300">
+          <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2 text-[11px] leading-relaxed">
+            <span className="text-foreground">
               <strong>After your free {TRIAL_DAYS}-day trial, your plan auto-renews at{" "}
               {usd(RENEWAL_PRICE)}/month.</strong>{" "}
             </span>
@@ -98,13 +98,13 @@ export function HiddenInformationCond2({
 
       {started &&
         (dark ? (
-          <div className="rounded-md border border-red-500/30 bg-red-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="font-semibold text-red-700 dark:text-red-300">Trial activated</div>
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold text-foreground">Trial activated</div>
             <p className="mt-1 text-muted-foreground">Your CloudNimbus Pro trial is active. You can review renewal details before the first charge.</p>
           </div>
         ) : (
-          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-foreground">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

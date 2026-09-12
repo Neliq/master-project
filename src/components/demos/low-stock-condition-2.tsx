@@ -99,11 +99,11 @@ export function LowStockCond2({
           <div className="rounded-md border border-border bg-background p-2.5">
             <div className="flex items-center justify-between text-[9px]">
               <span className="font-mono text-muted-foreground">Live stock feed — backend source</span>
-              <span className="font-mono font-semibold tabular-nums text-green-500">{STOCK} units</span>
+              <span className="font-mono font-semibold tabular-nums text-foreground">{STOCK} units</span>
             </div>
             <div className="mt-1.5 flex items-center justify-between text-[9px]">
               <span className="font-mono text-muted-foreground">Badge hue (N_stock)</span>
-              <span className="font-mono font-semibold tabular-nums text-green-500">{HUE_BENIGN}&deg; — neutral</span>
+              <span className="font-mono font-semibold tabular-nums text-foreground">{HUE_BENIGN}&deg; — neutral</span>
             </div>
           </div>
 
@@ -115,8 +115,8 @@ export function LowStockCond2({
           </button>
 
           {refreshes > 0 && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -131,7 +131,7 @@ export function LowStockCond2({
 
           <button
             onClick={() => setCheckedOut(true)}
-            className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             {checkedOut ? "Checked out ✓" : "Buy now"}
           </button>
@@ -141,18 +141,18 @@ export function LowStockCond2({
       <div className="space-y-3">
         {productCard(badgeDark)}
 
-        <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5">
+        <div className="rounded-md border border-border/60 bg-muted/40 p-2.5">
           <div className="flex items-center justify-between text-[9px]">
             <span className="font-mono text-muted-foreground">Displayed to shopper (badge)</span>
-            <span className="font-mono font-semibold tabular-nums text-red-500">{STOCK} units — &ldquo;Only 2 left!&rdquo;</span>
+            <span className="font-mono font-semibold tabular-nums text-foreground">{STOCK} units — &ldquo;Only 2 left!&rdquo;</span>
           </div>
           <div className="mt-1.5 flex items-center justify-between text-[9px]">
             <span className="font-mono text-muted-foreground">Actual backend inventory (I_true)</span>
-            <span className="font-mono font-semibold tabular-nums text-yellow-700 dark:text-yellow-300">{TRUE_STOCK} units</span>
+            <span className="font-mono font-semibold tabular-nums text-foreground">{TRUE_STOCK} units</span>
           </div>
           <div className="mt-1.5 flex items-center justify-between text-[9px]">
             <span className="font-mono text-muted-foreground">Badge hue (N_stock)</span>
-            <span className="font-mono font-semibold tabular-nums text-red-500">{HUE_DARK}&deg; — alarm spectrum</span>
+            <span className="font-mono font-semibold tabular-nums text-foreground">{HUE_DARK}&deg; — alarm spectrum</span>
           </div>
         </div>
 
@@ -164,8 +164,8 @@ export function LowStockCond2({
         </button>
 
         {refreshes > 0 && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -185,13 +185,13 @@ export function LowStockCond2({
 
         <button
           onClick={() => setCheckedOut(true)}
-          className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+          className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
           {checkedOut ? "Checked out ✓" : "Buy now"}
         </button>
 
         {checkedOut && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
             <p className="text-muted-foreground">
               The pulsing red badge associates the product with danger and immediate action. Users who skip the
               verification step buy under a manufactured alarm that never corresponds to any real stock movement.

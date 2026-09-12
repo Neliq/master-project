@@ -63,7 +63,7 @@ export function ForcedGracePeriodCond1({
           {stageB === "idle" ? (
             <div className="rounded-md border bg-card p-3">
               <div className="flex items-center gap-1.5">
-                <Hourglass className="size-3.5 text-green-500" />
+                <Hourglass className="size-3.5 text-foreground" />
                 <h3 className="text-[11px] font-semibold">CloudPhoto Pro — $9.99/mo</h3>
               </div>
               <p className="mt-1 text-[9px] text-muted-foreground">
@@ -71,14 +71,14 @@ export function ForcedGracePeriodCond1({
               </p>
               <button
                 onClick={() => setStageB("done")}
-                className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Delete my account
               </button>
             </div>
           ) : (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-3 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-3 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <CheckCircle2 className="size-3" />
                 Request executed instantly
               </div>
@@ -96,7 +96,7 @@ export function ForcedGracePeriodCond1({
         {stageA === "idle" ? (
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-1.5">
-              <Hourglass className="size-3.5 text-red-500" />
+              <Hourglass className="size-3.5 text-foreground" />
               <h3 className="text-[11px] font-semibold">CloudPhoto Pro — $9.99/mo</h3>
             </div>
             <p className="mt-1 text-[9px] text-muted-foreground">
@@ -107,7 +107,7 @@ export function ForcedGracePeriodCond1({
                 setStageA("pending");
                 setHoursA(0);
               }}
-              className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Delete my account
             </button>
@@ -116,7 +116,7 @@ export function ForcedGracePeriodCond1({
           <div className="space-y-3">
             <div className="rounded-md border bg-card p-3">
               <div className="flex items-center gap-1.5">
-                <CalendarClock className="size-3.5 text-red-500" />
+                <CalendarClock className="size-3.5 text-foreground" />
                 <h3 className="text-[11px] font-semibold">Deletion request received</h3>
               </div>
 
@@ -124,7 +124,7 @@ export function ForcedGracePeriodCond1({
               <div className="mt-2 rounded-md border border-border bg-background p-2 text-[9px] leading-relaxed">
                 <p className="text-muted-foreground">
                   We&rsquo;ve received your request. Your account will be permanently deleted in{" "}
-                  <mark className="rounded-sm bg-yellow-500/25 px-0.5 text-yellow-800 dark:text-yellow-200">
+                  <mark className="rounded-sm bg-muted/40 px-0.5 text-foreground">
                     30 days
                   </mark>
                   .
@@ -160,7 +160,7 @@ export function ForcedGracePeriodCond1({
                 </div>
                 <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">
                   <div
-                    className="h-full rounded-full bg-red-500 transition-[width] duration-150"
+                    className="h-full rounded-full bg-primary transition-[width] duration-150"
                     style={{ width: `${pct}%` }}
                   />
                 </div>
@@ -169,7 +169,7 @@ export function ForcedGracePeriodCond1({
               <div className="mt-2.5 flex gap-1.5">
                 <button
                   onClick={() => setHoursA(WAIT_HOURS)}
-                  className="flex-1 rounded-md border border-red-500/40 bg-red-500/5 py-1.5 text-[9px] font-semibold text-red-600 transition-colors hover:bg-red-500/10 cursor-pointer dark:text-red-300"
+                  className="flex-1 rounded-md border border-border/60 bg-muted/40 py-1.5 text-[9px] font-semibold text-foreground transition-colors hover:bg-muted/60 cursor-pointer"
                 >
                   View scheduled completion
                 </button>

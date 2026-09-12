@@ -66,19 +66,19 @@ export function FeedforwardAmbiguityCond3({
                   id="feedforward-benign-email"
                   type="email"
                   defaultValue="marta.kowalska@northmail.pl"
-                  className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-green-500/50"
+                  className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-ring/50"
                 />
                 <label htmlFor="feedforward-benign-password" className="text-[9px] font-medium text-foreground/80">Password</label>
                 <input
                   id="feedforward-benign-password"
                   type="password"
                   defaultValue="••••••••"
-                  className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-green-500/50"
+                  className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-ring/50"
                 />
               </div>
               <button
                 onClick={() => setStep(2)}
-                className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Continue
               </button>
@@ -92,7 +92,7 @@ export function FeedforwardAmbiguityCond3({
               <div className="mt-3">{planCard}</div>
               <button
                 onClick={() => { setSubscribed(true); setCharged(true); setStep("done"); }}
-                className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Subscribe — $29/month
               </button>
@@ -106,8 +106,8 @@ export function FeedforwardAmbiguityCond3({
           )}
 
           {step === "done" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -133,19 +133,19 @@ export function FeedforwardAmbiguityCond3({
                 id="feedforward-dark-email"
                 type="email"
                 defaultValue="marta.kowalska@northmail.pl"
-                className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-red-500/50"
+                className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-ring/50"
               />
               <label htmlFor="feedforward-dark-password" className="text-[9px] font-medium text-foreground/80">Password</label>
               <input
                 id="feedforward-dark-password"
                 type="password"
                 defaultValue="••••••••"
-                className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-red-500/50"
+                className="w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] outline-none transition-colors focus:border-ring/50"
               />
             </div>
             <button
               onClick={() => setStep(2)}
-              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Continue
             </button>
@@ -159,7 +159,7 @@ export function FeedforwardAmbiguityCond3({
             <div className="mt-3">{planCard}</div>
             <button
               onClick={() => { setSubscribed(true); setCharged(true); setMarketingOptIn(true); setStep("done"); }}
-              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Next
             </button>

@@ -45,11 +45,11 @@ export function InformationWithoutContextCond1({
             <div className="flex items-center justify-between rounded-md bg-background border border-border px-3 py-2.5">
               <div className="flex items-center gap-2">
                 <div className="relative">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                    <Mail className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+                  <div className="flex h-7 w-7 items-center justify-center rounded-md bg-muted/40">
+                    <Mail className="h-3.5 w-3.5 text-foreground" />
                   </div>
                   {/* N_metric adjacent to its descriptor — d < τ_orphan */}
-                  <span className="absolute -top-1 -right-1 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-green-500 px-1 text-[8px] font-bold text-white">
+                  <span className="absolute -top-1 -right-1 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-primary px-1 text-[8px] font-bold text-primary-foreground">
                     1
                   </span>
                 </div>
@@ -60,7 +60,7 @@ export function InformationWithoutContextCond1({
               </div>
               <button
                 onClick={() => setClicked(true)}
-                className="rounded-md bg-green-600 hover:bg-green-700 text-white px-2.5 py-1 text-[9px] font-medium transition-colors cursor-pointer"
+                className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground px-2.5 py-1 text-[9px] font-medium transition-colors cursor-pointer"
               >
                 Open inbox
               </button>
@@ -68,8 +68,8 @@ export function InformationWithoutContextCond1({
           </div>
 
           {clicked && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
                 1 new message — as advertised
               </div>
@@ -85,16 +85,16 @@ export function InformationWithoutContextCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between rounded-md bg-background border border-border px-3 py-2.5">
-            <div className="relative flex h-7 w-7 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <Bell className="h-3.5 w-3.5 text-red-600 dark:text-red-400" aria-hidden="true" />
+            <div className="relative flex h-7 w-7 items-center justify-center rounded-md bg-muted/40">
+              <Bell className="h-3.5 w-3.5 text-foreground" aria-hidden="true" />
               {/* N_metric: the count is visible, but its meaning is not nearby. */}
-              <span className="absolute -top-1 -right-1 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-red-500 px-1 text-[8px] font-bold text-white">
+              <span className="absolute -top-1 -right-1 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-primary px-1 text-[8px] font-bold text-primary-foreground">
                 1
               </span>
             </div>
             <button
               onClick={() => setClicked(true)}
-              className="rounded-md bg-red-600 hover:bg-red-700 text-white px-2.5 py-1 text-[9px] font-medium transition-colors cursor-pointer"
+              className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground px-2.5 py-1 text-[9px] font-medium transition-colors cursor-pointer"
             >
               Open inbox
             </button>

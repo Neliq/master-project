@@ -70,7 +70,7 @@ export function FeedforwardAmbiguityCond2({
                   <div className="text-[10px] font-medium text-foreground/80">Two-factor authentication</div>
                   <div className="text-[8px] text-muted-foreground/50 mt-0.5">Add an extra code at login.</div>
                 </div>
-                <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+                <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                   On
                 </span>
               </div>
@@ -96,7 +96,7 @@ export function FeedforwardAmbiguityCond2({
                   onClick={() => { setSharing(!sharing); setPressed("toggle"); }}
                   className={`shrink-0 rounded-full px-2.5 py-1 text-[9px] font-semibold transition-colors cursor-pointer ${
                     sharing
-                      ? "bg-green-600 text-white hover:bg-green-700"
+                      ? "bg-primary text-primary-foreground hover:bg-primary/80"
                       : "border border-border bg-background text-foreground/70 hover:text-foreground"
                   }`}
                 >
@@ -107,8 +107,8 @@ export function FeedforwardAmbiguityCond2({
           </div>
 
           {pressed === "toggle" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -135,7 +135,7 @@ export function FeedforwardAmbiguityCond2({
               <div className="text-[9px] text-muted-foreground/60">Account protection</div>
               <button
                 onClick={() => setPressed("2fa")}
-                className="flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-red-500/50 hover:text-red-500 cursor-pointer"
+                className="flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-border/60 hover:text-foreground cursor-pointer"
               >
                 {shieldIcon}
               </button>
@@ -144,7 +144,7 @@ export function FeedforwardAmbiguityCond2({
               <div className="text-[9px] text-muted-foreground/60">Activity alerts</div>
               <button
                 onClick={() => setPressed("push")}
-                className="flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-red-500/50 hover:text-red-500 cursor-pointer"
+                className="flex h-7 w-7 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-border/60 hover:text-foreground cursor-pointer"
               >
                 {bellIcon}
               </button>
@@ -155,8 +155,8 @@ export function FeedforwardAmbiguityCond2({
                 onClick={() => { setSharing(true); setPressed("share"); }}
                 className={`flex h-7 w-7 items-center justify-center rounded-md border transition-colors cursor-pointer ${
                   sharing
-                    ? "border-red-500/50 text-red-500"
-                    : "border-border text-muted-foreground hover:border-red-500/50 hover:text-red-500"
+                    ? "border-border/60 text-foreground"
+                    : "border-border text-muted-foreground hover:border-border/60 hover:text-foreground"
                 }`}
               >
                 {networkIcon}

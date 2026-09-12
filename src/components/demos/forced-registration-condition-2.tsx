@@ -75,7 +75,7 @@ export function ForcedRegistrationCond2({
               onClick={() => {
                 setCheckoutStartedB(true);
               }}
-              className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-semibold transition-colors cursor-pointer"
+              className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-semibold transition-colors cursor-pointer"
             >
               Checkout as guest
             </button>
@@ -88,8 +88,8 @@ export function ForcedRegistrationCond2({
           </div>
 
           {checkoutStartedB && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -110,7 +110,7 @@ export function ForcedRegistrationCond2({
 
         <button
           onClick={() => setCheckoutStartedA(true)}
-          className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
+          className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2.5 text-[11px] font-bold transition-colors cursor-pointer"
         >
           Create account &amp; checkout
         </button>
@@ -128,8 +128,8 @@ export function ForcedRegistrationCond2({
         </button>
 
         {checkoutStartedA && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

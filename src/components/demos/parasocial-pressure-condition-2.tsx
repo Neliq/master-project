@@ -24,16 +24,16 @@ import { DemoShell } from "@/components/demos/demo-shell";
 function Mascot({ size = 36, pleading = false }: { size?: number; pleading?: boolean }) {
   return (
     <svg viewBox="0 0 40 40" style={{ width: size, height: size }} fill="none" aria-hidden="true">
-      <circle cx="20" cy="20" r="18" className="fill-yellow-400/30" />
+      <circle cx="20" cy="20" r="18" className="fill-primary/30" />
       {pleading ? (
         <>
           <circle cx="14.5" cy="16" r="2.6" className="fill-foreground/80" />
           <circle cx="25.5" cy="16" r="2.6" className="fill-foreground/80" />
-          <circle cx="14.5" cy="17" r="0.9" className="fill-white" />
-          <circle cx="25.5" cy="17" r="0.9" className="fill-white" />
+          <circle cx="14.5" cy="17" r="0.9" className="fill-background" />
+          <circle cx="25.5" cy="17" r="0.9" className="fill-background" />
           <path d="M13 26 Q20 31 27 26" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="12.5" cy="21" r="1.2" className="fill-blue-400/80" />
-          <circle cx="27.5" cy="21" r="1.2" className="fill-blue-400/80" />
+          <circle cx="12.5" cy="21" r="1.2" className="fill-primary/80" />
+          <circle cx="27.5" cy="21" r="1.2" className="fill-primary/80" />
         </>
       ) : (
         <>
@@ -74,7 +74,7 @@ export function ParasocialPressureCond2({
             </p>
             <button
               onClick={() => setBenignSupported(true)}
-              className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
             >
               Support now — $2.99
             </button>
@@ -86,8 +86,8 @@ export function ParasocialPressureCond2({
             )}
           </div>
           {benignSupported && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -111,7 +111,7 @@ export function ParasocialPressureCond2({
             <span className="font-semibold text-foreground">$2.99</span> contribution — entirely
             optional.
           </p>
-          <div className="mt-3 flex items-center gap-3 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
+          <div className="mt-3 flex items-center gap-3 rounded-md border border-border/60 bg-muted/40 p-2.5">
             <div className="flex shrink-0 flex-col items-center">
               <Mascot size={44} pleading />
               {mode === "auditor" && (
@@ -124,7 +124,7 @@ export function ParasocialPressureCond2({
               </p>
               <button
                 onClick={() => setDarkSupported(true)}
-                className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
               >
                 Support now — $2.99
               </button>

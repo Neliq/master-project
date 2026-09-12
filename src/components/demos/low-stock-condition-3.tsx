@@ -69,8 +69,8 @@ export function LowStockCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <svg className="h-5 w-5 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-muted/40">
+                <svg className="h-5 w-5 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 3v3m6.366-.366l-2.12 2.12M21 12h-3m.366 6.366l-2.12-2.12M12 21v-3m-6.366.366l2.12-2.12M3 12h3m-.366-6.366l2.12 2.12" />
                 </svg>
               </div>
@@ -81,7 +81,7 @@ export function LowStockCond3({
                 </p>
                 <div className="mt-1.5 flex items-center gap-2">
                   <span className="text-[11px] font-bold">{ITEM_PRICE}</span>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-green-500/40 bg-green-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-700 dark:text-green-300">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-muted/40 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground">
                     In stock — {stockB} remaining
                   </span>
                 </div>
@@ -92,7 +92,7 @@ export function LowStockCond3({
           <div className="rounded-md border border-border bg-background p-2.5">
             <div className="flex items-center justify-between text-[9px]">
               <span className="font-mono text-muted-foreground">Live stock feed — backend source</span>
-              <span className="font-mono font-semibold tabular-nums text-green-500">{stockB} units</span>
+              <span className="font-mono font-semibold tabular-nums text-foreground">{stockB} units</span>
             </div>
             <div className="mt-1 flex items-center justify-between text-[9px]">
               <span className="font-mono text-muted-foreground">Load count (simulated reloads)</span>
@@ -100,7 +100,7 @@ export function LowStockCond3({
             </div>
             <div className="mt-1 flex items-center justify-between text-[9px]">
               <span className="font-mono text-muted-foreground">Transaction log (t1 → t2)</span>
-              <span className="font-mono font-semibold tabular-nums text-green-500">{soldB} purchase{soldB === 1 ? "" : "s"}</span>
+              <span className="font-mono font-semibold tabular-nums text-foreground">{soldB} purchase{soldB === 1 ? "" : "s"}</span>
             </div>
             <div className="mt-1 flex items-center justify-between text-[9px]">
               <span className="font-mono text-muted-foreground">Session clock (&Delta;t)</span>
@@ -117,15 +117,15 @@ export function LowStockCond3({
             </button>
             <button
               onClick={buyB}
-              className="flex-1 rounded-md border border-green-500/40 bg-green-500/10 py-1.5 text-[10px] font-medium text-green-700 dark:text-green-300 hover:bg-green-500/20 transition-colors cursor-pointer"
+              className="flex-1 rounded-md border border-border/60 bg-muted/40 py-1.5 text-[10px] font-medium text-foreground hover:bg-muted/60 transition-colors cursor-pointer"
             >
               Someone bought one
             </button>
           </div>
 
           {loadsB > 1 && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -144,8 +144,8 @@ export function LowStockCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <svg className="h-5 w-5 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-muted/40">
+              <svg className="h-5 w-5 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 3v3m6.366-.366l-2.12 2.12M21 12h-3m.366 6.366l-2.12-2.12M12 21v-3m-6.366.366l2.12-2.12M3 12h3m-.366-6.366l2.12 2.12" />
               </svg>
             </div>
@@ -156,7 +156,7 @@ export function LowStockCond3({
               </p>
               <div className="mt-1.5 flex items-center gap-2">
                 <span className="text-[11px] font-bold">{ITEM_PRICE}</span>
-                <span className="inline-flex items-center gap-1 rounded-full border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-red-600 dark:text-red-300 animate-pulse">
+                <span className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-muted/40 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground animate-pulse">
                   Only {quantA} left!
                 </span>
               </div>
@@ -171,7 +171,7 @@ export function LowStockCond3({
           </div>
           <div className="mt-1 flex items-center justify-between text-[9px]">
             <span className="font-mono text-muted-foreground">Transaction log (t1 → t2)</span>
-            <span className="font-mono font-semibold tabular-nums text-red-500">0 purchases</span>
+            <span className="font-mono font-semibold tabular-nums text-foreground">0 purchases</span>
           </div>
           <div className="mt-1 flex items-center justify-between text-[9px]">
             <span className="font-mono text-muted-foreground">Session clock (&Delta;t)</span>

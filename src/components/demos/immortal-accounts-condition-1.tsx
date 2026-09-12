@@ -84,14 +84,14 @@ export function ImmortalAccountsCond1({
             {stepB === 0 ? (
               <button
                 onClick={() => setStepB(1)}
-                className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Delete account
               </button>
             ) : null}
             {stepB === 1 ? (
-              <div className="mt-3 space-y-2 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
-                <div className="text-[10px] font-semibold text-red-700 dark:text-red-300">Delete your account?</div>
+              <div className="mt-3 space-y-2 rounded-md border border-border/60 bg-muted/40 p-2.5">
+                <div className="text-[10px] font-semibold text-foreground">Delete your account?</div>
                 <p className="text-[9px] text-muted-foreground leading-relaxed">
                   This is permanent. All photos, notes and plan history will be removed.
                 </p>
@@ -104,7 +104,7 @@ export function ImmortalAccountsCond1({
                   </button>
                   <button
                     onClick={() => setStepB(2)}
-                    className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                    className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                   >
                     Delete my account
                   </button>
@@ -112,8 +112,8 @@ export function ImmortalAccountsCond1({
               </div>
             ) : null}
             {stepB === 2 ? (
-              <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -145,14 +145,14 @@ export function ImmortalAccountsCond1({
           {stepA === 0 ? (
             <button
               onClick={() => setStepA(1)}
-              className="mt-3 w-full rounded-md border border-red-500/40 bg-background text-red-600 dark:text-red-400 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md border border-border/60 bg-background text-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Delete account
             </button>
           ) : null}
           {stepA === 7 ? (
-            <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -166,7 +166,7 @@ export function ImmortalAccountsCond1({
             </div>
           ) : null}
           {stepA >= 1 && stepA <= 6 ? (
-            <div className="absolute inset-0 z-10 flex items-center justify-center rounded-md bg-black/60 p-4">
+            <div className="absolute inset-0 z-10 flex items-center justify-center rounded-md bg-foreground/60 p-4">
               <div className="w-full rounded-md border border-border bg-card p-3 shadow-xl">
                 {stepA === 1 && (
                   <>
@@ -177,7 +177,7 @@ export function ImmortalAccountsCond1({
                     </p>
                     <div className="mt-3 flex gap-2">
                       <button onClick={() => setStepA(0)} className="flex-1 rounded-md border border-border bg-background py-1.5 text-[10px] cursor-pointer">Keep account</button>
-                      <button onClick={() => setStepA(2)} className="flex-1 rounded-md bg-red-600 text-white py-1.5 text-[10px] font-medium cursor-pointer">Yes, continue</button>
+                      <button onClick={() => setStepA(2)} className="flex-1 rounded-md bg-primary text-primary-foreground py-1.5 text-[10px] font-medium cursor-pointer">Yes, continue</button>
                     </div>
                   </>
                 )}
@@ -196,7 +196,7 @@ export function ImmortalAccountsCond1({
                     </select>
                     <div className="mt-3 flex gap-2">
                       <button onClick={() => setStepA(1)} className="flex-1 rounded-md border border-border bg-background py-1.5 text-[10px] cursor-pointer">Back</button>
-                      <button onClick={() => setStepA(3)} className="flex-1 rounded-md bg-red-600 text-white py-1.5 text-[10px] font-medium cursor-pointer">Continue</button>
+                      <button onClick={() => setStepA(3)} className="flex-1 rounded-md bg-primary text-primary-foreground py-1.5 text-[10px] font-medium cursor-pointer">Continue</button>
                     </div>
                   </>
                 )}
@@ -213,7 +213,7 @@ export function ImmortalAccountsCond1({
                     />
                     <div className="mt-3 flex gap-2">
                       <button onClick={() => setStepA(2)} className="flex-1 rounded-md border border-border bg-background py-1.5 text-[10px] cursor-pointer">Back</button>
-                      <button onClick={() => setStepA(4)} className="flex-1 rounded-md bg-red-600 text-white py-1.5 text-[10px] font-medium cursor-pointer">Verify</button>
+                      <button onClick={() => setStepA(4)} className="flex-1 rounded-md bg-primary text-primary-foreground py-1.5 text-[10px] font-medium cursor-pointer">Verify</button>
                     </div>
                   </>
                 )}
@@ -221,10 +221,10 @@ export function ImmortalAccountsCond1({
                   <>
                     <div className="text-[10px] font-semibold">We&rsquo;d hate to see you go! </div>
                     <p className="text-[9px] text-muted-foreground mt-1 leading-relaxed">
-                      Did you know? You can <strong className="text-green-600 dark:text-green-400">downgrade to the free plan</strong> and
+                      Did you know? You can <strong className="text-foreground">downgrade to the free plan</strong> and
                       keep every photo, with no monthly fee. Most people who try it stay.
                     </p>
-                    <button onClick={() => setStepA(0)} className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-semibold cursor-pointer">
+                    <button onClick={() => setStepA(0)} className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-semibold cursor-pointer">
                       Keep my account — downgrade instead
                     </button>
                     <button onClick={() => setStepA(5)} className="mt-2 w-full rounded-md border border-border bg-background py-1.5 text-[8px] text-muted-foreground underline underline-offset-2 cursor-pointer">
@@ -257,7 +257,7 @@ export function ImmortalAccountsCond1({
                         type="checkbox"
                         checked={understood}
                         onChange={(e) => setUnderstood(e.target.checked)}
-                        className="mt-0.5 flex-shrink-0 accent-red-500"
+                        className="mt-0.5 flex-shrink-0 accent-primary"
                       />
                       <span className="text-[9px] text-foreground/80 leading-relaxed">I understand my account will be permanently deleted.</span>
                     </label>
@@ -266,7 +266,7 @@ export function ImmortalAccountsCond1({
                       disabled={!understood}
                       className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                         understood
-                          ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                          ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                           : "bg-muted text-muted-foreground/40 cursor-not-allowed"
                       }`}
                     >

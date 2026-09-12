@@ -53,7 +53,7 @@ export function FriendSpamCond1({
                   find friends already on the platform.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 {benignGranted ? "Connected" : "Read-only"}
               </div>
             </div>
@@ -64,7 +64,7 @@ export function FriendSpamCond1({
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 benignGranted
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
               }`}
             >
               {benignGranted ? "Access granted" : "Allow access to contacts"}
@@ -72,8 +72,8 @@ export function FriendSpamCond1({
           </div>
 
           {benignDone && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -107,7 +107,7 @@ export function FriendSpamCond1({
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               darkGranted
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
             }`}
           >
             {darkGranted ? "Access granted" : "Allow access to contacts"}

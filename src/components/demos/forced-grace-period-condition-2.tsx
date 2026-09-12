@@ -68,13 +68,13 @@ export function ForcedGracePeriodCond2({
       <div>
         <div className="flex items-center justify-between text-[8px] text-muted-foreground">
           <span className="font-mono">{mode === "auditor" ? "S(N_cancel) — “Cancel anyway”" : "Cancel plan"}</span>
-          <span className={`font-mono tabular-nums ${accent === "rose" ? "text-red-500" : "text-green-500"}`}>
+          <span className={`font-mono tabular-nums ${accent === "rose" ? "text-foreground" : "text-foreground"}`}>
             {mode === "auditor" ? cancelSalience.toFixed(2) : ""}
           </span>
         </div>
         <div className="mt-0.5 h-1.5 w-full overflow-hidden rounded-full bg-foreground/10">
           <div
-            className={`h-full rounded-full ${accent === "rose" ? "bg-red-500" : "bg-green-500"}`}
+            className={`h-full rounded-full ${accent === "rose" ? "bg-primary" : "bg-primary"}`}
             style={{ width: `${Math.max(1, Math.round(cancelSalience * 100))}%` }}
           />
         </div>
@@ -90,7 +90,7 @@ export function ForcedGracePeriodCond2({
   ) => (
     <div className="rounded-md border bg-card p-3">
       <div className="flex items-center gap-1.5">
-        <Gift className={`size-3.5 ${accent === "rose" ? "text-red-500" : "text-green-500"}`} />
+        <Gift className={`size-3.5 ${accent === "rose" ? "text-foreground" : "text-foreground"}`} />
         <h3 className="text-[11px] font-semibold">We&rsquo;re sorry to see you go!</h3>
       </div>
       <p className="mt-1 text-[9px] leading-relaxed text-muted-foreground">
@@ -112,8 +112,8 @@ export function ForcedGracePeriodCond2({
       {/* N_confirm — the confirmation/renewal prompt. */}
       <button
         onClick={onKeep}
-        className={`mt-2.5 w-full rounded-md py-2.5 text-[10px] font-bold text-white shadow-sm transition-colors cursor-pointer ${
-          accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+        className={`mt-2.5 w-full rounded-md py-2.5 text-[10px] font-bold text-primary-foreground shadow-sm transition-colors cursor-pointer ${
+          accent === "rose" ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"
         }`}
       >
         Keep my subscription — 50% off
@@ -148,8 +148,8 @@ export function ForcedGracePeriodCond2({
             false
           )}
           {choiceB === "keep" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <CheckCircle2 className="size-3" />
                 Choice made with equal salience
               </div>
@@ -162,8 +162,8 @@ export function ForcedGracePeriodCond2({
             </div>
           )}
           {choiceB === "cancel" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <CheckCircle2 className="size-3" />
                 Cancellation — one glance away
               </div>
@@ -182,7 +182,7 @@ export function ForcedGracePeriodCond2({
           <div className="text-center">
             <button
               onClick={() => setChoiceA("cancel")}
-              className="text-[8px] font-normal text-muted-foreground/40 underline decoration-muted-foreground/30 underline-offset-2 transition-colors hover:text-red-500 cursor-pointer"
+              className="text-[8px] font-normal text-muted-foreground/40 underline decoration-muted-foreground/30 underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
             >
               Cancel anyway
             </button>
@@ -194,8 +194,8 @@ export function ForcedGracePeriodCond2({
           true
         )}
         {choiceA === "keep" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <AlertTriangle className="size-3" />
               Request saved
             </div>
@@ -213,8 +213,8 @@ export function ForcedGracePeriodCond2({
           </div>
         )}
         {choiceA === "cancel" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <AlertTriangle className="size-3" />
               Cancellation confirmed
             </div>

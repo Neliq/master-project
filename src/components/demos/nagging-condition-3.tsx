@@ -14,9 +14,9 @@ export function NaggingCond3({ mode = "user" }: { mode?: "user" | "auditor" } = 
       benign={<div className="space-y-3"><div className="rounded-md border bg-card p-4"><p className="text-[11px] font-semibold">Notification settings</p><p className="mt-1 text-[10px] text-muted-foreground">Notifications are currently off. You can change this in Settings.</p><button className="mt-3 rounded-md border px-3 py-1.5 text-[10px]">Open settings</button></div><button onClick={() => setShown((n) => n + 1)} className="w-full rounded-md border py-1.5 text-[10px] text-muted-foreground">Refresh status ({shown})</button></div>}
     >
       <div className="space-y-3">
-        <div className="rounded-md border border-red-500/40 bg-card p-4"><p className="text-[11px] font-semibold">Enable notifications now</p><p className="mt-1 text-[10px] text-muted-foreground">Enable notifications now to stay up to date.</p><button className="mt-3 rounded-md bg-red-600 px-3 py-1.5 text-[10px] font-medium text-white">Enable notifications</button></div>
+        <div className="rounded-md border border-border/60 bg-card p-4"><p className="text-[11px] font-semibold">Enable notifications now</p><p className="mt-1 text-[10px] text-muted-foreground">Enable notifications now to stay up to date.</p><button className="mt-3 rounded-md bg-primary px-3 py-1.5 text-[10px] font-medium text-primary-foreground">Enable notifications</button></div>
         <button onClick={() => setShown((n) => n + 1)} className="w-full rounded-md border py-1.5 text-[10px] text-muted-foreground">Show the message again ({shown})</button>
-        {shown > 1 && <div className="rounded-md border border-yellow-500/40 bg-yellow-500/10 p-3 text-[10px] text-muted-foreground">Enable notifications now. Nothing about the task has changed.</div>}
+        {shown > 1 && <div className="rounded-md border border-border/60 bg-muted/40 p-3 text-[10px] text-muted-foreground">Enable notifications now. Nothing about the task has changed.</div>}
       </div>
     </DemoShell>
   );

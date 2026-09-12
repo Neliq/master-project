@@ -60,7 +60,7 @@ export function FriendSpamCond2({
 
             <div className="mt-2.5 space-y-1">
               {CONTACTS.map((name, i) => (
-                <label key={name} className="flex items-center gap-2 rounded-md border border-border bg-background px-2 py-1.5 cursor-pointer transition-colors hover:border-green-500/40">
+                <label key={name} className="flex items-center gap-2 rounded-md border border-border bg-background px-2 py-1.5 cursor-pointer transition-colors hover:border-border/60">
                   <input
                     type="checkbox"
                     checked={benignChecked[i]}
@@ -69,7 +69,7 @@ export function FriendSpamCond2({
                       next[i] = e.target.checked;
                       setBenignChecked(next);
                     }}
-                    className="flex-shrink-0 accent-green-500"
+                    className="flex-shrink-0 accent-primary"
                   />
                   <span className="text-[10px] text-foreground/80">{name}</span>
                   <span className="ml-auto text-[8px] text-muted-foreground/50">{CONTACT_EMAILS[i]}</span>
@@ -85,7 +85,7 @@ export function FriendSpamCond2({
               disabled={benignSelected === 0}
               className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 benignSelected > 0
-                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -94,8 +94,8 @@ export function FriendSpamCond2({
           </div>
 
           {benignSent && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -120,7 +120,7 @@ export function FriendSpamCond2({
 
           <div className="mt-2.5 space-y-1">
             {CONTACTS.map((name, i) => (
-              <label key={name} className="flex items-center gap-2 rounded-md border border-border bg-background px-2 py-1.5 cursor-pointer transition-colors hover:border-red-500/40">
+              <label key={name} className="flex items-center gap-2 rounded-md border border-border bg-background px-2 py-1.5 cursor-pointer transition-colors hover:border-border/60">
                 <input
                   type="checkbox"
                   checked={darkChecked[i]}
@@ -129,7 +129,7 @@ export function FriendSpamCond2({
                     next[i] = e.target.checked;
                     setDarkChecked(next);
                   }}
-                  className="flex-shrink-0 accent-red-500"
+                  className="flex-shrink-0 accent-primary"
                 />
                 <span className="text-[10px] text-foreground/80">{name}</span>
                 <span className="ml-auto text-[8px] text-muted-foreground/50">{CONTACT_EMAILS[i]}</span>
@@ -142,15 +142,15 @@ export function FriendSpamCond2({
 
           <button
             onClick={() => setDarkSent(true)}
-            className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Invite all {NETWORK_SIZE} friends
           </button>
         </div>
 
         {darkSent && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -159,7 +159,7 @@ export function FriendSpamCond2({
             </div>
             <p className="text-muted-foreground mt-0.5">
               You unchecked{" "}
-              <strong className="text-red-500">{CONTACTS.filter((_, i) => !darkChecked[i]).length}</strong>{" "}
+              <strong className="text-foreground">{CONTACTS.filter((_, i) => !darkChecked[i]).length}</strong>{" "}
               box(es) — but the backend still dispatched{" "}
               <strong className="text-foreground">{NETWORK_SIZE} invites to the full contact list</strong>.
               {mode === "auditor" ? (

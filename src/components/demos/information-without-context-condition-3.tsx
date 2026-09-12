@@ -42,8 +42,8 @@ export function InformationWithoutContextCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <Zap className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted/40">
+                <Zap className="h-3.5 w-3.5 text-foreground" />
               </div>
               <div>
                 <h3 className="text-[11px] font-semibold">TechNook — flash sale</h3>
@@ -55,7 +55,7 @@ export function InformationWithoutContextCond3({
 
             {/* anchored metric: unit + baseline inside the cluster */}
             <div className="mt-3 rounded-md bg-background border border-border p-2.5 text-center">
-              <div className="text-[16px] font-bold text-green-600 dark:text-green-400">
+              <div className="text-[16px] font-bold text-foreground">
                 SAVE 50%
               </div>
               <div className="text-[10px] text-foreground/80 mt-0.5">
@@ -65,7 +65,7 @@ export function InformationWithoutContextCond3({
 
             <button
               onClick={() => setClaimed(true)}
-              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Claim offer
             </button>
@@ -89,8 +89,8 @@ export function InformationWithoutContextCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <Zap className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted/40">
+              <Zap className="h-3.5 w-3.5 text-foreground" />
             </div>
             <div>
               <h3 className="text-[11px] font-semibold">TechNook — flash sale</h3>
@@ -100,7 +100,7 @@ export function InformationWithoutContextCond3({
 
           {/* v = 50: prominent, unanchored — no unit, no denominator */}
           <div className="mt-3 rounded-md bg-background border border-border p-2.5 text-center">
-            <div className="text-[22px] font-black leading-none text-red-500">SAVE {FLASH}</div>
+            <div className="text-[22px] font-black leading-none text-foreground">SAVE {FLASH}</div>
             <div className="text-[8px] text-muted-foreground/50 mt-1.5">
               Limited time offer. Terms apply.
             </div>
@@ -108,7 +108,7 @@ export function InformationWithoutContextCond3({
 
           <button
             onClick={() => setClaimed(true)}
-            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Claim offer
           </button>

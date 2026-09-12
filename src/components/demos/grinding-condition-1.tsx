@@ -68,7 +68,7 @@ export function GrindingCond1({
                   Forge swords to level up. Each level needs a few more — always fair.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Fair curve
               </div>
             </div>
@@ -85,22 +85,22 @@ export function GrindingCond1({
               aria-valuenow={Math.round((benign.progress / benign.required) * 100)}
               className="mt-1 bg-foreground/10 h-2.5 rounded-full overflow-hidden"
             >
-              <div className="bg-green-500 h-full transition-all" style={{ width: `${Math.min(100, (benign.progress / benign.required) * 100)}%` }} />
+              <div className="bg-primary h-full transition-all" style={{ width: `${Math.min(100, (benign.progress / benign.required) * 100)}%` }} />
             </div>
             <p className="text-[9px] text-muted-foreground mt-1.5">
-              Gold earned so far: <span className="font-mono font-semibold tabular-nums text-green-600 dark:text-green-400">{benign.stage * GOLD_PER_LEVEL} </span>
+              Gold earned so far: <span className="font-mono font-semibold tabular-nums text-foreground">{benign.stage * GOLD_PER_LEVEL} </span>
             </p>
 
             <div className="mt-2 flex gap-2">
               <button
                 onClick={() => setActionsB((a) => a + 1)}
-                className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Forge a sword (+1)
               </button>
               <button
                 onClick={() => setActionsB((a) => a + 5)}
-                className="flex-1 rounded-md border border-green-500/40 text-green-700 dark:text-green-300 hover:bg-green-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                className="flex-1 rounded-md border border-border/60 text-foreground hover:bg-muted/60 py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Forge ×5
               </button>
@@ -108,8 +108,8 @@ export function GrindingCond1({
           </div>
 
           {revealedB && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -135,7 +135,7 @@ export function GrindingCond1({
                 Forge swords to level up. Keep forging. Keep forging…
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Grind
             </div>
           </div>
@@ -152,25 +152,25 @@ export function GrindingCond1({
             aria-valuenow={Math.round((dark.progress / dark.required) * 100)}
             className="mt-1 bg-foreground/10 h-2.5 rounded-full overflow-hidden"
           >
-            <div className="bg-red-500 h-full transition-all" style={{ width: `${Math.min(100, (dark.progress / dark.required) * 100)}%` }} />
+            <div className="bg-primary h-full transition-all" style={{ width: `${Math.min(100, (dark.progress / dark.required) * 100)}%` }} />
           </div>
           <p className="text-[9px] text-muted-foreground mt-1.5">
-            Gold earned so far: <span className="font-mono font-semibold tabular-nums text-yellow-500">{dark.stage * GOLD_PER_LEVEL} </span>{" "}
+            Gold earned so far: <span className="font-mono font-semibold tabular-nums text-foreground">{dark.stage * GOLD_PER_LEVEL} </span>{" "}
             {dark.stage >= 3 && (
-              <span className="text-red-500/80">— next level needs {needDark(dark.stage)} forges for the same {GOLD_PER_LEVEL} gold.</span>
+              <span className="text-foreground/80">— next level needs {needDark(dark.stage)} forges for the same {GOLD_PER_LEVEL} gold.</span>
             )}
           </p>
 
           <div className="mt-2 flex gap-2">
             <button
               onClick={() => setActionsA((a) => a + 1)}
-              className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Forge a sword (+1)
             </button>
             <button
               onClick={() => setActionsA((a) => a + 5)}
-              className="flex-1 rounded-md border border-red-500/40 text-red-700 dark:text-red-300 hover:bg-red-500/10 py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="flex-1 rounded-md border border-border/60 text-foreground hover:bg-muted/60 py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Forge ×5
             </button>

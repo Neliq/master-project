@@ -52,7 +52,7 @@ export function FriendSpamCond3({
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 benignSent
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
               }`}
             >
               {benignSent ? "Message sent" : "Send welcome offer"}
@@ -60,8 +60,8 @@ export function FriendSpamCond3({
           </div>
 
           {benignSent && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed space-y-2">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-2">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -69,12 +69,12 @@ export function FriendSpamCond3({
               </div>
               <div className="rounded-md border bg-card p-2">
                 <div className="flex items-start gap-2">
-                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30 text-[8px] font-bold text-green-600 dark:text-green-400">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-muted/40 text-[8px] font-bold text-foreground">
                     PS
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1 text-[8px] text-muted-foreground">
-                      PopSocial <span className="rounded bg-green-500/10 px-1 py-px font-semibold uppercase tracking-wide text-green-700 dark:text-green-300">Sponsored</span>
+                      PopSocial <span className="rounded bg-muted/40 px-1 py-px font-semibold uppercase tracking-wide text-foreground">Sponsored</span>
                     </div>
                     <div className="text-[9px] leading-snug mt-0.5">{SPONSORED_COPY}</div>
                   </div>
@@ -105,7 +105,7 @@ export function FriendSpamCond3({
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               darkSent
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
             }`}
           >
             {darkSent ? "Message sent" : "Send welcome offer"}

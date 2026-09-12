@@ -40,7 +40,7 @@ function highlightConfirmation(
   accent: "rose" | "emerald"
 ): React.ReactNode {
   const spans: { needle: string; cls: string }[] = [
-    { needle: entity, cls: "rounded-sm bg-yellow-500/25 px-0.5 text-yellow-800 dark:text-yellow-200" },
+    { needle: entity, cls: "rounded-sm bg-muted/40 px-0.5 text-foreground" },
   ];
   keywords.forEach((k) => {
     if (text.toLowerCase().includes(k.toLowerCase())) {
@@ -48,8 +48,8 @@ function highlightConfirmation(
         needle: k,
         cls:
           accent === "rose"
-            ? "rounded-sm bg-red-500/25 px-0.5 text-red-800 dark:text-red-200 font-semibold"
-            : "rounded-sm bg-green-500/25 px-0.5 text-green-800 dark:text-green-200 font-semibold",
+            ? "rounded-sm bg-muted/40 px-0.5 text-foreground font-semibold"
+            : "rounded-sm bg-muted/40 px-0.5 text-foreground font-semibold",
       });
     }
   });
@@ -98,8 +98,8 @@ export function ForcedGracePeriodCond3({
       </p>
       <button
         onClick={onRequest}
-        className={`mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer ${
-          accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+        className={`mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer ${
+          accent === "rose" ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"
         }`}
       >
         <Trash2 className="size-3.5" />
@@ -145,7 +145,7 @@ export function ForcedGracePeriodCond3({
               <div className="mt-2.5 flex gap-1.5">
                 <button
                   onClick={() => setStageB("resolved")}
-                  className="flex flex-1 items-center justify-center gap-1.5 rounded-md bg-green-600 py-1.5 text-[9px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
+                  className="flex flex-1 items-center justify-center gap-1.5 rounded-md bg-primary py-1.5 text-[9px] font-semibold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
                 >
                   Delete my account
                 </button>
@@ -158,8 +158,8 @@ export function ForcedGracePeriodCond3({
               </div>
             )}
           {stageB === "resolved" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <CheckCircle2 className="size-3" />
                 No delay — no reversal hook
               </div>
@@ -186,7 +186,7 @@ export function ForcedGracePeriodCond3({
                   setStageA("resolved");
                   setAborted(true);
                 }}
-                className="flex flex-1 items-center justify-center gap-1.5 rounded-md bg-red-600 py-1.5 text-[9px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
+                className="flex flex-1 items-center justify-center gap-1.5 rounded-md bg-primary py-1.5 text-[9px] font-semibold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
               >
                 <LogIn className="size-3" />
                 Log in now
@@ -200,8 +200,8 @@ export function ForcedGracePeriodCond3({
             </div>
           )}
         {stageA === "resolved" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <AlertTriangle className="size-3" />
               {aborted ? "Request updated" : "Request pending"}
             </div>

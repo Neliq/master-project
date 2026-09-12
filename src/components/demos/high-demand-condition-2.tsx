@@ -56,16 +56,16 @@ export function HighDemandCond2({
                 <h3 className="text-[11px] font-semibold">AeroGlide X Wireless Headphones</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">Noise-cancelling over-ear · Graphite</p>
               </div>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 $119
               </span>
             </div>
 
             {/* Static badge — no animation at all */}
-            <div className="mt-3 flex items-center gap-2 rounded-md border border-green-500/30 bg-green-500/5 px-3 py-2">
-              <TrendingUp className="size-3.5 text-green-600 dark:text-green-400 shrink-0" />
+            <div className="mt-3 flex items-center gap-2 rounded-md border border-border/60 bg-muted/40 px-3 py-2">
+              <TrendingUp className="size-3.5 text-foreground shrink-0" />
               <div>
-                <div className="text-[10px] font-medium text-green-700 dark:text-green-300">
+                <div className="text-[10px] font-medium text-foreground">
                   {BACKEND_PURCHASES} people bought this in the last hour
                 </div>
                 <div className="text-[8px] text-muted-foreground">
@@ -78,15 +78,15 @@ export function HighDemandCond2({
             <div className="mt-2 rounded-md border border-border bg-background p-2.5">
               <div className="flex items-center justify-between text-[9px]">
                 <span className="font-mono text-muted-foreground">Backend purchase log — last hour</span>
-                <span className="font-mono font-semibold tabular-nums text-green-500">
+                <span className="font-mono font-semibold tabular-nums text-foreground">
                   {BACKEND_PURCHASES} events
                 </span>
               </div>
               <div className="mt-1.5 space-y-1 text-[8px] font-mono text-muted-foreground">
-                <div className="flex justify-between"><span>12:58 — P. Novak · AeroGlide X</span><span className="text-green-600 dark:text-green-400">✓</span></div>
-                <div className="flex justify-between"><span>12:51 — S. Iyer · AeroGlide X</span><span className="text-green-600 dark:text-green-400">✓</span></div>
-                <div className="flex justify-between"><span>12:44 — L. Ferreira · AeroGlide X</span><span className="text-green-600 dark:text-green-400">✓</span></div>
-                <div className="flex justify-between text-muted-foreground/70"><span>… {BACKEND_PURCHASES - 3} more (total {BACKEND_PURCHASES})</span><span className="text-green-600 dark:text-green-400">✓</span></div>
+                <div className="flex justify-between"><span>12:58 — P. Novak · AeroGlide X</span><span className="text-foreground">✓</span></div>
+                <div className="flex justify-between"><span>12:51 — S. Iyer · AeroGlide X</span><span className="text-foreground">✓</span></div>
+                <div className="flex justify-between"><span>12:44 — L. Ferreira · AeroGlide X</span><span className="text-foreground">✓</span></div>
+                <div className="flex justify-between text-muted-foreground/70"><span>… {BACKEND_PURCHASES - 3} more (total {BACKEND_PURCHASES})</span><span className="text-foreground">✓</span></div>
               </div>
             </div>
 
@@ -101,7 +101,7 @@ export function HighDemandCond2({
               className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
                 phaseB === "revealed"
                   ? "bg-muted text-muted-foreground/60 cursor-default"
-                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
               }`}
             >
               <ShoppingCart className="size-3" />
@@ -109,8 +109,8 @@ export function HighDemandCond2({
             </button>
 
             {phaseB === "revealed" && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -135,16 +135,16 @@ export function HighDemandCond2({
               <h3 className="text-[11px] font-semibold">AeroGlide X Wireless Headphones</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Noise-cancelling over-ear · Graphite</p>
             </div>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0 animate-pulse">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0 animate-pulse">
               Trending
             </span>
           </div>
 
           {/* Animated badge — increments every 450 ms */}
-          <div className="mt-3 flex items-center gap-2 rounded-md border border-red-500/30 bg-red-500/5 px-3 py-2 animate-pulse">
-            <TrendingUp className="size-3.5 text-red-600 dark:text-red-400 shrink-0" />
+          <div className="mt-3 flex items-center gap-2 rounded-md border border-border/60 bg-muted/40 px-3 py-2 animate-pulse">
+            <TrendingUp className="size-3.5 text-foreground shrink-0" />
             <div>
-              <div className="font-mono text-[13px] font-bold tabular-nums text-red-700 dark:text-red-300">
+              <div className="font-mono text-[13px] font-bold tabular-nums text-foreground">
                 {count} people bought this in the last hour
               </div>
               <div className="text-[8px] text-muted-foreground">
@@ -156,7 +156,7 @@ export function HighDemandCond2({
           <div className="mt-2 flex items-center justify-between text-[9px] text-muted-foreground">
             <span className="line-through">$195</span>
             <span className="font-semibold text-foreground">$119</span>
-            <span className="text-[8px] font-semibold uppercase tracking-wider text-red-500 animate-pulse">
+            <span className="text-[8px] font-semibold uppercase tracking-wider text-foreground animate-pulse">
               {count} sold
             </span>
           </div>
@@ -167,7 +167,7 @@ export function HighDemandCond2({
             className={`mt-2 flex w-full items-center justify-center gap-1.5 rounded-md py-1.5 text-[10px] font-medium transition-colors ${
               phaseA === "revealed"
                 ? "bg-muted text-muted-foreground/60 cursor-default"
-                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
             }`}
           >
             <ShoppingCart className="size-3" />
@@ -175,8 +175,8 @@ export function HighDemandCond2({
           </button>
 
           {phaseA === "revealed" && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />

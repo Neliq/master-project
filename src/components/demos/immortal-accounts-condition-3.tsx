@@ -84,12 +84,12 @@ export function ImmortalAccountsCond3({
 
   const privacyBenign = (
     <div className="space-y-1.5">
-      <div className="flex items-center justify-between rounded-md border border-red-500/30 bg-red-500/5 px-2.5 py-2">
+      <div className="flex items-center justify-between rounded-md border border-border/60 bg-muted/40 px-2.5 py-2">
         <div>
-          <div className="text-[10px] font-medium text-red-600 dark:text-red-400">Delete account</div>
+          <div className="text-[10px] font-medium text-foreground">Delete account</div>
           <div className="text-[8px] text-muted-foreground/60">Permanently remove your account and all data.</div>
         </div>
-        <span className="font-mono text-[8px] text-red-500">K_del &cap; T_DOM</span>
+        <span className="font-mono text-[8px] text-foreground">K_del &cap; T_DOM</span>
       </div>
       <div className="flex items-center justify-between rounded-md border border-border bg-background px-2.5 py-2">
         <div>
@@ -122,7 +122,7 @@ export function ImmortalAccountsCond3({
                 <h3 className="text-[11px] font-semibold">Settings</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">Manage your account, privacy and data.</p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Exit found
               </div>
             </div>
@@ -141,12 +141,12 @@ export function ImmortalAccountsCond3({
             {queryNoResultsB ? (
               <div className={`mt-2 rounded-md border p-2 text-[9px] ${
                 hitsBenign > 0
-                  ? "border-green-500/30 bg-green-500/5"
+                  ? "border-border/60 bg-muted/40"
                   : "border-border bg-background"
               }`}>
                 {hitsBenign > 0 ? (
                   <>
-                    <span className="font-semibold text-green-700 dark:text-green-300">{hitsBenign} result for &ldquo;{queryB}&rdquo;</span>
+                    <span className="font-semibold text-foreground">{hitsBenign} result for &ldquo;{queryB}&rdquo;</span>
                     <span className="text-muted-foreground"> — Delete account (Account &gt; Privacy).</span>
                   </>
                 ) : (
@@ -159,13 +159,13 @@ export function ImmortalAccountsCond3({
           </div>
           <button
             onClick={() => setScannedB(true)}
-            className="w-full rounded-md border border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="w-full rounded-md border border-border/60 bg-muted/40 text-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Scan settings DOM for exit keywords
           </button>
           {scannedB ? (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -187,7 +187,7 @@ export function ImmortalAccountsCond3({
               <h3 className="text-[11px] font-semibold">Settings</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Manage your account, privacy and data.</p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               No exit
             </div>
           </div>
@@ -204,8 +204,8 @@ export function ImmortalAccountsCond3({
             />
           </div>
           {queryNoResultsA ? (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px]">
-              <span className="font-semibold text-yellow-700 dark:text-yellow-300">No results for &ldquo;{queryA}&rdquo;</span>
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px]">
+              <span className="font-semibold text-foreground">No results for &ldquo;{queryA}&rdquo;</span>
               <span className="text-muted-foreground"> — nothing matched in Settings, Privacy or Data.</span>
             </div>
           ) : null}
@@ -214,13 +214,13 @@ export function ImmortalAccountsCond3({
         </div>
         <button
           onClick={() => setScannedA(true)}
-          className="w-full rounded-md border border-red-500/40 bg-red-500/5 text-red-700 dark:text-red-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+          className="w-full rounded-md border border-border/60 bg-muted/40 text-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
           Scan settings DOM for exit keywords
         </button>
         {scannedA ? (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

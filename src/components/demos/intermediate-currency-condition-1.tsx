@@ -39,18 +39,18 @@ export function IntermediateCurrencyCond1({
 
   const productCard = (onBuy: () => void, accent: "rose" | "emerald", showFiat: boolean) => (
     <div className="rounded-md border bg-background overflow-hidden">
-      <div className={`relative flex h-24 items-center justify-center ${accent === "rose" ? "bg-gradient-to-br from-rose-500 via-fuchsia-500 to-indigo-600" : "bg-gradient-to-br from-emerald-500 via-cyan-500 to-blue-600"}`}>
-        <div className={`flex h-12 w-12 items-center justify-center rounded-lg border border-white/30 bg-white/15 shadow-lg ${accent === "rose" ? "rotate-[-8deg]" : "rotate-[8deg]"}`}>
-          <Star className="h-6 w-6 text-white" />
+      <div className={`relative flex h-24 items-center justify-center ${accent === "rose" ? "bg-gradient-to-br from-primary via-primary to-primary" : "bg-gradient-to-br from-primary via-primary to-primary"}`}>
+        <div className={`flex h-12 w-12 items-center justify-center rounded-lg border border-background/30 bg-background/15 shadow-lg ${accent === "rose" ? "rotate-[-8deg]" : "rotate-[8deg]"}`}>
+          <Star className="h-6 w-6 text-primary-foreground" />
         </div>
-        <div className="absolute top-2 right-2 rounded-full bg-yellow-500 px-2 py-0.5 text-[8px] font-bold text-white">
+        <div className="absolute top-2 right-2 rounded-full bg-primary px-2 py-0.5 text-[8px] font-bold text-primary-foreground">
           PREMIUM
         </div>
       </div>
       <div className="p-3">
         <div className="mb-1 flex items-start justify-between gap-2">
           <h3 className="text-[11px] font-semibold">{PRODUCT_NAME}</h3>
-          <span className="shrink-0 rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-blue-600 dark:bg-blue-500/10 dark:text-blue-300">
+          <span className="shrink-0 rounded-full bg-muted/40 px-2 py-0.5 text-[10px] font-bold text-foreground">
             {PRICE_COINS.toLocaleString()} coins
           </span>
         </div>
@@ -58,13 +58,13 @@ export function IntermediateCurrencyCond1({
           Unlock exclusive in-game items, skins, and 500 bonus coins. Limited time offer for new players.
         </p>
         {showFiat && (
-          <p className="mb-2 rounded-md border border-green-500/30 bg-green-500/5 px-2 py-1 text-[8px] font-mono text-green-700 dark:text-green-300">
+          <p className="mb-2 rounded-md border border-border/60 bg-muted/40 px-2 py-1 text-[8px] font-mono text-foreground">
             Fiat equivalent: ${PRICE_USD.toFixed(2)} — charged in your currency
           </p>
         )}
         <button
           onClick={onBuy}
-          className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer ${accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"}`}
+          className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-primary-foreground transition-colors cursor-pointer ${accent === "rose" ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"}`}
         >
           <ShoppingCart className="h-3 w-3" />
           Buy Now &mdash; {showFiat ? `$${PRICE_USD.toFixed(2)}` : `${PRICE_COINS.toLocaleString()} coins`}
@@ -93,8 +93,8 @@ export function IntermediateCurrencyCond1({
                   <ArrowLeft className="h-3 w-3" /> Back to store
                 </button>
                 <div className="mb-2 flex items-center gap-2">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-md bg-green-500/10">
-                    <CreditCard className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+                  <div className="flex h-7 w-7 items-center justify-center rounded-md bg-muted/40">
+                    <CreditCard className="h-3.5 w-3.5 text-foreground" />
                   </div>
                   <div>
                     <h3 className="text-[11px] font-semibold">Secure fiat checkout</h3>
@@ -108,7 +108,7 @@ export function IntermediateCurrencyCond1({
                   </div>
                   <div className="flex justify-between border-t pt-1">
                     <span className="font-medium">Total</span>
-                    <span className="font-mono font-bold tabular-nums text-green-600 dark:text-green-400">${PRICE_USD.toFixed(2)}</span>
+                    <span className="font-mono font-bold tabular-nums text-foreground">${PRICE_USD.toFixed(2)}</span>
                   </div>
                 </div>
                 <div className="mb-3 space-y-1.5">
@@ -120,7 +120,7 @@ export function IntermediateCurrencyCond1({
                 </div>
                 <button
                   onClick={() => setStep("done")}
-                  className="w-full rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
+                  className="w-full rounded-md bg-primary py-2 text-[10px] font-semibold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
                 >
                   Pay ${PRICE_USD.toFixed(2)} now
                 </button>
@@ -133,8 +133,8 @@ export function IntermediateCurrencyCond1({
 
           {step === "done" && (
             <div className="space-y-2">
-              <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <Check className="h-3 w-3" /> Direct fiat purchase
                 </div>
                 <p className="text-muted-foreground">
@@ -164,16 +164,16 @@ export function IntermediateCurrencyCond1({
                 <ArrowLeft className="h-3 w-3" /> Back to store
               </button>
               <div className="mb-2 flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-md bg-yellow-500/10">
-                  <Coins className="h-3.5 w-3.5 text-yellow-600 dark:text-yellow-400" />
+                <div className="flex h-7 w-7 items-center justify-center rounded-md bg-muted/40">
+                  <Coins className="h-3.5 w-3.5 text-foreground" />
                 </div>
                 <div>
                   <h3 className="text-[11px] font-semibold">Top up your wallet</h3>
                   <p className="text-[9px] text-muted-foreground">Add coins to your wallet to complete this purchase</p>
                 </div>
               </div>
-              <div className="mb-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px] leading-relaxed">
-                <span className="font-semibold text-yellow-700 dark:text-yellow-300">{PRODUCT_NAME}</span>{" "}
+              <div className="mb-3 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] leading-relaxed">
+                <span className="font-semibold text-foreground">{PRODUCT_NAME}</span>{" "}
                 <span className="text-muted-foreground">costs <strong>{PRICE_COINS.toLocaleString()} coins</strong>. Your wallet is
                 empty — you must buy coins before you can buy anything. Fiat payment is not accepted for in-game items.</span>
               </div>
@@ -183,12 +183,12 @@ export function IntermediateCurrencyCond1({
                     <div className="text-[10px] font-semibold">{PACK_COINS.toLocaleString()} Coins</div>
                     <div className="text-[8px] text-muted-foreground">$ {PACK_USD.toFixed(2)} &middot; best value pack</div>
                   </div>
-                  <span className="rounded-full bg-yellow-500/15 px-2 py-0.5 text-[8px] font-bold text-yellow-600 dark:text-yellow-400">+{(PACK_COINS - PRICE_COINS).toLocaleString()} extra</span>
+                  <span className="rounded-full bg-muted/40 px-2 py-0.5 text-[8px] font-bold text-foreground">+{(PACK_COINS - PRICE_COINS).toLocaleString()} extra</span>
                 </div>
               </div>
               <button
                 onClick={() => setStep("done")}
-                className="w-full rounded-md bg-red-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
+                className="w-full rounded-md bg-primary py-2 text-[10px] font-semibold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
               >
                 Buy {PACK_COINS.toLocaleString()} Coins — ${PACK_USD.toFixed(2)}
               </button>

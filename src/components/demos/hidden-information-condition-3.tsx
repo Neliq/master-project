@@ -42,11 +42,11 @@ export function HiddenInformationCond3({
         <div className="flex items-center gap-3">
           <div
             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
-              dark ? "bg-red-100 dark:bg-red-900/30" : "bg-green-100 dark:bg-green-900/30"
+              dark ? "bg-muted/40" : "bg-muted/40"
             }`}
           >
             <svg
-              className={`h-4 w-4 ${dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}
+              className={`h-4 w-4 ${dark ? "text-foreground" : "text-foreground"}`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -75,8 +75,8 @@ export function HiddenInformationCond3({
 
         <button
           onClick={() => setStarted(true)}
-          className={`mt-2 w-full cursor-pointer rounded-md py-2 text-[11px] font-semibold text-white transition-colors ${
-            dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+          className={`mt-2 w-full cursor-pointer rounded-md py-2 text-[11px] font-semibold text-primary-foreground transition-colors ${
+            dark ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"
           }`}
           title={dark ? "Auto-renews monthly — a $5.00 monthly service fee applies" : undefined}
         >
@@ -94,11 +94,11 @@ export function HiddenInformationCond3({
             </div>
           </details>
         ) : (
-          <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] leading-relaxed">
+          <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] leading-relaxed">
             <span className="text-muted-foreground">
-              A <strong className="text-green-700 dark:text-green-300">{usd(SERVICE_FEE)} monthly
+              A <strong className="text-foreground">{usd(SERVICE_FEE)} monthly
               service fee</strong> applies after your {TRIAL_DAYS}-day free trial. Your subscription
-              auto-renews monthly — <strong className="text-green-700 dark:text-green-300">you
+              auto-renews monthly — <strong className="text-foreground">you
               can cancel at any time</strong> in settings.
             </span>
           </div>
@@ -136,13 +136,13 @@ export function HiddenInformationCond3({
 
       {started &&
         (dark ? (
-          <div className="rounded-md border border-red-500/30 bg-red-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="font-semibold text-red-700 dark:text-red-300">Trial started</div>
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold text-foreground">Trial started</div>
             <p className="mt-1 text-muted-foreground">Your {TRIAL_DAYS}-day trial is active. Review Subscription details before the first renewal.</p>
           </div>
         ) : (
-          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-foreground">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

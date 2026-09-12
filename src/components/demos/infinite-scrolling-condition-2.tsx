@@ -103,7 +103,7 @@ export function InfiniteScrollingCond2({
                   section.
                 </p>
               </div>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 {countB} sections
               </span>
             </div>
@@ -121,8 +121,8 @@ export function InfiniteScrollingCond2({
                   {SECTIONS[i % SECTIONS.length]}
                 </div>
               ))}
-              <footer className="rounded-md border border-green-500/30 bg-green-500/5 px-2 py-2">
-                <div className="text-[9px] font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <footer className="rounded-md border border-border/60 bg-muted/40 px-2 py-2">
+                <div className="text-[9px] font-semibold text-foreground uppercase tracking-tight">
                   Footer — reachable
                 </div>
                 <div className="mt-1 flex flex-wrap gap-1.5">
@@ -130,7 +130,7 @@ export function InfiniteScrollingCond2({
                     <button
                       key={l}
                       onClick={() => setFooterLink(l)}
-                      className="rounded border border-green-500/30 bg-background px-1.5 py-0.5 text-[9px] text-foreground/80 hover:text-green-600 dark:hover:text-green-300 transition-colors cursor-pointer"
+                      className="rounded border border-border/60 bg-background px-1.5 py-0.5 text-[9px] text-foreground/80 hover:text-foreground transition-colors cursor-pointer"
                     >
                       {l}
                     </button>
@@ -150,8 +150,8 @@ export function InfiniteScrollingCond2({
             </div>
 
             {footerLink && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   Terminal node reached
                 </div>
@@ -176,7 +176,7 @@ export function InfiniteScrollingCond2({
                 Try to reach the footer at the bottom. The more you scroll, the further it moves.
               </p>
             </div>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               {countA} sections
             </span>
           </div>
@@ -194,8 +194,8 @@ export function InfiniteScrollingCond2({
                 {SECTIONS[i % SECTIONS.length]}
               </div>
             ))}
-            <footer className="rounded-md border border-red-500/30 bg-red-500/5 px-2 py-2">
-              <div className="text-[9px] font-semibold text-red-600 dark:text-red-300 uppercase tracking-tight">
+            <footer className="rounded-md border border-border/60 bg-muted/40 px-2 py-2">
+              <div className="text-[9px] font-semibold text-foreground uppercase tracking-tight">
                 Footer — keeps moving…
               </div>
               <div className="mt-1 flex flex-wrap gap-1.5">
@@ -210,7 +210,7 @@ export function InfiniteScrollingCond2({
 
           <div className="mt-2 flex items-center justify-between gap-2">
             {gapA !== null && gapA <= 400 ? (
-              <span className="inline-flex items-center gap-1 rounded border border-yellow-500/40 bg-yellow-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-yellow-700 dark:text-yellow-300">
+              <span className="inline-flex items-center gap-1 rounded border border-border/60 bg-muted/40 px-1.5 py-0.5 text-[9px] font-semibold text-foreground">
                 <AlertTriangle className="size-2.5" />
                 {mode === "auditor"
                   ? "approaching footer — DOM mutated, footer pushed down…"

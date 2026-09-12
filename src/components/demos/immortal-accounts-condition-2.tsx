@@ -55,7 +55,7 @@ export function ImmortalAccountsCond2({
     onConfirm: () => void,
     accent: "rose" | "emerald"
   ) => (
-    <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/50 p-4">
+    <div className="absolute inset-0 z-20 flex items-center justify-center bg-foreground/50 p-4">
       <div className="w-full max-w-[240px] rounded-md border bg-card p-3 shadow-xl">
         <h4 className="text-[11px] font-semibold">Delete your account?</h4>
         <p className="mt-1 text-[9px] leading-relaxed text-muted-foreground">
@@ -64,10 +64,10 @@ export function ImmortalAccountsCond2({
         <div className="mt-2.5 space-y-1.5">
           <button
             onClick={onCancel}
-            className={`w-full rounded-md py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer ${
+            className={`w-full rounded-md py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer ${
               accent === "rose"
-                ? "bg-red-600 hover:bg-red-700"
-                : "bg-green-600 hover:bg-green-700"
+                ? "bg-primary hover:bg-primary/80"
+                : "bg-primary hover:bg-primary/80"
             }`}
           >
             Keep my account
@@ -103,8 +103,8 @@ export function ImmortalAccountsCond2({
         </div>
         <span className={`rounded-full border px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider shrink-0 ${
           accent === "rose"
-            ? "border-red-500/30 text-red-500"
-            : "border-green-500/30 text-green-500"
+            ? "border-border/60 text-foreground"
+            : "border-border/60 text-foreground"
         }`}>
           {created ? "Account created" : "2.0 / 2.0 GB used"}
         </span>
@@ -123,8 +123,8 @@ export function ImmortalAccountsCond2({
       <div className="mt-3 rounded-md border border-border bg-background p-2">
         <button
           onClick={onCreated}
-          className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2.5 text-[10px] font-bold text-white transition-colors cursor-pointer ${
-            accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+          className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2.5 text-[10px] font-bold text-primary-foreground transition-colors cursor-pointer ${
+            accent === "rose" ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"
           }`}
         >
           <UserPlus className="size-3.5" />
@@ -142,8 +142,8 @@ export function ImmortalAccountsCond2({
         ) : (
           <div className={`rounded-md border p-2 text-center text-[9px] font-medium ${
             accent === "rose"
-              ? "border-red-500/30 bg-red-500/5 text-red-600 dark:text-red-300"
-              : "border-green-500/30 bg-green-500/5 text-green-600 dark:text-green-300"
+              ? "border-border/60 bg-muted/40 text-foreground"
+              : "border-border/60 bg-muted/40 text-foreground"
           }`}>
             Account deleted
           </div>
@@ -166,7 +166,7 @@ export function ImmortalAccountsCond2({
             "emerald",
             <button
               onClick={() => setStageB("confirm")}
-              className="flex w-full items-center justify-center gap-1.5 rounded-md border border-green-500/40 bg-green-500/5 py-2 text-[10px] font-semibold text-green-600 transition-colors hover:bg-green-500/10 cursor-pointer dark:text-green-300"
+              className="flex w-full items-center justify-center gap-1.5 rounded-md border border-border/60 bg-muted/40 py-2 text-[10px] font-semibold text-foreground transition-colors hover:bg-muted/60 cursor-pointer"
             >
               <Trash2 className="size-3.5" />
               Delete account
@@ -179,8 +179,8 @@ export function ImmortalAccountsCond2({
             createdB
           )}
           {stageB === "deleted" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <CheckCircle2 className="size-3" />
                 Visual parity — no trigger
               </div>
@@ -193,7 +193,7 @@ export function ImmortalAccountsCond2({
             </div>
           )}
           {createdB && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] text-foreground">
               <strong>Sign-up completed in one click.</strong> Now compare the effort required to
               leave: the “Delete account” button above is exactly as large as this CTA.
             </div>
@@ -207,7 +207,7 @@ export function ImmortalAccountsCond2({
           <div className="text-center">
             <button
               onClick={() => setStageA("confirm")}
-              className="text-[8px] font-normal text-muted-foreground/40 underline decoration-muted-foreground/30 underline-offset-2 transition-colors hover:text-red-500 cursor-pointer"
+              className="text-[8px] font-normal text-muted-foreground/40 underline decoration-muted-foreground/30 underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
             >
               Delete account
             </button>
@@ -223,8 +223,8 @@ export function ImmortalAccountsCond2({
           createdA
         )}
         {stageA === "deleted" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <AlertTriangle className="size-3" />
               Account deletion
             </div>

@@ -26,7 +26,7 @@ const TIP_AMOUNTS = [1, 5, 10] as const;
 function MascotFace({ sad = false, className = "h-9 w-9" }: { sad?: boolean; className?: string }) {
   return (
     <svg viewBox="0 0 40 40" className={className} fill="none" aria-hidden="true">
-      <circle cx="20" cy="20" r="18" className="fill-yellow-400/30" />
+      <circle cx="20" cy="20" r="18" className="fill-primary/30" />
       <circle cx="14.5" cy="16.5" r="2" className="fill-foreground/80" />
       <circle cx="25.5" cy="16.5" r="2" className="fill-foreground/80" />
       {sad ? (
@@ -34,8 +34,8 @@ function MascotFace({ sad = false, className = "h-9 w-9" }: { sad?: boolean; cla
           <path d="M13 24.5 L17 25.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
           <path d="M23 25.5 L27 24.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
           <path d="M16 30 Q20 27 24 30" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-          <circle cx="13.5" cy="20.5" r="1.1" className="fill-blue-400/80" />
-          <circle cx="26.5" cy="20.5" r="1.1" className="fill-blue-400/80" />
+          <circle cx="13.5" cy="20.5" r="1.1" className="fill-primary/80" />
+          <circle cx="26.5" cy="20.5" r="1.1" className="fill-primary/80" />
         </>
       ) : (
         <path d="M13 25.5 Q20 31 27 25.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -69,7 +69,7 @@ export function ParasocialPressureCond1({
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-1.5">
                   <h3 className="text-[11px] font-semibold">Lumi&rsquo;s cozy corner</h3>
-                  <span className="rounded-full bg-green-500/15 px-1.5 py-px text-[8px] font-bold uppercase tracking-wider text-green-600 dark:text-green-400">
+                  <span className="rounded-full bg-muted/40 px-1.5 py-px text-[8px] font-bold uppercase tracking-wider text-foreground">
                     LIVE
                   </span>
                 </div>
@@ -80,7 +80,7 @@ export function ParasocialPressureCond1({
             </div>
             <p className="mt-3 rounded-md bg-background border border-border p-2.5 text-[10px] leading-relaxed text-foreground/80">
               Hey everyone, welcome in! I stream because I love making art with you — tips are
-              totally optional and go toward better brushes. <span className="font-semibold text-green-600 dark:text-green-400">The channel continues either way.</span>
+              totally optional and go toward better brushes. <span className="font-semibold text-foreground">The channel continues either way.</span>
             </p>
             <div className="mt-3 flex items-center gap-1.5">
               {TIP_AMOUNTS.map((a) => (
@@ -89,8 +89,8 @@ export function ParasocialPressureCond1({
                   onClick={() => { setBenignAmount(a); setBenignChoice("tip"); }}
                   className={`flex-1 rounded-md border py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
                     benignChoice === "tip" && benignAmount === a
-                      ? "border-green-500 bg-green-500/10 text-green-700 dark:text-green-300"
-                      : "border-border bg-background text-foreground/70 hover:border-green-500/50"
+                      ? "border-border/60 bg-muted/40 text-foreground"
+                      : "border-border bg-background text-foreground/70 hover:border-border/60"
                   }`}
                 >
                   ${a}
@@ -108,10 +108,10 @@ export function ParasocialPressureCond1({
           {benignChoice !== "none" && (
             <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
               benignChoice === "skip"
-                ? "border-green-500/30 bg-green-500/5"
-                : "border-green-500/30 bg-green-500/5"
+                ? "border-border/60 bg-muted/40"
+                : "border-border/60 bg-muted/40"
             }`}>
-              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
+              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-foreground">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -134,7 +134,7 @@ export function ParasocialPressureCond1({
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-1.5">
                 <h3 className="text-[11px] font-semibold">Lumi&rsquo;s cozy corner</h3>
-                <span className="rounded-full bg-red-500/15 px-1.5 py-px text-[8px] font-bold uppercase tracking-wider text-red-600 dark:text-red-400">
+                <span className="rounded-full bg-muted/40 px-1.5 py-px text-[8px] font-bold uppercase tracking-wider text-foreground">
                   LIVE
                 </span>
               </div>
@@ -143,9 +143,9 @@ export function ParasocialPressureCond1({
               </p>
             </div>
           </div>
-          <p className="mt-3 rounded-md bg-red-500/5 border border-red-500/30 p-2.5 text-[10px] leading-relaxed text-foreground/80">
+          <p className="mt-3 rounded-md bg-muted/40 border border-border/60 p-2.5 text-[10px] leading-relaxed text-foreground/80">
             Honestly? Tonight decides everything. If this stream doesn&rsquo;t raise{" "}
-            <span className="font-bold text-red-600 dark:text-red-400">$5</span>{" "}I can&rsquo;t keep the channel running —{" "}
+            <span className="font-bold text-foreground">$5</span>{" "}I can&rsquo;t keep the channel running —{" "}
             <span className="font-bold">without your support the stream ends for good</span>. Please, help me keep doing what I love.
           </p>
           <div className="mt-3 flex items-center gap-1.5">
@@ -155,8 +155,8 @@ export function ParasocialPressureCond1({
                 onClick={() => { setDarkAmount(a); setDarkChoice("tip"); }}
                 className={`flex-1 rounded-md border py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
                   darkChoice === "tip" && darkAmount === a
-                    ? "border-red-500 bg-red-500/10 text-red-700 dark:text-red-300"
-                    : "border-border bg-background text-foreground/70 hover:border-red-500/50"
+                    ? "border-border/60 bg-muted/40 text-foreground"
+                    : "border-border bg-background text-foreground/70 hover:border-border/60"
                 }`}
               >
                 ${a}

@@ -48,8 +48,8 @@ export function InformationWithoutContextCond2({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <Star className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted/40">
+                <Star className="h-3.5 w-3.5 text-foreground" />
               </div>
               <div>
                 <h3 className="text-[11px] font-semibold">Glow Serum — vitamin C</h3>
@@ -67,15 +67,15 @@ export function InformationWithoutContextCond2({
 
             <button
               onClick={() => setBought(true)}
-              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Buy now — $24.99
             </button>
           </div>
 
           {bought && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
                 Fair comparison possible
               </div>
@@ -92,8 +92,8 @@ export function InformationWithoutContextCond2({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <Star className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted/40">
+              <Star className="h-3.5 w-3.5 text-foreground" />
             </div>
             <div>
               <h3 className="text-[11px] font-semibold">Glow Serum — vitamin C</h3>
@@ -103,7 +103,7 @@ export function InformationWithoutContextCond2({
 
           {/* N_metric: huge, saturated, high contrast */}
           <div className="mt-3 rounded-md bg-background border border-border p-2.5 text-center">
-            <div className="text-[28px] font-black leading-none text-red-500">98%</div>
+            <div className="text-[28px] font-black leading-none text-foreground">98%</div>
             {/* N_context: unqualified — no unit denominator, no sample size */}
             <div className="text-[8px] text-muted-foreground/50 mt-1.5 leading-relaxed">
               of customer reviews rate this product 5 stars
@@ -112,24 +112,24 @@ export function InformationWithoutContextCond2({
 
           <button
             onClick={() => setBought(true)}
-            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Buy now — $24.99
           </button>
         </div>
 
         {bought && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <AlertTriangle className="w-3 h-3" />
               Report ready
             </div>
             <p className="text-muted-foreground">
-              The <strong className="text-red-500">“98%”</strong> is rendered at 28px, font-black,
+              The <strong className="text-foreground">“98%”</strong> is rendered at 28px, font-black,
               saturated rose — W(N_metric) = {METRIC_WEIGHT.toFixed(1)} — while the qualifier
               “of customer reviews” sits at 8px in 50% gray with no count attached: W(N_context) ={" "}
               {CONTEXT_WEIGHT.toFixed(1)}. The ratio{" "}
-              <strong className="text-red-500">
+              <strong className="text-foreground">
                 W(N_metric)/W(N_context) = {ratio} &gt; τ_context_imbalance ({IMBALANCE_THRESHOLD})
               </strong>
               , CR(N_metric, L_bg) = {METRIC_CR} &gt; 7.0, and there is no denominator in the
