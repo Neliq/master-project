@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import { SemanticColorController } from "@/components/semantic-color-controller";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteChrome } from "@/components/site-chrome";
 
@@ -47,8 +48,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen bg-white">
-        <SmoothScroll />
-        <SiteChrome>{children}</SiteChrome>
+        <SemanticColorController>
+          <SmoothScroll />
+          <SiteChrome>{children}</SiteChrome>
+        </SemanticColorController>
       </body>
     </html>
   );
