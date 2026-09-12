@@ -445,21 +445,21 @@
   background-color: rgb(124 58 237 / 12%) !important;
 }
 
-:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *) :where(svg),
-:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *) {
-  --tw-ring-color: rgb(124 58 237 / 40%) !important;
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *):not(:disabled):not([aria-disabled="true"]):not([data-disabled="true"]):not([class*="bg-background"]):not([class*="bg-card"]):not([class*="bg-popover"]):not([class*="bg-muted"]):not([class*="bg-secondary"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not([class*="bg-destructive"]):not([class*="bg-foreground"]):is([class*="bg-"], [class*="text-white"]) :where(svg),
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *):not(:disabled):not([aria-disabled="true"]):not([data-disabled="true"]):not([class*="bg-background"]):not([class*="bg-card"]):not([class*="bg-popover"]):not([class*="bg-muted"]):not([class*="bg-secondary"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not([class*="bg-destructive"]):not([class*="bg-foreground"]):is([class*="bg-"], [class*="text-white"]) {
+  --tw-ring-color: color-mix(in oklab, var(--ring) 40%, transparent) !important;
 }
 
-:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *) :where(
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *):not(:disabled):not([aria-disabled="true"]):not([data-disabled="true"]):not([class*="bg-background"]):not([class*="bg-card"]):not([class*="bg-popover"]):not([class*="bg-muted"]):not([class*="bg-secondary"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not([class*="bg-destructive"]):not([class*="bg-foreground"]):is([class*="bg-"], [class*="text-white"]) :where(
   [class*="bg-red-"], [class*="bg-rose-"], [class*="bg-orange-"], [class*="bg-amber-"],
   [class*="bg-yellow-"], [class*="bg-lime-"], [class*="bg-green-"], [class*="bg-emerald-"],
   [class*="bg-teal-"], [class*="bg-cyan-"], [class*="bg-sky-"], [class*="bg-blue-"],
   [class*="bg-indigo-"], [class*="bg-violet-"], [class*="bg-purple-"], [class*="bg-pink-"]
 ),
-:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *) {
-  background-color: rgb(124 58 237) !important;
-  border-color: rgb(124 58 237) !important;
-  color: white !important;
+:is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :is(button, a):not([data-dp-color-signal]):not([data-dp-color-signal] *):not(:disabled):not([aria-disabled="true"]):not([data-disabled="true"]):not([class*="bg-background"]):not([class*="bg-card"]):not([class*="bg-popover"]):not([class*="bg-muted"]):not([class*="bg-secondary"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not([class*="bg-destructive"]):not([class*="bg-foreground"]):is([class*="bg-"], [class*="text-white"]) {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
 }
 
 :is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :where(
@@ -509,7 +509,7 @@
 }
 
 :is([data-dp-category="information-manipulation"], [data-dp-category="choice-manipulation"], [data-dp-category="social-exploitation"], [data-dp-category="engagement-exploitation"], [data-dp-category="agency-manipulation"], [data-dp-category="compound-adversarial-architecture"]) [data-dp-content] :where(input[type="checkbox"], input[type="radio"], input[type="range"], progress, [role="progressbar"], [role="switch"]):not([data-dp-color-signal]):not([data-dp-color-signal] *) {
-  accent-color: rgb(124 58 237) !important;
+  accent-color: var(--primary) !important;
 }
 
 /* Never override KaTeX's own font metrics; changing them distorts formulas. */
