@@ -71,7 +71,7 @@ export function ComplexLanguageCond2({
                 <h3 className="text-[11px] font-semibold">Checkout</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">Design Tools Pro — one-time license</p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 FKGL {FKGL_BENIGN.toFixed(1)}
               </div>
             </div>
@@ -85,22 +85,22 @@ export function ComplexLanguageCond2({
 
             <div className="mt-3 rounded-md border bg-background p-2.5">
               <p className="text-[12px] leading-relaxed text-foreground/80">{PLAIN_BENIGN}</p>
-              <p className="mt-1 text-[8px] text-green-600/70 dark:text-green-400/70">
+              <p className="mt-1 text-[8px] text-foreground/70">
                 Body-size text, FKGL {FKGL_BENIGN.toFixed(1)} — readable by anyone.
               </p>
             </div>
 
             <button
               onClick={() => setPaid(true)}
-              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Pay $29.99
             </button>
           </div>
 
           {paid && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -122,7 +122,7 @@ export function ComplexLanguageCond2({
               <h3 className="text-[11px] font-semibold">Checkout</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">Design Tools Pro — one-time license</p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               FKGL {FKGL_DARK.toFixed(1)}
             </div>
           </div>
@@ -136,14 +136,14 @@ export function ComplexLanguageCond2({
 
           <div className="mt-3 rounded-md border bg-background p-2.5">
             <p className="text-[7px] leading-relaxed text-muted-foreground/60">{LEGALESE_DARK}</p>
-            <p className="mt-1 text-[7px] italic text-red-500/60">
+            <p className="mt-1 text-[7px] italic text-foreground/60">
               Additional terms are shown in small print below.
             </p>
           </div>
 
           <button
             onClick={() => setPaid(true)}
-            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Pay $29.99
           </button>

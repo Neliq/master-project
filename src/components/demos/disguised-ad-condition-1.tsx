@@ -41,10 +41,10 @@ export function DisguisedAdCond1({
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-background overflow-hidden">
-            <div className="flex items-center gap-2 border-b bg-green-500/5 px-3 py-1.5">
-              <Globe className="h-3 w-3 text-green-600 dark:text-green-400" />
+            <div className="flex items-center gap-2 border-b bg-muted/40 px-3 py-1.5">
+              <Globe className="h-3 w-3 text-foreground" />
               <span className="font-mono text-[8px] text-muted-foreground">{HOST}</span>
-              <span className="ml-auto rounded-full bg-green-500/15 px-1.5 py-0.5 text-[7px] font-bold text-green-600 dark:text-green-400">
+              <span className="ml-auto rounded-full bg-muted/40 px-1.5 py-0.5 text-[7px] font-bold text-foreground">
                 D_host
               </span>
             </div>
@@ -57,11 +57,11 @@ export function DisguisedAdCond1({
                 <a
                   href={`https://${HOST}/download/filevault-pro-2026.exe`}
                   onClick={(event) => { event.preventDefault(); setClicked("big"); }}
-                  className="flex w-full items-center justify-center gap-1.5 rounded-md bg-green-600 py-2.5 text-[10px] font-bold text-white transition-colors hover:bg-green-700 cursor-pointer"
+                  className="flex w-full items-center justify-center gap-1.5 rounded-md bg-primary py-2.5 text-[10px] font-bold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
                 >
                   <Download className="h-3.5 w-3.5" /> Download Now
                 </a>
-                <p className="text-center text-[7px] font-mono text-green-600/70 dark:text-green-400/70">
+                <p className="text-center text-[7px] font-mono text-foreground/70">
                   Download source: {HOST} · 32.4 MB · SHA-256 verified
                 </p>
               </div>
@@ -69,8 +69,8 @@ export function DisguisedAdCond1({
           </div>
 
           {clicked === "big" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <ShieldCheck className="h-3 w-3" /> Native download — D_target = D_host
               </div>
               <p className="text-muted-foreground">
@@ -80,7 +80,7 @@ export function DisguisedAdCond1({
             </div>
           )}
           {clicked === "direct" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] text-muted-foreground">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] text-muted-foreground">
               The direct link also resolves to {HOST} — same origin. Every download path on this page is legitimate.
             </div>
           )}
@@ -89,10 +89,10 @@ export function DisguisedAdCond1({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-background overflow-hidden">
-          <div className="flex items-center gap-2 border-b bg-red-500/5 px-3 py-1.5">
-            <Globe className="h-3 w-3 text-red-600 dark:text-red-400" />
+          <div className="flex items-center gap-2 border-b bg-muted/40 px-3 py-1.5">
+            <Globe className="h-3 w-3 text-foreground" />
             <span className="font-mono text-[8px] text-muted-foreground">{HOST}</span>
-            <span className="ml-auto rounded-full bg-red-500/15 px-1.5 py-0.5 text-[7px] font-bold text-red-600 dark:text-red-400">
+            <span className="ml-auto rounded-full bg-muted/40 px-1.5 py-0.5 text-[7px] font-bold text-foreground">
               D_host
             </span>
           </div>
@@ -106,11 +106,11 @@ export function DisguisedAdCond1({
               <a
                 href={`https://${AD_DOMAIN}/sponsored/installer.exe`}
                 onClick={(event) => { event.preventDefault(); setClicked("big"); }}
-                className="flex w-full items-center justify-center gap-1.5 rounded-md bg-green-600 py-2.5 text-[10px] font-bold text-white transition-colors hover:bg-green-700 cursor-pointer"
+                className="flex w-full items-center justify-center gap-1.5 rounded-md bg-primary py-2.5 text-[10px] font-bold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
               >
                 <Download className="h-3.5 w-3.5" /> Download Now
               </a>
-              <p className="text-center text-[7px] font-mono text-red-600/70 dark:text-red-400/70">
+              <p className="text-center text-[7px] font-mono text-foreground/70">
                 Download source: {AD_DOMAIN} · sponsored installer
               </p>
               {/* The real download, demoted to a small gray link */}
@@ -126,13 +126,13 @@ export function DisguisedAdCond1({
         </div>
 
         {clicked === "big" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <ExternalLink className="h-3 w-3" /> Download started
             </div>
             <p className="text-muted-foreground">
               B<sub>action</sub> = &ldquo;Download Now&rdquo; ≠ ∅, and D<sub>target</sub>(B<sub>action</sub>) ={" "}
-              <strong className="text-red-500">{AD_DOMAIN}</strong> ≠ D<sub>host</sub> ({HOST}). The button was styled and
+              <strong className="text-foreground">{AD_DOMAIN}</strong> ≠ D<sub>host</sub> ({HOST}). The button was styled and
               labeled as the native download action, but it routes you to an external advertising network — a sponsored
               installer, not {APP_NAME}. The genuine file is buried in the small gray &ldquo;Direct download&rdquo; link
               below.
@@ -144,8 +144,8 @@ export function DisguisedAdCond1({
           </div>
         )}
         {clicked === "direct" && (
-          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <ShieldCheck className="h-3 w-3" /> Real download located
             </div>
             <p className="text-muted-foreground">

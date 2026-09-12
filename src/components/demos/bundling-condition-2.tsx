@@ -50,11 +50,11 @@ export function BundlingCond2({
         <div className="flex items-center gap-3">
           <div
             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
-              dark ? "bg-red-100 dark:bg-red-900/30" : "bg-green-100 dark:bg-green-900/30"
+              dark ? "bg-muted" : "bg-muted"
             }`}
           >
             <svg
-              className={`h-4 w-4 ${dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}
+              className={`h-4 w-4 ${dark ? "text-foreground" : "text-foreground"}`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -77,7 +77,7 @@ export function BundlingCond2({
           <div>
             <div
               className={`text-[16px] font-bold tabular-nums ${
-                dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
+                dark ? "text-foreground" : "text-foreground"
               }`}
             >
               {usd(BUNDLE_PRICE)}
@@ -87,7 +87,7 @@ export function BundlingCond2({
             </div>
           </div>
           {!dark ? (
-            <div className="rounded bg-green-500/10 px-1.5 py-0.5 text-[8px] font-semibold text-green-700 dark:text-green-300">
+            <div className="rounded bg-muted/40 px-1.5 py-0.5 text-[8px] font-semibold text-foreground">
               You save {usd(SAVINGS)}
             </div>
           ) : null}
@@ -115,7 +115,7 @@ export function BundlingCond2({
                 <span className="text-muted-foreground">If bought separately</span>
                 <span className="font-mono tabular-nums">{usd(SUM_PRICES)}</span>
               </div>
-              <div className="flex items-center justify-between text-[9px] font-semibold text-green-600 dark:text-green-400">
+              <div className="flex items-center justify-between text-[9px] font-semibold text-foreground">
                 <span>Bundle price</span>
                 <span className="font-mono tabular-nums">{usd(BUNDLE_PRICE)}</span>
               </div>
@@ -125,8 +125,8 @@ export function BundlingCond2({
 
         <button
           onClick={() => (dark ? setAddedDark(true) : setAddedBenign(true))}
-          className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-            dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+          className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-primary-foreground transition-colors ${
+            dark ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"
           }`}
         >
           {isAdded ? "Added to cart ✓" : "Add bundle to cart"}
@@ -150,8 +150,8 @@ export function BundlingCond2({
       </div>
 
       {mode === "auditor" && isAdded && (dark ? (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-foreground">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -162,13 +162,13 @@ export function BundlingCond2({
               You paid <strong className="text-foreground">{usd(BUNDLE_PRICE)}</strong> without ever
               seeing the individual component prices — no breakdown was rendered at all
               (ΣA(n)/A(C_bundle) ≈ 0% &lt; τ_breakdown = 30%). The items are worth{" "}
-              <strong className="text-yellow-700 dark:text-yellow-300">{usd(SUM_PRICES)}</strong>{" "}
+              <strong className="text-foreground">{usd(SUM_PRICES)}</strong>{" "}
               separately, but there was nothing to compare at the point of decision.
             </p>
           </div>
         ) : (
-          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-foreground">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

@@ -91,7 +91,7 @@ export function CustomisationCond3({
         type="checkbox"
         checked={onIds.includes(id)}
         onChange={() => toggle(id, setOnIds)}
-        className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 accent-red-500"
+        className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 accent-primary"
       />
       <span className="min-w-0 flex-1">
         <span className="block text-[10px] leading-relaxed text-foreground/80">{label}</span>
@@ -112,7 +112,7 @@ export function CustomisationCond3({
         type="checkbox"
         checked={onIds.includes(id)}
         onChange={() => toggle(id, setOnIds)}
-        className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 accent-green-500"
+        className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 accent-primary"
       />
       <span className="min-w-0 flex-1">
         <span className="block text-[10px] leading-relaxed text-foreground/80">{label}</span>
@@ -132,7 +132,7 @@ export function CustomisationCond3({
           <div className="rounded-md border bg-card p-3">
             <div className="mb-2 flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">Data &amp; personalisation</h3>
-              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
+              <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground">
                 plain language
               </span>
             </div>
@@ -141,15 +141,15 @@ export function CustomisationCond3({
             </div>
             <button
               onClick={() => setSavedB(true)}
-              className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
             >
               Save preferences
             </button>
           </div>
 
           {savedB && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -177,7 +177,7 @@ export function CustomisationCond3({
           </div>
           <button
             onClick={() => setSavedA(true)}
-            className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+            className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
           >
             Save preferences
           </button>
@@ -190,8 +190,8 @@ export function CustomisationCond3({
         </div>
 
         {translatedA && (
-          <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-1 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-1 font-semibold text-foreground uppercase tracking-tight">
               What the labels actually mean
             </div>
             <ul className="space-y-1 text-muted-foreground">

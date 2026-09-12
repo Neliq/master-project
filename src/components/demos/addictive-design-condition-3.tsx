@@ -30,12 +30,12 @@ function SpinButton({ onClick, disabled, dark }: { onClick: () => void; disabled
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`w-full rounded-full py-2 text-[11px] font-bold uppercase tracking-wider text-white transition-all cursor-pointer ${
+      className={`w-full rounded-full py-2 text-[11px] font-bold uppercase tracking-wider text-primary-foreground transition-all cursor-pointer ${
         disabled
           ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
           : dark
-            ? "bg-red-600 hover:bg-red-700 shadow-lg shadow-red-600/25"
-            : "bg-green-600 hover:bg-green-700"
+            ? "bg-primary hover:bg-primary/80 shadow-lg shadow-primary/25"
+            : "bg-primary hover:bg-primary/80"
       }`}
     >
       {dark ? "Spin again — claim reward" : "Play again"}
@@ -84,7 +84,7 @@ export function AddictiveDesignCond3({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">LuckyPins</h3>
-              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
+              <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
                 {coinsB} coins
               </span>
             </div>
@@ -93,12 +93,12 @@ export function AddictiveDesignCond3({
             </p>
             <div className="mt-2 flex items-center justify-center py-2">
               <svg viewBox="0 0 72 72" className="h-14 w-14" aria-hidden="true">
-                <circle cx="36" cy="36" r="32" className="fill-green-500/15 stroke-green-500/50" strokeWidth="3" />
-                <path d="M36 14 L41 31 L58 36 L41 41 L36 58 L31 41 L14 36 L31 31 Z" className="fill-green-500/40" />
+                <circle cx="36" cy="36" r="32" className="fill-primary/15 stroke-primary/50" strokeWidth="3" />
+                <path d="M36 14 L41 31 L58 36 L41 41 L36 58 L31 41 L14 36 L31 31 Z" className="fill-primary/40" />
               </svg>
             </div>
             {lastB !== null && (
-              <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2 text-center text-[9px] font-mono text-green-700 dark:text-green-300">
+              <div className="rounded-md border border-border/60 bg-muted/40 p-2 text-center text-[9px] font-mono text-foreground">
                 +{lastB} coins — same as last time, as expected
               </div>
             )}
@@ -116,26 +116,26 @@ export function AddictiveDesignCond3({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">LuckyPins</h3>
-            <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
+            <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
               {coinsA} coins
             </span>
           </div>
-          <p className="mt-2 rounded-md border border-red-500/30 bg-red-500/5 p-2.5 text-[10px] leading-relaxed text-foreground/80">
+          <p className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[10px] leading-relaxed text-foreground/80">
             {DARK_COPY}
           </p>
           <div className="mt-2 flex items-center justify-center py-2">
             <svg viewBox="0 0 72 72" className={`h-14 w-14 transition-transform duration-150 ${spinsA > 0 ? "" : ""}`} aria-hidden="true">
-              <circle cx="36" cy="36" r="32" className="fill-red-500/15 stroke-red-500/50" strokeWidth="3" />
-              <path d="M36 14 L41 31 L58 36 L41 41 L36 58 L31 41 L14 36 L31 31 Z" className="fill-red-500/40" />
+              <circle cx="36" cy="36" r="32" className="fill-primary/15 stroke-primary/50" strokeWidth="3" />
+              <path d="M36 14 L41 31 L58 36 L41 41 L36 58 L31 41 L14 36 L31 31 Z" className="fill-primary/40" />
             </svg>
           </div>
           {lastA !== null && (
             <div className={`rounded-md border p-2 text-center text-[9px] font-mono ${
               lastA === 50
-                ? "border-yellow-500/40 bg-yellow-500/10 text-yellow-700 dark:text-yellow-300 font-bold"
+                ? "border-border/60 bg-muted/40 text-foreground font-bold"
                 : lastA === 0
                   ? "border-foreground/10 bg-muted/40 text-muted-foreground"
-                  : "border-red-500/30 bg-red-500/5 text-red-700 dark:text-red-300"
+                  : "border-border/60 bg-muted/40 text-foreground"
             }`}>
               {lastA === 50 ? "★ JACKPOT! +50 coins ★" : lastA === 0 ? "+0 coins — so close, spin again!" : `+${lastA} coins`}
             </div>
@@ -148,8 +148,8 @@ export function AddictiveDesignCond3({
           </p>
         </div>
         {jackpotA && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

@@ -94,7 +94,7 @@ export function AddictiveDesignCond1({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Reelz — feed</h3>
-              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
+              <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
                 {countB} reels
               </span>
             </div>
@@ -102,13 +102,13 @@ export function AddictiveDesignCond1({
               {Array.from({ length: countB }).map((_, i) => (
                 <ReelItem key={i} index={i} />
               ))}
-              <div className="rounded-md border border-green-500/40 bg-green-500/5 py-1.5 text-center text-[8px] font-mono font-semibold text-green-700 dark:text-green-300">
+              <div className="rounded-md border border-border/60 bg-muted/40 py-1.5 text-center text-[8px] font-mono font-semibold text-foreground">
                 — End of results —
               </div>
             </div>
             <button
               onClick={() => setCountB((c) => c + PAGE_SIZE)}
-              className="mt-2 w-full rounded-md border border-green-500/50 bg-green-500/10 py-1.5 text-[10px] font-medium text-green-700 dark:text-green-300 hover:bg-green-500/20 transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md border border-border/60 bg-muted/40 py-1.5 text-[10px] font-medium text-foreground hover:bg-muted/40 transition-colors cursor-pointer"
             >
               Load more reels
             </button>
@@ -123,7 +123,7 @@ export function AddictiveDesignCond1({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Reelz — feed</h3>
-            <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
+            <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
               {countA}{" "}reels &hellip; keep going
             </span>
           </div>
@@ -138,8 +138,8 @@ export function AddictiveDesignCond1({
             {Array.from({ length: countA }).map((_, i) => (
               <ReelItem key={i} index={i} />
             ))}
-            <div className="flex items-center justify-center gap-1 py-1 text-[8px] font-mono text-red-600 dark:text-red-400">
-              <span className="inline-block h-1 w-1 animate-pulse rounded-full bg-red-500" />
+            <div className="flex items-center justify-center gap-1 py-1 text-[8px] font-mono text-foreground">
+              <span className="inline-block h-1 w-1 animate-pulse rounded-full bg-primary" />
               appending next reels&hellip;
             </div>
           </div>

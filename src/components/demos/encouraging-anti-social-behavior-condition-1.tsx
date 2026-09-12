@@ -50,7 +50,7 @@ export function EncouragingAntiSocialBehaviorCond1({
                   Invite a friend who&rsquo;s interested. One invite, one choice.
                 </p>
               </div>
-              <div className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
+              <div className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
                 {benignJoined ? "20 coins" : benignSent ? "20 coins pending" : "0 coins"}
               </div>
             </div>
@@ -67,7 +67,7 @@ export function EncouragingAntiSocialBehaviorCond1({
                 className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
                   benignSent
                     ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                    : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                    : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                 }`}
               >
                 Send 1 invite
@@ -76,8 +76,8 @@ export function EncouragingAntiSocialBehaviorCond1({
           </div>
 
           {benignSent && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -85,7 +85,7 @@ export function EncouragingAntiSocialBehaviorCond1({
               </div>
               <p className="text-muted-foreground mt-0.5">
                 1 person was notified (they opted in). You earn{" "}
-                <span className="font-mono font-semibold text-green-600 dark:text-green-400">
+                <span className="font-mono font-semibold text-foreground">
                   {benignJoined ? "+20 coins" : "20 coins pending"}
                 </span>{" "}
                 {benignJoined
@@ -115,29 +115,29 @@ export function EncouragingAntiSocialBehaviorCond1({
                 Unlock the full app by inviting your address book.
               </p>
             </div>
-            <div className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
+            <div className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
               +500 coins
             </div>
           </div>
 
-          <div className="mt-3 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
+          <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5">
             <div className="flex items-center justify-between gap-2">
               <div className="text-[9px] font-medium text-foreground/80">
                 Send invites to your entire address book
               </div>
-              <span className="rounded-full bg-red-600 px-1.5 py-px text-[8px] font-bold uppercase tracking-wider text-white">
+              <span className="rounded-full bg-primary px-1.5 py-px text-[8px] font-bold uppercase tracking-wider text-primary-foreground">
                 Pre-selected
               </span>
             </div>
             <div className="mt-2 space-y-1">
               {CONTACT_PREVIEWS.map((name) => (
-                <div key={name} className="flex items-center gap-2 rounded border border-red-500/30 bg-card px-2 py-1 text-[8px]">
-                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-red-600 text-[7px] font-bold text-white">{name[0]}</span>
+                <div key={name} className="flex items-center gap-2 rounded border border-border/60 bg-card px-2 py-1 text-[8px]">
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[7px] font-bold text-primary-foreground">{name[0]}</span>
                   <span className="font-medium text-foreground/80">{name}</span>
-                  <span className="ml-auto text-red-600 dark:text-red-400">Selected</span>
+                  <span className="ml-auto text-foreground">Selected</span>
                 </div>
               ))}
-              <div className="pt-0.5 text-center text-[8px] font-mono text-red-600 dark:text-red-400">
+              <div className="pt-0.5 text-center text-[8px] font-mono text-foreground">
                 +{CONTACTS - CONTACT_PREVIEWS.length} more selected
               </div>
             </div>
@@ -147,7 +147,7 @@ export function EncouragingAntiSocialBehaviorCond1({
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
                 darkSent
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                  : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
               }`}
             >
               {`Invite all ${CONTACTS} contacts → +500 coins`}

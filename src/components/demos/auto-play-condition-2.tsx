@@ -63,13 +63,13 @@ export function AutoPlayCond2({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Streamly — auto-advance</h3>
-              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
+              <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
                   {stoppedB ? "stopped" : "playing"}
               </span>
             </div>
             <div className="mt-2 rounded-md border border-border bg-background p-3">
               <div className="flex items-center gap-2">
-                <svg viewBox="0 0 24 24" className="h-5 w-5 text-green-500" fill="currentColor">
+                <svg viewBox="0 0 24 24" className="h-5 w-5 text-foreground" fill="currentColor">
                   <path d="M4 5v14l13-7L4 5z" />
                 </svg>
                 <div className="min-w-0 flex-1">
@@ -82,15 +82,15 @@ export function AutoPlayCond2({
               {!stoppedB && (
                 <button
                   onClick={() => setStoppedB(true)}
-                  className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+                  className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-semibold text-primary-foreground transition-colors cursor-pointer"
                 >
                   Stop autoplay
                 </button>
               )}
             </div>
             {stoppedB && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -110,7 +110,7 @@ export function AutoPlayCond2({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Streamly — auto-advance</h3>
-            <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
+            <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
               {stoppedA ? "stopped" : "playing"}
             </span>
           </div>
@@ -130,7 +130,7 @@ export function AutoPlayCond2({
             className="mt-2 relative cursor-pointer rounded-md border border-border bg-background p-3"
           >
             <div className="flex items-center gap-2">
-              <svg viewBox="0 0 24 24" className="h-5 w-5 text-red-500" fill="currentColor">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 text-foreground" fill="currentColor">
                 <path d="M4 5v14l13-7L4 5z" />
               </svg>
               <div className="min-w-0 flex-1">

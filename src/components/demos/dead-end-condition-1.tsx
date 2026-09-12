@@ -40,7 +40,7 @@ export function DeadEndCond1({
   const bannerBody = (accent: "rose" | "emerald") => (
     <>
       <div className="flex items-start gap-2">
-        <svg className={`mt-0.5 h-4 w-4 shrink-0 ${accent === "rose" ? "text-red-500" : "text-green-500"}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg className={`mt-0.5 h-4 w-4 shrink-0 ${accent === "rose" ? "text-foreground" : "text-foreground"}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M3 11l18-8-8 18-2-8-8-2z" />
         </svg>
         <div className="min-w-0 flex-1">
@@ -54,7 +54,7 @@ export function DeadEndCond1({
         <div className="mt-2.5 space-y-1.5">
           <button
             onClick={() => setOutcomeA("accept-all")}
-            className={`w-full rounded-md py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer ${accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"}`}
+            className={`w-full rounded-md py-1.5 text-[10px] font-semibold text-primary-foreground transition-colors cursor-pointer ${accent === "rose" ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"}`}
           >
             Accept all
           </button>
@@ -78,7 +78,7 @@ export function DeadEndCond1({
         <div className="mt-2.5 space-y-1.5">
           <button
             onClick={() => setOutcomeB("accept-all")}
-            className="w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+            className="w-full rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-semibold text-primary-foreground transition-colors cursor-pointer"
           >
             Accept all
           </button>
@@ -110,10 +110,10 @@ export function DeadEndCond1({
     const emerald = o === "reject" || o === "exit" ? benign : false;
     return (
       <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed ${
-        emerald ? "border-green-500/30 bg-green-500/5" : "border-yellow-500/30 bg-yellow-500/5"
+        emerald ? "border-border/60 bg-muted/40" : "border-border/60 bg-muted/40"
       }`}>
         <div className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
-          emerald ? "text-green-700 dark:text-green-300" : "text-yellow-700 dark:text-yellow-300"
+          emerald ? "text-foreground" : "text-foreground"
         }`}>
           {emerald ? (
             <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -161,9 +161,9 @@ export function DeadEndCond1({
       deltaNote="In Variant A all three buttons (Accept all, Essential only, and a mislabelled Reject all) map into V_forced, and backdrop/Esc clicks have no edge — No Escape Path. In Variant B a real rejection edge and a close vector return to v_prev, the neutral pre-banner state."
       benign={
         <div className="space-y-3">
-          <div className="rounded-md border border-green-500/30 bg-card p-3">
+          <div className="rounded-md border border-border/60 bg-card p-3">
             <div className="flex items-center justify-between gap-2">
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground">
                 Cookie settings
               </div>
               <div className="text-[8px] font-mono text-muted-foreground/60">{outcomeB ? "Closed" : "3 choices"}</div>
@@ -185,11 +185,11 @@ export function DeadEndCond1({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div
-          className="rounded-md border border-red-500/30 bg-card p-3"
+          className="rounded-md border border-border/60 bg-card p-3"
           onMouseDown={(e) => { if (e.target === e.currentTarget) setEscapeAttempts((n) => n + 1); }}
         >
           <div className="flex items-center justify-between gap-2">
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground">
               Cookie settings
             </div>
             <div className="text-[8px] font-mono text-muted-foreground/60">{outcomeA ? "Closed" : "3 choices"}</div>

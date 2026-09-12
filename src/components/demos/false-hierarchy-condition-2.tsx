@@ -55,8 +55,8 @@ export function FalseHierarchyCond2({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <Cookie className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted">
+                <Cookie className="h-3.5 w-3.5 text-foreground" />
               </div>
               <div>
                 <h3 className="text-[11px] font-semibold">Cookie consent</h3>
@@ -72,13 +72,13 @@ export function FalseHierarchyCond2({
             <div className="mt-3 grid grid-cols-1 gap-1.5">
               <button
                 onClick={() => setBenignChoice("accept")}
-                className="w-full rounded-md border border-green-600/50 bg-background text-green-700 dark:text-green-300 hover:bg-green-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
+                className="w-full rounded-md border border-border/60 bg-background text-foreground hover:bg-muted/40 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Accept all cookies
               </button>
               <button
                 onClick={() => setBenignChoice("reject")}
-                className="w-full rounded-md border border-green-600/50 bg-background text-green-700 dark:text-green-300 hover:bg-green-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
+                className="w-full rounded-md border border-border/60 bg-background text-foreground hover:bg-muted/40 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Reject all
               </button>
@@ -103,8 +103,8 @@ export function FalseHierarchyCond2({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <Cookie className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted">
+              <Cookie className="h-3.5 w-3.5 text-foreground" />
             </div>
             <div>
               <h3 className="text-[11px] font-semibold">Cookie consent</h3>
@@ -120,7 +120,7 @@ export function FalseHierarchyCond2({
             {/* B_business: large area, saturated bg, bold type */}
             <button
               onClick={() => setDarkChoice("accept")}
-              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 px-4 text-[12px] font-bold tracking-wide transition-colors cursor-pointer"
+              className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2.5 px-4 text-[12px] font-bold tracking-wide transition-colors cursor-pointer"
             >
               Accept all cookies
             </button>
@@ -135,8 +135,8 @@ export function FalseHierarchyCond2({
         </div>
 
         {darkChoice && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <AlertTriangle className="w-3 h-3" />
               Preferences saved
             </div>
@@ -146,7 +146,7 @@ export function FalseHierarchyCond2({
                   {darkChoice === "accept"
                     ? "You hit the dominant button — 43 partners set tracking cookies."
                     : "You fought the layout to reach the pale reject option."}{" "}
-                  <strong className="text-red-500">
+                  <strong className="text-foreground">
                     W(B_business) = {W_BUSINESS.toFixed(1)} vs W(B_user) = {W_USER.toFixed(1)} →
                     ratio {RATIO_DARK} &gt; τ_hierarchy ({TAU_HIERARCHY})
                   </strong>

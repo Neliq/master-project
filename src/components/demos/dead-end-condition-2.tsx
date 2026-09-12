@@ -86,13 +86,13 @@ export function DeadEndCond2({
   ) => (
     <div
       className={`w-full max-w-[240px] rounded-md border bg-card p-3 shadow-xl ${
-        accent === "rose" ? "border-red-500/30" : "border-green-500/30"
+        accent === "rose" ? "border-border/60" : "border-border/60"
       }`}
       onClick={(e) => e.stopPropagation()}
     >
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-1.5">
-          <Cookie className={`size-3.5 ${accent === "rose" ? "text-red-500" : "text-green-500"}`} />
+          <Cookie className={`size-3.5 ${accent === "rose" ? "text-foreground" : "text-foreground"}`} />
           <h3 className="text-[11px] font-semibold">We use cookies</h3>
         </div>
         {onDismiss ? (
@@ -112,8 +112,8 @@ export function DeadEndCond2({
       </p>
       <button
         onClick={onAccept}
-        className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer ${
-          accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+        className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-semibold text-primary-foreground transition-colors cursor-pointer ${
+          accent === "rose" ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"
         }`}
       >
         Accept all
@@ -149,7 +149,7 @@ export function DeadEndCond2({
             {pageBackdrop}
             {stageB === "open" && (
               <div
-                className="absolute inset-0 flex items-center justify-center bg-black/50 p-4"
+                className="absolute inset-0 flex items-center justify-center bg-foreground/50 p-4"
                 style={{ zIndex: Z_INDEX }}
                 onClick={() => setStageB("dismissed")}
               >
@@ -189,7 +189,7 @@ export function DeadEndCond2({
           {pageBackdrop}
           {stageA === "open" && (
             <div
-              className="absolute inset-0 flex items-center justify-center bg-black/50 p-4"
+              className="absolute inset-0 flex items-center justify-center bg-foreground/50 p-4"
               style={{ zIndex: Z_INDEX }}
               onClick={() => setAttempts((a) => a + 1)}
             >
@@ -198,15 +198,15 @@ export function DeadEndCond2({
           )}
         </div>
         {stageA === "open" && attempts > 0 && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px] leading-relaxed text-yellow-700 dark:text-yellow-300">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] leading-relaxed text-foreground">
             {attempts} dismissal attempt{attempts === 1 ? "" : "s"} — clicking the backdrop does
             nothing, there is no close icon, and Esc is ignored.{" "}
             <span className="font-mono text-foreground">C_dismiss = ∅</span>.
           </div>
         )}
         {stageA === "accepted" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <AlertTriangle className="size-3" />
               Continue to manage cookies
             </div>

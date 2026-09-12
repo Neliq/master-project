@@ -37,42 +37,42 @@ export function ConflictingInformationCond3({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                  <Crown className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted">
+                  <Crown className="h-3.5 w-3.5 text-foreground" />
                 </div>
                 <h3 className="text-[11px] font-semibold">CloudPlus Pro</h3>
               </div>
-              <div className="text-[10px] font-bold text-green-600 dark:text-green-400">$12/mo</div>
+              <div className="text-[10px] font-bold text-foreground">$12/mo</div>
             </div>
 
             <ul className="mt-3 space-y-1 text-[10px] text-foreground/80">
               <li className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-3 w-3 text-green-500" /> 50 GB storage
+                <CheckCircle2 className="h-3 w-3 text-foreground" /> 50 GB storage
               </li>
               <li className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-3 w-3 text-green-500" /> Unlimited projects
+                <CheckCircle2 className="h-3 w-3 text-foreground" /> Unlimited projects
               </li>
               <li className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-3 w-3 text-green-500" /> Priority support
+                <CheckCircle2 className="h-3 w-3 text-foreground" /> Priority support
               </li>
             </ul>
 
             <div className="mt-3 rounded-md bg-background border border-border p-2 text-[9px] leading-relaxed text-muted-foreground">
-              <strong className="text-foreground">Fine print:</strong> Storage is 50 GB on Pro.
+              Storage is 50 GB on Pro.
               Additional storage available as add-ons.
             </div>
 
             <button
               onClick={() => setChosen(true)}
-              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Choose Pro — $12/mo
             </button>
           </div>
 
           {chosen && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
                 Plan selected — claims consistent
               </div>
@@ -90,34 +90,34 @@ export function ConflictingInformationCond3({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-                <Crown className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted">
+                <Crown className="h-3.5 w-3.5 text-foreground" />
               </div>
               <h3 className="text-[11px] font-semibold">CloudPlus Pro — Unlimited</h3>
             </div>
-            <div className="text-[10px] font-bold text-red-600 dark:text-red-400">$12/mo</div>
+            <div className="text-[10px] font-bold text-foreground">$12/mo</div>
           </div>
 
           <ul className="mt-3 space-y-1 text-[10px] text-foreground/80">
             <li className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-3 w-3 text-red-500" /> Unlimited storage
+              <CheckCircle2 className="h-3 w-3 text-foreground" /> Unlimited storage
             </li>
             <li className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-3 w-3 text-red-500" /> Unlimited projects
+              <CheckCircle2 className="h-3 w-3 text-foreground" /> Unlimited projects
             </li>
             <li className="flex items-center gap-1.5">
-              <CheckCircle2 className="h-3 w-3 text-red-500" /> Priority support
+              <CheckCircle2 className="h-3 w-3 text-foreground" /> Priority support
             </li>
           </ul>
 
           <div className="mt-3 rounded-md bg-background border border-border p-2 text-[9px] leading-relaxed text-muted-foreground">
-            <strong className="text-foreground">Fine print:</strong> Storage is capped at 5 GB on
+            Storage is capped at 5 GB on
             all plans. Projects limited to 3.
           </div>
 
           <button
             onClick={() => setChosen(true)}
-            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Choose Pro — $12/mo
           </button>

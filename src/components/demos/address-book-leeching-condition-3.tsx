@@ -39,8 +39,8 @@ export function AddressBookLeechingCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <svg aria-hidden="true" className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted">
+                <svg aria-hidden="true" className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                   <circle cx="9" cy="7" r="4" />
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -59,7 +59,7 @@ export function AddressBookLeechingCond3({
             <div className="mt-3 flex gap-2">
               <button
                 onClick={() => setBenignAllowed("allowed")}
-                className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white px-2 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground px-2 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Allow access
               </button>
@@ -73,8 +73,8 @@ export function AddressBookLeechingCond3({
           </div>
 
           {benignAllowed && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -93,8 +93,8 @@ export function AddressBookLeechingCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <svg aria-hidden="true" className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted">
+              <svg aria-hidden="true" className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -111,7 +111,7 @@ export function AddressBookLeechingCond3({
           </div>
           <button
             onClick={() => setDarkAllowed(true)}
-            className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white px-2 py-2 text-[10px] font-semibold transition-colors cursor-pointer"
+            className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground px-2 py-2 text-[10px] font-semibold transition-colors cursor-pointer"
           >
             Allow &amp; find friends
           </button>

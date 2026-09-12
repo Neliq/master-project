@@ -59,13 +59,13 @@ export function BadDefaultsPreselectionCond3({
             <div className="mt-2.5 space-y-2">
               <div className="rounded-md border border-border bg-background p-2.5">
                 <div className="text-[9px] font-medium text-muted-foreground mb-1">Delivery speed</div>
-                <label className="flex items-center gap-2 cursor-pointer group rounded border border-green-500/30 bg-green-500/5 px-2 py-1.5 transition-colors">
+                <label className="flex items-center gap-2 cursor-pointer group rounded border border-border/60 bg-muted/40 px-2 py-1.5 transition-colors">
                   <input
                     type="radio"
                     name="b-shipping"
                     checked={!bExpress}
                     onChange={() => setBExpress(false)}
-                    className="accent-green-500 flex-shrink-0"
+                    className="accent-primary flex-shrink-0"
                   />
                   <span className="text-[10px] text-foreground/80 select-none group-hover:text-foreground transition-colors">
                     Standard — <span className="font-mono tabular-nums">$0.00</span> (default:
@@ -78,19 +78,19 @@ export function BadDefaultsPreselectionCond3({
                     name="b-shipping"
                     checked={bExpress}
                     onChange={() => setBExpress(true)}
-                    className="accent-green-500 flex-shrink-0"
+                    className="accent-primary flex-shrink-0"
                   />
                   <span className="text-[10px] text-foreground/80 select-none group-hover:text-foreground transition-colors">
                     Express — <span className="font-mono tabular-nums">+$9.99</span>
                   </span>
                 </label>
               </div>
-              <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-green-500/30 bg-green-500/5 p-2.5 transition-colors">
+              <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-border/60 bg-muted/40 p-2.5 transition-colors">
                 <input
                   type="checkbox"
                   checked={bAlerts}
                   onChange={(e) => setBAlerts(e.target.checked)}
-                  className="mt-0.5 flex-shrink-0 accent-green-500"
+                  className="mt-0.5 flex-shrink-0 accent-primary"
                 />
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
                   Security alerts about my account
@@ -99,13 +99,13 @@ export function BadDefaultsPreselectionCond3({
             </div>
             <button
               onClick={() => setBSubmitted(true)}
-              className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Place order
             </button>
             {bSubmitted && (
-              <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-2.5 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -124,10 +124,10 @@ export function BadDefaultsPreselectionCond3({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="rounded-md border-2 border-red-500/50 bg-card p-3">
+        <div className="rounded-md border-2 border-border/60 bg-card p-3">
           <div className="flex items-start justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Checkout</h3>
-            <div className="shrink-0 rounded-full border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">
+            <div className="shrink-0 rounded-full border border-border/60 bg-muted/40 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground">
               Recommended extras
             </div>
           </div>
@@ -135,12 +135,12 @@ export function BadDefaultsPreselectionCond3({
             A few optional extras are selected for your review. Change anything you do not need.
           </p>
           <div className="mt-2.5 space-y-2">
-            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-red-500/30 bg-red-500/5 p-2.5 transition-colors">
+            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-border/60 bg-muted/40 p-2.5 transition-colors">
               <input
                 type="checkbox"
                 checked={aProtection}
                 onChange={(e) => setAProtection(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-red-500"
+                className="mt-0.5 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -152,12 +152,12 @@ export function BadDefaultsPreselectionCond3({
                 </div>
               </div>
             </label>
-            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-red-500/30 bg-red-500/5 p-2.5 transition-colors">
+            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-border/60 bg-muted/40 p-2.5 transition-colors">
               <input
                 type="checkbox"
                 checked={aOffers}
                 onChange={(e) => setAOffers(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-red-500"
+                className="mt-0.5 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -168,12 +168,12 @@ export function BadDefaultsPreselectionCond3({
                 </div>
               </div>
             </label>
-            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-red-500/30 bg-red-500/5 p-2.5 transition-colors">
+            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-border/60 bg-muted/40 p-2.5 transition-colors">
               <input
                 type="checkbox"
                 checked={aData}
                 onChange={(e) => setAData(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-red-500"
+                className="mt-0.5 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -187,13 +187,13 @@ export function BadDefaultsPreselectionCond3({
           </div>
           <button
             onClick={() => setASubmitted(true)}
-            className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Place order
           </button>
           {aSubmitted && (
-            <div className="mt-2.5 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-2.5 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -208,7 +208,7 @@ export function BadDefaultsPreselectionCond3({
                   — NLP mapped each pre-selected label to a provider-favorable consequence
                   domain:
                   {aDomains.length
-                    ? " " + aDomains.map((d) => <span key={d} className="font-mono text-red-500">{d}</span>).reduce<React.ReactNode[]>((acc, el, i) => (i === 0 ? [el] : [...acc, <span key={`sep-${i}`}>, </span>, el]), [])
+                    ? " " + aDomains.map((d) => <span key={d} className="font-mono text-foreground">{d}</span>).reduce<React.ReactNode[]>((acc, el, i) => (i === 0 ? [el] : [...acc, <span key={`sep-${i}`}>, </span>, el]), [])
                     : " none (you unchecked them all)"}
                   . Passive compliance = the user pays, subscribes, and shares by default.
                 </p>

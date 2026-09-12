@@ -78,7 +78,7 @@ export function AutoPlayCond3({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Streamly — end of episode</h3>
-              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
+              <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
                 Autoplay: {autoB ? "ON" : "OFF"}
               </span>
             </div>
@@ -101,7 +101,7 @@ export function AutoPlayCond3({
                 {!startedB && !autoB && (
                   <button
                     onClick={() => setStartedB(true)}
-                    className="shrink-0 rounded bg-green-600 hover:bg-green-700 px-2.5 py-1 text-[9px] font-semibold text-white transition-colors cursor-pointer"
+                    className="shrink-0 rounded bg-primary hover:bg-primary/80 px-2.5 py-1 text-[9px] font-semibold text-primary-foreground transition-colors cursor-pointer"
                   >
                     Play now
                   </button>
@@ -109,7 +109,7 @@ export function AutoPlayCond3({
               </div>
             </div>
 
-            <div className="mt-2 flex items-center justify-between gap-2 rounded-md border border-green-500/30 bg-green-500/5 p-2">
+            <div className="mt-2 flex items-center justify-between gap-2 rounded-md border border-border/60 bg-muted/40 p-2">
               <div>
                 <div className="text-[9px] font-medium text-foreground/85">Autoplay</div>
                 <div className="text-[8px] text-muted-foreground">
@@ -121,11 +121,11 @@ export function AutoPlayCond3({
                 role="switch"
                 aria-checked={autoB}
                 className={`relative h-4 w-7 shrink-0 rounded-full transition-colors cursor-pointer ${
-                  autoB ? "bg-green-500" : "bg-foreground/20"
+                  autoB ? "bg-primary" : "bg-foreground/20"
                 }`}
               >
                 <span
-                  className={`absolute top-0.5 h-3 w-3 rounded-full bg-white transition-all ${
+                  className={`absolute top-0.5 h-3 w-3 rounded-full bg-background transition-all ${
                     autoB ? "left-3.5" : "left-0.5"
                   }`}
                 />
@@ -139,12 +139,12 @@ export function AutoPlayCond3({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Streamly — end of episode</h3>
-            <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
+            <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
               Up next
             </span>
           </div>
 
-          <div className="mt-2 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
+          <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5">
             <div className="text-[8px] font-mono uppercase tracking-wider text-muted-foreground">
               Continue watching
             </div>
@@ -157,7 +157,7 @@ export function AutoPlayCond3({
                     : `Up next — starting in ${countA}s`}
                 </div>
               </div>
-              <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-red-500" fill="currentColor">
+              <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-foreground" fill="currentColor">
                 <path d="M4 5v14l13-7L4 5z" />
               </svg>
             </div>

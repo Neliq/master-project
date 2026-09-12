@@ -93,14 +93,14 @@ export function ActivityMessagesCond2({
     <div className="rounded-md border border-border bg-background p-2.5">
       <div className="flex items-center justify-between text-[9px]">
         <span className="font-mono text-muted-foreground">{label}</span>
-        <span className={`font-mono font-semibold tabular-nums ${tone === "rose" ? "text-red-500" : tone === "emerald" ? "text-green-500" : "text-yellow-500"}`}>
+        <span className={`font-mono font-semibold tabular-nums ${tone === "rose" ? "text-foreground" : tone === "emerald" ? "text-foreground" : "text-foreground"}`}>
           {value}%
         </span>
       </div>
       <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-muted">
         <div
           className={`h-full rounded-full transition-all duration-500 ${
-            value > 60 ? "bg-green-500" : value > 30 ? "bg-yellow-500" : "bg-red-500"
+            value > 60 ? "bg-primary" : value > 30 ? "bg-primary" : "bg-primary"
           }`}
           style={{ width: `${value}%` }}
         />
@@ -124,7 +124,7 @@ export function ActivityMessagesCond2({
             )}
             {toastsB.map((t, i) => (
               <div key={`${t}-${i}`} className="flex items-start gap-1.5 rounded border border-border/60 bg-background/80 px-2 py-1 text-[8px] leading-snug text-muted-foreground">
-                <span className="mt-0.5 h-1 w-1 shrink-0 rounded-full bg-green-400" />
+                <span className="mt-0.5 h-1 w-1 shrink-0 rounded-full bg-muted" />
                 {t}
               </div>
             ))}
@@ -134,14 +134,14 @@ export function ActivityMessagesCond2({
 
           <button
             onClick={() => setFinishedB(true)}
-            className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             {finishedB ? "Order placed ✓" : "Finish reading & check out"}
           </button>
 
           {finishedB && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -167,9 +167,9 @@ export function ActivityMessagesCond2({
           {toastsA.map((t, i) => (
             <div
               key={`${t}-${i}`}
-              className="flex items-start gap-1.5 rounded-md border border-red-500/50 bg-red-500/10 px-2 py-1.5 text-[9px] font-medium leading-snug text-foreground shadow-[0_0_12px_rgba(244,63,94,0.25)]"
+              className="flex items-start gap-1.5 rounded-md border border-border/60 bg-muted/40 px-2 py-1.5 text-[9px] font-medium leading-snug text-foreground shadow-primary/25"
             >
-              <svg className="mt-0.5 h-3 w-3 shrink-0 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg className="mt-0.5 h-3 w-3 shrink-0 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
               </svg>
               <span>{t}</span>
@@ -181,7 +181,7 @@ export function ActivityMessagesCond2({
 
         <button
           onClick={() => setFinishedA(true)}
-          className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+          className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
           {finishedA ? "Order placed ✓" : "Finish reading & check out"}
         </button>
@@ -204,8 +204,8 @@ export function ActivityMessagesCond2({
         )}
 
         {mode !== "auditor" && finishedA && (
-          <div className="rounded-md border border-red-500/30 bg-red-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="font-semibold text-red-700 dark:text-red-300">Order placed</div>
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="font-semibold text-foreground">Order placed</div>
             <p className="mt-1 text-muted-foreground">Aurora Wireless Earbuds Pro · specifications reviewed and order submitted.</p>
           </div>
         )}

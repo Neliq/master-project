@@ -58,14 +58,14 @@ export function ComplexLanguageCond1({
                   Pro plan — $29.99/month. Review the terms before agreeing.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Depth {DEPTH_BENIGN}
               </div>
             </div>
 
             <div className="mt-3 max-h-36 overflow-y-auto rounded-md border bg-background p-2">
               <p className="text-[10px] leading-relaxed text-foreground/80">
-                <span className="font-semibold text-green-600 dark:text-green-400">14.2 Automatic Renewal — </span>
+                <span className="font-semibold text-foreground">14.2 Automatic Renewal — </span>
                 {CLAUSE_BENIGN}
               </p>
               <p className="mt-1.5 text-[8px] text-muted-foreground/60">
@@ -78,7 +78,7 @@ export function ComplexLanguageCond1({
                 type="checkbox"
                 checked={agreed}
                 onChange={(e) => setAgreed(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-green-500"
+                className="mt-0.5 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -95,7 +95,7 @@ export function ComplexLanguageCond1({
               disabled={!agreed}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 agreed
-                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -104,8 +104,8 @@ export function ComplexLanguageCond1({
           </div>
 
           {submitted && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -129,7 +129,7 @@ export function ComplexLanguageCond1({
                 Pro plan — $29.99/month. Review the terms before agreeing.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Depth {DEPTH_DARK}
             </div>
           </div>
@@ -152,7 +152,7 @@ export function ComplexLanguageCond1({
                       <p className="mt-1 text-[8px] leading-relaxed text-foreground/70">
                         {CLAUSE_DARK}
                       </p>
-                      <p className="mt-1 text-[7px] italic text-red-500/70">
+                      <p className="mt-1 text-[7px] italic text-foreground/70">
                         D_DOM = {DEPTH_DARK} — the clause lives 6 levels below the page surface.
                       </p>
                     </details>
@@ -167,7 +167,7 @@ export function ComplexLanguageCond1({
               type="checkbox"
               checked={agreed}
               onChange={(e) => setAgreed(e.target.checked)}
-              className="mt-0.5 flex-shrink-0 accent-red-500"
+              className="mt-0.5 flex-shrink-0 accent-primary"
             />
             <div className="min-w-0 flex-1">
               <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -184,7 +184,7 @@ export function ComplexLanguageCond1({
             disabled={!agreed}
             className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               agreed
-                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >

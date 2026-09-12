@@ -42,8 +42,8 @@ export function ConflictingInformationCond2({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <Check className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted">
+                <Check className="h-3.5 w-3.5 text-foreground" />
               </div>
               <div>
                 <h3 className="text-[11px] font-semibold">FitClub gym membership</h3>
@@ -60,15 +60,15 @@ export function ConflictingInformationCond2({
 
             <div className="mt-2 space-y-1.5">
               <button
-                data-dp-color-signal
                 onClick={() => setChoice("cancel")}
-                className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Cancel my membership
               </button>
               <button
+                data-dp-color-signal=""
                 onClick={() => setChoice("keep")}
-                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-foreground hover:bg-muted transition-colors cursor-pointer"
               >
                 Keep my membership
               </button>
@@ -76,8 +76,8 @@ export function ConflictingInformationCond2({
           </div>
 
           {choice && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
                 {choice === "cancel" ? "Membership cancelled" : "Membership kept"}
               </div>
@@ -94,8 +94,8 @@ export function ConflictingInformationCond2({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-              <Check className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted">
+              <Check className="h-3.5 w-3.5 text-foreground" />
             </div>
             <div>
               <h3 className="text-[11px] font-semibold">FitClub gym membership</h3>
@@ -114,22 +114,22 @@ export function ConflictingInformationCond2({
             {/* Business-favorable action: primary, prominent, confirm-colored */}
             <button
               onClick={() => setChoice("keep")}
-              className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 px-3 text-[10px] font-semibold transition-colors cursor-pointer"
+              className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 px-3 text-[10px] font-semibold transition-colors cursor-pointer"
             >
               Keep my membership
             </button>
             {/* User-favorable action: confirmation-colored despite its destructive intent. */}
             {!confirming ? (
               <button
-                data-dp-color-signal
+                data-dp-color-signal=""
                 type="button"
                 onClick={() => setConfirming(true)}
-                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 px-3 text-[10px] font-semibold transition-colors cursor-pointer"
+                className="w-full rounded-md border border-border bg-background hover:bg-muted text-foreground py-2 px-3 text-[10px] font-semibold transition-colors cursor-pointer"
               >
                 Cancel my membership
               </button>
             ) : (
-              <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5">
+              <div className="rounded-md border border-border/60 bg-muted/40 p-2.5">
                 <div className="text-[9px] font-semibold text-foreground">Confirm cancellation</div>
                 <p className="text-[8px] text-muted-foreground mt-1 leading-relaxed">
                   Cancelling ends your access immediately and the $49 early-cancellation fee will be
@@ -137,6 +137,7 @@ export function ConflictingInformationCond2({
                 </p>
                 <div className="mt-1.5 flex gap-1.5">
                   <button
+                    data-dp-color-signal=""
                     onClick={() => {
                       setConfirming(false);
                       setChoice("cancel");
@@ -147,7 +148,7 @@ export function ConflictingInformationCond2({
                   </button>
                   <button
                     onClick={() => setConfirming(false)}
-                    className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                    className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Keep my membership
                   </button>

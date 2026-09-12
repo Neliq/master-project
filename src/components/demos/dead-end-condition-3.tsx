@@ -56,7 +56,7 @@ function renderHighlighted(text: string, coerciveSet: Set<string>) {
     return (
       <React.Fragment key={i}>
         {isCoercive ? (
-          <mark className="rounded-sm bg-yellow-500/25 px-0.5 text-yellow-800 dark:text-yellow-200">{w}</mark>
+          <mark className="rounded-sm bg-muted/40 px-0.5 text-foreground">{w}</mark>
         ) : (
           <span>{w}</span>
         )}
@@ -83,7 +83,7 @@ export function DeadEndCond3({
           <h3 className="text-[11px] font-semibold">
             {accent === "rose" ? (
               <>
-                <span className="text-yellow-600 dark:text-yellow-400">⚠</span> Storage notice
+                <span className="text-foreground">⚠</span> Storage notice
               </>
             ) : (
               "Storage notice"
@@ -102,7 +102,7 @@ export function DeadEndCond3({
       </div>
       {(accent === "rose" ? analyzedA : analyzedB) ? (
         <div className={`mt-2 rounded-md border p-2 text-[8px] leading-relaxed ${
-          accent === "rose" ? "border-yellow-500/30 bg-yellow-500/5 text-yellow-700 dark:text-yellow-300" : "border-green-500/30 bg-green-500/5 text-green-700 dark:text-green-300"
+          accent === "rose" ? "border-border/60 bg-muted/40 text-foreground" : "border-border/60 bg-muted/40 text-foreground"
         }`}>
           {mode === "auditor" ? (
             accent === "rose" ? (
@@ -120,8 +120,8 @@ export function DeadEndCond3({
       <div className="mt-2.5 flex gap-1.5">
         <button
           onClick={() => (accent === "rose" ? setChoiceA("upgraded") : setChoiceB("upgraded"))}
-          className={`flex-1 rounded-md py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer ${
-            accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+          className={`flex-1 rounded-md py-1.5 text-[10px] font-semibold text-primary-foreground transition-colors cursor-pointer ${
+            accent === "rose" ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"
           }`}
         >
           Upgrade now — save 50% TODAY
@@ -134,7 +134,7 @@ export function DeadEndCond3({
         </button>
       </div>
       {accent === "rose" && choiceA ? (
-        <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+        <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
           <p className="text-muted-foreground">
             {choiceA === "upgraded"
               ? "Your upgrade is active. You can manage it from your account settings."
@@ -143,7 +143,7 @@ export function DeadEndCond3({
         </div>
       ) : null}
       {accent === "emerald" && choiceB ? (
-        <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
+        <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
           <p className="text-muted-foreground">
             {choiceB === "upgraded"
               ? "You upgraded after a calm, factual explanation — a deliberate choice, not a pressured one."
@@ -165,7 +165,7 @@ export function DeadEndCond3({
           {trapPage("emerald")}
           <button
             onClick={() => setAnalyzedB(true)}
-            className="w-full rounded-md border border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="w-full rounded-md border border-border/60 bg-muted/40 text-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             View details
           </button>
@@ -176,7 +176,7 @@ export function DeadEndCond3({
         {trapPage("rose")}
         <button
           onClick={() => setAnalyzedA(true)}
-          className="w-full rounded-md border border-red-500/40 bg-red-500/5 text-red-700 dark:text-red-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+          className="w-full rounded-md border border-border/60 bg-muted/40 text-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
           View details
         </button>

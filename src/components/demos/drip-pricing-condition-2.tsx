@@ -50,11 +50,11 @@ export function DripPricingCond2({
         <div className="flex items-center gap-3">
           <div
             className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md ${
-              dark ? "bg-red-100 dark:bg-red-900/30" : "bg-green-100 dark:bg-green-900/30"
+              dark ? "bg-muted" : "bg-muted"
             }`}
           >
             <svg
-              className={`h-4 w-4 ${dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}
+              className={`h-4 w-4 ${dark ? "text-foreground" : "text-foreground"}`}
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -77,7 +77,7 @@ export function DripPricingCond2({
           <div>
             <div
               className={`font-bold tabular-nums ${
-                dark ? "text-[20px] text-red-600 dark:text-red-400" : "text-[14px] text-green-600 dark:text-green-400"
+                dark ? "text-[20px] text-foreground" : "text-[14px] text-foreground"
               }`}
             >
               {usd(BASE_PRICE)}
@@ -91,7 +91,7 @@ export function DripPricingCond2({
               <div className="text-[8px] uppercase tracking-wider text-muted-foreground">
                 all-inclusive
               </div>
-              <div className="text-[14px] font-bold tabular-nums text-green-600 dark:text-green-400">
+              <div className="text-[14px] font-bold tabular-nums text-foreground">
                 {usd(TOTAL_PRICE)}
               </div>
             </div>
@@ -104,7 +104,7 @@ export function DripPricingCond2({
             <button
               onClick={() => setHighlighted(true)}
               className={`cursor-pointer text-[8px] transition-all hover:underline ${
-                highlighted ? "rounded px-1 ring-2 ring-red-500/60" : ""
+                highlighted ? "rounded px-1 ring-2 ring-ring/60" : ""
               }`}
               style={{ color: "rgb(185 185 185)" }}
             >
@@ -116,7 +116,7 @@ export function DripPricingCond2({
               <span className="text-muted-foreground">·</span>
               <span>service charge {usd(SERVICE_CHARGE)}</span>
               <span className="text-muted-foreground">·</span>
-              <span className="font-semibold text-green-600 dark:text-green-400">
+              <span className="font-semibold text-foreground">
                 total {usd(TOTAL_PRICE)}
               </span>
             </div>
@@ -126,8 +126,8 @@ export function DripPricingCond2({
         <button
           onClick={() => setPaid(true)}
           disabled={paid}
-          className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-            paid ? "bg-muted text-muted-foreground/50 cursor-not-allowed" : dark ? "bg-red-600 hover:bg-red-700 cursor-pointer" : "bg-green-600 hover:bg-green-700 cursor-pointer"
+          className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium text-primary-foreground transition-colors ${
+            paid ? "bg-muted text-muted-foreground/50 cursor-not-allowed" : dark ? "bg-primary hover:bg-primary/80 cursor-pointer" : "bg-primary hover:bg-primary/80 cursor-pointer"
           }`}
         >
           {paid ? "Ticket booked" : dark ? "Book ticket" : `Book ticket — ${usd(TOTAL_PRICE)} total`}

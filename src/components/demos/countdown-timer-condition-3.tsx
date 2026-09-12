@@ -89,7 +89,7 @@ export function CountdownTimerCond3({
       }
       parts.push(rest.slice(0, match.index));
       parts.push(
-        <mark key={key++} className="rounded-sm bg-yellow-500/20 px-0.5 text-yellow-700 dark:text-yellow-300 font-semibold">
+        <mark key={key++} className="rounded-sm bg-muted/40 px-0.5 text-foreground font-semibold">
           {rest.slice(match.index, match.index + match.lexeme.length)}
         </mark>
       );
@@ -113,10 +113,10 @@ export function CountdownTimerCond3({
             </p>
           </div>
 
-          <div className="rounded-md border border-green-500/40 bg-green-500/10 px-2.5 py-2">
+          <div className="rounded-md border border-border/60 bg-muted/40 px-2.5 py-2">
             <div className="flex items-center justify-between">
               <span className="text-[9px] font-medium text-muted-foreground">Discount ends in</span>
-              <span className="font-mono text-[12px] font-bold tabular-nums tracking-wider text-green-600 dark:text-green-300">
+              <span className="font-mono text-[12px] font-bold tabular-nums tracking-wider text-foreground">
                 {fmt(seconds)}
               </span>
             </div>
@@ -125,14 +125,14 @@ export function CountdownTimerCond3({
 
           <button
             onClick={() => setPaid(true)}
-            className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             {paid ? "Paid ✓" : `Pay ${PRICE_NOW}`}
           </button>
 
           {paid && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -156,10 +156,10 @@ export function CountdownTimerCond3({
           </p>
         </div>
 
-        <div className="rounded-md border border-red-500/40 bg-red-500/10 px-2.5 py-2">
+        <div className="rounded-md border border-border/60 bg-muted/40 px-2.5 py-2">
           <div className="flex items-center justify-between">
             <span className="text-[9px] font-medium text-muted-foreground">Discount ends in</span>
-            <span className="font-mono text-[12px] font-bold tabular-nums tracking-wider text-red-600 dark:text-red-300">
+            <span className="font-mono text-[12px] font-bold tabular-nums tracking-wider text-foreground">
               {fmt(seconds)}
             </span>
           </div>
@@ -170,7 +170,7 @@ export function CountdownTimerCond3({
 
         <button
           onClick={() => setPaid(true)}
-          className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+          className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
         >
           {paid ? "Paid ✓" : `Pay ${PRICE_NOW} now`}
         </button>

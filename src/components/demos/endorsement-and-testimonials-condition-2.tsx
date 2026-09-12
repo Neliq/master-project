@@ -44,32 +44,32 @@ const BENIGN_TESTIMONIALS: BenignReview[] = [
   {
     stars: 4,
     quote: "The meal-plan add-on made the difference for me. Lost 9 kg over three months — slow, but steady.",
-    name: "Julia Nowak", initials: "JN", color: "bg-green-500", date: "12 May 2026",
+    name: "Julia Nowak", initials: "JN", color: "bg-primary", date: "12 May 2026",
     handle: "@julia.nowak", followers: 214, joined: "2021", url: "https://shopline.co/profiles/julia-nowak",
   },
   {
     stars: 5,
     quote: "Energy levels are noticeably steadier after two weeks. Not magic, but I'll keep taking it.",
-    name: "Tomasz Rybak", initials: "TR", color: "bg-blue-500", date: "3 May 2026",
+    name: "Tomasz Rybak", initials: "TR", color: "bg-primary", date: "3 May 2026",
     handle: "@tomasz.r", followers: 89, joined: "2023", url: "https://shopline.co/profiles/tomasz-rybak",
   },
   {
     stars: 3,
     quote: "Joints feel a little better, though I'm also swimming twice a week, so hard to isolate the cause.",
-    name: "Alicja Pawlak", initials: "AP", color: "bg-yellow-500", date: "28 Apr 2026",
+    name: "Alicja Pawlak", initials: "AP", color: "bg-primary", date: "28 Apr 2026",
     handle: "@alicja.p", followers: 402, joined: "2020", url: "https://shopline.co/profiles/alicja-pawlak",
   },
   {
     stars: 5,
     quote: "Fair price, no side effects, and the shipping was fast. Would order again.",
-    name: "Marek Kowal", initials: "MK", color: "bg-red-500", date: "17 Apr 2026",
+    name: "Marek Kowal", initials: "MK", color: "bg-primary", date: "17 Apr 2026",
     handle: "@marek.k", followers: 56, joined: "2024", url: "https://shopline.co/profiles/marek-kowal",
   },
 ];
 
 function Stars({ n }: { n: number }) {
   return (
-    <span className="inline-flex items-center gap-px text-yellow-400" aria-label={`${n} out of 5 stars`}>
+    <span className="inline-flex items-center gap-px text-foreground" aria-label={`${n} out of 5 stars`}>
       {[1, 2, 3, 4, 5].map((i) => (
         <svg
           key={i}
@@ -114,24 +114,24 @@ export function EndorsementAndTestimonialsCond2({
                 key={i}
                 onClick={() => setRevealed(i)}
                 className={`rounded-md border bg-card p-2.5 text-left transition-colors cursor-pointer ${
-                  revealed === i ? "ring-2 ring-green-500/50 border-green-500/40" : "border-border hover:border-green-500/40"
+                  revealed === i ? "ring-2 ring-ring/50 border-border/60" : "border-border hover:border-ring"
                 }`}
               >
                 <Stars n={t.stars} />
                 <p className="text-[9px] leading-relaxed text-foreground/85 mt-1">{t.quote}</p>
                 <div className="mt-1.5 flex items-center gap-1.5">
-                  <span className={`flex h-4 w-4 items-center justify-center rounded-full ${t.color} text-white`}>
+                  <span className={`flex h-4 w-4 items-center justify-center rounded-full ${t.color} text-primary-foreground`}>
                     <span className="text-[7px] font-bold">{t.initials}</span>
                   </span>
                   <div className="min-w-0">
                     <p className="text-[8px] font-semibold leading-tight text-foreground">{t.name}</p>
-                    <p className="text-[7px] leading-tight text-green-600 dark:text-green-400">
+                    <p className="text-[7px] leading-tight text-foreground">
                       Verified buyer · {t.handle} · {t.date}
                     </p>
                     <a
                       href={t.url}
                       onClick={(e) => e.stopPropagation()}
-                      className="text-[7px] font-medium text-green-600 dark:text-green-400 underline underline-offset-2 hover:text-green-700 dark:hover:text-green-300"
+                      className="text-[7px] font-medium text-foreground underline underline-offset-2 hover:text-foreground"
                     >
                       View profile →
                     </a>
@@ -144,7 +144,7 @@ export function EndorsementAndTestimonialsCond2({
           {revealed !== null && (
             <div className="rounded-md border border-border bg-background p-2.5 text-[9px] leading-relaxed">
               <div className="flex items-center gap-1.5">
-                <span className={`flex h-5 w-5 items-center justify-center rounded-full ${BENIGN_TESTIMONIALS[revealed].color} text-white`}>
+                <span className={`flex h-5 w-5 items-center justify-center rounded-full ${BENIGN_TESTIMONIALS[revealed].color} text-primary-foreground`}>
                   <span className="text-[8px] font-bold">{BENIGN_TESTIMONIALS[revealed].initials}</span>
                 </span>
                 <div>
@@ -163,7 +163,7 @@ export function EndorsementAndTestimonialsCond2({
               </p>
               <a
                 href={BENIGN_TESTIMONIALS[revealed].url}
-                className="mt-1 inline-block text-[8px] font-semibold text-green-600 dark:text-green-400 underline underline-offset-2 hover:text-green-700 dark:hover:text-green-300"
+                className="mt-1 inline-block text-[8px] font-semibold text-foreground underline underline-offset-2 hover:text-foreground"
               >
                 View full profile →
               </a>
@@ -186,7 +186,7 @@ export function EndorsementAndTestimonialsCond2({
               key={i}
               onClick={() => setRevealed(i)}
               className={`rounded-md border bg-card p-2.5 text-left transition-colors cursor-pointer ${
-                revealed === i ? "ring-2 ring-red-500/50 border-red-500/40" : "border-border hover:border-red-500/40"
+                revealed === i ? "ring-2 ring-ring/50 border-border/60" : "border-border hover:border-ring"
               }`}
             >
               <Stars n={t.stars} />
@@ -208,8 +208,8 @@ export function EndorsementAndTestimonialsCond2({
         </div>
 
         {revealed !== null && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

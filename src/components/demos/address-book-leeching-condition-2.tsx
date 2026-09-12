@@ -51,7 +51,7 @@ export function AddressBookLeechingCond2({
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
                 onClick={() => setBenignInvited("all")}
-                className="rounded-md border border-green-500/40 bg-green-500/10 px-2 py-2.5 text-[10px] font-semibold text-green-700 dark:text-green-300 hover:bg-green-500/20 transition-colors cursor-pointer"
+                className="rounded-md border border-border/60 bg-muted/40 px-2 py-2.5 text-[10px] font-semibold text-foreground hover:bg-muted/40 transition-colors cursor-pointer"
               >
                 Invite all {NETWORK_SIZE} contacts
               </button>
@@ -70,8 +70,8 @@ export function AddressBookLeechingCond2({
           </div>
 
           {benignInvited !== "none" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -96,7 +96,7 @@ export function AddressBookLeechingCond2({
 
           <button
             onClick={() => setDarkInvited("all")}
-            className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white px-4 py-4 text-[11px] font-bold shadow-lg shadow-red-600/20 transition-colors cursor-pointer"
+            className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground px-4 py-4 text-[11px] font-bold shadow-lg shadow-primary/20 transition-colors cursor-pointer"
           >
             Invite all {NETWORK_SIZE} contacts
           </button>

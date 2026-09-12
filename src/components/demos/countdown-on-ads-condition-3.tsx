@@ -84,21 +84,21 @@ export function CountdownOnAdsCond3({
             {phaseB === "idle" && (
               <button
                 onClick={playB}
-                className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Continue to next level
               </button>
             )}
 
             {phaseB === "ad" && (
-              <div className="mt-2 overflow-hidden rounded-md border border-green-500/30">
-                <div className="from-slate-600 to-slate-800 p-4 text-white">
+              <div className="mt-2 overflow-hidden rounded-md border border-border/60">
+                <div className="from-muted to-muted p-4 text-primary-foreground">
                   <div className="flex items-center gap-1.5 text-[8px] font-semibold uppercase tracking-widest opacity-80">
                     <Gift className="size-3" /> Advertisement
                   </div>
                   <div className="mt-1 text-[12px] font-bold leading-tight">{COPY_B_TITLE}</div>
                   <div className="mt-1 text-[9px] opacity-90">{COPY_B_SUBTITLE}</div>
-                  <div className="mt-2 inline-block rounded bg-white/20 px-2 py-1 text-[9px] font-semibold">
+                  <div className="mt-2 inline-block rounded bg-background/20 px-2 py-1 text-[9px] font-semibold">
                     Visit shop
                   </div>
                 </div>
@@ -108,7 +108,7 @@ export function CountdownOnAdsCond3({
                   </span>
                   <button
                     onClick={() => setPhaseB("playing")}
-                    className="rounded bg-green-600 hover:bg-green-700 px-2.5 py-1 text-[9px] font-semibold text-white transition-colors cursor-pointer"
+                    className="rounded bg-primary hover:bg-primary/80 px-2.5 py-1 text-[9px] font-semibold text-primary-foreground transition-colors cursor-pointer"
                   >
                     Skip ad
                   </button>
@@ -117,8 +117,8 @@ export function CountdownOnAdsCond3({
             )}
 
             {phaseB === "playing" && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-3 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-3 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   Neutral framing
                 </div>
@@ -138,21 +138,21 @@ export function CountdownOnAdsCond3({
           {phaseA === "idle" && (
             <button
               onClick={playA}
-              className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Continue to next level
             </button>
           )}
 
           {phaseA === "ad" && (
-            <div className="mt-2 overflow-hidden rounded-md border border-red-500/30">
-              <div className="bg-gradient-to-br from-slate-600 to-slate-800 p-4 text-white">
+            <div className="mt-2 overflow-hidden rounded-md border border-border/60">
+              <div className="bg-gradient-to-br from-muted to-muted p-4 text-primary-foreground">
                 <div className="flex items-center gap-1.5 text-[8px] font-semibold uppercase tracking-widest">
                   <Gift className="size-3" /> Your daily reward is ready
                 </div>
                 <div className="mt-1 text-[12px] font-bold leading-tight">{COPY_A_TITLE}</div>
                 <div className="mt-1 text-[9px] opacity-90">{COPY_A_SUBTITLE}</div>
-                <div className="mt-2 inline-block rounded bg-white/25 px-2 py-1 text-[9px] font-bold">
+                <div className="mt-2 inline-block rounded bg-background/25 px-2 py-1 text-[9px] font-bold">
                   ⏳ Claiming in {remainingA}s…
                 </div>
               </div>
@@ -170,7 +170,7 @@ export function CountdownOnAdsCond3({
                       setClaimedA(true);
                       setPhaseA("playing");
                     }}
-                    className="w-full rounded bg-yellow-500 hover:bg-yellow-600 px-2.5 py-1 text-[9px] font-bold text-white transition-colors cursor-pointer"
+                    className="w-full rounded bg-primary hover:bg-primary/80 px-2.5 py-1 text-[9px] font-bold text-primary-foreground transition-colors cursor-pointer"
                   >
                     Claim reward
                   </button>
@@ -180,8 +180,8 @@ export function CountdownOnAdsCond3({
           )}
 
           {phaseA === "playing" && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
                 Reward available
               </div>

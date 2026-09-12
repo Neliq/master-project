@@ -62,8 +62,8 @@ export function CustomisationCond1({
           {!customisingB ? (
             <div className="rounded-md border bg-card p-3">
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                  <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted">
+                  <svg className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6m2-6h6m2 8h6" />
                   </svg>
                 </div>
@@ -78,13 +78,13 @@ export function CustomisationCond1({
               <div className="mt-3 grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setOutcomeB("accepted")}
-                  className="w-full rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+                  className="w-full rounded-md bg-primary hover:bg-primary/80 py-2 text-[10px] font-semibold text-primary-foreground transition-colors cursor-pointer"
                 >
                   Accept All
                 </button>
                 <button
                   onClick={() => setOutcomeB("rejected")}
-                  className="w-full rounded-md border border-green-600/50 bg-background hover:bg-green-500/10 py-2 text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors cursor-pointer"
+                  className="w-full rounded-md border border-border/60 bg-background hover:bg-muted/40 py-2 text-[10px] font-semibold text-foreground transition-colors cursor-pointer"
                 >
                   Reject All
                 </button>
@@ -115,7 +115,7 @@ export function CustomisationCond1({
                       checked={onIdsB.includes(c.id)}
                       disabled={c.locked}
                       onChange={() => toggle(c.id, setOnIdsB)}
-                      className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${c.locked ? "" : "accent-green-500"}`}
+                      className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${c.locked ? "" : "accent-primary"}`}
                     />
                     <span className="min-w-0 flex-1">
                       <span className={`block text-[10px] leading-relaxed ${c.locked ? "text-muted-foreground/50" : "text-foreground/80"}`}>
@@ -129,13 +129,13 @@ export function CustomisationCond1({
               <div className="mt-2.5 grid grid-cols-2 gap-2">
                 <button
                   onClick={() => { setCustomisingB(false); setOutcomeB("rejected"); }}
-                  className="w-full rounded-md border border-green-600/50 bg-background hover:bg-green-500/10 py-1.5 text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors cursor-pointer"
+                  className="w-full rounded-md border border-border/60 bg-background hover:bg-muted/40 py-1.5 text-[10px] font-semibold text-foreground transition-colors cursor-pointer"
                 >
                   Reject All
                 </button>
                 <button
                   onClick={() => { setCustomisingB(false); setOutcomeB("accepted"); }}
-                  className="w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+                  className="w-full rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-semibold text-primary-foreground transition-colors cursor-pointer"
                 >
                   Save preferences
                 </button>
@@ -144,8 +144,8 @@ export function CustomisationCond1({
           )}
 
           {outcomeB !== "none" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -165,8 +165,8 @@ export function CustomisationCond1({
         {!customisingA ? (
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-                <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted">
+                <svg className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6m2-6h6m2 8h6" />
                 </svg>
               </div>
@@ -180,7 +180,7 @@ export function CustomisationCond1({
             </div>
             <button
               onClick={() => { setOutcomeA("accepted"); setAcceptedViaA("layer1"); }}
-              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 py-2.5 text-[11px] font-bold text-white shadow-md transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 py-2.5 text-[11px] font-bold text-primary-foreground shadow-md transition-colors cursor-pointer"
             >
               Accept All
             </button>
@@ -207,7 +207,7 @@ export function CustomisationCond1({
                     checked={onIdsA.includes(c.id)}
                     disabled={c.locked}
                     onChange={() => toggle(c.id, setOnIdsA)}
-                    className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${c.locked ? "" : "accent-red-500"}`}
+                    className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 ${c.locked ? "" : "accent-primary"}`}
                   />
                   <span className="min-w-0 flex-1">
                     <span className={`block text-[10px] leading-relaxed ${c.locked ? "text-muted-foreground/50" : "text-foreground/80"}`}>
@@ -227,7 +227,7 @@ export function CustomisationCond1({
               </button>
               <button
                 onClick={() => { setCustomisingA(false); setOutcomeA("accepted"); setAcceptedViaA("custom"); }}
-                className="w-full rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="w-full rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
               >
                 Save preferences
               </button>
@@ -239,8 +239,8 @@ export function CustomisationCond1({
         )}
 
         {outcomeA !== "none" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

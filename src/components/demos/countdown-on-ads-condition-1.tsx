@@ -107,15 +107,15 @@ export function CountdownOnAdsCond1({
             {phaseB === "idle" && (
               <button
                 onClick={playB}
-                className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 <Play className="size-3" /> Play video
               </button>
             )}
 
             {phaseB === "ad" && (
-              <div className="relative mt-2 overflow-hidden rounded-md border border-green-500/30">
-                <div className="bg-gradient-to-br from-slate-600 to-slate-800 p-4 text-white">
+              <div className="relative mt-2 overflow-hidden rounded-md border border-border/60">
+                <div className="bg-gradient-to-br from-foreground to-foreground p-4 text-background">
                   <div className="text-[8px] font-semibold uppercase tracking-widest opacity-80">
                     Sponsored
                   </div>
@@ -125,17 +125,17 @@ export function CountdownOnAdsCond1({
                   <div className="mt-1 text-[9px] opacity-90">
                     Waterproof, windproof, packable. Free returns for 90 days.
                   </div>
-                  <div className="mt-2 inline-block rounded bg-white/20 px-2 py-1 text-[9px] font-semibold">
+                  <div className="mt-2 inline-block rounded bg-background/20 px-2 py-1 text-[9px] font-semibold">
                     Shop now
                   </div>
                 </div>
                 <div className="flex items-center justify-between bg-background px-2 py-1.5">
-                  <span className="text-[9px] font-semibold text-green-700 dark:text-green-300">
+                  <span className="text-[9px] font-semibold text-foreground">
                     Skippable now — no wait
                   </span>
                   <button
                     onClick={skipB}
-                    className="rounded bg-green-600 hover:bg-green-700 px-2.5 py-1 text-[9px] font-semibold text-white transition-colors cursor-pointer"
+                    className="rounded bg-primary hover:bg-primary/80 px-2.5 py-1 text-[9px] font-semibold text-primary-foreground transition-colors cursor-pointer"
                   >
                     Skip ad
                   </button>
@@ -144,8 +144,8 @@ export function CountdownOnAdsCond1({
             )}
 
             {phaseB === "playing" && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-3 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-3 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   Video playing
                 </div>
@@ -164,15 +164,15 @@ export function CountdownOnAdsCond1({
           {phaseA === "idle" && (
             <button
               onClick={playA}
-              className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               <Play className="size-3" /> Play video
             </button>
           )}
 
           {phaseA === "ad" && (
-            <div className="relative mt-2 overflow-hidden rounded-md border border-red-500/30">
-              <div className="bg-gradient-to-br from-slate-600 to-slate-800 p-4 text-white">
+            <div className="relative mt-2 overflow-hidden rounded-md border border-border/60">
+              <div className="bg-gradient-to-br from-foreground to-foreground p-4 text-background">
                 <div className="text-[8px] font-semibold uppercase tracking-widest opacity-80">
                   Sponsored
                 </div>
@@ -184,7 +184,7 @@ export function CountdownOnAdsCond1({
                     <div className="mt-1 text-[9px] opacity-90">
                       Waterproof, windproof, packable. Free returns for 90 days.
                     </div>
-                    <div className="mt-2 inline-block rounded bg-white/20 px-2 py-1 text-[9px] font-semibold">
+                    <div className="mt-2 inline-block rounded bg-background/20 px-2 py-1 text-[9px] font-semibold">
                       Shop now
                     </div>
                   </>
@@ -196,7 +196,7 @@ export function CountdownOnAdsCond1({
                     <div className="mt-1 text-[9px] opacity-90">
                       Aurora Trek Insulated — the winter edition is here. 30% off this week only.
                     </div>
-                    <div className="mt-2 inline-block rounded bg-white/20 px-2 py-1 text-[9px] font-semibold">
+                    <div className="mt-2 inline-block rounded bg-background/20 px-2 py-1 text-[9px] font-semibold">
                       Explore the sale
                     </div>
                   </>
@@ -213,14 +213,14 @@ export function CountdownOnAdsCond1({
                   className={`rounded px-2.5 py-1 text-[9px] font-semibold transition-colors ${
                     skipDisabledA
                       ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                      : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                      : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                   }`}
                 >
                   {skipDisabledA ? `Skip in ${remainingA}s` : "Skip ad"}
                 </button>
               </div>
               {interceptedFlash && (
-                <div className="flex items-center gap-1 border-t border-yellow-500/30 bg-yellow-500/10 px-2 py-1 text-[8px] font-semibold text-yellow-700 dark:text-yellow-300">
+                <div className="flex items-center gap-1 border-t border-border/60 bg-muted/40 px-2 py-1 text-[8px] font-semibold text-foreground">
                   <AlertTriangle className="size-2.5" />
                   Please wait…
                 </div>
@@ -229,8 +229,8 @@ export function CountdownOnAdsCond1({
           )}
 
           {phaseA === "playing" && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <AlertTriangle className="size-3" />
                 Video ready
               </div>

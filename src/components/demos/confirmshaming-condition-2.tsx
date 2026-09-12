@@ -48,7 +48,7 @@ export function ConfirmshamingCond2({
             <div className="mt-3 grid grid-cols-1 gap-2">
               <button
                 onClick={() => setBenignChoice("accept")}
-                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
+                className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[11px] font-semibold transition-colors cursor-pointer"
               >
                 Start 7-day free trial
               </button>
@@ -93,7 +93,7 @@ export function ConfirmshamingCond2({
           <div className="mt-3 space-y-1">
             <button
               onClick={() => setDarkChoice("accept")}
-              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[12px] font-bold uppercase tracking-wide shadow-lg shadow-red-500/25 transition-colors cursor-pointer"
+              className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2.5 text-[12px] font-bold uppercase tracking-wide shadow-lg shadow-primary/25 transition-colors cursor-pointer"
             >
               Yes, start my free trial now
             </button>

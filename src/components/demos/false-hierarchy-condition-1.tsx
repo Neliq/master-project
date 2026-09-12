@@ -40,8 +40,8 @@ export function FalseHierarchyCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <Cookie className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted">
+                <Cookie className="h-3.5 w-3.5 text-foreground" />
               </div>
               <div>
                 <h3 className="text-[11px] font-semibold">Cookie consent</h3>
@@ -58,13 +58,13 @@ export function FalseHierarchyCond1({
             <div className="mt-3 grid grid-cols-1 gap-1.5">
               <button
                 onClick={() => setBenignChoice("accept")}
-                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
+                className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Accept all cookies
               </button>
               <button
                 onClick={() => setBenignChoice("reject")}
-                className="w-full rounded-md border border-green-600/50 bg-background text-green-700 dark:text-green-300 hover:bg-green-500/5 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
+                className="w-full rounded-md border border-border/60 bg-background text-foreground hover:bg-muted/40 py-1.5 px-3 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Reject all
               </button>
@@ -72,8 +72,8 @@ export function FalseHierarchyCond1({
           </div>
 
           {benignChoice && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <CheckCircle2 className="w-3 h-3" />
                 {benignChoice === "accept" ? "Cookies accepted" : "All cookies rejected"} — as chosen
               </div>
@@ -89,8 +89,8 @@ export function FalseHierarchyCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <Cookie className="h-3.5 w-3.5 text-red-600 dark:text-red-400" />
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-muted">
+              <Cookie className="h-3.5 w-3.5 text-foreground" />
             </div>
             <div>
               <h3 className="text-[11px] font-semibold">Cookie consent</h3>
@@ -107,7 +107,7 @@ export function FalseHierarchyCond1({
             {/* B_business: primary interactive component — one click to accept */}
             <button
               onClick={() => setDarkChoice("accept")}
-              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 px-3 text-[11px] font-semibold transition-colors cursor-pointer"
+              className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 px-3 text-[11px] font-semibold transition-colors cursor-pointer"
             >
               Accept all cookies
             </button>
@@ -144,7 +144,7 @@ export function FalseHierarchyCond1({
                         type="checkbox"
                         defaultChecked={on as boolean}
                         disabled={label === "Essential cookies"}
-                        className="h-3 w-3 accent-red-500"
+                        className="h-3 w-3 accent-primary"
                       />
                     </label>
                   ))}
@@ -158,7 +158,7 @@ export function FalseHierarchyCond1({
                   </button>
                   <button
                     onClick={() => setDarkChoice("accept")}
-                    className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                    className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                   >
                     Save preferences
                   </button>

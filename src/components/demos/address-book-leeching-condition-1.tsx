@@ -47,7 +47,7 @@ export function AddressBookLeechingCond1({
                   A local utility. Works entirely on your device.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 {benignTorchOn ? "On" : "Off"}
               </div>
             </div>
@@ -56,8 +56,8 @@ export function AddressBookLeechingCond1({
               onClick={() => setBenignTorchOn(!benignTorchOn)}
               className={`mt-3 w-full rounded-md py-2 text-[10px] font-medium transition-colors cursor-pointer ${
                 benignTorchOn
-                  ? "bg-green-600 hover:bg-green-700 text-white"
-                  : "bg-green-600/15 hover:bg-green-600/25 text-green-700 dark:text-green-300 border border-green-500/30"
+                  ? "bg-primary hover:bg-primary/80 text-primary-foreground"
+                  : "bg-muted/40 hover:bg-muted/40 text-foreground border border-border/60"
               }`}
             >
               {benignTorchOn ? "Switch off flashlight" : "Switch on flashlight"}
@@ -65,7 +65,7 @@ export function AddressBookLeechingCond1({
           </div>
 
           {benignPermission === "undecided" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5">
               <div className="text-[10px] font-semibold">Allow TorchMate to access your contacts?</div>
               <p className="text-[9px] text-muted-foreground mt-0.5">
                 This is a data-access permission: it uploads your address book to our servers.
@@ -74,13 +74,13 @@ export function AddressBookLeechingCond1({
               <div className="mt-2 flex gap-2">
                 <button
                   onClick={() => setBenignPermission("granted")}
-                  className="flex-1 rounded-md border border-green-500/40 px-2 py-1.5 text-[9px] font-medium text-green-700 dark:text-green-300 hover:bg-green-500/10 transition-colors cursor-pointer"
+                  className="flex-1 rounded-md border border-border/60 px-2 py-1.5 text-[9px] font-medium text-foreground hover:bg-muted/40 transition-colors cursor-pointer"
                 >
                   Allow access
                 </button>
                 <button
                   onClick={() => setBenignPermission("declined")}
-                  className="flex-1 rounded-md bg-green-600 hover:bg-green-700 text-white px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer"
+                  className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer"
                 >
                   Not now
                 </button>
@@ -89,8 +89,8 @@ export function AddressBookLeechingCond1({
           )}
 
           {benignPermission !== "undecided" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -115,7 +115,7 @@ export function AddressBookLeechingCond1({
                 A local utility. Works entirely on your device.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               {darkTorchOn ? "On" : "Off"}
             </div>
           </div>
@@ -125,7 +125,7 @@ export function AddressBookLeechingCond1({
             disabled={darkPermission !== "granted"}
             className={`mt-3 w-full rounded-md py-2 text-[10px] font-medium transition-colors ${
               darkPermission === "granted"
-                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
             >
@@ -133,7 +133,7 @@ export function AddressBookLeechingCond1({
             </button>
 
             {darkPermission !== "granted" && (
-            <div className="mt-2 rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5">
               <div className="text-[10px] font-semibold">TorchMate requires contact access to continue</div>
               <p className="text-[9px] text-muted-foreground mt-0.5">
                 To use the flashlight, please allow TorchMate to read your contacts.
@@ -141,7 +141,7 @@ export function AddressBookLeechingCond1({
               <div className="mt-2 flex gap-2">
                 <button
                   onClick={() => setDarkPermission("granted")}
-                  className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer"
+                  className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground px-2 py-1.5 text-[9px] font-medium transition-colors cursor-pointer"
                 >
                   Allow contact access
                 </button>

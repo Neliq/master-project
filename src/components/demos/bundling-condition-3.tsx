@@ -88,7 +88,7 @@ export function BundlingCond3({
               <ul className="mt-1.5 grid grid-cols-1 gap-0.5">
                 {specRows.map((s) => (
                   <li key={s} className="flex items-center gap-1 text-[8px] text-muted-foreground">
-                    <svg className="h-2 w-2 shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <svg className="h-2 w-2 shrink-0 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                     {s}
@@ -100,8 +100,8 @@ export function BundlingCond3({
 
           <button
             onClick={() => (dark ? setAddedDark(true) : setAddedBenign(true))}
-            className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-              dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+            className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-primary-foreground transition-colors ${
+              dark ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"
             }`}
           >
             {isAdded ? "Added to cart ✓" : "Add bundle to cart"}
@@ -135,7 +135,7 @@ export function BundlingCond3({
               <ul className="mt-1.5 space-y-0.5">
                 {STANDALONE_SPECS.map((s) => (
                   <li key={s} className="flex items-center gap-1 text-[8px] text-muted-foreground">
-                    <svg className="h-2 w-2 shrink-0 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <svg className="h-2 w-2 shrink-0 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                       <path d="M20 6L9 17l-5-5" />
                     </svg>
                     {s}
@@ -151,8 +151,8 @@ export function BundlingCond3({
 
         {isAdded &&
           (dark ? (
-            <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-yellow-700 dark:text-yellow-300">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-foreground">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -165,8 +165,8 @@ export function BundlingCond3({
               </p>
             </div>
           ) : (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-green-700 dark:text-green-300">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold uppercase tracking-tight text-foreground">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>

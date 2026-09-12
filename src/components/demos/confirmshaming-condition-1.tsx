@@ -45,7 +45,7 @@ export function ConfirmshamingCond1({
             <div className="mt-3 space-y-2">
               <button
                 onClick={() => setChoice("accept")}
-                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
+                className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[11px] font-semibold transition-colors cursor-pointer"
               >
                 Yes, claim my 10% discount
               </button>
@@ -89,7 +89,7 @@ export function ConfirmshamingCond1({
           <div className="mt-3 space-y-2">
             <button
               onClick={() => setChoice("accept")}
-              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
+              className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[11px] font-semibold transition-colors cursor-pointer"
             >
               Yes, claim my 10% discount
             </button>

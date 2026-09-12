@@ -62,7 +62,7 @@ export function AutomaticAcceptThirdPartyTermCond1({
                 type="checkbox"
                 checked={acceptedB}
                 onChange={(e) => setAcceptedB(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-green-500"
+                className="mt-0.5 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -89,7 +89,7 @@ export function AutomaticAcceptThirdPartyTermCond1({
                         next[i] = e.target.checked;
                         setPartnersB(next);
                       }}
-                      className="flex-shrink-0 accent-green-500"
+                      className="flex-shrink-0 accent-primary"
                     />
                     <span className="text-[9px] text-foreground/80">{name}</span>
                     <span className="ml-auto text-[8px] text-muted-foreground/50">view terms</span>
@@ -106,7 +106,7 @@ export function AutomaticAcceptThirdPartyTermCond1({
               disabled={!acceptedB}
               className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 acceptedB
-                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -115,8 +115,8 @@ export function AutomaticAcceptThirdPartyTermCond1({
           </div>
 
           {createdB && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -144,7 +144,7 @@ export function AutomaticAcceptThirdPartyTermCond1({
               type="checkbox"
               checked={acceptedA}
               onChange={(e) => setAcceptedA(e.target.checked)}
-              className="mt-0.5 flex-shrink-0 accent-red-500"
+              className="mt-0.5 flex-shrink-0 accent-primary"
             />
             <div className="min-w-0 flex-1">
               <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -161,7 +161,7 @@ export function AutomaticAcceptThirdPartyTermCond1({
             disabled={!acceptedA}
             className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               acceptedA
-                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >

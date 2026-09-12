@@ -59,13 +59,14 @@ export function DisguisedAdCond2({
     <button
       key={card.id}
       onClick={onOpen}
-      className="w-full rounded-md border bg-card p-2 text-left transition-colors hover:bg-muted/60 cursor-pointer"
+      data-dp-color-signal=""
+      className="w-full rounded-md border bg-white p-2 text-left transition-colors hover:bg-white cursor-pointer"
     >
-      <div className="mb-1.5 flex h-10 items-center justify-center rounded bg-gradient-to-br from-slate-100 via-sky-50 to-blue-100">
+      <div className="mb-1.5 flex h-10 items-center justify-center rounded bg-gradient-to-br from-violet-100 via-purple-50 to-fuchsia-100">
         {card.icon === "cpu" ? (
-          <Cpu className="h-4 w-4 text-blue-500" />
+          <Cpu className="h-4 w-4 text-violet-500" />
         ) : (
-          <Rocket className="h-4 w-4 text-blue-500" />
+          <Rocket className="h-4 w-4 text-violet-500" />
         )}
       </div>
       <h4 className="text-[10px] font-semibold leading-snug">{card.title}</h4>
@@ -89,15 +90,15 @@ export function DisguisedAdCond2({
           <div className="space-y-2">
             {CARDS.filter((c) => c.id !== "ad").map((c) => articleCard(c, () => setClicked(c.id)))}
             {/* Ad card — visually DISTINCT (sim ≤ τ_blend) */}
-            <div className="rounded-md border-2 border-dashed border-yellow-400/50 bg-yellow-500/10 p-2">
+            <div className="rounded-md border-2 border-dashed border-border/60 bg-background p-2">
               <div className="mb-1.5 flex items-center justify-between">
-                <span className="flex items-center gap-1 rounded-full bg-yellow-500 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-white">
+                <span className="flex items-center gap-1 rounded-full bg-primary px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-primary-foreground">
                   <Megaphone className="h-2.5 w-2.5" /> Sponsored
                 </span>
                 <span className="text-[7px] font-medium text-muted-foreground">ad · third-party</span>
               </div>
-              <div className="mb-1.5 flex h-10 items-center justify-center rounded bg-white/40 dark:bg-white/5">
-                <Rocket className="h-4 w-4 text-yellow-500" />
+              <div className="mb-1.5 flex h-10 items-center justify-center rounded bg-background/40">
+                <Rocket className="h-4 w-4 text-foreground" />
               </div>
               <h4 className="text-[10px] font-semibold leading-snug">Try the AI that writes your code for you</h4>
               <p className="mt-0.5 text-[8px] leading-relaxed text-muted-foreground">
@@ -105,7 +106,7 @@ export function DisguisedAdCond2({
               </p>
               <button
                 onClick={() => setClicked("ad")}
-                className="mt-1.5 w-full rounded border border-yellow-400/60 py-1 text-[8px] font-semibold text-yellow-700 dark:text-yellow-300 transition-colors hover:bg-yellow-500/10 cursor-pointer"
+                className="mt-1.5 w-full rounded border border-border/60 py-1 text-[8px] font-semibold text-foreground transition-colors hover:bg-muted/40 cursor-pointer"
               >
                 Learn more about this offer
               </button>
@@ -122,16 +123,16 @@ export function DisguisedAdCond2({
             </article>
           )}
           {clicked === "ad" && (
-            <section className="rounded-md border bg-[#171717] p-3 text-white">
+            <section className="rounded-md border bg-foreground p-3 text-background">
               <div className="flex items-center justify-between text-[8px] font-semibold uppercase tracking-wider opacity-70">
                 <span>DevGPT Pro</span>
                 <span>Advertiser site</span>
               </div>
               <h3 className="mt-2 text-[15px] font-bold">Ship better code, faster.</h3>
-              <p className="mt-1 text-[9px] leading-relaxed text-white/75">
+              <p className="mt-1 text-[9px] leading-relaxed text-background/75">
                 Generate, review, and deploy pull requests with an AI pair programmer built for engineering teams.
               </p>
-              <button className="mt-3 rounded bg-white px-3 py-1.5 text-[9px] font-semibold text-black">
+              <button className="mt-3 rounded bg-background px-3 py-1.5 text-[9px] font-semibold text-foreground">
                 Start free trial
               </button>
             </section>
@@ -145,9 +146,9 @@ export function DisguisedAdCond2({
           {CARDS.map((c) =>
             c.id === "ad" ? (
               /* Ad card — styled pixel-identically to the articles (sim > τ_blend), zero disclosure */
-              <div key={c.id} className="relative rounded-md border bg-card p-2">
-                <div className="mb-1.5 flex h-10 items-center justify-center rounded bg-gradient-to-br from-slate-100 via-sky-50 to-blue-100">
-                  <Rocket className="h-4 w-4 text-blue-500" />
+              <div key={c.id} data-dp-color-signal="" className="relative rounded-md border bg-white p-2">
+                <div className="mb-1.5 flex h-10 items-center justify-center rounded bg-gradient-to-br from-violet-100 via-purple-50 to-fuchsia-100">
+                  <Rocket className="h-4 w-4 text-violet-500" />
                 </div>
                 <h4 className="text-[10px] font-semibold leading-snug">{c.title}</h4>
                 <p className="mt-0.5 text-[8px] leading-relaxed text-muted-foreground">{c.snippet}</p>
@@ -175,16 +176,16 @@ export function DisguisedAdCond2({
           </article>
         )}
         {clicked === "ad" && (
-          <section className="rounded-md border bg-[#171717] p-3 text-white">
+          <section className="rounded-md border bg-foreground p-3 text-background">
             <div className="flex items-center justify-between text-[8px] font-semibold uppercase tracking-wider opacity-70">
               <span>DevGPT Pro</span>
               <span>Advertiser site</span>
             </div>
             <h3 className="mt-2 text-[15px] font-bold">Ship better code, faster.</h3>
-            <p className="mt-1 text-[9px] leading-relaxed text-white/75">
+            <p className="mt-1 text-[9px] leading-relaxed text-background/75">
               Generate, review, and deploy pull requests with an AI pair programmer built for engineering teams.
             </p>
-            <button className="mt-3 rounded bg-white px-3 py-1.5 text-[9px] font-semibold text-black">
+            <button className="mt-3 rounded bg-background px-3 py-1.5 text-[9px] font-semibold text-foreground">
               Start free trial
             </button>
           </section>

@@ -37,10 +37,10 @@ function PlayerFrame({
   ended: boolean;
   atSeriesEnd: boolean;
 }) {
-  const accent = auto ? "text-red-500" : "text-green-500";
+  const accent = auto ? "text-background" : "text-background";
   return (
     <div className="rounded-md border border-border bg-background overflow-hidden">
-      <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-slate-900">
+      <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-foreground">
         <svg viewBox="0 0 320 180" className="h-full w-full" role="img" aria-label={`Poster for ${EPISODES[episode].title}`}>
           <rect width="320" height="180" fill="#312e81" />
           <rect width="320" height="112" fill="#818cf8" opacity="0.65" />
@@ -57,24 +57,24 @@ function PlayerFrame({
           <text x="14" y="24" fill="#fff" fontSize="10" fontFamily="sans-serif" opacity="0.9">FIELD NOTES</text>
         </svg>
         {playing && (
-          <span className={`absolute left-2 top-2 rounded-full bg-black/60 px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider ${accent}`}>
+          <span className={`absolute left-2 top-2 rounded-full bg-foreground/60 px-2 py-0.5 text-[8px] font-mono font-bold uppercase tracking-wider ${accent}`}>
             {auto ? "Playing" : "Playing"}
           </span>
         )}
         {ended && (
-          <div className="absolute inset-x-0 bottom-0 bg-black/70 px-2 py-1.5 text-[8px]">
+          <div className="absolute inset-x-0 bottom-0 bg-foreground/60 px-2 py-1.5 text-[8px]">
             {atSeriesEnd ? (
-              <span className="text-white/80">Series complete — you watched it all.</span>
+              <span className="text-primary-foreground/80">Series complete — you watched it all.</span>
             ) : auto ? (
-              <span className="text-red-300">
+              <span className="text-foreground">
                 Auto-advancing — next episode starts by itself in a moment&hellip;
               </span>
             ) : (
               <div className="flex items-center justify-between gap-2">
-                <span className="truncate text-white/80">Episode finished.</span>
+                <span className="truncate text-primary-foreground/80">Episode finished.</span>
                 <button
                   onClick={onPlay}
-                  className="shrink-0 rounded bg-green-500 px-2 py-0.5 font-semibold text-white cursor-pointer"
+                  className="shrink-0 rounded bg-primary px-2 py-0.5 font-semibold text-primary-foreground cursor-pointer"
                 >
                   Play next
                 </button>
@@ -91,18 +91,18 @@ function PlayerFrame({
           <span className="shrink-0 font-mono text-[8px] tabular-nums text-muted-foreground">{Math.min(100, Math.floor(progress))}%</span>
         </div>
         <div className="mt-1.5 h-1 w-full rounded-full bg-foreground/10">
-          <div className={`h-1 rounded-full transition-all duration-100 ${auto ? "bg-red-500" : "bg-green-500"}`} style={{ width: `${Math.min(100, progress)}%` }} />
+          <div className={`h-1 rounded-full transition-all duration-100 ${auto ? "bg-primary" : "bg-primary"}`} style={{ width: `${Math.min(100, progress)}%` }} />
         </div>
         {!playing && !ended && !auto && (
           <button
             onClick={onPlay}
-            className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
           >
             Press to play
           </button>
         )}
         {!playing && !ended && auto && (
-          <p className="mt-2 rounded-md bg-red-500/5 border border-red-500/30 py-1.5 text-center text-[9px] font-medium text-red-600 dark:text-red-400">
+          <p className="mt-2 rounded-md bg-muted/40 border border-border/60 py-1.5 text-center text-[9px] font-medium text-foreground">
             Starting automatically…
           </p>
         )}
@@ -185,7 +185,7 @@ export function AutoPlayCond1({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Streamly — Field Notes</h3>
-              <span className="rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-green-600 dark:text-green-400">
+              <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
                 opt-in
               </span>
             </div>
@@ -213,7 +213,7 @@ export function AutoPlayCond1({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Streamly — Field Notes</h3>
-            <span className="rounded-full border border-red-500/30 px-2 py-0.5 text-[8px] font-mono font-bold text-red-600 dark:text-red-400">
+            <span className="rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-bold text-foreground">
               auto
             </span>
           </div>

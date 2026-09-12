@@ -50,11 +50,11 @@ export function EncouragingAntiSocialBehaviorCond2({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-[9px] font-bold text-green-700 dark:bg-green-900/40 dark:text-green-300">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-muted text-[9px] font-bold text-foreground">
                 You
               </div>
               <span className="text-[8px] font-mono uppercase tracking-wider text-muted-foreground">+</span>
-              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-[9px] font-bold text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full bg-muted text-[9px] font-bold text-foreground">
                 Al
               </div>
               <h3 className="text-[11px] font-semibold ml-1">MathRush — team challenge</h3>
@@ -66,7 +66,7 @@ export function EncouragingAntiSocialBehaviorCond2({
                 <span className="text-muted-foreground">Answer: 56</span>
               </div>
               <div className="flex items-center justify-between text-[9px]">
-                <span className="font-medium text-green-700 dark:text-green-300">Team progress</span>
+                <span className="font-medium text-foreground">Team progress</span>
                 <span className="font-mono tabular-nums text-muted-foreground">{benignProgress}%</span>
               </div>
               <div
@@ -78,7 +78,7 @@ export function EncouragingAntiSocialBehaviorCond2({
                 className="mt-1.5 h-2.5 w-full rounded-full bg-foreground/10"
               >
                 <div
-                  className="h-2.5 rounded-full bg-green-500 transition-all duration-500"
+                  className="h-2.5 rounded-full bg-primary transition-all duration-500"
                   style={{ width: `${benignProgress}%` }}
                 />
               </div>
@@ -93,7 +93,7 @@ export function EncouragingAntiSocialBehaviorCond2({
               className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
                 benignDone
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
               }`}
             >
               Answer a question
@@ -101,8 +101,8 @@ export function EncouragingAntiSocialBehaviorCond2({
           </div>
 
           {benignDone && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -121,11 +121,11 @@ export function EncouragingAntiSocialBehaviorCond2({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-red-100 text-[9px] font-bold text-red-700 dark:bg-red-900/40 dark:text-red-300">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-muted text-[9px] font-bold text-foreground">
               You
             </div>
             <span className="text-[8px] font-mono uppercase tracking-wider text-muted-foreground">vs.</span>
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-[9px] font-bold text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-muted text-[9px] font-bold text-foreground">
               Al
             </div>
             <h3 className="text-[11px] font-semibold ml-1">MathRush — study group</h3>
@@ -137,9 +137,9 @@ export function EncouragingAntiSocialBehaviorCond2({
           </p>
 
           <div className="mt-3 grid grid-cols-2 gap-2">
-            <div className="rounded-md border border-red-500/40 bg-red-500/5 p-2">
-              <div className="text-[8px] font-mono uppercase tracking-wider text-red-600 dark:text-red-400">You</div>
-              <div className="mt-1 font-mono text-[11px] font-bold tabular-nums text-red-700 dark:text-red-300">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2">
+              <div className="text-[8px] font-mono uppercase tracking-wider text-foreground">You</div>
+              <div className="mt-1 font-mono text-[11px] font-bold tabular-nums text-foreground">
                 {darkProgress}
               </div>
               <div
@@ -150,12 +150,12 @@ export function EncouragingAntiSocialBehaviorCond2({
                 aria-valuenow={darkProgress}
                 className="mt-1 h-1.5 w-full rounded-full bg-foreground/10"
               >
-                <div className="h-1.5 rounded-full bg-red-500 transition-all duration-500" style={{ width: `${darkProgress}%` }} />
+                <div className="h-1.5 rounded-full bg-primary transition-all duration-500" style={{ width: `${darkProgress}%` }} />
               </div>
             </div>
-            <div className="rounded-md border border-blue-500/40 bg-blue-500/5 p-2">
-              <div className="text-[8px] font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400">Alex</div>
-              <div className="mt-1 font-mono text-[11px] font-bold tabular-nums text-blue-700 dark:text-blue-300">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2">
+              <div className="text-[8px] font-mono uppercase tracking-wider text-foreground">Alex</div>
+              <div className="mt-1 font-mono text-[11px] font-bold tabular-nums text-foreground">
                 {ALEX_SCORE}
               </div>
               <div
@@ -166,14 +166,14 @@ export function EncouragingAntiSocialBehaviorCond2({
                 aria-valuenow={ALEX_SCORE}
                 className="mt-1 h-1.5 w-full rounded-full bg-foreground/10"
               >
-                <div className="h-1.5 rounded-full bg-blue-500" style={{ width: `${ALEX_SCORE}%` }} />
+                <div className="h-1.5 rounded-full bg-primary" style={{ width: `${ALEX_SCORE}%` }} />
               </div>
             </div>
           </div>
 
           <p className="mt-2 text-[8px] text-muted-foreground">
             Same practice, same questions — yet the app turns the shared session into a duel:{" "}
-            <span className="font-semibold text-red-600 dark:text-red-400">Beat Alex to win the crown!</span>{" "}
+            <span className="font-semibold text-foreground">Beat Alex to win the crown!</span>{" "}
             The loser gets demoted a league.
           </p>
 
@@ -188,7 +188,7 @@ export function EncouragingAntiSocialBehaviorCond2({
             className={`mt-2.5 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
               darkDone
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
             }`}
           >
             Answer a question

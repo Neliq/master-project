@@ -69,7 +69,7 @@ export function DripPricingCond3({
       <div className="text-muted-foreground">
         T_final ∩ K_fees = {"{reservation service fee, booking fee, convenience charge}"} ≠ ∅
       </div>
-      <div className="text-red-500">⟹ trigger: T_initial ∩ K_fees = ∅ ∧ T_final ∩ K_fees ≠ ∅</div>
+      <div className="text-foreground">⟹ trigger: T_initial ∩ K_fees = ∅ ∧ T_final ∩ K_fees ≠ ∅</div>
     </div>
   ) : (
     <div className="space-y-1 rounded-md border bg-background p-2 text-[8px] leading-relaxed">
@@ -112,7 +112,7 @@ export function DripPricingCond3({
             <div className="shrink-0 text-right">
               <div
                 className={`text-[16px] font-bold tabular-nums ${
-                  dark ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
+                  dark ? "text-foreground" : "text-foreground"
                 }`}
               >
                 {usd(NIGHT_RATE)}
@@ -122,8 +122,8 @@ export function DripPricingCond3({
           </div>
 
           {dark ? null : (
-            <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] leading-relaxed">
-              <strong className="text-green-700 dark:text-green-300">Total for {NIGHTS} nights: {usd(GRAND_TOTAL)}</strong>{" "}
+            <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] leading-relaxed">
+              <strong className="text-foreground">Total for {NIGHTS} nights: {usd(GRAND_TOTAL)}</strong>{" "}
               <span className="text-muted-foreground">
                 — includes reservation service fee, booking fee and convenience charge.
               </span>
@@ -132,8 +132,8 @@ export function DripPricingCond3({
 
           <button
             onClick={() => setPage(1)}
-            className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-              dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+            className={`mt-3 w-full cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-primary-foreground transition-colors ${
+              dark ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"
             }`}
           >
             Continue to booking
@@ -160,8 +160,8 @@ export function DripPricingCond3({
             </button>
             <button
               onClick={() => setPaid(true)}
-              className={`flex-1 cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-white transition-colors ${
-                dark ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"
+              className={`flex-1 cursor-pointer rounded-md py-1.5 text-[10px] font-medium text-primary-foreground transition-colors ${
+                dark ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"
               }`}
             >
               {paid ? "Paid" : `Pay ${usd(GRAND_TOTAL)}`}

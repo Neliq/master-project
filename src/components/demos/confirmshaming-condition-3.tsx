@@ -36,7 +36,7 @@ export function ConfirmshamingCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-2.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-foreground">
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 22c-4.5-3.5-8-6.6-8-10.5C4 7.6 7 5 10.5 5c1.9 0 3.7.9 4.9 2.4 1.2-1.5 3-2.4 4.9-2.4 3.5 0 6.5 2.6 6.5 6.5 0 3.9-3.5 7-8 10.5z" />
                   <path d="M8 3c1.5 0 2.5 1 3 2" />
@@ -53,7 +53,7 @@ export function ConfirmshamingCond3({
             <div className="mt-3 space-y-2">
               <button
                 onClick={() => setBenignChoice("accept")}
-                className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
+                className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[11px] font-semibold transition-colors cursor-pointer"
               >
                 Yes, add a $2 donation
               </button>
@@ -86,7 +86,7 @@ export function ConfirmshamingCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-2.5">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-foreground">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 22c-4.5-3.5-8-6.6-8-10.5C4 7.6 7 5 10.5 5c1.9 0 3.7.9 4.9 2.4 1.2-1.5 3-2.4 4.9-2.4 3.5 0 6.5 2.6 6.5 6.5 0 3.9-3.5 7-8 10.5z" />
                 <path d="M8 3c1.5 0 2.5 1 3 2" />
@@ -103,7 +103,7 @@ export function ConfirmshamingCond3({
           <div className="mt-3 space-y-2">
             <button
               onClick={() => setDarkChoice("accept")}
-              className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[11px] font-semibold transition-colors cursor-pointer"
+              className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[11px] font-semibold transition-colors cursor-pointer"
             >
               Yes, I care about the planet — add the donation
             </button>

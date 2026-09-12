@@ -94,7 +94,7 @@ export function ChoiceOverloadCond3({
                       key={p.name}
                       onClick={() => setBenignSelected(p.name)}
                       className={`cursor-pointer border-b border-border/50 transition-colors last:border-b-0 ${
-                        benignSelected === p.name ? "bg-green-500/10" : "hover:bg-muted/40"
+                        benignSelected === p.name ? "bg-muted/40" : "hover:bg-muted/40"
                       }`}
                     >
                       <td className="px-2 py-1.5 font-medium">{p.name}</td>
@@ -113,7 +113,7 @@ export function ChoiceOverloadCond3({
               disabled={!benignSelected}
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 benignSelected
-                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -154,8 +154,8 @@ export function ChoiceOverloadCond3({
                 key={p.name}
                 className={`block cursor-pointer rounded-md border p-2 transition-colors ${
                   darkSelected === p.name
-                    ? "border-red-500 bg-red-500/10"
-                    : "border-border bg-background hover:border-red-500/40"
+                    ? "border-border bg-muted/40"
+                    : "border-border bg-background hover:border-ring"
                 }`}
               >
                 <input
@@ -170,7 +170,7 @@ export function ChoiceOverloadCond3({
                     <div className="flex items-center gap-1.5">
                       <span className="text-[10px] font-semibold">{p.name}</span>
                       {p.name === MOST_EXPENSIVE && (
-                        <span className="bg-red-600 text-white rounded-full px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
+                        <span className="bg-primary text-primary-foreground rounded-full px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
                           ★ Most popular
                         </span>
                       )}
@@ -193,7 +193,7 @@ export function ChoiceOverloadCond3({
             disabled={!darkSelected}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               darkSelected
-                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >

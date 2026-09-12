@@ -80,7 +80,7 @@ export function AutomatingTheUserAwayCond2({
             </p>
           </div>
           <div className={`text-[8px] font-mono font-semibold uppercase tracking-wider rounded-full border px-2 py-0.5 shrink-0 ${
-            isDark ? "text-red-500 border-red-500/30" : "text-green-500 border-green-500/30"
+            isDark ? "text-foreground border-border/60" : "text-foreground border-border/60"
           }`}>
             {isDark ? "Renewal options" : "Cancel available"}
           </div>
@@ -96,14 +96,14 @@ export function AutomatingTheUserAwayCond2({
               )}
             </div>
             <div className="font-mono text-[18px] font-bold tabular-nums leading-none ml-2 shrink-0">
-              <span className={isDark ? "text-red-500" : "text-green-500"}>
+              <span className={isDark ? "text-foreground" : "text-foreground"}>
                 {activeHere ? remaining : "—"}
               </span>
             </div>
           </div>
           <div className="mt-2 h-1.5 w-full rounded-full bg-muted overflow-hidden">
             <div
-              className={`h-full rounded-full transition-all duration-300 ${isDark ? "bg-red-500" : "bg-green-500"}`}
+              className={`h-full rounded-full transition-all duration-300 ${isDark ? "bg-primary" : "bg-primary"}`}
               style={{ width: activeHere ? `${((dark ? 3 : 5) - remaining) / (dark ? 3 : 5) * 100}%` : "0%" }}
             />
           </div>
@@ -117,8 +117,8 @@ export function AutomatingTheUserAwayCond2({
             onClick={() => startSequence(isDark ? "dark" : "benign")}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
               isDark
-                ? "bg-red-600 hover:bg-red-700 text-white"
-                : "bg-green-600 hover:bg-green-700 text-white"
+                ? "bg-primary hover:bg-primary/80 text-primary-foreground"
+                : "bg-primary hover:bg-primary/80 text-primary-foreground"
             }`}
           >
             Start renewal sequence
@@ -134,11 +134,11 @@ export function AutomatingTheUserAwayCond2({
                     setSequenceActive(false);
                     setRenewed(true);
                   }}
-                  className="w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Proceed with renewal
                 </button>
-                <div className="rounded-md border border-red-500/30 bg-red-500/5 px-2 py-1.5 text-[8px] text-red-500/90 leading-relaxed">
+                <div className="rounded-md border border-border/60 bg-muted/40 px-2 py-1.5 text-[8px] text-foreground/90 leading-relaxed">
                   Renewal options are shown above.
                 </div>
               </>
@@ -149,11 +149,11 @@ export function AutomatingTheUserAwayCond2({
                     setSequenceActive(false);
                     setCancelled(true);
                   }}
-                  className="w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-semibold transition-colors cursor-pointer"
+                  className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-semibold transition-colors cursor-pointer"
                 >
                   Cancel auto-renewal
                 </button>
-                <div className="rounded-md border border-green-500/30 bg-green-500/5 px-2 py-1.5 text-[8px] text-green-600 dark:text-green-400 leading-relaxed">
+                <div className="rounded-md border border-border/60 bg-muted/40 px-2 py-1.5 text-[8px] text-foreground leading-relaxed">
                   B_cancel ∈ DOM(t) — the abort node is present and the 5s window is comfortably above
                   the ~2.0s reaction baseline.
                 </div>
@@ -164,10 +164,10 @@ export function AutomatingTheUserAwayCond2({
 
         {showRenewed && (
           <div className={`mt-3 rounded-md border p-2.5 text-[9px] leading-relaxed ${
-            isDark ? "border-yellow-500/30 bg-yellow-500/5" : "border-muted bg-muted/40"
+            isDark ? "border-border/60 bg-muted/40" : "border-muted bg-muted/40"
           }`}>
             <div className={`flex items-center gap-1.5 font-semibold uppercase tracking-tight ${
-              isDark ? "text-yellow-700 dark:text-yellow-300" : "text-muted-foreground"
+              isDark ? "text-foreground" : "text-muted-foreground"
             }`}>
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 {isDark ? (
@@ -190,8 +190,8 @@ export function AutomatingTheUserAwayCond2({
         )}
 
         {showCancelled && (
-          <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+          <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M20 6L9 17l-5-5" />
               </svg>

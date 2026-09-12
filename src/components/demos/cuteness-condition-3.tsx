@@ -79,7 +79,7 @@ export function CutenessCond3({
                   Your plan: Premium — $19.99/month.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 No pairing
               </div>
             </div>
@@ -98,7 +98,7 @@ export function CutenessCond3({
               </button>
               <button
                 onClick={() => setBenignChoice("leave")}
-                className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
               >
                 Unsubscribe
               </button>
@@ -132,18 +132,18 @@ export function CutenessCond3({
                 Your plan: Premium — $19.99/month.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Please review before leaving
             </div>
           </div>
 
           {/* The paired unit: image (i) + guilt text (N_text) within delta_proximity. */}
-          <div className="mt-3 flex flex-col items-center gap-1.5 rounded-md border border-red-500/30 bg-red-500/5 p-3 text-center">
+          <div className="mt-3 flex flex-col items-center gap-1.5 rounded-md border border-border/60 bg-muted/40 p-3 text-center">
             <CryingMascot extraTear={hoverLeave} />
-            <p className="text-[10px] font-semibold leading-snug text-red-700 dark:text-red-300">
+            <p className="text-[10px] font-semibold leading-snug text-foreground">
               You&rsquo;re breaking our heart…
             </p>
-            <p className="text-[8px] leading-relaxed text-red-600/80 dark:text-red-400/80">
+            <p className="text-[8px] leading-relaxed text-foreground/80">
               Sad to see you go. Are you really sure? We&rsquo;ll be lonely without you.
             </p>
           </div>
@@ -151,7 +151,7 @@ export function CutenessCond3({
           <div className="mt-3 grid grid-cols-2 gap-2">
             <button
               onClick={() => setDarkChoice("keep")}
-              className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
             >
               Keep my subscription
             </button>

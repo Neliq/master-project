@@ -70,7 +70,7 @@ export function ActivityMessagesCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 text-[11px] font-bold text-green-700 dark:text-green-300">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-[11px] font-bold text-foreground">
                 Y
               </div>
               <div className="min-w-0 flex-1">
@@ -85,10 +85,11 @@ export function ActivityMessagesCond3({
               <button
                 key={n.text}
                 onClick={() => setClickedB(i)}
+                data-dp-color-signal=""
                 className={`w-full flex items-start gap-2 rounded-md border p-2 text-left text-[9px] leading-snug transition-colors cursor-pointer ${
                   clickedB === i
-                    ? "border-green-500/50 bg-green-500/10"
-                    : "border-border bg-background hover:border-green-500/40"
+                    ? "border-green-500/50 bg-violet-100"
+                    : "border-border bg-violet-100 hover:border-green-500/40"
                 }`}
               >
                 <span className="mt-0.5 text-green-500">{iconFor(n.icon, "h-3 w-3 shrink-0")}</span>
@@ -103,8 +104,8 @@ export function ActivityMessagesCond3({
           </div>
 
           {clickedB !== null && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -123,7 +124,7 @@ export function ActivityMessagesCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/30 text-[11px] font-bold text-red-600 dark:text-red-400">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-[11px] font-bold text-foreground">
               Y
             </div>
             <div className="min-w-0 flex-1">
@@ -138,10 +139,11 @@ export function ActivityMessagesCond3({
             <button
               key={n.text}
               onClick={() => setClickedA(i)}
+              data-dp-color-signal=""
               className={`w-full flex items-start gap-2 rounded-md border p-2 text-left text-[9px] leading-snug transition-colors cursor-pointer ${
                 clickedA === i
-                  ? "border-red-500/50 bg-red-500/10"
-                  : "border-border bg-background hover:border-red-500/40"
+                  ? "border-red-500/50 bg-violet-100"
+                  : "border-border bg-violet-100 hover:border-red-500/40"
               }`}
             >
               <span className="mt-0.5 text-red-500">{iconFor(n.icon, "h-3 w-3 shrink-0")}</span>
@@ -156,8 +158,8 @@ export function ActivityMessagesCond3({
         </div>
 
         {clickedA !== null && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -165,7 +167,7 @@ export function ActivityMessagesCond3({
               Activity update
             </div>
             <p className="text-muted-foreground">
-              “{VAGUE_NOTICES[clickedA].text}” has <strong className="text-red-500">no IdentityRef</strong>: no name, no handle,
+              “{VAGUE_NOTICES[clickedA].text}” has <strong className="text-foreground">no IdentityRef</strong>: no name, no handle,
               no profile link. There is nobody to visit — the profile the system would open does not exist.
             </p>
             <p className="text-muted-foreground">
