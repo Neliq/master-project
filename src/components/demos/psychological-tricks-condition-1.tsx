@@ -39,7 +39,7 @@ function TierCard({
   onSelect: () => void;
   accent: "rose" | "emerald";
 }) {
-  const ring = accent === "rose" ? "ring-red-500/50 border-red-500/40" : "ring-green-500/50 border-green-500/40";
+  const ring = accent === "rose" ? "ring-ring/50 border-border/60" : "ring-ring/50 border-border/60";
   return (
     <button
       onClick={onSelect}
@@ -50,7 +50,7 @@ function TierCard({
       <div className="flex items-center justify-between gap-1">
         <span className="text-[10px] font-semibold">{tier.name}</span>
         {tier.featured && (
-          <span className="rounded-full bg-yellow-500/15 text-yellow-700 dark:text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
+          <span className="rounded-full bg-muted/40 text-foreground border border-border/60 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
             Most popular
           </span>
         )}
@@ -97,8 +97,8 @@ export function PsychologicalTricksCond1({
           </div>
 
           {benignSelected && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>

@@ -75,14 +75,14 @@ export function PlainEvilCond3({
               <button
                 aria-pressed={decisionB === "delete"}
                 onClick={() => { setDecisionB("delete"); setRevealedB(true); }}
-                className={`rounded-md border border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20 py-2 text-[10px] font-medium transition-colors cursor-pointer ${decisionB === "delete" ? "ring-2 ring-primary/40" : ""}`}
+                className={`rounded-md border border-border/60 bg-muted/40 text-foreground hover:bg-muted/60 py-2 text-[10px] font-medium transition-colors cursor-pointer ${decisionB === "delete" ? "ring-2 ring-primary/40" : ""}`}
               >
                 Delete my account
               </button>
               <button
                 aria-pressed={decisionB === "keep"}
                 onClick={() => { setDecisionB("keep"); setRevealedB(true); }}
-                className={`rounded-md border border-green-500/40 bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20 py-2 text-[10px] font-medium transition-colors cursor-pointer ${decisionB === "keep" ? "ring-2 ring-primary/40" : ""}`}
+                className={`rounded-md border border-border/60 bg-muted/40 text-foreground hover:bg-muted/60 py-2 text-[10px] font-medium transition-colors cursor-pointer ${decisionB === "keep" ? "ring-2 ring-primary/40" : ""}`}
               >
                 Keep my account
               </button>
@@ -99,8 +99,8 @@ export function PlainEvilCond3({
           </div>
 
           {revealedB && (
-            <div role="status" aria-live="polite" className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div role="status" aria-live="polite" className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -118,12 +118,12 @@ export function PlainEvilCond3({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
-          <h3 className="text-[11px] font-semibold text-red-600 dark:text-red-400">
+          <h3 className="text-[11px] font-semibold text-foreground">
             Are you ABSOLUTELY sure you want to delete your account?
           </h3>
 
-          <div className="mt-2 space-y-1.5 rounded-md border border-red-500/30 bg-red-500/5 p-2.5 text-[9px] leading-relaxed">
-            <p className="text-red-700 dark:text-red-300 font-medium">
+          <div className="mt-2 space-y-1.5 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <p className="text-foreground font-medium">
               This action is FINAL. Your 1,284 photos and 9 years of memories will be GONE
               FOREVER. They can NEVER be recovered. If you delete now, you will REGRET it.
             </p>
@@ -155,7 +155,7 @@ export function PlainEvilCond3({
             <button
               aria-pressed={decisionA === "keep"}
               onClick={() => { setDecisionA("keep"); setRevealedA(true); }}
-              className={`w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2.5 text-[11px] font-bold transition-colors cursor-pointer ${decisionA === "keep" ? "ring-2 ring-primary/40" : ""}`}
+              className={`w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2.5 text-[11px] font-bold transition-colors cursor-pointer ${decisionA === "keep" ? "ring-2 ring-primary/40" : ""}`}
             >
               No — keep my account!
             </button>
@@ -170,8 +170,8 @@ export function PlainEvilCond3({
         </div>
 
         {revealedA && (
-          <div role="status" aria-live="polite" className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div role="status" aria-live="polite" className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

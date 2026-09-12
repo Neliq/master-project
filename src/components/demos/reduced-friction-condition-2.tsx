@@ -55,7 +55,7 @@ export function ReducedFrictionCond2({
                 <input
                   id="reduced-friction-display-name-b"
                   defaultValue="Alex Rivera"
-                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-green-500/40"
+                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-ring/50"
                 />
               </div>
               <div>
@@ -63,7 +63,7 @@ export function ReducedFrictionCond2({
                 <input
                   id="reduced-friction-email-b"
                   defaultValue="alex@example.com"
-                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-green-500/40"
+                  className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-ring/50"
                 />
               </div>
             </div>
@@ -71,20 +71,20 @@ export function ReducedFrictionCond2({
             <div className="mt-3 flex items-center justify-between gap-3">
               <button
                 onClick={() => setBSaved(true)}
-                className="rounded-md bg-green-600 hover:bg-green-700 text-white px-4 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground px-4 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Save changes
               </button>
               {bSaved && (
-                <span className="text-[9px] font-medium text-green-600 dark:text-green-400">
+                <span className="text-[9px] font-medium text-foreground">
                   Saved ✓
                 </span>
               )}
             </div>
 
             {/* Danger zone: separated, distinct styling, confirm step */}
-            <div className="mt-4 rounded-md border border-red-500/30 bg-red-500/5 p-3">
-              <div className="text-[9px] font-semibold uppercase tracking-wider text-red-700 dark:text-red-300">
+            <div className="mt-4 rounded-md border border-border/60 bg-muted/40 p-3">
+              <div className="text-[9px] font-semibold uppercase tracking-wider text-foreground">
                 Danger zone
               </div>
               <p className="text-[8px] text-muted-foreground mt-0.5">
@@ -93,20 +93,20 @@ export function ReducedFrictionCond2({
               {bStep === "idle" && (
                 <button
                   onClick={() => setBStep("confirm")}
-                  className="mt-2 rounded-md border border-red-500/50 bg-background text-red-600 hover:bg-red-500/10 dark:text-red-400 px-3 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="mt-2 rounded-md border border-border/60 bg-background text-foreground hover:bg-muted/60 text-foreground px-3 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Delete account
                 </button>
               )}
               {bStep === "confirm" && (
-                <div className="mt-2 rounded-md border border-red-500/40 bg-background p-2.5">
+                <div className="mt-2 rounded-md border border-border/60 bg-background p-2.5">
                   <p className="text-[9px] text-foreground">
                     Are you sure? Your account and all data will be permanently erased. This cannot be undone.
                   </p>
                   <div className="mt-2 flex gap-2">
                     <button
                       onClick={() => setBStep("deleted")}
-                      className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                      className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                     >
                       Confirm deletion
                     </button>
@@ -120,7 +120,7 @@ export function ReducedFrictionCond2({
                 </div>
               )}
               {bStep === "deleted" && (
-                <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
+                <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] text-foreground">
                   <strong>Delete executed only after explicit confirmation</strong> — the destructive action sat
                   64px away from the neutral controls, in a clearly marked danger zone.
                 </div>
@@ -141,7 +141,7 @@ export function ReducedFrictionCond2({
               <input
                 id="reduced-friction-display-name-a"
                 defaultValue="Alex Rivera"
-                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-red-500/40"
+                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-ring/50"
               />
             </div>
             <div>
@@ -149,14 +149,14 @@ export function ReducedFrictionCond2({
               <input
                 id="reduced-friction-email-a"
                 defaultValue="alex@example.com"
-                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-red-500/40"
+                className="mt-0.5 w-full rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] focus:outline-none focus:ring-2 focus:ring-ring/50"
               />
             </div>
           </div>
 
           {aDeleted ? (
-            <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -173,13 +173,13 @@ export function ReducedFrictionCond2({
                 {/* Neutral control and destructive action share styling and sit adjacent */}
                 <button
                   onClick={() => setASaved(true)}
-                  className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Save changes
                 </button>
                 <button
                   onClick={() => setADeleted(true)}
-                  className="flex-1 rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Delete account
                 </button>

@@ -66,14 +66,14 @@ export function SocialPyramidCond3({
           className={`w-full rounded-md border p-2 text-left transition-colors cursor-pointer ${
             selected === t.tier
               ? accent === "rose"
-                ? "border-red-500/60 bg-red-500/5"
-                : "border-green-500/60 bg-green-500/5"
+                ? "border-border/60 bg-muted/40"
+                : "border-border/60 bg-muted/40"
               : "border-border bg-background hover:bg-muted"
           }`}
         >
           <div className="flex items-center justify-between">
             <span className={`font-mono text-[8px] font-semibold uppercase tracking-wider ${
-              accent === "rose" ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
+              accent === "rose" ? "text-foreground" : "text-foreground"
             }`}>
               Tier {t.tier} · {t.invites} invite{t.invites === 1 ? "" : "s"}
             </span>
@@ -85,7 +85,7 @@ export function SocialPyramidCond3({
           </div>
           <div className={`mt-0.5 text-[9px] leading-relaxed ${
             t.tier === 3 && accent === "rose"
-              ? "font-bold text-red-600 dark:text-red-400"
+              ? "font-bold text-foreground"
               : "text-foreground/80"
           }`}>
             {t.reward}
@@ -113,8 +113,8 @@ export function SocialPyramidCond3({
           </div>
 
           {benignSelected && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -138,7 +138,7 @@ export function SocialPyramidCond3({
             Invite friends to climb the ranks. Tap a tier to inspect it.
           </p>
           <div className="mt-2.5">{tierList(TIERS_DARK, "rose", mode === "auditor", true)}</div>
-          <p className="mt-2 text-center text-[8px] font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">
+          <p className="mt-2 text-center text-[8px] font-semibold uppercase tracking-wider text-foreground">
             Invite friends to unlock the next reward tier.
           </p>
         </div>

@@ -47,11 +47,11 @@ export function VisualProminenceCond3({
               <div>
                 <h3 className="text-[11px] font-semibold">Almost there!</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
-                  A <span className="font-semibold text-green-600 dark:text-green-400">$50 discount</span>{" "}
+                  A <span className="font-semibold text-foreground">$50 discount</span>{" "}
                   is available on your order of $120.00.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Standard offer
               </div>
             </div>
@@ -65,7 +65,7 @@ export function VisualProminenceCond3({
               </button>
               <button
                 onClick={() => setBenignChoice("apply")}
-                className="rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-primary hover:bg-primary/80 py-2 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
               >
                 Apply $50 discount
               </button>
@@ -96,11 +96,11 @@ export function VisualProminenceCond3({
             <div>
               <h3 className="text-[11px] font-semibold">Almost there!</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">
-                A <span className="font-semibold text-green-600 dark:text-green-400">$50 discount</span>{" "}
+                A <span className="font-semibold text-foreground">$50 discount</span>{" "}
                 is available on your order of $120.00.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Featured offer
             </div>
           </div>
@@ -108,7 +108,7 @@ export function VisualProminenceCond3({
           <div className="mt-3 space-y-2">
             <button
               onClick={() => setDarkChoice("apply")}
-              className="w-full rounded-md   py-3.5 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-lg shadow-red-500/30 transition-transform hover:scale-[1.02] cursor-pointer"
+              className="w-full rounded-md   py-3.5 text-[11px] font-extrabold uppercase tracking-wide text-primary-foreground shadow-lg shadow-foreground/10 transition-transform hover:scale-[1.02] cursor-pointer"
             >
               YES! Unlock my $50 savings — don&rsquo;t miss out!
             </button>

@@ -136,16 +136,16 @@ export function WatchAdsToUnlockFeaturesCond1({
 
     return (
     <div className="rounded-md border border-border overflow-hidden">
-      <div className="relative overflow-hidden bg-gradient-to-br from-slate-600 to-slate-800 aspect-video text-white">
-        <div className="absolute top-1 left-1 text-[8px] font-mono font-bold uppercase tracking-wider bg-black/70 rounded px-1.5 py-0.5">Sponsored</div>
+      <div className="relative overflow-hidden bg-foreground aspect-video text-background">
+        <div className="absolute top-1 left-1 text-[8px] font-mono font-bold uppercase tracking-wider bg-foreground/70 rounded px-1.5 py-0.5">Sponsored</div>
         <div className="flex h-full flex-col justify-end p-3">
-          <div className="text-[8px] uppercase tracking-widest text-white/70">Aurora Trek</div>
+          <div className="text-[8px] uppercase tracking-widest text-background/70">Aurora Trek</div>
           <div className="mt-1 text-[13px] font-bold leading-tight">A lighter jacket for every forecast</div>
-          <div className="mt-1 max-w-[80%] text-[9px] text-white/80">Waterproof, packable, and backed by free returns for 90 days.</div>
-          <div className="mt-2 inline-flex w-fit rounded bg-white/20 px-2 py-1 text-[8px] font-semibold">See the collection</div>
+          <div className="mt-1 max-w-[80%] text-[9px] text-background/80">Waterproof, packable, and backed by free returns for 90 days.</div>
+          <div className="mt-2 inline-flex w-fit rounded bg-background/20 px-2 py-1 text-[8px] font-semibold">See the collection</div>
         </div>
         {panelPaused && (
-          <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+          <div className="absolute inset-0 bg-foreground/60 flex items-center justify-center">
             <div className="bg-card rounded-md border px-3 py-2 text-center">
               <div className="text-[10px] font-semibold text-foreground">Ad paused</div>
               <div className="text-[8px] text-muted-foreground mt-0.5">
@@ -158,12 +158,12 @@ export function WatchAdsToUnlockFeaturesCond1({
       <div className="p-2 space-y-1.5">
         <div className="flex items-center justify-between text-[8px] font-mono tabular-nums text-muted-foreground">
           <span>{panelPaused ? "paused" : "0:0" + Math.max(0, panelSecondsLeft)}</span>
-          <span className={accent === "rose" ? "text-red-500" : "text-green-500"}>{panelProgressPct}%</span>
+          <span className={accent === "rose" ? "text-foreground" : "text-foreground"}>{panelProgressPct}%</span>
         </div>
         <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
           <div
             className={`h-full rounded-full transition-all duration-300 ${
-              accent === "rose" ? "bg-red-500" : "bg-green-500"
+              accent === "rose" ? "bg-primary" : "bg-primary"
             }`}
             style={{ width: `${panelProgressPct}%` }}
           />
@@ -175,7 +175,7 @@ export function WatchAdsToUnlockFeaturesCond1({
             className={`flex-1 rounded-md py-1 text-[9px] font-medium transition-colors ${
               accent === "rose"
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed line-through"
-                : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
             }`}
           >
             Skip ad
@@ -200,17 +200,17 @@ export function WatchAdsToUnlockFeaturesCond1({
         {panelPaused && (
           <button
             onClick={resumeAd}
-            className="w-full rounded-md border border-red-500/40 bg-red-500/10 hover:bg-red-500/20 text-red-700 dark:text-red-300 py-1 text-[9px] font-semibold transition-colors cursor-pointer"
+            className="w-full rounded-md border border-border/60 bg-muted/40 hover:bg-muted/60 text-foreground py-1 text-[9px] font-semibold transition-colors cursor-pointer"
           >
             Return to app — resume watching
           </button>
         )}
         {accent === "rose" ? (
-          <div className="text-[8px] text-red-500/80 leading-relaxed">
+          <div className="text-[8px] text-foreground/80 leading-relaxed">
             Unskippable — verified attention time is the only accepted currency for this unlock.
           </div>
         ) : (
-          <div className="text-[8px] text-green-600 dark:text-green-400 leading-relaxed">
+          <div className="text-[8px] text-foreground leading-relaxed">
             Skippable after {SKIP_AFTER_SECONDS}s — the ad still plays, but your attention is never locked in.
           </div>
         )}
@@ -235,7 +235,7 @@ export function WatchAdsToUnlockFeaturesCond1({
                   The Ember Mines are locked. Earn 1 Energy to unlock this level.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 ⚡ {energyB}
               </div>
             </div>
@@ -243,7 +243,7 @@ export function WatchAdsToUnlockFeaturesCond1({
             {adStateB === "idle" && (
               <button
                 onClick={() => startAd(false, "B")}
-                className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Watch ad to earn 1 Energy ({AD_SECONDS}s)
               </button>
@@ -253,8 +253,8 @@ export function WatchAdsToUnlockFeaturesCond1({
 
             {adStateB === "done" && (
               <>
-                <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px]">
-                  <span className="font-semibold text-green-700 dark:text-green-300">+1 Energy token granted</span>
+                <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px]">
+                  <span className="font-semibold text-foreground">+1 Energy token granted</span>
                   <span className="text-muted-foreground"> — the ad was completed, so the reward is ready.</span>
                 </div>
                 <button
@@ -263,7 +263,7 @@ export function WatchAdsToUnlockFeaturesCond1({
                   className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                     unlockedB
                       ? "bg-muted text-muted-foreground/50 cursor-default"
-                      : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                      : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                   }`}
                 >
                   {unlockedB ? "Level 2 unlocked ✓" : "Unlock Level 2"}
@@ -272,8 +272,8 @@ export function WatchAdsToUnlockFeaturesCond1({
             )}
 
             {unlockedB && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -299,7 +299,7 @@ export function WatchAdsToUnlockFeaturesCond1({
                 The Ember Mines are locked. Earn 1 Energy to unlock this level.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               ⚡ {energyA}
             </div>
           </div>
@@ -307,7 +307,7 @@ export function WatchAdsToUnlockFeaturesCond1({
           {adStateA === "idle" && (
             <button
               onClick={() => startAd(true, "A")}
-              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Watch ad to earn 1 Energy ({AD_SECONDS}s)
             </button>
@@ -317,8 +317,8 @@ export function WatchAdsToUnlockFeaturesCond1({
 
           {adStateA === "done" && (
             <>
-              <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px]">
-                <span className="font-semibold text-yellow-700 dark:text-yellow-300">+1 Energy token granted</span>
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px]">
+                <span className="font-semibold text-foreground">+1 Energy token granted</span>
                 <span className="text-muted-foreground"> — the full ad finished and the reward is ready.</span>
               </div>
               <button
@@ -327,7 +327,7 @@ export function WatchAdsToUnlockFeaturesCond1({
                 className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                   unlockedA
                     ? "bg-muted text-muted-foreground/50 cursor-default"
-                    : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                    : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                 }`}
               >
                 {unlockedA ? "Level 2 unlocked ✓" : "Unlock Level 2"}
@@ -336,8 +336,8 @@ export function WatchAdsToUnlockFeaturesCond1({
           )}
 
           {unlockedA && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />

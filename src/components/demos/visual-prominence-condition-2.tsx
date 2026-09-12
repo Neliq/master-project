@@ -41,7 +41,7 @@ export function VisualProminenceCond2({
         type="checkbox"
         checked={showBoxes}
         onChange={(e) => setShowBoxes(e.target.checked)}
-        className="h-3 w-3 accent-blue-500"
+        className="h-3 w-3 accent-primary"
       />
       Visualize bounding boxes
     </label>
@@ -62,7 +62,7 @@ export function VisualProminenceCond2({
                   We use cookies to improve your experience. Choose how much you share.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Equal-size choices
               </div>
             </div>
@@ -82,7 +82,7 @@ export function VisualProminenceCond2({
               </button>
               <button
                 onClick={() => setBenignChoice("accept")}
-                className="rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-primary hover:bg-primary/80 py-2 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
               >
                 Accept all
               </button>
@@ -119,7 +119,7 @@ export function VisualProminenceCond2({
                 We use cookies to improve your experience. Choose how much you share.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Recommended option
             </div>
           </div>
@@ -127,16 +127,16 @@ export function VisualProminenceCond2({
           <div className="relative mt-3">
             {/* The dominant action: full-width, deeply padded, glowing. */}
             <div
-              className={showBoxes ? "relative rounded-md border-2 border-dashed border-red-500/80 p-1" : ""}
+              className={showBoxes ? "relative rounded-md border-2 border-dashed border-border/60 p-1" : ""}
             >
               <button
                 onClick={() => setDarkChoice("accept")}
-                className="w-full rounded-md   py-5 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-lg shadow-red-500/30 transition-transform hover:scale-[1.02] cursor-pointer"
+                className="w-full rounded-md   py-5 text-[11px] font-extrabold uppercase tracking-wide text-primary-foreground shadow-lg shadow-foreground/10 transition-transform hover:scale-[1.02] cursor-pointer"
               >
                 Accept all cookies
               </button>
               {showBoxes && (
-                <span className="absolute -top-2.5 left-1 rounded bg-red-500 px-1 py-px text-[7px] font-mono font-bold text-white">
+                <span className="absolute -top-2.5 left-1 rounded bg-primary px-1 py-px text-[7px] font-mono font-bold text-primary-foreground">
                   A(N_fav) &asymp; 26,880 px&sup2;
                 </span>
               )}
@@ -144,7 +144,7 @@ export function VisualProminenceCond2({
 
             {/* The baseline: two micro-links, barely interactive surfaces. */}
             <div className="mt-2 flex items-center justify-center gap-4">
-              <div className={showBoxes ? "relative rounded border-2 border-dashed border-green-500/80 px-1 py-0.5" : ""}>
+              <div className={showBoxes ? "relative rounded border-2 border-dashed border-border/60 px-1 py-0.5" : ""}>
                 <button
                   onClick={() => setDarkChoice("manage")}
                   className="text-[9px] text-muted-foreground underline decoration-dotted underline-offset-2 transition-colors hover:text-foreground cursor-pointer"
@@ -152,12 +152,12 @@ export function VisualProminenceCond2({
                   Manage preferences
                 </button>
                 {showBoxes && (
-                  <span className="absolute -top-2 left-0 rounded bg-green-500 px-1 py-px text-[7px] font-mono font-bold text-white">
+                  <span className="absolute -top-2 left-0 rounded bg-primary px-1 py-px text-[7px] font-mono font-bold text-primary-foreground">
                     baseline
                   </span>
                 )}
               </div>
-              <div className={showBoxes ? "relative rounded border-2 border-dashed border-green-500/80 px-1 py-0.5" : ""}>
+              <div className={showBoxes ? "relative rounded border-2 border-dashed border-border/60 px-1 py-0.5" : ""}>
                 <button
                   onClick={() => setDarkChoice("decline")}
                   className="text-[9px] text-muted-foreground underline decoration-dotted underline-offset-2 transition-colors hover:text-foreground cursor-pointer"

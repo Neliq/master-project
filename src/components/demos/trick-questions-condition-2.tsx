@@ -44,15 +44,15 @@ export function TrickQuestionsCond2({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted/40">
+                <svg className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
               </div>
               <div className="min-w-0 flex-1">
                 <h3 className="text-[11px] font-semibold">Welcome bonus</h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
-                  New customers get a <span className="font-semibold text-green-600 dark:text-green-400">$10 bonus</span>{" "}
+                  New customers get a <span className="font-semibold text-foreground">$10 bonus</span>{" "}
                   credited to their account after signup.
                 </p>
               </div>
@@ -63,7 +63,7 @@ export function TrickQuestionsCond2({
                 type="checkbox"
                 checked={bChecked}
                 onChange={(e) => setBChecked(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-green-500"
+                className="mt-0.5 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -80,7 +80,7 @@ export function TrickQuestionsCond2({
               disabled={!bChecked}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 bChecked
-                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -89,8 +89,8 @@ export function TrickQuestionsCond2({
           </div>
 
           {bClaimed && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -109,15 +109,15 @@ export function TrickQuestionsCond2({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted/40">
+              <svg className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
             </div>
             <div className="min-w-0 flex-1">
               <h3 className="text-[11px] font-semibold">Welcome bonus</h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">
-                New customers get a <span className="font-semibold text-green-600 dark:text-green-400">$10 bonus</span>{" "}
+                New customers get a <span className="font-semibold text-foreground">$10 bonus</span>{" "}
                 credited to their account after signup.
               </p>
             </div>
@@ -128,7 +128,7 @@ export function TrickQuestionsCond2({
               type="checkbox"
               checked={aChecked}
               onChange={(e) => setAChecked(e.target.checked)}
-              className="mt-0.5 flex-shrink-0 accent-red-500"
+              className="mt-0.5 flex-shrink-0 accent-primary"
             />
             <div className="min-w-0 flex-1">
               <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -145,7 +145,7 @@ export function TrickQuestionsCond2({
             disabled={!aChecked}
             className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               aChecked
-                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >

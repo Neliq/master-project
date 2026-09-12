@@ -59,8 +59,8 @@ export function PrivacyMazeCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted/40">
+                <svg className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
                   <path d="M12 6v6l4 2" />
                 </svg>
@@ -73,13 +73,13 @@ export function PrivacyMazeCond3({
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
                 onClick={() => setOutcomeB("accepted")}
-                className="w-full rounded-md bg-green-600 hover:bg-green-700 py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer"
+                className="w-full rounded-md bg-primary hover:bg-primary/80 py-2 text-[10px] font-semibold text-primary-foreground transition-colors cursor-pointer"
               >
                 Accept All
               </button>
               <button
                 onClick={() => setOutcomeB("rejected")}
-                className="w-full rounded-md border border-green-600/50 bg-background hover:bg-green-500/10 py-2 text-[10px] font-semibold text-green-700 dark:text-green-300 transition-colors cursor-pointer"
+                className="w-full rounded-md border border-border/60 bg-background hover:bg-muted/60 py-2 text-[10px] font-semibold text-foreground transition-colors cursor-pointer"
               >
                 Reject All
               </button>
@@ -90,8 +90,8 @@ export function PrivacyMazeCond3({
           </div>
 
           {outcomeB !== "none" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -109,8 +109,8 @@ export function PrivacyMazeCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted/40">
+              <svg className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
                 <path d="M12 6v6l4 2" />
               </svg>
@@ -123,7 +123,7 @@ export function PrivacyMazeCond3({
             </div>
           </div>
           {translatedA && (
-            <div className="mt-1.5 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[8px] text-muted-foreground">
+            <div className="mt-1.5 rounded-md border border-border/60 bg-muted/40 p-2 text-[8px] text-muted-foreground">
               Plain-language rendering shown above — same facts, FKGL {FKGL_PLAIN}.
             </div>
           )}
@@ -136,7 +136,7 @@ export function PrivacyMazeCond3({
           <div className="mt-2 grid grid-cols-2 gap-2">
             <button
               onClick={() => setOutcomeA("accepted")}
-              className="w-full rounded-md bg-red-600 hover:bg-red-700 py-2 text-[10px] font-bold text-white transition-colors cursor-pointer"
+              className="w-full rounded-md bg-primary hover:bg-primary/80 py-2 text-[10px] font-bold text-primary-foreground transition-colors cursor-pointer"
             >
               Accept All
             </button>
@@ -150,8 +150,8 @@ export function PrivacyMazeCond3({
         </div>
 
         {outcomeA !== "none" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

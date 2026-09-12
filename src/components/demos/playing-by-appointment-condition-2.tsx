@@ -79,7 +79,7 @@ export function PlayingByAppointmentCond2({
               className={`mt-2 w-full rounded-md py-2 text-[10px] font-medium transition-all ${
                 claimedB
                   ? "bg-muted text-muted-foreground/50 cursor-default"
-                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
               }`}
             >
               {claimedB ? "Reward claimed ✓" : "Claim event reward"}
@@ -87,8 +87,8 @@ export function PlayingByAppointmentCond2({
           </div>
 
           {claimedB && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -105,14 +105,14 @@ export function PlayingByAppointmentCond2({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="overflow-hidden rounded-md border bg-card">
-          <div className="animate-pulse bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 p-4 text-center">
-            <p className="text-[9px] font-bold uppercase tracking-widest text-red-100">
+          <div className="animate-pulse bg-gradient-to-br from-primary via-primary to-primary p-4 text-center">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-foreground">
               ⏰ Limited-time event ends soon!
             </p>
-            <p className="mt-1 font-mono text-[22px] font-bold tabular-nums text-white leading-none">
+            <p className="mt-1 font-mono text-[22px] font-bold tabular-nums text-primary-foreground leading-none">
               {REMAINING}
             </p>
-            <p className="mt-1 text-[8px] font-semibold uppercase tracking-wider text-red-100/80">
+            <p className="mt-1 text-[8px] font-semibold uppercase tracking-wider text-foreground/80">
               double points · last chance
             </p>
           </div>
@@ -120,7 +120,7 @@ export function PlayingByAppointmentCond2({
           <div className="p-3">
             <div className="flex items-start justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Harvest Moon Festival</h3>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Ending soon
               </div>
             </div>
@@ -134,7 +134,7 @@ export function PlayingByAppointmentCond2({
               className={`mt-2 w-full rounded-md py-2 text-[10px] font-bold transition-all ${
                 claimedA
                   ? "bg-muted text-muted-foreground/50 cursor-default"
-                  : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                  : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
               }`}
             >
               {claimedA ? "Reward claimed ✓" : "Claim reward — before time runs out!"}

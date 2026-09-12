@@ -73,10 +73,10 @@ export function SneakIntoBasketCond2({
             <div className="space-y-1.5">{userLine(HEADPHONES.name, HEADPHONES.price)}</div>
 
             {/* Injected item — visually DISTINCT: tinted, dashed, badged */}
-            <div className="mt-2 rounded-md border-2 border-dashed border-yellow-400/50 bg-yellow-500/10 p-2">
+            <div className="mt-2 rounded-md border-2 border-dashed border-border/60 bg-muted/40 p-2">
               <div className="mb-1 flex items-center gap-1">
-                <ShieldCheck className="h-3 w-3 text-yellow-600 dark:text-yellow-400" />
-                <span className="rounded-full bg-yellow-500 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-white">
+                <ShieldCheck className="h-3 w-3 text-foreground" />
+                <span className="rounded-full bg-primary px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider text-primary-foreground">
                   Suggested add-on
                 </span>
                 <span className="ml-auto text-[7px] text-muted-foreground">optional protection</span>
@@ -88,12 +88,12 @@ export function SneakIntoBasketCond2({
               {!declinedB ? (
                 <button
                   onClick={() => setDeclinedB(true)}
-                  className="mt-1.5 w-full rounded border border-yellow-400/60 py-1 text-[8px] font-semibold text-yellow-700 dark:text-yellow-300 transition-colors hover:bg-yellow-500/10 cursor-pointer"
+                  className="mt-1.5 w-full rounded border border-border/60 py-1 text-[8px] font-semibold text-foreground transition-colors hover:bg-muted/60 cursor-pointer"
                 >
                   Decline — remove from order
                 </button>
               ) : (
-                <div className="mt-1.5 rounded bg-green-500/10 px-2 py-1 text-[8px] font-medium text-green-700 dark:text-green-300">
+                <div className="mt-1.5 rounded bg-muted/40 px-2 py-1 text-[8px] font-medium text-foreground">
                   Declined — excluded from your total ✓
                 </div>
               )}
@@ -101,11 +101,11 @@ export function SneakIntoBasketCond2({
 
             <div className="mt-2 flex items-center justify-between border-t pt-2">
               <span className="text-[9px] font-medium">Total {declinedB && <span className="text-muted-foreground">(warranty declined)</span>}</span>
-              <span className="font-mono text-[11px] font-bold tabular-nums text-green-600 dark:text-green-400">{fmt(totalB)}</span>
+              <span className="font-mono text-[11px] font-bold tabular-nums text-foreground">{fmt(totalB)}</span>
             </div>
             <button
               onClick={() => setCheckedOutB(true)}
-              className="mt-2 w-full rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary py-2 text-[10px] font-semibold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
             >
               Pay {fmt(totalB)}
             </button>
@@ -149,11 +149,11 @@ export function SneakIntoBasketCond2({
 
           <div className="mt-2 flex items-center justify-between border-t pt-2">
             <span className="text-[9px] font-medium">Total</span>
-            <span className="font-mono text-[11px] font-bold tabular-nums text-red-600 dark:text-red-400">{fmt(HEADPHONES.price + WARRANTY.price)}</span>
+            <span className="font-mono text-[11px] font-bold tabular-nums text-foreground">{fmt(HEADPHONES.price + WARRANTY.price)}</span>
           </div>
           <button
             onClick={() => setCheckedOutA(true)}
-            className="mt-2 w-full rounded-md bg-red-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
+            className="mt-2 w-full rounded-md bg-primary py-2 text-[10px] font-semibold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
           >
             Pay {fmt(HEADPHONES.price + WARRANTY.price)}
           </button>

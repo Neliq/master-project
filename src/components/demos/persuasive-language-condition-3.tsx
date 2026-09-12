@@ -76,19 +76,19 @@ export function PersuasiveLanguageCond3({
             <span className="font-semibold text-foreground">
               Sem(t{i + 1}) = &ldquo;{c.fact}&rdquo;
             </span>
-            <span className="font-mono text-green-600 dark:text-green-400 shrink-0">
+            <span className="font-mono text-foreground shrink-0">
               {c.truth ? "True" : "False"}
             </span>
           </div>
           {c.spin && (
-            <div className="mt-0.5 text-red-600/90 dark:text-red-400/90">
+            <div className="mt-0.5 text-foreground/90">
               Connotation: &ldquo;{c.spin}&rdquo;
             </div>
           )}
         </div>
       ))}
       <div className={`rounded border p-1.5 text-[8px] font-mono font-semibold ${
-        dark ? "border-yellow-500/40 bg-yellow-500/5 text-yellow-700 dark:text-yellow-300" : "border-green-500/40 bg-green-500/5 text-green-700 dark:text-green-300"
+        dark ? "border-border/60 bg-muted/40 text-foreground" : "border-border/60 bg-muted/40 text-foreground"
       }`}>
         {dark
           ? `Sem(t1) AND Sem(t2) AND Sem(t3) AND Sem(t4) => ${SAT_DARK ? "SATISFIABLE" : "UNSAT"} — no contradiction`
@@ -105,7 +105,7 @@ export function PersuasiveLanguageCond3({
           <span>
             {spin && c.spin ? (
               <>
-                <span className="font-semibold text-red-600 dark:text-red-400">{c.spin}</span>{" "}
+                <span className="font-semibold text-foreground">{c.spin}</span>{" "}
                 <span className="text-muted-foreground">({c.fact.toLowerCase()})</span>
               </>
             ) : (
@@ -132,7 +132,7 @@ export function PersuasiveLanguageCond3({
                   Here is what the Pro plan offers.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Standard plan details
               </div>
             </div>
@@ -147,7 +147,7 @@ export function PersuasiveLanguageCond3({
               </button>
               <button
                 onClick={() => setChoice("upgrade")}
-                className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
               >
                 Upgrade to Pro
               </button>
@@ -194,7 +194,7 @@ export function PersuasiveLanguageCond3({
                 Don&rsquo;t be the one left behind — see what you&rsquo;d miss.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Featured plan offer
             </div>
           </div>
@@ -209,7 +209,7 @@ export function PersuasiveLanguageCond3({
             </button>
             <button
               onClick={() => setChoice("upgrade")}
-              className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
             >
               Upgrade now
             </button>

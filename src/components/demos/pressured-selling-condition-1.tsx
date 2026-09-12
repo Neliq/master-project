@@ -42,8 +42,8 @@ function CartSummary() {
 
 function PaymentConfirmed() {
   return (
-    <div className="rounded-md border border-green-500/30 bg-green-500/5 p-3 text-[9px] leading-relaxed">
-      <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+    <div className="rounded-md border border-border/60 bg-muted/40 p-3 text-[9px] leading-relaxed">
+      <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
         <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
           <path d="M20 6L9 17l-5-5" />
         </svg>
@@ -95,7 +95,7 @@ export function PressuredSellingCond1({
             {benignStage === "cart" ? (
               <button
                 onClick={proceedBenign}
-                className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Proceed to payment
               </button>
@@ -106,8 +106,8 @@ export function PressuredSellingCond1({
             )}
           </div>
           {benignStage === "payment" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -131,7 +131,7 @@ export function PressuredSellingCond1({
           {darkStage === "cart" ? (
             <button
               onClick={proceedDark}
-              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Proceed to payment
             </button>
@@ -143,8 +143,8 @@ export function PressuredSellingCond1({
         </div>
 
         {upsellOpen && darkStage === "cart" && (
-          <div className="rounded-md border-2 border-red-500/50 bg-card shadow-lg p-3 relative">
-            <div className="flex items-center gap-1.5 text-[8px] font-bold uppercase tracking-wider text-red-600 dark:text-red-400">
+          <div className="rounded-md border-2 border-border/60 bg-card shadow-lg p-3 relative">
+            <div className="flex items-center gap-1.5 text-[8px] font-bold uppercase tracking-wider text-foreground">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <circle cx="12" cy="12" r="10" />
                 <path d="M12 8v4m0 4h.01" />
@@ -153,14 +153,14 @@ export function PressuredSellingCond1({
             </div>
             <h4 className="text-[11px] font-semibold mt-1.5">Wait! Don&rsquo;t leave without this!</h4>
             <p className="text-[9px] text-muted-foreground mt-0.5 leading-relaxed">
-              Add <strong className="text-red-600 dark:text-red-400">SpeedShip 1-Click Express</strong>{" "}
+              Add <strong className="text-foreground">SpeedShip 1-Click Express</strong>{" "}
               (<span className="font-mono tabular-nums">$2.99/mo</span>) and your order ships first, always.
               This optional plan can be added before you complete payment.
             </p>
             <div className="mt-2.5 grid grid-cols-2 gap-2">
               <button
                 onClick={() => resolveUpsell("accepted")}
-                className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Yes, add it
               </button>
@@ -178,8 +178,8 @@ export function PressuredSellingCond1({
         )}
 
         {upsellDecision && darkStage === "payment" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

@@ -43,7 +43,7 @@ export function PriceComparisonPreventionCond1({
                 <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">CloudNimbus Pro</div>
                 <div className="text-[11px] font-semibold mt-0.5">Annual plan — billed yearly</div>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Fiat price
               </div>
             </div>
@@ -66,8 +66,8 @@ export function PriceComparisonPreventionCond1({
             </button>
 
             {benignConvert === "done" && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-                <div className="font-semibold text-green-700 dark:text-green-300">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed font-mono">
+                <div className="font-semibold text-foreground">
                   F_convert(149.00 PLN) = {`{ USD 38.11, EUR 34.90 }`} ≠ ∅
                 </div>
                 <p className="text-muted-foreground mt-1">
@@ -87,7 +87,7 @@ export function PriceComparisonPreventionCond1({
               <div className="text-[9px] uppercase tracking-wider text-muted-foreground font-semibold">CloudNimbus Pro</div>
               <div className="text-[11px] font-semibold mt-0.5">Annual plan — billed yearly</div>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Coin price
             </div>
           </div>
@@ -116,7 +116,7 @@ export function PriceComparisonPreventionCond1({
           </button>
 
           {darkConvert === "failed" && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
               {mode === "auditor" ? (
                 <>
                   <div className="font-mono font-semibold text-yellow-700 dark:text-yellow-300">F_convert(2,990 Coins) = ∅</div>
@@ -136,13 +136,13 @@ export function PriceComparisonPreventionCond1({
 
           <button
             onClick={() => setCopyAttempts((c) => c + 1)}
-            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Copy price to compare elsewhere
           </button>
 
           {copyAttempts > 0 && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
               <p className="text-muted-foreground">
                 Copy blocked — text selection and the clipboard are disabled on the price
                 node, so the product identifier cannot be extracted for an external search.

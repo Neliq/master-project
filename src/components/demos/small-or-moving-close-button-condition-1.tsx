@@ -62,7 +62,7 @@ export function SmallOrMovingCloseButtonCond1({
             <button
               onClick={() => setBState("dismissed")}
               aria-label="Close dialog"
-              className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center rounded-full border border-green-500/40 bg-green-500/10 text-green-600 dark:text-green-400 transition-colors hover:bg-green-500/20 cursor-pointer"
+              className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center rounded-full border border-border/60 bg-muted/40 text-foreground transition-colors hover:bg-muted/60 cursor-pointer"
             >
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M18 6L6 18M6 6l12 12" />
@@ -75,7 +75,7 @@ export function SmallOrMovingCloseButtonCond1({
               closes the dialog directly.
             </p>
             {bState === "dismissed" && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] text-foreground">
                 Dismissed cleanly — the close control closed the modal immediately.
               </div>
             )}
@@ -85,7 +85,7 @@ export function SmallOrMovingCloseButtonCond1({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div
-          className="relative rounded-md border-2 border-red-500/50 bg-card p-3"
+          className="relative rounded-md border-2 border-border/60 bg-card p-3"
           onClickCapture={(event) => {
             const target = event.target;
             if (target instanceof Element && target.closest("[data-close-vector]")) {
@@ -100,7 +100,7 @@ export function SmallOrMovingCloseButtonCond1({
               onFocus={dodge}
               aria-label="Close dialog"
               data-close-vector
-              className="absolute z-10 flex h-6 w-6 items-center justify-center rounded-full border border-red-500/40 bg-red-500/10 text-red-600 dark:text-red-400 transition-all duration-100 cursor-pointer"
+              className="absolute z-10 flex h-6 w-6 items-center justify-center rounded-full border border-border/60 bg-muted/40 text-foreground transition-all duration-100 cursor-pointer"
               style={{ top: `${xPos.top}%`, right: `${xPos.right}%` }}
             >
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -119,8 +119,8 @@ export function SmallOrMovingCloseButtonCond1({
             </p>
           )}
           {aState === "intercepted" && (
-            <div className="mt-2 space-y-1.5 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-2 space-y-1.5 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
@@ -146,7 +146,7 @@ export function SmallOrMovingCloseButtonCond1({
             </div>
           )}
           {aState === "dismissed" && (
-            <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] text-foreground">
               Finally dismissed — via a secondary control, not the X. The X itself was
               useless as a dismissal vector.
             </div>

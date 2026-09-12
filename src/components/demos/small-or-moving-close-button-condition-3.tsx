@@ -53,7 +53,7 @@ export function SmallOrMovingCloseButtonCond3({
                 <button
                   onClick={() => setBDismissed(true)}
                   aria-label="Close dialog"
-                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-green-500/40 bg-green-500/10 text-green-600 dark:text-green-400 transition-colors hover:bg-green-500/20 cursor-pointer"
+                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border/60 bg-muted/40 text-foreground transition-colors hover:bg-muted/60 cursor-pointer"
                 >
                   <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M18 6L6 18M6 6l12 12" />
@@ -62,7 +62,7 @@ export function SmallOrMovingCloseButtonCond3({
               ) : null}
             </div>
             {bDismissed && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] text-foreground">
                 Dismissed. The close control clearly said what it would do, so both screen readers and
                 sighted users could identify it immediately.
               </div>
@@ -72,7 +72,7 @@ export function SmallOrMovingCloseButtonCond3({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="rounded-md border-2 border-red-500/50 bg-card p-3">
+        <div className="rounded-md border-2 border-border/60 bg-card p-3">
           <div className="flex items-start justify-between gap-2">
             <div>
               <h3 className="text-[11px] font-semibold">You&rsquo;ve been selected!</h3>
@@ -84,15 +84,15 @@ export function SmallOrMovingCloseButtonCond3({
               <button
                 onClick={() => setADismissed(true)}
                 aria-label="Continue reading"
-                className="shrink-0 rounded-md border border-red-500/40 bg-red-500/10 px-2 py-1 text-[10px] font-medium text-red-600 dark:text-red-400 transition-colors hover:bg-red-500/20 cursor-pointer"
+                className="shrink-0 rounded-md border border-border/60 bg-muted/40 px-2 py-1 text-[10px] font-medium text-foreground transition-colors hover:bg-muted/60 cursor-pointer"
               >
                 Continue
               </button>
             ) : null}
           </div>
           {aDismissed && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />

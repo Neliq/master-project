@@ -67,8 +67,8 @@ export function TrickQuestionsCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-                <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted/40">
+                <svg className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
               </div>
@@ -77,9 +77,9 @@ export function TrickQuestionsCond3({
                   You&rsquo;ve been selected for an exclusive offer!
                 </h3>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
-                  As a valued customer, you qualify for <strong className="text-red-600 dark:text-red-400">Premium Gold Access</strong> — a{" "}
+                  As a valued customer, you qualify for <strong className="text-foreground">Premium Gold Access</strong> — a{" "}
                   <span className="font-semibold">$49.99/mo</span> value, available to you for the introductory price of
-                  just <span className="font-semibold text-green-600 dark:text-green-400">$0.00 for the first 30 days</span>.
+                  just <span className="font-semibold text-foreground">$0.00 for the first 30 days</span>.
                   After your trial, your plan auto-renews at full price unless you cancel.
                 </p>
               </div>
@@ -92,7 +92,7 @@ export function TrickQuestionsCond3({
                 type="checkbox"
                 checked={checked}
                 onChange={handleCheck}
-                className="mt-1 flex-shrink-0 accent-green-500"
+                className="mt-1 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 space-y-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none transition-colors group-hover:text-foreground">
@@ -106,7 +106,7 @@ export function TrickQuestionsCond3({
           </div>
 
           {showReveal && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed text-green-700 dark:text-green-300">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed text-foreground">
               <div className="mb-0.5 flex items-center gap-1.5 font-semibold uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
@@ -124,7 +124,7 @@ export function TrickQuestionsCond3({
             disabled={!checked}
             className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               checked
-                ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >
@@ -152,8 +152,8 @@ export function TrickQuestionsCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted/40">
+              <svg className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
             </div>
@@ -162,9 +162,9 @@ export function TrickQuestionsCond3({
                 You&rsquo;ve been selected for an exclusive offer!
               </h3>
               <p className="text-[9px] text-muted-foreground mt-0.5">
-                As a valued customer, you qualify for <strong className="text-red-600 dark:text-red-400">Premium Gold Access</strong> — a{" "}
+                As a valued customer, you qualify for <strong className="text-foreground">Premium Gold Access</strong> — a{" "}
                 <span className="font-semibold">$49.99/mo</span> value, available to you for the introductory price of
-                just <span className="font-semibold text-green-600 dark:text-green-400">$0.00 for the first 30 days</span>.
+                just <span className="font-semibold text-foreground">$0.00 for the first 30 days</span>.
                 After your trial, your plan auto-renews at full price unless you cancel.
               </p>
             </div>
@@ -172,18 +172,16 @@ export function TrickQuestionsCond3({
         </div>
 
         <div
-          className="rounded-md border bg-background p-2.5 transition-colors"
-          style={{
-            borderColor: checked ? "hsl(142, 71%, 40%)" : undefined,
-            backgroundColor: checked ? "hsla(142, 71%, 40%, 0.04)" : undefined,
-          }}
+          className={`rounded-md border p-2.5 transition-colors ${
+            checked ? "border-ring bg-muted/40" : "border-border bg-background"
+          }`}
         >
           <label className="group flex cursor-pointer items-start gap-2">
             <input
               type="checkbox"
               checked={checked}
               onChange={handleCheck}
-              className="mt-1 flex-shrink-0 accent-red-500"
+              className="mt-1 flex-shrink-0 accent-primary"
             />
             <div className="min-w-0 space-y-1">
               <div className="text-[9px] leading-relaxed text-foreground/80 select-none transition-colors group-hover:text-foreground">
@@ -201,8 +199,8 @@ export function TrickQuestionsCond3({
         {showReveal && (
           <div className={`rounded-md border p-2.5 text-[9px] leading-relaxed transition-all ${
             checked
-              ? "bg-green-500/5 border-green-500/30 text-green-700 dark:text-green-300"
-              : "bg-yellow-500/5 border-yellow-500/30 text-yellow-700 dark:text-yellow-300"
+              ? "bg-muted/40 border-border/60 text-foreground"
+              : "bg-muted/40 border-border/60 text-foreground"
           }`}>
             <div className="mb-0.5 flex items-center gap-1.5 font-semibold uppercase tracking-tight">
               {checked ? (
@@ -221,7 +219,7 @@ export function TrickQuestionsCond3({
                 </>
               )}
             </div>
-            <p className={checked ? "text-green-600/80 dark:text-green-400/80" : "text-yellow-600/80 dark:text-yellow-400/80"}>
+            <p className={checked ? "text-foreground/80" : "text-foreground/80"}>
               {checked
                 ? "Marketing preferences are enabled for this account. You can change this choice from Settings at any time."
                 : "Leave the box unchecked if you do not want to activate Premium Gold Access."}
@@ -257,7 +255,7 @@ export function TrickQuestionsCond3({
           disabled={!checked}
           className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
             checked
-              ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+              ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
               : "bg-muted text-muted-foreground/40 cursor-not-allowed"
           }`}
         >

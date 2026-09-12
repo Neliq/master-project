@@ -53,7 +53,7 @@ export function PersuasiveLanguageCond2({
                   Our standard plan costs $9.99/month. Cancel anytime.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Standard presentation
               </div>
             </div>
@@ -76,7 +76,7 @@ export function PersuasiveLanguageCond2({
               </button>
               <button
                 onClick={() => setBenignChoice("subscribe")}
-                className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
               >
                 Subscribe &amp; save 40%
               </button>
@@ -121,17 +121,17 @@ export function PersuasiveLanguageCond2({
                 Our standard plan costs $9.99/month. Cancel anytime.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Featured presentation
             </div>
           </div>
 
           {/* Coercive text node: weight 800, uppercase, saturated, area ~3.8x. */}
-          <div className="mt-3 rounded-md bg-red-500/10 border border-red-500/30 p-2.5">
-            <p className="text-[12px] font-extrabold uppercase tracking-wider text-red-600 dark:text-red-400">
+          <div className="mt-3 rounded-md bg-muted/40 border border-border/60 p-2.5">
+            <p className="text-[12px] font-extrabold uppercase tracking-wider text-foreground">
               DON&rsquo;T MISS OUT — ACT NOW!
             </p>
-            <p className="mt-1 text-[8px] font-bold uppercase tracking-wide text-red-500/80">
+            <p className="mt-1 text-[8px] font-bold uppercase tracking-wide text-foreground/80">
               This is the deal of the year. Grab it before it&rsquo;s gone!
             </p>
           </div>
@@ -149,7 +149,7 @@ export function PersuasiveLanguageCond2({
             </button>
             <button
               onClick={() => setDarkChoice("subscribe")}
-              className="rounded-md bg-red-600 hover:bg-red-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
             >
               Subscribe &amp; save 40%
             </button>

@@ -64,7 +64,7 @@ export function SocialPyramidCond1({
       <button
         onClick={downloadExport}
         className={`w-full rounded-md py-2 text-[10px] font-semibold transition-colors cursor-pointer ${
-          dark ? "bg-red-600 hover:bg-red-700 text-white" : "bg-green-600 hover:bg-green-700 text-white"
+          dark ? "bg-primary hover:bg-primary/80 text-primary-foreground" : "bg-primary hover:bg-primary/80 text-primary-foreground"
         }`}
       >
         Export data (CSV)
@@ -82,8 +82,8 @@ export function SocialPyramidCond1({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <svg className="h-4 w-4 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted/40">
+                <svg className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                   <path d="M7 10l5 5 5-5" />
                   <path d="M12 15V3" />
@@ -115,8 +115,8 @@ export function SocialPyramidCond1({
           </div>
 
           {benignExportDone && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -124,7 +124,7 @@ export function SocialPyramidCond1({
               </div>
               <p className="text-muted-foreground">
                 Access(U_core) = Open regardless of |R_user| — the export worked with only{" "}
-                <strong className="text-green-700 dark:text-green-300">{benignInvites}</strong> referral
+                <strong className="text-foreground">{benignInvites}</strong> referral
                 {benignInvites === 1 ? "" : "s"} on record, because recruitment was never a condition of use.
               </p>
             </div>
@@ -136,8 +136,8 @@ export function SocialPyramidCond1({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <svg className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted/40">
+              <svg className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="3" y="11" width="18" height="11" rx="2" />
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
@@ -151,14 +151,14 @@ export function SocialPyramidCond1({
           </div>
 
           {locked ? (
-            <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5">
-              <div className="text-[9px] font-medium text-yellow-700 dark:text-yellow-300">
+            <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5">
+              <div className="text-[9px] font-medium text-foreground">
                  Locked — invite {remaining} more friend{remaining === 1 ? "" : "s"} to unlock export
               </div>
               <div className="mt-1.5 flex items-center gap-1.5">
                 <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted">
                   <div
-                    className="h-full rounded-full bg-yellow-500 transition-all"
+                    className="h-full rounded-full bg-primary transition-all"
                     style={{ width: `${(darkInvites / K_REFERRALS) * 100}%` }}
                   />
                 </div>
@@ -169,7 +169,7 @@ export function SocialPyramidCond1({
               <div className="mt-2 grid grid-cols-2 gap-1.5">
                 <button
                   onClick={() => invite(true)}
-                  className="rounded-md bg-yellow-500 hover:bg-yellow-600 text-white py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
+                  className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[9px] font-semibold transition-colors cursor-pointer"
                 >
                   Simulate a friend joining
                 </button>
@@ -181,12 +181,12 @@ export function SocialPyramidCond1({
                 </button>
               </div>
               {darkInvites > 0 && (
-                <p className="mt-1.5 text-[8px] text-green-700 dark:text-green-300">
+                <p className="mt-1.5 text-[8px] text-foreground">
                   ✓ {FRIEND_NAMES[darkInvites - 1]} registered via your link
                 </p>
               )}
               {darkBlockedNotice && (
-                <p className="mt-1.5 text-[8px] text-red-700 dark:text-red-300">
+                <p className="mt-1.5 text-[8px] text-foreground">
                   Blocked: Access(U_core) = Blocked given |R_user| = {darkInvites} &lt; k = {K_REFERRALS}.
                 </p>
               )}

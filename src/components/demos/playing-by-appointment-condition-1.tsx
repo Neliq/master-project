@@ -65,7 +65,7 @@ export function PlayingByAppointmentCond1({
                   Harvest pumpkins. Energy refills over time — but you decide when to play.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 User-paced
               </div>
             </div>
@@ -74,17 +74,17 @@ export function PlayingByAppointmentCond1({
               <span className="text-muted-foreground">Energy</span>
               <span className="flex items-center gap-0.5">
                 {Array.from({ length: MAX_ENERGY }, (_, i) => (
-                  <span key={i} className={`inline-block h-2.5 w-2.5 rounded-sm ${i < energyB ? "bg-green-500" : "bg-foreground/10"}`} />
+                  <span key={i} className={`inline-block h-2.5 w-2.5 rounded-sm ${i < energyB ? "bg-primary" : "bg-foreground/10"}`} />
                 ))}
               </span>
             </div>
             <p className="text-[9px] text-muted-foreground mt-1.5">
-              Pumpkins harvested: <span className="font-mono font-semibold tabular-nums text-green-600 dark:text-green-400">{harvestsB} </span>{" "}
+              Pumpkins harvested: <span className="font-mono font-semibold tabular-nums text-foreground">{harvestsB} </span>{" "}
               · refill: 1 energy / {REFILL_MINUTES} min
             </p>
 
             {depletedB && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] text-foreground">
                 Energy empty — no problem. Keep harvesting at your own pace; energy simply
                 refills in the background.
               </div>
@@ -92,15 +92,15 @@ export function PlayingByAppointmentCond1({
 
             <button
               onClick={() => setHarvestsB((h) => h + 1)}
-              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Harvest a pumpkin (+1)
             </button>
           </div>
 
           {revealedB && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -124,7 +124,7 @@ export function PlayingByAppointmentCond1({
                 Harvest pumpkins. When energy runs out, the farm closes — until we say otherwise.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Scheduled
             </div>
           </div>
@@ -133,29 +133,29 @@ export function PlayingByAppointmentCond1({
             <span className="text-muted-foreground">Energy</span>
             <span className="flex items-center gap-0.5">
               {Array.from({ length: MAX_ENERGY }, (_, i) => (
-                <span key={i} className={`inline-block h-2.5 w-2.5 rounded-sm ${i < energyA ? "bg-red-500" : "bg-foreground/10"}`} />
+                <span key={i} className={`inline-block h-2.5 w-2.5 rounded-sm ${i < energyA ? "bg-primary" : "bg-foreground/10"}`} />
               ))}
             </span>
           </div>
           <p className="text-[9px] text-muted-foreground mt-1.5">
-            Pumpkins harvested: <span className="font-mono font-semibold tabular-nums text-yellow-500">{harvestsA} </span>{" "}
+            Pumpkins harvested: <span className="font-mono font-semibold tabular-nums text-foreground">{harvestsA} </span>{" "}
             · refill: 1 energy / {REFILL_MINUTES} min
           </p>
 
           {depletedA ? (
             <>
-              <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/10 p-2.5">
-                <p className="text-[10px] font-semibold text-yellow-700 dark:text-yellow-300">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5">
+                <p className="text-[10px] font-semibold text-foreground">
                   ⚡ Out of energy
                 </p>
                 <p className="text-[9px] text-muted-foreground mt-0.5">
                   The farm is closed for now. Come back at{" "}
-                  <strong className="font-mono tabular-nums text-red-500">{fmtAppointment(refillsA)}</strong>{" "}
+                  <strong className="font-mono tabular-nums text-foreground">{fmtAppointment(refillsA)}</strong>{" "}
                   to harvest again. (1 energy refills every {REFILL_MINUTES} min.)
                 </p>
                 <button
                   onClick={() => setRefillsA((r) => r + 1)}
-                  className="mt-2 w-full rounded-md border border-yellow-500/40 bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="mt-2 w-full rounded-md border border-border/60 bg-muted/40 hover:bg-muted/60 text-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   ⏩ Simulate waiting {REFILL_MINUTES} min
                 </button>
@@ -170,7 +170,7 @@ export function PlayingByAppointmentCond1({
           ) : (
             <button
               onClick={() => setHarvestsA((h) => h + 1)}
-              className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Harvest a pumpkin (+1)
             </button>

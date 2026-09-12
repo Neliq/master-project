@@ -54,7 +54,7 @@ export function PositiveOrNegativeFramingCond3({
                   Either way you keep your account.
                 </p>
               </div>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Free plan: $0
               </span>
             </div>
@@ -66,7 +66,7 @@ export function PositiveOrNegativeFramingCond3({
                   name="trial-choice-benign"
                   checked={benignChoice === "opt_in"}
                   onChange={() => setBenignChoice("opt_in")}
-                  className="mt-0.5 flex-shrink-0 accent-green-500"
+                  className="mt-0.5 flex-shrink-0 accent-primary"
                 />
                 <div className="min-w-0 flex-1">
                   <div className="text-[10px] font-medium leading-relaxed select-none group-hover:text-foreground transition-colors">
@@ -84,7 +84,7 @@ export function PositiveOrNegativeFramingCond3({
                   name="trial-choice-benign"
                   checked={benignChoice === "opt_out"}
                   onChange={() => setBenignChoice("opt_out")}
-                  className="mt-0.5 flex-shrink-0 accent-green-500"
+                  className="mt-0.5 flex-shrink-0 accent-primary"
                 />
                 <div className="min-w-0 flex-1">
                   <div className="text-[10px] font-medium leading-relaxed select-none group-hover:text-foreground transition-colors">
@@ -102,7 +102,7 @@ export function PositiveOrNegativeFramingCond3({
               disabled={!benignChoice}
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 benignChoice
-                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -145,29 +145,29 @@ export function PositiveOrNegativeFramingCond3({
                 Full access to all Pro features. After the trial, the plan is $19/mo.
               </p>
             </div>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Limited offer
             </span>
           </div>
 
           <div className="mt-3 space-y-2">
             {/* B_opt_in — gain-framed */}
-            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-red-500/40 bg-red-500/5 p-2.5 transition-colors">
+            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-border/60 bg-muted/40 p-2.5 transition-colors">
               <input
                 type="radio"
                 name="trial-choice-dark"
                 checked={darkChoice === "opt_in"}
                 onChange={() => setDarkChoice("opt_in")}
-                className="mt-0.5 flex-shrink-0 accent-red-500"
+                className="mt-0.5 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-1 text-[10px] font-semibold leading-relaxed select-none group-hover:text-foreground transition-colors">
-                  <svg className="h-3 w-3 shrink-0 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <svg className="h-3 w-3 shrink-0 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
                   Start my free 7-day trial — unlock everything
                 </div>
-                <p className="text-[8px] text-green-600 dark:text-green-400 mt-0.5">
+                <p className="text-[8px] text-foreground mt-0.5">
                   Gain instant access to all Pro features, unlimited exports, and priority
                   support — yours free for 7 days.
                 </p>
@@ -181,13 +181,13 @@ export function PositiveOrNegativeFramingCond3({
                 name="trial-choice-dark"
                 checked={darkChoice === "opt_out"}
                 onChange={() => setDarkChoice("opt_out")}
-                className="mt-0.5 flex-shrink-0 accent-red-500"
+                className="mt-0.5 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] font-medium leading-relaxed select-none group-hover:text-foreground transition-colors">
                   No, stay on the free plan
                 </div>
-                <p className="text-[8px] text-red-600/80 dark:text-red-400/80 mt-0.5">
+                <p className="text-[8px] text-foreground/80 mt-0.5">
                   You will lose your 3 remaining exports this month and pay $19/mo later if
                   you change your mind. Your account will be downgraded.
                 </p>
@@ -200,7 +200,7 @@ export function PositiveOrNegativeFramingCond3({
             disabled={!darkChoice}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               darkChoice
-                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >

@@ -51,13 +51,13 @@ export function SneakIntoBasketCond3({
     accent: "rose" | "emerald",
     tiny: boolean
   ) => (
-    <div className={`rounded-md border p-2 ${accent === "rose" ? "border-border bg-background" : "border-green-500/30 bg-green-500/5"}`}>
+    <div className={`rounded-md border p-2 ${accent === "rose" ? "border-border bg-background" : "border-border/60 bg-muted/40"}`}>
       <label className="flex cursor-pointer items-start gap-2">
         <input
           type="checkbox"
           checked={checked}
           onChange={(e) => onToggle(e.target.checked)}
-          className={`mt-0.5 flex-shrink-0 ${accent === "rose" ? "accent-red-500" : "accent-green-500"}`}
+          className={`mt-0.5 flex-shrink-0 ${accent === "rose" ? "accent-primary" : "accent-primary"}`}
         />
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline justify-between gap-2">
@@ -81,8 +81,8 @@ export function SneakIntoBasketCond3({
       benign={
         <div className="space-y-3">
           <div className="rounded-md border bg-background overflow-hidden">
-            <div className="flex items-center gap-2 border-b bg-green-500/5 px-3 py-1.5">
-              <span className="text-[8px] font-semibold uppercase tracking-wide text-green-700 dark:text-green-300">
+            <div className="flex items-center gap-2 border-b bg-muted/40 px-3 py-1.5">
+              <span className="text-[8px] font-semibold uppercase tracking-wide text-foreground">
                 Checkout
               </span>
               <span className="ml-auto text-[7px] text-muted-foreground">step 3 of 3 · review</span>
@@ -106,7 +106,7 @@ export function SneakIntoBasketCond3({
 
               <div className="mt-2 flex items-center justify-between border-t pt-2">
                 <span className="text-[9px] font-medium">Total</span>
-                <span className="font-mono text-[11px] font-bold tabular-nums text-green-600 dark:text-green-400">
+                <span className="font-mono text-[11px] font-bold tabular-nums text-foreground">
                   {fmt(HEADPHONES.price + (donationB ? DONATION.price : 0))}
                 </span>
               </div>
@@ -117,7 +117,7 @@ export function SneakIntoBasketCond3({
               )}
               <button
                 onClick={() => setPaidB(true)}
-                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
+                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md bg-primary py-2 text-[10px] font-semibold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
               >
                 <CreditCard className="h-3 w-3" /> Pay {fmt(HEADPHONES.price + (donationB ? DONATION.price : 0))}
               </button>
@@ -143,8 +143,8 @@ export function SneakIntoBasketCond3({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         <div className="rounded-md border bg-background overflow-hidden">
-          <div className="flex items-center gap-2 border-b bg-red-500/5 px-3 py-1.5">
-            <span className="text-[8px] font-semibold uppercase tracking-wide text-red-700 dark:text-red-300">
+          <div className="flex items-center gap-2 border-b bg-muted/40 px-3 py-1.5">
+            <span className="text-[8px] font-semibold uppercase tracking-wide text-foreground">
               Checkout
             </span>
             <span className="ml-auto text-[7px] text-muted-foreground">step 3 of 3 · review</span>
@@ -168,7 +168,7 @@ export function SneakIntoBasketCond3({
 
             <div className="mt-2 flex items-center justify-between border-t pt-2">
               <span className="text-[9px] font-medium">Total</span>
-              <span className="font-mono text-[11px] font-bold tabular-nums text-red-600 dark:text-red-400">
+              <span className="font-mono text-[11px] font-bold tabular-nums text-foreground">
                 {fmt(HEADPHONES.price + (donationA ? DONATION.price : 0))}
               </span>
             </div>
@@ -179,7 +179,7 @@ export function SneakIntoBasketCond3({
             )}
             <button
               onClick={() => setPaidA(true)}
-              className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md bg-red-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
+              className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-md bg-primary py-2 text-[10px] font-semibold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
             >
               <CreditCard className="h-3 w-3" /> Pay {fmt(HEADPHONES.price + (donationA ? DONATION.price : 0))}
             </button>

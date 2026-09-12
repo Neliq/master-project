@@ -75,7 +75,7 @@ export function PayToPlayCond1({
                   Tap to tend your farm. Each stage needs a few taps — nothing more.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Fair effort
               </div>
             </div>
@@ -86,21 +86,21 @@ export function PayToPlayCond1({
                 <span className="font-mono tabular-nums">{benign.progress}/{benign.required} taps</span>
               </div>
               <div className="bg-foreground/10 h-2.5 rounded-full overflow-hidden">
-                <div className="bg-green-500 h-full transition-all" style={{ width: `${Math.min(100, (benign.progress / benign.required) * 100)}%` }} />
+                <div className="bg-primary h-full transition-all" style={{ width: `${Math.min(100, (benign.progress / benign.required) * 100)}%` }} />
               </div>
             </div>
 
             <button
               onClick={() => setTaps((t) => t + 1)}
-              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Tend farm (+1 tap)
             </button>
           </div>
 
           {revealed && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -125,7 +125,7 @@ export function PayToPlayCond1({
                 Tap to tend your farm. The free path gets… steeper. Much steeper.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Free · slow
             </div>
           </div>
@@ -136,13 +136,13 @@ export function PayToPlayCond1({
               <span className="font-mono tabular-nums">{dark.progress}/{dark.required} taps</span>
             </div>
             <div className="bg-foreground/10 h-2.5 rounded-full overflow-hidden">
-              <div className="bg-red-500 h-full transition-all" style={{ width: `${Math.min(100, (dark.progress / dark.required) * 100)}%` }} />
+              <div className="bg-primary h-full transition-all" style={{ width: `${Math.min(100, (dark.progress / dark.required) * 100)}%` }} />
             </div>
           </div>
 
           <button
             onClick={() => setDarkTaps((t) => t + 1)}
-            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Tend farm (+1 tap)
           </button>
@@ -150,7 +150,7 @@ export function PayToPlayCond1({
           {dark.stage >= 2 && (
             <button
               onClick={skipStage}
-              className="mt-2 w-full rounded-md border border-yellow-500/40 bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 py-2 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md border border-border/60 bg-muted/40 hover:bg-muted/60 text-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
             >
               ⚡ Skip this stage instantly — $4.99
             </button>

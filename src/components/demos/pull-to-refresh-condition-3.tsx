@@ -116,16 +116,16 @@ export function PullToRefreshCond3({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Nest — your network</h3>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Deterministic
               </span>
             </div>
 
-            <div className="mt-2 min-h-[72px] rounded-md border border-green-500/30 bg-green-500/5 p-2.5">
+            <div className="mt-2 min-h-[72px] rounded-md border border-border/60 bg-muted/40 p-2.5">
               {outcomeB ? (
                 <div>
                   <div className="flex items-center gap-1.5 text-[10px] font-semibold text-foreground">
-                    <Info className="size-3 text-green-600 dark:text-green-400" />
+                    <Info className="size-3 text-foreground" />
                     {outcomeB.title}
                   </div>
                   <p className="mt-0.5 text-[9px] text-muted-foreground">{outcomeB.body}</p>
@@ -143,7 +143,7 @@ export function PullToRefreshCond3({
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
                 refreshingB
                   ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                  : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
               }`}
             >
               {refreshingB ? "Refreshing…" : "Pull to refresh"}
@@ -153,8 +153,8 @@ export function PullToRefreshCond3({
             </p>
 
             {historyB.length >= 3 && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <CheckCircle2 className="size-3" />
                   No variable reward
                 </div>
@@ -174,17 +174,17 @@ export function PullToRefreshCond3({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Nest — your network</h3>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Surprise drops
             </span>
           </div>
 
-          <div className="mt-2 min-h-[72px] rounded-md border border-red-500/30 bg-red-500/5 p-2.5">
+          <div className="mt-2 min-h-[72px] rounded-md border border-border/60 bg-muted/40 p-2.5">
             {outcomeA ? (
               <div>
                 <div className="flex items-center gap-1.5 text-[10px] font-semibold text-foreground">
                   {outcomeA.valence === 1 ? (
-                    <Sparkles className="size-3 text-yellow-500" />
+                    <Sparkles className="size-3 text-foreground" />
                   ) : (
                     <Info className="size-3 text-muted-foreground" />
                   )}
@@ -205,7 +205,7 @@ export function PullToRefreshCond3({
             className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-colors ${
               refreshingA
                 ? "bg-muted text-muted-foreground/40 cursor-not-allowed"
-                : "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
             }`}
           >
             {refreshingA ? "Refreshing…" : "Pull to refresh"}

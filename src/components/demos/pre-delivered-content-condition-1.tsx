@@ -68,7 +68,7 @@ export function PreDeliveredContentCond1({
                   Installer — {BASE_GAME_GB} GB base game
                 </p>
               </div>
-              <Download className="size-3.5 text-green-600 dark:text-green-400 shrink-0 mt-0.5" />
+              <Download className="size-3.5 text-foreground shrink-0 mt-0.5" />
             </div>
 
             {/* Consent gate — the entire point of Variant B */}
@@ -77,7 +77,7 @@ export function PreDeliveredContentCond1({
                 type="checkbox"
                 checked={consentB}
                 onChange={(e) => setConsentB(e.target.checked)}
-                className="mt-0.5 flex-shrink-0 accent-green-500"
+                className="mt-0.5 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
@@ -94,13 +94,13 @@ export function PreDeliveredContentCond1({
               <HardDrive className="size-3 shrink-0" />
               <span>{FREE_BEFORE_GB.toFixed(1)} GB free</span>
               <span className="font-mono tabular-nums">→</span>
-              <span className="font-mono font-semibold tabular-nums text-green-600 dark:text-green-400">
+              <span className="font-mono font-semibold tabular-nums text-foreground">
                 {benignFreeAfter.toFixed(1)} GB free
               </span>
             </div>
             <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-muted">
               <div
-                className="h-full rounded-full bg-green-500 transition-all duration-700"
+                className="h-full rounded-full bg-primary transition-all duration-700"
                 style={{ width: `${((FREE_BEFORE_GB - benignFreeAfter) / FREE_BEFORE_GB) * 100}%` }}
               />
             </div>
@@ -108,7 +108,7 @@ export function PreDeliveredContentCond1({
             {phaseB === "idle" && (
               <button
                 onClick={() => setPhaseB("installing")}
-                className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Install game ({BASE_GAME_GB} GB)
               </button>
@@ -119,8 +119,8 @@ export function PreDeliveredContentCond1({
               </div>
             )}
             {phaseB === "done" && (
-              <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -146,7 +146,7 @@ export function PreDeliveredContentCond1({
                 Installer — {BASE_GAME_GB} GB base game
               </p>
             </div>
-            <Download className="size-3.5 text-red-600 dark:text-red-400 shrink-0 mt-0.5" />
+            <Download className="size-3.5 text-foreground shrink-0 mt-0.5" />
           </div>
 
           {/* No consent gate exists here — nothing to toggle */}
@@ -165,13 +165,13 @@ export function PreDeliveredContentCond1({
             <HardDrive className="size-3 shrink-0" />
             <span>{FREE_BEFORE_GB.toFixed(1)} GB free</span>
             <span className="font-mono tabular-nums">→</span>
-            <span className="font-mono font-semibold tabular-nums text-red-600 dark:text-red-400">
+            <span className="font-mono font-semibold tabular-nums text-foreground">
               {darkFreeAfter.toFixed(1)} GB free
             </span>
           </div>
           <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-muted">
             <div
-              className="h-full rounded-full bg-red-500 transition-all duration-700"
+              className="h-full rounded-full bg-primary transition-all duration-700"
               style={{ width: `${((FREE_BEFORE_GB - darkFreeAfter) / FREE_BEFORE_GB) * 100}%` }}
             />
           </div>
@@ -179,7 +179,7 @@ export function PreDeliveredContentCond1({
           {phaseA === "idle" && (
             <button
               onClick={() => setPhaseA("installing")}
-              className="mt-3 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Install game ({BASE_GAME_GB} GB)
             </button>
@@ -194,24 +194,24 @@ export function PreDeliveredContentCond1({
               <div className="mt-3 space-y-1.5">
                 <div className="flex items-center justify-between rounded-md border border-border bg-background px-2.5 py-1.5">
                   <div className="flex items-center gap-1.5 text-[9px]">
-                    <Lock className="size-3 text-red-500" />
+                    <Lock className="size-3 text-foreground" />
                     <span>4K Texture Pack</span>
                     <span className="text-muted-foreground font-mono">3.2 GB</span>
                   </div>
-                  <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-1.5 py-0.5">Locked</span>
+                  <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-1.5 py-0.5">Locked</span>
                 </div>
                 <div className="flex items-center justify-between rounded-md border border-border bg-background px-2.5 py-1.5">
                   <div className="flex items-center gap-1.5 text-[9px]">
-                    <Lock className="size-3 text-red-500" />
+                    <Lock className="size-3 text-foreground" />
                     <span>Expansion: Void Campaign</span>
                     <span className="text-muted-foreground font-mono">1.8 GB</span>
                   </div>
-                  <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-1.5 py-0.5">Locked</span>
+                  <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-1.5 py-0.5">Locked</span>
                 </div>
               </div>
               <button
                 onClick={() => setUnlockedA(true)}
-                className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Unlock premium content — $9.99
               </button>
@@ -220,8 +220,8 @@ export function PreDeliveredContentCond1({
         </div>
 
         {phaseA === "done" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -229,7 +229,7 @@ export function PreDeliveredContentCond1({
               Unconsented storage consumption
             </div>
             <p className="text-muted-foreground">
-              <strong className="text-foreground">C_premium ⊆ S_local</strong> with <strong className="text-red-500">E_consent = ∅</strong> — the
+              <strong className="text-foreground">C_premium ⊆ S_local</strong> with <strong className="text-foreground">E_consent = ∅</strong> — the
               installer wrote 5.0 GB of premium assets to your disk as part of the baseline install, with no consent request.
               Size(C_premium) = 5.0 GB ≫ 0: your storage was consumed as a hidden cost.
             </p>

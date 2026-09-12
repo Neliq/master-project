@@ -68,7 +68,7 @@ export function VisualProminenceCond1({
                   Confirm your purchase details below.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Standard checkout
               </div>
             </div>
@@ -84,7 +84,7 @@ export function VisualProminenceCond1({
               </button>
               <button
                 onClick={() => setBenignChoice("purchase")}
-                className="rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+                className="rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
               >
                 Complete purchase
               </button>
@@ -118,7 +118,7 @@ export function VisualProminenceCond1({
                 Confirm your purchase details below.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Recommended option
             </div>
           </div>
@@ -128,19 +128,19 @@ export function VisualProminenceCond1({
           {/* The favorable action: a structurally bloated subtree — 3 nested
               wrapper layers, a gradient overlay, an icon container, a badge. */}
           <div className="relative mt-3"> {/* wrapper A */}
-            <div className="rounded-md   p-[1.5px] shadow-lg shadow-red-500/20"> {/* wrapper B */}
-              <div className="relative overflow-hidden rounded-md bg-red-600"> {/* wrapper C */}
-                <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-white/10" />
+            <div className="rounded-md   p-[1.5px] shadow-lg shadow-foreground/10"> {/* wrapper B */}
+              <div className="relative overflow-hidden rounded-md bg-primary"> {/* wrapper C */}
+                <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-background/10" />
                 <button
                   onClick={() => setDarkChoice("purchase")}
-                  className="relative flex w-full items-center justify-center gap-1.5 py-2.5 text-[10px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-red-500 cursor-pointer"
+                  className="relative flex w-full items-center justify-center gap-1.5 py-2.5 text-[10px] font-bold uppercase tracking-wide text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
                 >
                   <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
                   Complete purchase
                 </button>
-                <span className="absolute -top-1.5 -right-1.5 rounded-full bg-yellow-400 px-1.5 py-px text-[7px] font-bold text-black shadow-sm">
+                <span className="absolute -top-1.5 -right-1.5 rounded-full bg-muted/40 px-1.5 py-px text-[7px] font-bold text-foreground shadow-sm">
                   SAVE 20%
                 </span>
               </div>

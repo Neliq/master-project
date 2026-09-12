@@ -46,7 +46,7 @@ export function WrongLanguageCond3({
           <h3 className="text-[11px] font-semibold">Checkout — order summary</h3>
           <p className="text-[9px] text-muted-foreground mt-0.5">Acme Store · 2 items · Free shipping</p>
         </div>
-        <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+        <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
           html lang=&ldquo;{SESSION_LANG_ATTR}&rdquo;
         </div>
       </div>
@@ -77,7 +77,7 @@ export function WrongLanguageCond3({
           type="checkbox"
           checked={agreed}
           onChange={(e) => setAgreed(e.target.checked)}
-          className={`mt-0.5 flex-shrink-0 ${dark ? "accent-red-500" : "accent-green-500"}`}
+          className={`mt-0.5 flex-shrink-0 ${dark ? "accent-primary" : "accent-primary"}`}
         />
         <span lang={dark ? "es" : "en"} className="min-w-0 flex-1 text-[10px] leading-relaxed text-foreground/80 select-none group-hover:text-foreground transition-colors">
           {dark ? CHECKBOX_LABEL_DARK : CHECKBOX_LABEL_BENIGN}
@@ -90,8 +90,8 @@ export function WrongLanguageCond3({
         className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
           agreed
             ? dark
-              ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
-              : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+              ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
+              : "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
             : "bg-muted text-muted-foreground/40 cursor-not-allowed"
         }`}
       >

@@ -64,11 +64,11 @@ export function PositiveOrNegativeFramingCond1({
                   name="discount-choice-benign"
                   checked={bChoice === "gain"}
                   onChange={() => setBChoice("gain")}
-                  className="mt-0.5 flex-shrink-0 accent-green-500"
+                  className="mt-0.5 flex-shrink-0 accent-primary"
                 />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5 text-[10px] font-medium leading-relaxed select-none group-hover:text-foreground transition-colors">
-                    <svg className="h-3 w-3 shrink-0 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg className="h-3 w-3 shrink-0 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" />
                     </svg>
                     Claim my 20% welcome discount
@@ -86,7 +86,7 @@ export function PositiveOrNegativeFramingCond1({
                   name="discount-choice-benign"
                   checked={bChoice === "loss"}
                   onChange={() => setBChoice("loss")}
-                  className="mt-0.5 flex-shrink-0 accent-green-500"
+                  className="mt-0.5 flex-shrink-0 accent-primary"
                 />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5 text-[10px] font-medium leading-relaxed select-none group-hover:text-foreground transition-colors">
@@ -107,7 +107,7 @@ export function PositiveOrNegativeFramingCond1({
               disabled={!bChoice}
               className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 bChoice
-                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -143,27 +143,27 @@ export function PositiveOrNegativeFramingCond1({
 
           <div className="mt-3 space-y-2">
             {/* Gain pole — gradient colour-wrapper + badge + two icon nodes, pre-selected */}
-            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-red-500/40  via-background  p-2.5 transition-colors">
+            <label className="flex items-start gap-2 cursor-pointer group rounded-md border border-border/60  via-background  p-2.5 transition-colors">
               <input
                 type="radio"
                 name="discount-choice-dark"
                 checked={aChoice === "gain"}
                 onChange={() => setAChoice("gain")}
-                className="mt-0.5 flex-shrink-0 accent-red-500"
+                className="mt-0.5 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-1.5">
-                  <span className="bg-red-600 text-white rounded-full px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
+                  <span className="bg-primary text-primary-foreground rounded-full px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
                     ★ Best deal
                   </span>
                   <span className="flex items-center gap-1 text-[10px] font-semibold leading-relaxed select-none group-hover:text-foreground transition-colors">
-                    <svg className="h-3 w-3 shrink-0 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg className="h-3 w-3 shrink-0 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" />
                     </svg>
                     Claim my 20% welcome discount
                   </span>
                 </div>
-                <p className="text-[8px] text-green-600 dark:text-green-400 font-medium mt-0.5">
+                <p className="text-[8px] text-foreground font-medium mt-0.5">
                   <svg className="inline h-2.5 w-2.5 -mt-0.5 mr-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M12 3v18M3 12h18" />
                   </svg>
@@ -179,7 +179,7 @@ export function PositiveOrNegativeFramingCond1({
                 name="discount-choice-dark"
                 checked={aChoice === "loss"}
                 onChange={() => setAChoice("loss")}
-                className="mt-0.5 flex-shrink-0 accent-red-500"
+                className="mt-0.5 flex-shrink-0 accent-primary"
               />
               <div className="min-w-0 flex-1">
                 <div className="text-[9px] text-muted-foreground/60 leading-relaxed select-none group-hover:text-foreground transition-colors">
@@ -197,7 +197,7 @@ export function PositiveOrNegativeFramingCond1({
             disabled={!aChoice}
             className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               aChoice
-                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >

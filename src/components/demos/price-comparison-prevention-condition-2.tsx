@@ -48,7 +48,7 @@ export function PriceComparisonPreventionCond2({
                   Two sizes of the same line. Unit prices are clearly rendered.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Unit prices visible
               </div>
             </div>
@@ -59,7 +59,7 @@ export function PriceComparisonPreventionCond2({
                   <div className="min-w-0">
                     <div className="text-[10px] font-medium">{it.name}</div>
                     <div className="text-[8px] text-muted-foreground">{it.size}</div>
-                    <div className="text-[10px] font-medium text-green-700 dark:text-green-300">{it.unit}</div>
+                    <div className="text-[10px] font-medium text-foreground">{it.unit}</div>
                   </div>
                   <div className="text-[13px] font-bold tabular-nums">{it.price}</div>
                 </div>
@@ -68,14 +68,14 @@ export function PriceComparisonPreventionCond2({
 
             <button
               onClick={() => setCompared(true)}
-              className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Compare per 100 g
             </button>
 
             {compared && (
-              <div className="mt-2 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed font-mono">
-                <div className="font-semibold text-green-700 dark:text-green-300">
+              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed font-mono">
+                <div className="font-semibold text-foreground">
                   Fruity: PLN 2.58/100 g · Crunchy: PLN 2.29/100 g
                 </div>
                 <p className="text-muted-foreground mt-1">
@@ -97,7 +97,7 @@ export function PriceComparisonPreventionCond2({
                 Two sizes of the same line. Headline prices only.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Pack prices shown
             </div>
           </div>
@@ -108,7 +108,7 @@ export function PriceComparisonPreventionCond2({
                 <div className="min-w-0">
                   <div className="text-[10px] font-medium">{it.name}</div>
                   <div className="text-[8px] text-muted-foreground">{it.size}</div>
-                  <div className="text-[8px] text-gray-400 select-none">{it.unit}</div>
+                  <div className="text-[8px] text-foreground select-none">{it.unit}</div>
                 </div>
                 <div className="text-[13px] font-bold tabular-nums">{it.price}</div>
               </div>
@@ -117,13 +117,13 @@ export function PriceComparisonPreventionCond2({
 
           <button
             onClick={() => setCompared(true)}
-            className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Compare per 100 g
           </button>
 
           {compared && (
-            <div className="mt-2 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
+            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
               {mode === "auditor" ? (
                 <>
                   <div className="font-mono font-semibold text-yellow-700 dark:text-yellow-300">

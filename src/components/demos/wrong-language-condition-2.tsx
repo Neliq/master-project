@@ -39,8 +39,8 @@ export function WrongLanguageCond2({
   const banner = (dark: boolean) => (
     <div className="rounded-md border bg-card p-3">
       <div className="flex items-start gap-2">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-yellow-100 dark:bg-yellow-900/30">
-          <svg className="h-4 w-4 text-yellow-600 dark:text-yellow-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted/40">
+          <svg className="h-4 w-4 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6L17 7M7 17l-1.4 1.4" />
             <circle cx="12" cy="12" r="4" />
           </svg>
@@ -52,7 +52,7 @@ export function WrongLanguageCond2({
           </p>
           <p className="text-[8px] text-muted-foreground/60 mt-1">
             Site language: English · Your locale: en-US · Cookie controls:{" "}
-            <span className={dark ? "font-semibold text-red-500" : "font-semibold text-green-600 dark:text-green-400"}>
+            <span className={dark ? "font-semibold text-foreground" : "font-semibold text-foreground"}>
               {dark ? "Français" : "English"}
             </span>
           </p>
@@ -64,8 +64,8 @@ export function WrongLanguageCond2({
           onClick={() => setChoice("all")}
           className={`w-full rounded-md py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
             dark
-              ? "bg-red-600 hover:bg-red-700 text-white"
-              : "bg-green-600 hover:bg-green-700 text-white"
+              ? "bg-primary hover:bg-primary/80 text-primary-foreground"
+              : "bg-primary hover:bg-primary/80 text-primary-foreground"
           }`}
         >
           {ACCEPT_ALL}
@@ -75,8 +75,8 @@ export function WrongLanguageCond2({
           onClick={() => setChoice("essential")}
           className={`w-full rounded-md border py-1.5 text-[10px] font-medium transition-colors cursor-pointer ${
             dark
-              ? "border-red-500/40 bg-background text-foreground/80 hover:text-foreground"
-              : "border-green-500/40 bg-background text-foreground/80 hover:text-foreground"
+              ? "border-border/60 bg-background text-foreground/80 hover:text-foreground"
+              : "border-border/60 bg-background text-foreground/80 hover:text-foreground"
           }`}
         >
           {dark ? REJECT_DARK : REJECT_BENIGN}
@@ -85,7 +85,7 @@ export function WrongLanguageCond2({
       ) : (
         <p className="mt-3 text-[9px] text-muted-foreground">Cookie preferences saved.</p>
       )}
-      <p className={`mt-2 text-[8px] italic ${dark ? "text-red-500/70" : "text-green-600/70 dark:text-green-400/70"}`}>
+      <p className={`mt-2 text-[8px] italic ${dark ? "text-foreground/70" : "text-foreground/70"}`}>
         {dark ? NOTE_DARK : NOTE_BENIGN}
       </p>
     </div>

@@ -50,7 +50,7 @@ export function PositiveOrNegativeFramingCond2({
             <h3 className="text-[11px] font-semibold">Your Premium plan is renewing</h3>
             <p className="text-[9px] text-muted-foreground mt-0.5">
               Renewal is due in 3 days. Renew now at the discounted rate of{" "}
-              <span className="font-semibold text-green-600 dark:text-green-400">$29/mo (save 40%)</span>;
+              <span className="font-semibold text-foreground">$29/mo (save 40%)</span>;
               the standard rate after renewal is $49/mo.
             </p>
 
@@ -59,8 +59,8 @@ export function PositiveOrNegativeFramingCond2({
                 onClick={() => setBenignDecision("keep")}
                 className={`rounded-md py-2 text-[10px] font-medium transition-colors cursor-pointer ${
                   benignDecision === "keep"
-                    ? "bg-green-600 text-white"
-                    : "bg-green-600/10 text-green-700 dark:text-green-300 hover:bg-green-600/20 border border-green-500/40"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted/40 text-foreground hover:bg-muted/60 border border-border/60"
                 }`}
               >
                 Renew at $29/mo (save 40%)
@@ -69,8 +69,8 @@ export function PositiveOrNegativeFramingCond2({
                 onClick={() => setBenignDecision("cancel")}
                 className={`rounded-md py-2 text-[10px] font-medium transition-colors cursor-pointer ${
                   benignDecision === "cancel"
-                    ? "bg-green-600 text-white"
-                    : "bg-green-600/10 text-green-700 dark:text-green-300 hover:bg-green-600/20 border border-green-500/40"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted/40 text-foreground hover:bg-muted/60 border border-border/60"
                 }`}
               >
                 Cancel my subscription
@@ -87,7 +87,7 @@ export function PositiveOrNegativeFramingCond2({
               disabled={!benignDecision}
               className={`mt-2 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
                 benignDecision
-                  ? "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                   : "bg-muted text-muted-foreground/40 cursor-not-allowed"
               }`}
             >
@@ -127,7 +127,7 @@ export function PositiveOrNegativeFramingCond2({
           <h3 className="text-[11px] font-semibold">Your Premium plan is renewing</h3>
           <p className="text-[9px] text-muted-foreground mt-0.5">
             Renewal is due in 3 days. Renew now at the discounted rate of{" "}
-            <span className="font-semibold text-red-600 dark:text-red-400">$29/mo (save 40%)</span>;
+            <span className="font-semibold text-foreground">$29/mo (save 40%)</span>;
             the standard rate after renewal is $49/mo.
           </p>
 
@@ -136,8 +136,8 @@ export function PositiveOrNegativeFramingCond2({
             onClick={() => setDarkDecision("keep")}
             className={`mt-3 w-full rounded-md py-3.5 text-[12px] font-bold tracking-wide transition-colors cursor-pointer shadow-lg ${
               darkDecision === "keep"
-                ? "bg-red-600 text-white"
-                : "bg-red-600 text-white hover:bg-red-700"
+                ? "bg-primary text-primary-foreground"
+                : "bg-primary text-primary-foreground hover:bg-primary/80"
             }`}
           >
             Renew at $29/mo — save 40% now
@@ -149,7 +149,7 @@ export function PositiveOrNegativeFramingCond2({
               onClick={() => setDarkDecision("cancel")}
               className={`text-[8px] transition-colors cursor-pointer ${
                 darkDecision === "cancel"
-                  ? "text-red-500 font-semibold"
+                  ? "text-foreground font-semibold"
                   : "text-muted-foreground/40 hover:text-muted-foreground underline"
               }`}
             >
@@ -165,7 +165,7 @@ export function PositiveOrNegativeFramingCond2({
             disabled={!darkDecision}
             className={`mt-4 w-full rounded-md py-1.5 text-[10px] font-medium transition-all ${
               darkDecision
-                ? "bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                ? "bg-primary hover:bg-primary/80 text-primary-foreground cursor-pointer"
                 : "bg-muted text-muted-foreground/40 cursor-not-allowed"
             }`}
           >

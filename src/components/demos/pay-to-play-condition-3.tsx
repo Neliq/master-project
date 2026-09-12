@@ -42,8 +42,8 @@ export function PayToPlayCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-green-100 dark:bg-green-900/30">
-                <svg className="h-4.5 w-4.5 text-green-600 dark:text-green-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-muted/40">
+                <svg className="h-4.5 w-4.5 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <rect x="3" y="11" width="18" height="11" rx="2" />
                   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                 </svg>
@@ -54,17 +54,17 @@ export function PayToPlayCond3({
                   Legendary loot: 500 gems, a rare sword skin, and the Crown of Ember.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Item shop
               </div>
             </div>
 
             {!benignPurchased ? (
               <>
-                <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5">
+                <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5">
                   <div className="flex items-center justify-between text-[10px]">
                     <span className="text-muted-foreground">Buy the Ancient Chest</span>
-                    <span className="font-mono font-semibold tabular-nums text-green-600 dark:text-green-400">{PRICE} one-time</span>
+                    <span className="font-mono font-semibold tabular-nums text-foreground">{PRICE} one-time</span>
                   </div>
                   <p className="text-[8px] text-muted-foreground mt-0.5">
                     One-time purchase. Charged to your payment method on file. No recurring fees.
@@ -72,13 +72,13 @@ export function PayToPlayCond3({
                 </div>
                 <button
                   onClick={() => setBenignPurchased(true)}
-                  className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-2 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-2 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Purchase — {PRICE}
                 </button>
               </>
             ) : (
-              <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] text-green-700 dark:text-green-300 flex items-center gap-1.5">
+              <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] text-foreground flex items-center gap-1.5">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -88,8 +88,8 @@ export function PayToPlayCond3({
           </div>
 
           {benignPurchased && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -108,8 +108,8 @@ export function PayToPlayCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-red-100 dark:bg-red-900/30">
-              <svg className="h-4.5 w-4.5 text-red-600 dark:text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-muted/40">
+              <svg className="h-4.5 w-4.5 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="3" y="11" width="18" height="11" rx="2" />
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
@@ -120,7 +120,7 @@ export function PayToPlayCond3({
                 A legendary chest lies sealed beneath the Ember Temple. Only the worthy may open it.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Discover
             </div>
           </div>
@@ -141,7 +141,7 @@ export function PayToPlayCond3({
               </p>
             </>
           ) : (
-            <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] text-yellow-700 dark:text-yellow-300 flex items-center gap-1.5">
+            <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] text-foreground flex items-center gap-1.5">
               <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />

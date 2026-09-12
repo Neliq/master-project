@@ -54,8 +54,8 @@ export function SneakIntoBasketCond1({
   const productPage = (onAdd: () => void, accent: "rose" | "emerald") => (
     <div className="rounded-md border bg-background p-3">
       <div className="flex items-start gap-3">
-        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-md ${accent === "rose" ? "bg-red-500/10" : "bg-green-500/10"}`}>
-          <Headphones className={`h-5 w-5 ${accent === "rose" ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`} />
+        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-md ${accent === "rose" ? "bg-muted/40" : "bg-muted/40"}`}>
+          <Headphones className={`h-5 w-5 ${accent === "rose" ? "text-foreground" : "text-foreground"}`} />
         </div>
         <div className="min-w-0 flex-1">
           <h3 className="text-[11px] font-semibold">{HEADPHONES.name}</h3>
@@ -67,7 +67,7 @@ export function SneakIntoBasketCond1({
       </div>
       <button
         onClick={onAdd}
-        className={`mt-3 flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-white transition-colors cursor-pointer ${accent === "rose" ? "bg-red-600 hover:bg-red-700" : "bg-green-600 hover:bg-green-700"}`}
+        className={`mt-3 flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold text-primary-foreground transition-colors cursor-pointer ${accent === "rose" ? "bg-primary hover:bg-primary/80" : "bg-primary hover:bg-primary/80"}`}
       >
         <ShoppingCart className="h-3 w-3" /> Add to Cart
       </button>
@@ -102,7 +102,7 @@ export function SneakIntoBasketCond1({
             <div className="rounded-md border bg-background p-2.5">
               <div className="mb-2 flex items-center justify-between">
                 <h3 className="text-[11px] font-semibold">Your cart</h3>
-                <span className="rounded-full bg-green-500/15 px-2 py-0.5 text-[8px] font-bold text-green-600 dark:text-green-400">
+                <span className="rounded-full bg-muted/40 px-2 py-0.5 text-[8px] font-bold text-foreground">
                   {addedB ? 1 + optedItemsB.length : 0} item{addedB && optedItemsB.length === 0 ? "" : "s"}
                 </span>
               </div>
@@ -126,19 +126,19 @@ export function SneakIntoBasketCond1({
                   {!optedInB.warranty && (
                     <button
                       onClick={() => setOptedInB((o) => ({ ...o, warranty: true }))}
-                      className="flex w-full items-center justify-between rounded-md border border-green-500/40 bg-green-500/5 px-2.5 py-1.5 text-left transition-colors hover:bg-green-500/10 cursor-pointer"
+                      className="flex w-full items-center justify-between rounded-md border border-border/60 bg-muted/40 px-2.5 py-1.5 text-left transition-colors hover:bg-muted/60 cursor-pointer"
                     >
                       <span className="text-[9px] font-medium">+ Add {WARRANTY.name} — {fmt(WARRANTY.price)}</span>
-                      <span className="text-[8px] font-semibold text-green-600 dark:text-green-400">opt in</span>
+                      <span className="text-[8px] font-semibold text-foreground">opt in</span>
                     </button>
                   )}
                   {!optedInB.shipping && (
                     <button
                       onClick={() => setOptedInB((o) => ({ ...o, shipping: true }))}
-                      className="flex w-full items-center justify-between rounded-md border border-green-500/40 bg-green-500/5 px-2.5 py-1.5 text-left transition-colors hover:bg-green-500/10 cursor-pointer"
+                      className="flex w-full items-center justify-between rounded-md border border-border/60 bg-muted/40 px-2.5 py-1.5 text-left transition-colors hover:bg-muted/60 cursor-pointer"
                     >
                       <span className="text-[9px] font-medium">+ Add {SHIPPING.name} — {fmt(SHIPPING.price)}</span>
-                      <span className="text-[8px] font-semibold text-green-600 dark:text-green-400">opt in</span>
+                      <span className="text-[8px] font-semibold text-foreground">opt in</span>
                     </button>
                   )}
                 </div>
@@ -146,11 +146,11 @@ export function SneakIntoBasketCond1({
 
               <div className="mt-2 flex items-center justify-between border-t pt-2">
                 <span className="text-[9px] font-medium">Total</span>
-                <span className="font-mono text-[11px] font-bold tabular-nums text-green-600 dark:text-green-400">{fmt(totalB)}</span>
+                <span className="font-mono text-[11px] font-bold tabular-nums text-foreground">{fmt(totalB)}</span>
               </div>
               <button
                 onClick={() => setStageB("review")}
-                className="mt-2 w-full rounded-md bg-green-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-green-700 cursor-pointer"
+                className="mt-2 w-full rounded-md bg-primary py-2 text-[10px] font-semibold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
               >
                 Proceed to checkout
               </button>
@@ -158,8 +158,8 @@ export function SneakIntoBasketCond1({
           )}
 
           {stageB === "review" && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -189,7 +189,7 @@ export function SneakIntoBasketCond1({
           <div className="rounded-md border bg-background p-2.5">
             <div className="mb-2 flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">Your cart</h3>
-              <span className="rounded-full bg-red-500/15 px-2 py-0.5 text-[8px] font-bold text-red-600 dark:text-red-400">
+              <span className="rounded-full bg-muted/40 px-2 py-0.5 text-[8px] font-bold text-foreground">
                 {addedA ? 1 + injectedItemsA.length : 0} item{addedA && injectedItemsA.length === 0 ? "" : "s"}
               </span>
             </div>
@@ -217,11 +217,11 @@ export function SneakIntoBasketCond1({
             </div>
             <div className="mt-2 flex items-center justify-between border-t pt-2">
               <span className="text-[9px] font-medium">Total</span>
-              <span className="font-mono text-[11px] font-bold tabular-nums text-red-600 dark:text-red-400">{fmt(totalA)}</span>
+              <span className="font-mono text-[11px] font-bold tabular-nums text-foreground">{fmt(totalA)}</span>
             </div>
             <button
               onClick={() => setStageA("review")}
-              className="mt-2 w-full rounded-md bg-red-600 py-2 text-[10px] font-semibold text-white transition-colors hover:bg-red-700 cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary py-2 text-[10px] font-semibold text-primary-foreground transition-colors hover:bg-primary/80 cursor-pointer"
             >
               Proceed to checkout
             </button>
@@ -230,8 +230,8 @@ export function SneakIntoBasketCond1({
         )}
 
         {stageA === "review" && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed">
-            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+            <div className="mb-0.5 flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M12 9v4m0 4h.01" />
                 <circle cx="12" cy="12" r="10" />
@@ -240,7 +240,7 @@ export function SneakIntoBasketCond1({
             </div>
             <p className="text-muted-foreground">
               I<sub>cart</sub> \ I<sub>explicit</sub> ={" "}
-              <strong className="text-red-500">
+              <strong className="text-foreground">
                 {injectedItemsA.length > 0
                   ? `{${injectedItemsA.map((i) => i.name).join(", ")}} ≠ ∅`
                   : "∅ (you removed them)"}

@@ -82,7 +82,7 @@ export function PressuredSellingCond3({
                   {BENIGN_COPY}
                 </p>
               </div>
-              <div className="shrink-0 rounded-full border border-green-500/30 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
+              <div className="shrink-0 rounded-full border border-border/60 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground">
                 Neutral copy
               </div>
             </div>
@@ -91,7 +91,7 @@ export function PressuredSellingCond3({
               <div className="mt-2.5 grid grid-cols-2 gap-2">
                 <button
                   onClick={() => setBenignDecision("accepted")}
-                  className="rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                  className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
                 >
                   Add for $19.99
                 </button>
@@ -103,7 +103,7 @@ export function PressuredSellingCond3({
                 </button>
               </div>
             ) : (
-              <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
+              <div className="mt-2.5 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] text-foreground">
                 {benignDecision === "accepted"
                   ? "Warranty added. Coverage will be included with this order."
                   : "Declined. The warranty was not added to this order."}
@@ -121,17 +121,17 @@ export function PressuredSellingCond3({
       }>
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
-        <div className="rounded-md border-2 border-red-500/50 bg-card p-3">
+        <div className="rounded-md border-2 border-border/60 bg-card p-3">
           <div className="flex items-start justify-between gap-2">
             <div>
               <h3 className="text-[11px] font-semibold">
-                <span className="text-red-600 dark:text-red-400">WAIT!</span>{" "}Don&rsquo;t miss out!
+                <span className="text-foreground">WAIT!</span>{" "}Don&rsquo;t miss out!
               </h3>
               <p className="text-[9px] text-muted-foreground mt-0.5 leading-relaxed">
                 {DARK_COPY}
               </p>
             </div>
-            <div className="shrink-0 rounded-full border border-red-500/40 bg-red-500/10 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">
+            <div className="shrink-0 rounded-full border border-border/60 bg-muted/40 px-2 py-0.5 text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground">
               Limited-time offer
             </div>
           </div>
@@ -140,7 +140,7 @@ export function PressuredSellingCond3({
             <div className="mt-2.5 grid grid-cols-2 gap-2">
               <button
                 onClick={() => setDarkDecision("accepted")}
-                className="rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+                className="rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
               >
                 Add for $19.99
               </button>
@@ -152,7 +152,7 @@ export function PressuredSellingCond3({
               </button>
             </div>
           ) : (
-            <div className="mt-2.5 rounded-md border border-green-500/30 bg-green-500/5 p-2 text-[9px] text-green-700 dark:text-green-300">
+            <div className="mt-2.5 rounded-md border border-border/60 bg-muted/40 p-2 text-[9px] text-foreground">
               {darkDecision === "accepted"
                 ? "Warranty added. It will appear in your order summary."
                 : "Declined. The warranty was not added to this order."}

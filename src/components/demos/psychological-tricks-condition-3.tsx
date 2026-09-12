@@ -28,7 +28,7 @@ function PriceRow({ label, value, tone }: { label: string; value: string; tone?:
   return (
     <div className="flex items-center justify-between text-[9px]">
       <span className="text-muted-foreground">{label}</span>
-      <span className={`font-mono font-semibold tabular-nums ${tone === "rose" ? "text-red-500" : tone === "emerald" ? "text-green-500" : ""}`}>
+      <span className={`font-mono font-semibold tabular-nums ${tone === "rose" ? "text-foreground" : tone === "emerald" ? "text-foreground" : ""}`}>
         {value}
       </span>
     </div>
@@ -55,7 +55,7 @@ export function PsychologicalTricksCond3({
         <div className="space-y-3">
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-start gap-2.5">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-primary-foreground">
                 <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M3 12h18" />
                   <path d="M9 3v18" />
@@ -88,7 +88,7 @@ export function PsychologicalTricksCond3({
                 step={5}
                 value={wtpBenign}
                 onChange={(e) => setWtpBenign(Number(e.target.value))}
-                className="mt-1.5 w-full accent-green-500 cursor-pointer"
+                className="mt-1.5 w-full accent-primary cursor-pointer"
                 aria-label="What would you pay for this lamp"
               />
               <div className="mt-0.5 flex justify-between text-[8px] text-muted-foreground/70 font-mono">
@@ -99,15 +99,15 @@ export function PsychologicalTricksCond3({
 
             <button
               onClick={() => setBoughtBenign(true)}
-              className="mt-2 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Buy now
             </button>
           </div>
 
           {boughtBenign && (
-            <div className="rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M20 6L9 17l-5-5" />
                 </svg>
@@ -126,7 +126,7 @@ export function PsychologicalTricksCond3({
       <div className="space-y-3">
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-start gap-2.5">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-white">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md   text-primary-foreground">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M3 12h18" />
                 <path d="M9 3v18" />
@@ -145,14 +145,14 @@ export function PsychologicalTricksCond3({
           <div className="mt-2.5 flex items-end gap-2">
             <div>
               <span className="text-[10px] font-mono text-muted-foreground/70 line-through">$299</span>
-              <span className="ml-1.5 rounded-full bg-red-500/15 text-red-700 dark:text-red-300 border border-red-500/30 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider">
+              <span className="ml-1.5 rounded-full bg-muted/40 text-foreground border border-border/60 px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider">
                 MSRP
               </span>
             </div>
           </div>
           <div className="mt-1 flex items-baseline gap-1.5">
             <span className="text-[14px] font-bold">$149</span>
-            <span className="rounded-full bg-red-600 text-white px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider">
+            <span className="rounded-full bg-primary text-primary-foreground px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wider">
               Save 50% — today only
             </span>
           </div>
@@ -171,7 +171,7 @@ export function PsychologicalTricksCond3({
               step={5}
               value={wtpDark}
               onChange={(e) => setWtpDark(Number(e.target.value))}
-              className="mt-1.5 w-full accent-red-500 cursor-pointer"
+              className="mt-1.5 w-full accent-primary cursor-pointer"
               aria-label="What would you pay for this lamp"
             />
             <div className="mt-0.5 flex justify-between text-[8px] text-muted-foreground/70 font-mono">
@@ -182,7 +182,7 @@ export function PsychologicalTricksCond3({
 
           <button
             onClick={() => setBoughtDark(true)}
-            className="mt-2 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Buy now
           </button>

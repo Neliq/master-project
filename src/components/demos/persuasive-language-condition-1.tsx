@@ -55,7 +55,7 @@ export function PersuasiveLanguageCond1({
                   Limited-time price on wireless earbuds.
                 </p>
               </div>
-              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 Standard listing
               </div>
             </div>
@@ -70,7 +70,7 @@ export function PersuasiveLanguageCond1({
 
             <button
               onClick={() => setBenignCart("added")}
-              className="mt-3 w-full rounded-md bg-green-600 hover:bg-green-700 py-1.5 text-[10px] font-medium text-white transition-colors cursor-pointer"
+              className="mt-3 w-full rounded-md bg-primary hover:bg-primary/80 py-1.5 text-[10px] font-medium text-primary-foreground transition-colors cursor-pointer"
             >
               Add to cart
             </button>
@@ -104,7 +104,7 @@ export function PersuasiveLanguageCond1({
                 Limited-time price on wireless earbuds.
               </p>
             </div>
-            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <div className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               Featured listing
             </div>
           </div>
@@ -121,15 +121,15 @@ export function PersuasiveLanguageCond1({
             onKeyDown={() => { if (hoverFires > -1) setHoverFires((n) => n + 1); }}
             className={`mt-3 rounded-md border p-2.5 transition-all cursor-pointer select-none ${
               coerciveHovered
-                ? "border-red-500 bg-red-500/10 ring-2 ring-red-500/40"
-                : "border-red-500/40 bg-red-500/5"
+                ? "border-border bg-muted/40 ring-2 ring-ring/50"
+                : "border-border/60 bg-muted/40"
             }`}
           >
-            <p className={`text-[10px] font-bold uppercase tracking-wide text-red-600 dark:text-red-400 transition-transform ${coerciveHovered ? "scale-[1.02]" : ""}`}>
+            <p className={`text-[10px] font-bold uppercase tracking-wide text-foreground transition-transform ${coerciveHovered ? "scale-[1.02]" : ""}`}>
               ⏰ Act now — Don&rsquo;t miss out on this price!
             </p>
             {coerciveHovered && (
-              <p className="mt-1 text-[8px] font-mono text-red-500/80">
+              <p className="mt-1 text-[8px] font-mono text-foreground/80">
                 mouseenter fired — listener activity: {hoverFires} events
               </p>
             )}
@@ -140,10 +140,10 @@ export function PersuasiveLanguageCond1({
 
           <button
             onClick={() => setDarkCart("added")}
-            className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium text-white transition-all cursor-pointer ${
+            className={`mt-3 w-full rounded-md py-1.5 text-[10px] font-medium text-primary-foreground transition-all cursor-pointer ${
               coerciveHovered
-                ? "bg-red-500 ring-2 ring-red-300 scale-[1.02]"
-                : "bg-red-600 hover:bg-red-700"
+                ? "bg-primary ring-2 ring-ring scale-[1.02]"
+                : "bg-primary hover:bg-primary/80"
             }`}
           >
             Add to cart

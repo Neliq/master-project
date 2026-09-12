@@ -80,7 +80,7 @@ function RowControl({
       type="checkbox"
       checked={value === "on"}
       onChange={onToggle}
-      className={`h-3.5 w-3.5 flex-shrink-0 ${accent === "rose" ? "accent-red-500" : "accent-green-500"}`}
+      className={`h-3.5 w-3.5 flex-shrink-0 ${accent === "rose" ? "accent-primary" : "accent-primary"}`}
     />
   );
 }
@@ -106,7 +106,7 @@ export function PsychologicalTricksCond2({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between">
               <h3 className="text-[11px] font-semibold">Finish setting up your account</h3>
-              <span className="text-[8px] font-mono uppercase tracking-wider rounded-full border border-green-500/30 text-green-600 dark:text-green-400 px-2 py-0.5">
+              <span className="text-[8px] font-mono uppercase tracking-wider rounded-full border border-border/60 text-foreground px-2 py-0.5">
                 3 settings
               </span>
             </div>
@@ -131,7 +131,7 @@ export function PsychologicalTricksCond2({
 
             <button
               onClick={() => setBenignFinished(true)}
-              className="mt-2.5 w-full rounded-md bg-green-600 hover:bg-green-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               Finish setup
             </button>
@@ -166,7 +166,7 @@ export function PsychologicalTricksCond2({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between">
             <h3 className="text-[11px] font-semibold">Finish setting up your account</h3>
-            <span className="text-[8px] font-mono uppercase tracking-wider rounded-full border border-red-500/30 text-red-600 dark:text-red-400 px-2 py-0.5">
+            <span className="text-[8px] font-mono uppercase tracking-wider rounded-full border border-border/60 text-foreground px-2 py-0.5">
               14 settings
             </span>
           </div>
@@ -180,14 +180,14 @@ export function PsychologicalTricksCond2({
                 key={i}
                 className={`flex items-center justify-between gap-2 rounded-md border px-2.5 py-2 ${
                   row.hostile
-                    ? "border-red-500/40 bg-red-500/5"
+                    ? "border-border/60 bg-muted/40"
                     : "border-border/60 bg-background"
                 }`}
               >
                 <span className="text-[10px] text-foreground/85">
                   {row.label}
                   {row.hostile && (
-                    <span className="ml-1.5 rounded-full bg-red-500/15 text-red-700 dark:text-red-300 border border-red-500/30 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
+                    <span className="ml-1.5 rounded-full bg-muted/40 text-foreground border border-border/60 px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-wider">
                       Pre-selected
                     </span>
                   )}
@@ -205,7 +205,7 @@ export function PsychologicalTricksCond2({
 
           <button
             onClick={() => setDarkFinished(true)}
-            className="mt-2.5 w-full rounded-md bg-red-600 hover:bg-red-700 text-white py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+            className="mt-2.5 w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
           >
             Finish setup
           </button>

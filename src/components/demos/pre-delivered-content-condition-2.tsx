@@ -76,7 +76,7 @@ export function PreDeliveredContentCond2({
           <div className="rounded-md border bg-card p-3">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-[11px] font-semibold">Nebula Drift — Content Hub</h3>
-              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-green-500 rounded-full border border-green-500/30 px-2 py-0.5 shrink-0">
+              <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
                 12 of 14 playable
               </span>
             </div>
@@ -93,14 +93,14 @@ export function PreDeliveredContentCond2({
                     onClick={() => handleClick(name, isLocked, setClickedB, setClicksB)}
                     className={`flex flex-col items-start gap-1 rounded-md border p-1.5 text-left transition-colors cursor-pointer ${
                       isLocked
-                        ? "border-border bg-background hover:border-green-500/40"
-                        : "border-green-500/20 bg-green-500/5 hover:border-green-500/40"
+                        ? "border-border bg-background hover:border-border/60"
+                        : "border-border/60 bg-muted/40 hover:border-border/60"
                     }`}
                   >
                     {isLocked ? (
-                      <Download className="size-3 text-green-600 dark:text-green-400" />
+                      <Download className="size-3 text-foreground" />
                     ) : (
-                      <Play className="size-3 text-green-600 dark:text-green-400" />
+                      <Play className="size-3 text-foreground" />
                     )}
                     <span className="text-[8px] leading-tight text-foreground/80">{name}</span>
                     <span className="text-[7px] font-mono uppercase tracking-wider text-muted-foreground/60">
@@ -112,8 +112,8 @@ export function PreDeliveredContentCond2({
             </div>
 
             {clickedB && (
-              <div className="mt-3 rounded-md border border-green-500/30 bg-green-500/5 p-2.5 text-[9px] leading-relaxed">
-                <div className="flex items-center gap-1.5 font-semibold text-green-700 dark:text-green-300 uppercase tracking-tight">
+              <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
+                <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
@@ -134,7 +134,7 @@ export function PreDeliveredContentCond2({
         <div className="rounded-md border bg-card p-3">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-semibold">Nebula Drift — Content Hub</h3>
-            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-red-500 rounded-full border border-red-500/30 px-2 py-0.5 shrink-0">
+            <span className="text-[8px] font-mono font-semibold uppercase tracking-wider text-foreground rounded-full border border-border/60 px-2 py-0.5 shrink-0">
               12 locked
             </span>
           </div>
@@ -151,17 +151,17 @@ export function PreDeliveredContentCond2({
                   onClick={() => handleClick(name, isLocked, setClickedA, setClicksA)}
                   className={`flex flex-col items-start gap-1 rounded-md border p-1.5 text-left transition-colors cursor-pointer ${
                     isLocked
-                      ? "border-red-500/25 bg-background hover:border-red-500/50"
+                      ? "border-border/60 bg-background hover:border-border/60"
                       : "border-border bg-background hover:border-foreground/40"
                   }`}
                 >
                   {isLocked ? (
-                    <Lock className="size-3 text-red-500" />
+                    <Lock className="size-3 text-foreground" />
                   ) : (
                     <Play className="size-3 text-foreground/60" />
                   )}
                   <span className={`text-[8px] leading-tight ${isLocked ? "text-foreground/50" : "text-foreground/80"}`}>{name}</span>
-                  <span className={`text-[7px] font-mono uppercase tracking-wider ${isLocked ? "text-red-500/80" : "text-muted-foreground/60"}`}>
+                  <span className={`text-[7px] font-mono uppercase tracking-wider ${isLocked ? "text-foreground/80" : "text-muted-foreground/60"}`}>
                     {isLocked ? "Unlock — $7.99" : "Play"}
                   </span>
                 </button>
@@ -170,8 +170,8 @@ export function PreDeliveredContentCond2({
           </div>
 
           {clickedA && (
-            <div className="mt-3 rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-              <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
+            <div className="mt-3 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed space-y-1.5">
+              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M12 9v4m0 4h.01" />
                   <circle cx="12" cy="12" r="10" />
