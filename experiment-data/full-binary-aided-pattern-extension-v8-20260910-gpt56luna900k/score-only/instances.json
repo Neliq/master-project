@@ -1,0 +1,122 @@
+{
+  "task-59991541ece9": {
+    "instance_id": "task-59991541ece9",
+    "slug": "games-for-other-purposes",
+    "pattern_name": "Games For Other Purposes",
+    "pattern_number": 64,
+    "condition": 2,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/64/2/2"
+  },
+  "task-53802e3992ad": {
+    "instance_id": "task-53802e3992ad",
+    "slug": "nagging",
+    "pattern_name": "Nagging",
+    "pattern_number": 63,
+    "condition": 2,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/63/2/2"
+  },
+  "task-c899de16d072": {
+    "instance_id": "task-c899de16d072",
+    "slug": "nagging",
+    "pattern_name": "Nagging",
+    "pattern_number": 63,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/63/1/1"
+  },
+  "task-fda48b3b5d3d": {
+    "instance_id": "task-fda48b3b5d3d",
+    "slug": "games-for-other-purposes",
+    "pattern_name": "Games For Other Purposes",
+    "pattern_number": 64,
+    "condition": 1,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/64/1/1"
+  },
+  "task-19770a244e8d": {
+    "instance_id": "task-19770a244e8d",
+    "slug": "games-for-other-purposes",
+    "pattern_name": "Games For Other Purposes",
+    "pattern_number": 64,
+    "condition": 3,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/64/3/1"
+  },
+  "task-2c09719c9f46": {
+    "instance_id": "task-2c09719c9f46",
+    "slug": "games-for-other-purposes",
+    "pattern_name": "Games For Other Purposes",
+    "pattern_number": 64,
+    "condition": 2,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/64/2/1"
+  },
+  "task-f33c1fe4ae6b": {
+    "instance_id": "task-f33c1fe4ae6b",
+    "slug": "games-for-other-purposes",
+    "pattern_name": "Games For Other Purposes",
+    "pattern_number": 64,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/64/1/2"
+  },
+  "task-0ab8f4420396": {
+    "instance_id": "task-0ab8f4420396",
+    "slug": "nagging",
+    "pattern_name": "Nagging",
+    "pattern_number": 63,
+    "condition": 3,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/63/3/2"
+  },
+  "task-253f9fb5c4ea": {
+    "instance_id": "task-253f9fb5c4ea",
+    "slug": "nagging",
+    "pattern_name": "Nagging",
+    "pattern_number": 63,
+    "condition": 2,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/63/2/1"
+  },
+  "task-0ec2ae7ec850": {
+    "instance_id": "task-0ec2ae7ec850",
+    "slug": "games-for-other-purposes",
+    "pattern_name": "Games For Other Purposes",
+    "pattern_number": 64,
+    "condition": 3,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/64/3/2"
+  },
+  "task-ef997d1956a6": {
+    "instance_id": "task-ef997d1956a6",
+    "slug": "nagging",
+    "pattern_name": "Nagging",
+    "pattern_number": 63,
+    "condition": 3,
+    "variant": 1,
+    "deceptive": true,
+    "url": "http://127.0.0.1:3000/63/3/1"
+  },
+  "task-c71ab4495b13": {
+    "instance_id": "task-c71ab4495b13",
+    "slug": "nagging",
+    "pattern_name": "Nagging",
+    "pattern_number": 63,
+    "condition": 1,
+    "variant": 2,
+    "deceptive": false,
+    "url": "http://127.0.0.1:3000/63/1/2"
+  }
+}

@@ -54,8 +54,7 @@ export function InformationWithoutContextCond1({
                   </span>
                 </div>
                 <div className="text-[10px] font-medium">
-                  New messages{" "}
-                  <span className="text-muted-foreground font-normal">(descriptor present)</span>
+                  New messages
                 </div>
               </div>
               <button

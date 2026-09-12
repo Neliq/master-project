@@ -58,9 +58,6 @@ export function HighDemandCond3({
                 <div className="text-[10px] font-medium text-foreground">
                   {Q} people viewed this in the last hour
                 </div>
-                <div className="text-[8px] text-muted-foreground">
-                  ∃q = {Q} ∈ ℤ⁺ ∧ Qualifier_temporal = &ldquo;in the last hour&rdquo; — falsifiable
-                </div>
               </div>
             </div>
 
@@ -113,9 +110,6 @@ export function HighDemandCond3({
             <div>
               <div className="font-mono text-[13px] font-bold tabular-nums text-foreground">
                 {Q} people are viewing this
-              </div>
-              <div className="text-[8px] text-muted-foreground">
-                ∃q = {Q} ∈ ℤ⁺ but ¬∃ Qualifier_temporal/geographic — unfalsifiable
               </div>
             </div>
           </div>

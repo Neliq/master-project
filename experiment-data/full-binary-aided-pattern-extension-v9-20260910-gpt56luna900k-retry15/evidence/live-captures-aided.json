@@ -1,0 +1,738 @@
+{
+  "arm": "aided",
+  "browser": "Playwright MCP browser_run_code_unsafe",
+  "capture_method": "Playwright live browser navigation; document.title set to Isolated audit demo; history replaced with /audit-view; scoped [data-isolated-demo] inspected before and after one direct in-scope transition attempt",
+  "records": [
+    {
+      "instance_id": "task-59991541ece9",
+      "url": "http://127.0.0.1:3000/64/2/2",
+      "before": {
+        "text": "Submit maintenance request\n\nDescribe the issue and choose a preferred time.\n\nContinue\nProfile progress: 2 of 4 steps",
+        "rect": [
+          304,
+          243,
+          672,
+          235
+        ],
+        "controls": [
+          {
+            "tag": "textarea",
+            "text": "Issue description",
+            "disabled": false,
+            "rect": [
+              321,
+              307,
+              638,
+              64
+            ]
+          },
+          {
+            "tag": "button",
+            "text": "Continue",
+            "disabled": false,
+            "rect": [
+              321,
+              390,
+              66,
+              27
+            ]
+          }
+        ]
+      },
+      "action": {
+        "attempted": true,
+        "control": "Continue",
+        "filled_textarea": true,
+        "attempts": 1
+      },
+      "after": {
+        "text": "Submit maintenance request\n\nDescribe the issue and choose a preferred time.\n\nContinue\nProfile progress: 2 of 4 steps",
+        "rect": [
+          304,
+          243,
+          672,
+          235
+        ],
+        "controls": [
+          {
+            "tag": "textarea",
+            "text": "Issue description",
+            "disabled": false,
+            "rect": [
+              321,
+              307,
+              638,
+              64
+            ]
+          },
+          {
+            "tag": "button",
+            "text": "Continue",
+            "disabled": false,
+            "rect": [
+              321,
+              390,
+              66,
+              27
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "task-53802e3992ad",
+      "url": "http://127.0.0.1:3000/63/2/2",
+      "before": {
+        "text": "Order summary\n\nYour delivery details are saved.\n\nOptional reminder: finish your profile later.",
+        "rect": [
+          304,
+          303,
+          672,
+          115
+        ],
+        "controls": []
+      },
+      "action": {
+        "attempted": false
+      },
+      "after": {
+        "text": "Order summary\n\nYour delivery details are saved.\n\nOptional reminder: finish your profile later.",
+        "rect": [
+          304,
+          303,
+          672,
+          115
+        ],
+        "controls": []
+      }
+    },
+    {
+      "instance_id": "task-c899de16d072",
+      "url": "http://127.0.0.1:3000/63/1/1",
+      "before": {
+        "text": "Finish setting up your profile\n\nAdd a photo to get the most from your account.\n\nAdd photo\nNot now",
+        "rect": [
+          304,
+          305,
+          672,
+          111
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Add photo",
+            "disabled": false,
+            "rect": [
+              321,
+              369,
+              72,
+              29
+            ]
+          },
+          {
+            "tag": "button",
+            "text": "Not now",
+            "disabled": false,
+            "rect": [
+              401,
+              369,
+              65,
+              29
+            ]
+          }
+        ]
+      },
+      "action": {
+        "attempted": true,
+        "control": "Not now",
+        "filled_textarea": false,
+        "attempts": 1
+      },
+      "after": {
+        "text": "Finish setting up your profile\n\nAdd a photo to get the most from your account.\n\nAdd photo\nNot now",
+        "rect": [
+          304,
+          305,
+          672,
+          111
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Add photo",
+            "disabled": false,
+            "rect": [
+              321,
+              369,
+              72,
+              29
+            ]
+          },
+          {
+            "tag": "button",
+            "text": "Not now",
+            "disabled": false,
+            "rect": [
+              401,
+              369,
+              65,
+              29
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "task-fda48b3b5d3d",
+      "url": "http://127.0.0.1:3000/64/1/1",
+      "before": {
+        "text": "Profile quest\n\nLEVEL 2\n\nComplete service details to earn points and unlock the next level.\n\nComplete next quest",
+        "rect": [
+          304,
+          295,
+          672,
+          130
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Complete next quest",
+            "disabled": false,
+            "rect": [
+              321,
+              381,
+              122,
+              27
+            ]
+          }
+        ]
+      },
+      "action": {
+        "attempted": true,
+        "control": "Complete next quest",
+        "filled_textarea": false,
+        "attempts": 1
+      },
+      "after": {
+        "text": "Profile quest\n\nLEVEL 2\n\nComplete service details to earn points and unlock the next level.\n\nComplete next quest",
+        "rect": [
+          304,
+          295,
+          672,
+          130
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Complete next quest",
+            "disabled": false,
+            "rect": [
+              321,
+              381,
+              122,
+              27
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "task-19770a244e8d",
+      "url": "http://127.0.0.1:3000/64/3/1",
+      "before": {
+        "text": "Unlock the submission badge\n\nEarn 30 points to unlock your application submission.\n\nProgress\n20/30 XP\nComplete a challenge",
+        "rect": [
+          304,
+          279,
+          672,
+          163
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Complete a challenge",
+            "disabled": false,
+            "rect": [
+              321,
+              397,
+              126,
+              27
+            ]
+          }
+        ]
+      },
+      "action": {
+        "attempted": true,
+        "control": "Complete a challenge",
+        "filled_textarea": false,
+        "attempts": 1
+      },
+      "after": {
+        "text": "Unlock the submission badge\n\nEarn 30 points to unlock your application submission.\n\nProgress\n20/30 XP\nComplete a challenge",
+        "rect": [
+          304,
+          279,
+          672,
+          163
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Complete a challenge",
+            "disabled": false,
+            "rect": [
+              321,
+              397,
+              126,
+              27
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "task-2c09719c9f46",
+      "url": "http://127.0.0.1:3000/64/2/1",
+      "before": {
+        "text": "Weekly service leaderboard\n\n#04\n\n1,240\n\npoints to next badge\n\nEarn points to continue",
+        "rect": [
+          304,
+          261,
+          672,
+          199
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Earn points to continue",
+            "disabled": false,
+            "rect": [
+              317,
+              416,
+              646,
+              31
+            ]
+          }
+        ]
+      },
+      "action": {
+        "attempted": true,
+        "control": "Earn points to continue",
+        "filled_textarea": false,
+        "attempts": 1
+      },
+      "after": {
+        "text": "Weekly service leaderboard\n\n#04\n\n1,240\n\npoints to next badge\n\nEarn points to continue",
+        "rect": [
+          304,
+          261,
+          672,
+          199
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Earn points to continue",
+            "disabled": false,
+            "rect": [
+              317,
+              416,
+              646,
+              31
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "task-f33c1fe4ae6b",
+      "url": "http://127.0.0.1:3000/64/1/2",
+      "before": {
+        "text": "Complete your service profile\n\n✓ Contact details\n\n○ Delivery preferences\n\n○ Review and save\n\nContinue",
+        "rect": [
+          304,
+          279,
+          672,
+          163
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Continue",
+            "disabled": false,
+            "rect": [
+              321,
+              397,
+              66,
+              27
+            ]
+          }
+        ]
+      },
+      "action": {
+        "attempted": true,
+        "control": "Continue",
+        "filled_textarea": false,
+        "attempts": 1
+      },
+      "after": {
+        "text": "Complete your service profile\n\n✓ Contact details\n\n○ Delivery preferences\n\n○ Review and save\n\nContinue",
+        "rect": [
+          304,
+          279,
+          672,
+          163
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Continue",
+            "disabled": false,
+            "rect": [
+              321,
+              397,
+              66,
+              27
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "task-0ab8f4420396",
+      "url": "http://127.0.0.1:3000/63/3/2",
+      "before": {
+        "text": "Notification settings\n\nNotifications are currently off. You can change this in Settings.\n\nOpen settings\nRefresh status (1)",
+        "rect": [
+          304,
+          284,
+          672,
+          152
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Open settings",
+            "disabled": false,
+            "rect": [
+              321,
+              349,
+              89,
+              29
+            ]
+          },
+          {
+            "tag": "button",
+            "text": "Refresh status (1)",
+            "disabled": false,
+            "rect": [
+              304,
+              407,
+              672,
+              29
+            ]
+          }
+        ]
+      },
+      "action": {
+        "attempted": true,
+        "control": "Refresh status (1)",
+        "filled_textarea": false,
+        "attempts": 1
+      },
+      "after": {
+        "text": "Notification settings\n\nNotifications are currently off. You can change this in Settings.\n\nOpen settings\nRefresh status (1)",
+        "rect": [
+          304,
+          284,
+          672,
+          152
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Open settings",
+            "disabled": false,
+            "rect": [
+              321,
+              349,
+              89,
+              29
+            ]
+          },
+          {
+            "tag": "button",
+            "text": "Refresh status (1)",
+            "disabled": false,
+            "rect": [
+              304,
+              407,
+              672,
+              29
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "task-253f9fb5c4ea",
+      "url": "http://127.0.0.1:3000/63/2/1",
+      "before": {
+        "text": "Order summary\n\nDelivery tomorrow · card ending 2048\n\nContinue\n\nPlease finish your profile\n\nThis request interrupts the task again.\n\nFinish now",
+        "rect": [
+          304,
+          264,
+          672,
+          192
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Continue",
+            "disabled": false,
+            "rect": [
+              321,
+              329,
+              67,
+              29
+            ]
+          },
+          {
+            "tag": "button",
+            "text": "Finish now",
+            "disabled": false,
+            "rect": [
+              603,
+              371,
+              75,
+              27
+            ]
+          }
+        ]
+      },
+      "action": {
+        "attempted": true,
+        "control": "Finish now",
+        "filled_textarea": false,
+        "attempts": 1
+      },
+      "after": {
+        "text": "Order summary\n\nDelivery tomorrow · card ending 2048\n\nContinue\n\nPlease finish your profile\n\nThis request interrupts the task again.\n\nFinish now",
+        "rect": [
+          304,
+          264,
+          672,
+          192
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Continue",
+            "disabled": false,
+            "rect": [
+              321,
+              329,
+              67,
+              29
+            ]
+          },
+          {
+            "tag": "button",
+            "text": "Finish now",
+            "disabled": false,
+            "rect": [
+              603,
+              371,
+              75,
+              27
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "task-0ec2ae7ec850",
+      "url": "http://127.0.0.1:3000/64/3/2",
+      "before": {
+        "text": "Submit your application\n\nYour information is complete and ready for review.\n\nSubmit application",
+        "rect": [
+          304,
+          306,
+          672,
+          109
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Submit application",
+            "disabled": false,
+            "rect": [
+              321,
+              370,
+              112,
+              27
+            ]
+          }
+        ]
+      },
+      "action": {
+        "attempted": true,
+        "control": "Submit application",
+        "filled_textarea": false,
+        "attempts": 1
+      },
+      "after": {
+        "text": "Submit your application\n\nYour information is complete and ready for review.\n\nSubmit application",
+        "rect": [
+          304,
+          306,
+          672,
+          109
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Submit application",
+            "disabled": false,
+            "rect": [
+              321,
+              370,
+              112,
+              27
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "task-ef997d1956a6",
+      "url": "http://127.0.0.1:3000/63/3/1",
+      "before": {
+        "text": "Enable notifications now\n\nEnable notifications now to stay up to date.\n\nEnable notifications\nShow the message again (1)",
+        "rect": [
+          304,
+          285,
+          672,
+          150
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Enable notifications",
+            "disabled": false,
+            "rect": [
+              321,
+              350,
+              116,
+              27
+            ]
+          },
+          {
+            "tag": "button",
+            "text": "Show the message again (1)",
+            "disabled": false,
+            "rect": [
+              304,
+              406,
+              672,
+              29
+            ]
+          }
+        ]
+      },
+      "action": {
+        "attempted": true,
+        "control": "Show the message again (1)",
+        "filled_textarea": false,
+        "attempts": 1
+      },
+      "after": {
+        "text": "Enable notifications now\n\nEnable notifications now to stay up to date.\n\nEnable notifications\nShow the message again (1)",
+        "rect": [
+          304,
+          285,
+          672,
+          150
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Enable notifications",
+            "disabled": false,
+            "rect": [
+              321,
+              350,
+              116,
+              27
+            ]
+          },
+          {
+            "tag": "button",
+            "text": "Show the message again (1)",
+            "disabled": false,
+            "rect": [
+              304,
+              406,
+              672,
+              29
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "task-c71ab4495b13",
+      "url": "http://127.0.0.1:3000/63/1/2",
+      "before": {
+        "text": "Your account is ready\n\nYou can finish setting up your profile whenever you choose.\n\nOpen profile\n\nThe message does not return after you dismiss it.",
+        "rect": [
+          304,
+          293,
+          672,
+          134
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Open profile",
+            "disabled": false,
+            "rect": [
+              321,
+              358,
+              81,
+              27
+            ]
+          }
+        ]
+      },
+      "action": {
+        "attempted": true,
+        "control": "Open profile",
+        "filled_textarea": false,
+        "attempts": 1
+      },
+      "after": {
+        "text": "Your account is ready\n\nYou can finish setting up your profile whenever you choose.\n\nOpen profile\n\nThe message does not return after you dismiss it.",
+        "rect": [
+          304,
+          293,
+          672,
+          134
+        ],
+        "controls": [
+          {
+            "tag": "button",
+            "text": "Open profile",
+            "disabled": false,
+            "rect": [
+              321,
+              358,
+              81,
+              27
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -121,11 +121,12 @@ export function IntermediateCurrencyCond3({
 
             {/* Pay action gated behind the exchange vector */}
             <button
+              data-dp-color-signal=""
               onClick={() => enough && setPaidA(true)}
               disabled={!enough}
               className={`flex w-full items-center justify-center gap-1.5 rounded-md py-2 text-[10px] font-semibold transition-colors ${
                 enough
-                  ? "bg-primary text-primary-foreground hover:bg-primary/80 cursor-pointer"
+                  ? "bg-red-600 text-white hover:bg-red-700 cursor-pointer"
                   : "bg-muted text-muted-foreground/50 cursor-not-allowed"
               }`}
             >

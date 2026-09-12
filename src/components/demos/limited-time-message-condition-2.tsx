@@ -24,7 +24,6 @@ export function LimitedTimeMessageCond2({
 }: {
   mode?: "user" | "auditor";
 } = {}) {
-  const [probed, setProbed] = React.useState(false);
   const [added, setAdded] = React.useState(false);
 
 
@@ -47,20 +46,6 @@ export function LimitedTimeMessageCond2({
               </div>
             </div>
 
-            <button
-              onClick={() => setProbed(true)}
-              className="mt-2.5 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-            >
-              Inspect offer container (hue probe)
-            </button>
-
-            {probed && (
-              <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed font-mono">
-                <div className="font-semibold text-foreground">Hue(C_offer) = 210° ∉ [0°, 45°] ✗</div>
-                <div className="text-muted-foreground">Match(T(C_offer), “ends in | only today”) = True ✓</div>
-                <div className="text-muted-foreground mt-1">Conjunction fails — no compound urgency signal.</div>
-              </div>
-            )}
 
             <button
               onClick={() => setAdded(true)}
@@ -100,20 +85,6 @@ export function LimitedTimeMessageCond2({
             </div>
           </div>
 
-          <button
-            onClick={() => setProbed(true)}
-            className="mt-2.5 w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-          >
-            Inspect offer container (hue probe)
-          </button>
-
-          {probed && (
-            <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed font-mono">
-              <div className="font-semibold text-foreground">Hue(C_offer) = 15° ∈ [0°, 45°] ✓</div>
-              <div className="text-muted-foreground">Match(T(C_offer), “ends in | only today”) = True ✓</div>
-              <div className="text-muted-foreground mt-1">Offer ends soon</div>
-            </div>
-          )}
 
           <button
             onClick={() => setAdded(true)}

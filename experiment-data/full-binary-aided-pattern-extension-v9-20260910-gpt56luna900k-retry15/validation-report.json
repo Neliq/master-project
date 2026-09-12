@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "run": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15",
+  "patterns": [
+    "games-for-other-purposes",
+    "nagging"
+  ],
+  "distinct_interfaces": 12,
+  "raw_rows": {
+    "not-aided": 12,
+    "aided": 12
+  },
+  "agent_files": {
+    "not-aided": 6,
+    "aided": 6
+  },
+  "rows_per_agent": {
+    "not-aided": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "aided": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ]
+  },
+  "evidence_records_per_arm": {
+    "not-aided": 12,
+    "aided": 12
+  },
+  "grid_counts": {
+    "games-for-other-purposes:1:1": 1,
+    "games-for-other-purposes:1:2": 1,
+    "games-for-other-purposes:2:1": 1,
+    "games-for-other-purposes:2:2": 1,
+    "games-for-other-purposes:3:1": 1,
+    "games-for-other-purposes:3:2": 1,
+    "nagging:1:1": 1,
+    "nagging:1:2": 1,
+    "nagging:2:1": 1,
+    "nagging:2:2": 1,
+    "nagging:3:1": 1,
+    "nagging:3:2": 1
+  },
+  "issues": [],
+  "raw_sha256": {
+    "results/raw-not-aided/agent-01.jsonl": "bb0812c73562b7fe818353a282f4f1e0923a21602da961ca038c45c9c0af69c2",
+    "results/raw-not-aided/agent-02.jsonl": "023ee658547b21e15e34187db4523c5164acfe9537432443e4367f17681e5c09",
+    "results/raw-not-aided/agent-03.jsonl": "22c0fd682e78b10ecf0f11137e6dc83845f678bf51ff5a3dd5140c09d1f5f135",
+    "results/raw-not-aided/agent-04.jsonl": "f78571a4aaa81b27280819fe1b4b4feffde396d3ff1b9e153f204d87ba0c56bb",
+    "results/raw-not-aided/agent-05.jsonl": "6f00930c84a1009901e4f13c8a73c18cabfa1f0a478a955ac65bf17f6619a30a",
+    "results/raw-not-aided/agent-06.jsonl": "7c61f66b5dbbe6d1b26bbbfcd4a6dca8b99eb1cb8f27833d877da51e2cb4ccae",
+    "results/raw-aided/agent-01.jsonl": "553773f63767367f5ff900addd4898ae067808fa6cacd61d01bc5565a6b75e68",
+    "results/raw-aided/agent-02.jsonl": "65fb62350d6495c9edb34c0be8af504a7f62cc98f8a1249ee4197fb8931d8481",
+    "results/raw-aided/agent-03.jsonl": "373447ca923cb981ac803f8fc6c35f8eb412958863e60a7a39e461e9008365ea",
+    "results/raw-aided/agent-04.jsonl": "058569ddc5cf29421d99912873f2aebcff35699bde1244e9aad0e2261890d175",
+    "results/raw-aided/agent-05.jsonl": "d83054b3066943304cf0c9c2657bef234f62c79100dc48a9523c94ba63fe001d",
+    "results/raw-aided/agent-06.jsonl": "db620c0d18962cc0a95959885bec85112754e4b55b319f5a55e368ac60457857"
+  }
+}

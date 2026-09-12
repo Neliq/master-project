@@ -89,25 +89,6 @@ export function LowStockCond3({
             </div>
           </div>
 
-          <div className="rounded-md border border-border bg-background p-2.5">
-            <div className="flex items-center justify-between text-[9px]">
-              <span className="font-mono text-muted-foreground">Live stock feed — backend source</span>
-              <span className="font-mono font-semibold tabular-nums text-foreground">{stockB} units</span>
-            </div>
-            <div className="mt-1 flex items-center justify-between text-[9px]">
-              <span className="font-mono text-muted-foreground">Load count (simulated reloads)</span>
-              <span className="font-mono font-semibold tabular-nums">{loadsB}</span>
-            </div>
-            <div className="mt-1 flex items-center justify-between text-[9px]">
-              <span className="font-mono text-muted-foreground">Transaction log (t1 → t2)</span>
-              <span className="font-mono font-semibold tabular-nums text-foreground">{soldB} purchase{soldB === 1 ? "" : "s"}</span>
-            </div>
-            <div className="mt-1 flex items-center justify-between text-[9px]">
-              <span className="font-mono text-muted-foreground">Session clock (&Delta;t)</span>
-              <span className="font-mono font-semibold tabular-nums">{elapsed}s</span>
-            </div>
-          </div>
-
           <div className="flex gap-2">
             <button
               onClick={refreshB}
@@ -161,21 +142,6 @@ export function LowStockCond3({
                 </span>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="rounded-md border border-border bg-background p-2.5">
-          <div className="flex items-center justify-between text-[9px]">
-            <span className="font-mono text-muted-foreground">Load count (simulated reloads)</span>
-            <span className="font-mono font-semibold tabular-nums">{loadsA}</span>
-          </div>
-          <div className="mt-1 flex items-center justify-between text-[9px]">
-            <span className="font-mono text-muted-foreground">Transaction log (t1 → t2)</span>
-            <span className="font-mono font-semibold tabular-nums text-foreground">0 purchases</span>
-          </div>
-          <div className="mt-1 flex items-center justify-between text-[9px]">
-            <span className="font-mono text-muted-foreground">Session clock (&Delta;t)</span>
-            <span className="font-mono font-semibold tabular-nums">{elapsed}s</span>
           </div>
         </div>
 

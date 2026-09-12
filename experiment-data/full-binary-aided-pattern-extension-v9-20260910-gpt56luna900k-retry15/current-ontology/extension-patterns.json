@@ -1,0 +1,14 @@
+{
+  "nagging": {
+    "pattern_number": 63,
+    "slug": "nagging",
+    "name": "Nagging",
+    "card": "card-063-nagging.md"
+  },
+  "games-for-other-purposes": {
+    "pattern_number": 64,
+    "slug": "games-for-other-purposes",
+    "name": "Games For Other Purposes",
+    "card": "card-064-games-for-other-purposes.md"
+  }
+}

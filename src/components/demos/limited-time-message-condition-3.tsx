@@ -62,11 +62,7 @@ export function LimitedTimeMessageCond3({
 
             {asked > 0 && (
               <div className="mt-2 rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
-                <span className="font-semibold text-foreground">Concrete answer:</span>{" "}
-                <span className="text-muted-foreground">
-                  Friday 23:59 CET. That timestamp exists in the DOM, so you can schedule
-                  your purchase — and your comparison shopping — around a real constraint.
-                </span>
+                <span className="font-mono font-semibold text-foreground">Friday 23:59 CET</span>
               </div>
             )}
 

@@ -68,9 +68,6 @@ export function HighDemandCond2({
                 <div className="text-[10px] font-medium text-foreground">
                   {BACKEND_PURCHASES} people bought this in the last hour
                 </div>
-                <div className="text-[8px] text-muted-foreground">
-                  Static badge · Δt_update = ∞ ≥ τ_animate · count matches the backend event log below
-                </div>
               </div>
             </div>
 

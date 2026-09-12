@@ -1,0 +1,28 @@
+{
+  "run_id": "full-binary-aided-pattern-extension-v8-20260910-gpt56luna900k",
+  "purpose": "additive two-pattern extension of prior full binary aided-vs-not-aided live test",
+  "base_run_id": "full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini",
+  "base_url": "http://127.0.0.1:3000",
+  "patterns": 2,
+  "pattern_names": [
+    "Nagging",
+    "Games For Other Purposes"
+  ],
+  "conditions_per_pattern": 3,
+  "variants_per_condition": 2,
+  "distinct_interfaces": 12,
+  "audit_rows_total": 24,
+  "agents_total": 12,
+  "agents_per_arm": 6,
+  "arms": [
+    "not-aided",
+    "aided"
+  ],
+  "seed": 20260910,
+  "labels_public": false,
+  "evidence_mode": "live isolated URL; scoped data-isolated-demo DOM and transitions",
+  "provenance": {
+    "original_run_untouched": true,
+    "extension_only": true
+  }
+}

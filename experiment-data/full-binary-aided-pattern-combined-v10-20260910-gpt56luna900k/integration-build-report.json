@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "run": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-combined-v10-20260910-gpt56luna900k",
+  "source_runs": {
+    "authoritative_completed_observations": {
+      "run_id": "full-binary-aided-pattern-first-v4-20260906-gpt54mini",
+      "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini",
+      "role": "only source with completed 62-pattern raw observations and prior aggregate",
+      "patterns": 62,
+      "distinct_interfaces": 372,
+      "audit_rows_total": 744
+    },
+    "declared_extension_base": {
+      "run_id": "full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini",
+      "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini",
+      "role": "extension-declared immutable base metadata/score-only run",
+      "patterns": 62,
+      "distinct_interfaces": 372,
+      "audit_rows_total": 744,
+      "raw_observations_present": false
+    },
+    "validated_extension": {
+      "run_id": "full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15",
+      "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15",
+      "role": "validated additive 2-pattern raw/live-evidence source",
+      "patterns": 2,
+      "distinct_interfaces": 12,
+      "audit_rows_total": 24
+    }
+  },
+  "final_counts": {
+    "patterns": 64,
+    "distinct_interfaces_per_arm": 384,
+    "raw_rows_per_arm": 384,
+    "combined_audit_rows": 768,
+    "agents_per_arm": 6,
+    "rows_per_agent_per_arm": 64,
+    "route_records": 64,
+    "formalization_rules": 192
+  },
+  "metrics": {
+    "not-aided": {
+      "n": 384,
+      "accuracy": 0.6927083333333334,
+      "precision": 0.6927083333333334,
+      "recall": 0.6927083333333334,
+      "f1": 0.6927083333333334,
+      "tp": 133,
+      "fp": 59,
+      "tn": 133,
+      "fn": 59
+    },
+    "aided": {
+      "n": 384,
+      "accuracy": 0.7552083333333334,
+      "precision": 0.7606382978723404,
+      "recall": 0.7447916666666666,
+      "f1": 0.7526315789473683,
+      "tp": 143,
+      "fp": 45,
+      "tn": 147,
+      "fn": 49
+    },
+    "aided_base": {
+      "n": 384,
+      "accuracy": 0.7552083333333334,
+      "precision": 0.7606382978723404,
+      "recall": 0.7447916666666666,
+      "f1": 0.7526315789473683,
+      "tp": 143,
+      "fp": 45,
+      "tn": 147,
+      "fn": 49
+    }
+  },
+  "row_provenance": {
+    "path": "row-provenance.json",
+    "total_rows": 768,
+    "original_rows": 744,
+    "extension_rows": 24
+  }
+}

@@ -32,11 +32,8 @@ export function LowStockCond2({
 }: {
   mode?: "user" | "auditor";
 } = {}) {
-  const [refreshes, setRefreshes] = React.useState(0);
   const [checkedOut, setCheckedOut] = React.useState(false);
 
-
-  const refreshFeed = () => setRefreshes((n) => n + 1);
 
   const badgeDark = (
     <span
@@ -96,39 +93,6 @@ export function LowStockCond2({
         <div className="space-y-3">
           {productCard(badgeBenign)}
 
-          <div className="rounded-md border border-border bg-background p-2.5">
-            <div className="flex items-center justify-between text-[9px]">
-              <span className="font-mono text-muted-foreground">Live stock feed — backend source</span>
-              <span className="font-mono font-semibold tabular-nums text-foreground">{STOCK} units</span>
-            </div>
-            <div className="mt-1.5 flex items-center justify-between text-[9px]">
-              <span className="font-mono text-muted-foreground">Badge hue (N_stock)</span>
-              <span className="font-mono font-semibold tabular-nums text-foreground">{HUE_BENIGN}&deg; — neutral</span>
-            </div>
-          </div>
-
-          <button
-            onClick={refreshFeed}
-            className="w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-          >
-            Refresh stock feed ({refreshes}×)
-          </button>
-
-          {refreshes > 0 && (
-            <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
-              <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
-                <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M20 6L9 17l-5-5" />
-                </svg>
-                Stock update
-              </div>
-              <p className="text-muted-foreground mt-0.5">
-                After {refreshes} refresh{refreshes === 1 ? "" : "es"} the stock level is still {STOCK} units (&Delta;Stock_actual = 0),
-                and the badge keeps its neutral hue. The scarcity information is conveyed factually, without chromatic urgency coding.
-              </p>
-            </div>
-          )}
-
           <button
             onClick={() => setCheckedOut(true)}
             className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
@@ -140,48 +104,6 @@ export function LowStockCond2({
       {/* ── Variant A: dark pattern ── */}
       <div className="space-y-3">
         {productCard(badgeDark)}
-
-        <div className="rounded-md border border-border/60 bg-muted/40 p-2.5">
-          <div className="flex items-center justify-between text-[9px]">
-            <span className="font-mono text-muted-foreground">Displayed to shopper (badge)</span>
-            <span className="font-mono font-semibold tabular-nums text-foreground">{STOCK} units — &ldquo;Only 2 left!&rdquo;</span>
-          </div>
-          <div className="mt-1.5 flex items-center justify-between text-[9px]">
-            <span className="font-mono text-muted-foreground">Actual backend inventory (I_true)</span>
-            <span className="font-mono font-semibold tabular-nums text-foreground">{TRUE_STOCK} units</span>
-          </div>
-          <div className="mt-1.5 flex items-center justify-between text-[9px]">
-            <span className="font-mono text-muted-foreground">Badge hue (N_stock)</span>
-            <span className="font-mono font-semibold tabular-nums text-foreground">{HUE_DARK}&deg; — alarm spectrum</span>
-          </div>
-        </div>
-
-        <button
-          onClick={refreshFeed}
-          className="w-full rounded-md border border-border bg-background py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-        >
-          Refresh stock feed ({refreshes}×)
-        </button>
-
-        {refreshes > 0 && (
-          <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 font-semibold text-foreground uppercase tracking-tight">
-              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Alarm hue with zero stock change
-            </div>
-            <p className="text-muted-foreground">
-              After {refreshes} refresh{refreshes === 1 ? "" : "es"} the displayed count is still pinned
-              at {STOCK} units while the backend holds {TRUE_STOCK} —{" "}
-              <span className="font-mono text-foreground">I_displayed ({STOCK}) &ll; I_true ({TRUE_STOCK})</span> — yet
-              the badge keeps burning alarm red-orange. Hue(N_stock) = {HUE_DARK}&deg; &isin; [0&deg;, 30&deg;]
-              satisfies the red-orange alarm spectrum while the low number is manufactured, not
-              pulled from inventory.
-            </p>
-          </div>
-        )}
 
         <button
           onClick={() => setCheckedOut(true)}

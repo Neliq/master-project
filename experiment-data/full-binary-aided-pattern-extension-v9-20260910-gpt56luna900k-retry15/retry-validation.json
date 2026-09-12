@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "issues": [],
+  "design": {
+    "patterns": 2,
+    "instances": 12,
+    "rows_per_arm": {
+      "not-aided": 12,
+      "aided": 12
+    },
+    "evidence_per_arm": {
+      "not-aided": 12,
+      "aided": 12
+    },
+    "agents_per_arm": 6
+  },
+  "metrics_emitted": false
+}

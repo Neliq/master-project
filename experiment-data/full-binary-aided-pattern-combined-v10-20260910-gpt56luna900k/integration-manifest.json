@@ -1,0 +1,591 @@
+{
+  "status": "PASS",
+  "run_id": "full-binary-aided-pattern-combined-v10-20260910-gpt56luna900k",
+  "created_by": "integrate_full_binary_aided_64.py",
+  "source_runs": {
+    "authoritative_completed_observations": {
+      "run_id": "full-binary-aided-pattern-first-v4-20260906-gpt54mini",
+      "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini",
+      "role": "only source with completed 62-pattern raw observations and prior aggregate",
+      "patterns": 62,
+      "distinct_interfaces": 372,
+      "audit_rows_total": 744
+    },
+    "declared_extension_base": {
+      "run_id": "full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini",
+      "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini",
+      "role": "extension-declared immutable base metadata/score-only run",
+      "patterns": 62,
+      "distinct_interfaces": 372,
+      "audit_rows_total": 744,
+      "raw_observations_present": false
+    },
+    "validated_extension": {
+      "run_id": "full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15",
+      "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15",
+      "role": "validated additive 2-pattern raw/live-evidence source",
+      "patterns": 2,
+      "distinct_interfaces": 12,
+      "audit_rows_total": 24
+    }
+  },
+  "final_counts": {
+    "patterns": 64,
+    "distinct_interfaces_per_arm": 384,
+    "raw_rows_per_arm": 384,
+    "combined_audit_rows": 768,
+    "agents_per_arm": 6,
+    "rows_per_agent_per_arm": 64,
+    "route_records": 64,
+    "formalization_rules": 192
+  },
+  "source_artifacts": {
+    "authoritative_completed_observations": {
+      "runtime-config.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/runtime-config.json",
+        "relative_path": "runtime-config.json",
+        "size_bytes": 626,
+        "sha256": "69605fda14458f6c381f9da2ad927074be5af281cddb2df8490db5b6b91000b5"
+      },
+      "public-manifest.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/public-manifest.json",
+        "relative_path": "public-manifest.json",
+        "size_bytes": 691,
+        "sha256": "92d4ea5efba538beb39638a4a4aac0ed8af4b6384f053ece6a255477f6177c22"
+      },
+      "score-only/instances.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/score-only/instances.json",
+        "relative_path": "score-only/instances.json",
+        "size_bytes": 102969,
+        "sha256": "6728af85c2deafd2471bdce9d7755089fe5d68e7333006cc7b435474a45032e6"
+      },
+      "score-only/ground-truth.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/score-only/ground-truth.json",
+        "relative_path": "score-only/ground-truth.json",
+        "size_bytes": 19533,
+        "sha256": "bd5c7c4ae80307df756e6f5bdcf5be3cc781b361be9fe879600c82b4d28a862c"
+      },
+      "score-only/route-patterns.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/score-only/route-patterns.json",
+        "relative_path": "score-only/route-patterns.json",
+        "size_bytes": 6416,
+        "sha256": "74c9205d08b212e023c55115190941c0892bf68a933800f0f7ad63d0e2bd085e"
+      },
+      "score-only/rules.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/score-only/rules.json",
+        "relative_path": "score-only/rules.json",
+        "size_bytes": 368552,
+        "sha256": "ae984d4eb2a59cd966390a1e7d365724e415b8c668c80b6b8e125fffa1310f4f"
+      },
+      "assignments/not-aided/agent-01.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/not-aided/agent-01.json",
+        "relative_path": "assignments/not-aided/agent-01.json",
+        "size_bytes": 5640,
+        "sha256": "7461db4cf33e84dea43069623b9575714f987105ba08039e26991af06422f770"
+      },
+      "results/raw-not-aided/agent-01.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-not-aided/agent-01.jsonl",
+        "relative_path": "results/raw-not-aided/agent-01.jsonl",
+        "size_bytes": 32812,
+        "sha256": "8fbf9ada0e1b0d0089f9c9614cbce0661a0f0d7b853bf0c4c946a47f52c12ae3"
+      },
+      "assignments/not-aided/agent-02.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/not-aided/agent-02.json",
+        "relative_path": "assignments/not-aided/agent-02.json",
+        "size_bytes": 5637,
+        "sha256": "6e5f313979c26a60bcc7933ea3f95c5e129eb73fa52d4891c1378f8078802fc3"
+      },
+      "results/raw-not-aided/agent-02.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-not-aided/agent-02.jsonl",
+        "relative_path": "results/raw-not-aided/agent-02.jsonl",
+        "size_bytes": 28154,
+        "sha256": "916967a0198368dd5e4cd0a858456514eeab4677ac8184aa08edaa1c0b3ec591"
+      },
+      "assignments/not-aided/agent-03.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/not-aided/agent-03.json",
+        "relative_path": "assignments/not-aided/agent-03.json",
+        "size_bytes": 5634,
+        "sha256": "55e6d002cb87e988af676f0c9dfb9062d876534b721aa004ccd95d7ff596e149"
+      },
+      "results/raw-not-aided/agent-03.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-not-aided/agent-03.jsonl",
+        "relative_path": "results/raw-not-aided/agent-03.jsonl",
+        "size_bytes": 30162,
+        "sha256": "fcd3e8a941f77a100de210ac5ca319d407683c1d8d67c2880b26cf5d15604476"
+      },
+      "assignments/not-aided/agent-04.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/not-aided/agent-04.json",
+        "relative_path": "assignments/not-aided/agent-04.json",
+        "size_bytes": 5636,
+        "sha256": "39b6c1a154b39164fa41971aec7cd9c5b869a0196f586fe4d4f7fdbc89738271"
+      },
+      "results/raw-not-aided/agent-04.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-not-aided/agent-04.jsonl",
+        "relative_path": "results/raw-not-aided/agent-04.jsonl",
+        "size_bytes": 24348,
+        "sha256": "d6e0656383546a4754bd19284b92e63def2ce76271922d919c33299e826fa11e"
+      },
+      "assignments/not-aided/agent-05.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/not-aided/agent-05.json",
+        "relative_path": "assignments/not-aided/agent-05.json",
+        "size_bytes": 5634,
+        "sha256": "654c793ef26e87579c6c6c0f38d0bdff7e20a9763592234965e931eb5ab2d449"
+      },
+      "results/raw-not-aided/agent-05.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-not-aided/agent-05.jsonl",
+        "relative_path": "results/raw-not-aided/agent-05.jsonl",
+        "size_bytes": 33624,
+        "sha256": "2fca3e1add01c0c422353c172f4ffabe0ed9fee883e5b9ba63989a9e048ffb70"
+      },
+      "assignments/not-aided/agent-06.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/not-aided/agent-06.json",
+        "relative_path": "assignments/not-aided/agent-06.json",
+        "size_bytes": 5635,
+        "sha256": "abb4d6e5a4adaf74f4051d40944473a3d3cf73ea7f7988f142833f313e7160d6"
+      },
+      "results/raw-not-aided/agent-06.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-not-aided/agent-06.jsonl",
+        "relative_path": "results/raw-not-aided/agent-06.jsonl",
+        "size_bytes": 44649,
+        "sha256": "eb0040d460163c26e7a2a8cfc61e24fe66e8827f5ae09bea3dc13c0d6f77015c"
+      },
+      "assignments/aided/agent-01.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/aided/agent-01.json",
+        "relative_path": "assignments/aided/agent-01.json",
+        "size_bytes": 5640,
+        "sha256": "7461db4cf33e84dea43069623b9575714f987105ba08039e26991af06422f770"
+      },
+      "results/raw-aided/agent-01.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-aided/agent-01.jsonl",
+        "relative_path": "results/raw-aided/agent-01.jsonl",
+        "size_bytes": 69803,
+        "sha256": "7f7a089a2d27eaf37086d0098fa4aae6974581907768fde1d967b4d310afc724"
+      },
+      "assignments/aided/agent-02.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/aided/agent-02.json",
+        "relative_path": "assignments/aided/agent-02.json",
+        "size_bytes": 5637,
+        "sha256": "6e5f313979c26a60bcc7933ea3f95c5e129eb73fa52d4891c1378f8078802fc3"
+      },
+      "results/raw-aided/agent-02.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-aided/agent-02.jsonl",
+        "relative_path": "results/raw-aided/agent-02.jsonl",
+        "size_bytes": 62587,
+        "sha256": "d0f6b79d7edd583cf7ecc43c24d9da490e137d6826b41e7e03e6ac1c39cb3f8b"
+      },
+      "assignments/aided/agent-03.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/aided/agent-03.json",
+        "relative_path": "assignments/aided/agent-03.json",
+        "size_bytes": 5634,
+        "sha256": "55e6d002cb87e988af676f0c9dfb9062d876534b721aa004ccd95d7ff596e149"
+      },
+      "results/raw-aided/agent-03.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-aided/agent-03.jsonl",
+        "relative_path": "results/raw-aided/agent-03.jsonl",
+        "size_bytes": 51856,
+        "sha256": "1822aa4e6f8188f0d1f10f516117978724bdfaa19c82a4d56af83310a8c73b86"
+      },
+      "assignments/aided/agent-04.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/aided/agent-04.json",
+        "relative_path": "assignments/aided/agent-04.json",
+        "size_bytes": 5636,
+        "sha256": "39b6c1a154b39164fa41971aec7cd9c5b869a0196f586fe4d4f7fdbc89738271"
+      },
+      "results/raw-aided/agent-04.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-aided/agent-04.jsonl",
+        "relative_path": "results/raw-aided/agent-04.jsonl",
+        "size_bytes": 57314,
+        "sha256": "16ce2f5f05b558da5ba046a71e3b0b787c0d03b4ec4e0e2a76790cbe055e17be"
+      },
+      "assignments/aided/agent-05.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/aided/agent-05.json",
+        "relative_path": "assignments/aided/agent-05.json",
+        "size_bytes": 5634,
+        "sha256": "654c793ef26e87579c6c6c0f38d0bdff7e20a9763592234965e931eb5ab2d449"
+      },
+      "results/raw-aided/agent-05.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-aided/agent-05.jsonl",
+        "relative_path": "results/raw-aided/agent-05.jsonl",
+        "size_bytes": 56846,
+        "sha256": "121bab2e50fcde99567b09c586c137d83cb9b581dd1f82f4fc315c4a5de0fbce"
+      },
+      "assignments/aided/agent-06.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/assignments/aided/agent-06.json",
+        "relative_path": "assignments/aided/agent-06.json",
+        "size_bytes": 5635,
+        "sha256": "abb4d6e5a4adaf74f4051d40944473a3d3cf73ea7f7988f142833f313e7160d6"
+      },
+      "results/raw-aided/agent-06.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/raw-aided/agent-06.jsonl",
+        "relative_path": "results/raw-aided/agent-06.jsonl",
+        "size_bytes": 57132,
+        "sha256": "829a9a814080cc47d2fa9df8ae73a4cfb370fcd2710dec8253d7351962f85ee9"
+      },
+      "arms/aided/pattern-routing-index.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/arms/aided/pattern-routing-index.jsonl",
+        "relative_path": "arms/aided/pattern-routing-index.jsonl",
+        "size_bytes": 46229,
+        "sha256": "d743dbc72baabba51b3c83cbb904807dfc666f827de0706eeb8f6ef5b3725176"
+      },
+      "arms/aided/formalization-index.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/arms/aided/formalization-index.jsonl",
+        "relative_path": "arms/aided/formalization-index.jsonl",
+        "size_bytes": 85548,
+        "sha256": "3aab2984bf6275af5f42ad2085cb1ca67c258ac133e2dcf0659fc9abe37a8c4a"
+      },
+      "arms/aided/formalization-index.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/arms/aided/formalization-index.json",
+        "relative_path": "arms/aided/formalization-index.json",
+        "size_bytes": 115197,
+        "sha256": "d6ff523046de76dff796395a41682fa4146d66d51780704fd333cb4272e7d20c"
+      },
+      "results/results.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/results.json",
+        "relative_path": "results/results.json",
+        "size_bytes": 156911,
+        "sha256": "7abcd7e2aef75444f5701096645d0ac654f694ac6100948ed9ba203e1cdc0ec8"
+      },
+      "results/report.md": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-v4-20260906-gpt54mini/results/report.md",
+        "relative_path": "results/report.md",
+        "size_bytes": 3976,
+        "sha256": "88cde7d52faadfaf071957b9237055ae9fa4df5520b58b166fc442d41c603ee1"
+      }
+    },
+    "declared_extension_base": {
+      "runtime-config.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini/runtime-config.json",
+        "relative_path": "runtime-config.json",
+        "size_bytes": 626,
+        "sha256": "69605fda14458f6c381f9da2ad927074be5af281cddb2df8490db5b6b91000b5"
+      },
+      "public-manifest.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini/public-manifest.json",
+        "relative_path": "public-manifest.json",
+        "size_bytes": 700,
+        "sha256": "d9816b645679090e8c1f9227961e5cc457eec5e837707d3e8ff12b4d29c3734a"
+      },
+      "score-only/instances.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini/score-only/instances.json",
+        "relative_path": "score-only/instances.json",
+        "size_bytes": 102969,
+        "sha256": "6728af85c2deafd2471bdce9d7755089fe5d68e7333006cc7b435474a45032e6"
+      },
+      "score-only/ground-truth.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini/score-only/ground-truth.json",
+        "relative_path": "score-only/ground-truth.json",
+        "size_bytes": 19533,
+        "sha256": "bd5c7c4ae80307df756e6f5bdcf5be3cc781b361be9fe879600c82b4d28a862c"
+      },
+      "score-only/route-patterns.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini/score-only/route-patterns.json",
+        "relative_path": "score-only/route-patterns.json",
+        "size_bytes": 6416,
+        "sha256": "74c9205d08b212e023c55115190941c0892bf68a933800f0f7ad63d0e2bd085e"
+      },
+      "score-only/rules.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini/score-only/rules.json",
+        "relative_path": "score-only/rules.json",
+        "size_bytes": 368552,
+        "sha256": "ae984d4eb2a59cd966390a1e7d365724e415b8c668c80b6b8e125fffa1310f4f"
+      },
+      "arms/aided/pattern-routing-index.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini/arms/aided/pattern-routing-index.jsonl",
+        "relative_path": "arms/aided/pattern-routing-index.jsonl",
+        "size_bytes": 46229,
+        "sha256": "d743dbc72baabba51b3c83cbb904807dfc666f827de0706eeb8f6ef5b3725176"
+      },
+      "arms/aided/formalization-index.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini/arms/aided/formalization-index.jsonl",
+        "relative_path": "arms/aided/formalization-index.jsonl",
+        "size_bytes": 85548,
+        "sha256": "3aab2984bf6275af5f42ad2085cb1ca67c258ac133e2dcf0659fc9abe37a8c4a"
+      },
+      "arms/aided/formalization-index.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini/arms/aided/formalization-index.json",
+        "relative_path": "arms/aided/formalization-index.json",
+        "size_bytes": 115197,
+        "sha256": "d6ff523046de76dff796395a41682fa4146d66d51780704fd333cb4272e7d20c"
+      }
+    },
+    "validated_extension": {
+      "runtime-config.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/runtime-config.json",
+        "relative_path": "runtime-config.json",
+        "size_bytes": 4862,
+        "sha256": "54bbdcf4c2c419449cbc1ad329acc331ee7caae7f51fd215fdbb15790b692a3f"
+      },
+      "public-manifest.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/public-manifest.json",
+        "relative_path": "public-manifest.json",
+        "size_bytes": 3496,
+        "sha256": "7f8d53c255f71bbaab01c58958845799bb42e7462a5306bdc549b7928af9db98"
+      },
+      "score-only/instances.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/score-only/instances.json",
+        "relative_path": "score-only/instances.json",
+        "size_bytes": 3249,
+        "sha256": "da2457e8ceefff21e40de9a8a2060a93482acca39a694b511834791f4749b50c"
+      },
+      "score-only/ground-truth.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/score-only/ground-truth.json",
+        "relative_path": "score-only/ground-truth.json",
+        "size_bytes": 633,
+        "sha256": "11fe09a2c4f0a9f71f2ff2d88224ed662efdca918a13f0de16a27c96421070ed"
+      },
+      "score-only/route-patterns.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/score-only/route-patterns.json",
+        "relative_path": "score-only/route-patterns.json",
+        "size_bytes": 284,
+        "sha256": "1b8dc45ce81c5096e6509ec68568a86779820a7347a8b143c6ebf17699923c61"
+      },
+      "score-only/rules.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/score-only/rules.json",
+        "relative_path": "score-only/rules.json",
+        "size_bytes": 4348,
+        "sha256": "d9eb4ce4c740cf2c6a5932bcbc72d03c2855522ef3412af40fa0e426f2a4e191"
+      },
+      "assignments/not-aided/agent-01.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/not-aided/agent-01.json",
+        "relative_path": "assignments/not-aided/agent-01.json",
+        "size_bytes": 185,
+        "sha256": "c36cbd6ae610159d165fee6a65008b4e880b251191bea7e0cea8335eb737a41e"
+      },
+      "results/raw-not-aided/agent-01.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-not-aided/agent-01.jsonl",
+        "relative_path": "results/raw-not-aided/agent-01.jsonl",
+        "size_bytes": 1767,
+        "sha256": "bb0812c73562b7fe818353a282f4f1e0923a21602da961ca038c45c9c0af69c2"
+      },
+      "assignments/not-aided/agent-02.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/not-aided/agent-02.json",
+        "relative_path": "assignments/not-aided/agent-02.json",
+        "size_bytes": 185,
+        "sha256": "1e7ab528eec66e0d985a9392f009e571cdf330e0d18ec5dcbf6c8fe0c8b08ba9"
+      },
+      "results/raw-not-aided/agent-02.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-not-aided/agent-02.jsonl",
+        "relative_path": "results/raw-not-aided/agent-02.jsonl",
+        "size_bytes": 1608,
+        "sha256": "023ee658547b21e15e34187db4523c5164acfe9537432443e4367f17681e5c09"
+      },
+      "assignments/not-aided/agent-03.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/not-aided/agent-03.json",
+        "relative_path": "assignments/not-aided/agent-03.json",
+        "size_bytes": 185,
+        "sha256": "0961f9b85b19d0f1497f5bf20d0bff2cde02cfb45ec05c0a4f6f4ca358674546"
+      },
+      "results/raw-not-aided/agent-03.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-not-aided/agent-03.jsonl",
+        "relative_path": "results/raw-not-aided/agent-03.jsonl",
+        "size_bytes": 1540,
+        "sha256": "22c0fd682e78b10ecf0f11137e6dc83845f678bf51ff5a3dd5140c09d1f5f135"
+      },
+      "assignments/not-aided/agent-04.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/not-aided/agent-04.json",
+        "relative_path": "assignments/not-aided/agent-04.json",
+        "size_bytes": 185,
+        "sha256": "7a3c85af57c3e6db5a8dc04d263ef81165bb959d11fc2d03dffdc6dfc3a6bf16"
+      },
+      "results/raw-not-aided/agent-04.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-not-aided/agent-04.jsonl",
+        "relative_path": "results/raw-not-aided/agent-04.jsonl",
+        "size_bytes": 1563,
+        "sha256": "f78571a4aaa81b27280819fe1b4b4feffde396d3ff1b9e153f204d87ba0c56bb"
+      },
+      "assignments/not-aided/agent-05.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/not-aided/agent-05.json",
+        "relative_path": "assignments/not-aided/agent-05.json",
+        "size_bytes": 185,
+        "sha256": "7ddd222d218afe0f57de68f8f9337404f437cba5b1986ba2a25e9385d1c643a6"
+      },
+      "results/raw-not-aided/agent-05.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-not-aided/agent-05.jsonl",
+        "relative_path": "results/raw-not-aided/agent-05.jsonl",
+        "size_bytes": 1611,
+        "sha256": "6f00930c84a1009901e4f13c8a73c18cabfa1f0a478a955ac65bf17f6619a30a"
+      },
+      "assignments/not-aided/agent-06.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/not-aided/agent-06.json",
+        "relative_path": "assignments/not-aided/agent-06.json",
+        "size_bytes": 185,
+        "sha256": "a2e05f29227f710d775e6bf33e688034df4d5dff91e3d80157aa045f7ce353d0"
+      },
+      "results/raw-not-aided/agent-06.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-not-aided/agent-06.jsonl",
+        "relative_path": "results/raw-not-aided/agent-06.jsonl",
+        "size_bytes": 1582,
+        "sha256": "7c61f66b5dbbe6d1b26bbbfcd4a6dca8b99eb1cb8f27833d877da51e2cb4ccae"
+      },
+      "assignments/aided/agent-01.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/aided/agent-01.json",
+        "relative_path": "assignments/aided/agent-01.json",
+        "size_bytes": 185,
+        "sha256": "c36cbd6ae610159d165fee6a65008b4e880b251191bea7e0cea8335eb737a41e"
+      },
+      "results/raw-aided/agent-01.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-aided/agent-01.jsonl",
+        "relative_path": "results/raw-aided/agent-01.jsonl",
+        "size_bytes": 2732,
+        "sha256": "553773f63767367f5ff900addd4898ae067808fa6cacd61d01bc5565a6b75e68"
+      },
+      "assignments/aided/agent-02.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/aided/agent-02.json",
+        "relative_path": "assignments/aided/agent-02.json",
+        "size_bytes": 185,
+        "sha256": "1e7ab528eec66e0d985a9392f009e571cdf330e0d18ec5dcbf6c8fe0c8b08ba9"
+      },
+      "results/raw-aided/agent-02.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-aided/agent-02.jsonl",
+        "relative_path": "results/raw-aided/agent-02.jsonl",
+        "size_bytes": 2572,
+        "sha256": "65fb62350d6495c9edb34c0be8af504a7f62cc98f8a1249ee4197fb8931d8481"
+      },
+      "assignments/aided/agent-03.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/aided/agent-03.json",
+        "relative_path": "assignments/aided/agent-03.json",
+        "size_bytes": 185,
+        "sha256": "0961f9b85b19d0f1497f5bf20d0bff2cde02cfb45ec05c0a4f6f4ca358674546"
+      },
+      "results/raw-aided/agent-03.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-aided/agent-03.jsonl",
+        "relative_path": "results/raw-aided/agent-03.jsonl",
+        "size_bytes": 2510,
+        "sha256": "373447ca923cb981ac803f8fc6c35f8eb412958863e60a7a39e461e9008365ea"
+      },
+      "assignments/aided/agent-04.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/aided/agent-04.json",
+        "relative_path": "assignments/aided/agent-04.json",
+        "size_bytes": 185,
+        "sha256": "7a3c85af57c3e6db5a8dc04d263ef81165bb959d11fc2d03dffdc6dfc3a6bf16"
+      },
+      "results/raw-aided/agent-04.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-aided/agent-04.jsonl",
+        "relative_path": "results/raw-aided/agent-04.jsonl",
+        "size_bytes": 2514,
+        "sha256": "058569ddc5cf29421d99912873f2aebcff35699bde1244e9aad0e2261890d175"
+      },
+      "assignments/aided/agent-05.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/aided/agent-05.json",
+        "relative_path": "assignments/aided/agent-05.json",
+        "size_bytes": 185,
+        "sha256": "7ddd222d218afe0f57de68f8f9337404f437cba5b1986ba2a25e9385d1c643a6"
+      },
+      "results/raw-aided/agent-05.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-aided/agent-05.jsonl",
+        "relative_path": "results/raw-aided/agent-05.jsonl",
+        "size_bytes": 2595,
+        "sha256": "d83054b3066943304cf0c9c2657bef234f62c79100dc48a9523c94ba63fe001d"
+      },
+      "assignments/aided/agent-06.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/assignments/aided/agent-06.json",
+        "relative_path": "assignments/aided/agent-06.json",
+        "size_bytes": 185,
+        "sha256": "a2e05f29227f710d775e6bf33e688034df4d5dff91e3d80157aa045f7ce353d0"
+      },
+      "results/raw-aided/agent-06.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/results/raw-aided/agent-06.jsonl",
+        "relative_path": "results/raw-aided/agent-06.jsonl",
+        "size_bytes": 2552,
+        "sha256": "db620c0d18962cc0a95959885bec85112754e4b55b319f5a55e368ac60457857"
+      },
+      "arms/aided/pattern-routing-index.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/arms/aided/pattern-routing-index.jsonl",
+        "relative_path": "arms/aided/pattern-routing-index.jsonl",
+        "size_bytes": 1174,
+        "sha256": "6b47523ba27b76aaebc623a26edd71f6644e3601293fac11adacc1460ee0fb9b"
+      },
+      "arms/aided/formalization-index.jsonl": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/arms/aided/formalization-index.jsonl",
+        "relative_path": "arms/aided/formalization-index.jsonl",
+        "size_bytes": 3779,
+        "sha256": "2d95c92dcde029b72e0a92ad23d1a63a825629d0e52df394410e0f7d3bcc843e"
+      },
+      "arms/aided/formalization-index.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/arms/aided/formalization-index.json",
+        "relative_path": "arms/aided/formalization-index.json",
+        "size_bytes": 4348,
+        "sha256": "d9eb4ce4c740cf2c6a5932bcbc72d03c2855522ef3412af40fa0e426f2a4e191"
+      },
+      "evidence/capture-index.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/evidence/capture-index.json",
+        "relative_path": "evidence/capture-index.json",
+        "size_bytes": 1120,
+        "sha256": "af5638daf7187fa7aca26df859423bcaebdac65c5d9dba81e9baf26f46716272"
+      },
+      "evidence/live-captures-not-aided.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/evidence/live-captures-not-aided.json",
+        "relative_path": "evidence/live-captures-not-aided.json",
+        "size_bytes": 17487,
+        "sha256": "e0aabf36dad9d1572f26be8814383c44a6b84175e6e5c4ec89a3d75416c9a8ba"
+      },
+      "evidence/live-captures-aided.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/evidence/live-captures-aided.json",
+        "relative_path": "evidence/live-captures-aided.json",
+        "size_bytes": 17483,
+        "sha256": "fa6271b193f4199413521dfad9b41718919bb59d08b22cfd1b73778799f39a05"
+      },
+      "base-run-reference.json": {
+        "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15/base-run-reference.json",
+        "relative_path": "base-run-reference.json",
+        "size_bytes": 693,
+        "sha256": "644740c4c018d934e73deacaf560fc1d909f2d571fea3b795e167777c55f4ec7"
+      }
+    }
+  },
+  "row_provenance": {
+    "path": "row-provenance.json",
+    "total_rows": 768,
+    "original_rows": 744,
+    "extension_rows": 24
+  },
+  "limitations": [
+    "The extension handoff names the rollback-v7 directory as its base, but that directory has no raw result files or prior results aggregate. Its runtime and score-only hashes match the completed v4 source used for original observations; both source identities are retained here instead of silently relabelling either run.",
+    "The extension intentionally emitted no standalone metrics; all combined metrics in results/results.json are derived here from copied original and extension raw rows plus combined ground truth.",
+    "The original run has no live-evidence bundle in its directory; extension live evidence is retained under evidence/extension and linked by source hashes."
+  ],
+  "output_files_sha256": {
+    "HANDOFF.md": "38806a9299f5194163a48dfeb98d3a8c768c30510f088a1eb1b2f8a1370747e1",
+    "arms/aided/formalization-index.json": "e5994629e6ed7d257f15f2face990e34dabc4fa73b1e1efbe8b87f1a56ca6ecc",
+    "arms/aided/formalization-index.jsonl": "772bc4d3c9d7d2d7c6261a4557916ee49e1e0dbfab90d901187b88c0c0f2ae5d",
+    "arms/aided/formalization-index.md": "d926d9e9b7c448719248b97a9520c6d180ce257bcd914c0ae83e5333d33e5a3a",
+    "arms/aided/pattern-routing-index.jsonl": "fa9e3f0235eb29b6f9caff925cc70596deb58352d49c43e7bd602a447fe4c2e5",
+    "assignments/aided/agent-01.json": "b77cd6ac913da9d2fe80faa238b6439df1310a2688d6449488440bcd2198a5c2",
+    "assignments/aided/agent-02.json": "0c59bb0d57c1d1090d24d74b93a992ddf5d339dce99bd46ddc3338758a2ba6c3",
+    "assignments/aided/agent-03.json": "0e50390eaae79b951c489c8afb8409dce5dee41b4dd3e496aebd75e311755c2b",
+    "assignments/aided/agent-04.json": "df0cacb60c7f4884d44371edbd707c660226f63c0cc52c2da3c8b4a5ce607207",
+    "assignments/aided/agent-05.json": "1191b7275d9ad5535a427872aeb68cf2c0af5e2bc6b0a3db1c6058c1618ea801",
+    "assignments/aided/agent-06.json": "c5602b985f5442286e86b2e7b552e3171fc39342de5f2d2aae95738ddaf73082",
+    "assignments/not-aided/agent-01.json": "b77cd6ac913da9d2fe80faa238b6439df1310a2688d6449488440bcd2198a5c2",
+    "assignments/not-aided/agent-02.json": "0c59bb0d57c1d1090d24d74b93a992ddf5d339dce99bd46ddc3338758a2ba6c3",
+    "assignments/not-aided/agent-03.json": "0e50390eaae79b951c489c8afb8409dce5dee41b4dd3e496aebd75e311755c2b",
+    "assignments/not-aided/agent-04.json": "df0cacb60c7f4884d44371edbd707c660226f63c0cc52c2da3c8b4a5ce607207",
+    "assignments/not-aided/agent-05.json": "1191b7275d9ad5535a427872aeb68cf2c0af5e2bc6b0a3db1c6058c1618ea801",
+    "assignments/not-aided/agent-06.json": "c5602b985f5442286e86b2e7b552e3171fc39342de5f2d2aae95738ddaf73082",
+    "evidence/extension/capture-index.json": "af5638daf7187fa7aca26df859423bcaebdac65c5d9dba81e9baf26f46716272",
+    "evidence/extension/live-captures-aided.json": "fa6271b193f4199413521dfad9b41718919bb59d08b22cfd1b73778799f39a05",
+    "evidence/extension/live-captures-not-aided.json": "e0aabf36dad9d1572f26be8814383c44a6b84175e6e5c4ec89a3d75416c9a8ba",
+    "integration-build-report.json": "14737db39860c80e1ec997410c76bab514cd57ea9123d30d813136eff0bc0b96",
+    "public-manifest.json": "1f187b703191d45af01d48f3a15a3b13460376b90858bc4ade542bcd9e33cf79",
+    "results/raw-aided/agent-01.jsonl": "d5ddb5cb29ec87e2191d76b981fc9dd8086af9a2b91b351a4d457052953af596",
+    "results/raw-aided/agent-02.jsonl": "cdcba8e3130529cd6df1a25a0df06135deba3d665b4a6f7db1f276f94fd02910",
+    "results/raw-aided/agent-03.jsonl": "23bc2f487637a260a297523d82258085f89f4d34849b8017bee3cc38df18be85",
+    "results/raw-aided/agent-04.jsonl": "476d049cda33eb2d04d9ee305289f2d52505dc73dd1e736bd5a37ea4fdd562b0",
+    "results/raw-aided/agent-05.jsonl": "0b687ac54bfcc5750fb332125b7db56f2861bdb1f6920182d016c736077c6c6a",
+    "results/raw-aided/agent-06.jsonl": "69238b5ce70099b195006c30fb85e8069f96aa7ffcce2f9334215c5dfed4a191",
+    "results/raw-not-aided/agent-01.jsonl": "6005a05816ba6811431c3787c36ec78fd61173f27d0043f30a26498e788b954a",
+    "results/raw-not-aided/agent-02.jsonl": "fc7517ef430daa54bb0bb7e72b6bbd4ed463b7537130fa6f823c9e3683d71741",
+    "results/raw-not-aided/agent-03.jsonl": "8387c865a28299ad02c98528059d9e1f36a3b6bfc436283915c4075d3a39405a",
+    "results/raw-not-aided/agent-04.jsonl": "fd92403982502f81219df8a4d279bbf8f17c6918369405f889fa14c5b005821f",
+    "results/raw-not-aided/agent-05.jsonl": "dd596377d679af4fd228862f17d4fc606cba130d1a27fb637285a48d8297b4a8",
+    "results/raw-not-aided/agent-06.jsonl": "f0022c91b7cc4f661894bc7b2660cc24d86ea0d24c4e27691782e7c6830f79f1",
+    "results/report.md": "7feec783ad8bdd142a8df195ba450274611ce5301170ecfdfd051b53d79f7a0b",
+    "results/results.json": "8249cee3d90f9dada98410105a1a6bb62f875c4cb08c748595d55df96fa50634",
+    "row-provenance.json": "cd772dea3e9c60325264523d441b5c6a37297f7d2de46cdfcc5f5f3d84059818",
+    "runtime-config.json": "cf8cd9293a36c9f013f12d15850e8b70515dcea1acde725ab4102e5a5cceade4",
+    "score-only/ground-truth.json": "4aad635de75cdf5d0829679591f968207bebe9ab93919253887201efb0ac0a75",
+    "score-only/instances.json": "307d92994fd83dd903e4dac59c38fbf5b77aa8334fdb29b02fb3c33371b17bf4",
+    "score-only/route-patterns.json": "05c4618a3ebe359aa28b44d4079c15029965fd0f522724b6706ab5c167c6b60e",
+    "score-only/rules.json": "09f4e2bf2f713ca33ebcb51bdbcb7b7fabd31086b6c0fd06507871f8b639df01"
+  }
+}

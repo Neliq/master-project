@@ -31,7 +31,6 @@ export function LowStockCond1({
   mode?: "user" | "auditor";
 } = {}) {
   const [added, setAdded] = React.useState(false);
-  const [verified, setVerified] = React.useState(false);
 
 
   return (
@@ -116,48 +115,20 @@ export function LowStockCond1({
             </div>
           </div>
 
-          <div className="mt-3 flex gap-2">
+          <div className="mt-3">
             <button
               onClick={() => setAdded(true)}
-              className="flex-1 rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
+              className="w-full rounded-md bg-primary hover:bg-primary/80 text-primary-foreground py-1.5 text-[10px] font-medium transition-colors cursor-pointer"
             >
               {added ? "Added to cart ✓" : "Add to cart"}
-            </button>
-            <button
-              onClick={() => setVerified(true)}
-              className="rounded-md border border-border bg-background px-2.5 py-1.5 text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-            >
-              Verify stock
             </button>
           </div>
         </div>
 
-        {mode === "auditor" && verified && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
-              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Only ${I_DISPLAYED_DARK} left
-            </div>
-            <p className="text-muted-foreground">
-              The frontend badge claims <strong className="text-red-500">“Only {I_DISPLAYED_DARK} left at this price!”</strong> — that
-              satisfies I_displayed(x) = {I_DISPLAYED_DARK} &le; &tau;_scarcity = {TAU_SCARCITY}, the panic threshold.
-              But the backend database holds <strong className="text-green-500">I_true(x) = {I_TRUE} units</strong>.
-            </p>
-            <p className="text-muted-foreground">
-              Because I_displayed(x) &lt;&lt; I_true(x), the low number was algorithmically generated to manufacture
-              urgency — the scarcity is a visual overlay, not a backend reality. The trigger fires regardless of true stock depth.
-            </p>
-          </div>
-        )}
-
         {added && (
           <div className="rounded-md border border-border/60 bg-muted/40 p-2.5 text-[9px] leading-relaxed">
             <p className="text-muted-foreground">
-              You rushed to add the item while the panic badge was pulsing. A user who clicks “Verify stock”
-              (or who reloads) discovers the stock never actually depletes — it is stuck at a fabricated low threshold.
+              Reloading reveals that the stock never actually depletes — it is stuck at a fabricated low threshold.
             </p>
           </div>
         )}

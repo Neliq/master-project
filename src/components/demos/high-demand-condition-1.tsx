@@ -71,9 +71,6 @@ export function HighDemandCond1({
                 <div className="text-[10px] font-medium text-foreground">
                   {U_TRUE} people are viewing this right now
                 </div>
-                <div className="text-[8px] text-muted-foreground">
-                  U_displayed = U_true — live backend analytics, stable across refreshes
-                </div>
               </div>
             </div>
 
@@ -138,9 +135,6 @@ export function HighDemandCond1({
             <div>
               <div className="font-mono text-[13px] font-bold tabular-nums text-foreground">
                 {displayedA} people are viewing this right now
-              </div>
-              <div className="text-[8px] text-muted-foreground">
-                U_displayed = R(a, b) — pseudo-random, detached from backend truth
               </div>
             </div>
           </div>

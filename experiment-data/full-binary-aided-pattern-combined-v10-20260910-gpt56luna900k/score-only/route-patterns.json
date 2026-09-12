@@ -1,0 +1,324 @@
+[
+  {
+    "pattern_number": 1,
+    "slug": "immortal-accounts",
+    "name": "Immortal Accounts"
+  },
+  {
+    "pattern_number": 2,
+    "slug": "dead-end",
+    "name": "Dead End"
+  },
+  {
+    "pattern_number": 3,
+    "slug": "forced-grace-period",
+    "name": "Forced Grace Period"
+  },
+  {
+    "pattern_number": 4,
+    "slug": "privacy-maze",
+    "name": "Privacy Maze"
+  },
+  {
+    "pattern_number": 5,
+    "slug": "labyrinthine-navigation",
+    "name": "Labyrinthine Navigation"
+  },
+  {
+    "pattern_number": 6,
+    "slug": "customisation",
+    "name": "Customisation (Interface Nesting)"
+  },
+  {
+    "pattern_number": 7,
+    "slug": "intermediate-currency",
+    "name": "Intermediate Currency"
+  },
+  {
+    "pattern_number": 8,
+    "slug": "disguised-ad",
+    "name": "Disguised Ad"
+  },
+  {
+    "pattern_number": 9,
+    "slug": "sneak-into-basket",
+    "name": "Sneak Into Basket"
+  },
+  {
+    "pattern_number": 10,
+    "slug": "drip-pricing",
+    "name": "Drip Pricing, Hidden Costs, or Partitioned Pricing"
+  },
+  {
+    "pattern_number": 11,
+    "slug": "bundling",
+    "name": "Bundling"
+  },
+  {
+    "pattern_number": 12,
+    "slug": "hidden-information",
+    "name": "Hidden Information"
+  },
+  {
+    "pattern_number": 13,
+    "slug": "reduced-friction",
+    "name": "Reduced Friction"
+  },
+  {
+    "pattern_number": 14,
+    "slug": "forced-continuity",
+    "name": "Forced Continuity"
+  },
+  {
+    "pattern_number": 15,
+    "slug": "privacy-zuckering",
+    "name": "Privacy Zuckering"
+  },
+  {
+    "pattern_number": 16,
+    "slug": "friend-spam",
+    "name": "Friend Spam"
+  },
+  {
+    "pattern_number": 17,
+    "slug": "address-book-leeching",
+    "name": "Address Book Leeching"
+  },
+  {
+    "pattern_number": 18,
+    "slug": "automatic-accept-third-party-term",
+    "name": "Automatic Accept Third Party Term"
+  },
+  {
+    "pattern_number": 19,
+    "slug": "pre-delivered-content",
+    "name": "Pre-Delivered Content"
+  },
+  {
+    "pattern_number": 20,
+    "slug": "fear-of-missing-out-fomo",
+    "name": "Fear Of Missing Out (FOMO)"
+  },
+  {
+    "pattern_number": 21,
+    "slug": "high-demand",
+    "name": "High Demand"
+  },
+  {
+    "pattern_number": 22,
+    "slug": "low-stock",
+    "name": "Low Stock"
+  },
+  {
+    "pattern_number": 23,
+    "slug": "activity-messages",
+    "name": "Activity Messages"
+  },
+  {
+    "pattern_number": 24,
+    "slug": "countdown-timer",
+    "name": "Countdown Timer"
+  },
+  {
+    "pattern_number": 25,
+    "slug": "limited-time-message",
+    "name": "Limited Time Message"
+  },
+  {
+    "pattern_number": 26,
+    "slug": "price-comparison-prevention",
+    "name": "Price Comparison Prevention"
+  },
+  {
+    "pattern_number": 27,
+    "slug": "reference-pricing",
+    "name": "Reference Pricing"
+  },
+  {
+    "pattern_number": 28,
+    "slug": "conflicting-information",
+    "name": "Conflicting Information"
+  },
+  {
+    "pattern_number": 29,
+    "slug": "information-without-context",
+    "name": "Information Without Context"
+  },
+  {
+    "pattern_number": 30,
+    "slug": "false-hierarchy",
+    "name": "False Hierarchy"
+  },
+  {
+    "pattern_number": 31,
+    "slug": "visual-prominence",
+    "name": "Visual Prominence"
+  },
+  {
+    "pattern_number": 32,
+    "slug": "persuasive-language",
+    "name": "Persuasive Language"
+  },
+  {
+    "pattern_number": 33,
+    "slug": "cuteness",
+    "name": "Cuteness"
+  },
+  {
+    "pattern_number": 34,
+    "slug": "positive-or-negative-framing",
+    "name": "Positive Or Negative Framing"
+  },
+  {
+    "pattern_number": 35,
+    "slug": "choice-overload",
+    "name": "Choice Overload"
+  },
+  {
+    "pattern_number": 36,
+    "slug": "plain-evil",
+    "name": "Plain Evil (Theoretical Construct)"
+  },
+  {
+    "pattern_number": 37,
+    "slug": "endorsement-and-testimonials",
+    "name": "Endorsement And Testimonials"
+  },
+  {
+    "pattern_number": 38,
+    "slug": "confirmshaming",
+    "name": "Confirmshaming"
+  },
+  {
+    "pattern_number": 39,
+    "slug": "psychological-tricks",
+    "name": "Psychological Tricks"
+  },
+  {
+    "pattern_number": 40,
+    "slug": "pressured-selling",
+    "name": "Pressured Selling"
+  },
+  {
+    "pattern_number": 41,
+    "slug": "small-or-moving-close-button",
+    "name": "Small or Moving Close Button"
+  },
+  {
+    "pattern_number": 42,
+    "slug": "bad-defaults-preselection",
+    "name": "Bad Defaults / Preselection"
+  },
+  {
+    "pattern_number": 43,
+    "slug": "trick-questions",
+    "name": "Trick Questions"
+  },
+  {
+    "pattern_number": 44,
+    "slug": "wrong-language",
+    "name": "Wrong Language"
+  },
+  {
+    "pattern_number": 45,
+    "slug": "complex-language",
+    "name": "Complex Language"
+  },
+  {
+    "pattern_number": 46,
+    "slug": "feedforward-ambiguity",
+    "name": "Feedforward Ambiguity"
+  },
+  {
+    "pattern_number": 47,
+    "slug": "forced-registration",
+    "name": "Forced Registration"
+  },
+  {
+    "pattern_number": 48,
+    "slug": "social-pyramid",
+    "name": "Social Pyramid"
+  },
+  {
+    "pattern_number": 49,
+    "slug": "granting-and-interaction",
+    "name": "Granting and Interaction"
+  },
+  {
+    "pattern_number": 50,
+    "slug": "pay-to-play",
+    "name": "Pay-To-Play"
+  },
+  {
+    "pattern_number": 51,
+    "slug": "grinding",
+    "name": "Grinding"
+  },
+  {
+    "pattern_number": 52,
+    "slug": "playing-by-appointment",
+    "name": "Playing By Appointment"
+  },
+  {
+    "pattern_number": 53,
+    "slug": "watch-ads-to-unlock-features",
+    "name": "Watch Ads To Unlock Features Or Get Rewards"
+  },
+  {
+    "pattern_number": 54,
+    "slug": "pay-to-avoid",
+    "name": "Pay To Avoid"
+  },
+  {
+    "pattern_number": 55,
+    "slug": "automating-the-user-away",
+    "name": "Automating The User Away"
+  },
+  {
+    "pattern_number": 56,
+    "slug": "parasocial-pressure",
+    "name": "Parasocial Pressure"
+  },
+  {
+    "pattern_number": 57,
+    "slug": "encouraging-anti-social-behavior",
+    "name": "Encouraging Anti-Social Behavior"
+  },
+  {
+    "pattern_number": 58,
+    "slug": "addictive-design",
+    "name": "Addictive Design"
+  },
+  {
+    "pattern_number": 59,
+    "slug": "infinite-scrolling",
+    "name": "Infinite Scrolling"
+  },
+  {
+    "pattern_number": 60,
+    "slug": "pull-to-refresh",
+    "name": "Pull To Refresh (Variable-Reward Trap)"
+  },
+  {
+    "pattern_number": 61,
+    "slug": "countdown-on-ads",
+    "name": "Countdown On Ads"
+  },
+  {
+    "pattern_number": 62,
+    "slug": "auto-play",
+    "name": "Auto-Play"
+  },
+  {
+    "pattern_number": 63,
+    "slug": "nagging",
+    "name": "Nagging",
+    "card": "card-063-nagging.md"
+  },
+  {
+    "pattern_number": 64,
+    "slug": "games-for-other-purposes",
+    "name": "Games For Other Purposes",
+    "card": "card-064-games-for-other-purposes.md"
+  }
+]

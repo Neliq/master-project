@@ -1,0 +1,30 @@
+{
+  "model": "gpt-5.6-luna-900k",
+  "provider": "openai-codex",
+  "service_tier": "fast",
+  "reasoning_effort": "minimal",
+  "arms": [
+    "not-aided",
+    "aided"
+  ],
+  "agents_total": 12,
+  "agents_per_arm": 6,
+  "distinct_interfaces": 12,
+  "audit_rows_total": 24,
+  "patterns": 2,
+  "conditions_per_pattern": 3,
+  "variants_per_condition": 2,
+  "seed": 20260910,
+  "base_run_id": "full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini",
+  "source_commit": "bdf275fdc93d35b27687a0aa303bb4531a788f4e",
+  "source_worktree_status": " M src/app/globals.css\n?? experiment-data/full-binary-aided-pattern-extension-v8-20260910-gpt56luna900k.failed-setup/\n?? experiment-data/full-binary-aided-pattern-extension-v8-20260910-gpt56luna900k/\n",
+  "source_patterns_sha256": "e91c06ffea20e4a5b46e10b2e8f0a2e63e281cafb2099fb040bab9d480c3cafd",
+  "base_ontology_sha256": "ccb1b85e8192103b92eef1853384bf1a13d5a622008965fc58172c25f6e3533c",
+  "pattern_cards_sha256": {
+    "nagging": "441e9ea7c0556fcbc5e08d5c4814c8b737361ce6427ce48653d6c068334c3886",
+    "games-for-other-purposes": "de9e119b308b12c3801b11027e55bf144044aeaf365b5c62c8c63cd8c83a04c4"
+  },
+  "aid_package": "two-pattern-extension-indexed-formalization-screening",
+  "pattern_index_sha256": "6b47523ba27b76aaebc623a26edd71f6644e3601293fac11adacc1460ee0fb9b",
+  "aid_index_sha256": "2d95c92dcde029b72e0a92ad23d1a63a825629d0e52df394410e0f7d3bcc843e"
+}

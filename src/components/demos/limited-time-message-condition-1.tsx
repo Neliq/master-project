@@ -166,15 +166,9 @@ export function LimitedTimeMessageCond1({
           </div>
 
           {cycles > 1 && (
-            <div className="mt-2 flex items-center gap-1.5 rounded-md border border-border/60 bg-muted/40 px-2.5 py-2 text-[9px] leading-relaxed">
-              <svg className="w-3 h-3 shrink-0 text-foreground" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-              </svg>
-              <span className="text-muted-foreground">
-                Just extended! The deadline reset at the last second —{" "}
-                <strong className="text-foreground">T_end({cycles}) = t_current + {EXTENSION_SECONDS}s</strong>{" "}
-                (extension #{cycles - 1}).
-              </span>
+            <div className="mt-2 flex items-center justify-between rounded-md border border-border/60 bg-muted/40 px-2.5 py-2 text-[9px]">
+              <span className="text-muted-foreground">Refreshes</span>
+              <strong className="font-mono tabular-nums text-foreground">{cycles - 1}×</strong>
             </div>
           )}
 
@@ -186,23 +180,6 @@ export function LimitedTimeMessageCond1({
           </button>
         </div>
 
-        {mode === "auditor" && claimed && (
-          <div className="rounded-md border border-yellow-500/30 bg-yellow-500/5 p-2.5 text-[9px] leading-relaxed space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-yellow-700 dark:text-yellow-300 uppercase tracking-tight">
-              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M12 9v4m0 4h.01" />
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              Offer updated
-            </div>
-            <p className="text-muted-foreground">
-              You paid the &ldquo;sale&rdquo; price — but the deadline you were chasing never
-              arrived. Each time t_current reached T_end(i), the backend shifted it forward:
-              T_end(i+1) = t_current + Δt. The constraint is infinite, so this price is just
-              the standard baseline dressed up as a temporary offer.
-            </p>
-          </div>
-        )}
       </div>
     </DemoShell>
   );

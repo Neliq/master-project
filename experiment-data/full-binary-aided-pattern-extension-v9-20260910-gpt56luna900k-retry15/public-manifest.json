@@ -1,0 +1,68 @@
+{
+  "run_id": "full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15",
+  "purpose": "additive retry of two-pattern binary aided versus not-aided live isolated-demo test",
+  "retry_of": "full-binary-aided-pattern-extension-v8-20260910-gpt56luna900k",
+  "base_run_id": "full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini",
+  "base_url": "http://127.0.0.1:3000",
+  "patterns": 2,
+  "pattern_names": [
+    "Nagging",
+    "Games For Other Purposes"
+  ],
+  "pattern_numbers": [
+    63,
+    64
+  ],
+  "conditions_per_pattern": 3,
+  "variants_per_condition": 2,
+  "distinct_interfaces": 12,
+  "audit_rows_total": 24,
+  "agents_total": 12,
+  "agents_per_arm": 6,
+  "arms": [
+    "not-aided",
+    "aided"
+  ],
+  "seed": 20260910,
+  "labels_public": false,
+  "evidence_mode": "live isolated URL; scoped data-isolated-demo DOM, computed layout, and one in-scope transition attempt",
+  "provenance": {
+    "original_run_untouched": true,
+    "source_template_read_only": true,
+    "extension_only": true,
+    "source_patterns_sha256": "e91c06ffea20e4a5b46e10b2e8f0a2e63e281cafb2099fb040bab9d480c3cafd",
+    "base_ontology_sha256": "ccb1b85e8192103b92eef1853384bf1a13d5a622008965fc58172c25f6e3533c",
+    "pattern_cards_sha256": {
+      "nagging": "441e9ea7c0556fcbc5e08d5c4814c8b737361ce6427ce48653d6c068334c3886",
+      "games-for-other-purposes": "de9e119b308b12c3801b11027e55bf144044aeaf365b5c62c8c63cd8c83a04c4"
+    },
+    "pattern_index_sha256": "6b47523ba27b76aaebc623a26edd71f6644e3601293fac11adacc1460ee0fb9b",
+    "aid_index_sha256": "2d95c92dcde029b72e0a92ad23d1a63a825629d0e52df394410e0f7d3bcc843e"
+  },
+  "metrics_emitted": false,
+  "raw_rows_written": 24,
+  "evidence_records_per_arm": {
+    "not-aided": 12,
+    "aided": 12
+  },
+  "raw_outputs_complete": true,
+  "raw_files_sha256": {
+    "results/raw-aided/agent-01.jsonl": "553773f63767367f5ff900addd4898ae067808fa6cacd61d01bc5565a6b75e68",
+    "results/raw-aided/agent-02.jsonl": "65fb62350d6495c9edb34c0be8af504a7f62cc98f8a1249ee4197fb8931d8481",
+    "results/raw-aided/agent-03.jsonl": "373447ca923cb981ac803f8fc6c35f8eb412958863e60a7a39e461e9008365ea",
+    "results/raw-aided/agent-04.jsonl": "058569ddc5cf29421d99912873f2aebcff35699bde1244e9aad0e2261890d175",
+    "results/raw-aided/agent-05.jsonl": "d83054b3066943304cf0c9c2657bef234f62c79100dc48a9523c94ba63fe001d",
+    "results/raw-aided/agent-06.jsonl": "db620c0d18962cc0a95959885bec85112754e4b55b319f5a55e368ac60457857",
+    "results/raw-not-aided/agent-01.jsonl": "bb0812c73562b7fe818353a282f4f1e0923a21602da961ca038c45c9c0af69c2",
+    "results/raw-not-aided/agent-02.jsonl": "023ee658547b21e15e34187db4523c5164acfe9537432443e4367f17681e5c09",
+    "results/raw-not-aided/agent-03.jsonl": "22c0fd682e78b10ecf0f11137e6dc83845f678bf51ff5a3dd5140c09d1f5f135",
+    "results/raw-not-aided/agent-04.jsonl": "f78571a4aaa81b27280819fe1b4b4feffde396d3ff1b9e153f204d87ba0c56bb",
+    "results/raw-not-aided/agent-05.jsonl": "6f00930c84a1009901e4f13c8a73c18cabfa1f0a478a955ac65bf17f6619a30a",
+    "results/raw-not-aided/agent-06.jsonl": "7c61f66b5dbbe6d1b26bbbfcd4a6dca8b99eb1cb8f27833d877da51e2cb4ccae"
+  },
+  "evidence_files_sha256": {
+    "evidence/capture-index.json": "af5638daf7187fa7aca26df859423bcaebdac65c5d9dba81e9baf26f46716272",
+    "evidence/live-captures-aided.json": "fa6271b193f4199413521dfad9b41718919bb59d08b22cfd1b73778799f39a05",
+    "evidence/live-captures-not-aided.json": "e0aabf36dad9d1572f26be8814383c44a6b84175e6e5c4ec89a3d75416c9a8ba"
+  }
+}

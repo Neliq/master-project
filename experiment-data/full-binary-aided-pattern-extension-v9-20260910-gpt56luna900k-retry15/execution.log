@@ -1,0 +1,41 @@
+run_id=full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15
+template=/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-extension-v8-20260910-gpt56luna900k
+base=/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini
+setup_command=python3 /home/neliq/.hermes/kanban/workspaces/t_92cc044e/build_retry.py
+capture_command=Playwright MCP browser_run_code_unsafe route loop; fresh pass arm=not-aided
+capture_command=Playwright MCP browser_run_code_unsafe route loop; fresh pass arm=aided
+capture_scope=[data-isolated-demo]; one direct control attempt where available; title/history masking applied
+write_command=python3 /home/neliq/.hermes/kanban/workspaces/t_92cc044e/write_rows.py
+validation_command=python3 /home/neliq/.hermes/kanban/workspaces/t_92cc044e/validate_retry.py
+raw_rows_written=24
+raw_rows_per_arm=not-aided:12,aided:12
+evidence_records_per_arm=not-aided:12,aided:12
+metrics_emitted=false
+focused_validation=PASS
+sha256 runtime-config.json 54bbdcf4c2c419449cbc1ad329acc331ee7caae7f51fd215fdbb15790b692a3f
+sha256 public-manifest.json 7f8d53c255f71bbaab01c58958845799bb42e7462a5306bdc549b7928af9db98
+sha256 base-run-reference.json 644740c4c018d934e73deacaf560fc1d909f2d571fea3b795e167777c55f4ec7
+sha256 results/raw-aided/agent-01.jsonl 553773f63767367f5ff900addd4898ae067808fa6cacd61d01bc5565a6b75e68
+sha256 results/raw-aided/agent-02.jsonl 65fb62350d6495c9edb34c0be8af504a7f62cc98f8a1249ee4197fb8931d8481
+sha256 results/raw-aided/agent-03.jsonl 373447ca923cb981ac803f8fc6c35f8eb412958863e60a7a39e461e9008365ea
+sha256 results/raw-aided/agent-04.jsonl 058569ddc5cf29421d99912873f2aebcff35699bde1244e9aad0e2261890d175
+sha256 results/raw-aided/agent-05.jsonl d83054b3066943304cf0c9c2657bef234f62c79100dc48a9523c94ba63fe001d
+sha256 results/raw-aided/agent-06.jsonl db620c0d18962cc0a95959885bec85112754e4b55b319f5a55e368ac60457857
+sha256 results/raw-not-aided/agent-01.jsonl bb0812c73562b7fe818353a282f4f1e0923a21602da961ca038c45c9c0af69c2
+sha256 results/raw-not-aided/agent-02.jsonl 023ee658547b21e15e34187db4523c5164acfe9537432443e4367f17681e5c09
+sha256 results/raw-not-aided/agent-03.jsonl 22c0fd682e78b10ecf0f11137e6dc83845f678bf51ff5a3dd5140c09d1f5f135
+sha256 results/raw-not-aided/agent-04.jsonl f78571a4aaa81b27280819fe1b4b4feffde396d3ff1b9e153f204d87ba0c56bb
+sha256 results/raw-not-aided/agent-05.jsonl 6f00930c84a1009901e4f13c8a73c18cabfa1f0a478a955ac65bf17f6619a30a
+sha256 results/raw-not-aided/agent-06.jsonl 7c61f66b5dbbe6d1b26bbbfcd4a6dca8b99eb1cb8f27833d877da51e2cb4ccae
+sha256 evidence/capture-index.json af5638daf7187fa7aca26df859423bcaebdac65c5d9dba81e9baf26f46716272
+sha256 evidence/live-captures-aided.json fa6271b193f4199413521dfad9b41718919bb59d08b22cfd1b73778799f39a05
+sha256 evidence/live-captures-not-aided.json e0aabf36dad9d1572f26be8814383c44a6b84175e6e5c4ec89a3d75416c9a8ba
+sha256 source src/lib/patterns.ts e91c06ffea20e4a5b46e10b2e8f0a2e63e281cafb2099fb040bab9d480c3cafd
+sha256 source current-ontology/base-ontology-62.json ccb1b85e8192103b92eef1853384bf1a13d5a622008965fc58172c25f6e3533c
+sha256 source arms/aided/pattern-routing-index.jsonl 6b47523ba27b76aaebc623a26edd71f6644e3601293fac11adacc1460ee0fb9b
+sha256 source arms/aided/formalization-index.jsonl 2d95c92dcde029b72e0a92ad23d1a63a825629d0e52df394410e0f7d3bcc843e
+sha256 base-v7 runtime-config.json 69605fda14458f6c381f9da2ad927074be5af281cddb2df8490db5b6b91000b5
+sha256 base-v7 public-manifest.json d9816b645679090e8c1f9227961e5cc457eec5e837707d3e8ff12b4d29c3734a
+sha256 template-v8 runtime-config.json be00b9e5d5218196943ab9949a40f00be51f86dec06268371543f6139a54d8a7
+sha256 template-v8 public-manifest.json ff8de02b36045a34999d37853a013984fd743e7cf445b3b99fb3005a8374dbb0
+status=focused_validation_pass

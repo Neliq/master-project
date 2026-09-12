@@ -1,0 +1,39 @@
+{
+  "run_id": "full-binary-aided-pattern-extension-v9-20260910-gpt56luna900k-retry15",
+  "arms": [
+    "not-aided",
+    "aided"
+  ],
+  "records_per_arm": 12,
+  "records": [
+    "task-0ab8f4420396",
+    "task-0ec2ae7ec850",
+    "task-19770a244e8d",
+    "task-253f9fb5c4ea",
+    "task-2c09719c9f46",
+    "task-53802e3992ad",
+    "task-59991541ece9",
+    "task-c71ab4495b13",
+    "task-c899de16d072",
+    "task-ef997d1956a6",
+    "task-f33c1fe4ae6b",
+    "task-fda48b3b5d3d"
+  ],
+  "files": [
+    "evidence/capture-index.json",
+    "evidence/live-captures-aided.json",
+    "evidence/live-captures-not-aided.json",
+    "results/raw-aided/agent-01.jsonl",
+    "results/raw-aided/agent-02.jsonl",
+    "results/raw-aided/agent-03.jsonl",
+    "results/raw-aided/agent-04.jsonl",
+    "results/raw-aided/agent-05.jsonl",
+    "results/raw-aided/agent-06.jsonl",
+    "results/raw-not-aided/agent-01.jsonl",
+    "results/raw-not-aided/agent-02.jsonl",
+    "results/raw-not-aided/agent-03.jsonl",
+    "results/raw-not-aided/agent-04.jsonl",
+    "results/raw-not-aided/agent-05.jsonl",
+    "results/raw-not-aided/agent-06.jsonl"
+  ]
+}

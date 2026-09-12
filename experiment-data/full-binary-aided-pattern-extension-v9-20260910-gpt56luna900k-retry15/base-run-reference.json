@@ -1,0 +1,9 @@
+{
+  "run_id": "full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini",
+  "path": "/home/neliq/Coding/master-project/experiment-data/full-binary-aided-pattern-first-rollback-v7-20260907-gpt54mini",
+  "runtime_config_sha256": "69605fda14458f6c381f9da2ad927074be5af281cddb2df8490db5b6b91000b5",
+  "public_manifest_sha256": "d9816b645679090e8c1f9227961e5cc457eec5e837707d3e8ff12b4d29c3734a",
+  "template_run_id": "full-binary-aided-pattern-extension-v8-20260910-gpt56luna900k",
+  "template_runtime_config_sha256": "be00b9e5d5218196943ab9949a40f00be51f86dec06268371543f6139a54d8a7",
+  "template_public_manifest_sha256": "ff8de02b36045a34999d37853a013984fd743e7cf445b3b99fb3005a8374dbb0"
+}
